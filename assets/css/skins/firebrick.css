@@ -1,0 +1,26 @@
+/*Main colors*/
+.active, .active-tab,.page-numbers a,.widgeted_title,#dun-title,#submit,.form_submit,.featured-posts-title,.section_title,.button,#page-scroll,.post-image-wrapper h4,.f-post-title,.reply{
+	background-color: #ef1450 !important;
+}
+.single-download,.toggle-sidebar{
+	background-color:rgba(35, 0, 5,1);
+}
+.fa-calendar,.fa-comments-o,.fa-folder-open,.fa-eye,.fa-download,.fa-star{
+	color: #b10030;
+}
+
+a,h1,h2,h3,h4,h5,h6 {
+	color: #b10030;	
+}
+
+body{
+	background: url(../../../images/6fe4bb926f48f7ef104b56f95d53e999c3cd.jpg) no-repeat fixed;
+	background-size: cover;
+}
+.breadcrumbs li, .breadcrumbs a {
+    color: #b10030;
+}
+
+#top-header-wrapper{
+	border-bottom: 5px solid #ef1450;
+}

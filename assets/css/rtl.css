@@ -1,0 +1,248 @@
+@font-face{font-family:'ae_albattarregular';src:url(../../fonts/ARBfonts/ae_albattar-webfont.eot);src:url(../../fonts/ARBfonts/ae_albattar-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_albattar-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_albattar-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_albattar-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_albattar-webfont.svg#ae_albattarregular) format("svg");font-weight:400;font-style:normal}
+@font-face {
+    font-family: 'decotypethuluthiiregular';
+    src: url('../../fonts/ARBfonts/thuluth-decorated2-webfont.eot');
+    src: url('../../fonts/ARBfonts/thuluth-decorated2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/thuluth-decorated2-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/thuluth-decorated2-webfont.ttf') format('truetype'),
+         url('../../fonts/ARBfonts/thuluth-decorated2-webfont.svg#decotypethuluthiiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'hsn_shahd_boldbold';
+    src: url('../../fonts/ARBfonts/shahd-bold-webfont.eot');
+    src: url('../../fonts/ARBfonts/shahd-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/shahd-bold-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/shahd-bold-webfont.ttf') format('truetype'),
+         url('../../fonts/ARBfonts/shahd-bold-webfont.svg#hsn_shahd_boldbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face{font-family:'ae_alarabiyaregular';src:url(../../fonts/ARBfonts/ae_alarabiya-webfont.eot);src:url(../../fonts/ARBfonts/ae_alarabiya-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.svg#ae_alarabiyaregular) format("svg");font-weight:400;font-style:normal}
+
+@font-face{font-family:'ae_alhorregular';src:url(../../fonts/ARBfonts/ae_alhor-webfont.eot);src:url(../../fonts/ARBfonts/ae_alhor-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_alhor-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_alhor-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_alhor-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_alhor-webfont.svg#ae_alhorregular) format("svg");font-weight:400;font-style:normal}
+
+@font-face{font-family:'ae_almohanadregular';src:url(../../fonts/ARBfonts/ae_almohanad-webfont.eot);src:url(../../fonts/ARBfonts/ae_almohanad-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_almohanad-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_almohanad-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_almohanad-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular) format("svg");font-weight:400;font-style:normal}
+
+@font-face {
+    font-family: 'smartmanartregular';
+    src: url('../../fonts/ARBfonts/smartman-webfont.eot');
+    src: url('../../fonts/ARBfonts/smartman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/smartman-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/smartman-webfont.ttf') format('truetype'),
+         url('../../fonts/ARBfonts/smartman-webfont.svg#smartmanartregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'kawkab_monoregular';
+    src: url('../../fonts/ARBfonts/kawkabmono-regular-webfont.eot');
+    src: url('../../fonts/ARBfonts/kawkabmono-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/kawkabmono-regular-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/kawkabmono-regular-webfont.svg#kawkab_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'anegaarregular';
+    src: url('../../fonts/ARBfonts/neckar-webfont.eot');
+    src: url('../../fonts/ARBfonts/neckar-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/neckar-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/neckar-webfont.ttf') format('truetype'),
+         url('../../fonts/ARBfonts/neckar-webfont.svg#anegaarregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'zahraarabic-regularregular';
+    src: url('../../fonts/ARBfonts/zahra-webfont.eot');
+    src: url('../../fonts/ARBfonts/zahra-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/zahra-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/zahra-webfont.ttf') format('truetype'),
+         url('../../fonts/ARBfonts/zahra-webfont.svg#zahraarabic-regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'harmattan-regularregular';
+    src: url('../../fonts/ARBfonts/harmattan-webfont.eot');
+    src: url('../../fonts/ARBfonts/harmattan-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/harmattan-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/harmattan-webfont.ttf') format('truetype'),
+         url('../../fonts/ARBfonts/harmattan-webfont.svg#harmattan-regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'dubairegular';
+    src: url('../../fonts/ARBfonts/dubai-dubi.eot');
+    src: url('../../fonts/ARBfonts/dubai-dubi.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/dubai-dubi.woff2') format('woff2'),
+         url('../../fonts/ARBfonts/dubai-dubi.woff') format('woff'),
+         url('../../fonts/ARBfonts/dubai-dubi.svg#dubairegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+html{
+direction: rtl;
+    unicode-bidi:embed;
+}
+body{
+	font-family:'dubairegular';
+	font-size: 18px;
+	font-style: normal;
+	letter-spacing: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family:'hsn_shahd_boldbold';
+}
+/***Header***/
+.search-form-toggle{
+	right: auto;
+	left: 0;
+}
+/***End header**/
+
+/***body***/
+#dun_text_wrapper{
+	text-align: right;
+}
+
+.fa-star{
+		margin-right: 0px;
+		margin-left: 5px;
+	}
+/***End body***/
+
+/***Footer***/
+#page-scroll-wrapper{
+	right: auto;
+	left: 20px;
+}
+#hidden-search-form #searchform{
+    flex-direction: row;
+}
+#hidden-search-form #searchform .smpg-search-input{
+    border-radius:0px 10px 10px 0px; 
+}
+#hidden-search-form #searchform .form_submit{
+    border-radius: 10px 0px 0px 10px;
+}
+#hidden-search-form > .search-form-toggle{
+	right: auto;
+	left: 20px;
+}
+/***End Footer***/
+
+.download-meta{
+	padding-right: 0;
+	padding-left: 5px;
+}
+.single-download-title .date{
+	margin-right: 0;
+	margin-left: 5px;
+}
+.cat-more{
+	left: 0;
+	right: auto;
+	font-style: normal;
+}
+.ca-item h4 span{
+	text-align: right;
+}
+.ca-item h4 span.ca-quote{
+	left: auto;
+	right: 10px;
+}
+.ca-item h4{
+	    border-right: 10px solid #ccbda2;
+	border-left: none;
+	padding-left: 0;
+	padding-right: 10px;
+}
+.popular{
+	margin-right: auto;
+	margin-left: 0.6%;
+}
+.reply{
+	
+}
+#contacts li{
+display: flex;
+    align-items: center;
+    direction: ltr;
+    }
+.smpg-search-input{
+	padding-right: 10px;
+	padding-left: 0;
+}
+.featured-posts-title,.post-image-wrapper h4{
+	left: auto;
+	right: 0;
+}
+.posts-list{
+	margin-left: auto;
+	margin-right: 5px;
+}
+.metadata{
+	padding-right: 0;
+	padding-left: 10px;
+}
+
+.featured-excerpt{
+	padding-right: 10px;
+	padding-left: 0;
+}
+.toggle-category{
+	right: auto;
+	left: 5px;
+}
+
+/***Body***/
+	/***blog post***/
+	.toggle-excerpt{
+		right: auto;
+		left: 10px;
+	}
+	.text h3, .text p{
+		text-align: right;
+	}
+.post_meta div{
+	margin-left: 5px;
+	margin-right: 0px;
+}
+.inside-thumb{
+	right: auto;
+	left: 0;
+}
+.extra-metas{
+	
+}
+	/***End blog post**/
+/***End body***/
+
+@media screen and (min-width: 768px){
+	/***Header***/
+	#main_menu_con li a {
+		border-right: 0;
+		border-left: 1px solid rgba(97, 27, 46, 0.5);
+	}
+	.sub-menu{
+		right: 0;
+	}
+	/***End header*/
+}

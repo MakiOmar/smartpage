@@ -1,0 +1,461 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Smart Page\n"
+"POT-Creation-Date: 2018-10-22 10:57+0300\n"
+"PO-Revision-Date: 2018-04-16 14:35+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: category.php:10 taxonomy-download_category.php:10
+msgid "sub categories"
+msgstr ""
+
+#: category.php:24 taxonomy-download_category.php:24
+msgid "Enter"
+msgstr ""
+
+#: category.php:42 taxonomy-download_category.php:44
+msgid "Category posts"
+msgstr ""
+
+#: comments.php:9
+#, php-format
+msgctxt "comments title"
+msgid "One Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:21 functions/theme_functions.php:138
+msgid "Comments-off"
+msgstr ""
+
+#: footer.php:2
+#, php-format
+msgid "All rights reserved for %s 2018"
+msgstr ""
+
+#: functions.php:28
+msgid "Commented"
+msgstr ""
+
+#: functions.php:29
+msgid "View Post"
+msgstr ""
+
+#: functions.php:32
+msgid "No comments yet"
+msgstr ""
+
+#: functions/menus_functions.php:6
+msgid "Shows on the main navigation"
+msgstr ""
+
+#: functions/menus_functions.php:7
+msgid "Shows on the footer"
+msgstr ""
+
+#: functions/menus_functions.php:8
+msgid "Shows on the top header"
+msgstr ""
+
+#: functions/menus_functions.php:146
+msgid "<i class=\"fa fa-home\"></i>"
+msgstr ""
+
+#: functions/menus_functions.php:157
+msgid "Home"
+msgstr ""
+
+#: functions/posts_functions.php:8 functions/posts_functions.php:76
+#: functions/posts_functions.php:124 single-smpg_download.php:49
+msgid "Download"
+msgstr ""
+
+#: functions/posts_functions.php:8 functions/posts_functions.php:76
+#: templates/temp-download.php:12
+msgid "Downloads"
+msgstr ""
+
+#: functions/posts_functions.php:10 functions/posts_functions.php:78
+msgid "Portfolio"
+msgstr ""
+
+#: functions/posts_functions.php:10 functions/posts_functions.php:78
+msgid "Portfolios"
+msgstr ""
+
+#: functions/posts_functions.php:12 functions/posts_functions.php:80
+msgid "Testimonial"
+msgstr ""
+
+#: functions/posts_functions.php:12 functions/posts_functions.php:80
+msgid "Testimonials"
+msgstr ""
+
+#: functions/posts_functions.php:14
+msgid "New"
+msgstr ""
+
+#: functions/posts_functions.php:14
+msgid "News"
+msgstr ""
+
+#: functions/posts_functions.php:19
+#, php-format
+msgctxt "General Name"
+msgid "%s"
+msgstr ""
+
+#: functions/posts_functions.php:20
+#, php-format
+msgctxt "Singular Name"
+msgid "%s"
+msgstr ""
+
+#: functions/posts_functions.php:21 functions/posts_functions.php:22
+#: functions/posts_functions.php:48
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: functions/posts_functions.php:23
+#, php-format
+msgid "%s Archives"
+msgstr ""
+
+#: functions/posts_functions.php:24
+#, php-format
+msgid "%s Attributes"
+msgstr ""
+
+#: functions/posts_functions.php:25
+#, php-format
+msgid "Parent %s:"
+msgstr ""
+
+#: functions/posts_functions.php:26
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: functions/posts_functions.php:27
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: functions/posts_functions.php:28
+msgid "Add New"
+msgstr ""
+
+#: functions/posts_functions.php:29
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: functions/posts_functions.php:30
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: functions/posts_functions.php:31
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#: functions/posts_functions.php:32 functions/posts_functions.php:33
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: functions/posts_functions.php:34
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: functions/posts_functions.php:35
+msgid "Not found"
+msgstr ""
+
+#: functions/posts_functions.php:36
+msgid "Not found in Trash"
+msgstr ""
+
+#: functions/posts_functions.php:37
+msgid "Featured Image"
+msgstr ""
+
+#: functions/posts_functions.php:38
+msgid "Set featured image"
+msgstr ""
+
+#: functions/posts_functions.php:39
+msgid "Remove featured image"
+msgstr ""
+
+#: functions/posts_functions.php:40
+msgid "Use as featured image"
+msgstr ""
+
+#: functions/posts_functions.php:41
+#, php-format
+msgid "Insert into %s"
+msgstr ""
+
+#: functions/posts_functions.php:42
+#, php-format
+msgid "Uploaded to this %s"
+msgstr ""
+
+#: functions/posts_functions.php:43
+#, php-format
+msgid "%s list"
+msgstr ""
+
+#: functions/posts_functions.php:44
+#, php-format
+msgid "%s list navigation"
+msgstr ""
+
+#: functions/posts_functions.php:45
+#, php-format
+msgid "Filter %s list"
+msgstr ""
+
+#: functions/posts_functions.php:49
+#, php-format
+msgid "Here you can add your %s"
+msgstr ""
+
+#: functions/posts_functions.php:89 functions/posts_functions.php:90
+#, php-format
+msgid "%s categories"
+msgstr ""
+
+#: functions/posts_functions.php:92
+#, php-format
+msgid "All %s categories"
+msgstr ""
+
+#: functions/posts_functions.php:93
+#, php-format
+msgid "Edit %s category"
+msgstr ""
+
+#: functions/posts_functions.php:94
+#, php-format
+msgid "view %s category"
+msgstr ""
+
+#: functions/posts_functions.php:95
+#, php-format
+msgid "update %s category"
+msgstr ""
+
+#: functions/posts_functions.php:96
+#, php-format
+msgid "Add new %s category"
+msgstr ""
+
+#: functions/posts_functions.php:97
+#, php-format
+msgid "new %s category"
+msgstr ""
+
+#: functions/posts_functions.php:98
+#, php-format
+msgid "Parent %s category"
+msgstr ""
+
+#: functions/posts_functions.php:99
+#, php-format
+msgid "Parent %s category:"
+msgstr ""
+
+#: functions/posts_functions.php:100
+#, php-format
+msgid "search %s categories"
+msgstr ""
+
+#: functions/posts_functions.php:101
+#, php-format
+msgid "No %s category found"
+msgstr ""
+
+#: functions/posts_functions.php:110
+msgid "Add your download"
+msgstr ""
+
+#: functions/posts_functions.php:116
+msgid "Select your file"
+msgstr ""
+
+#: functions/posts_functions.php:124
+msgid "Current file:"
+msgstr ""
+
+#: functions/posts_functions.php:126
+msgid "No selected file "
+msgstr ""
+
+#: functions/posts_functions.php:165
+msgid "Sorry!! Please make sure your file type is one of the following"
+msgstr ""
+
+#: functions/posts_functions.php:260
+msgid "Pingback:"
+msgstr ""
+
+#: functions/posts_functions.php:260
+msgid "(Edit)"
+msgstr ""
+
+#: functions/posts_functions.php:275
+msgid "Post author"
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: functions/posts_functions.php:281
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: functions/posts_functions.php:287
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions/posts_functions.php:292
+msgid "Edit"
+msgstr ""
+
+#: functions/posts_functions.php:296
+msgid "Reply"
+msgstr ""
+
+#: functions/posts_functions.php:311
+msgid "General Downloads"
+msgstr ""
+
+#: functions/theme_functions.php:133 templates/temp-recent-posts.php:15
+msgid "comments"
+msgstr ""
+
+#: functions/theme_functions.php:135
+msgid "comment"
+msgstr ""
+
+#: functions/walkers/categories_custom_walker.php:55
+#, php-format
+msgid "Feed for all posts filed under %s"
+msgstr ""
+
+#: functions/widgets/categories-list.php:5
+msgid "Displays an organized dropdown list of your categories"
+msgstr ""
+
+#: functions/widgets/categories-list.php:6
+msgid "Smart Page categories"
+msgstr ""
+
+#: searchform.php:2 searchform.php:3
+msgid "Search"
+msgstr ""
+
+#: sidebar-secondary.php:4
+msgid "Popular"
+msgstr ""
+
+#: sidebar-secondary.php:5
+msgid "Recent comments"
+msgstr ""
+
+#: sidebar.php:7
+#, php-format
+msgid "<strong>Please add some widgets.</strong><a href=\"%s\"> Add Here</a>"
+msgstr ""
+
+#: template-homepage.php:17
+msgid "Simple Info"
+msgstr ""
+
+#: template-homepage.php:41
+msgid "Suggested downloads"
+msgstr ""
+
+#: templates/temp-blog-post.php:28
+msgid "Shares"
+msgstr ""
+
+#: templates/temp-blog-post.php:55
+msgid "By"
+msgstr ""
+
+#: templates/temp-blog-post.php:58 templates/temp-featured.php:22
+msgid "Read more"
+msgstr ""
+
+#: templates/temp-category-posts.php:6
+msgid "Recent Posts"
+msgstr ""
+
+#: templates/temp-popular.php:30
+msgid "No popular posts till now"
+msgstr ""
+
+#: templates/temp-rate.php:31
+msgid "Rated"
+msgstr ""
+
+#: templates/temp-rate.php:31
+msgid "out of"
+msgstr ""
+
+#: templates/temp-rate.php:31
+msgid "Review(s)"
+msgstr ""
+
+#: templates/temp-recent-posts.php:15
+msgid "No comments"
+msgstr ""
+
+#: templates/temp-recent-posts.php:15
+msgid "One comment"
+msgstr ""
+
+#: templates/temp-recent-posts.php:21
+msgid "No published posts"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Smart Page"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://prosentra.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A professional wordpress smart theme suitable for Professional Blogs and "
+"Magazines."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mohamed Omar"
+msgstr ""
