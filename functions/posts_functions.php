@@ -222,7 +222,9 @@ function number_postpercat($idcat) {
 	global $wpdb;
 	$query = "SELECT count FROM $wpdb->term_taxonomy WHERE term_id = $idcat";
 	$num = $wpdb->get_col($query);
-	return $num[0];
+	if(is_array($num) && !empty($num)){
+		return $num[0];
+	}
 
 }
 
