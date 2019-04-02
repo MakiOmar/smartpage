@@ -18,6 +18,8 @@ require_once(LIBS_DIR.'/db_functions.php');
 require_once(LIBS_DIR.'/walkers/categories_custom_walker.php');
 require_once(LIBS_DIR.'/walkers/nav_menu_custom_walker.php');
 require_once(LIBS_DIR.'/widgets/categories-list.php');
+require_once(LIBS_DIR.'/helper/php-helpers.php');
+require_once(LIBS_DIR.'/helper/wordpress-helpers.php');
 
 function latest_comments(){
 	$args = array('number'=>4,'author__not_in' => array(get_current_user_id()),);
