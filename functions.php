@@ -89,3 +89,18 @@ add_filter('option_users_can_register', function($value) {
     
     return $value;
 });
+
+/*
+*define post types to search for
+*/
+add_filter('pre_get_posts','searchFilter');
+
+function searchFilter($query) {
+ 
+    if ($query->is_search && !is_admin() ) {
+        $query->set('post_type',array('post','page'));
+    }
+ 
+	return $query;
+}
+ 
