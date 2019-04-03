@@ -8,7 +8,7 @@
 
 	$tn->beforeSection .= '<p id="dun-title">'.esc_html__('Simple Info','smartpage').'</p>';
 
-	$tn->beforeSection .= get_search_form();
+	$tn->beforeSection .= get_search_form(false);
 
 	$tn->beforeSection .= '</div>';
 
