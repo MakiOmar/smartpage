@@ -7,11 +7,6 @@
 		
 		$FreaturedQuery = new WP_Query($args);
 		
-		add_action('wp_footer',function () use ($FreaturedQuery){
-			
-		neat_print_r($FreaturedQuery);
-			
-	});
 		if ( $FreaturedQuery->have_posts() ) {
 			
 			$FeaturedIDs = array();
