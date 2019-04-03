@@ -4,11 +4,13 @@
 						'news-loop',
 						true
 					);
-	$tn->beforeSection = '
-	<div id="didyouknow" class="group">
-		<p id="dun-title">'.esc_html__('Simple Info','smartpage').'</p>
-	'.get_search_form().'
-	</div>';
+	$tn->beforeSection  = '<div id="didyouknow" class="group">';
+
+	$tn->beforeSection .= '<p id="dun-title">'.esc_html__('Simple Info','smartpage').'</p>';
+
+	$tn->beforeSection .= get_search_form();
+
+	$tn->beforeSection .= '</div>';
 
 	$tn->sectionWrapperOpen ='
 	<div id="dun-text">
