@@ -38,6 +38,18 @@ class Smpg_Generate_Posts_View{
 	*/
 
 	public $sectionWrapperClose = '</div>';
+	
+	/*
+	*@var  string  $beforeSection  add any thing before posts wrapper
+	*/
+
+	public $beforeSection = '';
+	
+	/*
+	*@var  string  $beforeSection  add any thing before posts wrapper
+	*/
+
+	public $afterSection = '';
 	/*
 	*generatePostView constructor
 	*@param  array   $args      array to create post object
@@ -45,7 +57,7 @@ class Smpg_Generate_Posts_View{
 	*@param  bool    $reset     if the loop need to be reset
 	*/
 
-	public function __construct($args, $template, $reset = false){
+	public function __construct($args, $template = 'blog-post', $reset = false){
 
 		$this->resetLoop = $reset;
 
@@ -54,21 +66,31 @@ class Smpg_Generate_Posts_View{
 		$this->post = new WP_Query($args);
 
 	}
-
+	
+	/*
+	*Display posts list view
+	*/
 	public function postsView(){
 
 		if($this->post->have_posts()){
 
+			echo $this->beforeSection;
+			
 			echo $this->sectionWrapperOpen;
 
-			$this->loopPosts();
+				$this->loopPosts();
 
 			echo $this->sectionWrapperClose;
+			
+			echo $this->afterSection;
 
 
 		}
 	}
-
+	
+	/*
+	*Loops through posts list view
+	*/
 	public function loopPosts(){
 		while ($this->post->have_posts() ) {
 			
