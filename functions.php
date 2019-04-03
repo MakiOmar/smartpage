@@ -1,20 +1,55 @@
 <?php
-define( 'THEME_DIR', str_replace("\\","/",get_template_directory()) );
+define( 'THEME_DIR', wp_normalize_path( get_template_directory() ) );
+
 define( 'THEME_URI', get_template_directory_uri() );
 
 define( 'THEME_NAME', 'Smartpage' );
+
 define( 'THEME_VERSION', '1.0' );
 
-define( 'LIBS_DIR', THEME_DIR. '/functions' );
-define( 'LIBS_URI', THEME_URI. '/functions' );
-define( 'LANG_DIR', THEME_DIR. '/languages' );
+define( 'LIBS_DIR', THEME_DIR . '/functions/' );
 
-require_once(LIBS_DIR.'/posts_functions.php');
-require_once(LIBS_DIR.'/theme_functions.php');
-require_once(LIBS_DIR.'/menus_functions.php');
-require_once(LIBS_DIR.'/admin_functions.php');
-require_once(LIBS_DIR.'/media_functions.php');
-require_once(LIBS_DIR.'/db_functions.php');
+define( 'LANG_DIR', THEME_DIR. '/languages/' );
+
+define('SuppTypes',serialize(array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd')));
+
+
+/*
+*Classes Auto loader
+*/
+spl_autoload_register( 'smpg_autoloader' );
+
+/*
+*@param  string $class_name 
+*/
+function smpg_autoloader( $class_name ) {
+	
+  if ( false !== strpos( $class_name, 'Smpg' ) ) {
+	  
+    $classes_dir = THEME_DIR .'/functions/smpg-classes/';
+	  
+    $class_file = 'class-' . str_replace( '_', '-',strtolower($class_name)  ) . '.php';
+	  
+    require_once $classes_dir . $class_file;
+	  
+  }
+	
+}
+
+$smpglibs = [
+	'posts-functions',
+	'theme-functions',
+	'menus-functions',
+	'admin-functions',
+	'media-functions',
+	'db-functions'   ,
+	
+];
+
+foreach($smpglibs as $smpglib){
+	require_once(LIBS_DIR.$smpglib.'.php');
+}
+
 require_once(LIBS_DIR.'/walkers/categories_custom_walker.php');
 require_once(LIBS_DIR.'/walkers/nav_menu_custom_walker.php');
 require_once(LIBS_DIR.'/widgets/categories-list.php');
@@ -54,18 +89,3 @@ add_filter('option_users_can_register', function($value) {
     
     return $value;
 });
-
-function is_url_exist($url){
-    $ch = curl_init($url);    
-    curl_setopt($ch, CURLOPT_NOBODY, true);
-    curl_exec($ch);
-    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-    if($code == 200){
-       $status = true;
-    }else{
-      $status = false;
-    }
-    curl_close($ch);
-   return $status;
-}
