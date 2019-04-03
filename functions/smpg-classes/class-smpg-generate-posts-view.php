@@ -23,21 +23,21 @@ class Smpg_Generate_Posts_View{
 	*@var  bool  $HomeView  Flage to check if post view will be at homepage
 	*/
 
-	public $HomeView;
+	public $HomeView = false;
 
 
 	/*
 	*@var  string  $sectionWrapperOpen  posts section container opening wrapper
 	*/
 
-	public $sectionWrapperOpen;
+	public $sectionWrapperOpen = '<div>';
 
 
 	/*
 	*@var  string  $sectionWrapperClose  posts section container closing wrapper
 	*/
 
-	public $sectionWrapperClose;
+	public $sectionWrapperClose = '</div>';
 	/*
 	*generatePostView constructor
 	*@param  array   $args      array to create post object
@@ -50,12 +50,6 @@ class Smpg_Generate_Posts_View{
 		$this->resetLoop = $reset;
 
 		$this->postsTemplate = $template;
-
-		$this->HomeView = false;
-
-		$this->sectionWrapperOpen = '';
-
-		$this->sectionWrapperClose = '';
 
 		$this->post = new WP_Query($args);
 
