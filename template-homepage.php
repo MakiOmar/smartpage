@@ -41,15 +41,16 @@ get_header();
 					<div><h4 class="section_title clearfix"><?php _e('Suggested downloads','smartpage');?></h4></div>
 					<div class="posts-wrapper">
 					  <div id="download">
-							<?php while ( $smpg_download->have_posts() ) { 
-								$smpg_download->the_post();
-							get_template_part('templates/temp','download') ;	
-					  }?>
+							<?php 
+									while ( $smpg_download->have_posts() ) { 
+									$smpg_download->the_post();
+									get_template_part('templates/temp','download') ;	
+					  			}?>
 					  </div>
 					</div>
 				  </div>
-				<?php } 
-				wp_reset_postdata();
+							<?php wp_reset_postdata();} 
+				
 				
 			   get_template_part('templates/temp','category-posts-masonary') ;
 			 ?>	
