@@ -637,6 +637,7 @@ img {
 	}
 .blog-post .post-info p{
 	font-size: 14px;
+	padding: 5px;
 }
 	.post-contents {
 		margin-bottom: 10px;
@@ -753,6 +754,9 @@ img {
 		position: absolute;
 		top: 5px;
 		right: 0;
+	}
+	.inside-thumb .meta-text{
+		color:#ffffff!important;
 	}
 	.shares-count{
 		background-color: #ffffff;
@@ -1533,13 +1537,13 @@ img {
 	padding: 5px;
 	line-height: 25px;
 	color: #ffffff;
-	width:100px;
 	text-align: center;
 	background-color: #fc2a2a;
 	border: none;
 	cursor: pointer;
 	font-weight: bold;
 	border-radius: 5px;
+	font-size: 16px;
 }
 .featured-button{
 	background-color:rgba(0,0,0,0.3);
