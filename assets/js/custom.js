@@ -441,6 +441,7 @@ jQuery(document).ready(function($){
 		
 		//the is to reset prev items on click
 		$('.view').eq(i).attr("role", SlidesNo - i);
+		
 		$('.slide-item').eq(i).attr("role", SlidesNo - i);
 		
 	}
@@ -510,7 +511,7 @@ jQuery(document).ready(function($){
 		}
 		
 	}
-	//imageSlider(500);
+	imageSlider(500);
 	
 	$('.slide-item').on({
 	  click: function(e) {
