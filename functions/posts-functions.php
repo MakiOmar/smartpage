@@ -1,7 +1,6 @@
 <?php
 // Register Custom Download
-$accepted_types = array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd');
-define('SuppTypes',$accepted_types);
+
 function reg_smpg_post_type() {
 	$custom_posts = array(
 			'Download'=>array(
@@ -146,7 +145,7 @@ function smpg_upload_with_media_uploader() { ?>
 function save_smpg_upload_meta_data($id) {
     if(isset($_POST['smpg_download_attachment']) && !empty($_POST['smpg_download_attachment'])) {
 		$ext = pathinfo($_POST['smpg_download_attachment'], PATHINFO_EXTENSION);
-			if(in_array($ext,SuppTypes)){
+			if(in_array($ext,unserialize(SuppTypes))){
 				update_post_meta($id, 'smpg_download_attachment',$_POST['smpg_download_attachment']);
 			}else{
 				add_filter( 'redirect_post_location', 'smpg_download_redirect_post_location');
@@ -167,7 +166,7 @@ function smpg_upload_admin_notice() {
 	if( 'smpg_download' == $screen->post_type && 'post' == $screen->base ){
 	if ( array_key_exists( 'c_error', $_GET) ) {?>
 		<div class="error">
-			<p><?php _e( 'Sorry!! Please make sure your file type is one of the following', 'smartpage' );?><br><?php echo implode("-",SuppTypes); ?></p>
+			<p><?php _e( 'Sorry!! Please make sure your file type is one of the following', 'smartpage' );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
 		</div>
 	<?php }}
 }
