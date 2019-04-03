@@ -6,7 +6,7 @@
 					);
 	$tn->beforeSection = '
 	<div id="didyouknow" class="group">
-		<p id="dun-title">'.esc_html_e('Simple Info','smartpage').'</p>
+		<p id="dun-title">'.esc_html__('Simple Info','smartpage').'</p>
 	'.get_search_form().'
 	</div>';
 
