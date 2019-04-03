@@ -10,11 +10,18 @@
 			<i class="fa fa-comments-o meta-text"></i>
 			<?php echo smpg_comments_number(); ?>
 		</div>
+		<?php if(has_category()){?>
 		
-		<div class="category">
-			<i class="fa fa-folder-open meta-text"></i>
-			<a class="meta-text" href="<?php echo get_category_link(get_the_category()[0]->cat_ID);?>"><?php echo get_the_category()[0]->name ;?></a>
-		</div>
+			<div class="category">
+			
+				<i class="fa fa-folder-open meta-text"></i>
+				
+				<a class="meta-text" href="<?php echo get_category_link(get_the_category()[0]->cat_ID);?>"><?php echo get_the_category()[0]->name ;?></a>
+			
+			</div>
+		
+		<?php }?>
+		
 	</div>
 		<p><?php echo get_the_excerpt(); ?></p>
 </div>

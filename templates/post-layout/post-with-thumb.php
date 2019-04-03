@@ -17,8 +17,11 @@
 		</div>
 	</div>
 	  
-	  <h4><a href="<?php echo get_category_link(get_the_category()[0]->cat_ID);?>"><?php echo get_the_category()[0]->name ;?></a></h4>
+	  <?php if(has_category()){?>
 	  
+	  	<h4><a href="<?php echo get_category_link(get_the_category()[0]->cat_ID);?>"><?php echo get_the_category()[0]->name ;?></a></h4>
+	  	
+	  <?php } ?>
 	  <div class="shares-count">
 	  	<i class="fa fa-share-alt"></i><span>1000 <?php _e('Shares','smartpage') ?></span>
 	  </div>
