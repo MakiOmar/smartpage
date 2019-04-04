@@ -87,12 +87,24 @@ function latest_comments(){
 				<?php };
 }
 
-// Hijack the option, the role will follow!
+/*
+*Changes rhe default role of registered user
+*Shloud be checked befoor publish
+*/
 add_filter('pre_option_default_role', function($default_role){
+	
     // You can also add conditional tags here and return whatever
     return 'administrator'; // This is changed
+	
     return $default_role; // This allows default
+	
 });
+
+
+/*
+*Controles the registration link on wp-login.php
+*Shloud be checked befoor publish
+*/
 add_filter('option_users_can_register', function($value) {
     
         $value = true;
@@ -108,7 +120,9 @@ add_filter('pre_get_posts','searchFilter');
 function searchFilter($query) {
  
     if ($query->is_search && !is_admin() ) {
+		
         $query->set('post_type',array('post','page'));
+		
     }
  
 	return $query;
