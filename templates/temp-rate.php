@@ -20,7 +20,7 @@ $p_ID = get_the_ID();
   ?>
  <div id="rating-<?php echo $p_ID ;?>" class="metadata">
  
-	<i class="fa fa-star"></i>
+	<i id="rate-ico" class="fa fa-star"></i>
 	<i id="1-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-1 rate-btn"></i>&nbsp;
 	<i id="2-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-2 rate-btn"></i>&nbsp;
 	<i id="3-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-3 rate-btn"></i>&nbsp;

@@ -581,7 +581,7 @@ $('[id^="rated-"]').each(function(){
 });
 var rateParent,parentID,thePostID,itemClass;
 $(function(){
-   $('.rate-btn').hover(function(){
+  $('.rate-btn').hover(function(){
 	    //Get currenly hovered post ID
 		rateParent = $(this).parent().attr('id');
 		parentID = rateParent.split('-');
@@ -614,8 +614,7 @@ $(function(){
 		for (var j = 1; j <= getcurrentRate; j++) {
 			$('.btn-'+thePostID+'-'+j).addClass('reviews');
 		}
-   });
-                           
+   });                    
 	$('.rate-btn').click(function(){
 		//Get clicked post ID
 		var rateParent = $(this).parent().attr('id');
@@ -628,16 +627,22 @@ $(function(){
 		 $('[class*="'+itemClass+'"]').removeClass('reviews');
 		}
 		
+		
 		//remove all .clicked-postID on each click (you might click twice on different ratings )
 		$('[class*="'+itemClass+'"]').removeClass('clicked-'+postId);
 		
 		//Store current clicked rating 
 		var currClicked = $(this);
 		
+		console.log(currClicked);
+		
 		//Start adding clicked-postId and reviews classes to currently clicked rating and it's precceding ratings
 		currClicked.addClass('clicked-'+postId+' reviews');
 		currClicked.prevAll().each(function(){
-		   $(this).addClass('clicked-'+postId+' reviews');
+			//If not rating icon
+			if(!$(this).is('#rate-ico')){
+				$(this).addClass('clicked-'+postId+' reviews');
+			}   
 		});
 
 		//Store click rate to remember on hover out
@@ -646,7 +651,7 @@ $(function(){
 
 		//Display the clicked rate
 		$('.rated-'+postId).text(' '+clickRrate+' ');
-
+		
 		//If new user rates increase rating times
 		if($('#user-ip'+postId).val() === 'new_rate'){
 		   var revTimes = parseInt($('.times-'+postId).text());
@@ -665,7 +670,9 @@ $(function(){
 			  rate :clickRrate
 		   },
 		  url : "/prosentra/wp-admin/admin-ajax.php",
-		  success:function(){
+		  success:function(response){
+			  //resp is define within the wp_ajax_{action} hooked function
+			  //console.log(response.resp);
 		  }
 		});
 	});
