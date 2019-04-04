@@ -13,6 +13,9 @@ define( 'LIBS_DIR', THEME_DIR . '/functions/' );
 
 define( 'LANG_DIR', THEME_DIR. '/languages/' );
 
+define( 'STAR_RATE', $GLOBALS['wpdb']->prefix . 'star_rating' );
+
+
 define('SuppTypes',serialize(array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd')));
 
 
@@ -53,6 +56,10 @@ $smpglibs = [
 foreach($smpglibs as $smpglib=>$path){
 	require_once(LIBS_DIR.$path.$smpglib.'.php');
 }
+
+add_action('wp_footer', function(){
+	//test
+});
 
 /*
 *Get lates comments
