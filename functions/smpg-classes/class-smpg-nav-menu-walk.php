@@ -2,7 +2,7 @@
 /**
  * Custom Frontend Main Menu Walker
  */
-class Walker_Nav_Menu_smpg extends Walker_Nav_Menu {
+class Smpg_Nav_Menu_Walk extends Walker_Nav_Menu {
 
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$t = "\t";

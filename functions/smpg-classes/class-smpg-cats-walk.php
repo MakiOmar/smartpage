@@ -1,5 +1,5 @@
-<?php if ( ! class_exists( 'SmPG_Cats_Walk' ) ) {
-	class SmPG_Cats_Walk extends Walker_Category {
+<?php if ( ! class_exists( 'Smpg_Cats_Walk' ) ) {
+	class Smpg_Cats_Walk extends Walker_Category {
 		public $tree_type = 'category';
 				/**
 				 * Start Level.
