@@ -1,5 +1,5 @@
 <footer class="grid-col-md-12 grid-col">
-	<p><?php printf(__('All rights reserved for %s 2018','smartpage'),get_bloginfo()) ?></p>
+	<p><?php printf(__('All rights reserved for %s 2018',TEXTDOM),get_bloginfo()) ?></p>
 </footer>
 <div id="page-scroll-wrapper">
 	<div id="page-scroll-bg"></div>

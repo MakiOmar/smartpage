@@ -3,9 +3,9 @@
 add_action( 'after_setup_theme', 'register_smartpage_menu' );
 function register_smartpage_menu() {
 	$menus= array(
-		'main-menu'=> __('Shows on the main navigation','smartpage'),
-		'footer-menu'=>__('Shows on the footer','smartpage'),
-		'languages-menu'=>__('Shows on the top header','smartpage'),
+		'main-menu'=> __('Shows on the main navigation',TEXTDOM),
+		'footer-menu'=>__('Shows on the footer',TEXTDOM),
+		'languages-menu'=>__('Shows on the top header',TEXTDOM),
 	); 
 	foreach($menus as $name => $description){
 		register_nav_menu($name, $description);
@@ -13,7 +13,7 @@ function register_smartpage_menu() {
 }
 function smpg_main_navigation($location_slug, $container = 'nav'){
 	if ($location_slug == 'main-menu'){
-		$walker = new Walker_Nav_Menu_smpg;
+		$walker = new Smpg_Nav_Menu_Walk;
 	}
 	if ( has_nav_menu( $location_slug ) ) {
 		$location_array = explode('-',$location_slug);
@@ -85,7 +85,7 @@ function add_cats_menu($item , $args){
 				'title_li' => '',
 				'order'=> 'DESC',
 				'echo' => false,
-				'walker' => new SmPG_Cats_Walk()
+				'walker' => new Smpg_Cats_Walk()
 			   );
 	$item.= wp_list_categories($args);
 	$item.='</ul></li>';
@@ -143,7 +143,7 @@ function special_page_menu_class ($css_class, $page, $depth, $args, $current_pag
 add_filter('wp_list_pages','add_home_to',10,3);
 
 function add_home_to($output, $r, $pages){
- $home = '<li><a href="'.get_home_url().'">'.__('<i class="fa fa-home"></i>','smartpage').'</a></li>';
+ $home = '<li><a href="'.get_home_url().'">'.__('<i class="fa fa-home"></i>',TEXTDOM).'</a></li>';
  $output = $home.$output;
         return $output;
 }
@@ -154,7 +154,7 @@ function smpg_breadcrumbs() {
 	global $post;
 	$homeLink = home_url();
 	echo '<ul class="breadcrumbs">';
-	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. __('Home','smartpage') .'</a> <span>/</span></li>';
+	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. __('Home',TEXTDOM) .'</a> <span>/</span></li>';
 
 	// Blog Category
 	if ( is_category() ) {

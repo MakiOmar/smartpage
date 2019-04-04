@@ -7,7 +7,7 @@
 			$terms = get_terms(array('taxonomy'=>'download_category','hide_empty' => false, 'parent'=>$this_term->term_id,'order'=> 'ASC','depth'=> '1'));
 		if(!empty($terms)){	?>
 			<div class="container">
-			<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_term->name).' / '.__('sub categories','smartpage').' ---'?></h3>
+			<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_term->name).' / '.__('sub categories',TEXTDOM).' ---'?></h3>
 				<div id="ca-container" class="ca-container">
 					<div class="ca-wrapper">
 						<?php foreach ($terms as $term) {?>
@@ -21,7 +21,7 @@
 									<span><?php echo wp_trim_words( $term->description, 10);?></span>
 								</h4>
 								<?php }?>
-									<a href="<?php echo get_term_link($term->term_id);?>" class="cat-more"><?php _e('Enter','smartpage')?></a>
+									<a href="<?php echo get_term_link($term->term_id);?>" class="cat-more"><?php _e('Enter',TEXTDOM)?></a>
 							</div>
 						</div>
 						<?php }?>
@@ -41,7 +41,7 @@
 			);
 			$query = new WP_Query( $args );
 			if ( $query->have_posts() ) {?>
-				<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_term->name).' / '.__('Category posts','smartpage').' ---'?></h3>
+				<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_term->name).' / '.__('Category posts',TEXTDOM).' ---'?></h3>
 				<div id = "download">
 				<?php while ($query->have_posts() ) { $query->the_post();
 					get_template_part('templates/temp','download') ;

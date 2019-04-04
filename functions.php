@@ -5,6 +5,8 @@ define( 'THEME_URI', get_template_directory_uri() );
 
 define( 'THEME_NAME', 'Smartpage' );
 
+define( 'TEXTDOM', strtolower(THEME_NAME) );
+
 define( 'THEME_VERSION', '1.0' );
 
 define( 'LIBS_DIR', THEME_DIR . '/functions/' );
@@ -37,44 +39,52 @@ function smpg_autoloader( $class_name ) {
 }
 
 $smpglibs = [
-	'posts-functions',
-	'theme-functions',
-	'menus-functions',
-	'admin-functions',
-	'media-functions',
-	'db-functions'   ,
+	'posts-functions'     =>'',
+	'theme-functions'     =>'',
+	'menus-functions'     =>'',
+	'admin-functions'     =>'',
+	'media-functions'     =>'',
+	'db-functions'        =>'',
+	'php-helpers'         =>'helper/',
+	'wordpress-helpers'   =>'helper/',
 	
 ];
 
-foreach($smpglibs as $smpglib){
-	require_once(LIBS_DIR.$smpglib.'.php');
+foreach($smpglibs as $smpglib=>$path){
+	require_once(LIBS_DIR.$path.$smpglib.'.php');
 }
 
-require_once(LIBS_DIR.'/walkers/categories_custom_walker.php');
-require_once(LIBS_DIR.'/walkers/nav_menu_custom_walker.php');
-require_once(LIBS_DIR.'/widgets/categories-list.php');
-require_once(LIBS_DIR.'/helper/php-helpers.php');
-require_once(LIBS_DIR.'/helper/wordpress-helpers.php');
-
+/*
+*Get lates comments
+*/
 function latest_comments(){
-	$args = array('number'=>4,'author__not_in' => array(get_current_user_id()),);
+	
+	$args = array('number'=>4,'author__not_in' => array(get_current_user_id()));
+	
 		$comments = get_comments($args);
+	
 		if(count($comments) > 0){
+			
 			foreach($comments as $comment) {?>	
+			
 				<div  class="recent-comment-wrapper">
-					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented','smartpage') ?></h3>
-					<p class='recent-comment'><?php echo substr($comment->comment_content,0 , 150).'... ' ?><a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php _e('View Post','smartpage') ?></a></p>
+				
+					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented',TEXTDOM) ?></h3>
+					
+					<p class='recent-comment'>
+					<?php echo substr($comment->comment_content,0 , 150).'... ' ?>
+					
+					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php _e('View Post',TEXTDOM) ?></a>
+					
+					</p>
+					
 				</div>
+				
 		<?php }}else{?>
-					<p><?php _e('No comments yet','smartpage');?></p>
+				
+					<p><?php _e('No comments yet',TEXTDOM);?></p>
+					
 				<?php };
-}
-
-function getFilemTime($path){
-	if(filemtime(str_replace('/','\\',$path)) === false){
-		return filemtime(str_replace('\\','/',$path));
-	}
-	return filemtime(str_replace('/','\\',$path));
 }
 
 // Hijack the option, the role will follow!
@@ -103,4 +113,14 @@ function searchFilter($query) {
  
 	return $query;
 }
- 
+
+/*
+*Register categories widget
+*/
+add_action('widgets_init', 'smpg_cats_widget_register');
+
+function smpg_cats_widget_register(){
+	
+	register_widget('Smpg_Cats_Widget');
+	
+}

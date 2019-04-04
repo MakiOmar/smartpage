@@ -4,48 +4,48 @@
 function reg_smpg_post_type() {
 	$custom_posts = array(
 			'Download'=>array(
-					__('Download','smartpage')=>__('Downloads','smartpage')),
+					__('Download',TEXTDOM)=>__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
-					__('Portfolio','smartpage')=>__('Portfolios','smartpage')),
+					__('Portfolio',TEXTDOM)=>__('Portfolios',TEXTDOM)),
 			'Testimonial'=>array(
-					__('Testimonial','smartpage')=>__('Testimonials','smartpage')),
+					__('Testimonial',TEXTDOM)=>__('Testimonials',TEXTDOM)),
 			'News'=>array(
-					__('New','smartpage')=>__('News','smartpage')),
+					__('New',TEXTDOM)=>__('News',TEXTDOM)),
 			);
 	foreach($custom_posts as $custom_posts=> $translatable){
 		foreach($translatable as $translatable_single => $translatable_plural){
 		$labels = array(
-			'name'                  => sprintf(_x( '%s', 'General Name', 'smartpage'),$translatable_plural ),
-			'singular_name'         => sprintf(_x( '%s', 'Singular Name', 'smartpage' ),$translatable_plural),
-			'menu_name'             => sprintf(__( '%s', 'smartpage' ),$translatable_plural),
-			'name_admin_bar'        => sprintf(__( '%s', 'smartpage' ),$translatable_plural),
-			'archives'              => sprintf(__( '%s Archives', 'smartpage' ),$translatable_plural),
-			'attributes'            => sprintf(__( '%s Attributes', 'smartpage' ),$translatable_plural),
-			'parent_item_colon'     => sprintf(__( 'Parent %s:', 'smartpage' ),$translatable_single),
-			'all_items'             => sprintf(__( 'All %s', 'smartpage' ),$translatable_plural),
-			'add_new_item'          => sprintf(__( 'Add New %s', 'smartpage' ),$translatable_single),
-			'add_new'               => sprintf(__( 'Add New', 'smartpage' ),$translatable_single),
-			'new_item'              => sprintf(__( 'New %s', 'smartpage' ),$translatable_single),
-			'edit_item'             => sprintf(__( 'Edit %s', 'smartpage' ),$translatable_single),
-			'update_item'           => sprintf(__( 'Update %s', 'smartpage' ),$translatable_single),
-			'view_item'             => sprintf(__( 'View %s', 'smartpage' ),$translatable_single),
-			'view_items'            => sprintf(__( 'View %s', 'smartpage' ),$translatable_plural),
-			'search_items'          => sprintf(__( 'Search %s', 'smartpage' ),$translatable_plural),
-			'not_found'             => __( 'Not found', 'smartpage' ),
-			'not_found_in_trash'    => __( 'Not found in Trash', 'smartpage' ),
-			'featured_image'        => __( 'Featured Image', 'smartpage' ),
-			'set_featured_image'    => __( 'Set featured image', 'smartpage' ),
-			'remove_featured_image' => __( 'Remove featured image', 'smartpage' ),
-			'use_featured_image'    => __( 'Use as featured image', 'smartpage' ),
-			'insert_into_item'      => sprintf(__( 'Insert into %s', 'smartpage' ),$translatable_single),
-			'uploaded_to_this_item' => sprintf(__( 'Uploaded to this %s', 'smartpage' ),$translatable_single),
-			'items_list'            => sprintf(__( '%s list', 'smartpage' ),$translatable_plural),
-			'items_list_navigation' => sprintf(__( '%s list navigation', 'smartpage' ),$translatable_plural),
-			'filter_items_list'     => sprintf(__( 'Filter %s list', 'smartpage' ),$translatable_plural),
+			'name'                  => sprintf(_x( '%s', 'General Name', TEXTDOM),$translatable_plural ),
+			'singular_name'         => sprintf(_x( '%s', 'Singular Name', TEXTDOM ),$translatable_plural),
+			'menu_name'             => sprintf(__( '%s', TEXTDOM ),$translatable_plural),
+			'name_admin_bar'        => sprintf(__( '%s', TEXTDOM ),$translatable_plural),
+			'archives'              => sprintf(__( '%s Archives', TEXTDOM ),$translatable_plural),
+			'attributes'            => sprintf(__( '%s Attributes', TEXTDOM ),$translatable_plural),
+			'parent_item_colon'     => sprintf(__( 'Parent %s:', TEXTDOM ),$translatable_single),
+			'all_items'             => sprintf(__( 'All %s', TEXTDOM ),$translatable_plural),
+			'add_new_item'          => sprintf(__( 'Add New %s', TEXTDOM ),$translatable_single),
+			'add_new'               => sprintf(__( 'Add New', TEXTDOM ),$translatable_single),
+			'new_item'              => sprintf(__( 'New %s', TEXTDOM ),$translatable_single),
+			'edit_item'             => sprintf(__( 'Edit %s', TEXTDOM ),$translatable_single),
+			'update_item'           => sprintf(__( 'Update %s', TEXTDOM ),$translatable_single),
+			'view_item'             => sprintf(__( 'View %s', TEXTDOM ),$translatable_single),
+			'view_items'            => sprintf(__( 'View %s', TEXTDOM ),$translatable_plural),
+			'search_items'          => sprintf(__( 'Search %s', TEXTDOM ),$translatable_plural),
+			'not_found'             => __( 'Not found', TEXTDOM ),
+			'not_found_in_trash'    => __( 'Not found in Trash', TEXTDOM ),
+			'featured_image'        => __( 'Featured Image', TEXTDOM ),
+			'set_featured_image'    => __( 'Set featured image', TEXTDOM ),
+			'remove_featured_image' => __( 'Remove featured image', TEXTDOM ),
+			'use_featured_image'    => __( 'Use as featured image', TEXTDOM ),
+			'insert_into_item'      => sprintf(__( 'Insert into %s', TEXTDOM ),$translatable_single),
+			'uploaded_to_this_item' => sprintf(__( 'Uploaded to this %s', TEXTDOM ),$translatable_single),
+			'items_list'            => sprintf(__( '%s list', TEXTDOM ),$translatable_plural),
+			'items_list_navigation' => sprintf(__( '%s list navigation', TEXTDOM ),$translatable_plural),
+			'filter_items_list'     => sprintf(__( 'Filter %s list', TEXTDOM ),$translatable_plural),
 		);
 		$args = array(
-			'label'                 => sprintf(__( '%s', 'smartpage' ),$translatable_plural),
-			'description'           => sprintf(__( 'Here you can add your %s', 'smartpage' ),lcfirst($translatable_plural)),
+			'label'                 => sprintf(__( '%s', TEXTDOM ),$translatable_plural),
+			'description'           => sprintf(__( 'Here you can add your %s', TEXTDOM ),lcfirst($translatable_plural)),
 			'labels'                => $labels,
 			'supports'              => array( 'title', 'editor','thumbnail', 'comments'),
 			'taxonomies'            => array( lcfirst($custom_posts).'_category' ),
@@ -73,11 +73,11 @@ add_action( 'init', 'reg_smpg_post_type', 0 );
 function reg_smpg_taxonomies(){
 	$smpg_custom_taxs = array(
 			'Download'=>array(
-					__('Download','smartpage')=>__('Downloads','smartpage')),
+					__('Download',TEXTDOM)=>__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
-					__('Portfolio','smartpage')=>__('Portfolios','smartpage')),
+					__('Portfolio',TEXTDOM)=>__('Portfolios',TEXTDOM)),
 			'Testimonial'=>array(
-					__('Testimonial','smartpage')=>__('Testimonials','smartpage')),
+					__('Testimonial',TEXTDOM)=>__('Testimonials',TEXTDOM)),
 			);;
 	foreach($smpg_custom_taxs as $smpg_custom_tax => $translatable ){
 	foreach($translatable as $translatable_single => $translatable_plural){
@@ -86,19 +86,19 @@ function reg_smpg_taxonomies(){
 			array("smpg_".lcfirst($smpg_custom_tax)),
 			array(
 				 "hierarchical" => true,
-				 "label" => sprintf(__('%s categories','smartpage'),$translatable_plural),
-				 "singular_label" => sprintf(__('%s category','smartpage'),$translatable_single),
+				 "label" => sprintf(__('%s categories',TEXTDOM),$translatable_plural),
+				 "singular_label" => sprintf(__('%s category',TEXTDOM),$translatable_single),
 				  "labels"=>array(
-							 "all_items"=>sprintf(__('All %s categories','smartpage'),$translatable_single),
-							 "edit_item"=>sprintf(__('Edit %s category','smartpage'),$translatable_single),
-							 "view_item"=>sprintf(__('view %s category','smartpage'),$translatable_single),
-							 "update_item"=>sprintf(__('update %s category','smartpage'),$translatable_single),
-							 "add_new_item"=>sprintf(__('Add new %s category','smartpage'),$translatable_single),
-							 "new_item_name"=>sprintf(__('new %s category','smartpage'),$translatable_single),
-							 "parent_item"=>sprintf(__('Parent %s category','smartpage'),$translatable_single),
-							 "parent_item_colon"=>sprintf(__('Parent %s category:','smartpage'),$translatable_single),
-							 "search_items"=>sprintf(__('search %s categories','smartpage'),$translatable_single),
-							 "not_found"=>sprintf(__('No %s category found','smartpage'),$translatable_single),
+							 "all_items"=>sprintf(__('All %s categories',TEXTDOM),$translatable_single),
+							 "edit_item"=>sprintf(__('Edit %s category',TEXTDOM),$translatable_single),
+							 "view_item"=>sprintf(__('view %s category',TEXTDOM),$translatable_single),
+							 "update_item"=>sprintf(__('update %s category',TEXTDOM),$translatable_single),
+							 "add_new_item"=>sprintf(__('Add new %s category',TEXTDOM),$translatable_single),
+							 "new_item_name"=>sprintf(__('new %s category',TEXTDOM),$translatable_single),
+							 "parent_item"=>sprintf(__('Parent %s category',TEXTDOM),$translatable_single),
+							 "parent_item_colon"=>sprintf(__('Parent %s category:',TEXTDOM),$translatable_single),
+							 "search_items"=>sprintf(__('search %s categories',TEXTDOM),$translatable_single),
+							 "not_found"=>sprintf(__('No %s category found',TEXTDOM),$translatable_single),
 							  ),
 			"show_admin_column" => true,
 			)
@@ -111,13 +111,13 @@ add_action( 'init', 'reg_smpg_taxonomies', 0 );
 
 //Add download's upload meta box
 function smpg_upload_meta_boxes() {
-    add_meta_box('smpg_download_attachment', __('Add your download','smartpage'), 'smpg_upload_with_media_uploader', 'smpg_download', 'normal', 'high');  
+    add_meta_box('smpg_download_attachment', __('Add your download',TEXTDOM), 'smpg_upload_with_media_uploader', 'smpg_download', 'normal', 'high');  
 }
 add_action('add_meta_boxes', 'smpg_upload_meta_boxes');  
 
 function smpg_upload_with_media_uploader() { ?>
 	<div class="file-upload-override-button">
-		<a href="#" class="insert-media" data-editor="my-editor"><?php _e('Select your file','smartpage') ;?></a>
+		<a href="#" class="insert-media" data-editor="my-editor"><?php _e('Select your file',TEXTDOM) ;?></a>
 	</div>
 	<?php
 		$file_url = get_post_meta( get_the_ID(), 'smpg_download_attachment', true );
@@ -125,9 +125,9 @@ function smpg_upload_with_media_uploader() { ?>
 			delete_post_meta( get_the_ID(), 'smpg_download_attachment' );
 		}
 		if(!empty($file_url)){
-			   $html = '<div id="download-file"><p>'.__('Current file:','smartpage').'<span>'.basename($file_url).'</span></p><a href="'.$file_url.'">'.__('Download','smartpage').'</a></div>';
+			   $html = '<div id="download-file"><p>'.__('Current file:',TEXTDOM).'<span>'.basename($file_url).'</span></p><a href="'.$file_url.'">'.__('Download',TEXTDOM).'</a></div>';
 		}else{
-			$html = '<div id="download-file"><p>'.'<span>'.__('No selected file ','smartpage').'</span></p></div>';
+			$html = '<div id="download-file"><p>'.'<span>'.__('No selected file ',TEXTDOM).'</span></p></div>';
 		}
 		echo $html;
 	?>
@@ -166,7 +166,7 @@ function smpg_upload_admin_notice() {
 	if( 'smpg_download' == $screen->post_type && 'post' == $screen->base ){
 	if ( array_key_exists( 'c_error', $_GET) ) {?>
 		<div class="error">
-			<p><?php _e( 'Sorry!! Please make sure your file type is one of the following', 'smartpage' );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
+			<p><?php _e( 'Sorry!! Please make sure your file type is one of the following', TEXTDOM );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
 		</div>
 	<?php }}
 }
@@ -264,7 +264,7 @@ function smartpage_comment( $comment, $args, $depth ) {
 		// Display trackbacks differently than normal comments.
 	?>
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<p><?php _e( 'Pingback:', 'smartpage' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'smartpage' ), '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php _e( 'Pingback:', TEXTDOM ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', TEXTDOM ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -279,28 +279,28 @@ function smartpage_comment( $comment, $args, $depth ) {
 					printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
 						get_comment_author_link(),
 						// If current post author is also comment author, make it known visually.
-						( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', 'smartpage' ) . '</span>' : ''
+						( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', TEXTDOM ) . '</span>' : ''
 					);
 					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 						esc_url( get_comment_link( $comment->comment_ID ) ),
 						get_comment_time( 'c' ),
 						/* translators: 1: date, 2: time */
-						sprintf( __( '%1$s at %2$s', 'smartpage' ), get_comment_date(), get_comment_time() )
+						sprintf( __( '%1$s at %2$s', TEXTDOM ), get_comment_date(), get_comment_time() )
 					);
 				?>
 			</header><!-- .comment-meta -->
 
 			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'smartpage' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', TEXTDOM ); ?></p>
 			<?php endif; ?>
 
 			<section class="comment-content comment">
 				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', 'smartpage' ), '<p class="edit-link">', '</p>' ); ?>
+				<?php edit_comment_link( __( 'Edit', TEXTDOM ), '<p class="edit-link">', '</p>' ); ?>
 			</section><!-- .comment-content -->
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'smartpage' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', TEXTDOM ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 	<?php
@@ -315,7 +315,7 @@ add_action('init','create_smpg_downloads_object_terms');
 function create_smpg_downloads_object_terms( ) {
 	if(!term_exists('general_downloads', 'download_category')){
 		$args = array('slug' => 'general_downloads');
-		return wp_insert_term( __('General Downloads','smartpage'), 'download_category', $args  );
+		return wp_insert_term( __('General Downloads',TEXTDOM), 'download_category', $args  );
 	}
 	
 }

@@ -33,7 +33,7 @@ $p_ID = get_the_ID();
 	
 	<?php if(is_single()){?>
 
-	<p style="margin:5px; font-size:16px; text-align:center"><?php _e('Rated','smartpage') ?><span class="rated-<?php echo $p_ID ;?>"><?php echo ' '.substr($rate_value,0,3).' '; ?></span><?php _e('out of','smartpage') ?><span class="times-<?php echo $p_ID ;?>"><?php echo ' '.$rate_times.' '; ?></span><?php _e('Review(s)','smartpage') ?></p>
+	<p style="margin:5px; font-size:16px; text-align:center"><?php _e('Rated',TEXTDOM) ?><span class="rated-<?php echo $p_ID ;?>"><?php echo ' '.substr($rate_value,0,3).' '; ?></span><?php _e('out of',TEXTDOM) ?><span class="times-<?php echo $p_ID ;?>"><?php echo ' '.$rate_times.' '; ?></span><?php _e('Review(s)',TEXTDOM) ?></p>
 	<?php }?>
 
 </div>

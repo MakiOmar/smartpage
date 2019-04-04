@@ -46,7 +46,7 @@
 									 <?php get_template_part('templates/temp','rate') ?>
 									</div>
 									<div class="single-download">
-									<a title="download-<?php the_ID()?>" target="_blank" class="smpg-download" href="<?php echo $curr_download_meta ?>"><i class="fa fa-download"></i><span><?php _e('Download','smartpage') ?></a></span>
+									<a title="download-<?php the_ID()?>" target="_blank" class="smpg-download" href="<?php echo $curr_download_meta ?>"><i class="fa fa-download"></i><span><?php _e('Download',TEXTDOM) ?></a></span>
 									</div>
 									</div>
 								</div>

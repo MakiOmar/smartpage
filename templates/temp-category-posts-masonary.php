@@ -8,7 +8,7 @@
 		$tcp->sectionWrapperOpen = 
 		'<div class="section">
 			<div>
-				<h4 class="section_title clearfix">'.esc_html__('Recent Posts','smartpage').'
+				<h4 class="section_title clearfix">'.esc_html__('Recent Posts',TEXTDOM).'
 				</h4>
 		</div><div id="masonary">';
 	}else{

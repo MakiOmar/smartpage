@@ -23,7 +23,7 @@
 	  	
 	  <?php } ?>
 	  <div class="shares-count">
-	  	<i class="fa fa-share-alt"></i><span>1000 <?php _e('Shares','smartpage') ?></span>
+	  	<i class="fa fa-share-alt"></i><span>1000 <?php _e('Shares',TEXTDOM) ?></span>
 	  </div>
 	  
 	   <div class="post-title-cover"></div>

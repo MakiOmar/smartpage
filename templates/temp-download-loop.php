@@ -19,7 +19,7 @@
 	  
 		<div class="hover-toggle post-image-wrapper" style="background-color: transparent">
 		
-		<span id="download-<?php echo $tdPostId?>-count" class="download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads','smartpage') ?></span>
+		<span id="download-<?php echo $tdPostId?>-count" class="download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',TEXTDOM) ?></span>
 		  
 
 		  <?php if( has_post_thumbnail() ){

@@ -37,7 +37,7 @@
 
 							  <h2 class="slide-title"><a href="<?php echo $link ?>"><?php the_title() ;?></a></h2>
 
-							  <a class="featured-button" href="<?php echo $link?>"><?php _e('Read more', 'smartpage')?></a>
+							  <a class="featured-button" href="<?php echo $link?>"><?php _e('Read more', TEXTDOM)?></a>
 
 						  </div>
 						</div>

@@ -32,7 +32,7 @@ setPostViews($tbp_post_id);?>
 				<span>
 				
 					<?php 
-						_e('By','smartpage');
+						_e('By',TEXTDOM);
 						echo ' '.get_the_author(); 
 					?>
 					
@@ -42,7 +42,7 @@ setPostViews($tbp_post_id);?>
 			
 			<div>
 			
-				<a class="button" href="<?php echo get_the_permalink() ?>"><?php _e('Read more','smartpage') ?></a>
+				<a class="button" href="<?php echo get_the_permalink() ?>"><?php _e('Read more',TEXTDOM) ?></a>
 				
 			</div>
 			

@@ -7,7 +7,7 @@
 			$cats=get_categories(array('hide_empty' => '0', 'parent'=>$this_category ->cat_ID,'order'=> 'ASC','depth'=> '1'));
 		if(!empty($cats)){	?>
 			<div class="container">
-			<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('sub categories','smartpage').' ---'?></h3>
+			<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('sub categories',TEXTDOM).' ---'?></h3>
 				<div id="ca-container" class="ca-container">
 					<div class="ca-wrapper">
 						<?php foreach ($cats as $cat) {?>
@@ -21,7 +21,7 @@
 									<span><?php echo wp_trim_words( $cat->category_description, 10);?></span>
 								</h4>
 								<?php }?>
-									<a href="<?php echo get_category_link($cat->term_id);?>" class="cat-more"><?php _e('Enter','smartpage')?></a>
+									<a href="<?php echo get_category_link($cat->term_id);?>" class="cat-more"><?php _e('Enter',TEXTDOM)?></a>
 							</div>
 						</div>
 						<?php }?>
@@ -39,7 +39,7 @@
 			);
 			$query = new WP_Query( $args );
 			if ( have_posts() ) {?>
-				<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('Category posts','smartpage').' ---'?></h3>
+				<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('Category posts',TEXTDOM).' ---'?></h3>
 			<?php while (have_posts() ) { the_post();
 					get_template_part('templates/temp','blog-post') ;
 			} }?>

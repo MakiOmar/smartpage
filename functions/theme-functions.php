@@ -16,7 +16,7 @@ function curPageURL() {
 add_action('after_setup_theme', 'smartpage_theme_textdomain');
 
 function smartpage_theme_textdomain(){
-	load_theme_textdomain('smartpage', get_template_directory().'/languages');
+	load_theme_textdomain(TEXTDOM, get_template_directory().'/languages');
 }
 
 //Theme Scripts
@@ -25,17 +25,17 @@ add_action('wp_enqueue_scripts','smartpage_enqueue_styles');
 function smartpage_enqueue_styles() {
 	$styles = array('main','font-awesome','responsive','prettyPhoto');
 	foreach($styles as $style){
-		wp_enqueue_style( $style , get_theme_file_uri('/assets/css/'.$style.'.css') , false, filemtime(get_theme_file_path('/assets/css/'.$style.'.css')) );
+		wp_enqueue_style( $style , get_theme_file_uri('/assets/css/'.$style.'.css') , false, filemtime(wp_normalize_path(get_theme_file_path('/assets/css/'.$style.'.css'))) );
 	}
 	if(is_rtl()){
-		wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(get_theme_file_path('/assets/css/rtl.css')));
+		wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/rtl.css'))));
 	}
-	wp_enqueue_style( 'firebrick-skin' , get_theme_file_uri('/assets/css/skins/firebrick.css') ,array('main'), filemtime((get_theme_file_path('/assets/css/skins/firebrick.css'))));
+	wp_enqueue_style( 'firebrick-skin' , get_theme_file_uri('/assets/css/skins/firebrick.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/firebrick.css'))));
 	/*wp_enqueue_style( 'pure-skin' , get_theme_file_uri('/assets/css/skins/pure.css') ,array('main'), filemtime(get_theme_file_path('/assets/css/skins/pure.css')));*/
 	$scripts = array('jquery.mousewheel','jquery.easing.1.3','jquery.contentcarousel','jquery.prettyPhoto','custom');
 	#$scripts = array('jquery.min','jquery.prettyPhoto','retina.min','custom');
 		foreach($scripts as $script){
-		wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(get_theme_file_path('/assets/js/'.$script.'.js')),true);
+		wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
 			wp_enqueue_script($script);
 		}
 }
@@ -60,7 +60,7 @@ function smp_main_sidebar(){
 	foreach($sidebars as $sidebar){
 	    $sidebar_id = strtolower(str_replace(' ','-',$sidebar ));
 	    $args = array(
-			'name'=> __( $sidebar, 'smartpage' ),
+			'name'=> __( $sidebar, TEXTDOM ),
 			'id'=> $sidebar_id,
 			'class'=>$sidebar_id,
 			'before_widget' => '<div class="widgeted grid-col-md-6 grid-col-av-6 grid-col-sm-12 grid-col">',
@@ -130,12 +130,12 @@ function smpg_comments_number() {
 	
 	if ( comments_open() ) {
 		if ( $num_comments != 1 ) {
-			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.__('comments','smartpage').'&nbsp;</span>';
+			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.__('comments',TEXTDOM).'&nbsp;</span>';
 		} else {
-			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> 1 </a><span class="meta-text single-meta-text">&nbsp;'.__('comment','smartpage').'&nbsp;</span>';
+			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> 1 </a><span class="meta-text single-meta-text">&nbsp;'.__('comment',TEXTDOM).'&nbsp;</span>';
 		}
 	} else {
-		$comments = '<span class="meta-text single-meta-text">'.__('Comments-off','smartpage').'</span>';
+		$comments = '<span class="meta-text single-meta-text">'.__('Comments-off',TEXTDOM).'</span>';
 	}
 	return $comments;
 }

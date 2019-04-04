@@ -6,7 +6,7 @@
 					);
 	$tn->beforeSection  = '<div id="didyouknow" class="group">';
 
-	$tn->beforeSection .= '<p id="dun-title">'.esc_html__('Simple Info','smartpage').'</p>';
+	$tn->beforeSection .= '<p id="dun-title">'.esc_html__('Simple Info',TEXTDOM).'</p>';
 
 	$tn->beforeSection .= get_search_form(false);
 

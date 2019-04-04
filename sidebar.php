@@ -4,7 +4,7 @@
 		   dynamic_sidebar('right-sidebar');
 		}else{
 			$url = get_bloginfo('url').'/wp-admin/widgets.php';
-			printf(__( '<strong>Please add some widgets.</strong><a href="%s"> Add Here</a>', 'smartpage' ),esc_url($url));
+			printf(__( '<strong>Please add some widgets.</strong><a href="%s"> Add Here</a>', TEXTDOM ),esc_url($url));
 		}
 		//get_template_part('templates/temp','newsletters') ;
 	?>
