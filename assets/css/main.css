@@ -1242,6 +1242,7 @@ img {
 
 	.search-only{
 		margin-bottom: 5px;
+		height: 50px;
 	}
 
 	.search-only .smpg-search,.search-only .smpg-search .smpg-search-input{
