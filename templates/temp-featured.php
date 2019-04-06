@@ -3,7 +3,11 @@
 	
 	if($FreaturedCat){
 		
-		$args = array('cat'=>$FreaturedCat->term_id);
+		$args = array(
+			'posts_per_page' => 5,
+			'orderby'        => 'rand',
+			'cat'            =>$FreaturedCat->term_id
+		);
 		
 		$FreaturedQuery = new WP_Query($args);
 		
