@@ -18,6 +18,12 @@
 
 	$tn->sectionWrapperClose ='</div></div>';
 
+	$tn->IfNot = '<div id="didyouknow" class="group search-only">';
+
+	$tn->IfNot .= get_search_form(false);
+
+	$tn->IfNot .= '</div>';
+
 	$tn->postsView();
 
 ?>

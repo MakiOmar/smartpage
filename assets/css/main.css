@@ -1239,6 +1239,20 @@ img {
 		width: 70%;
 		margin: 0;
 	}
+
+	.search-only{
+		margin-bottom: 5px;
+	}
+
+	.search-only .smpg-search,.search-only .smpg-search .smpg-search-input{
+		width: 100%!important;
+	}
+	
+	#slider-wrapper{
+		border-top-width: 5px;
+		border-top-style: solid;
+		border-top-color: #ef1450;
+	}
 	.widgeted #searchform{
 		display: flex;
 	}
