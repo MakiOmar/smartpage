@@ -47,14 +47,26 @@
 		
 		<?php if(count($FeaturedIDs) > 0){ ?>
 			
-			<h3 class="featured-posts-title"><a href="<?php echo get_category_link($FreaturedCat->term_id) ?>"><?php echo get_cat_name( $FreaturedCat->term_id ) ?></a></h3>
+			<h3 class="featured-posts-title">
+			
+				<a href="<?php echo get_category_link($FreaturedCat->term_id) ?>">
+				
+					<?php echo get_cat_name( $FreaturedCat->term_id ) ?>
+					
+				</a>
+				
+			</h3>
 				
 		
 			<div id="slides-list" class="">
 
 			<?php foreach($FeaturedIDs as $pID) {?>
 
-				<a href="<?php echo get_the_permalink($pID) ?>" class="<?php if(array_search($pID,$FeaturedIDs) == 0) echo 'active-slide'?> slide-item grid-col-<?php echo count($FeaturedIDs)?>"><img src="<?php echo get_the_post_thumbnail_url($pID,'thumbnail') ?>" alt="<?php echo get_the_title($pID) ?>"/></a>
+				<a href="<?php echo get_the_permalink($pID) ?>" class="<?php if(array_search($pID,$FeaturedIDs) == 0) echo 'active-slide'?> slide-item grid-col-<?php echo count($FeaturedIDs)?>">
+				
+					<img src="<?php echo get_the_post_thumbnail_url($pID,'thumbnail') ?>" alt="<?php echo get_the_title($pID) ?>"/>
+					
+				</a>
 
 				<?php }?>
 
