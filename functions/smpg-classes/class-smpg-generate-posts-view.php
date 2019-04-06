@@ -50,6 +50,18 @@ class Smpg_Generate_Posts_View{
 	*/
 
 	public $afterSection = '';
+	
+	/*
+	*@var  string $IfNot  stores the else part
+	*/
+	public $IfNot = '';
+	
+	
+	/*
+	*@var array  $PostsIds post ids inside the loop for further use
+	*/
+	public $PostsIds = array();
+	
 	/*
 	*generatePostView constructor
 	*@param  array   $args      array to create post object
@@ -84,7 +96,8 @@ class Smpg_Generate_Posts_View{
 			
 			echo $this->afterSection;
 
-
+		}else{
+			echo $this->ifNot();
 		}
 	}
 	
@@ -95,8 +108,10 @@ class Smpg_Generate_Posts_View{
 		while ($this->post->have_posts() ) {
 			
 			$this->post->the_post();
-				
-				get_template_part('templates/temp', $this->postsTemplate);
+
+			$this->PostsIds[] = get_the_ID();
+
+			get_template_part('templates/temp', $this->postsTemplate);
 				
 		}
 		
@@ -104,5 +119,13 @@ class Smpg_Generate_Posts_View{
 			wp_reset_postdata();
 		}
 	}
+	
+	/*
+	*fired if no posts found
+	*/
+	public function ifNot(){
+		return $this->IfNot;
+	}
+	
 
 }
