@@ -1,6 +1,6 @@
 <?php
 		$tcp= new Smpg_Generate_Posts_View(
-				array('post_type'=>'post'),
+				array(),
 				'blog-post',
 				true
 			);
