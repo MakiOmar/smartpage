@@ -139,4 +139,44 @@ function smpg_comments_number() {
 	}
 	return $comments;
 }
+
+//Check if plugin wpml is activated
+function is_wpml_active(){
+	$pluginList = get_option( 'active_plugins' );
+	
+	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
+	
+	if ( in_array( $wpml_plugin , $pluginList ) ) {
+		
+		return true;
+		
+	}elseif(function_exists(icl_object_id)){
+		
+		return true;
+		
+	}
+	return false;
+}
+
+/*
+*Get the AJAX url with wpml if plugin is active
+*/
+function smpg_get_ajax_url(){
+	$ajax_url = admin_url( 'admin-ajax.php' );
+
+	if(is_wpml_active()){
+
+		$wpml_active_lang = apply_filters('wpml_current_language',NULL);
+
+		if($wpml_active_lang){
+
+			$ajax_url = add_query_arg('wp_lang',$wpml_active_lang, $ajax_url);
+			
+
+		}
+
+	}
+	
+	return $ajax_url;
+}
 ?>

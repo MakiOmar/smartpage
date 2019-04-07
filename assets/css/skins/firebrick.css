@@ -2,6 +2,9 @@
 .active, .active-tab,.page-numbers a,.widgeted_title,#dun-title,#submit,.form_submit,.featured-posts-title,.section_title,.button,#page-scroll,.post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 !important;
 }
+#main_nav_con {
+		background-color: rgba(35, 0, 5,1);
+}
 .single-download,.toggle-sidebar{
 	background-color:rgba(35, 0, 5,1);
 }

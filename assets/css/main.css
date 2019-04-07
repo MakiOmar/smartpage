@@ -216,7 +216,6 @@ img {
 	/***Navigation menus***/
 	#main_nav_con {
 		/*background: url(../../images/pattern-1.png) repeat;*/
-		background-color: rgba(35, 0, 5,1);
 		height: 100%;
 		position: absolute;
 		z-index: 999999;
@@ -1044,6 +1043,7 @@ img {
 	#smpg-cat-list {
 		position: relative;
 		width: 100%;
+		border-radius: 5px;
 	}
 	#smpg-cat-list li,#smpg-cat-list li ul li {
 		position: relative;
@@ -1053,7 +1053,6 @@ img {
 		display: inline-block!important;
 		line-height: 25px;
 		vertical-align: middle;
-		color: #ffffff;
 		font-size: 14px;
 	}
 	#secondary-sidebar ul li{
