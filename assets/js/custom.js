@@ -17,6 +17,7 @@ clean(document);
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
+	var SmpjAjaxUrl = $('#smpg_ajax_url').val();
 	//Hide Top section if no content
 	function isEmpty( el ){
 		
@@ -669,10 +670,10 @@ $(function(){
 			  post_id : postId,
 			  rate :clickRrate
 		   },
-		  url : "/prosentra/wp-admin/admin-ajax.php",
+		  url : SmpjAjaxUrl,
 		  success:function(response){
 			  //resp is define within the wp_ajax_{action} hooked function
-			  //console.log(response.resp);
+			  console.log(response.resp);
 		  }
 		});
 	});
