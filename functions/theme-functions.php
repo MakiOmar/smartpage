@@ -150,7 +150,7 @@ function is_wpml_active(){
 		
 		return true;
 		
-	}elseif(function_exists(icl_object_id)){
+	}elseif(function_exists('icl_object_id')){
 		
 		return true;
 		
