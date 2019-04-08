@@ -18,11 +18,14 @@ if ( post_password_required() )
 		 * But we only want the note on posts and pages that had comments in the first place.
 		 */
 		if ( ! comments_open() && get_comments_number() ) : ?>
-		<p class="nocomments"><?php _e( 'Comments-off' , TEXTDOM ); ?></p>
+		<p class="nocomments"><?php _e( 'Comments off' , TEXTDOM ); ?></p>
 		<?php endif; ?>
 
 	<?php endif; 
-	comment_form(array( 'class_form' => 'grid-col' ));
+	comment_form(array( 
+		'class_form' => 'grid-col',
+		'action'     =>'',
+	));
 	?>
 
 </div><!-- #comments .comments-area -->
