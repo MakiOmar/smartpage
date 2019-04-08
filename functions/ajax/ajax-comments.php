@@ -5,9 +5,11 @@
 		$comment = wp_handle_comment_submission( wp_unslash( $_POST ) );
 		
 		if ( is_wp_error( $comment ) ) {
+
 			$data = intval( $comment->get_error_data() );
 			
 			if ( ! empty( $data ) ) {
+
 				wp_die(
 					'<p>' . $comment->get_error_message() . '</p>',
 					__( 'Comment Submission Failure' ),
@@ -18,10 +20,12 @@
 				);
 				
 			} else {
+
 				exit;
 				
 			}
 		}
+
 		$user            = wp_get_current_user();
 		
 		$cookies_consent = ( isset( $_POST['wp-comment-cookies-consent'] ) );
@@ -33,8 +37,13 @@
 		
 		do_action( 'set_comment_cookies', $comment, $user, $cookies_consent );
 		
+		//Check if comments will be held for moderation
+		if(get_option('comment_moderation' === true)){
+			//do something
+		}
+		
 		$return = array(
-            'resp'  => $case,
+            'resp'  => '',
             );
 
 		wp_send_json($return);
