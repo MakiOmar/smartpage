@@ -1,5 +1,5 @@
 /*Main colors*/
-.active, .active-tab,.page-numbers a,.widgeted_title,#dun-title,#submit,.form_submit,.featured-posts-title,.section_title,.button,#page-scroll,.post-image-wrapper h4,.f-post-title,.reply{
+.active, .active-tab,.page-numbers a,.widgeted_title,#dun-title,#submit,.form_submit,.featured-posts-title,.section_title,#page-scroll,.post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 !important;
 }
 #main_nav_con {
@@ -11,7 +11,6 @@
 .fa-calendar,.fa-comments-o,.fa-folder-open,.fa-eye,.fa-download,.fa-star{
 	color: #b10030;
 }
-
 a,h1,h2,h3,h4,h5,h6 {
 	color: #b10030;	
 }

@@ -95,6 +95,9 @@ img {
     display: inline-block;
     max-width: 100%;
 }
+.form-submit{
+	margin-top: 15px;
+}
 .toggle-excerpt,#top-header-wrapper,#languages_menu_con,.text,.text p,#hidden-search-form,.post-contents,.download-counter,#main_nav_con,#menu-toggle,.single-sidebar,.contact span,.section{
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;
@@ -827,10 +830,12 @@ img {
 	list-style-type:disc;
 	}
 	.single-text p{
-	font-size:16px;
-	color: #484848;
-	line-height: 30px;
-	text-align:justify;
+		font-size:16px;
+		color: #484848;
+		line-height: 30px;
+		text-align:justify;
+		margin: 15px 0;
+		word-spacing: 1px;
 	}
 	.single-text a, .single-text ul li{
 		font-weight:bold;
@@ -878,8 +883,17 @@ img {
 		border: 0;
 		box-shadow: 0px 0px 20px 1px #d2caca inset;
 		height: 250px;
-		margin: 15px;
 		padding: 15px;
+	}
+	#commentform .comment-form-author input,
+	#commentform .comment-form-email input,
+	#commentform .comment-form-url input,
+	#commentform .error{
+		display: block;
+	}
+
+	#commentform .error{
+		color:#e1125c;
 	}
 	.commentlist{
 		box-shadow: 0 0 150px 1px #c3bebe inset;
@@ -890,6 +904,7 @@ img {
 	}
 	.comment{
 		position: relative;
+		margin: 15px 0;
 	}
 	.comment-author img{
 		margin: 0;

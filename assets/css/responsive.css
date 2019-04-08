@@ -294,17 +294,14 @@
 		display: none;
 	}
 	.hover-animate:hover{
-	padding: 20px;
-	box-shadow: 0px 0px 20px 10px rgba(144, 144, 144, 0.27);
-}
+		padding: 20px;
+		box-shadow: 0px 0px 20px 10px rgba(144, 144, 144, 0.27);
+	}
 	.feed-img-container:hover > .overlaying-wallpaper{
-	display: none;
-}
+		display: none;
+	}
 	.feed-img-container{
 		display: block;
-	}
-	#comment{
-	width: 70%;
 	}
 	
 	.sub-menu{
