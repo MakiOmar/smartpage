@@ -1,30 +1,45 @@
 jQuery(document).ready(function($){
 	"use strict";
+	jQuery.validator.addMethod("noHTML", function(value, element) {
+		if(this.optional(element) || /<\/?[^>]+(>|$)/g.test(value)){
+			return false;
+		} else {
+			return true;
+		}
+	}, "");
+
 	var CommentSubmit =$('#commentform').find('#submit'),
-		SmpgAjaxUrl = SmpgLoca.ajaxURL;
+		
+	SmpgAjaxUrl = SmpgLoca.ajaxURL;
 	
-	CommentSubmit.on('click', function(e){
+	$(CommentSubmit).click(function(e){
+		
 		e.preventDefault();
+
 		$('#commentform').validate({
 				rules: {
 					author: {
 						required: true,
-						minlength: 2
+						minlength: 2,
+						noHTML: true
 					},
 
 					email: {
 						required: true,
-						email: true
+						email: true,
+						noHTML: true
 					},
 
 					url: {
-						url: true
+						url: true,
+						noHTML: true
 					},
 
 					comment: {
 						required: true,
 						minlength: 20
-					}
+					},
+					
 				},
 				messages: {
 					author  : SmpgLoca.smpgFormAuthor ,
@@ -48,9 +63,10 @@ jQuery(document).ready(function($){
 				}
 			});
 		if($('#commentform').valid()){
+			$('#comment').html(tinymce.get('comment').getContent());
 			
 			var CommentsSerialized = $('#commentform').serialize();
-		
+
 			$.ajax({
 					type : 'POST',
 					url : SmpgAjaxUrl, // admin-ajax.php URL
@@ -69,7 +85,7 @@ jQuery(document).ready(function($){
 							}
 						},
 					success: function(response){
-						console.log(response.resp);
+						console.log(CommentsSerialized);
 					}
 			});
 		}
