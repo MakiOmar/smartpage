@@ -17,7 +17,7 @@ clean(document);
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
-	var SmpjAjaxUrl = $('#smpg_ajax_url').val();
+	var SmpgAjaxUrl = SmpgLoca.ajaxURL;
 	//Hide Top section if no content
 	function isEmpty( el ){
 		
@@ -670,7 +670,7 @@ $(function(){
 			  post_id : postId,
 			  rate :clickRrate
 		   },
-		  url : SmpjAjaxUrl,
+		  url : SmpgAjaxUrl,
 		  success:function(response){
 			  //resp is define within the wp_ajax_{action} hooked function
 			  console.log(response.resp);
