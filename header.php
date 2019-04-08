@@ -16,7 +16,6 @@ ob_start('ob_gzhandler');
 <div id="hidden-search-form">
 	<a class="search-form-toggle" href="#" title="Scroll page"><i class="fa fa-search"></i></a>
 		<?php get_search_form() ?>
-	</div>
 </div>
 <div id="grid-wrapper">
 <div class="grid">
