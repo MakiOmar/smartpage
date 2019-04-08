@@ -154,7 +154,6 @@ function save_smpg_upload_meta_data($id) {
 }
 add_action('save_post_smpg_download', 'save_smpg_upload_meta_data');
 
-
 function smpg_download_redirect_post_location( $location ) {
 	$location = add_query_arg( 'c_error' , '1' , $location );
     return $location;
@@ -353,4 +352,49 @@ function smpg_get_excerpt( $id,$words_count= 25 ) {
 			echo '<p>'.get_the_excerpt($id).'</p>';
 		}
 	}
+
+/*
+*Add tinymce to the comment form
+*/
+add_filter( 'comment_form_defaults', 'smpg_rich_text_comment_form' );
+
+function smpg_rich_text_comment_form( $args ) {
+	ob_start();
+	
+	wp_editor( '', 'comment', array(
+		
+		//'media_buttons' => true, // show insert/upload button(s) to users with permission
+		
+		'textarea_rows' => '10', // re-size text area
+		
+		'dfw' => true, // replace the default full screen with DFW (WordPress 3.4+)
+		
+		'tinymce' => array(
+		
+        	'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,bullist,numlist,code,blockquote,link,unlink,outdent,indent,|,undo,redo,fullscreen',
+		
+  	  	),
+		
+		'quicktags' => array(
+		
+ 	       'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,close'
+		
+	    )
+		
+	) );
+	
+	$args['comment_field'] = ob_get_clean();
+	
+	return $args;
+	
+}
+
+function smpg_init_tinymce(){?>
+	<script type="text/javascript">
+		tinymce.init({
+			selector: '#comment',
+		});
+	</script>
+<?php }
+add_action('wp_footer', 'smpg_init_tinymce',999);
 ?>
