@@ -50,6 +50,7 @@ $smpglibs = [
 	'db-functions'        =>'',
 	'php-helpers'         =>'helper/',
 	'wordpress-helpers'   =>'helper/',
+	'ajax-comments'       =>'ajax/',
 	
 ];
 
