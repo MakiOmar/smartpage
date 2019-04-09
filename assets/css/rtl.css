@@ -232,6 +232,9 @@ display: flex;
 .extra-metas{
 	
 }
+#reply-title small{
+	float: left;
+}
 	/***End blog post**/
 /***End body***/
 
