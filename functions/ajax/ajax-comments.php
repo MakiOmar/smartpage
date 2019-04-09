@@ -36,13 +36,49 @@
 		 */
 		
 		do_action( 'set_comment_cookies', $comment, $user, $cookies_consent );
-		
-		//Check if comments will be held for moderation
-		if(get_option('comment_moderation' === true)){
-			//do something
+		/*
+		 * If you do not like this loop, pass the comment depth from JavaScript code
+		 */
+		$comment_depth = 1;
+		$comment_parent = $comment->comment_parent;
+		while( $comment_parent ){
+			$comment_depth++;
+			$parent_comment = get_comment( $comment_parent );
+			$comment_parent = $parent_comment->comment_parent;
 		}
+
+		/*
+		 * Set the globals, so our comment functions below will work correctly
+		 */
+		$GLOBALS['comment'] = $comment;
+		$GLOBALS['comment_depth'] = $comment_depth;
+		
+		$comment_html = '<div ' . comment_class('', null, null, false ) . ' id="comment-' . $comment->comment_ID . '">			
+			
+				<div class="comment-author vcard">
+					' . get_avatar( $comment, 64 ) .
+					'<b class="fn">' . get_comment_author_link() . '</b> <span class="says">'.esc_html__('says:', TEXTDOM).'</span>
+				</div>
+				
+				<div class="comment-metadata">
+					<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf('%1$s at %2$s', get_comment_date(),  get_comment_time() ) . '</a>';
+
+					if( $edit_link = get_edit_comment_link() )
+						$comment_html .= '<span class="edit-link"><a class="comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', TEXTDOM).'</a></span>';
+
+				$comment_html .= '</div>';
+		
+				if ( $comment->comment_approved == '0' )
+					$comment_html .= '<p class="comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', TEXTDOM).'</p>';
+
+			$comment_html .= '<div class="comment-content">' . apply_filters( 'comment_text', get_comment_text( $comment ), $comment ) . '</div>';
+			$comment_html .= '<div class="reply">'.get_comment_reply_link( array('depth' => $comment_depth,'max_depth'     => get_option( 'thread_comments_depth' )), $comment , '' ).'</div></div>';
+		
+		
 		
 		$return = array(
+            'html'  => $comment_html,
+			'comment_id' => $comment->comment_ID,
             'resp'  => '',
             );
 

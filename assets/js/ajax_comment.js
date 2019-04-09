@@ -11,11 +11,11 @@ jQuery(document).ready(function($){
 	var CommentSubmit =$('#commentform').find('#submit'),
 		
 	SmpgAjaxUrl = SmpgLoca.ajaxURL;
-	
+	var replyTo = '';
 	$(CommentSubmit).click(function(e){
 		
 		e.preventDefault();
-
+		
 		$('#commentform').validate({
 				rules: {
 					author: {
@@ -63,34 +63,96 @@ jQuery(document).ready(function($){
 				}
 			});
 		if($('#commentform').valid()){
-			$('#comment').html(tinymce.get('comment').getContent());
+			var commentID = '',
+			    respond = $('#respond'), // comment form container
+		   		commentList = $('.commentlist');// comment list container
 			
-			var CommentsSerialized = $('#commentform').serialize();
-
+				$('#comment').html(tinymce.get('comment').getContent());
+			
+				var CommentsSerialized = $('#commentform').serialize(),
+				c;
 			$.ajax({
 					type : 'POST',
 					url : SmpgAjaxUrl, // admin-ajax.php URL
+				
 					data: CommentsSerialized + '&action=smpg_ajax_comments', // send form data + action parameter
+					
+					beforeSend: function(){
+						// what to do just after the form has been submitted
+						$('#smpg-loading').addClass('show-loading');
+					},
 					error: function (request, status, error) {
 							if( status === 500 ){
+								
 								alert( 'Error while adding comment' );
 							} else if( status === 'timeout' ){
+								
 								alert('Error: Server doesn\'t respond.');
-							} else {
-								// process WordPress errors
-								var wpErrorHtml = request.responseText.split("<p>"),
-									wpErrorStr = wpErrorHtml[1].split("</p>");
-
-								alert( wpErrorStr[0] );
 							}
+						
 						},
 					success: function(response){
-						console.log(CommentsSerialized);
+						commentID = response.comment_id;
+						
+						if(commentList.length > 0){
+							
+							if( replyTo !== ''){
+								
+								$('#comment-'+replyTo).append(response.html);
+							}else{
+								
+								commentList.append( response.html );
+							}
+							
+						}else{
+							// if no comments yet
+							var addedCommentHTML = '<div class="commentlist">' + response.html + '</div>';
+							
+							respond.before( addedCommentHTML );
+						}
+						
+						
+					},
+					
+					complete: function(){
+						
+						tinymce.get('comment').setContent('');
+						
+						if(commentID !== ''){
+							
+							$("html, body").animate({
+
+								scrollTop: $("#comment-"+commentID).offset().top
+
+							}, 2000);
+							
+						}
+						$('#smpg-loading').removeClass('show-loading');
+						
+
 					}
+				
+				
+					
 			});
 		}
-		
-		
+			
 	});
+	
+	$('.comment-reply-link').click(function(e){
+		e.preventDefault();
+		
+		$("html, body").animate({
+			
+			scrollTop: $("#commentform").offset().top
+			
+		}, 2000);
+		
+		replyTo = $(this).attr('data-commentid');
+		
+		$('#comment_parent').val(replyTo);
+
+	});
+	
 	
 });
