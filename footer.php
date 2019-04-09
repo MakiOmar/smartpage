@@ -15,7 +15,9 @@
 </div>
 
 <input type="hidden" id="smpg_ajax_url" value="<?php echo smpg_get_ajax_url(); ?>" />
-
+<div id="smpg-loading">
+    <div id="smpg-page-loading-wrapper"><div id="smpg-page-loading-bg"></div></div>
+</div>
 <?php wp_footer();?>
 
 </body>
