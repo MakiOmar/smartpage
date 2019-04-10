@@ -15,6 +15,10 @@ define( 'LANG_DIR', THEME_DIR. '/languages/' );
 
 define( 'STAR_RATE', $GLOBALS['wpdb']->prefix . 'star_rating' );
 
+define( 'BLOG_TITLE', get_bloginfo() );
+
+define( 'BLOG_URL', get_bloginfo('url') );
+
 
 define('SuppTypes',serialize(array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd')));
 
