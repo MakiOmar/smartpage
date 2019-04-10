@@ -137,6 +137,15 @@ jQuery(document).ready(function($){
 						
 						$('#smpg-loading').removeClass('show-loading');
 						
+						$('.comments-title').each(function(){
+							
+							var titleText = $(this).text();
+							
+							var newTitleText.replace( new RegExp("\\d+"),titleText);
+							
+							$(this).text(newTitleText);
+							
+						});
 						
 					}
 				
