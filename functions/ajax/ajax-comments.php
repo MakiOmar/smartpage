@@ -46,7 +46,7 @@
 			$parent_comment = get_comment( $comment_parent );
 			$comment_parent = $parent_comment->comment_parent;
 		}
-
+		$maxNOcomments = get_option( 'thread_comments_depth' );
 		/*
 		 * Set the globals, so our comment functions below will work correctly
 		 */
@@ -72,7 +72,14 @@
 					$comment_html .= '<p class="comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', TEXTDOM).'</p>';
 
 			$comment_html .= '<div class="comment-content">' . apply_filters( 'comment_text', get_comment_text( $comment ), $comment ) . '</div>';
-			$comment_html .= '<div class="reply">'.get_comment_reply_link( array('depth' => $comment_depth,'max_depth'     => get_option( 'thread_comments_depth' )), $comment , '' ).'</div></div>';
+		
+			if($maxNOcomments > $comment_depth){
+				$comment_html .= '<div class="reply">'.get_comment_reply_link( array('depth' => $comment_depth,'max_depth'     => $maxNOcomments), $comment , '' ).'</div>';
+			}else{
+				$comment_html .= '<p class="limit-reach">'.sprintf(esc_html__('A Max number of %s threads has been reached'),$maxNOcomments).'<p>';
+			}
+			
+			$comment_html .= '</div>';
 		
 		
 		
