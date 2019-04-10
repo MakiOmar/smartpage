@@ -11,7 +11,7 @@ jQuery(document).ready(function($){
 	var CommentSubmit =$('#commentform').find('#submit'),
 		
 	SmpgAjaxUrl = SmpgLoca.ajaxURL;
-	var replyTo = '';
+	var replyTo = $('#comment_parent').val();
 	$(CommentSubmit).click(function(e){
 		
 		e.preventDefault();
@@ -95,11 +95,12 @@ jQuery(document).ready(function($){
 						
 						if(commentList.length > 0){
 							
-							if( replyTo !== ''){
+							if( replyTo !== '0'){
 								
 								$('#comment-'+replyTo).append(response.html);
+
 							}else{
-								
+
 								commentList.append( response.html );
 							}
 							
@@ -126,9 +127,13 @@ jQuery(document).ready(function($){
 							}, 2000);
 							
 						}
+						$('#comment_parent').val('0');
+						
+						$('#cancel-comment-reply-link').css('display', 'none');
+						
 						$('#smpg-loading').removeClass('show-loading');
 						
-
+						
 					}
 				
 				
