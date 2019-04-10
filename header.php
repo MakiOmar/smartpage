@@ -29,7 +29,22 @@ ob_start('ob_gzhandler');
                 </div>
 				 <?php echo smartpage_custom_logo('orange') ;?>
 				 <div id="ads" class="grid-col-md-6 grid-col-sm-6">
-				 	<img alt="" src="<?php echo get_theme_file_uri();?>/images/banner.png"/>
+				 <?php
+					 
+					 $smpgAD = get_option('smpg_ad');
+					 
+					 if($smpgAD && !empty($smpgAD)){
+						 
+						 echo $smpgAD;
+						 
+					 }else{?>
+					 
+						 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- Responsive Prosentra --><ins class="adsbygoogle"style="display:block"data-ad-client="ca-pub-3107909375387230"data-ad-slot="8162895901"data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+						 
+						 <!--<img alt="" src="<?php /*echo get_theme_file_uri();*/?>/images/banner.png"/>-->
+						 
+					<?php }?>
+				 	
 				 </div>
 				 
 				 	<?php 
