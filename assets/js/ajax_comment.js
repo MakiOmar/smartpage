@@ -11,6 +11,7 @@ jQuery(document).ready(function($){
 	var CommentSubmit =$('#commentform').find('#submit'),
 		
 	SmpgAjaxUrl = SmpgLoca.ajaxURL;
+	var commentsCount;
 	var replyTo = $('#comment_parent').val();
 	$(CommentSubmit).click(function(e){
 		
@@ -91,7 +92,8 @@ jQuery(document).ready(function($){
 							}
 						},
 					success: function(response){
-						commentID = response.comment_id;
+						commentID        = response.comment_id;
+						commentsCount = response.comment_count;
 						
 						if(commentList.length > 0){
 							
@@ -137,13 +139,14 @@ jQuery(document).ready(function($){
 						
 						$('#smpg-loading').removeClass('show-loading');
 						
+						//Change comment counter
 						$('.comments-title').each(function(){
 							
 							var titleText = $(this).text();
 							
-							var newTitleText.replace( new RegExp("\\d+"),titleText);
-							
-							$(this).text(newTitleText);
+							var newtitleText = titleText.replace( new RegExp("\\d+"),commentsCount);
+
+							$(this).text(newtitleText);
 							
 						});
 						

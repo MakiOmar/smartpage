@@ -46,7 +46,10 @@
 			$parent_comment = get_comment( $comment_parent );
 			$comment_parent = $parent_comment->comment_parent;
 		}
+		
 		$maxNOcomments = get_option( 'thread_comments_depth' );
+		
+		$commentsCount = wp_count_comments( $comment->comment_post_ID )->approved;
 		/*
 		 * Set the globals, so our comment functions below will work correctly
 		 */
@@ -84,9 +87,10 @@
 		
 		
 		$return = array(
-            'html'  => $comment_html,
-			'comment_id' => $comment->comment_ID,
-            'resp'  => '',
+            'html'          => $comment_html,
+			'comment_id'    => $comment->comment_ID,
+			'comment_count' => $commentsCount,
+            'resp'          => '',
             );
 
 		wp_send_json($return);
