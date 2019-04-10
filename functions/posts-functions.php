@@ -397,4 +397,55 @@ function smpg_init_tinymce(){?>
 	</script>
 <?php }
 add_action('wp_footer', 'smpg_init_tinymce',999);
+
+add_filter('comment_reply_link', 'smpg_ajax_comment_reply_link','',4);
+function smpg_ajax_comment_reply_link($link, $args, $comment, $post){
+	if(wp_doing_ajax()){
+		if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) {
+				$link = sprintf(
+					'<a rel="nofollow" class="comment-reply-login" href="%s">%s</a>',
+					esc_url( wp_login_url( get_permalink($post) ) ),
+					$args['login_text']
+				);
+			} else {
+				$data_attributes = array(
+					'commentid'      => $comment->comment_ID,
+					'postid'         => $post->ID,
+					'belowelement'   => $args['add_below'] . '-' . $comment->comment_ID,
+					'respondelement' => $args['respond_id'],
+				);
+
+				$data_attribute_string = '';
+
+				foreach ( $data_attributes as $name => $value ) {
+					$data_attribute_string .= " data-${name}=\"" . esc_attr( $value ) . '"';
+				}
+
+				$data_attribute_string = trim( $data_attribute_string );
+				
+			
+				$current_url = str_replace(get_bloginfo('url'),'',get_permalink($post));
+			
+				$link = sprintf(
+					"<a rel='nofollow' class='comment-reply-link' href='%s' %s aria-label='%s'>%s</a>",
+					esc_url(
+						add_query_arg(
+							array(
+								'replytocom'      => $comment->comment_ID,
+								'unapproved'      => false,
+								'moderation-hash' => false,
+							),$current_url
+						)
+					) .'#'. $args['respond_id'],
+					$data_attribute_string,
+					esc_attr( sprintf( $args['reply_to_text'], $comment->comment_author ) ),
+					$args['reply_text']
+				);
+			}
+		return $link;
+	}
+			
+	return $link;
+		
+}
 ?>
