@@ -98,6 +98,10 @@ jQuery(document).ready(function($){
 							if( replyTo !== '0'){
 								
 								$('#comment-'+replyTo).append(response.html);
+								
+								$('#comment-'+replyTo).addClass('parent');
+								
+								$('#comment-'+commentID).addClass('child');
 
 							}else{
 
