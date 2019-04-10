@@ -150,6 +150,20 @@ jQuery(document).ready(function($){
 		replyTo = $(this).attr('data-commentid');
 		
 		$('#comment_parent').val(replyTo);
+		
+		$('#cancel-comment-reply-link').css('display', 'block');
+
+	});
+	
+	$(document).on('click','#cancel-comment-reply-link',function(e){
+		
+		e.preventDefault();
+		
+		$('#comment_parent').val('0');
+		
+		tinymce.get('comment').setContent('');
+		
+		$(this).css('display', 'none');
 
 	});
 	
