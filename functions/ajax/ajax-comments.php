@@ -57,11 +57,11 @@
 			
 				<div class="comment-author vcard">
 					' . get_avatar( $comment, 64 ) .
-					'<b class="fn">' . get_comment_author_link() . '</b> <span class="says">'.esc_html__('says:', TEXTDOM).'</span>
+					sprintf( __( '%s <span class="says">says:</span>' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link( $comment ) )).'
 				</div>
 				
 				<div class="comment-metadata">
-					<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf('%1$s at %2$s', get_comment_date(),  get_comment_time() ) . '</a>';
+					<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf( __( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() ) . '</a> ';
 
 					if( $edit_link = get_edit_comment_link() )
 						$comment_html .= '<span class="edit-link"><a class="comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', TEXTDOM).'</a></span>';
