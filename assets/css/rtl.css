@@ -258,6 +258,10 @@ display: flex;
 #reply-title small{
 	float: left;
 }
+.child{
+	margin-left: 0;
+	margin-right: 35px;
+}
 	/***End blog post**/
 /***End body***/
 
