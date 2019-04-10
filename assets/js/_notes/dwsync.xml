@@ -10,5 +10,7 @@
 <file name="jquery.contentcarousel.js" server="ftp.prosentra.com//" local="131690647943198404" remote="131690359800000000" Dst="0" />
 <file name="jquery.easing.1.3.js" server="ftp.prosentra.com//" local="129563223200000000" remote="131690092200000000" Dst="0" />
 <file name="custom.js" server="ftp.prosentra.com//" local="131719802757215476" remote="131719514400000000" Dst="0" />
-<file name="custom.js" server="ftp.prosentra.com" local="131990932372526909" remote="131990577000000000" Dst="0" />
+<file name="custom.js" server="ftp.prosentra.com" local="131991860336876745" remote="131992492800000000" Dst="0" />
+<file name="ajax_comment.js" server="ftp.prosentra.com" local="131992810645244177" remote="131992492200000000" Dst="0" />
+<file name="jquery.validate.min.js" server="ftp.prosentra.com" local="131878923360000000" remote="131992492800000000" Dst="0" />
 </dwsync>
