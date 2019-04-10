@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	"use strict";
 	jQuery.validator.addMethod("noHTML", function(value, element) {
-		if(this.optional(element) || /<\/?[^>]+(>|$)/g.test(value)){
+		if(/<\/?[^>]+(>|$)/g.test(value)){
 			return false;
 		} else {
 			return true;
