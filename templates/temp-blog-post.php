@@ -42,7 +42,7 @@ setPostViews($tbp_post_id);?>
 			
 			<div>
 			
-				<a class="button" href="<?php echo get_the_permalink() ?>"><?php _e('Read more',TEXTDOM) ?></a>
+				<a class="button smpg-button" href="<?php echo get_the_permalink() ?>"><?php _e('Read more',TEXTDOM) ?></a>
 				
 			</div>
 			
