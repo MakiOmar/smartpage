@@ -1,5 +1,28 @@
 @font-face{font-family:'ae_albattarregular';src:url(../../fonts/ARBfonts/ae_albattar-webfont.eot);src:url(../../fonts/ARBfonts/ae_albattar-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_albattar-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_albattar-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_albattar-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_albattar-webfont.svg#ae_albattarregular) format("svg");font-weight:400;font-style:normal}
 @font-face {
+    font-family: 'droid_arabic_kufiregular';
+    src: url('../../fonts/ARBfonts/droidkufi-regular-webfont.eot');
+    src: url('../../fonts/ARBfonts/droidkufi-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/droidkufi-regular-webfont.woff2') format('woff2'),
+         url('../../fonts/ARBfonts/droidkufi-regular-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/droidkufi-regular-webfont.svg#droid_arabic_kufiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'droid_arabic_kufibold';
+    src: url('../../fonts/ARBfonts/droidkufi-bold-webfont.eot');
+    src: url('../../fonts/ARBfonts/droidkufi-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/droidkufi-bold-webfont.woff2') format('woff2'),
+         url('../../fonts/ARBfonts/droidkufi-bold-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/droidkufi-bold-webfont.svg#droid_arabic_kufibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
     font-family: 'decotypethuluthiiregular';
     src: url('../../fonts/ARBfonts/thuluth-decorated2-webfont.eot');
     src: url('../../fonts/ARBfonts/thuluth-decorated2-webfont.eot?#iefix') format('embedded-opentype'),
@@ -102,8 +125,8 @@ direction: rtl;
     unicode-bidi:embed;
 }
 body{
-	font-family:'dubairegular';
-	font-size: 18px;
+	font-family:'droid_arabic_kufiregular';
+	font-size: 14px;
 	font-style: normal;
 	letter-spacing: 0;
 }
