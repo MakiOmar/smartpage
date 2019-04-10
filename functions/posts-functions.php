@@ -398,6 +398,9 @@ function smpg_init_tinymce(){?>
 <?php }
 add_action('wp_footer', 'smpg_init_tinymce',999);
 
+/*
+*Filter reply link
+*/
 add_filter('comment_reply_link', 'smpg_ajax_comment_reply_link','',4);
 function smpg_ajax_comment_reply_link($link, $args, $comment, $post){
 	if(wp_doing_ajax()){
@@ -447,5 +450,21 @@ function smpg_ajax_comment_reply_link($link, $args, $comment, $post){
 			
 	return $link;
 		
+}
+
+/*
+*Filter commet classes
+*/
+add_filter('comment_class', 'smpg_filter_comment_class','',5);
+
+function smpg_filter_comment_class($classes, $class, $comment_id, $comment, $post_id){
+	if(intval($comment->comment_parent) != 0){
+
+		$classes[] = 'child';
+		
+		return $classes;
+	}
+	
+	return $classes;
 }
 ?>
