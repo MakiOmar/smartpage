@@ -89,7 +89,6 @@ jQuery(document).ready(function($){
 								
 								alert('Error: Server doesn\'t respond.');
 							}
-						
 						},
 					success: function(response){
 						commentID = response.comment_id;
@@ -139,7 +138,7 @@ jQuery(document).ready(function($){
 			
 	});
 	
-	$('.comment-reply-link').click(function(e){
+	$(document).on('click','.comment-reply-link',function(e){
 		e.preventDefault();
 		
 		$("html, body").animate({
