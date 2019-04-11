@@ -1,5 +1,5 @@
 <?php
-	$tn= new Smpg_Generate_Posts_View(
+	$tn= new Smpg__Generate_Posts_View(
 						array('post_type' => 'smpg_news','posts_per_page'=>5),
 						'news-loop',
 						true

@@ -1,7 +1,7 @@
 <?php
 $FreaturedCat = get_category_by_slug('featured-posts');
 
-	$tcp= new Smpg_Generate_Posts_View(
+	$tcp= new Smpg__Generate_Posts_View(
 			array(
 				'category__not_in' => $FreaturedCat->term_id,
 			),

@@ -13,7 +13,7 @@ function register_smartpage_menu() {
 }
 function smpg_main_navigation($location_slug, $container = 'nav'){
 	if ($location_slug == 'main-menu'){
-		$walker = new Smpg_Nav_Menu_Walk;
+		$walker = new Smpg__Nav_Menu_Walk;
 	}
 	if ( has_nav_menu( $location_slug ) ) {
 		$location_array = explode('-',$location_slug);
@@ -85,7 +85,7 @@ function add_cats_menu($item , $args){
 				'title_li' => '',
 				'order'=> 'DESC',
 				'echo' => false,
-				'walker' => new Smpg_Cats_Walk()
+				'walker' => new Smpg__Cats_Walk()
 			   );
 	$item.= wp_list_categories($args);
 	$item.='</ul></li>';

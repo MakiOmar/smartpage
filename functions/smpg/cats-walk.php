@@ -1,5 +1,5 @@
-<?php if ( ! class_exists( 'Smpg_Cats_Walk' ) ) {
-	class Smpg_Cats_Walk extends Walker_Category {
+<?php if ( ! class_exists( 'Smpg__Cats_Walk' ) ) {
+	class Smpg__Cats_Walk extends Walker_Category {
 		public $tree_type = 'category';
 				/**
 				 * Start Level.
@@ -84,7 +84,7 @@
 						if ( ! empty( $args['current_category'] ) ) {
 							// 'current_category' can be an array, so we use `get_terms()`.
 							$_current_terms = get_terms( $category->taxonomy, array(
-								'include' => $args['current_category'],
+								'include'    => $args['current_category'],
 								'hide_empty' => false,
 							) );
 

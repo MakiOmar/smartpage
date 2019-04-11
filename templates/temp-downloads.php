@@ -1,5 +1,5 @@
 <?php
-	$tcp= new Smpg_Generate_Posts_View(
+	$tcp= new Smpg__Generate_Posts_View(
 						array('post_type' => 'smpg_download','posts_per_page'=>5),
 						'download-loop',
 						true

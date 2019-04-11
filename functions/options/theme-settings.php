@@ -1,6 +1,6 @@
 <?php
-if (!class_exists('Smpg_Theme_Options')) {
-	class Smpg_Theme_Options{
+if (!class_exists('Options__Theme_Settings')) {
+	class Options__Theme_Settings{
 		public $page = '';
 		public $OptionGroup = '';
 		public $sections = array();
@@ -18,7 +18,7 @@ if (!class_exists('Smpg_Theme_Options')) {
 			$defaults['menu_title'] = __('SmartPage Theme Options', TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
 			$defaults['page_title'] = __('SmartPage Theme Options', TEXTDOM);
-			$defaults['page_slug'] = 'smpg_options';
+			$defaults['page_slug'] = 'Smpg_Options';
 			$defaults['page_cap'] = 'manage_options';
 			$defaults['page_type'] = 'menu';
 			$defaults['page_parent'] = '';
@@ -68,7 +68,7 @@ if (!class_exists('Smpg_Theme_Options')) {
 				$this->args['opt_name'],
 				array(
 					'sanitize_callback',
-					array(&$this,'smpg_options_validate_cd')
+					array(&$this,'Smpg_Options_validate_cd')
 				)
 			);
 			
@@ -120,30 +120,28 @@ if (!class_exists('Smpg_Theme_Options')) {
 
 			if(isset($field['callback']) && function_exists($field['callback'])){
 
-			}?>
+			}
 			
-			<select>
-				<option>1</option>
-				<option>1</option>
-				<option>1</option>
-				<option>1</option>
-				<option>1</option>
-				<option>1</option>
-			</select>
-			
-		<?php }
+			if(isset($field['type'])){
+				$field_class = 'Options__Fields__'.ucfirst($field['type']).'__F_'.ucfirst($field['type']);
+				
+				if(class_exists($field_class)){
+					
+				}
+			}
+ 		}
 		
 
-		function smpg_options_validate_cd($smpg_options){
-			$Smpg_Options = Smpg_Options::get_instance();
+		function Smpg_Options_validate_cd($Smpg_Options){
+			$Smpg_Options = Smpg__Options_Model::get_instance();
 			$message = null;
 			$type = null;
 
-			if ( null != $smpg_options ) {
+			if ( null != $Smpg_Options ) {
 
 				if ( false === $Smpg_Options->get_option( 'myOption' ) ) {
 
-					$Smpg_Options->add_option( 'myOption', $smpg_options );
+					$Smpg_Options->add_option( 'myOption', $Smpg_Options );
 
 					$type = 'updated';
 
@@ -152,7 +150,7 @@ if (!class_exists('Smpg_Theme_Options')) {
 
 				} else {
 
-					$Smpg_Options->update_option( 'myOption', $smpg_options );
+					$Smpg_Options->update_option( 'myOption', $Smpg_Options );
 
 					$type = 'updated';
 
@@ -194,11 +192,11 @@ if (!class_exists('Smpg_Theme_Options')) {
 
 					<?php
 
-					// output security fields for the registered setting "smpg_options"
+					// output security fields for the registered setting "Smpg_Options"
 					settings_fields( $this->OptionGroup );
 
 					// output setting sections and their fields
-					// (sections are registered for "smpg_options", each field is registered to a specific section)
+					// (sections are registered for "Smpg_Options", each field is registered to a specific section)
 					//You should pass the page passed to add_settings_section
 					do_settings_sections( $this->args['opt_name'] );
 				

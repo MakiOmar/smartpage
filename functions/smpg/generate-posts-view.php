@@ -1,5 +1,5 @@
 <?php
-class Smpg_Generate_Posts_View{
+class Smpg__Generate_Posts_View{
 
 	/*
 	*@var  string  $postsTemplate  the posts template 

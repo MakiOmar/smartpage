@@ -19,7 +19,7 @@ define( 'BLOG_TITLE', get_bloginfo() );
 
 define( 'BLOG_URL', get_bloginfo('url') );
 
-define( 'SMPG_OPTIONS', 'smpg_options' );
+define( 'SMPG_OPTIONS', 'Smpg_Options' );
 
 define( 'SMPG_OPTIONS_URI', THEME_URI ."/functions/options/");
 
@@ -36,13 +36,14 @@ spl_autoload_register( 'smpg_autoloader' );
 */
 function smpg_autoloader( $class_name ) {
 	
-  if ( false !== strpos( $class_name, 'Smpg' ) ) {
+  if ( false !== strpos( $class_name, 'Smpg__' ) || false !== strpos( $class_name, 'Options__' )) {
 	  
-    $classes_dir = THEME_DIR .'/functions/smpg-classes/';
+	$class_sub =  preg_replace('/__/', DIRECTORY_SEPARATOR, strtolower($class_name));
+    $classes_dir = THEME_DIR .DIRECTORY_SEPARATOR.'functions'.DIRECTORY_SEPARATOR;
 	  
-    $class_file = 'class-' . str_replace( '_', '-',strtolower($class_name)  ) . '.php';
-	  
-    require_once $classes_dir . $class_file;
+    $class_path =  $classes_dir . str_replace('_','-',$class_sub) . '.php';
+	
+    require_once wp_normalize_path($class_path);
 	  
   }
 	
@@ -67,7 +68,7 @@ foreach($smpglibs as $smpglib=>$path){
 }
 
 add_action('wp_footer', function(){
-	//test
+	
 });
 
 /*
@@ -147,10 +148,10 @@ function searchFilter($query) {
 /*
 *Register categories widget
 */
-add_action('widgets_init', 'smpg_cats_widget_register');
+add_action('widgets_init', 'Smpg__Cats_Widget_register');
 
-function smpg_cats_widget_register(){
+function Smpg__Cats_Widget_register(){
 	
-	register_widget('Smpg_Cats_Widget');
+	register_widget('Smpg__Cats_Widget');
 	
 }

@@ -1,9 +1,9 @@
 <?php
-//change option name (smpg_options) to what you want
+//change option name (Smpg_Options) to what you want
 /**
- * Class SMPG_Options: equivalent to an option in wp_engine, we use this to group many options of our themes into 1
+ * Class Smpg_Options: equivalent to an option in wp_engine, we use this to group many options of our themes into 1
  * Create an option group in wp_options using the name provided when construct the object, e.g.:
- * 		$smpg_{theme}_general = new smpg_Options("et_options");
+ * 		$smpg_{theme}_general = new Smpg_Options("et_options");
  * Get & Set new option in this group using assignments & save() function, e.g.:
  * 		$smpg_{theme}_general->logo = {url};
  * 		$smpg_{theme}_general->save();
@@ -15,8 +15,8 @@
  * @copyright enginethemes.com team
  * @license enginethemes.com team
  */
-if (!class_exists('Smpg_Options')) {
-    class Smpg_Options
+if (!class_exists('Smpg__Options_Model')) {
+    class Smpg__Options_Model
     {
         protected $option_group;
          // equivalent 'option_name' of wp_options table. 'option_value' contains all options of the theme
@@ -27,7 +27,7 @@ if (!class_exists('Smpg_Options')) {
         
         public static function get_instance() {
             if (self::$instance == null) {
-                self::$instance = new SMPG_Options(SMPG_OPTIONS);
+                self::$instance = new Smpg__Options_Model(SMPG_OPTIONS);
             }
             return self::$instance;
         }
