@@ -5,7 +5,7 @@ class Options__Fields__Text__F_Text extends Options__Theme_Settings{
 	 * Field Constructor.
 	*/
 	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;		
 	}

@@ -5,6 +5,8 @@ if (!class_exists('Options__Theme_Settings')) {
 		public $OptionGroup = '';
 		public $sections = array();
 		public $args = array();
+		public $extraTabs = array();
+		public $options = array();
 		/**
 		 * Class Constructor. Defines the args for the theme options class
 		*/
@@ -41,6 +43,8 @@ if (!class_exists('Options__Theme_Settings')) {
 			 */
 			add_action('admin_init', array(&$this, 'smpg_settings_init'));
 			
+			//get the options for use later on
+			$this->options = Smpg__Options_Model::get_instance();
 
 		}
 		
@@ -127,6 +131,13 @@ if (!class_exists('Options__Theme_Settings')) {
 				
 				if(class_exists($field_class)){
 					
+					$fieldID = $field['id'];
+					//neat_var_dump($this->options->$fieldID);
+					$value = (isset($this->options->$fieldID))? $this->options->$fieldID :'';
+										
+					$render = '';
+					$render = new $field_class($field, $value, $this);
+					$render->render();
 				}
 			}
  		}
