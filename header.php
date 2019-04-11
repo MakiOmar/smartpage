@@ -30,8 +30,9 @@ ob_start('ob_gzhandler');
 				 <?php echo smartpage_custom_logo('orange') ;?>
 				 <div id="ads" class="grid-col-md-6 grid-col-sm-6">
 				 <?php
+					 $SmpgOptions = Smpg_Options::get_instance();
 					 
-					 $smpgAD = get_option('smpg_ad');
+					 $smpgAD = $SmpgOptions->get_option('smpg_ad');
 					 
 					 if($smpgAD && !empty($smpgAD)){
 						 
