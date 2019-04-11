@@ -24,8 +24,33 @@ $sections['socials']= array(
 		'icon' => Smpg_Options_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id' => 'smpg_facebook_settings',
+							'id' => 'facebook_url',
 							'title' => esc_html__('Facebook account link', TEXTDOM),
+							'type' => 'text',		
+						),
+						array(
+							'id' => 'twitter_url',
+							'title' => esc_html__('Twitter account link', TEXTDOM),
+							'type' => 'text',		
+						),
+						array(
+							'id' => 'linkedin_url',
+							'title' => esc_html__('Linkedin account link', TEXTDOM),
+							'type' => 'text',		
+						),
+						array(
+							'id' => 'instagram_url',
+							'title' => esc_html__('Instagram account link', TEXTDOM),
+							'type' => 'text',		
+						),
+						array(
+							'id' => 'youtube_channel',
+							'title' => esc_html__('Youtube channel', TEXTDOM),
+							'type' => 'text',		
+						),
+						array(
+							'id' => 'email',
+							'title' => esc_html__('Email address', TEXTDOM),
 							'type' => 'text',		
 						),
 						
