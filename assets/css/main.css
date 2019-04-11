@@ -213,6 +213,9 @@ img {
 			display: inline-flex;
 			vertical-align: middle;
 	}
+	#follow li a:hover{
+		font-size: 18px!important;
+	}
 	.full-width-header {
 		max-width: 100%;
 	}
