@@ -7,11 +7,14 @@ if (!class_exists('Options__Theme_Settings')) {
 		public $args = array();
 		public $extraTabs = array();
 		public $options = array();
+		public $validate;
 		/**
 		 * Class Constructor. Defines the args for the theme options class
 		*/
 		public function __construct($menu = array(), $sections = array()){
 			
+			$this->validate = new Smpg__Validate_Inputs();
+				
 			$defaults = array();
 			
 			$defaults['opt_name'] = SMPG_OPTIONS;
@@ -65,15 +68,16 @@ if (!class_exists('Options__Theme_Settings')) {
 			*/
 			//add_action('admin_print_styles-'.$this->page, array(&$this, '_enqueue'));
 		}
+		
+		/*
+		*Class register settings function
+		*/
 		function smpg_settings_init(){
 			// register a new setting for "smartpage" page
 			register_setting(
 				$this->OptionGroup,
 				$this->args['opt_name'],
-				array(
-					'sanitize_callback',
-					array(&$this,'Smpg_Options_validate_cd')
-				)
+				array(&$this,'smpg_options_validate')
 			);
 			
 			foreach($this->sections as $secKey => $section){
@@ -116,10 +120,17 @@ if (!class_exists('Options__Theme_Settings')) {
 			}
 
 		}
-
+		
+		/*
+		*class settings sections callback function
+		*/
 		function smpg__section_cb($section){
 			
 		}
+		
+		/*
+		*class section fields callback function
+		*/
 		function smpg__field_input($field){
 
 			if(isset($field['callback']) && function_exists($field['callback'])){
@@ -132,8 +143,10 @@ if (!class_exists('Options__Theme_Settings')) {
 				if(class_exists($field_class)){
 					
 					$fieldID = $field['id'];
+					
+					$fieldDefault = isset($field['default']) ? $field['default'] : '';
 					//neat_var_dump($this->options->$fieldID);
-					$value = (isset($this->options->$fieldID))? $this->options->$fieldID :'';
+					$value = (isset($this->options->$fieldID))? $this->options->$fieldID : $fieldDefault;
 										
 					$render = '';
 					$render = new $field_class($field, $value, $this);
@@ -142,39 +155,63 @@ if (!class_exists('Options__Theme_Settings')) {
 			}
  		}
 		
-
-		function Smpg_Options_validate_cd($Smpg_Options){
-			$Smpg_Options = Smpg__Options_Model::get_instance();
-			$message = null;
-			$type = null;
-
-			if ( null != $Smpg_Options ) {
-
-				if ( false === $Smpg_Options->get_option( 'myOption' ) ) {
-
-					$Smpg_Options->add_option( 'myOption', $Smpg_Options );
-
-					$type = 'updated';
-
-					$message = esc_html__( 'Successfully saved', TEXTDOM );
-
-
-				} else {
-
-					$Smpg_Options->update_option( 'myOption', $Smpg_Options );
-
-					$type = 'updated';
-
-					$message = esc_html__( 'Successfully updated', TEXTDOM );
-
+		/*
+		*class settings fields validation function
+		*@param  array  $notValidated  array of options sent by options form, not validated
+		*return  array  $validated     array of form values after validation
+		*/
+		function smpg_options_validate($notValidated){
+			
+			$validated = array();
+			
+			foreach($this->sections as $secKey => $section){
+				if(isset($section['fields'])){
+					foreach($section['fields'] as $fieldKey => $field){
+						if(isset($field['validate']) && isset($notValidated[$field['id']])){
+							
+							$currentValue = null;
+							
+							$fieldID = $field['id'];
+							
+							$args = array(
+								'id'            => $fieldID,
+								'validation'    => $field['validate'],
+								'new_value'     => $notValidated[$fieldID],
+								'current_value' => $this->options->get_option($fieldID),
+							);
+							
+							if(isset($this->options->$fieldID)){
+			
+								$currentValue = $this->options->get_option($fieldID);
+							}
+							
+							if($currentValue == $notValidated[$fieldID]) {
+								
+								$validated[$fieldID] = $currentValue;
+								
+								continue;
+							}
+							
+							//set_transient($fieldID, $this->options->$fieldID, 3600);
+							
+							$this->validate->validate_inputs($args);
+							
+							if(isset($this->validate->errors[$fieldID])){
+								set_transient($fieldID, $this->validate->errors[$fieldID], 1000);
+							}
+							
+							if(isset($this->validate->warnings[$fieldID])){
+								set_transient($fieldID, $this->validate->warnings[$fieldID], 1000);
+							}
+							
+							$validated[$fieldID] = $this->validate->value;
+							
+						}
+					}
 				}
-
-			} else {
-
-				$type = 'error';
-				$message = esc_html__( 'Data can not be added', TEXTDOM );
-
 			}
+
+			return $validated;
 			/*add error/update messages
 			*check if the user have submitted the settings
 			*wordpress will add the "settings-updated" $_GET parameter to the url
@@ -185,7 +222,9 @@ if (!class_exists('Options__Theme_Settings')) {
 			 }
 
 			// show error/update messages
-			settings_errors( 'smpg_messages' );
+			//settings_errors( 'smpg_messages' );
+			
+			//return $validated;
 		}
 		
 		/**
@@ -199,10 +238,10 @@ if (!class_exists('Options__Theme_Settings')) {
 			<div class="wrap">
 				<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
-				<form action="options.php" method="post">
+				<form action="options.php" method="post" autocomplete="off">
 
 					<?php
-
+					//neat_var_dump($this->options);
 					// output security fields for the registered setting "Smpg_Options"
 					settings_fields( $this->OptionGroup );
 
@@ -211,8 +250,6 @@ if (!class_exists('Options__Theme_Settings')) {
 					//You should pass the page passed to add_settings_section
 					do_settings_sections( $this->args['opt_name'] );
 				
-					//neat_print_r($wp_settings_sections);
-
 					// output save settings button
 					submit_button( 'Save Settings' );
 					?>
