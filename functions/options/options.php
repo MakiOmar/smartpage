@@ -1,6 +1,10 @@
 <?php
-
-define('Smpg_Options_DIR', wp_normalize_path( trailingslashit(dirname(__FILE__))));
+if(!defined('SMPG_OPTIONS_DIR')){
+	define('SMPG_OPTIONS_DIR', wp_normalize_path( trailingslashit(dirname(__FILE__))));
+}
+if(!defined('SMPG_OPTIONS_URI')){
+	define('SMPG_OPTIONS_URI', THEME_URI ."/functions/options/");	
+}
 
 $smpgOptions = Smpg__Options_Model::get_instance();
 
@@ -11,13 +15,29 @@ $sections = array();
 
 $sections['general']= array(
 		'title' => esc_html__('General', TEXTDOM),
-		'icon' => Smpg_Options_DIR. 'imgs/icons/icon.png',
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id' => 'smpg_copyright_settings',
-							'title' => esc_html__('Copyright', TEXTDOM),
-							'type' => 'text',
-							'validate' => 'no_html',
+							'id'      => 'smpg_copyright_settings',
+							'title'   => esc_html__('Copyright', TEXTDOM),
+							'type'    => 'text',
+							'validate'=> 'no_html',
+							'default' => sprintf(__('All rights are reserved to SmartPage %s', TEXTDOM), date('Y'))
+						),
+						array(
+							'id'      => 'smpg_sidebar_settings',
+							'title'   => esc_html__('Single post sidebar', TEXTDOM),
+							'type'    => 'radio_img',
+							'validate'=> 'no_html',
+							'options' => array(
+											//'' 				=> array('title' => 'Use Post Meta', 'img' => MFN_OPTIONS_URI.'img/question.png'),
+											'left-sidebar'	=> array('title' => __('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
+	
+											'right-sidebar'	=> array('title' => __('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
+											
+											'no-sidebar' 	=> array('title' => __('Full width', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/full-width.png'),
+										),
+							'default'  => 'left-sidebar'
 						),
 						
 					)
@@ -28,7 +48,7 @@ $arFonts = is_array($smpgOptions->get_option('custom_ar_fonts')) ? $smpgOptions-
 $enFonts = is_array($smpgOptions->get_option('custom_en_fonts')) ? $smpgOptions->get_option('custom_en_fonts') : array();
 $sections['fonts']= array(
 		'title'  => esc_html__('Fonts', TEXTDOM),
-		'icon'   => Smpg_Options_DIR. 'imgs/icons/icon.png',
+		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
 							'id'      => 'smpg_ar_font',
@@ -67,43 +87,49 @@ $sections['fonts']= array(
 
 $sections['socials']= array(
 		'title'  => esc_html__('Social Media', TEXTDOM),
-		'icon'   => Smpg_Options_DIR. 'imgs/icons/icon.png',
+		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'facebook_url',
+							'id'      => 'facebook',
 							'title'   => esc_html__('Facebook account link', TEXTDOM),
 							'type'    => 'text',	
-							'validate'=> 'url',	
+							'validate'=> 'url',
+							'default' => '#',
 						),
 						array(
-							'id'      => 'twitter_url',
+							'id'      => 'twitter',
 							'title'   => esc_html__('Twitter account link', TEXTDOM),
 							'type'    => 'text',		
-							'validate'=> 'url',		
+							'validate'=> 'url',	
+							'default' => '#',	
 						),
 						array(
-							'id'      => 'linkedin_url',
+							'id'      => 'linkedin',
 							'title'   => esc_html__('Linkedin account link', TEXTDOM),
 							'type'    => 'text',		
-							'validate'=> 'url',		
+							'validate'=> 'url',	
+							'default' => '#',
 						),
 						array(
-							'id'      => 'instagram_url',
+							'id'      => 'instagram',
 							'title'   => esc_html__('Instagram account link', TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',		
+							'default' => '#',		
 						),
 						array(
-							'id'      => 'youtube_channel',
+							'id'      => 'youtube',
 							'title'   => esc_html__('Youtube channel', TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',		
+							'default' => '#',
 						),
 						array(
 							'id'      => 'email',
 							'title'   => esc_html__('Email address', TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'email',		
+							'default' => get_bloginfo('admin_email'),		
 						),
 
 					)
