@@ -34,7 +34,7 @@ if(!class_exists('Smpg__Validate_Inputs')){
 			$this->value = strip_tags($field);
 		
 			if($field != $this->value){
-				$this->warnings[$id] = __('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM);
+				$this->warnings[$id] = esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM);
 			}
 			
 			$this->valid = true;
@@ -57,7 +57,7 @@ if(!class_exists('Smpg__Validate_Inputs')){
 
 					$this->value = $current;
 
-					$this->errors[$id] = __('You must enter a valid email address.', TEXTDOM);
+					$this->errors[$id] = esc_html__('You must enter a valid email address.', TEXTDOM);
 
 					$this->valid = false;
 
@@ -79,7 +79,7 @@ if(!class_exists('Smpg__Validate_Inputs')){
 				
 				$this->value = $current;
 				
-				$this->errors[$id] = __('You must provide a valid URL for this option.', TEXTDOM);
+				$this->errors[$id] = esc_html__('You must provide a valid URL for this option.', TEXTDOM);
 				
 			}else{
 				

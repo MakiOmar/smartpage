@@ -66,7 +66,7 @@ if (!class_exists('Options__Theme_Settings')) {
 			/*
 			*Load page scripts
 			*/
-			//add_action('admin_print_styles-'.$this->page, array(&$this, '_enqueue'));
+			add_action('admin_print_styles-'.$this->page, array(&$this, 'page_scripts'));
 		}
 		
 		/*
@@ -86,8 +86,8 @@ if (!class_exists('Options__Theme_Settings')) {
 					'smpg_'.$secKey.'_section',
 					$section['title'],
 					array(&$this,'smpg__section_cb'),
-					//You should pass the page passed added by add_theme_page
-					$this->args['opt_name']
+					//Make sure to add the same in add_settings_field
+					'smpg_'.$secKey.'_section_group'
 				);
 				
 				if(isset($section['fields'])){
@@ -109,7 +109,7 @@ if (!class_exists('Options__Theme_Settings')) {
 								$fieldTitle,
 								array(&$this,'smpg__field_input'),
 								//You should pass the page passed to add_settings_section
-								$this->args['opt_name'],
+								'smpg_'.$secKey.'_section_group',
 								'smpg_'.$secKey.'_section',
 								$field
 							);
@@ -232,32 +232,65 @@ if (!class_exists('Options__Theme_Settings')) {
 		*/
 		function _options_page_html(){
 			global $wp_settings_sections;
+			//neat_print_r($wp_settings_sections);
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
 
-			<div class="wrap">
+			<div id="smpg-wrapper">
 				<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
-				<form action="options.php" method="post" autocomplete="off">
+				<form action="options.php" method="post" enctype="multipart/form-data" autocomplete="off">
 
-					<?php
-					//neat_var_dump($this->options);
-					// output security fields for the registered setting "Smpg_Options"
-					settings_fields( $this->OptionGroup );
+				<?php
+				// output security fields for the registered setting "Smpg_Options"
+				settings_fields( $this->OptionGroup );
 
-					// output setting sections and their fields
-					// (sections are registered for "Smpg_Options", each field is registered to a specific section)
-					//You should pass the page passed to add_settings_section
-					do_settings_sections( $this->args['opt_name'] );
-				
-					// output save settings button
-					submit_button( 'Save Settings' );
-					?>
+				// output setting sections and their fields
+				// (sections are registered for "Smpg_Options", each field is registered to a specific section)
+							
+				foreach($this->sections as $secKey => $section){ $groupID = 'smpg_'.$secKey.'_section_group';?>
+							
+							<div id="<?php echo str_replace('_','-',$groupID) ?>" class="smpg-section-group">
+								<?php do_settings_sections( $groupID );?>
+							</div>
+						
+				<?php } 
+
+				submit_button( 'Save Settings' );?>
 
 				</form>
 			</div>
 <?php
 }
+		function page_scripts(){
+			wp_register_style( 'smpg-options-css', SMPG_OPTIONS_URI.'css/options.css', array(), time(), 'all');	
+			wp_enqueue_style( 'smpg-options-css' );
+			
+			foreach($this->sections as $k => $section){
+				
+				if(isset($section['fields'])){
+					
+					foreach($section['fields'] as $fieldKey => $field){
+						
+						if(isset($field['type'])){
+							
+							$n = ucfirst($field['type']);
+							
+							$field_class = 'Options__Fields__'.$n.'__F_'.$n;
+					
+							if(class_exists($field_class) && method_exists($field_class, 'enqueue')){
+								$enqueue = new $field_class('','',$this);
+								$enqueue->enqueue();
+							}
+							
+						}
+						
+					}
+				
+				}
+				
+			}
+		}
 	}
 }
 ?>
