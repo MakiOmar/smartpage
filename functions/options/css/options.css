@@ -1,0 +1,16 @@
+#smpg-wrapper{
+	background-color: #fff;
+	padding: 20px;
+	margin: 20px;
+}
+.smpg-radio-img input[type="radio"]{display: none}
+.smpg-radio-item{
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 5px;
+}
+.smpg-radio-img-selected{
+	padding: 5px;
+	border: 1px solid #ff3600;
+}
