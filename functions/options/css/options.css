@@ -3,6 +3,9 @@
 	padding: 20px;
 	margin: 20px;
 }
+.smpg-section-group{
+	padding: 20px;
+}
 .smpg-radio-img input[type="radio"]{display: none}
 .smpg-radio-item{
 	display: inline-flex;
