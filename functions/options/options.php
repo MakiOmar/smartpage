@@ -135,5 +135,40 @@ $sections['socials']= array(
 					)
 );
 
+// Navigation elements
+	$menu = array(	
+	
+		// General --------------------------------------------
+		'general' => array(
+			'title' => __('Getting started', 'mfn-opts'),
+			'sections' => array(  ),
+		),
+		
+		// Layout --------------------------------------------
+		'elements' => array(
+			'title' => __('Layout', 'mfn-opts'),
+			'sections' => array(  ),
+		),
+		
+		// Colors --------------------------------------------
+		'colors' => array(
+			'title' => __('Colors', 'mfn-opts'),
+			'sections' => array( ),
+		),
+		
+		// Fonts --------------------------------------------
+		'font' => array(
+			'title' => __('Fonts', 'mfn-opts'),
+			'sections' => array(  ),
+		),
+		
+		// Translate --------------------------------------------
+		'translate' => array(
+			'title' => __('Translate', 'mfn-opts'),
+			'sections' => array(  ),
+		),
+		
+	);
+
 
 $Smpg_Options = new Options__Theme_Settings( $menu, $sections );
