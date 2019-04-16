@@ -1,6 +1,8 @@
+<?php $smpgOptions = Smpg__Options_Model::get_instance();?>
+
 <footer class="grid-col-md-12 grid-col">
 
-	<p><?php printf(__('All rights reserved for %s 2018',TEXTDOM),get_bloginfo()) ?></p>
+	<p><?php echo $smpgOptions->smpg_copyright_settings ?></p>
 	
 </footer>
 
