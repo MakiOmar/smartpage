@@ -8,10 +8,13 @@ if (!class_exists('Options__Theme_Settings')) {
 		public $extraTabs = array();
 		public $options = array();
 		public $validate;
+		public $navigation;
 		/**
 		 * Class Constructor. Defines the args for the theme options class
 		*/
 		public function __construct($menu = array(), $sections = array()){
+			
+			$this->navigation = $menu;
 			
 			$this->validate = new Smpg__Validate_Inputs();
 				
@@ -231,12 +234,11 @@ if (!class_exists('Options__Theme_Settings')) {
 		 * HTML OUTPUT.
 		*/
 		function _options_page_html(){
-			global $wp_settings_sections;
 			//neat_print_r($wp_settings_sections);
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
 
-			<div id="smpg-wrapper">
+			<div id="smpg-options-wrapper">
 				<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 				<form action="options.php" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -244,19 +246,30 @@ if (!class_exists('Options__Theme_Settings')) {
 				<?php
 				// output security fields for the registered setting "Smpg_Options"
 				settings_fields( $this->OptionGroup );
+			
+				echo '<div id="options-wrap"><div id="options-nav"><ul>';
+			
+					foreach($this->navigation as $nav => $details){
 
-				// output setting sections and their fields
-				// (sections are registered for "Smpg_Options", each field is registered to a specific section)
-							
-				foreach($this->sections as $secKey => $section){ $groupID = 'smpg_'.$secKey.'_section_group';?>
-							
-							<div id="<?php echo str_replace('_','-',$groupID) ?>" class="smpg-section-group">
-								<?php do_settings_sections( $groupID );?>
-							</div>
-						
-				<?php } 
+						echo '<li id="'.$nav.'" class="smpg-nav-item"><a id="'.$nav.'" href="#smpg-'.$nav.'-section-group" class="smpg-nav-link">'.$details['title'].'</a></li>';
 
-				submit_button( 'Save Settings' );?>
+					 }
+
+					echo '</ul></div><div id="options-sections">';
+					// output setting sections and their fields
+					// (sections are registered for "Smpg_Options", each field is registered to a specific section)
+
+					foreach($this->sections as $secKey => $section){ $groupID = 'smpg_'.$secKey.'_section_group';?>
+
+								<div id="<?php echo str_replace('_','-',$groupID) ?>" class="smpg-section-group<?php echo (($secKey == 'general') ? ' smpg-show-section' : '') ?>">
+									<?php do_settings_sections( $groupID );?>
+								</div>
+
+					<?php }
+				submit_button( 'Save Settings' );
+				echo "</div></div>";
+
+				?>
 
 				</form>
 			</div>
@@ -264,7 +277,11 @@ if (!class_exists('Options__Theme_Settings')) {
 }
 		function page_scripts(){
 			wp_register_style( 'smpg-options-css', SMPG_OPTIONS_URI.'css/options.css', array(), time(), 'all');	
+			
 			wp_enqueue_style( 'smpg-options-css' );
+			
+			wp_enqueue_script( 'smpg-options-js', SMPG_OPTIONS_URI.'js/options.js', array('jquery'), time(), true);
+
 			
 			foreach($this->sections as $k => $section){
 				
