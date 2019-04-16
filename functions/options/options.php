@@ -8,8 +8,44 @@ if(!defined('SMPG_OPTIONS_URI')){
 
 $smpgOptions = Smpg__Options_Model::get_instance();
 
-//Menus
-$menu = array();
+// Navigation elements
+$options_nav = array(
+	// General --------------------------------------------
+	'general' => array(
+		'title' => esc_html__('Getting started', 'mfn-opts'),
+		'sections' => array(  ),
+	),
+	// Layout --------------------------------------------
+	'elements' => array(
+		'title' => esc_html__('Layout', 'mfn-opts'),
+		'sections' => array(  ),
+	),
+
+	// Colors --------------------------------------------
+	'colors' => array(
+		'title' => esc_html__('Colors', 'mfn-opts'),
+		'sections' => array( ),
+	),
+
+	// Fonts --------------------------------------------
+	'fonts' => array(
+		'title' => esc_html__('Fonts', 'mfn-opts'),
+		'sections' => array(  ),
+	),
+
+	// Translate --------------------------------------------
+	'translate' => array(
+		'title' => esc_html__('Translate', 'mfn-opts'),
+		'sections' => array(  ),
+	),
+	
+	// Socials --------------------------------------------
+	'socials' => array(
+		'title' => esc_html__('Socials', 'mfn-opts'),
+		'sections' => array(  ),
+	),
+);
+
 //Sectoins
 $sections = array();
 
@@ -31,13 +67,28 @@ $sections['general']= array(
 							'validate'=> 'no_html',
 							'options' => array(
 											//'' 				=> array('title' => 'Use Post Meta', 'img' => MFN_OPTIONS_URI.'img/question.png'),
-											'left-sidebar'	=> array('title' => __('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
+											'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
-											'right-sidebar'	=> array('title' => __('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
+											'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
 											
-											'no-sidebar' 	=> array('title' => __('Full width', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/full-width.png'),
+											'no-sidebar' 	=> array('title' => esc_html__('Full width', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/full-width.png'),
 										),
 							'default'  => 'left-sidebar'
+						),
+	
+						array(
+							'id'      => 'smpg_slider_settings',
+							'title'   => esc_html__('Featured Posts slider', TEXTDOM),
+							'type'    => 'radio',
+							'validate'=> 'no_html',
+							'options' => array(
+											'featured-cat'	=> array('title' => esc_html__('Featured category', TEXTDOM)),
+	
+											'featured-post'	=> array('title' => esc_html__('Featured posts', TEXTDOM)),
+											
+											'rev-slider' 	=> array('title' => esc_html__('Revolution Slider', TEXTDOM)),
+										),
+							'default'  => 'featured-cat'
 						),
 						
 					)
@@ -135,40 +186,4 @@ $sections['socials']= array(
 					)
 );
 
-// Navigation elements
-	$menu = array(	
-	
-		// General --------------------------------------------
-		'general' => array(
-			'title' => __('Getting started', 'mfn-opts'),
-			'sections' => array(  ),
-		),
-		
-		// Layout --------------------------------------------
-		'elements' => array(
-			'title' => __('Layout', 'mfn-opts'),
-			'sections' => array(  ),
-		),
-		
-		// Colors --------------------------------------------
-		'colors' => array(
-			'title' => __('Colors', 'mfn-opts'),
-			'sections' => array( ),
-		),
-		
-		// Fonts --------------------------------------------
-		'font' => array(
-			'title' => __('Fonts', 'mfn-opts'),
-			'sections' => array(  ),
-		),
-		
-		// Translate --------------------------------------------
-		'translate' => array(
-			'title' => __('Translate', 'mfn-opts'),
-			'sections' => array(  ),
-		),
-		
-	);
-
-
-$Smpg_Options = new Options__Theme_Settings( $menu, $sections );
+$Smpg_Options = new Options__Theme_Settings( $options_nav, $sections );
