@@ -1,6 +1,6 @@
 /*
  *
- * MFN_Options_radio_img function
+ * smpg_Options_radio_img function
  * Changes the radio select option, and changes class on images
  *
  */
