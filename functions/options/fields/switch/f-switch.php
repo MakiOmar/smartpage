@@ -31,7 +31,7 @@ class MFN_Options_switch extends MFN_Options{
 	 * Enqueue Function.
 	*/
 	function enqueue(){		
-		wp_enqueue_script( 'mfn-opts-field-switch-js', MFN_OPTIONS_URI.'fields/switch/field_switch.js', false, time(), true );
+		wp_enqueue_script('smpg-opts-field-switch-js', SMPG_OPTIONS_URI.'fields/switch/field_switch.js', array('jquery'),time(),true);
 	}
 	
 }
