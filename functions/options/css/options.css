@@ -1,10 +1,32 @@
-#smpg-wrapper{
+#smpg-options-wrapper{
 	background-color: #fff;
 	padding: 20px;
 	margin: 20px;
 }
-.smpg-section-group{
-	padding: 20px;
+#options-wrap{
+	display: flex;
+	max-width: 960px;
+	margin-top: 50px;
+	min-height: 768px;
+}
+#options-nav{
+	width: 20%;
+	background-color: rgba(35, 0, 5,1);
+}
+.smpg-nav-link{
+	line-height: 50px;
+	color: #fff;
+	font-size: 18px;
+	text-decoration: none;
+}
+.smpg-nav-link:hover{
+	color: #ef1450;
+}
+#options-nav{
+	padding: 0 20px
+}
+#options-sections{
+	width: 70%;
 }
 .smpg-radio-img input[type="radio"]{display: none}
 .smpg-radio-item{
@@ -16,4 +38,27 @@
 .smpg-radio-img-selected{
 	padding: 5px;
 	border: 1px solid #ff3600;
+}
+
+.smpg-section-group > h2{
+	padding: 50px 10px;
+	font-size: 35px;
+	color: #ffffff;
+	background-color: rgb(154, 62, 75);
+	margin: 0;
+}
+
+.submit,.form-table{
+	margin: 15px;
+}
+
+.smpg-section-group{
+	display: none;
+}
+.smpg-show-section{
+	display: block;
+}
+
+.regular-text{
+	width: 20em;
 }
