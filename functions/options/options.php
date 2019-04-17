@@ -12,36 +12,41 @@ $smpgOptions = Smpg__Options_Model::get_instance();
 $options_nav = array(
 	// General --------------------------------------------
 	'general' => array(
-		'title' => esc_html__('Getting started', 'mfn-opts'),
+		'title' => esc_html__('Getting started', TEXTDOM),
+		'sections' => array(  ),
+	),
+	// Slider --------------------------------------------
+	'slider' => array(
+		'title' => esc_html__('Slider', TEXTDOM),
 		'sections' => array(  ),
 	),
 	// Layout --------------------------------------------
 	'elements' => array(
-		'title' => esc_html__('Layout', 'mfn-opts'),
+		'title' => esc_html__('Layout', TEXTDOM),
 		'sections' => array(  ),
 	),
 
 	// Colors --------------------------------------------
 	'colors' => array(
-		'title' => esc_html__('Colors', 'mfn-opts'),
+		'title' => esc_html__('Colors', TEXTDOM),
 		'sections' => array( ),
 	),
 
 	// Fonts --------------------------------------------
 	'fonts' => array(
-		'title' => esc_html__('Fonts', 'mfn-opts'),
+		'title' => esc_html__('Fonts', TEXTDOM),
 		'sections' => array(  ),
 	),
 
 	// Translate --------------------------------------------
 	'translate' => array(
-		'title' => esc_html__('Translate', 'mfn-opts'),
+		'title' => esc_html__('Translate', TEXTDOM),
 		'sections' => array(  ),
 	),
 	
 	// Socials --------------------------------------------
 	'socials' => array(
-		'title' => esc_html__('Socials', 'mfn-opts'),
+		'title' => esc_html__('Socials', TEXTDOM),
 		'sections' => array(  ),
 	),
 );
@@ -49,6 +54,44 @@ $options_nav = array(
 //Sectoins
 $sections = array();
 
+$sections['slider']= array(
+		'title' => esc_html__('Slider', TEXTDOM),
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(
+						array(
+							'id'      => 'smpg_slider_settings',
+							'title'   => esc_html__('Featured Posts slider', TEXTDOM),
+							'type'    => 'radio',
+							'validate'=> 'no_html',
+							'options' => array(
+											'featured-cat'	=> array('title' => esc_html__('Featured category', TEXTDOM)),
+	
+											'featured-post'	=> array('title' => esc_html__('Featured posts', TEXTDOM)),
+											
+											'rev-slider' 	=> array('title' => esc_html__('Revolution Slider', TEXTDOM)),
+										),
+							'default'  => 'featured-cat',
+						),
+	
+						array(
+							'id'      => 'smpg_featured_tax_settings',
+							'title'   => esc_html__('Select featured taxonomy', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => get_taxonomies(),
+							'default'  => 'category'
+						),
+	
+						array(
+							'id'      => 'smpg_featured_cat_settings',
+							'title'   => esc_html__('Select featured category', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => admin_get_terms_options($smpgOptions->smpg_featured_tax_settings),
+						),
+					),
+			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
+	);
 $sections['general']= array(
 		'title' => esc_html__('General', TEXTDOM),
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
@@ -75,29 +118,7 @@ $sections['general']= array(
 										),
 							'default'  => 'left-sidebar'
 						),
-	
-						array(
-							'id'      => 'smpg_slider_settings',
-							'title'   => esc_html__('Featured Posts slider', TEXTDOM),
-							'type'    => 'radio',
-							'validate'=> 'no_html',
-							'options' => array(
-											'featured-cat'	=> array('title' => esc_html__('Featured category', TEXTDOM)),
-	
-											'featured-post'	=> array('title' => esc_html__('Featured posts', TEXTDOM)),
-											
-											'rev-slider' 	=> array('title' => esc_html__('Revolution Slider', TEXTDOM)),
-										),
-							'default'  => 'featured-cat'
-						),
-						array(
-							'id'      => 'smpg_featured_cat_settings',
-							'title'   => esc_html__('Select featured category', TEXTDOM),
-							'type'    => 'select',
-							'validate'=> 'no_html',
-							'options' => admin_get_terms_options('category'),
-							'default'  => 'featured-cat'
-						),
+
 						
 					)
 );
