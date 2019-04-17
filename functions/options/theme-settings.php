@@ -129,6 +129,14 @@ if (!class_exists('Options__Theme_Settings')) {
 		*/
 		function smpg__section_cb($section){
 			
+			$id = preg_match('/smpg_(.*)_section/', $section['id'], $m);
+			
+			$id = $m[1];
+			
+			if(isset($this->sections[$id]['note'])){
+				echo '<p class=smpg-section-warning>'.$this->sections[$id]['note'].'<p>';
+			}
+			
 		}
 		
 		/*
@@ -153,6 +161,11 @@ if (!class_exists('Options__Theme_Settings')) {
 										
 					$render = '';
 					$render = new $field_class($field, $value, $this);
+					
+					if(isset($field['note'])){
+						echo '<p class=smpg-warning>'.$field['note'].'<p>';
+					}
+		
 					$render->render();
 				}
 			}
@@ -234,7 +247,7 @@ if (!class_exists('Options__Theme_Settings')) {
 		 * HTML OUTPUT.
 		*/
 		function _options_page_html(){
-			//neat_print_r($wp_settings_sections);
+			//neat_print_r(new WP_Term_Query(array('taxonomy' => 'post_tag')));
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
 
@@ -251,7 +264,7 @@ if (!class_exists('Options__Theme_Settings')) {
 			
 					foreach($this->navigation as $nav => $details){
 
-						echo '<li id="'.$nav.'" class="smpg-nav-item"><a id="'.$nav.'" href="#smpg-'.$nav.'-section-group" class="smpg-nav-link">'.$details['title'].'</a></li>';
+						echo '<li id="'.$nav.'" class="smpg-nav-item"><a id="'.$nav.'" href="#" class="smpg-nav-link">'.$details['title'].'</a></li>';
 
 					 }
 
