@@ -1,20 +1,92 @@
 <?php
-//Use instead of get_terms for admin purpuses
-function abstracted_load_terms($taxonomy){
+/*
+**Use instead of get_terms for admin purpuses
+*Get terms using WP_Term_Query class
+*@param  string  $taxonomy taxonomy to get terms from
+*@return  array of terms (id, name, slug)
+*/
+
+function admin_get_terms_query($taxonomy){
+	
+	$termsObject = new WP_Term_Query(array('taxonomy' => $taxonomy));
+	
+	$termsArray = array();
+	
+	foreach($termsObject->terms as $term){
+		$termsArray[$term->term_id] = array('name' => $term->name, 'slug'=>$term->slug);
+	}
+	
+	return $termsArray;
+}
+/*
+*Use instead of get_terms for admin purpuses
+*Get terms for slider options
+*@param  string  $taxonomy taxonomy to get terms from
+*@return  array of terms (id, name)
+*/
+
+function admin_get_terms_options($taxonomy){
+	
+	$termsOptions = array();
+	
+	foreach(admin_get_terms_query($taxonomy) as $id => $meta){
+		$termsOptions[$id] = $meta['name'];
+	}
+	
+	return $termsOptions;
+}
+/*
+*Use instead of get_terms for admin purpuses
+*@param  string  $taxonomy taxonomy to get terms from
+*@return  array of terms objects
+*/
+function admin_load_terms_slugs($taxonomy){
   global $wpdb;
   $query = 'SELECT DISTINCT 
                   t.slug 
               FROM
-                wp_terms t 
+                ' . $wpdb->prefix . 'terms t 
               INNER JOIN 
-                wp_term_taxonomy tax 
+                ' . $wpdb->prefix . 'term_taxonomy tax 
               ON 
                 tax.term_id = t.term_id
               WHERE 
                   ( tax.taxonomy = \'' . $taxonomy . '\')';                     
-  $result =  $wpdb->get_results($query , OBJECT);
+  $result =  $wpdb->get_results($query);
   return $result;                 
 } 
+
+/*
+*Use instead of get_terms for admin purpuses
+*@param  string  $taxonomy taxonomy to get terms from
+*@return  index array of terms
+*/
+
+function admin_get_terms($taxonomy){
+	
+	$terms = array();
+	foreach(admin_load_terms_slugs($taxonomy) as $term){
+		$terms[] = urldecode($term->slug);
+	}
+	
+	return $terms;
+}
+
+/*
+*Use instead of get_terms for admin purpuses
+*@param  string  $taxonomy taxonomy to get terms from
+*@return  associative array of terms
+*/
+
+function admin_get_terms_assoc($taxonomy){
+	
+	$terms = array();
+	foreach(admin_load_terms_slugs($taxonomy) as $term){
+		$terms[$term->slug] = ucfirst(str_replace ('-',' ',$term->slug));
+	}
+	
+	return $terms;
+}
 
 
 //Get page ID from slug
