@@ -21,7 +21,7 @@ class Options__Fields__Select__F_Select extends Options__Theme_Settings{
 		
 		if( get_transient( $this->field['id'] ) ){ ?>
 		
-			<p class="error"><?php echo  get_transient( $this->field['id'] )?></p>
+			<p class="smpg-error"><?php echo  get_transient( $this->field['id'] )?></p>
 			
 		<?php 
 			
@@ -29,6 +29,9 @@ class Options__Fields__Select__F_Select extends Options__Theme_Settings{
 												  
 		}
 		
+		if(isset($this->field['desc'])){
+			echo '<p class=smpg-warning>'.$this->field['desc'].'<p>';
+		}
 		echo '<select name="'. $name .'" '.$class.'rows="6" autocomplete="off">';
 			if( is_array( $this->field['options'] ) ){
 				foreach( $this->field['options'] as $k => $v ){
