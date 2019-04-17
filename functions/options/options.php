@@ -90,6 +90,14 @@ $sections['general']= array(
 										),
 							'default'  => 'featured-cat'
 						),
+						array(
+							'id'      => 'smpg_featured_cat_settings',
+							'title'   => esc_html__('Select featured category', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => admin_get_terms_options('category'),
+							'default'  => 'featured-cat'
+						),
 						
 					)
 );
