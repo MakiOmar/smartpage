@@ -7,14 +7,27 @@
 */
 
 function admin_get_terms_query($taxonomy){
+	//This for first use when no featured taxonomy been set
+	if(empty($taxonomy)){
+		$taxonomy = 'category';
+	}
 	
 	$termsObject = new WP_Term_Query(array('taxonomy' => $taxonomy));
 	
 	$termsArray = array();
 	
-	foreach($termsObject->terms as $term){
-		$termsArray[$term->term_id] = array('name' => $term->name, 'slug'=>$term->slug);
+	if(!empty ($termsObject->terms)){
+		
+		foreach($termsObject->terms as $term){
+			
+			$termsArray[$term->term_id] = array('name' => $term->name, 'slug'=>$term->slug);
+			
+		}
+		
+	}else{
+		$termsArray[0] = array('name' => esc_html__('No terms found'), 'slug'=>'no-terms-found');
 	}
+	
 	
 	return $termsArray;
 }
