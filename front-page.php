@@ -1,5 +1,4 @@
 <?php 
-/*Template Name: HomePage*/
 get_header();
 ?>
   <div class="grid">
