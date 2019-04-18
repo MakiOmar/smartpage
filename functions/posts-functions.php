@@ -468,33 +468,6 @@ function smpg_filter_comment_class($classes, $class, $comment_id, $comment, $pos
 	return $classes;
 }
 
-		/***************************************/
-
-add_action( 'add_meta_boxes_post', 'smpg_post_meta_boxes' );
-
-function smpg_post_meta_boxes(){
-	add_meta_box( 'smpg_set_featured', __( 'Set as featured post', TEXTDOM ), 'smpg_set_featured_cb', 'post', 'side','core');
-}
-
-
-/*
-*Callback function for smpg_set_featured
-*
-*/
-
-function smpg_set_featured_cb(){
-	global $post;
-	
-	wp_nonce_field( 'smpg_set_featured_action', 'smpg_set_featured_nonce' );
-	
-	if(get_post_meta( $post->ID, 'smpg_set_featured', true )){
-		$checked = checked(get_post_meta( $post->ID, 'smpg_set_featured', true ), 'on', false);
-	}else{
-		$checked = '';
-	}
-		
-	echo '<input class="widefat" type="checkbox" id="smpg_set_featured" name="smpg_set_featured"'.$checked.'/>';
-}
 /*
 *Fires on post save and store meta keys
 *
@@ -522,4 +495,14 @@ function smpg_set_featured_post( $post_id ) {
 
 add_action('save_post','smpg_set_featured_post',11);
 		/***************************************/
+$metaBoxes = array(
+	'smpg_set_featured' => array(
+							'title' => __( 'Set as featured post', TEXTDOM ),
+							'context' => 'side',
+							'type' => 'checkbox',
+						),
+
+);
+
+$metaboxes = new Smpg__Custom_Field($metaBoxes);
 ?>
