@@ -29,9 +29,7 @@ if( ! class_exists( 'Smpg__Custom_Field' )){
 				
 				$input->render();
 				
-			}
-			//neat_var_dump($metaBox['args']);
-			
+			}			
 			
 		}
 		
