@@ -16,7 +16,7 @@ class Smpg__Cf__Text extends Smpg__Custom_Field{
 		
 		if(get_post_meta( $this->post->ID, $this->id, true )){
 			
-			$value = checked(get_post_meta( $this->post->ID, $this->id, true ), 'on', false);
+			$value = get_post_meta( $this->post->ID, $this->id, true );
 			
 		}else{
 			
