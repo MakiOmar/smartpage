@@ -20,7 +20,7 @@ class MFN_Options_pages_select extends MFN_Options{
 		
 		$pages = get_pages('sort_column=post_title&hierarchical=0'); 
 		echo '<select name="'. $name .'" '.$class.'rows="6" >';	
-			echo '<option value="">'. __('-- select --','mfn-opts') .'</option>';
+			echo '<option value="">'. esc_html__('-- select --','mfn-opts') .'</option>';
 			foreach ( $pages as $page ) {
 				echo '<option value="'.$page->ID.'"'.selected($this->value, $page->ID, false).'>'.$page->post_title.'</option>';
 			}

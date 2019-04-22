@@ -22,25 +22,25 @@ class MFN_Options_font_select extends MFN_Options{
 		
 		echo '<select name="'. $name .'" '.$class.'rows="6" >';	
 		
-			echo '<optgroup label="'. __('Default Webfont','mfn-opts') .'">';
+			echo '<optgroup label="'. esc_html__('Default Webfont','mfn-opts') .'">';
 			foreach ( $fonts['default'] as $font ) {
 				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
 			}
 			echo '</optgroup>';
 			
-			echo '<optgroup label="'. __('System','mfn-opts') .'">';
+			echo '<optgroup label="'. esc_html__('System','mfn-opts') .'">';
 			foreach ( $fonts['system'] as $font ) {
 				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
 			}
 			echo '</optgroup>';
 			
-			echo '<optgroup label="'. __('Popular Google Fonts','mfn-opts') .'">';
+			echo '<optgroup label="'. esc_html__('Popular Google Fonts','mfn-opts') .'">';
 			foreach ( $fonts['popular'] as $font ) {
 				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
 			}
 			echo '</optgroup>';
 			
-			echo '<optgroup label="'. __('Google Fonts','mfn-opts') .'">';
+			echo '<optgroup label="'. esc_html__('Google Fonts','mfn-opts') .'">';
 			foreach ( $fonts['all'] as $font ) {
 				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
 			}

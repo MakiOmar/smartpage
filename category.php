@@ -21,7 +21,7 @@
 									<span><?php echo wp_trim_words( $cat->category_description, 10);?></span>
 								</h4>
 								<?php }?>
-									<a href="<?php echo get_category_link($cat->term_id);?>" class="cat-more"><?php _e('Enter',TEXTDOM)?></a>
+									<a href="<?php echo get_category_link($cat->term_id);?>" class="cat-more"><?php esc_html_e('Enter',TEXTDOM)?></a>
 							</div>
 						</div>
 						<?php }?>

@@ -44,7 +44,7 @@ function latest_comments(){
 					<p class='recent-comment'>
 					<?php echo substr($comment->comment_content,0 , 150).'... ' ?>
 					
-					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php _e('View Post',TEXTDOM) ?></a>
+					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php esc_html_e('View Post',TEXTDOM) ?></a>
 					
 					</p>
 					
@@ -52,7 +52,7 @@ function latest_comments(){
 				
 		<?php }}else{?>
 				
-					<p><?php _e('No comments yet',TEXTDOM);?></p>
+					<p><?php esc_html_e('No comments yet',TEXTDOM);?></p>
 					
 				<?php };
 }

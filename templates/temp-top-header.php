@@ -14,7 +14,7 @@ $socials_follow = array(
 	<nav id="follow-contact">
 	  <ul id="follow">
 	  	<?php foreach($socials_follow as $social_follow => $url){
-	$link_title = __(sprintf('Follow with %s' , ucfirst($social_follow)),TEXTDOM);
+	$link_title = esc_html__(sprintf('Follow with %s' , ucfirst($social_follow)),TEXTDOM);
 				echo '<li><a class="icon" href="'.$url.'" title="'.$link_title.'" target="_blank"><i class="fa fa-'.$social_follow.'"></i></a></li>';
 		} ?>
 		<li><a href="tel:00966536539253" class="phone-call"><i class="fa fa-phone"></i></a></li>

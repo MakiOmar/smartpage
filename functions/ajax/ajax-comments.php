@@ -64,7 +64,7 @@
 				</div>
 				
 				<div class="comment-metadata">
-					<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf( __( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() ) . '</a> ';
+					<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf( esc_html__( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() ) . '</a> ';
 
 					if( $edit_link = get_edit_comment_link() )
 						$comment_html .= '<span class="edit-link"><a class="comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', TEXTDOM).'</a></span>';

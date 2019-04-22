@@ -83,7 +83,7 @@ function smp_main_sidebar(){
 	foreach($sidebars as $sidebar){
 	    $sidebar_id = strtolower(str_replace(' ','-',$sidebar ));
 	    $args = array(
-			'name'=> __( $sidebar, TEXTDOM ),
+			'name'=> esc_html__( $sidebar, TEXTDOM ),
 			'id'=> $sidebar_id,
 			'class'=>$sidebar_id,
 			'before_widget' => '<div class="widgeted grid-col-md-6 grid-col-av-6 grid-col-sm-12 grid-col">',

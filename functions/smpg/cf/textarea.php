@@ -24,7 +24,7 @@ class Smpg__Cf__Textarea extends Smpg__Custom_Field{
 			
 		}
 		
-		echo '<textarea rows="4" cols="20" id="'.$this->idAttr.'" name="'.$this->id.'">'.$value.'</textarea> ';
+		echo '<textarea rows="4" cols="20" id="'.$this->idAttr.'" name="'.$this->id.'">'.esc_textarea($value).'</textarea> ';
 	}
 } 
 

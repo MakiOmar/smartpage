@@ -31,12 +31,12 @@ function reg_smpg_post_type() {
 			'view_item'             => sprintf(__( 'View %s', TEXTDOM ),$translatable_single),
 			'view_items'            => sprintf(__( 'View %s', TEXTDOM ),$translatable_plural),
 			'search_items'          => sprintf(__( 'Search %s', TEXTDOM ),$translatable_plural),
-			'not_found'             => __( 'Not found', TEXTDOM ),
-			'not_found_in_trash'    => __( 'Not found in Trash', TEXTDOM ),
-			'featured_image'        => __( 'Featured Image', TEXTDOM ),
-			'set_featured_image'    => __( 'Set featured image', TEXTDOM ),
-			'remove_featured_image' => __( 'Remove featured image', TEXTDOM ),
-			'use_featured_image'    => __( 'Use as featured image', TEXTDOM ),
+			'not_found'             => esc_html__( 'Not found', TEXTDOM ),
+			'not_found_in_trash'    => esc_html__( 'Not found in Trash', TEXTDOM ),
+			'featured_image'        => esc_html__( 'Featured Image', TEXTDOM ),
+			'set_featured_image'    => esc_html__( 'Set featured image', TEXTDOM ),
+			'remove_featured_image' => esc_html__( 'Remove featured image', TEXTDOM ),
+			'use_featured_image'    => esc_html__( 'Use as featured image', TEXTDOM ),
 			'insert_into_item'      => sprintf(__( 'Insert into %s', TEXTDOM ),$translatable_single),
 			'uploaded_to_this_item' => sprintf(__( 'Uploaded to this %s', TEXTDOM ),$translatable_single),
 			'items_list'            => sprintf(__( '%s list', TEXTDOM ),$translatable_plural),
@@ -111,13 +111,13 @@ add_action( 'init', 'reg_smpg_taxonomies', 0 );
 
 //Add download's upload meta box
 function smpg_upload_meta_boxes() {
-    add_meta_box('smpg_download_attachment', __('Add your download',TEXTDOM), 'smpg_upload_with_media_uploader', 'smpg_download', 'normal', 'high');  
+    add_meta_box('smpg_download_attachment', esc_html__('Add your download',TEXTDOM), 'smpg_upload_with_media_uploader', 'smpg_download', 'normal', 'high');  
 }
 add_action('add_meta_boxes', 'smpg_upload_meta_boxes');  
 
 function smpg_upload_with_media_uploader() { ?>
 	<div class="file-upload-override-button">
-		<a href="#" class="insert-media" data-editor="my-editor"><?php _e('Select your file',TEXTDOM) ;?></a>
+		<a href="#" class="insert-media" data-editor="my-editor"><?php esc_html_e('Select your file',TEXTDOM) ;?></a>
 	</div>
 	<?php
 		$file_url = get_post_meta( get_the_ID(), 'smpg_download_attachment', true );
@@ -165,7 +165,7 @@ function smpg_upload_admin_notice() {
 	if( 'smpg_download' == $screen->post_type && 'post' == $screen->base ){
 	if ( array_key_exists( 'c_error', $_GET) ) {?>
 		<div class="error">
-			<p><?php _e( 'Sorry!! Please make sure your file type is one of the following', TEXTDOM );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
+			<p><?php esc_html_e( 'Sorry!! Please make sure your file type is one of the following', TEXTDOM );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
 		</div>
 	<?php }}
 }
@@ -263,7 +263,7 @@ function smartpage_comment( $comment, $args, $depth ) {
 		// Display trackbacks differently than normal comments.
 	?>
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<p><?php _e( 'Pingback:', TEXTDOM ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', TEXTDOM ), '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php esc_html_e( 'Pingback:', TEXTDOM ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', TEXTDOM ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -278,28 +278,28 @@ function smartpage_comment( $comment, $args, $depth ) {
 					printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
 						get_comment_author_link(),
 						// If current post author is also comment author, make it known visually.
-						( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', TEXTDOM ) . '</span>' : ''
+						( $comment->user_id === $post->post_author ) ? '<span>' . esc_html__( 'Post author', TEXTDOM ) . '</span>' : ''
 					);
 					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 						esc_url( get_comment_link( $comment->comment_ID ) ),
 						get_comment_time( 'c' ),
 						/* translators: 1: date, 2: time */
-						sprintf( __( '%1$s at %2$s', TEXTDOM ), get_comment_date(), get_comment_time() )
+						sprintf( esc_html__( '%1$s at %2$s', TEXTDOM ), get_comment_date(), get_comment_time() )
 					);
 				?>
 			</header><!-- .comment-meta -->
 
 			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', TEXTDOM ); ?></p>
+				<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', TEXTDOM ); ?></p>
 			<?php endif; ?>
 
 			<section class="comment-content comment">
 				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', TEXTDOM ), '<p class="edit-link">', '</p>' ); ?>
+				<?php edit_comment_link( esc_html__( 'Edit', TEXTDOM ), '<p class="edit-link">', '</p>' ); ?>
 			</section><!-- .comment-content -->
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', TEXTDOM ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', TEXTDOM ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 	<?php
@@ -314,7 +314,7 @@ add_action('init','create_smpg_downloads_object_terms');
 function create_smpg_downloads_object_terms( ) {
 	if(!term_exists('general_downloads', 'download_category')){
 		$args = array('slug' => 'general_downloads');
-		return wp_insert_term( __('General Downloads',TEXTDOM), 'download_category', $args  );
+		return wp_insert_term( esc_html__('General Downloads',TEXTDOM), 'download_category', $args  );
 	}
 	
 }
@@ -493,14 +493,25 @@ function smpg_set_featured_post( $post_id ) {
 
 }
 
-add_action('save_post','smpg_set_featured_post',11);
+//add_action('save_post','smpg_set_featured_post',11);
 		/***************************************/
 $metaBoxes = array(
-	'smpg_set_featured' => array(
-							'title' => __( 'Set as featured post', TEXTDOM ),
-							'context' => 'side',
-							'type' => 'checkbox',
-						),
+	'post' => array(
+				array(
+					'id' => 'smpg_set_featured',
+					'title' => esc_html__( 'Set as featured post', TEXTDOM ),
+					'context' => 'side',
+					'type' => 'checkbox',
+					'validate' => 'no_html',
+				),
+				array(
+					'id' => 'smpg_test',
+					'title' => esc_html__( 'Set test', TEXTDOM ),
+					'context' => 'side',
+					'type' => 'text',
+					'validate' => 'no_html',
+				),
+			),	
 
 );
 

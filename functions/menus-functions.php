@@ -3,7 +3,7 @@
 add_action( 'after_setup_theme', 'register_smartpage_menu' );
 function register_smartpage_menu() {
 	$menus= array(
-		'main-menu'=> __('Shows on the main navigation',TEXTDOM),
+		'main-menu'=> esc_html__('Shows on the main navigation',TEXTDOM),
 		'footer-menu'=>__('Shows on the footer',TEXTDOM),
 		'languages-menu'=>__('Shows on the top header',TEXTDOM),
 	); 
@@ -154,7 +154,7 @@ function smpg_breadcrumbs() {
 	global $post;
 	$homeLink = home_url();
 	echo '<ul class="breadcrumbs">';
-	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. __('Home',TEXTDOM) .'</a> <span>/</span></li>';
+	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. esc_html__('Home',TEXTDOM) .'</a> <span>/</span></li>';
 
 	// Blog Category
 	if ( is_category() ) {

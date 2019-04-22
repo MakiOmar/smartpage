@@ -12,7 +12,7 @@
 				  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3> 
 				</div>
 				<div class="metadata"><i class="fa fa-calendar"></i>&nbsp;<?php echo get_the_date('Y-m-d'); ?></div>
-				<div class="metadata"><i class="fa fa-comment-o"></i>&nbsp;<?php comments_number( __('No comments',TEXTDOM), __('One comment',TEXTDOM), '%'.__('comments',TEXTDOM) ); ?></div>
+				<div class="metadata"><i class="fa fa-comment-o"></i>&nbsp;<?php comments_number( esc_html__('No comments',TEXTDOM), esc_html__('One comment',TEXTDOM), '%'.__('comments',TEXTDOM) ); ?></div>
 				<div class="metadata"><i class="fa fa-eye"></i>&nbsp;<?php echo getPostViews(get_the_ID())?></div>
 		    </div>	
 	 <?php }

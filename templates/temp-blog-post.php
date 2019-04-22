@@ -32,7 +32,7 @@ setPostViews($tbp_post_id);?>
 				<span>
 				
 					<?php 
-						_e('By',TEXTDOM);
+						esc_html_e('By',TEXTDOM);
 						echo ' '.get_the_author(); 
 					?>
 					
@@ -42,7 +42,7 @@ setPostViews($tbp_post_id);?>
 			
 			<div>
 			
-				<a class="button smpg-button" href="<?php echo get_the_permalink() ?>"><?php _e('Read more',TEXTDOM) ?></a>
+				<a class="button smpg-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
 				
 			</div>
 			

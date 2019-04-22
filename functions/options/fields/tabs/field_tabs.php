@@ -31,9 +31,9 @@ class MFN_Options_tabs extends MFN_Options{
 			if(isset($this->value) && is_array($this->value)){
 				foreach($this->value as $k => $value){
 					echo '<li>';
-						echo '<label>'. __('Title','mfn-opts') .'</label>';
+						echo '<label>'. esc_html__('Title','mfn-opts') .'</label>';
 						echo '<input type="text" name="'. $name .'[title][]" value="'. htmlspecialchars(stripslashes($value['title'])) .'" />';
-						echo '<label>'. __('Content','mfn-opts') .'</label>';
+						echo '<label>'. esc_html__('Content','mfn-opts') .'</label>';
 						echo '<textarea name="'. $name .'[content][]" value="" >'. $value['content'] .'</textarea>';
 						echo '<a href="" class="mfn-btn-close mfn-remove-tab"><em>delete</em></a>';
 					echo '</li>';
@@ -42,9 +42,9 @@ class MFN_Options_tabs extends MFN_Options{
 			
 			// default tab to clone
 			echo '<li class="tabs-default">';
-				echo '<label>'. __('Title','mfn-opts') .'</label>';
+				echo '<label>'. esc_html__('Title','mfn-opts') .'</label>';
 				echo '<input type="text" name="" value="" />';
-				echo '<label>'. __('Content','mfn-opts') .'</label>';
+				echo '<label>'. esc_html__('Content','mfn-opts') .'</label>';
 				echo '<textarea name="" value=""></textarea>';
 				echo '<a href="" class="mfn-btn-close mfn-remove-tab"><em>delete</em></a>';
 			echo '</li>';	
