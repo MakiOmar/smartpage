@@ -4,51 +4,55 @@
 function reg_smpg_post_type() {
 	$custom_posts = array(
 			'Download'=>array(
-					__('Download',TEXTDOM)=>__('Downloads',TEXTDOM)),
+					esc_html__('Download',TEXTDOM)   => esc_html__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
-					__('Portfolio',TEXTDOM)=>__('Portfolios',TEXTDOM)),
+					esc_html__('Portfolio',TEXTDOM)  => esc_html__('Portfolios',TEXTDOM)),
 			'Testimonial'=>array(
-					__('Testimonial',TEXTDOM)=>__('Testimonials',TEXTDOM)),
+					esc_html__('Testimonial',TEXTDOM)=> esc_html__('Testimonials',TEXTDOM)),
 			'News'=>array(
-					__('New',TEXTDOM)=>__('News',TEXTDOM)),
+					esc_html__('New',TEXTDOM)        => esc_html__('News',TEXTDOM)),
 			);
-	foreach($custom_posts as $custom_posts=> $translatable){
-		foreach($translatable as $translatable_single => $translatable_plural){
+	foreach($custom_posts as $custom_post=> $translatable){
+		
+		foreach($translatable as $t_s => $t_p){
+			
 		$labels = array(
-			'name'                  => sprintf(_x( '%s', 'General Name', TEXTDOM),$translatable_plural ),
-			'singular_name'         => sprintf(_x( '%s', 'Singular Name', TEXTDOM ),$translatable_plural),
-			'menu_name'             => sprintf(__( '%s', TEXTDOM ),$translatable_plural),
-			'name_admin_bar'        => sprintf(__( '%s', TEXTDOM ),$translatable_plural),
-			'archives'              => sprintf(__( '%s Archives', TEXTDOM ),$translatable_plural),
-			'attributes'            => sprintf(__( '%s Attributes', TEXTDOM ),$translatable_plural),
-			'parent_item_colon'     => sprintf(__( 'Parent %s:', TEXTDOM ),$translatable_single),
-			'all_items'             => sprintf(__( 'All %s', TEXTDOM ),$translatable_plural),
-			'add_new_item'          => sprintf(__( 'Add New %s', TEXTDOM ),$translatable_single),
-			'add_new'               => sprintf(__( 'Add New', TEXTDOM ),$translatable_single),
-			'new_item'              => sprintf(__( 'New %s', TEXTDOM ),$translatable_single),
-			'edit_item'             => sprintf(__( 'Edit %s', TEXTDOM ),$translatable_single),
-			'update_item'           => sprintf(__( 'Update %s', TEXTDOM ),$translatable_single),
-			'view_item'             => sprintf(__( 'View %s', TEXTDOM ),$translatable_single),
-			'view_items'            => sprintf(__( 'View %s', TEXTDOM ),$translatable_plural),
-			'search_items'          => sprintf(__( 'Search %s', TEXTDOM ),$translatable_plural),
-			'not_found'             => esc_html__( 'Not found', TEXTDOM ),
-			'not_found_in_trash'    => esc_html__( 'Not found in Trash', TEXTDOM ),
-			'featured_image'        => esc_html__( 'Featured Image', TEXTDOM ),
-			'set_featured_image'    => esc_html__( 'Set featured image', TEXTDOM ),
-			'remove_featured_image' => esc_html__( 'Remove featured image', TEXTDOM ),
-			'use_featured_image'    => esc_html__( 'Use as featured image', TEXTDOM ),
-			'insert_into_item'      => sprintf(__( 'Insert into %s', TEXTDOM ),$translatable_single),
-			'uploaded_to_this_item' => sprintf(__( 'Uploaded to this %s', TEXTDOM ),$translatable_single),
-			'items_list'            => sprintf(__( '%s list', TEXTDOM ),$translatable_plural),
-			'items_list_navigation' => sprintf(__( '%s list navigation', TEXTDOM ),$translatable_plural),
-			'filter_items_list'     => sprintf(__( 'Filter %s list', TEXTDOM ),$translatable_plural),
+			'name'                  => sprintf(esc_html_x( '%s', 'General Name'    , TEXTDOM),$t_p ),
+			'singular_name'         => sprintf(esc_html_x( '%s', 'Singular Name'   , TEXTDOM ),$t_p),
+			'menu_name'             => sprintf(esc_html__( '%s'                    , TEXTDOM ),$t_p),
+			'name_admin_bar'        => sprintf(esc_html__( '%s'                    , TEXTDOM ),$t_p),
+			'archives'              => sprintf(esc_html__( '%s Archives'           , TEXTDOM ),$t_p),
+			'attributes'            => sprintf(esc_html__( '%s Attributes'         , TEXTDOM ),$t_p),
+			'parent_item_colon'     => sprintf(esc_html__( 'Parent %s:'            , TEXTDOM ),$t_s),
+			'all_items'             => sprintf(esc_html__( 'All %s'                , TEXTDOM ),$t_p),
+			'add_new_item'          => sprintf(esc_html__( 'Add New %s'            , TEXTDOM ),$t_s),
+			'add_new'               => sprintf(esc_html__( 'Add New'               , TEXTDOM ),$t_s),
+			'new_item'              => sprintf(esc_html__( 'New %s'                , TEXTDOM ),$t_s),
+			'edit_item'             => sprintf(esc_html__( 'Edit %s'               , TEXTDOM ),$t_s),
+			'update_item'           => sprintf(esc_html__( 'Update %s'             , TEXTDOM ),$t_s),
+			'view_item'             => sprintf(esc_html__( 'View %s'               , TEXTDOM ),$t_s),
+			'view_items'            => sprintf(esc_html__( 'View %s'               , TEXTDOM ),$t_p),
+			'search_items'          => sprintf(esc_html__( 'Search %s'             , TEXTDOM ),$t_p),
+			'not_found'             => esc_html__( 		   'Not found'             , TEXTDOM ),
+			'not_found_in_trash'    => esc_html__(         'Not found in Trash'    , TEXTDOM ),
+			'featured_image'        => esc_html__(         'Featured Image'        , TEXTDOM ),
+			'set_featured_image'    => esc_html__(         'Set featured image'    , TEXTDOM ),
+			'remove_featured_image' => esc_html__(         'Remove featured image' , TEXTDOM ),
+			'use_featured_image'    => esc_html__(          'Use as featured image', TEXTDOM ),
+			'insert_into_item'      => sprintf(esc_html__( 'Insert into %s'        , TEXTDOM ),$t_s),
+			'uploaded_to_this_item' => sprintf(esc_html__( 'Uploaded to this %s'   , TEXTDOM ),$t_s),
+			'items_list'            => sprintf(esc_html__( '%s list'               , TEXTDOM ),$t_p),
+			'items_list_navigation' => sprintf(esc_html__( '%s list navigation'    , TEXTDOM ),$t_p),
+			'filter_items_list'     => sprintf(esc_html__( 'Filter %s list'        , TEXTDOM ),$t_p),
 		);
+			
+			
 		$args = array(
-			'label'                 => sprintf(__( '%s', TEXTDOM ),$translatable_plural),
-			'description'           => sprintf(__( 'Here you can add your %s', TEXTDOM ),lcfirst($translatable_plural)),
+			'label'                 => sprintf(esc_html__( '%s', TEXTDOM ),$t_p),
+			'description'           => sprintf(esc_html__( 'Here you can add your %s', TEXTDOM ),lcfirst($t_p)),
 			'labels'                => $labels,
-			'supports'              => array( 'title', 'editor','thumbnail', 'comments'),
-			'taxonomies'            => array( lcfirst($custom_posts).'_category' ),
+			'supports'              => ($custom_post == 'News') ? array( 'editor') : array( 'title', 'editor','thumbnail', 'comments'),
+			'taxonomies'            => array( lcfirst($custom_post).'_category' ),
 			'hierarchical'          => false,
 			'public'                => true,
 			'show_ui'               => true,
@@ -61,10 +65,10 @@ function reg_smpg_post_type() {
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
 			'capability_type'       => 'page',
-			'rewrite' => array('slug' => 'smpg_'.lcfirst($custom_posts)),
+			'rewrite' => array('slug' => 'smpg_'.lcfirst($custom_post)),
 		);
 	}
-		register_post_type( 'smpg_'.lcfirst($custom_posts), $args );
+		register_post_type( 'smpg_'.lcfirst($custom_post), $args );
 	}
 }
 add_action( 'init', 'reg_smpg_post_type', 0 );
@@ -73,32 +77,32 @@ add_action( 'init', 'reg_smpg_post_type', 0 );
 function reg_smpg_taxonomies(){
 	$smpg_custom_taxs = array(
 			'Download'=>array(
-					__('Download',TEXTDOM)=>__('Downloads',TEXTDOM)),
+					esc_html__('Download',TEXTDOM)=> esc_html__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
-					__('Portfolio',TEXTDOM)=>__('Portfolios',TEXTDOM)),
+					esc_html__('Portfolio',TEXTDOM)=> esc_html__('Portfolios',TEXTDOM)),
 			'Testimonial'=>array(
-					__('Testimonial',TEXTDOM)=>__('Testimonials',TEXTDOM)),
+					esc_html__('Testimonial',TEXTDOM)=> esc_html__('Testimonials',TEXTDOM)),
 			);;
 	foreach($smpg_custom_taxs as $smpg_custom_tax => $translatable ){
-	foreach($translatable as $translatable_single => $translatable_plural){
+	foreach($translatable as $t_s => $t_p){
 		register_taxonomy(
 			lcfirst($smpg_custom_tax).'_category',
 			array("smpg_".lcfirst($smpg_custom_tax)),
 			array(
 				 "hierarchical" => true,
-				 "label" => sprintf(__('%s categories',TEXTDOM),$translatable_plural),
-				 "singular_label" => sprintf(__('%s category',TEXTDOM),$translatable_single),
+				 "label" => sprintf(esc_html__('%s categories',TEXTDOM),$t_p),
+				 "singular_label" => sprintf(esc_html__('%s category',TEXTDOM),$t_s),
 				  "labels"=>array(
-							 "all_items"=>sprintf(__('All %s categories',TEXTDOM),$translatable_single),
-							 "edit_item"=>sprintf(__('Edit %s category',TEXTDOM),$translatable_single),
-							 "view_item"=>sprintf(__('view %s category',TEXTDOM),$translatable_single),
-							 "update_item"=>sprintf(__('update %s category',TEXTDOM),$translatable_single),
-							 "add_new_item"=>sprintf(__('Add new %s category',TEXTDOM),$translatable_single),
-							 "new_item_name"=>sprintf(__('new %s category',TEXTDOM),$translatable_single),
-							 "parent_item"=>sprintf(__('Parent %s category',TEXTDOM),$translatable_single),
-							 "parent_item_colon"=>sprintf(__('Parent %s category:',TEXTDOM),$translatable_single),
-							 "search_items"=>sprintf(__('search %s categories',TEXTDOM),$translatable_single),
-							 "not_found"=>sprintf(__('No %s category found',TEXTDOM),$translatable_single),
+							 "all_items"=>sprintf(esc_html__('All %s categories',TEXTDOM),$t_s),
+							 "edit_item"=>sprintf(esc_html__('Edit %s category',TEXTDOM),$t_s),
+							 "view_item"=>sprintf(esc_html__('view %s category',TEXTDOM),$t_s),
+							 "update_item"=>sprintf(esc_html__('update %s category',TEXTDOM),$t_s),
+							 "add_new_item"=>sprintf(esc_html__('Add new %s category',TEXTDOM),$t_s),
+							 "new_item_name"=>sprintf(esc_html__('new %s category',TEXTDOM),$t_s),
+							 "parent_item"=>sprintf(esc_html__('Parent %s category',TEXTDOM),$t_s),
+							 "parent_item_colon"=>sprintf(esc_html__('Parent %s category:',TEXTDOM),$t_s),
+							 "search_items"=>sprintf(esc_html__('search %s categories',TEXTDOM),$t_s),
+							 "not_found"=>sprintf(esc_html__('No %s category found',TEXTDOM),$t_s),
 							  ),
 			"show_admin_column" => true,
 			)
