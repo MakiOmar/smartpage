@@ -23,9 +23,9 @@ if (!class_exists('Options__Theme_Settings')) {
 			$defaults['opt_name'] = SMPG_OPTIONS;
 			
 			//$defaults['menu_icon'] = MFN_OPTIONS_URI.'/img/menu_icon.png';
-			$defaults['menu_title'] = __('SmartPage Theme Options', TEXTDOM);
+			$defaults['menu_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
-			$defaults['page_title'] = __('SmartPage Theme Options', TEXTDOM);
+			$defaults['page_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
 			$defaults['page_slug'] = 'Smpg_Options';
 			$defaults['page_cap'] = 'manage_options';
 			$defaults['page_type'] = 'menu';
@@ -193,15 +193,13 @@ if (!class_exists('Options__Theme_Settings')) {
 								'id'            => $fieldID,
 								'validation'    => $field['validate'],
 								'new_value'     => $notValidated[$fieldID],
-								'current_value' => $this->options->get_option($fieldID),
+								'current_value' => (isset($this->options->$fieldID)) ? $this->options->$fieldID : null,
 							);
 							
-							if(isset($this->options->$fieldID)){
-			
-								$currentValue = $this->options->get_option($fieldID);
-							}
 							
-							if($currentValue == $notValidated[$fieldID]) {
+							$currentValue = $args['current_value'];
+
+							if($currentValue === $notValidated[$fieldID]) {
 								
 								$validated[$fieldID] = $currentValue;
 								
@@ -219,6 +217,8 @@ if (!class_exists('Options__Theme_Settings')) {
 							if(isset($this->validate->warnings[$fieldID])){
 								set_transient($fieldID, $this->validate->warnings[$fieldID], 1000);
 							}
+							
+							if(is_null($this->validate->value)) continue;
 							
 							$validated[$fieldID] = $this->validate->value;
 							
