@@ -31,7 +31,7 @@ if(!class_exists('Smpg__Validate_Inputs')){
 		*/
 		public function valid_no_html($id, $field, $current){
 			
-			$this->value = strip_tags($field);
+			$this->value = sanitize_text_field($field);
 		
 			if($field != $this->value){
 				$this->warnings[$id] = esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM);
