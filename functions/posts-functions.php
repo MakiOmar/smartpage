@@ -468,33 +468,7 @@ function smpg_filter_comment_class($classes, $class, $comment_id, $comment, $pos
 	return $classes;
 }
 
-/*
-*Fires on post save and store meta keys
-*
-*@var inreger  $post_id    Post ID
-*@var array    $fields     array of meta boxes input names
-*/
-function smpg_set_featured_post( $post_id ) {
-	
-	if ( !isset( $_POST['smpg_set_featured'] ) || !wp_verify_nonce( $_POST['smpg_set_featured_nonce'], 'smpg_set_featured_action' ) ) return;
 
-	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
-	
-	$fields = [
-		'smpg_set_featured',
-
-	];
-	foreach ( $fields as $field ) {
-		if ( array_key_exists( $field, $_POST ) && !empty($field) ) {
-
-				update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
-		}
-	 }
-
-}
-
-//add_action('save_post','smpg_set_featured_post',11);
-		/***************************************/
 $metaBoxes = array(
 	'post' => array(
 				array(
