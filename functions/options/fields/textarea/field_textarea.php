@@ -18,7 +18,7 @@ class MFN_Options_textarea extends MFN_Options{
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : 'large-text';
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		echo '<textarea name="'. $name .'" class="'.$class.'" rows="6" >'.esc_attr($this->value).'</textarea>';
+		echo '<textarea name="'. $name .'" class="'.$class.'" rows="6" >'.esc_textarea($this->value).'</textarea>';
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<br/><span class="description">'.$this->field['desc'].'</span>':'';
 		
 	}
