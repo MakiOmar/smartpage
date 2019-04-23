@@ -113,83 +113,6 @@ function reg_smpg_taxonomies(){
 
 add_action( 'init', 'reg_smpg_taxonomies', 0 );
 
-//Add download's upload meta box
-function smpg_upload_meta_boxes() {
-    add_meta_box('smpg_download_attachment', esc_html__('Add your download',TEXTDOM), 'smpg_upload_with_media_uploader', 'smpg_download', 'normal', 'high');  
-}
-add_action('add_meta_boxes', 'smpg_upload_meta_boxes');  
-
-function smpg_upload_with_media_uploader() { ?>
-	<div class="file-upload-override-button">
-		<a href="#" class="insert-media" data-editor="my-editor"><?php esc_html_e('Select your file',TEXTDOM) ;?></a>
-	</div>
-	<?php
-		$file_url = get_post_meta( get_the_ID(), 'smpg_download_attachment', true );
-		if(is_array($file_url)){
-			delete_post_meta( get_the_ID(), 'smpg_download_attachment' );
-		}
-		if(!empty($file_url)){
-			   $html = '<div id="download-file"><p>'.__('Current file:',TEXTDOM).'<span>'.basename($file_url).'</span></p><a href="'.$file_url.'">'.__('Download',TEXTDOM).'</a></div>';
-		}else{
-			$html = '<div id="download-file"><p>'.'<span>'.__('No selected file ',TEXTDOM).'</span></p></div>';
-		}
-		echo $html;
-	?>
-	<!-- Caller -->
-	<span id="media-caller">
-		<div class="attachment">
-			<img width="277" height="300" alt="{{ alt }}">
-			<input type="hidden" name ="smpg_download_attachment" value="{{ url }}">
-		</div>
-	</span>
-
-	<!-- Results placeholder -->
-	<div id="upload-result"></div>
-<?php }
-function save_smpg_upload_meta_data($id) {
-    if(isset($_POST['smpg_download_attachment']) && !empty($_POST['smpg_download_attachment'])) {
-		$ext = pathinfo($_POST['smpg_download_attachment'], PATHINFO_EXTENSION);
-			if(in_array($ext,unserialize(SuppTypes))){
-				update_post_meta($id, 'smpg_download_attachment',$_POST['smpg_download_attachment']);
-			}else{
-				add_filter( 'redirect_post_location', 'smpg_download_redirect_post_location');
-			}
-        }
-}
-add_action('save_post_smpg_download', 'save_smpg_upload_meta_data');
-
-function smpg_download_redirect_post_location( $location ) {
-	$location = add_query_arg( 'c_error' , '1' , $location );
-    return $location;
-}
-//Show admin notice if no supported file type
-add_action( 'admin_notices', 'smpg_upload_admin_notice' );
-function smpg_upload_admin_notice() {
-	$screen = get_current_screen();
-	if( 'smpg_download' == $screen->post_type && 'post' == $screen->base ){
-	if ( array_key_exists( 'c_error', $_GET) ) {?>
-		<div class="error">
-			<p><?php esc_html_e( 'Sorry!! Please make sure your file type is one of the following', TEXTDOM );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
-		</div>
-	<?php }}
-}
-
-function implement_download_ajax() {
-	//Add and update downloads counter
-	if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
-		$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
-		if(empty($download_counter)){
-			add_post_meta($_POST['download_id'], 'download_times',1);
-		}else{
-			$download_counter +=  1;
-			update_post_meta($_POST['download_id'], 'download_times',$download_counter);
-		}
-	wp_die();
-	}
-}
-add_action('wp_ajax_download', 'implement_download_ajax');
-add_action('wp_ajax_nopriv_download', 'implement_download_ajax');//for users that are not logged in.
-
 //Post views Count
 function getPostViews($postID){
     $count_key = 'post_views_count';
@@ -482,14 +405,17 @@ $metaBoxes = array(
 					'type' => 'checkbox',
 					'validate' => 'no_html',
 				),
-				array(
-					'id' => 'smpg_test',
-					'title' => esc_html__( 'Set test', TEXTDOM ),
-					'context' => 'side',
-					'type' => 'text',
-					'validate' => 'no_html',
-				),
-			),	
+				
+			),
+	'smpg_download' => array(
+							array(
+								'id' => 'smpg_download_attachment',
+								'title' => esc_html__( 'Upload your attachment', TEXTDOM ),
+								'context' => 'normal',
+								'type' => 'upload',
+								//'validate' => 'no_html',
+							),
+			),
 
 );
 
