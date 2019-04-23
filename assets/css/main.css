@@ -1109,7 +1109,7 @@ img {
 		padding: 0;
 	}
 	.download-counter{
-		height: 0;
+		/*height: 0;*/
 		padding: 10px;
 		background-color: rgb(41,46,50,0.75);
 		color: #FFFFFF;

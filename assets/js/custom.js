@@ -325,10 +325,10 @@ jQuery(document).ready(function($){
 	});
 	$(".smpg-download").hover(function() {
 		var s = $(this).parent().siblings('div').find('.hover-toggle span');
-		s.css({"opacity" :"1","height":"25%"});
+		s.css({"opacity" :"1"/*,"height":"25%"*/});
 	},function(){
 		var s = $(this).parent().siblings('div').find('.hover-toggle span');
-		s.css({"opacity" :"0","height":"0"});
+		s.css({"opacity" :"0"/*,"height":"0"*/});
 	});
 	$('.toggle-excerpt').each(function(){
 		$(this).css({"bottom":$(this).next('.text').find('h3').outerHeight()});
