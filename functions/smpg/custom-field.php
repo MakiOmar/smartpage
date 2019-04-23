@@ -29,6 +29,9 @@ if( ! class_exists( 'Smpg__Custom_Field' )){
 				add_action( $action, array(&$this, 'smpg_save_post'),11);
 			}
 			
+			add_action('wp_ajax_download', array($this, 'implement_download_ajax'));
+			add_action('wp_ajax_nopriv_download', array($this, 'implement_download_ajax'));//for users that are not logged in.
+			
 		}
 		
 		public function smpg_add_meta_boxes(){
@@ -61,38 +64,73 @@ if( ! class_exists( 'Smpg__Custom_Field' )){
 			if ( ! current_user_can( 'edit_post', $post_ID ) ) return;
 			
 			foreach($this->metaBoxes[$this->postType] as $metaBox){
-				
-					
+						
 					$field = $metaBox['id'];
-				
-				
-					delete_transient($field);	
-				
-					if ( !isset( $_POST[$field] )|| !wp_verify_nonce( $_POST[$field.'_nonce'], $field.'_action' )) continue;
 					
-					if ( array_key_exists( $field, $_POST ) && !empty($_POST[$field]) ) {
-						
-						$args = array(
-							'id'            => $field,
-							'validation'    => $metaBox['validate'],
-							'new_value'     => $_POST[$field],
-							'current_value' => (get_post_meta($post_ID , $field, true)) ? get_post_meta($post_ID , $field, true) : null ,
-						);
-						
-						if($args['current_value'] === $_POST[$field]) continue;
-						
-						$this->validate->validate_inputs($args);
-						
-						if(is_null($this->validate->value)) continue;
-						
-						update_post_meta( $post_ID, $field, $this->validate->value );
-						
-					}
+					if($field == 'smpg_download_attachment'){
+						if(isset($_POST['smpg_download_attachment']) && !empty($_POST['smpg_download_attachment'])) {
+							
+							$ext = pathinfo($_POST['smpg_download_attachment'], PATHINFO_EXTENSION);
+							
+								if(in_array($ext,unserialize(SuppTypes))){
+									
+									update_post_meta($post_ID, 'smpg_download_attachment',$_POST['smpg_download_attachment']);
+									
+								}else{
+									
+									add_filter( 'redirect_post_location', array($this, 'smpg_download_redirect_post_location'));
+								}
+						}
+					}else{
+				
+						delete_transient($field);	
+
+						if ( !isset( $_POST[$field] )|| !wp_verify_nonce( $_POST[$field.'_nonce'], $field.'_action' )) continue;
+
+						if ( array_key_exists( $field, $_POST ) && !empty($_POST[$field]) ) {
+
+							$args = array(
+								'id'            => $field,
+								'validation'    => ( isset($metaBox['validate']) ) ? $metaBox['validate'] : null,
+								'new_value'     => $_POST[$field],
+								'current_value' => (get_post_meta($post_ID , $field, true)) ? get_post_meta($post_ID , $field, true) : null ,
+							);
+
+							if($args['current_value'] === $_POST[$field]) continue;
+
+							$this->validate->validate_inputs($args);
+
+							if(is_null($this->validate->value)) continue;
+
+							update_post_meta( $post_ID, $field, $this->validate->value );
+
+						}
+				}
 					
 				
 			}
 			
 			
+		}
+		
+		public function smpg_download_redirect_post_location( $location ){
+			$location = add_query_arg( 'c_error' , '1' , $location );
+			return $location;
+		}
+		
+		
+		function implement_download_ajax() {
+			//Add and update downloads counter
+			if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
+					$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
+					if(empty($download_counter)){
+						add_post_meta($_POST['download_id'], 'download_times',1);
+					}else{
+						$download_counter +=  1;
+						update_post_meta($_POST['download_id'], 'download_times',$download_counter);
+					}
+				wp_die();
+				}
 		}
 		
 		
