@@ -56,6 +56,11 @@ class Smpg__Generate_Posts_View{
 	*/
 	public $IfNot = '';
 	
+	/*
+	*@var  integer $IfNot  stores the else part
+	*/
+	public $excerptLength = 15;
+	
 	
 	/*
 	*@var array  $PostsIds post ids inside the loop for further use
@@ -76,6 +81,8 @@ class Smpg__Generate_Posts_View{
 		$this->postsTemplate = $template;
 
 		$this->post = new WP_Query($args);
+		
+		add_filter( 'excerpt_length', array($this, 'custom_excerpt_length'), 999 );
 
 	}
 	
@@ -127,5 +134,9 @@ class Smpg__Generate_Posts_View{
 		return $this->IfNot;
 	}
 	
-
+	//filter excerpt length
+	public function custom_excerpt_length( $length ) {
+		$length = $this->excerptLength;
+		return $length;
+	}
 }

@@ -153,12 +153,7 @@ function number_postpercat($idcat) {
 
 }
 
-//filter excerpt length
-function custom_excerpt_length( $length ) {
-	$length = 15;
-	return $length;
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 /**
  * Link all post thumbnails to the post permalink.
  *
