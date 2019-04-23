@@ -11,10 +11,18 @@ if(!class_exists('Smpg__Validate_Inputs')){
 		}
 		
 		public function validate_inputs($args){
+			if(!is_null($args['validation'])){
+				
+				$validationFunction = 'valid_'.$args['validation'];
 			
-			$validationFunction = 'valid_'.$args['validation'];
+				$this->$validationFunction($args['id'],$args['new_value'], $args['current_value']);
+				
+			}else{
+				
+				$this->value = $args['new_value'];
+				
+			}
 			
-			$this->$validationFunction($args['id'],$args['new_value'], $args['current_value']);
 			
 		}
 		
@@ -22,8 +30,11 @@ if(!class_exists('Smpg__Validate_Inputs')){
 		*accept html within input
 		*/
 		public function valid_html($id, $field, $current){
+			
 			$this->valid = true;
+			
 			$this->value =  wp_kses_post($field);
+			
 		}
 		
 		/*
