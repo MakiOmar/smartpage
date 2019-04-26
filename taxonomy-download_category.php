@@ -44,7 +44,7 @@
 				<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_term->name).' / '.__('Category posts',TEXTDOM).' ---'?></h3>
 				<div id = "download">
 				<?php while ($query->have_posts() ) { $query->the_post();
-					get_template_part('templates/temp','download') ;
+					get_template_part('templates/download') ;
 				}?>
        		</div>
        		<?php  }?>

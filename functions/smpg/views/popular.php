@@ -36,7 +36,7 @@ class Smpg__Views__Popular extends Smpg__Generate_Posts_View{
 								</div>
 								<div class="metadata"><i class="fa fa-calendar"></i>&nbsp;<?php echo get_the_date('Y-m-d'); ?></div>
 								<div class="metadata"><i class="fa fa-eye"></i>&nbsp;<?php echo getPostViews($tplID)?></div>
-								<?php get_template_part('templates/temp','rate') ?>
+								<?php get_template_part('templates/rate') ?>
 							</div>
 					</div>	
 

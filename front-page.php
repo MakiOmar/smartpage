@@ -9,19 +9,19 @@ get_header();
                
 				<div id="section-top" class="grid-col-md-8 grid-col">
 
-					<?php get_template_part('templates/temp','news') ;?>
+					<?php get_template_part('templates/news') ;?>
 					
-					<?php get_template_part('templates/temp','featured') ;?>
+					<?php get_template_part('templates/featured') ;?>
 					
 				</div>   
             </div>
 			<?php 
 				
-				get_template_part('templates/temp','downloads') ;
+				get_template_part('templates/downloads') ;
 
-				get_template_part('templates/temp','category-posts-masonary') ;
+				get_template_part('templates/category-posts-masonary') ;
 			
-				//get_template_part('templates/temp','video') ;
+				//get_template_part('templates/video') ;
 			
 			 ?>	
         </div>

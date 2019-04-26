@@ -41,7 +41,7 @@
 			if ( have_posts() ) {?>
 				<h3 class="cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('Category posts',TEXTDOM).' ---'?></h3>
 			<?php while (have_posts() ) { the_post();
-					get_template_part('templates/temp','blog-post') ;
+					get_template_part('templates/blog-post') ;
 			} }?>
         </div>
        <?php get_sidebar();?>

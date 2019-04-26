@@ -5,8 +5,8 @@
 		  <li class="grid-col-6 comments"><?php esc_html_e('Recent comments',TEXTDOM)?></li>
 		</ul>
 		<?php 
-		   get_template_part('templates/temp','popular') ;
-		   get_template_part('templates/temp','comments') ;
+		   get_template_part('templates/popular') ;
+		   get_template_part('templates/comments') ;
 		 ?>	
 	  </div>
 </div>

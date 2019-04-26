@@ -31,7 +31,7 @@
 			
 			<?php } ?>
 			
-			<?php get_template_part('templates/temp','rate') ?>
+			<?php get_template_part('templates/rate') ?>
 			
 		  </div>
 				<?php 

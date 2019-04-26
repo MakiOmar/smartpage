@@ -21,7 +21,7 @@ ob_start('ob_gzhandler');
 <div class="grid">
 	 <div class="grid-col-">
 			<header>
-				<?php get_template_part('templates/temp','top-header') ;?>	
+				<?php get_template_part('templates/top-header') ;?>	
 				<div id="sub-top-wrapper">
                 <div id="toggles-wrapper">
                 	<a href="#" id="menu-toggle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
