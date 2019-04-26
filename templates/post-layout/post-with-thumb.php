@@ -26,7 +26,7 @@
 	  	<i class="fa fa-share-alt"></i><span>1000 <?php esc_html_e('Shares',TEXTDOM) ?></span>
 	  </div>
 	  
-	   <div class="post-title-cover"></div>
+	   <div class="post-title-cover"><?php echo '<a href="' . esc_url( get_the_permalink() ) . '" title="' . esc_attr( get_the_title() ) . '">.</a>';?></div>
 	   
-		<?php the_post_thumbnail('full') ?>
+		<?php echo get_the_post_thumbnail($post, 'full') ?>
 </div>
