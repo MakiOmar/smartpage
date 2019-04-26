@@ -30,31 +30,6 @@ class Smpg__Generate_Posts_View{
 	*/
 
 	public $args = array();
-
-	/*
-	*@var  string  $sectionWrapperOpen  posts section container opening wrapper
-	*/
-
-	public $sectionWrapperOpen = '<div>';
-
-
-	/*
-	*@var  string  $sectionWrapperClose  posts section container closing wrapper
-	*/
-
-	public $sectionWrapperClose = '</div>';
-	
-	/*
-	*@var  string  $beforeSection  add any thing before posts wrapper
-	*/
-
-	public $beforeSection = '';
-	
-	/*
-	*@var  string  $beforeSection  add any thing before posts wrapper
-	*/
-
-	public $afterSection = '';
 	
 	/*
 	*@var  string $IfNot  stores the else part
