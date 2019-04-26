@@ -24,7 +24,12 @@ class Smpg__Generate_Posts_View{
 	*/
 
 	public $HomeView = false;
+	
+	/*
+	*@var  array  $args  arge of WP_Query
+	*/
 
+	public $args = array();
 
 	/*
 	*@var  string  $sectionWrapperOpen  posts section container opening wrapper
@@ -79,10 +84,16 @@ class Smpg__Generate_Posts_View{
 		$this->resetLoop = $reset;
 
 		$this->postsTemplate = $template;
+		
+		$this->args = $args;
+		
+		$this->resetLoop = $reset;
 
 		$this->post = new WP_Query($args);
 		
 		add_filter( 'excerpt_length', array($this, 'custom_excerpt_length'), 999 );
+		
+		
 
 	}
 	
@@ -93,45 +104,23 @@ class Smpg__Generate_Posts_View{
 
 		if($this->post->have_posts()){
 
-			echo $this->beforeSection;
+			$className= 'Smpg__Views__'.ucfirst($this->postsTemplate);
 			
-			echo $this->sectionWrapperOpen;
-
-				$this->loopPosts();
-
-			echo $this->sectionWrapperClose;
+			if(class_exists($className)){
+				
+				$view = new $className($this);
+				
+				if(method_exists($view, 'IfNot')){
+					$this->IfNot = $view->IfNot();
+				}
+				
+				$view->render();
+			}
 			
-			echo $this->afterSection;
 
 		}else{
-			echo $this->ifNot();
+			echo $this->IfNot;
 		}
-	}
-	
-	/*
-	*Loops through posts list view
-	*/
-	public function loopPosts(){
-		while ($this->post->have_posts() ) {
-			
-			$this->post->the_post();
-
-			$this->PostsIds[] = get_the_ID();
-
-			get_template_part('templates/temp', $this->postsTemplate);
-				
-		}
-		
-		if($this->resetLoop === true){
-			wp_reset_postdata();
-		}
-	}
-	
-	/*
-	*fired if no posts found
-	*/
-	public function ifNot(){
-		return $this->IfNot;
 	}
 	
 	//filter excerpt length
@@ -139,4 +128,7 @@ class Smpg__Generate_Posts_View{
 		$length = $this->excerptLength;
 		return $length;
 	}
+	
+
+
 }
