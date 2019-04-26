@@ -8,14 +8,9 @@
 							'orderby'=> 'meta_value_num',
 							'order' => 'DESC', 
 						),
-						'popular-loop',
+						'popular',
 						true
 					);
-
-	$tcp->sectionWrapperOpen ='<div id="popular" class ="tab_content">';
-
-	$tcp->sectionWrapperClose ='</div>';
-
 	$tcp->postsView();
 
 ?>
