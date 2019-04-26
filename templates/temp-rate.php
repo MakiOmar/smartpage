@@ -21,11 +21,11 @@ $p_ID = get_the_ID();
  <div id="rating-<?php echo $p_ID ;?>" class="metadata">
  
 	<i id="rate-ico" class="fa fa-star"></i>
-	<i id="1-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-1 rate-btn"></i>&nbsp;
-	<i id="2-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-2 rate-btn"></i>&nbsp;
-	<i id="3-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-3 rate-btn"></i>&nbsp;
-	<i id="4-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-4 rate-btn"></i>&nbsp;
-	<i id="5-<?php echo $p_ID ;?>" class="fa fa-star-o btn-<?php echo $p_ID ;?>-5 rate-btn"></i>
+	<?php
+	 for($r = 1; $r <= 5; $r++){
+		echo '<i id="'.$r.'-'.$p_ID.'" class="fa fa-star-o btn-'.$p_ID.'-'.$r.' rate-btn"></i>'.(($r != 5) ? '&nbsp': '');
+	 }
+	 ?>
 	
 	<span id="rated-<?php echo $p_ID ;?>" style="display:none"><?php echo substr($rate_value,0,3) ?></span>
 	
