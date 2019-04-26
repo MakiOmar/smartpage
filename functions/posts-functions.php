@@ -305,13 +305,20 @@ function smpg_rich_text_comment_form( $args ) {
 	
 }
 
-function smpg_init_tinymce(){?>
-	<script type="text/javascript">
-		tinymce.init({
-			selector: '#comment',
-		});
-	</script>
-<?php }
+function smpg_init_tinymce(){
+		if(is_single()){?>
+				<script type="text/javascript">
+					if(tinymce !== 'undefined'){
+						tinymce.init({
+							selector: '#comment',
+						});
+					}
+
+				</script>
+		<?php }
+
+ }
+
 add_action('wp_footer', 'smpg_init_tinymce',999);
 
 /*
