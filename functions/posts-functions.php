@@ -153,32 +153,11 @@ function number_postpercat($idcat) {
 
 }
 
-
-/**
- * Link all post thumbnails to the post permalink.
- *
- * @param string $html          Post thumbnail HTML.
- * @param int    $post_id       Post ID.
- * @param int    $post_image_id Post image ID.
- * @return string Filtered post image HTML.
- */
-function smpg_post_image_html( $html, $post_id, $post_image_id ) {
-    $html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_the_title( $post_id ) ) . '">' . $html . '</a>';
-    return $html;
-}
-add_filter( 'post_thumbnail_html', 'smpg_post_image_html', 10, 3 );
-
-// remove width & height attributes from images
-//
-function remove_img_attr ($html){
-    return preg_replace('/(width|height)="\d+"\s/', "", $html);
-}
-add_filter( 'post_thumbnail_html', 'remove_img_attr' );
-
 if ( ! function_exists( 'smartpage_comment' ) ) :
 
 function smartpage_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
+	
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
 		case 'trackback' :
@@ -233,6 +212,7 @@ endif;
 *Create term for custom post to be set as default
 */
 add_action('init','create_smpg_downloads_object_terms');
+
 function create_smpg_downloads_object_terms( ) {
 	if(!term_exists('general_downloads', 'download_category')){
 		$args = array('slug' => 'general_downloads');
@@ -274,6 +254,20 @@ function smpg_get_excerpt( $id,$words_count= 25 ) {
 			echo '<p>'.get_the_excerpt($id).'</p>';
 		}
 	}
+
+/**
+ * remove width and height atrr from img
+ *
+ * @param string $html          Post thumbnail HTML.
+ * @return string Filtered post image HTML.
+ */
+function smpg_post_image_html( $html) {
+	
+	return preg_replace('/(width|height)="\d+"\s/', "", $html);
+}
+
+add_filter( 'post_thumbnail_html', 'smpg_post_image_html' );
+
 
 /*
 *Add tinymce to the comment form
