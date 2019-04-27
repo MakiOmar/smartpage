@@ -50,12 +50,18 @@ class Smpg__Views__Featured extends Smpg__Generate_Posts_View{
 			<?php if(count($this->featuredIDs) > 0){ ?>
 			
 			<h3 class="featured-posts-title">
-			
-				<a href="<?php echo get_category_link($this->child->args['cat']) ?>">
+				<?php
+					if(isset($this->child->args['cat'])){?>
+						<a href="<?php echo get_category_link($this->child->args['cat']) ?>">
 				
-					<?php echo get_cat_name( $this->child->args['cat'] ) ?>
+							<?php echo get_cat_name( $this->child->args['cat'] ) ?>
+
+						</a>
+					<?php }else{?>
 					
-				</a>
+						<a href="#"><?php esc_html_e('Featured Posts', TEXTDOM); ?></a>
+						
+					<?php } ?>
 				
 			</h3>
 				
