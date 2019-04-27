@@ -1,4 +1,34 @@
 <?php
+/*
+*Query posts IDs by meta key and meta value
+*@param string $key    the meta key you want to query with
+*@param string $value  the meta value you want to query with
+*@return array of posts IDs
+*/
+
+function get_posts_ids_by_meta($key, $value){
+	global $wpdb;
+	
+	$postIDs = array();
+	$query = 'SELECT post_id FROM '. $wpdb->prefix .'postmeta WHERE meta_key="'.$key.'" AND meta_value="'.$value.'"';
+	
+	$results = $wpdb->get_results($query, ARRAY_N);
+	
+	if($results){
+		foreach($results as $result){
+			foreach($result as $id){
+				$postIDs[] = $id;
+			}
+		}
+	}
+	
+	if(WP_DEBUG == true){
+		$wpdb->show_errors();
+		$wpdb->print_error();
+	}
+	return $postIDs;
+	
+}
 /**
  * Link all post thumbnails to the post permalink and remove width and height atrr from img
  *
@@ -71,19 +101,23 @@ function admin_get_terms_options($taxonomy){
 *@return  array of terms objects
 */
 function admin_load_terms_slugs($taxonomy){
-  global $wpdb;
-  $query = 'SELECT DISTINCT 
-                  t.slug 
-              FROM
-                ' . $wpdb->prefix . 'terms t 
-              INNER JOIN 
-                ' . $wpdb->prefix . 'term_taxonomy tax 
-              ON 
-                tax.term_id = t.term_id
-              WHERE 
-                  ( tax.taxonomy = \'' . $taxonomy . '\')';                     
-  $result =  $wpdb->get_results($query);
-  return $result;                 
+	global $wpdb;
+	$query = 'SELECT DISTINCT 
+				  t.slug 
+			  FROM
+				' . $wpdb->prefix . 'terms t 
+			  INNER JOIN 
+				' . $wpdb->prefix . 'term_taxonomy tax 
+			  ON 
+				tax.term_id = t.term_id
+			  WHERE 
+				  ( tax.taxonomy = \'' . $taxonomy . '\')';                     
+	$result =  $wpdb->get_results($query);
+	if(WP_DEBUG == true){
+		$wpdb->show_errors();
+		$wpdb->print_error();
+	}
+	return $result;                 
 } 
 
 /*
