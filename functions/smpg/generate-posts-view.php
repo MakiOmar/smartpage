@@ -65,10 +65,6 @@ class Smpg__Generate_Posts_View{
 		$this->resetLoop = $reset;
 
 		$this->post = new WP_Query($args);
-		
-		add_filter( 'excerpt_length', array($this, 'custom_excerpt_length'), 999 );
-		
-		
 
 	}
 	
@@ -103,13 +99,5 @@ class Smpg__Generate_Posts_View{
 			echo $this->IfNot;
 		}
 	}
-	
-	//filter excerpt length
-	public function custom_excerpt_length( $length ) {
-		$length = $this->excerptLength;
-		return $length;
-	}
-	
-
 
 }

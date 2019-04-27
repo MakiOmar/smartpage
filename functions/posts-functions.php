@@ -255,6 +255,14 @@ function smpg_get_excerpt( $id,$words_count= 25 ) {
 		}
 	}
 
+/*
+*Chenge excerpt length
+*/
+function custom_excerpt_length(  ) {
+		return 15;
+	}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 /**
  * remove width and height atrr from img
  *
