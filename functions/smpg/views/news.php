@@ -9,8 +9,6 @@ class Smpg__Views__News extends Smpg__Generate_Posts_View{
 		parent::__construct($parent->args, $parent->postsTemplate, $parent->resetLoop);
 		
 		$this->child = $parent;
-		
-		$this->IfNot();
 	}
 	
 	public function render(){?>
@@ -47,6 +45,8 @@ class Smpg__Views__News extends Smpg__Generate_Posts_View{
 		$this->IfNot .= get_search_form(false);
 
 		$this->IfNot .= '</div>';
+		
+		return $this->IfNot;
 	}
 }
 ?>

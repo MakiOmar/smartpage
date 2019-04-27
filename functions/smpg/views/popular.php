@@ -56,7 +56,7 @@ class Smpg__Views__Popular extends Smpg__Generate_Posts_View{
 	<?php }
 	
 	public function IfNot(){
-		echo $this->IfNot;
+		return $this->IfNot;
 	}
 }
 ?>
