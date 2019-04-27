@@ -1494,6 +1494,7 @@ img {
 	height: 50px;
 	background-color:rgba(255,255,255,.30);
 	border-radius: 50%;
+	border: 2px solid rgba(255,255,255,.30);
 	border-left: 2px solid #ef1450;
 	-webkit-animation: Rotate  1s infinite linear;
 	-moz-animation: Rotate  1s infinite linear;
