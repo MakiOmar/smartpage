@@ -76,29 +76,29 @@ class Smpg__Generate_Posts_View{
 	*Display posts list view
 	*/
 	public function postsView(){
+		$className= 'Smpg__Views__'.ucfirst($this->postsTemplate);
+		
+		if(class_exists($className)){
+				
+			$view = new $className($this);
 
+			if(method_exists($view, 'IfNot')){
+				$this->IfNot = $view->IfNot();
+			}
+				
+		}
+		
 		if($this->post->have_posts()){
-
-			$className= 'Smpg__Views__'.ucfirst($this->postsTemplate);
-			
-			if(class_exists($className)){
-				
-				$view = new $className($this);
-				
-				if(method_exists($view, 'IfNot')){
-					$this->IfNot = $view->IfNot();
-				}
-				
+			if(isset($view)){
 				$view->render();
+			}
 				
-				if($this->resetLoop === true){
-					
-					wp_reset_postdata();
-					
-				}
+			if($this->resetLoop === true){
+
+				wp_reset_postdata();
+
 			}
 			
-
 		}else{
 			echo $this->IfNot;
 		}
