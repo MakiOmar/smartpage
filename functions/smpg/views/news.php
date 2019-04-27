@@ -34,11 +34,7 @@ class Smpg__Views__News extends Smpg__Generate_Posts_View{
 
 					<p id="dun-text-<?php echo $tnlID?>" class="dun_text"><?php echo strip_tags(get_the_content($tnlID))?></p>
 
-				<?php }
-
-				if($this->child->resetLoop === true){
-					wp_reset_postdata();
-				};?>
+				<?php } ?>
 				
 			</div>
 		</div>

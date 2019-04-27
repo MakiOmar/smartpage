@@ -82,11 +82,7 @@ class Smpg__Views__Masonary extends Smpg__Generate_Posts_View{
 
 					</div>
 
-				<?php }
-
-				if($this->child->resetLoop === true){
-					wp_reset_postdata();
-				};?>
+				<?php } ?>
 				</div>
 			</div>
 				

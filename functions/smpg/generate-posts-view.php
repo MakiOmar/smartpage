@@ -90,6 +90,12 @@ class Smpg__Generate_Posts_View{
 				}
 				
 				$view->render();
+				
+				if($this->resetLoop === true){
+					
+					wp_reset_postdata();
+					
+				}
 			}
 			
 

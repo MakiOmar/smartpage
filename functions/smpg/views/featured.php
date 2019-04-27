@@ -44,10 +44,7 @@ class Smpg__Views__Featured extends Smpg__Generate_Posts_View{
 						  </div>
 						</div>
 					<?php }
-				} 
-				if($this->child->resetLoop === true){
-					wp_reset_postdata();
-				};?>
+				} ?>
 			</div>
 
 			<?php if(count($this->featuredIDs) > 0){ ?>
