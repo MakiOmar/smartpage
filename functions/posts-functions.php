@@ -124,6 +124,8 @@ function getPostViews($postID){
     }
     return $count;
 }
+
+//Set post views
 function setPostViews($postID) {
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
@@ -221,23 +223,30 @@ function create_smpg_downloads_object_terms( ) {
 	
 }
 /*
-*Set default term for custom post
+*Set default term for custom post smpg_download
 */
 
 function smpg_downloads_default_object_terms( $post_id, $post ) {
-    if ( 'publish' === $post->post_status && $post->post_type == 'smpg_download' ) {
+    if ( 'publish' === $post->post_status) {
+		
         $defaults = array('download_category' => array( 'general_downloads'));
+		
         $taxonomies = get_object_taxonomies( $post->post_type );
 
         foreach ( (array) $taxonomies as $taxonomy ) {
+			
             $terms = wp_get_post_terms( $post_id, $taxonomy );
+			
             if ( empty( $terms ) && array_key_exists( $taxonomy, $defaults ) ) {
+				
                 wp_set_object_terms( $post_id, $defaults[$taxonomy], $taxonomy );
+				
             }
         }
     }
 }
-add_action( 'save_post', 'smpg_downloads_default_object_terms', 100, 2 );
+
+add_action( 'save_post_smpg_download', 'smpg_downloads_default_object_terms', 100, 2 );
 
 
 function smpg_get_excerpt( $id,$words_count= 25 ) {
