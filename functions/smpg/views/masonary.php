@@ -95,7 +95,7 @@ class Smpg__Views__Masonary extends Smpg__Generate_Posts_View{
 	<?php }
 	
 	public function IfNot(){
-		
+		echo $this->IfNot;
 	}
 }
 ?>

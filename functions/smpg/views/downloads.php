@@ -87,7 +87,7 @@ class Smpg__Views__Downloads extends Smpg__Generate_Posts_View{
 	<?php }
 	
 	public function IfNot(){
-		
+		echo $this->IfNot;
 	}
 }
 ?>
