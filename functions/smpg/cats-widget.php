@@ -12,9 +12,9 @@ if ( ! class_exists( 'Smpg__Cats_Widget' ) ) {
 			extract($instance);?>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id('title') ?>">Title:</label>
+				<label for="<?php echo $this->get_field_id('title') ?>"><?php esc_html_e('Title:', TEXTDOM) ?></label>
 				
-				<input type="text" class="widefat" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>"  value="<?php if(isset($title)) echo esc_attr($title);?>">
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>"  value="<?php echo (isset($title) && !empty($title))? esc_attr($title) : esc_attr__('Categories', TEXTDOM);?>">
 				
 			</p>
 			
@@ -23,6 +23,8 @@ if ( ! class_exists( 'Smpg__Cats_Widget' ) ) {
 			extract($parms);
 			
 			extract($instance);
+			
+			if(empty($title)) $title = esc_html__('Categories', TEXTDOM);
 			
 			echo $before_widget;
 			
