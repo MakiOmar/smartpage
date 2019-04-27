@@ -25,12 +25,6 @@ jQuery(document).ready(function($){
 		
 	}
 	
-	if (isEmpty($('#slideshow')) && $('#didyouknow').length === 0) {
-		
-	  $('#section-top').remove();
-		
-	}
-	
 	var slidesWidth = 0;
 	
 	$('.dun_text').each(function(){
