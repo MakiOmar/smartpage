@@ -45,7 +45,7 @@ if(!class_exists('Smpg__Validate_Inputs')){
 			$this->value = sanitize_text_field($field);
 		
 			if($field != $this->value){
-				$this->warnings[$id] = esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM);
+				$this->warnings[$id][] = esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM);
 			}
 			
 			$this->valid = true;
@@ -97,6 +97,46 @@ if(!class_exists('Smpg__Validate_Inputs')){
 				$this->value = esc_url_raw($field);
 				
 			}
+			
+		}
+		
+		/*
+		*cast to ineger value
+		*/
+		
+		public function valid_integer($id, $field, $current){
+			if(empty($field)){
+				$this->value = $field;
+				
+				return;
+			}
+			
+			$this->valid_no_html($id, $field, $current);
+			
+			if(intval($this->value) === 0 && $this->value !== 0){
+				
+				$this->errors[$id][] = esc_html__('Please add a valid number (e.g. 1,2,-5)', TEXTDOM);
+				
+				$this->value = intval($current);
+				
+			}else{
+				
+				$this->value = intval($this->value);
+			}
+			
+		}
+		/*
+		*cast to ineger value
+		*/
+		
+		public function valid_absolute_integer($id, $field, $current){
+			if(empty($field)){
+				$this->value = $field;
+				return;
+			}
+			$this->valid_integer($id, $field, $current);
+			
+			$this->value = absint($this->value);
 			
 		}
 	}
