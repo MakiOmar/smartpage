@@ -19,16 +19,6 @@ class Options__Fields__Select__F_Select extends Options__Theme_Settings{
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		if( get_transient( $this->field['id'] ) ){ ?>
-		
-			<p class="smpg-error"><?php echo  get_transient( $this->field['id'] )?></p>
-			
-		<?php 
-			
-			delete_transient( $this->field['id'] );
-												  
-		}
-		
 		if(isset($this->field['desc'])){
 			echo '<p class=smpg-warning>'.$this->field['desc'].'<p>';
 		}

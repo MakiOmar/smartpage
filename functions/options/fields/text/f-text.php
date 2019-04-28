@@ -19,15 +19,6 @@ class Options__Fields__Text__F_Text extends Options__Theme_Settings{
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		if( get_transient( $this->field['id'] ) ){ ?>
-		
-			<p class="error"><?php echo  get_transient( $this->field['id'] )?></p>
-			
-		<?php 
-			
-			delete_transient( $this->field['id'] );
-												  
-		}
 		echo '<input type="text" name="'. $name .'" value="'.esc_attr($this->value).'" class="'.$class.'" />';
 		
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description '.$class.'">'.$this->field['desc'].'</span>':'';

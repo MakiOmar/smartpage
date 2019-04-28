@@ -165,7 +165,17 @@ if (!class_exists('Options__Theme_Settings')) {
 					if(isset($field['note'])){
 						echo '<p class=smpg-warning>'.$field['note'].'<p>';
 					}
-		
+					
+					if( get_transient( $fieldID ) ){ 
+			
+						foreach(get_transient( $fieldID ) as $msg){?>
+							<p class="smpg-error"><?php echo $msg ;?></p>
+						<?php }
+
+						delete_transient( $fieldID );
+
+					}
+					
 					$render->render();
 				}
 			}
