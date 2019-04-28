@@ -1,5 +1,16 @@
 <?php
 /*
+*Check if plugin is active
+*/
+
+function smpg_is_active_plugin($path){
+	if(!is_admin()){
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	}
+	
+	return is_plugin_active($path);
+}
+/*
 *Query posts IDs by meta key and meta value
 *@param string $key    the meta key you want to query with
 *@param string $value  the meta value you want to query with
