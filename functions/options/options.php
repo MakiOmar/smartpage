@@ -21,7 +21,7 @@ $options_nav = array(
 		'sections' => array(  ),
 	),
 	// Layout --------------------------------------------
-	'elements' => array(
+	'layout' => array(
 		'title' => esc_html__('Layout', TEXTDOM),
 		'sections' => array(  ),
 	),
@@ -117,7 +117,14 @@ $sections['general']= array(
 							'type'    => 'text',
 							'validate'=> 'no_html',
 							'default' => sprintf(__('All rights are reserved to SmartPage %s', TEXTDOM), date('Y'))
-						),
+						),						
+					)
+);
+
+$sections['layout']= array(
+		'title' => esc_html__('Layout', TEXTDOM),
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(
 						array(
 							'id'      => 'smpg_sidebar_settings',
 							'title'   => esc_html__('Single post sidebar', TEXTDOM),
