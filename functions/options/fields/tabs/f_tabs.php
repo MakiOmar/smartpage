@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_tabs extends MFN_Options{	
+class Options__Fields__Tabs__F_Tabs extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
@@ -58,7 +58,7 @@ class MFN_Options_tabs extends MFN_Options{
 	 * Enqueue Function.
 	*/
 	function enqueue(){
-		wp_enqueue_script('mfn-opts-field-tabs-js', MFN_OPTIONS_URI.'fields/tabs/field_tabs.js', array('jquery'), time(), true);
+		wp_enqueue_script('mfn-opts-field-tabs-js', Options__Theme_Settings_URI.'fields/tabs/field_tabs.js', array('jquery'), time(), true);
 	}
 	
 }
