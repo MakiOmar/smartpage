@@ -3,11 +3,6 @@
 $smpgOptions = Smpg__Options_Model::get_instance();
 
 if(isset($smpgOptions->smpg_slider_settings )){
-	
-	if(smpg_is_active_plugin('revslider/revslider.php') && $smpgOptions->smpg_slider_settings == 'rev-slider'){
-		echo 'revolution slider';
-	}else{
-		
 		$args = array(
 					'posts_per_page' => 5,
 					'orderby'        => 'rand',
@@ -32,7 +27,6 @@ if(isset($smpgOptions->smpg_slider_settings )){
 					true
 				);
 		$fc->postsView();
-	}
 
 }
 
