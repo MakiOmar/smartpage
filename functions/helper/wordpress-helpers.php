@@ -1,6 +1,28 @@
 <?php
 /*
+*Gets revolution slider list of silders
+*@return array  Associative array of slider id = name
+*/
+
+function smpg_get_rev_sliders(){
+	$sliders = array();
+	
+	if ( class_exists( 'RevSlider' ) ) {
+		
+		$rev_slider = new RevSlider();
+		
+		foreach($rev_slider->getAllSliderAliases() as $slider){
+			
+			$sliders[$slider] = ucfirst(str_replace('-', ' ', $slider));
+				
+		}		
+	}
+	
+	return $sliders;
+}
+/*
 *Check if plugin is active
+*@var string $path  Path of plugin file
 */
 
 function smpg_is_active_plugin($path){
