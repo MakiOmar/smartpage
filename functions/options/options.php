@@ -54,10 +54,28 @@ $options_nav = array(
 //Sectoins
 $sections = array();
 
+$sliders = smpg_get_rev_sliders();
+
 $sections['slider']= array(
 		'title' => esc_html__('Slider', TEXTDOM),
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
+						array(
+							'id'      => 'smpg_home_slider_settings',
+							'title'   => esc_html__('Revolution slider', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    => esc_html('If checked, it will show revolution slider on Homepage', TEXTDOM),
+						),
+						array(
+							'id'      => 'smpg_rev_slider_settings',
+							'title'   => esc_html__('Select a slider', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
+							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
+						),
+	
 						array(
 							'id'      => 'smpg_slider_settings',
 							'title'   => esc_html__('Featured Posts slider', TEXTDOM),
@@ -67,12 +85,9 @@ $sections['slider']= array(
 											'featured-cat'	=> array('title' => esc_html__('Featured category', TEXTDOM)),
 	
 											'featured-post'	=> array('title' => esc_html__('Featured posts', TEXTDOM)),
-											
-											'rev-slider' 	=> array('title' => esc_html__('Revolution Slider', TEXTDOM)),
 										),
 							'default'  => 'featured-cat',
 						),
-	
 						array(
 							'id'      => 'smpg_featured_tax_settings',
 							'title'   => esc_html__('Select featured taxonomy', TEXTDOM),
@@ -109,7 +124,7 @@ $sections['general']= array(
 							'type'    => 'radio_img',
 							'validate'=> 'no_html',
 							'options' => array(
-											//'' 				=> array('title' => 'Use Post Meta', 'img' => MFN_OPTIONS_URI.'img/question.png'),
+											//'' 				=> array('title' => 'Use Post Meta', 'img' => Options__Theme_Settings_URI.'img/question.png'),
 											'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
 											'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
