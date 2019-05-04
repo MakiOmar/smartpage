@@ -1,7 +1,7 @@
 <?php
 	$smpgOptions = Smpg__Options_Model::get_instance();
 	
-	$args = array('post_type' => 'post');
+	$args = array('post_type' => 'post', 'posts_per_page' => 5);
 
 	if(isset($smpgOptions->smpg_slider_settings ) ){
 		
