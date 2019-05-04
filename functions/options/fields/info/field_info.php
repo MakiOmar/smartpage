@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_info extends MFN_Options{	
+class Options__Theme_Settings_info extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

@@ -29,7 +29,7 @@ class Options__Fields_Color_F_Color extends Options__Theme_Settings{
 	 * Enqueue Function.
 	*/
 	function enqueue(){
-		wp_enqueue_script('mfn-opts-field-color-js', MFN_OPTIONS_URI.'fields/color/field_color.js', array('jquery', 'farbtastic'), time(), true);
+		wp_enqueue_script('mfn-opts-field-color-js', Options__Theme_Settings_URI.'fields/color/field_color.js', array('jquery', 'farbtastic'), time(), true);
 	}
 	
 }

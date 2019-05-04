@@ -1,11 +1,11 @@
 <?php
-class MFN_Options_switch extends MFN_Options{	
+class Options__Fields__Switch__F_Switch extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
 	*/
 	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;	
 	}
@@ -24,6 +24,7 @@ class MFN_Options_switch extends MFN_Options{
 		if(strpos( $this->field['id'] ,'[]') === false) echo '<input type="hidden" name="'. $name .'" value="0" />';
 		
 		echo '<input type="checkbox" data-toggle="switch" id="'.$this->field['id'].'" name="'. $name .'" '.$class.' value="1" '.checked($this->value, 1, false).' />';
+		
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<span class="description btn-desc">'.$this->field['desc'].'</span>':'';	
 	}
 	

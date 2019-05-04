@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_font_select extends MFN_Options{	
+class Options__Theme_Settings_font_select extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

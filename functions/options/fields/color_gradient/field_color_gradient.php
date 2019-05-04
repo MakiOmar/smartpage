@@ -1,12 +1,12 @@
 <?php
-class MFN_Options_color_gradient extends MFN_Options{	
+class Options__Theme_Settings_color_gradient extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since MFN_Options 1.0
+	 * @since Options__Theme_Settings 1.0
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
@@ -24,7 +24,7 @@ class MFN_Options_color_gradient extends MFN_Options{
 	 *
 	 * Takes the vars and outputs the HTML for the field in the settings
 	 *
-	 * @since MFN_Options 1.0
+	 * @since Options__Theme_Settings 1.0
 	*/
 	function render(){
 		
@@ -57,13 +57,13 @@ class MFN_Options_color_gradient extends MFN_Options{
 	 *
 	 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 	 *
-	 * @since MFN_Options 1.0
+	 * @since Options__Theme_Settings 1.0
 	*/
 	function enqueue(){
 		
 		wp_enqueue_script(
 			'mfn-opts-field-color-js', 
-			MFN_OPTIONS_URI.'fields/color/field_color.js', 
+			Options__Theme_Settings_URI.'fields/color/field_color.js', 
 			array('jquery', 'farbtastic'),
 			time(),
 			true

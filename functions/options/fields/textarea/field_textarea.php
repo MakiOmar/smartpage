@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_textarea extends MFN_Options{	
+class Options__Theme_Settings_textarea extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

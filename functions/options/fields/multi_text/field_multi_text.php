@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_multi_text extends MFN_Options{	
+class Options__Theme_Settings_multi_text extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
@@ -56,7 +56,7 @@ class MFN_Options_multi_text extends MFN_Options{
 		
 		wp_enqueue_script(
 			'mfn-opts-field-multi-text-js', 
-			MFN_OPTIONS_URI.'fields/multi_text/field_multi_text.js', 
+			Options__Theme_Settings_URI.'fields/multi_text/field_multi_text.js', 
 			array('jquery'),
 			time(),
 			true

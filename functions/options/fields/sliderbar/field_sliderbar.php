@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_sliderbar extends MFN_Options{	
+class Options__Theme_Settings_sliderbar extends Options__Theme_Settings{	
 	
 	
 	/**
@@ -32,7 +32,7 @@ class MFN_Options_sliderbar extends MFN_Options{
 		
 		wp_enqueue_script(
 			'jquery-slider', 
-			MFN_OPTIONS_URI.'fields/sliderbar/jquery.ui.slider.js', 
+			Options__Theme_Settings_URI.'fields/sliderbar/jquery.ui.slider.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
 			time(), 
 			true
@@ -40,7 +40,7 @@ class MFN_Options_sliderbar extends MFN_Options{
 
 		wp_enqueue_script(
 			'mfn-opts-field-sliderbar-js', 
-			MFN_OPTIONS_URI.'fields/sliderbar/field_sliderbar.js', 
+			Options__Theme_Settings_URI.'fields/sliderbar/field_sliderbar.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-dialog'),
 			time(),
 			true

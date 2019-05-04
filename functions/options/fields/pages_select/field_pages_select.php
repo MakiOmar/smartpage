@@ -1,5 +1,5 @@
 <?php
-class MFN_Options_pages_select extends MFN_Options{	
+class Options__Theme_Settings_pages_select extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
