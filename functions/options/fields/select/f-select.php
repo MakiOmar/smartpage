@@ -19,8 +19,8 @@ class Options__Fields__Select__F_Select extends Options__Theme_Settings{
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		if(isset($this->field['desc'])){
-			echo '<p class=smpg-warning>'.$this->field['desc'].'<p>';
+		if(isset($this->field['note'])){
+			echo '<p class=smpg-warning>'.$this->field['note'].'<p>';
 		}
 		echo '<select name="'. $name .'" '.$class.'rows="6" autocomplete="off">';
 			if( is_array( $this->field['options'] ) ){
