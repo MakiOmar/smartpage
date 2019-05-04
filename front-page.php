@@ -2,6 +2,28 @@
 get_header();
 ?>
   <div class="grid">
+	<?php
+	$smpgOptions = Smpg__Options_Model::get_instance();
+
+	if(isset($smpgOptions->smpg_slider_settings )){
+		
+		if(smpg_is_active_plugin('revslider/revslider.php') && $smpgOptions->smpg_home_slider_settings == '1'){
+			
+			if(isset($smpgOptions->smpg_rev_slider_settings) && $smpgOptions->smpg_rev_slider_settings != '0'){
+				
+				putRevSlider($smpgOptions->smpg_rev_slider_settings);
+				
+			}else{
+				
+				echo '<p class="smpg-warning">'.esc_html__('You didn\'t choose a slider, Please select one from theme options page').'</p>';
+				
+			}
+			
+		}
+		
+	}
+
+	?>
   	<div class="grid-row grid-col">
         <div class="grid-col-sm-9-5">
 			<div class="content-wrapper">
