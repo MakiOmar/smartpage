@@ -1,0 +1,13 @@
+.has-switch{
+	float:right;
+}
+
+.has-switch > div.switch-off{
+	left: auto;
+	/*right: -63%;*/
+}
+
+.has-switch > div.switch-on {
+    left: auto;
+	right: -63%;
+}
