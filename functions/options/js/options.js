@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 	"use strict";
 	
 	$(document).on('click','.smpg-nav-link', function(e){
-		e.preventDefault;
+		e.preventDefault();
 		var linkId = $(this).attr('id');
 		
 		$('.smpg-section-group').each(function(){
