@@ -1,7 +1,18 @@
-<?php get_header();?>
+<?php 
+get_header();
+$smpgOptions = Smpg__Options_Model::get_instance();
+?>
   <div class="grid">
   	<div class="grid-row grid-col">
-       <?php get_sidebar('single');?>
+       <?php
+		
+		if($smpgOptions->smpg_sidebar_settings == 'left-sidebar'){
+			get_sidebar('single');
+		}else{
+			get_sidebar();
+		}
+		
+		?>
         <div class="grid-col grid-col-sm-7">
         
         <?php smpg_breadcrumbs()?>
@@ -48,7 +59,15 @@
 				  <?php }}
 				comments_template( '', true ); ?>
         </div>
-       <?php get_sidebar();?>
+       <?php
+		
+		if($smpgOptions->smpg_sidebar_settings == 'right-sidebar'){
+			get_sidebar('single');
+		}else{
+			get_sidebar();
+		}
+		
+		?>
 	</div>
   </div>
  <?php get_footer();?>
