@@ -22,7 +22,7 @@ if (!class_exists('Options__Theme_Settings')) {
 			
 			$defaults['opt_name'] = SMPG_OPTIONS;
 			
-			//$defaults['menu_icon'] = MFN_OPTIONS_URI.'/img/menu_icon.png';
+			//$defaults['menu_icon'] = Options__Theme_Settings_URI.'/img/menu_icon.png';
 			$defaults['menu_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
 			$defaults['page_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
@@ -303,8 +303,14 @@ if (!class_exists('Options__Theme_Settings')) {
 			
 			wp_enqueue_style( 'smpg-options-css' );
 			
+			if(is_rtl()){
+				wp_register_style( 'smpg-options-rtl-css', SMPG_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
+				wp_enqueue_style( 'smpg-options-rtl-css' );
+			}
+			
+			
+			
 			wp_enqueue_script( 'smpg-options-js', SMPG_OPTIONS_URI.'js/options.js', array('jquery'), time(), true);
-
 			
 			foreach($this->sections as $k => $section){
 				
