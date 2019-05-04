@@ -33,3 +33,7 @@ body{
 #smpg-page-loading-bg{
 	border-top: 8px solid #ef1450;
 }
+.smpg-warning {
+	background-color: #e09352;
+	border-left: 6px solid #230005;
+}
