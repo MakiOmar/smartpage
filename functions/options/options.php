@@ -127,18 +127,25 @@ $sections['layout']= array(
 		'fields' => array(
 						array(
 							'id'      => 'smpg_sidebar_settings',
-							'title'   => esc_html__('Single post sidebar', TEXTDOM),
+							'title'   => esc_html__('Sidebar', TEXTDOM),
 							'type'    => 'radio_img',
 							'validate'=> 'no_html',
 							'options' => array(
 											//'' 				=> array('title' => 'Use Post Meta', 'img' => Options__Theme_Settings_URI.'img/question.png'),
-											'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
+											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
-											'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
+											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
 											
 											'no-sidebar' 	=> array('title' => esc_html__('Full width', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/full-width.png'),
 										),
 							'default'  => 'left-sidebar'
+						),
+						array(
+							'id'      => 'smpg_single_sidebar_settings',
+							'title'   => esc_html__('Single post sidebar', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    => esc_html('If checked, it will show a single post specific sidebar', TEXTDOM),
 						),
 
 						
