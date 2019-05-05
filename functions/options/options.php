@@ -74,6 +74,7 @@ $sections['slider']= array(
 							'validate'=> 'no_html',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
 							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
+							'class'    => 'smpg_home_slider_settings'
 						),
 	
 						array(
@@ -94,7 +95,8 @@ $sections['slider']= array(
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => get_taxonomies(),
-							'default'  => 'category'
+							'default' => 'category',
+							'class'    => 'featured-cat'. ($smpgOptions->smpg_slider_settings == 'featured-cat' ? ' smpg_slider_settings_show' : '')
 						),
 	
 						array(
@@ -103,6 +105,7 @@ $sections['slider']= array(
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => admin_get_terms_options($smpgOptions->smpg_featured_tax_settings),
+							'class'    => 'featured-cat'.( $smpgOptions->smpg_slider_settings == 'featured-cat' ? ' smpg_slider_settings_show' : '')
 						),
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 

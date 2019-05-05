@@ -185,3 +185,11 @@
     transition: .25s ease-out;
     -webkit-backface-visibility: hidden;
 }
+
+.featured-cat{
+	display: none;
+}
+
+.smpg_slider_settings_show{
+	display: table-row;
+}
