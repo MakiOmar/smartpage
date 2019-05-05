@@ -8,9 +8,13 @@ if ( is_single() ) {
 		
 		$first_cat = $cats[0];
 
-		$catpostcount = number_postpercat($first_cat);
+		$catpostcount = number_postpercat($first_cat);?>
+		
+		<span class="toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
 
-		if ($catpostcount >= 2){
+		<div class="grid-col-sm-2-5 asidebar single-sidebar grid-col">
+		<?php
+		if ($catpostcount >= 1){
 				$args=array(
 				  'cat' => $first_cat,
 				  'post__not_in' => array($p_ID),
@@ -22,9 +26,7 @@ if ( is_single() ) {
 
 				if( $same_cat_posts->have_posts() ) {?>
 
-					<span class="toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
-
-					<div class="grid-col-sm-2-5 asidebar single-sidebar grid-col">
+					
 
 						<?php 
 						echo '<h3 class="widgeted_title"><a href="'.get_category_link( $first_cat ).'">'.get_cat_name( $first_cat ).'</a></h3>';
@@ -37,9 +39,11 @@ if ( is_single() ) {
 							wp_reset_postdata();  // Restore global post data stomped by the_post().
 						?>
 
-				  </div>
+				
 				<?php } //if ($same_cat_posts)
+		}else{
+			echo '<p>'. esc_html__('No more posts in this category') . '</p>';
 		}
-	} //if ($cats)
-	
-}?>	
+	} //if ($cats)?>
+	</div>
+<?php }?>	
