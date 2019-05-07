@@ -74,7 +74,7 @@ $sections['slider']= array(
 							'validate'=> 'no_html',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
 							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
-							'class'    => 'smpg_home_slider_settings'
+							'class'    => 'smpg_rev_slider_settings' . ($smpgOptions->smpg_home_slider_settings == '1' ? ' smpg_home_slider_settings' : '')
 						),
 	
 						array(
