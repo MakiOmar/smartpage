@@ -308,7 +308,18 @@ if (!class_exists('Options__Theme_Settings')) {
 				wp_enqueue_style( 'smpg-options-rtl-css' );
 			}
 			
-			
+			if(!is_rtl()){
+				$enGoogleFonts = array(
+					'Gugi'  => 'https://fonts.googleapis.com/css?family=Gugi', 
+					'Anton' => 'https://fonts.googleapis.com/css?family=Anton',
+					'Exo' => 'https://fonts.googleapis.com/css?family=Exo',
+				);
+				
+				foreach($enGoogleFonts as $name => $link){
+					wp_enqueue_style( $name, $link, array(), time(), 'all');
+				}
+				
+			}
 			
 			wp_enqueue_script( 'smpg-options-js', SMPG_OPTIONS_URI.'js/options.js', array('jquery'), time(), true);
 			
