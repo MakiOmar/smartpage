@@ -16,8 +16,8 @@ a,h1,h2,h3,h4,h5,h6 {
 }
 
 body{
-	background: url(../../../images/6fe4bb926f48f7ef104b56f95d53e999c3cd.jpg) no-repeat fixed;
-	background-size: cover;
+	/*background: url(../../../images/6fe4bb926f48f7ef104b56f95d53e999c3cd.jpg) no-repeat fixed;
+	background-size: cover;*/
 }
 #cancel-comment-reply-link {
 		color: #ef1450;

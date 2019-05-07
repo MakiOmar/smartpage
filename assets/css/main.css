@@ -54,7 +54,7 @@ html, body {
 	box-sizing: border-box;
 	}
 body{
-	background: url(../../images/pattern-2.png) repeat fixed;
+	/*background: url(../../images/pattern-2.png) repeat fixed;*/
 	font-family: "Georgia","Times New Roman",serif;
 	font-style: italic;
 	color: #444444;
@@ -197,7 +197,6 @@ img {
 				box-shadow: 0 8px 10px -6px #4b4949;
 	}
 	#grid-wrapper{
-		max-width: 1150px;
 		background-color: #FFFFFF;
 		margin: auto;
 		position: relative;

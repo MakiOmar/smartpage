@@ -11,3 +11,13 @@
     left: auto;
 	right: -63%;
 }
+
+.smpg-section-group > h2{
+	box-shadow: -5px 10px 6px #dbd1d1;
+}
+#options-nav {
+    box-shadow: -10px 5px 6px #dbd1d1;
+}
+#smpg-options-wrapper > h1{
+	
+}
