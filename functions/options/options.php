@@ -141,14 +141,15 @@ $sections['layout']= array(
 											
 											'no-sidebar' 	=> array('title' => esc_html__('Full width', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/full-width.png'),
 										),
-							'default'  => 'left-sidebar'
+							'default'  => 'left-sidebar',
+							'desc'  => esc_html__('This controls the direction of the main sidebar', TEXTDOM),
 						),
 						array(
 							'id'      => 'smpg_single_sidebar_settings',
 							'title'   => esc_html__('Single post sidebar', TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    => esc_html('If checked, it will show a single post specific sidebar', TEXTDOM),
+							'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', TEXTDOM),
 						),
 
 						

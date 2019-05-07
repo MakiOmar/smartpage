@@ -25,7 +25,7 @@ class Options__Theme_Settings_pages_select extends Options__Theme_Settings{
 				echo '<option value="'.$page->ID.'"'.selected($this->value, $page->ID, false).'>'.$page->post_title.'</option>';
 			}
 		echo '</select>';
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description">'.$this->field['desc'].'</span>':'';
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
 		
 	}
 	

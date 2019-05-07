@@ -32,7 +32,7 @@ class Options__Fields__Radio__F_Radio extends Options__Theme_Settings{
 					echo '<span class="description">'.$v['title'].'</span>';
 				echo '</div>';
 			}
-			echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<br style="clear:both;"/><span class="description">'.$this->field['desc'].'</span>':'';
+			echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<br style="clear:both;"/><div class="description">'.$this->field['desc'].'</div>':'';
 		echo '</fieldset>';
 		
 	}

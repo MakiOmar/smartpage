@@ -19,7 +19,7 @@ class Options__Theme_Settings_sliderbar extends Options__Theme_Settings{
 		$class = (isset($this->field['class']))?'class="'.$this->field['class'].'" ':'';
 		echo '<div id="'.$this->field['id'].'_sliderbar" class="sliderbar '.$class.'" rel="'.$this->field['id'].'"></div>';
 		echo '<input type="text" id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" value="'.esc_attr($this->value).'" class="sliderbar_input '.$class.'" readonly="readonly"/>';	
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description sliderbar_desc'.$class.'">'.$this->field['desc'].'</span>':'';
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description sliderbar_desc'.$class.'">'.$this->field['desc'].'</div>':'';
 	}
 	
 	

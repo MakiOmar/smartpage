@@ -25,7 +25,7 @@ class Options__Fields__Switch__F_Switch extends Options__Theme_Settings{
 		
 		echo '<input type="checkbox" data-toggle="switch" id="'.$this->field['id'].'" name="'. $name .'" '.$class.' value="1" '.checked($this->value, 1, false).' />';
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<span class="description btn-desc">'.$this->field['desc'].'</span>':'';	
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<div class="description btn-desc">'.$this->field['desc'].'</div>':'';	
 	}
 	
 	/**

@@ -48,7 +48,7 @@ class Options__Theme_Settings_font_select extends Options__Theme_Settings{
 			
 		echo '</select>';
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description">'.$this->field['desc'].'</span>':'';
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
 		
 	}
 	

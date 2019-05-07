@@ -21,7 +21,7 @@ class Options__Fields__Text__F_Text extends Options__Theme_Settings{
 		
 		echo '<input type="text" name="'. $name .'" value="'.esc_attr($this->value).'" class="'.$class.'" />';
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description '.$class.'">'.$this->field['desc'].'</span>':'';
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
 		
 	}
 	

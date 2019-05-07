@@ -51,7 +51,7 @@ class Options__Fields__Tabs__F_Tabs extends Options__Theme_Settings{
 	
 		echo '</ul>';
 
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description tabs-desc">'.$this->field['desc'].'</span>':'';	
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description tabs-desc">'.$this->field['desc'].'</div>':'';	
 	}
 	
 	/**

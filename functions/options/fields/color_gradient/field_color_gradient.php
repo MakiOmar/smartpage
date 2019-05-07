@@ -44,7 +44,7 @@ class Options__Theme_Settings_color_gradient extends Options__Theme_Settings{
 				
 			echo '</fieldset>';
 			
-			echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description">'.$this->field['desc'].'</span>':'';
+			echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
 
 
 		echo '</div>';

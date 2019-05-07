@@ -45,7 +45,7 @@ class Options__Theme_Settings_multi_text extends Options__Theme_Settings{
 	
 		echo '</ul>';
 
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description multi-text-desc">'.$this->field['desc'].'</span>':'';	
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description multi-text-desc">'.$this->field['desc'].'</div>':'';	
 	}
 	
 	

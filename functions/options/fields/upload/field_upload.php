@@ -25,7 +25,7 @@ class Options__Theme_Settings_upload extends Options__Theme_Settings{
 		if($this->value == ''){$remove = ' style="display:none;"';$upload = '';}else{$remove = '';$upload = ' style="display:none;"';}
 		echo ' <a href="javascript:void(0);" data-choose="Choose a File" data-update="Select File" class="mfn-opts-upload"'.$upload.' ><span></span>'.__('Browse', 'mfn-opts').'</a>';
 		echo ' <a href="javascript:void(0);" class="mfn-opts-upload-remove"'.$remove.'>'.__('Remove Upload', 'mfn-opts').'</a>';
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<span class="description">'.$this->field['desc'].'</span>':'';
+		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
 	}
 
     /**
