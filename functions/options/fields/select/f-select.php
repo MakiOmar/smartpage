@@ -23,7 +23,8 @@ class Options__Fields__Select__F_Select extends Options__Theme_Settings{
 			echo '<p class=smpg-warning>'.$this->field['note'].'<p>';
 		}
 		
-		$class = isset($this->field['class']) ? ' class="'.$this->field['class'].'"' : '';
+		$class = (isset($this->field['class']) && !empty($this->field['class'])) ? ' class="'.$this->field['class'].'"' : '';
+		
 		echo '<select name="'. $name .'" '.$class.'rows="6" autocomplete="off"'.$class.'>';
 			if( is_array( $this->field['options'] ) ){
 				foreach( $this->field['options'] as $k => $v ){
