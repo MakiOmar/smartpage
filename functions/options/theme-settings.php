@@ -270,11 +270,18 @@ if (!class_exists('Options__Theme_Settings')) {
 				// output security fields for the registered setting "Smpg_Options"
 				settings_fields( $this->OptionGroup );
 			
-				echo '<div id="options-wrap"><div id="options-nav"><ul>';
+				echo '<div id="options-wrap"><div id="options-nav"><div id="logo"><img src="'.SMPG_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
 			
 					foreach($this->navigation as $nav => $details){
 
-						echo '<li id="'.$nav.'" class="smpg-nav-item"><a id="'.$nav.'" href="#" class="smpg-nav-link">'.$details['title'].'</a></li>';
+						echo '<li><div><a href="#"  class="smpg-nav-item" role="'.$nav.'">'.$details['title'].'</a><span class="'.$nav.' toggle-dropdown" onclick="jQuery:toggle_sections(\''.$nav.'\')">+</span></div>';
+						echo '<ul id="'.$nav.'" class="smpg-dropdown">';
+						
+							foreach($details['sections'] as $sec){
+								echo '<li class="smpg-nav-item"><a id="'.$sec.'" href="#" class="smpg-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a></li>';
+							}
+						
+						echo '</ul></li>';
 
 					 }
 

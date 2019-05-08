@@ -41,6 +41,11 @@
     font-weight: 100;
     font-style: normal;
 }
+#logo{
+	padding: 27px 10px;
+	background-color: #f8f8f8;
+	text-align: center;
+}
 #smpg-options-wrapper{
 	background-color: #fff;
 	padding: 20px;
@@ -59,10 +64,9 @@
 #options-nav{
 	width: 20%;
 	background-color: rgb(209, 53, 75);
-	border-radius: 30px;
 	box-shadow: 10px 5px 6px #dbd1d1;
 }
-.smpg-nav-link{
+.smpg-nav-link,.smpg-nav-item{
 	line-height: 50px;
 	color: #fff;
 	font-size: 18px;
@@ -74,10 +78,19 @@
     font-size: 20px;
 	padding: 10px;
 }
-.smpg-nav-item{
+.smpg-nav-link{
 	padding: 0 20px;
-	border-bottom: 1px solid #80303b;
 }
+.smpg-nav-item{
+	display: block;
+	padding: 0 5px;
+	width: 75%;
+}
+.smpg-nav-item:hover{
+	color: #ffffff;
+	background: #871928;
+}
+
 #options-sections{
 	width: 70%;
 }
@@ -99,7 +112,6 @@
 	color: #ffffff;
 	background-color: rgb(209, 53, 75);
 	margin: 0;
-	border-radius: 30px;
 	border-bottom-left-radius: 0;
 	font-family: "EXO";
 	text-align: center;
@@ -129,7 +141,7 @@
 	font-weight: bold;
 	color: #f6f6f6;
 	padding: 10px;
-	background-color: #e09352;
+	background-color: #871928;
 	margin: 5px;
 	border-left: 6px solid #230005;
 }
@@ -208,7 +220,7 @@
 
 .has-switch span.switch-left {
     border-radius: 30px 0 0 30px;
-    background-color: #E09352;
+    background-color: #871928;
     border-left: 1px solid transparent;
 }
 .has-switch span.switch-right {
@@ -254,6 +266,42 @@
 	font-family: "Gugi";
 }
 
+.smpg-dropdown{
+	display: none;
+}
+.smpg-dropdown .smpg-nav-item{
+	width: auto;
+} 
+#options-nav ul{
+	padding-top: 0;
+	margin-top: 0;
+	border-bottom: 1px solid #fff;
+}
+#options-nav ul li{
+	
+	margin: 0;
+}
+#options-nav ul li div{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+	border-bottom: 1px solid #fff;
+}
+
+.toggle-dropdown{
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	height: 50px;
+	color: #fff;
+	background: #871928;
+	font-size: 20px;
+	top: 0;
+	left: 0;
+}
 .wp-core-ui .button-primary {
     background: #d1354b;
     border-color: #d1354b #d1354b #d1354b;
