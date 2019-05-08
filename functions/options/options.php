@@ -13,41 +13,41 @@ $options_nav = array(
 	// General --------------------------------------------
 	'general' => array(
 		'title' => esc_html__('Getting started', TEXTDOM),
-		'sections' => array(  ),
+		'sections' => array('general'),
 	),
 	// Slider --------------------------------------------
 	'slider' => array(
 		'title' => esc_html__('Slider', TEXTDOM),
-		'sections' => array(  ),
+		'sections' => array('slider'),
 	),
 	// Layout --------------------------------------------
 	'layout' => array(
 		'title' => esc_html__('Layout', TEXTDOM),
-		'sections' => array(  ),
+		'sections' => array('layout'),
 	),
 
 	// Colors --------------------------------------------
 	'colors' => array(
 		'title' => esc_html__('Colors', TEXTDOM),
-		'sections' => array( ),
+		'sections' => array('colors'),
 	),
 
 	// Fonts --------------------------------------------
 	'fonts' => array(
 		'title' => esc_html__('Fonts', TEXTDOM),
-		'sections' => array(  ),
+		'sections' => array( 'arabic-fonts', 'english-fonts' ),
 	),
 
 	// Translate --------------------------------------------
 	'translate' => array(
 		'title' => esc_html__('Translate', TEXTDOM),
-		'sections' => array(  ),
+		'sections' => array('translate'),
 	),
 	
 	// Socials --------------------------------------------
 	'socials' => array(
 		'title' => esc_html__('Socials', TEXTDOM),
-		'sections' => array(  ),
+		'sections' => array('socials'),
 	),
 );
 
@@ -158,46 +158,92 @@ $sections['layout']= array(
 
 $arFonts = is_array($smpgOptions->get_option('custom_ar_fonts')) ? $smpgOptions->get_option('custom_ar_fonts') : array();
 
+$defaultArFonts = array(
+						'droid_arabic_kufiregular' => 'Droid kufi regular',
+						'droid_arabic_kufibold'    => 'Droid kufi bold',
+						'decotypethuluthiiregular' => 'Thuluthii regular',
+						'hsn_shahd_boldbold'       => 'Shahd boldbold',
+						'ae_alarabiyaregular'      => 'Alarabiya regular',
+						'ae_alhorregular'          => 'Alhor regular',
+						'ae_almohanadregular'      => 'Almohanad regular',
+
+					);
+
 $enFonts = is_array($smpgOptions->get_option('custom_en_fonts')) ? $smpgOptions->get_option('custom_en_fonts') : array();
-$sections['fonts']= array(
-		'title'  => esc_html__('Fonts', TEXTDOM),
+
+$defaultEnFonts = array(
+						'ralewaybold'    => 'Raleway bold',
+						'ralewaylight'   => 'Raleway light',
+						'ralewayregular' => 'Raleway regular',
+						'ralewaythin'    => 'Raleway thin',
+
+					);
+
+$sections['arabic-fonts']= array(
+		'title'  => esc_html__('Arabic fonts', TEXTDOM),
 		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_ar_font',
-							'title'   => esc_html__('Arabic fonts', TEXTDOM),
+							'id'      => 'smpg_headings_ar_font',
+							'title'   => esc_html__('Arabic font for headings', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
-							'options' => array_merge( array(
-										'droid_arabic_kufiregular' => 'Droid kufi regular',
-										'droid_arabic_kufibold'    => 'Droid kufi bold',
-										'decotypethuluthiiregular' => 'Thuluthii regular',
-										'hsn_shahd_boldbold'       => 'Shahd boldbold',
-										'ae_alarabiyaregular'      => 'Alarabiya regular',
-										'ae_alhorregular'          => 'Alhor regular',
-										'ae_almohanadregular'      => 'Almohanad regular',
-
-									), $arFonts),
+							'options' => array_merge($defaultArFonts , $arFonts),
 							'default' => 'ae_almohanadregular',
 						),
 						array(
-							'id'      => 'smpg_en_font',
-							'title'   => esc_html__('English fonts', TEXTDOM),
+							'id'      => 'smpg_links_ar_font',
+							'title'   => esc_html__('Arabic font for links', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
-							'options' => array_merge( array(
-										'ralewaybold'    => 'Raleway bold',
-										'ralewaylight'   => 'Raleway light',
-										'ralewayregular' => 'Raleway regular',
-										'ralewaythin'    => 'Raleway thin',
-
-									), $enFonts),
-							'default' => 'ralewaybold',
+							'options' => array_merge($defaultArFonts , $arFonts),
+							'default' => 'ae_almohanadregular',
+						),
+						array(
+							'id'      => 'smpg_paragraph_ar_font',
+							'title'   => esc_html__('Arabic font for paragraph', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => array_merge($defaultArFonts , $arFonts),
+							'default' => 'ae_almohanadregular',
 						),
 						
 					)
 );
 
+$sections['english-fonts']= array(
+		'title'  => esc_html__('English fonts', TEXTDOM),
+		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(
+
+						array(
+							'id'      => 'smpg_headings_en_font',
+							'title'   => esc_html__('English font for headings', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => array_merge( $defaultEnFonts, $enFonts),
+							'default' => 'ralewaybold',
+						),
+						
+						array(
+							'id'      => 'smpg_links_en_font',
+							'title'   => esc_html__('English font for links', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => array_merge( $defaultEnFonts, $enFonts),
+							'default' => 'ralewaybold',
+						),
+						array(
+							'id'      => 'smpg_paragraph_en_font',
+							'title'   => esc_html__('English font for paragraph', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => array_merge( $defaultEnFonts, $enFonts),
+							'default' => 'ralewaybold',
+						),
+						
+					)
+);
 $sections['socials']= array(
 		'title'  => esc_html__('Social Media', TEXTDOM),
 		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
