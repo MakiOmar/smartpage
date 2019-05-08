@@ -9,10 +9,12 @@ $smpglibs = [
 	'admin-functions'     =>'',
 	'media-functions'     =>'',
 	'db-functions'        =>'',
+	'opts-functions'      =>'',
 	'php-helpers'         =>'helper/',
 	'wordpress-helpers'   =>'helper/',
 	'ajax-comments'       =>'ajax/',
 	'options'             =>'options/',
+	
 	
 ];
 
