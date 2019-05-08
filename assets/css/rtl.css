@@ -130,9 +130,10 @@ body{
 	font-style: normal;
 	letter-spacing: 0;
 }
-h1,h2,h3,h4,h5,h6{
+/*h1,h2,h3,h4,h5,h6{
 	font-family:'hsn_shahd_boldbold';
 }
+*/
 /***Header***/
 .search-form-toggle{
 	right: auto;
