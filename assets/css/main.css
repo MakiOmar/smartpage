@@ -326,7 +326,7 @@ img {
 	.sub-menu li{
 		background-color: #5F5D5D;
 		display: block!important;
-		border-right: none !important;
+		border-right: none;
 		border-bottom: 1px solid #808080!important;
 	}
 	.nav-links{
@@ -1646,8 +1646,15 @@ img {
 	left: 0!important;
 	right: 0;
 }
+.sticky #main_menu_con .menu-item{
+	height: auto;
+	top: auto;
+}
+.sticky #main_menu_con li a:hover{
+	font-size: 12px;
+}
 .active, .active-tab{
-	background-color: #fc2a2a !important;
+	background-color: #fc2a2a;
 	font-weight: bold;
 	border: none;
 }
