@@ -29,7 +29,7 @@ $options_nav = array(
 	// Colors --------------------------------------------
 	'colors' => array(
 		'title' => esc_html__('Colors', TEXTDOM),
-		'sections' => array('colors'),
+		'sections' => array('general-colors','menu-colors'),
 	),
 
 	// Fonts --------------------------------------------
@@ -120,6 +120,39 @@ $sections['general']= array(
 							'type'    => 'text',
 							'validate'=> 'no_html',
 							'default' => sprintf(__('All rights are reserved to SmartPage %s', TEXTDOM), date('Y'))
+						),						
+					)
+);
+$sections['menu-colors']= array(
+		'title' => esc_html__('Menu Colors', TEXTDOM),
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(	
+						array(
+							'id'      => 'smpg_main_menu_color_settings',
+							'title'   => esc_html__('Main menu', TEXTDOM),
+							'type'    => 'color',
+							'validate'=> 'no_html',
+							'default' => '#230005'
+						),						
+					)
+);
+$sections['general-colors']= array(
+		'title' => esc_html__('General', TEXTDOM),
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(
+						array(
+							'id'      => 'smpg_color_skin_settings',
+							'title'   => esc_html__('Color skin', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => array(
+											'blue'     => esc_html__('Blue', TEXTDOM),
+											'firebrick'=> esc_html__('Firebrick', TEXTDOM),
+											'pure'     => esc_html__('Pure', TEXTDOM),
+											'custom'   => esc_html__('Custom', TEXTDOM),
+											),
+							'default' => 'firebrick',
+							'desc' => esc_html__('Other color options like (Menu colors, Headings colors) works only if color skin is custom', TEXTDOM),
 						),						
 					)
 );
