@@ -274,7 +274,7 @@ if (!class_exists('Options__Theme_Settings')) {
 			
 					foreach($this->navigation as $nav => $details){
 
-						echo '<li><div><a href="#"  class="smpg-nav-item" role="'.$nav.'">'.$details['title'].'</a><span class="'.$nav.' toggle-dropdown" onclick="jQuery:toggle_sections(\''.$nav.'\')">+</span></div>';
+						echo '<li><div><a href="#"  class="smpg-nav-item nav-toggle" role="'.$nav.'">'.$details['title'].'</a><span class="'.$nav.' toggle-dropdown" onclick="jQuery:toggle_sections(\''.$nav.'\')">+</span></div>';
 						echo '<ul id="'.$nav.'" class="smpg-dropdown">';
 						
 							foreach($details['sections'] as $sec){
@@ -306,7 +306,7 @@ if (!class_exists('Options__Theme_Settings')) {
 <?php
 }
 		function page_scripts(){
-			wp_register_style( 'smpg-options-css', SMPG_OPTIONS_URI.'css/options.css', array(), time(), 'all');	
+			wp_register_style( 'smpg-options-css', SMPG_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
 			
 			wp_enqueue_style( 'smpg-options-css' );
 			
