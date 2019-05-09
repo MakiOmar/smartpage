@@ -1,11 +1,11 @@
 <?php
-class Options__Fields_Color_F_Color extends Options__Theme_Settings{
+class Options__Fields__Color__F_Color extends Options__Theme_Settings{
 	
 	/**
 	 * Field Constructor.
 	*/
 	function __construct($field = array(), $value ='', $parent){	
-		parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;
 	}
@@ -15,7 +15,7 @@ class Options__Fields_Color_F_Color extends Options__Theme_Settings{
 	*/
 	function render(){	
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : '';
-		$value = ( $this->value ) ? $this->value : $this->field['std'];
+		$value = ( $this->value ) ? $this->value : $this->field['default'];
 		
 		echo '<div class="farb-popup-wrapper">';
 			echo '<input type="text" id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" value="'. $value .'" class="'.$class.' popup-colorpicker"/>';
@@ -29,7 +29,7 @@ class Options__Fields_Color_F_Color extends Options__Theme_Settings{
 	 * Enqueue Function.
 	*/
 	function enqueue(){
-		wp_enqueue_script('mfn-opts-field-color-js', Options__Theme_Settings_URI.'fields/color/field_color.js', array('jquery', 'farbtastic'), time(), true);
+		wp_enqueue_script('smpg-opts-field-color-js', SMPG_OPTIONS_URI.'fields/color/field_color.js', array('jquery', 'farbtastic'), time(), true);
 	}
 	
 }
