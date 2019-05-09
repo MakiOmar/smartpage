@@ -7,7 +7,7 @@
 		
 		if($smpgOptions->smpg_slider_settings != 'rev-slider'){
 			
-			if($smpgOptions->smpg_slider_settings == 'featured-cat'){
+			if($smpgOptions->smpg_slider_settings == 'featured-cat' && $smpgOptions->smpg_featured_cat_settings != '0'){
 				$FreaturedCat = get_term_by( 
 								'id', 
 								$smpgOptions->smpg_featured_cat_settings,

@@ -8,13 +8,12 @@ if(isset($smpgOptions->smpg_slider_settings )){
 					'orderby'        => 'rand',
 				);
 		
-		if($smpgOptions->smpg_slider_settings == 'featured-cat'){
+		if($smpgOptions->smpg_slider_settings == 'featured-cat' && $smpgOptions->smpg_featured_cat_settings != '0'){
 			$FreaturedCat = get_term_by( 
 							'id', 
 							$smpgOptions->smpg_featured_cat_settings,
 							$smpgOptions->smpg_featured_tax_settings
 						);
-
 		$args['cat'] = $FreaturedCat->term_id;
 
 		}elseif($smpgOptions->smpg_slider_settings == 'featured-post'){
