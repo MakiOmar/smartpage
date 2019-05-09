@@ -148,7 +148,7 @@ $sections['general-colors']= array(
 							'options' => array(
 											'blue'     => esc_html__('Blue', TEXTDOM),
 											'firebrick'=> esc_html__('Firebrick', TEXTDOM),
-											'pure'     => esc_html__('Pure', TEXTDOM),
+											'red'     => esc_html__('Red', TEXTDOM),
 											'custom'   => esc_html__('Custom', TEXTDOM),
 											),
 							'default' => 'firebrick',
