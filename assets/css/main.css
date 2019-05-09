@@ -84,7 +84,7 @@ body{
 }
 
 a,h1,h2,h3,h4,h5,h6 {
-	color: #ff3600;
+	color: #fc2a2a;
 	
 }
 a{
@@ -266,7 +266,7 @@ img {
 	/***Navigation menus***/
 	#main_nav_con {
 		background: url(../../images/pattern-1.png) repeat;
-		background-color: #444;
+		background-color: #230005;
 		height: 100%;
 		position: absolute;
 		z-index: 999999;
@@ -656,7 +656,7 @@ img {
 		opacity:0.7;
 		cursor:pointer;
 		z-index:100;
-		background-color: #ff3600;
+		background-color: #fc2a2a;
 		text-align: center;
 		color: #ffffff;
 		border-radius: 5px;
@@ -712,7 +712,7 @@ img {
 	}
 	.post-image-wrapper h4{
 		display: flex;
-		background-color: #ff3600;
+		background-color: #fc2a2a;
 		position: absolute;
 		padding: 5px;
 		top: 0;
@@ -1062,7 +1062,7 @@ img {
 	}
 	.single-download{
 		border-radius: 15px;
-		background-color: #ff3600;
+		background-color: #fc2a2a;
 		text-align: center;
 		max-width: 50%;
 	}
@@ -1228,6 +1228,9 @@ img {
 	.widgeted .dropdown li{
 		background-color: transparent!important;
 	}
+	.widgeted a{
+		color: #444;
+	}
 	.single-sidebar{
 		height: 0;
 		opacity: 0;
@@ -1352,7 +1355,7 @@ img {
 	#slider-wrapper{
 		border-top-width: 5px;
 		border-top-style: solid;
-		border-top-color: #ef1450;
+		border-top-color: #fc2a2a;
 	}
 	.widgeted #searchform{
 		display: flex;
@@ -1440,11 +1443,11 @@ img {
 	.f-post-title {
 		display: inline-block;
 		padding: 10px;
-		background-color: #ff3600;
+		background-color: #fc2a2a;
 
 	}
 	.section{
-		border-top: 5px solid #ef1450;
+		border-top: 5px solid #fc2a2a;
 		visibility: hidden;
 		opacity: 0;
 		position: relative;
@@ -1540,7 +1543,7 @@ img {
 		justify-content: center;
 		width: 40px;
 		height: 40px;
-		background-color: #ff3600;
+		background-color: #fc2a2a;
 		color: #ffffff;
 		border-radius: 50%;
 	}
@@ -1764,7 +1767,7 @@ img {
     background-color: rgb(255,255,255, 0.5);
     border-radius: 50%;
     border: 8px solid #f3f3f3;
-    border-top: 8px solid #ff3600;
+    border-top: 8px solid #fc2a2a;
     animation: spin 1s linear infinite;
     -webkit-animation: spin 1s linear infinite;
     -moz-animation: spin 1s linear infinite;
