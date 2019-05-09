@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 	"use strict";
-	$('.smpg-nav-item').click(function(e){
+	$('.nav-toggle').click(function(e){
 		e.preventDefault();
 		toggle_sections($(this).attr('role'));
 	});
