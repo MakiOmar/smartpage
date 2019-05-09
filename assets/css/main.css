@@ -265,7 +265,8 @@ img {
 	}
 	/***Navigation menus***/
 	#main_nav_con {
-		/*background: url(../../images/pattern-1.png) repeat;*/
+		background: url(../../images/pattern-1.png) repeat;
+		background-color: #444;
 		height: 100%;
 		position: absolute;
 		z-index: 999999;
@@ -734,6 +735,7 @@ img {
 	display: flex;
     align-items: center;
     justify-content: space-around;
+	background-color: #e0e0e0;
 }
 .author-avatar{
 	width: 48px;
@@ -1773,4 +1775,11 @@ img {
 
 .show-loading{
 	display:block!important;
+}
+
+@media screen and (min-width: 768px){
+	#main_menu_con li a:hover {
+		background-color: #14a845;
+		font-size: 16px;
+	}
 }

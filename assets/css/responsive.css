@@ -246,10 +246,7 @@
 	#main_menu_con li:hover > .sub-menu{
 	display: block;
 	}
-	#main_menu_con li a:hover{
-    background-color: #b10030;
-	font-size: 16px;
-	}
+	
 	#toggles-wrapper{
 		display: none!important;
 	}
@@ -433,3 +430,4 @@
 	/***End body***/
 	
 }
+
