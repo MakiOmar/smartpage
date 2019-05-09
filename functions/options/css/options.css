@@ -302,6 +302,13 @@
 	top: 0;
 	left: 0;
 }
+.farb-popup {
+    position: absolute;
+    background-color: #fff;
+    border: 2px solid #EBECEC;
+    padding: 5px;
+    z-index: 100;
+}
 .wp-core-ui .button-primary {
     background: #d1354b;
     border-color: #d1354b #d1354b #d1354b;
