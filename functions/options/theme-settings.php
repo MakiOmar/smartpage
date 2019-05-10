@@ -58,9 +58,6 @@ if (!class_exists('Options__Theme_Settings')) {
 			
 			//get the options for use later on
 			$this->options = Smpg__Options_Model::get_instance();
-			
-			neat_print_r($this->options->get_all_current_options());
-			//neat_print_r($this->smpg_default_values());
 
 		}
 		
@@ -89,8 +86,7 @@ if (!class_exists('Options__Theme_Settings')) {
 		}
 		
 		/**
-		 * Set default options on admin_init if option doesnt exist (theme activation hook 
-		 *caused problems, so admin_init it is)
+		 * Set default options on init if option doesnt exist
 		*/
 		function smpg_set_default_options(){
 			if(!get_option($this->args['opt_name'])){
@@ -215,7 +211,7 @@ if (!class_exists('Options__Theme_Settings')) {
 					$fieldID = $field['id'];
 					
 					$fieldDefault = isset($field['default']) ? $field['default'] : '';
-					//neat_var_dump($this->options->$fieldID);
+
 					$value = (isset($this->options->$fieldID))? $this->options->$fieldID : $fieldDefault;
 										
 					$render = '';
@@ -274,9 +270,7 @@ if (!class_exists('Options__Theme_Settings')) {
 								
 								continue;
 							}
-							
-							//set_transient($fieldID, $this->options->$fieldID, 3600);
-							
+														
 							$this->validate->validate_inputs($args);
 							
 							if(isset($this->validate->errors[$fieldID])){
