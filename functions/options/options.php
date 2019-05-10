@@ -23,7 +23,7 @@ $options_nav = array(
 	// Layout --------------------------------------------
 	'layout' => array(
 		'title' => esc_html__('Layout', TEXTDOM),
-		'sections' => array('layout'),
+		'sections' => array('sidebars', 'blog'),
 	),
 
 	// Colors --------------------------------------------
@@ -157,8 +157,8 @@ $sections['general-colors']= array(
 					)
 );
 
-$sections['layout']= array(
-		'title' => esc_html__('Layout', TEXTDOM),
+$sections['sidebars']= array(
+		'title' => esc_html__('Sidebars', TEXTDOM),
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
@@ -186,6 +186,25 @@ $sections['layout']= array(
 						),
 
 						
+					)
+);
+$sections['blog']= array(
+		'title' => esc_html__('Blog', TEXTDOM),
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(
+						array(
+							'id'      => 'smpg_posts_grid_settings',
+							'title'   => esc_html__('Posts grid', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => array(
+											'standard'     => esc_html__('Standard', TEXTDOM),
+											'masonary'=> esc_html__('Masonary', TEXTDOM),
+											),
+							'default'  => 'masonary',
+							
+						),
+
 					)
 );
 
