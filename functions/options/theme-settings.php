@@ -9,6 +9,7 @@ if (!class_exists('Options__Theme_Settings')) {
 		public $options = array();
 		public $validate;
 		public $navigation;
+		public $defaultOptions;
 		/**
 		 * Class Constructor. Defines the args for the theme options class
 		*/
@@ -49,9 +50,67 @@ if (!class_exists('Options__Theme_Settings')) {
 			 */
 			add_action('admin_init', array(&$this, 'smpg_settings_init'));
 			
+			//set default values
+			$this->smpg_default_values();
+			
+			//set option with defaults
+			add_action('init', array(&$this, 'smpg_set_default_options'));
+			
 			//get the options for use later on
 			$this->options = Smpg__Options_Model::get_instance();
+			
+			neat_print_r($this->options->get_all_current_options());
+			//neat_print_r($this->smpg_default_values());
 
+		}
+		
+		/**
+		 * Get default options into an array suitable for the settings API
+		*/
+		public function smpg_default_values(){		
+			$defaults = array();
+			
+			foreach($this->sections as $secKey => $section){
+				
+				if(isset($section['fields'])){
+					
+					foreach($section['fields'] as $fieldk => $field){	
+						if(!isset($field['default'])){
+							$field['default'] = '';
+						}
+						$defaults[$field['id']] = $field['default'];
+					}
+					
+				}
+				
+			}
+			
+			$this->defaultOptions = $defaults;
+		}
+		
+		/**
+		 * Set default options on admin_init if option doesnt exist (theme activation hook 
+		 *caused problems, so admin_init it is)
+		*/
+		function smpg_set_default_options(){
+			if(!get_option($this->args['opt_name'])){
+				
+				add_option($this->args['opt_name'], $this->defaultOptions);
+				
+			}else{
+				
+				foreach(array_keys($this->defaultOptions)  as $defaultsKey){
+					
+					if(!in_array($defaultsKey, array_keys($this->options->get_all_current_options()))){
+						
+						$this->options->add_option($defaultsKey, $this->defaultOptions[$defaultsKey]);
+						
+					}
+					
+				}
+				
+			}
+			
 		}
 		
 		/**
