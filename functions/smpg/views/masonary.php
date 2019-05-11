@@ -24,14 +24,14 @@ class Smpg__Views__Masonary extends Smpg__Generate_Posts_View{
 			<div id="masonary">
 		<?php }else{?>
 			<div><div id="masonary">
-		<?php }
-
-				 while($this->child->post->have_posts()){
+		<?php }?>
+			<div id="blog-posts">
+			<?php
+					while($this->child->post->have_posts()){
 					 
 					$this->child->post->the_post();
 					 
-					$tbp_post_id = get_the_ID();
-		?>
+					$tbp_post_id = get_the_ID();?>
 
 					<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper grid-col-max-480-12 grid-col-av-12 grid-col-md-6 grid-col">
 						<div class="post-contents blog-post grid-col">
@@ -83,6 +83,7 @@ class Smpg__Views__Masonary extends Smpg__Generate_Posts_View{
 					</div>
 
 				<?php } ?>
+				</div>
 				</div>
 			</div>
 				
