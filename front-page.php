@@ -41,7 +41,7 @@ get_header();
 				
 				get_template_part('templates/downloads') ;
 
-				get_template_part('templates/category-posts-masonary') ;
+				get_template_part('templates/category-posts-'.$smpgOptions->smpg_posts_grid_settings) ;
 			
 				//get_template_part('templates/video') ;
 			
