@@ -27,12 +27,12 @@
 		
 	}
 
-$tcp= new Smpg__Generate_Posts_View(
+$cpm= new Smpg__Generate_Posts_View(
 					$args,
 					'masonary',
 					true
 				);
 
-$tcp->postsView();
+$cpm->postsView();
 						
 ?>
