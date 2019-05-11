@@ -2,7 +2,9 @@
 @-ms-viewport{
   width: device-width;
 }
-
+.post-wrapper{
+	float: left;
+}
 @font-face {
     font-family: 'ralewaybold';
     src: url('../../fonts/raleway-bold-webfont.eot');
