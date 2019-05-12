@@ -105,7 +105,8 @@ $sections['slider']= array(
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => admin_get_terms_options($smpgOptions->smpg_featured_tax_settings),
-							'class'    => 'featured-cat'.( $smpgOptions->smpg_slider_settings == 'featured-cat' ? ' smpg_slider_settings_show' : '')
+							'class'    => 'featured-cat'.( $smpgOptions->smpg_slider_settings == 'featured-cat' ? ' smpg_slider_settings_show' : ''),
+							'note'    => empty($smpgOptions->smpg_featured_cat_settings) ? esc_html__('No category selected, you have to select one', TEXTDOM) : ''
 						),
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
@@ -345,5 +346,4 @@ $sections['socials']= array(
 
 					)
 );
-
 $Smpg_Options = new Options__Theme_Settings( $options_nav, $sections );
