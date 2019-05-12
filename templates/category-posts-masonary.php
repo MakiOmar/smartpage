@@ -8,13 +8,17 @@
 		if($smpgOptions->smpg_slider_settings != 'rev-slider'){
 			
 			if($smpgOptions->smpg_slider_settings == 'featured-cat' && $smpgOptions->smpg_featured_cat_settings != '0'){
+				
 				$FreaturedCat = get_term_by( 
 								'id', 
 								$smpgOptions->smpg_featured_cat_settings,
 								$smpgOptions->smpg_featured_tax_settings
 							);
-
-				$args['category__not_in'] = $FreaturedCat->term_id;
+				
+				if($FreaturedCat){
+					$args['category__not_in'] = $FreaturedCat->term_id;
+				}
+				
 
 			}elseif($smpgOptions->smpg_slider_settings == 'featured-post'){
 
