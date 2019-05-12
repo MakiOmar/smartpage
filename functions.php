@@ -1,8 +1,10 @@
 <?php
 //Load configuration
 require_once(wp_normalize_path( get_template_directory() ).'/functions/config.php');
-
 $smpglibs = [
+	'php-helpers'         =>'helper/',
+	'wordpress-helpers'   =>'helper/',
+	'options'             =>'options/',
 	'posts-functions'     =>'',
 	'theme-functions'     =>'',
 	'menus-functions'     =>'',
@@ -10,12 +12,7 @@ $smpglibs = [
 	'media-functions'     =>'',
 	'db-functions'        =>'',
 	'opts-functions'      =>'',
-	'php-helpers'         =>'helper/',
-	'wordpress-helpers'   =>'helper/',
 	'ajax-comments'       =>'ajax/',
-	'options'             =>'options/',
-	
-	
 ];
 
 foreach($smpglibs as $smpglib=>$path){
@@ -23,7 +20,7 @@ foreach($smpglibs as $smpglib=>$path){
 }
 
 add_action('wp_footer', function(){
-	//neat_print_r(get_option(SMPG_OPTIONS));
+	neat_print_r(get_option(SMPG_OPTIONS));
 });
 
 /*
