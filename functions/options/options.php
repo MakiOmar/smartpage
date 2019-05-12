@@ -8,6 +8,10 @@ if(!defined('SMPG_OPTIONS_URI')){
 
 $smpgOptions = Smpg__Options_Model::get_instance();
 
+if(!defined('SMPG_OPTIONS_DB')){
+	define('SMPG_OPTIONS_DB', serialize($smpgOptions->get_all_options_in_database()));	
+}
+
 // Navigation elements
 $options_nav = array(
 	// General --------------------------------------------
@@ -330,6 +334,13 @@ $sections['socials']= array(
 							'default' => '#',		
 						),
 						array(
+							'id'      => 'tumblr',
+							'title'   => esc_html__('Tumbler account link', TEXTDOM),
+							'type'    => 'text',		
+							'validate'=> 'url',		
+							'default' => '#',		
+						),
+						array(
 							'id'      => 'youtube',
 							'title'   => esc_html__('Youtube channel', TEXTDOM),
 							'type'    => 'text',		
@@ -337,11 +348,25 @@ $sections['socials']= array(
 							'default' => '#',
 						),
 						array(
+							'id'      => 'rss',
+							'title'   => esc_html__('RSS feed', TEXTDOM),
+							'type'    => 'text',		
+							'validate'=> 'url',		
+							'default' => get_bloginfo('rss_url'),
+						),
+						array(
 							'id'      => 'email',
 							'title'   => esc_html__('Email address', TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'email',		
 							'default' => get_bloginfo('admin_email'),		
+						),
+						array(
+							'id'      => 'phone',
+							'title'   => esc_html__('Phone number', TEXTDOM),
+							'type'    => 'text',		
+							'validate'=> 'no_html',		
+							'default' => '#',		
 						),
 
 					)
