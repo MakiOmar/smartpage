@@ -14,17 +14,26 @@ if(isset($smpgOptions->smpg_slider_settings )){
 							$smpgOptions->smpg_featured_cat_settings,
 							$smpgOptions->smpg_featured_tax_settings
 						);
-		$args['cat'] = $FreaturedCat->term_id;
+			
+			if($FreaturedCat){
+				$args['cat'] = $FreaturedCat->term_id;
+			}
+		
 
 		}elseif($smpgOptions->smpg_slider_settings == 'featured-post'){
 			$args['meta_key'] = 'smpg_set_featured';
 		}
-
+		
 		$fc= new Smpg__Generate_Posts_View(
 					$args,
 					'featured',
 					true
 				);
+	
+		if(!$FreaturedCat){
+			$fc->msg = 'You did not select a featured category, please choose one from theme options/slider';
+		}
+	
 		$fc->postsView();
 
 }
