@@ -48,6 +48,11 @@ class Smpg__Generate_Posts_View{
 	public $PostsIds = array();
 	
 	/*
+	*@var array  $PostsIds post ids inside the loop for further use
+	*/
+	public $msg = null;
+	
+	/*
 	*generatePostView constructor
 	*@param  array   $args      array to create post object
 	*@param  string  $template  the name of posts template
@@ -86,6 +91,9 @@ class Smpg__Generate_Posts_View{
 		
 		if($this->post->have_posts()){
 			if(isset($view)){
+				if(!is_null($this->msg) && !empty($this->msg)){
+					echo $this->msg;
+				}
 				$view->render();
 			}
 				
