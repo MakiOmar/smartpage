@@ -3,16 +3,16 @@
 	
 	$args = array('post_type' => 'post', 'posts_per_page' => 5);
 
-	if(isset($smpgOptions->smpg_slider_settings ) ){
+	if(isset($smpgOptions->slider ) ){
 		
-		if($smpgOptions->smpg_slider_settings != 'rev-slider'){
+		if($smpgOptions->slider != 'rev-slider'){
 			
-			if($smpgOptions->smpg_slider_settings == 'featured-cat' && $smpgOptions->smpg_featured_cat_settings != '0'){
+			if($smpgOptions->slider == 'featured-cat' && $smpgOptions->featured_cat != '0'){
 				
 				$FreaturedCat = get_term_by( 
 								'id', 
-								$smpgOptions->smpg_featured_cat_settings,
-								$smpgOptions->smpg_featured_tax_settings
+								$smpgOptions->featured_cat,
+								$smpgOptions->featured_tax
 							);
 				
 				if($FreaturedCat){
@@ -20,7 +20,7 @@
 				}
 				
 
-			}elseif($smpgOptions->smpg_slider_settings == 'featured-post'){
+			}elseif($smpgOptions->slider == 'featured-post'){
 
 				$args['posts__not_in'] =  get_posts_ids_by_meta('smpg_set_featured', 'on');
 

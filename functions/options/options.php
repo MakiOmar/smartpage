@@ -6,10 +6,8 @@ if(!defined('SMPG_OPTIONS_URI')){
 	define('SMPG_OPTIONS_URI', THEME_URI ."/functions/options/");	
 }
 
-$smpgOptions = Smpg__Options_Model::get_instance();
-
-if(!defined('SMPG_OPTIONS_DB')){
-	define('SMPG_OPTIONS_DB', serialize($smpgOptions->get_all_options_in_database()));	
+if(get_option(SMPG_OPTIONS)){
+	$smpgOptions = Smpg__Options_Model::get_instance();
 }
 
 // Navigation elements
@@ -65,24 +63,24 @@ $sections['slider']= array(
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_home_slider_settings',
+							'id'      => 'home_slider',
 							'title'   => esc_html__('Revolution slider', TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
 							'desc'    => esc_html('If checked, it will show revolution slider on Homepage', TEXTDOM),
 						),
 						array(
-							'id'      => 'smpg_rev_slider_settings',
+							'id'      => 'rev_slider',
 							'title'   => esc_html__('Select a slider', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
 							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
-							'class'    => 'smpg_rev_slider_settings' . ($smpgOptions->smpg_home_slider_settings == '1' ? ' smpg_home_slider_settings' : '')
+							'class'    => 'rev_slider' . (isset($smpgOptions) && $smpgOptions->home_slider == '1') ? ' home_slider' : ''
 						),
 	
 						array(
-							'id'      => 'smpg_slider_settings',
+							'id'      => 'slider',
 							'title'   => esc_html__('Featured Posts slider', TEXTDOM),
 							'type'    => 'radio',
 							'validate'=> 'no_html',
@@ -94,23 +92,23 @@ $sections['slider']= array(
 							'default'  => 'featured-cat',
 						),
 						array(
-							'id'      => 'smpg_featured_tax_settings',
+							'id'      => 'featured_tax',
 							'title'   => esc_html__('Select featured taxonomy', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => get_taxonomies(),
 							'default' => 'category',
-							'class'    => 'featured-cat'. ($smpgOptions->smpg_slider_settings == 'featured-cat' ? ' smpg_slider_settings_show' : '')
+							'class'    => 'featured-cat'. (isset($smpgOptions) && $smpgOptions->slider == 'featured-cat') ? ' slider_show' : ''
 						),
 	
 						array(
-							'id'      => 'smpg_featured_cat_settings',
+							'id'      => 'featured_cat',
 							'title'   => esc_html__('Select featured category', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
-							'options' => admin_get_terms_options($smpgOptions->smpg_featured_tax_settings),
-							'class'    => 'featured-cat'.( $smpgOptions->smpg_slider_settings == 'featured-cat' ? ' smpg_slider_settings_show' : ''),
-							'note'    => empty($smpgOptions->smpg_featured_cat_settings) ? esc_html__('No category selected, you have to select one', TEXTDOM) : ''
+							'options' => isset($smpgOptions)  ?admin_get_terms_options($smpgOptions->featured_tax) : array(),
+							'class'    => 'featured-cat'.( isset($smpgOptions) && $smpgOptions->slider == 'featured-cat') ? ' slider_show' : '',
+							'note'    => (isset($smpgOptions) && empty($smpgOptions->featured_cat)) ? esc_html__('No category selected, you have to select one', TEXTDOM) : ''
 						),
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
@@ -120,7 +118,7 @@ $sections['general']= array(
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_copyright_settings',
+							'id'      => 'copyright',
 							'title'   => esc_html__('Copyright', TEXTDOM),
 							'type'    => 'text',
 							'validate'=> 'no_html',
@@ -133,7 +131,7 @@ $sections['menu-colors']= array(
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(	
 						array(
-							'id'      => 'smpg_main_menu_color_settings',
+							'id'      => 'main_menu_color',
 							'title'   => esc_html__('Main menu', TEXTDOM),
 							'type'    => 'color',
 							'validate'=> 'no_html',
@@ -146,7 +144,7 @@ $sections['general-colors']= array(
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_color_skin_settings',
+							'id'      => 'color_skin',
 							'title'   => esc_html__('Color skin', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -167,7 +165,7 @@ $sections['sidebars']= array(
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_sidebar_settings',
+							'id'      => 'sidebar',
 							'title'   => esc_html__('Sidebar', TEXTDOM),
 							'type'    => 'radio_img',
 							'validate'=> 'no_html',
@@ -183,7 +181,7 @@ $sections['sidebars']= array(
 							'desc'  => esc_html__('This controls the direction of the main sidebar', TEXTDOM),
 						),
 						array(
-							'id'      => 'smpg_single_sidebar_settings',
+							'id'      => 'single_sidebar',
 							'title'   => esc_html__('Single post sidebar', TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
@@ -198,7 +196,7 @@ $sections['blog']= array(
 		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_posts_grid_settings',
+							'id'      => 'posts_grid',
 							'title'   => esc_html__('Posts grid', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -213,7 +211,7 @@ $sections['blog']= array(
 					)
 );
 
-$arFonts = is_array($smpgOptions->get_option('custom_ar_fonts')) ? $smpgOptions->get_option('custom_ar_fonts') : array();
+$arFonts = (isset($smpgOptions) && is_array($smpgOptions->get_option('custom_ar_fonts'))) ? $smpgOptions->get_option('custom_ar_fonts') : array();
 
 $defaultArFonts = array(
 						'droid_arabic_kufiregular' => 'Droid kufi regular',
@@ -226,7 +224,7 @@ $defaultArFonts = array(
 
 					);
 
-$enFonts = is_array($smpgOptions->get_option('custom_en_fonts')) ? $smpgOptions->get_option('custom_en_fonts') : array();
+$enFonts = (isset($smpgOptions) && is_array($smpgOptions->get_option('custom_en_fonts'))) ? $smpgOptions->get_option('custom_en_fonts') : array();
 
 $defaultEnFonts = array(
 						'ralewaybold'    => 'Raleway bold',

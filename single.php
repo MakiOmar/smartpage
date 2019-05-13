@@ -6,14 +6,14 @@ $smpgOptions = Smpg__Options_Model::get_instance();
   	<div class="grid-row grid-col">
        <?php
 		
-		if($smpgOptions->smpg_sidebar_settings == 'left-sidebar'){
+		if($smpgOptions->sidebar == 'left-sidebar'){
 			get_sidebar();
-		}elseif($smpgOptions->smpg_single_sidebar_settings == '1'){
+		}elseif($smpgOptions->single_sidebar == '1'){
 			get_sidebar('single');
 		}
 		
 		?>
-        <div class="grid-col <?php echo ($smpgOptions->smpg_single_sidebar_settings == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
+        <div class="grid-col <?php echo ($smpgOptions->single_sidebar == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
         
         <?php smpg_breadcrumbs()?>
         
@@ -61,9 +61,9 @@ $smpgOptions = Smpg__Options_Model::get_instance();
         </div>
        <?php
 		
-		if($smpgOptions->smpg_sidebar_settings == 'right-sidebar'){
+		if($smpgOptions->sidebar == 'right-sidebar'){
 			get_sidebar();
-		}elseif($smpgOptions->smpg_single_sidebar_settings == '1'){
+		}elseif($smpgOptions->single_sidebar == '1'){
 			get_sidebar('single');
 		}
 		

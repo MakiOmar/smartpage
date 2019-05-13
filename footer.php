@@ -2,7 +2,7 @@
 
 <footer class="grid-col-md-12 grid-col">
 
-	<p><?php echo esc_html($smpgOptions->smpg_copyright_settings) ?></p>
+	<p><?php echo esc_html($smpgOptions->copyright) ?></p>
 	
 </footer>
 

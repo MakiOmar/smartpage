@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts','smartpage_enqueue_styles');
 
 function smartpage_enqueue_styles() {
 	$smpgOptions = Smpg__Options_Model::get_instance();
-	
+
 	$styles = array('main','font-awesome','responsive','prettyPhoto');
 	foreach($styles as $style){
 		wp_enqueue_style( $style , get_theme_file_uri('/assets/css/'.$style.'.css') , false, filemtime(wp_normalize_path(get_theme_file_path('/assets/css/'.$style.'.css'))) );
@@ -33,8 +33,8 @@ function smartpage_enqueue_styles() {
 		wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/rtl.css'))));
 	}
 	
-	if($smpgOptions->smpg_color_skin_settings !== 'custom'){
-		wp_enqueue_style( $smpgOptions->smpg_color_skin_settings.'-skin' , get_theme_file_uri('/assets/css/skins/'.$smpgOptions->smpg_color_skin_settings.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$smpgOptions->smpg_color_skin_settings.'.css'))));
+	if($smpgOptions->color_skin !== 'custom' /*&& !empty($smpgOptions->color_skin)*/){
+		wp_enqueue_style( $smpgOptions->color_skin.'-skin' , get_theme_file_uri('/assets/css/skins/'.$smpgOptions->color_skin.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$smpgOptions->color_skin.'.css'))));
 	}
 	
 	if(is_single()){
@@ -46,7 +46,6 @@ function smartpage_enqueue_styles() {
 	}
 	
 	$scripts = array('jquery.mousewheel','jquery.easing.1.3','jquery.contentcarousel','jquery.prettyPhoto','custom');
-	#$scripts = array('jquery.min','jquery.prettyPhoto','retina.min','custom');
 		foreach($scripts as $script){
 			wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
 			wp_enqueue_script($script);

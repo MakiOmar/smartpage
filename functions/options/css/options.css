@@ -255,11 +255,11 @@
     -webkit-backface-visibility: hidden;
 }
 
-.featured-cat, .smpg_rev_slider_settings{
+.featured-cat, .rev_slider{
 	display: none;
 }
 
-.smpg_slider_settings_show, .smpg_home_slider_settings{
+.slider_show, .home_slider{
 	display: table-row;
 }
 .form-table th{

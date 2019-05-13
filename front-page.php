@@ -5,13 +5,13 @@ get_header();
 	<?php
 	$smpgOptions = Smpg__Options_Model::get_instance();
 
-	if(isset($smpgOptions->smpg_slider_settings )){
+	if(isset($smpgOptions->slider )){
 		
-		if(smpg_is_active_plugin('revslider/revslider.php') && $smpgOptions->smpg_home_slider_settings == '1'){
+		if(smpg_is_active_plugin('revslider/revslider.php') && $smpgOptions->home_slider == '1'){
 			
-			if(isset($smpgOptions->smpg_rev_slider_settings) && $smpgOptions->smpg_rev_slider_settings != '0'){
+			if(isset($smpgOptions->rev_slider) && $smpgOptions->rev_slider != '0'){
 				
-				putRevSlider($smpgOptions->smpg_rev_slider_settings);
+				putRevSlider($smpgOptions->rev_slider);
 				
 			}else{
 				
@@ -41,7 +41,7 @@ get_header();
 				
 				get_template_part('templates/downloads') ;
 
-				get_template_part('templates/category-posts-'.$smpgOptions->smpg_posts_grid_settings) ;
+				get_template_part('templates/category-posts-'.$smpgOptions->posts_grid) ;
 			
 				//get_template_part('templates/video') ;
 			

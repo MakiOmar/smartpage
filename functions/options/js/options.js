@@ -19,28 +19,28 @@ jQuery(document).ready(function($){
 		
 	});
 	
-	$('.smpg-radio-smpg_slider_settings').find('input[type="radio"]').change(function(){
+	$('.smpg-radio-slider').find('input[type="radio"]').change(function(){
 		var clicked = $(this);
 
-		$('.smpg_slider_settings_show').each(function(){
-			$(this).removeClass('smpg_slider_settings_show');
+		$('.slider_show').each(function(){
+			$(this).removeClass('slider_show');
 		});
 
-		$('.' + clicked.val()).addClass('smpg_slider_settings_show');
+		$('.' + clicked.val()).addClass('slider_show');
 		
 	});
 	
-	$("#smpg_home_slider_settings").change(function() {
+	$("#home_slider").change(function() {
 		
-			$('.smpg_rev_slider_settings').each(function(){
+			$('.rev_slider').each(function(){
 				
-				if($(this).hasClass('smpg_home_slider_settings')){
+				if($(this).hasClass('home_slider')){
 					
-					$(this).removeClass('smpg_home_slider_settings');
+					$(this).removeClass('home_slider');
 					
 				}else{
 					
-					$(this).addClass('smpg_home_slider_settings');
+					$(this).addClass('home_slider');
 					
 				}	
 			});
