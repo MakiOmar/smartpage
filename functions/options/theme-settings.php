@@ -54,7 +54,9 @@ if (!class_exists('Options__Theme_Settings')) {
 			$this->smpg_default_values();
 			
 			//set option with defaults
-			add_action('init', array(&$this, 'smpg_set_default_options'));
+			if(!get_option(SMPG_OPTIONS)){
+				$this->smpg_set_default_options();
+			}
 			
 			//get the options for use later on
 			$this->options = Smpg__Options_Model::get_instance();
@@ -92,7 +94,7 @@ if (!class_exists('Options__Theme_Settings')) {
 			if(!get_option($this->args['opt_name'])){
 				
 				add_option($this->args['opt_name'], $this->defaultOptions);
-				
+								
 			}else{
 				
 				foreach(array_keys($this->defaultOptions)  as $defaultsKey){
