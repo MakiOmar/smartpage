@@ -20,7 +20,7 @@ foreach($smpglibs as $smpglib=>$path){
 }
 
 add_action('wp_footer', function(){
-	neat_print_r(get_option(SMPG_OPTIONS));
+	//neat_print_r(get_option(SMPG_OPTIONS));
 });
 
 /*

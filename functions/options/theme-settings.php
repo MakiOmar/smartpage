@@ -88,7 +88,7 @@ if (!class_exists('Options__Theme_Settings')) {
 		}
 		
 		/**
-		 * Set default options on init if option doesnt exist
+		 * Set default options if option doesnt exist
 		*/
 		function smpg_set_default_options(){
 			if(!get_option($this->args['opt_name'])){
