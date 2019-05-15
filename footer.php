@@ -1,7 +1,12 @@
 <?php $smpgOptions = Smpg__Options_Model::get_instance();?>
 
 <footer class="grid-col-md-12 grid-col">
-
+	<?php 
+		if(has_action('footer_ad')){
+			do_action('footer_ad');
+		}
+	?>
+	
 	<p><?php echo esc_html($smpgOptions->copyright) ?></p>
 	
 </footer>
