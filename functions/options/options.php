@@ -15,7 +15,7 @@ $options_nav = array(
 	// General --------------------------------------------
 	'general' => array(
 		'title' => esc_html__('Getting started', TEXTDOM),
-		'sections' => array('general'),
+		'sections' => array('general', 'advertisements'),
 	),
 	// Slider --------------------------------------------
 	'slider' => array(
@@ -211,6 +211,63 @@ $sections['blog']= array(
 					)
 );
 
+$smpgAdsLocs = array(
+					'header'  => esc_html__('Header', TEXTDOM),
+					'footer'  => esc_html__('Footer', TEXTDOM),
+					'sidebar' => esc_html__('Sidebar', TEXTDOM),
+					'post'    => esc_html__('Single post', TEXTDOM),
+					'page'    => esc_html__('page', TEXTDOM),
+				);
+$sections['advertisements']= array(
+		'title' => esc_html__('Advertisements', TEXTDOM),
+		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'fields' => array(
+						array(
+							'id'      => 'ad_block_one',
+							'title'   => esc_html__('AD block one', TEXTDOM),
+							'type'    => 'textarea',
+							'validate'=> 'html',	
+						),
+						array(
+							'id'      => 'ad_block_one_location',
+							'title'   => esc_html__('AD block one location', TEXTDOM),
+							'type'    => 'checkbox',
+							'validate'=> 'multi_checkbox',
+							'options' => $smpgAdsLocs,
+							
+						),
+						array(
+							'id'      => 'ad_block_two',
+							'title'   => esc_html__('AD block two', TEXTDOM),
+							'type'    => 'textarea',
+							'validate'=> 'html',	
+						),
+						array(
+							'id'      => 'ad_block_two_location',
+							'title'   => esc_html__('AD block two location', TEXTDOM),
+							'type'    => 'checkbox',
+							'validate'=> 'multi_checkbox',
+							'options' => $smpgAdsLocs,
+							
+						),
+						array(
+							'id'      => 'ad_block_three',
+							'title'   => esc_html__('AD block three', TEXTDOM),
+							'type'    => 'textarea',
+							'validate'=> 'html',	
+						),
+						array(
+							'id'      => 'ad_block_three_location',
+							'title'   => esc_html__('AD block three location', TEXTDOM),
+							'type'    => 'checkbox',
+							'validate'=> 'multi_checkbox',
+							'options' => $smpgAdsLocs,
+							
+						),
+
+					)
+);
+
 $arFonts = (isset($smpgOptions) && is_array($smpgOptions->get_option('custom_ar_fonts'))) ? $smpgOptions->get_option('custom_ar_fonts') : array();
 
 $defaultArFonts = array(
@@ -370,3 +427,34 @@ $sections['socials']= array(
 					)
 );
 $Smpg_Options = new Options__Theme_Settings( $options_nav, $sections );
+
+/*
+*Show ads hooked to custom hook
+*Hook name will be {location}_ad
+*do_action('{location}_ad') should be existed in the desired location
+*Available locations are header, footer, sidebar, post, page
+*/
+
+add_action('init', function() use($smpgOptions){
+	
+	$smpgADs = array('one', 'two', 'three');
+
+	foreach($smpgADs as $adBlock){
+		
+		 $block = 'ad_block_'.$adBlock;
+		 $blockLoc = $block.'_location';
+		
+		if(isset($smpgOptions->$blockLoc) && !empty($smpgOptions->$blockLoc)){
+			
+			foreach($smpgOptions->$blockLoc as $loc){
+				
+				 add_action($loc.'_ad', function() use($smpgOptions, $block){
+					 echo $smpgOptions->$block;
+				 });
+				
+			 }
+			
+		}
+		 
+	 }
+});
