@@ -47,5 +47,3 @@ function smpg_autoloader( $class_name ) {
   }
 	
 }
-
-//Smpg__Options_Model::get_instance()->add
