@@ -3,6 +3,11 @@
   	<div class="grid-row grid-col">
         <div class="grid-col-sm-9-5">
         	<div class="grid-col posts-wrapper">
+        	<?php 
+				if(has_action('page_ad')){
+					do_action('page_ad');
+				}
+			?>
 				<div class="grid-container">
 				<?php 
 					if ( have_posts() ) {

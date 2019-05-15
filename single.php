@@ -13,6 +13,12 @@ $smpgOptions = Smpg__Options_Model::get_instance();
 		}
 		
 		?>
+       
+       <?php 
+			if(has_action('post_ad')){
+				do_action('post_ad');
+			}
+		?>
         <div class="grid-col <?php echo ($smpgOptions->single_sidebar == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
         
         <?php smpg_breadcrumbs()?>
