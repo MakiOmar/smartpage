@@ -32,7 +32,7 @@ ob_start('ob_gzhandler');
 
 							 <?php echo smartpage_custom_logo('orange') ;?>
 
-							 <?php if(has_action(header_ad)){?>
+							 <?php if(has_action('header_ad')){?>
 								 <div id="ads" class="grid-col-md-6 grid-col-sm-6">
 
 									<?php do_action('header_ad'); ?>
