@@ -258,7 +258,7 @@ if (!class_exists('Options__Theme_Settings')) {
 							
 							$args = array(
 								'id'            => $fieldID,
-								'validation'    => $field['validate'],
+								'validation'    => isset($field['validate'])? $field['validate'] : '',
 								'new_value'     => $notValidated[$fieldID],
 								'current_value' => (isset($this->options->$fieldID)) ? $this->options->$fieldID : null,
 							);
