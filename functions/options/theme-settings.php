@@ -5,6 +5,7 @@ if (!class_exists('Options__Theme_Settings')) {
 		public $OptionGroup = '';
 		public $sections = array();
 		public $args = array();
+		public $widgets = array();
 		public $extraTabs = array();
 		public $options = array();
 		public $validate;
@@ -13,7 +14,7 @@ if (!class_exists('Options__Theme_Settings')) {
 		/**
 		 * Class Constructor. Defines the args for the theme options class
 		*/
-		public function __construct($menu = array(), $sections = array()){
+		public function __construct($menu = array(), $sections = array(), $widgets = array()){
 			
 			$this->navigation = $menu;
 			
@@ -41,6 +42,19 @@ if (!class_exists('Options__Theme_Settings')) {
 			
 			//get sections
 			$this->sections = $sections;
+			
+			//widgets sections
+			$this->widgets = $widgets;
+			
+			//register widgets
+			$this->smpg_register_widgets();
+			
+			/*
+			*Styles for options in front end
+			*/
+
+			add_action('wp_head', array(&$this, 'smpg_frontend_styles'));
+			
 			
 			//options page
 			add_action('admin_menu', array(&$this, '_options_page'));
@@ -407,6 +421,35 @@ if (!class_exists('Options__Theme_Settings')) {
 					}
 				
 				}
+				
+			}
+		}
+		
+		/*
+		*Adds styles related to some options in front end
+		*/
+		function smpg_frontend_styles(){ ?>
+			<style type="text/css">
+				#smpg-ads{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			</style>
+		<?php }
+		
+		/*
+		*Registers option related widgets
+		*/
+		function smpg_register_widgets(){
+			
+			foreach($this->widgets as $widget){
+				
+				add_action('widgets_init', function () use($widget){
+	
+					register_widget($widget);
+
+				});
 				
 			}
 		}
