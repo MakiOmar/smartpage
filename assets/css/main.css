@@ -1509,7 +1509,7 @@ img {
 	background-color:rgba(255,255,255,.30);
 	border-radius: 50%;
 	border: 2px solid rgba(255,255,255,.30);
-	border-left: 2px solid #ef1450;
+	border-left: 2px solid #fc2a2a;
 	-webkit-animation: Rotate  1s infinite linear;
 	-moz-animation: Rotate  1s infinite linear;
 	 -ms-animation: Rotate  1s infinite linear;
