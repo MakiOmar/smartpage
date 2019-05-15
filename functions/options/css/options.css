@@ -309,6 +309,9 @@
     padding: 5px;
     z-index: 100;
 }
+.form-table td{
+	display: flex;
+}
 .wp-core-ui .button-primary {
     background: #d1354b;
     border-color: #d1354b #d1354b #d1354b;
