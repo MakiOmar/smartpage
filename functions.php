@@ -100,10 +100,9 @@ function searchFilter($query) {
 /*
 *Register categories widget
 */
-add_action('widgets_init', 'Smpg__Cats_Widget_register');
-
-function Smpg__Cats_Widget_register(){
+add_action('widgets_init', function (){
 	
 	register_widget('Smpg__Cats_Widget');
 	
-}
+});
+
