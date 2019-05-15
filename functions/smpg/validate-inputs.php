@@ -11,7 +11,7 @@ if(!class_exists('Smpg__Validate_Inputs')){
 		}
 		
 		public function validate_inputs($args){
-			if(!is_null($args['validation'])){
+			if(!is_null($args['validation']) && !empty($args['validation'])){
 				
 				$validationFunction = 'valid_'.$args['validation'];
 			
@@ -137,6 +137,12 @@ if(!class_exists('Smpg__Validate_Inputs')){
 			$this->valid_integer($id, $field, $current);
 			
 			$this->value = absint($this->value);
+			
+		}
+		
+		public function valid_multi_checkbox($id, $field, $current){
+			
+			$this->value = $field;
 			
 		}
 	}
