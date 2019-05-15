@@ -1,11 +1,11 @@
 <?php
-class Options__Theme_Settings_textarea extends Options__Theme_Settings{	
+class Options__Fields__Textarea__F_Textarea extends Options__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
 	*/
 	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;
 	}
