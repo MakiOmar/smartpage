@@ -37,7 +37,7 @@ class Smpg__Views__Downloads extends Smpg__Generate_Posts_View{
 
 							}?>
 
-							<div id="download-<?php echo $tdPostId ?>" class="grid-col-max-480-6 grid-col-av-4 grid-10-col-md-2">
+							<div id="download-<?php echo $tdPostId ?>" class="download-wrapper grid-col-max-480-6 grid-col-av-4 grid-10-col-md-2">
 
 								<div class="grid-col post-contents">
 
