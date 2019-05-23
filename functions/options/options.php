@@ -60,7 +60,7 @@ $sliders = smpg_get_rev_sliders();
 
 $sections['slider']= array(
 		'title' => esc_html__('Slider', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'P',
 		'fields' => array(
 						array(
 							'id'      => 'home_slider',
@@ -115,7 +115,7 @@ $sections['slider']= array(
 	);
 $sections['general']= array(
 		'title' => esc_html__('General', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'x',
 		'fields' => array(
 						array(
 							'id'      => 'copyright',
@@ -128,7 +128,7 @@ $sections['general']= array(
 );
 $sections['menu-colors']= array(
 		'title' => esc_html__('Menu Colors', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'E',
 		'fields' => array(	
 						array(
 							'id'      => 'main_menu_color',
@@ -141,7 +141,7 @@ $sections['menu-colors']= array(
 );
 $sections['general-colors']= array(
 		'title' => esc_html__('General', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'E',
 		'fields' => array(
 						array(
 							'id'      => 'color_skin',
@@ -162,7 +162,7 @@ $sections['general-colors']= array(
 
 $sections['sidebars']= array(
 		'title' => esc_html__('Sidebars', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'y',
 		'fields' => array(
 						array(
 							'id'      => 'sidebar',
@@ -193,7 +193,7 @@ $sections['sidebars']= array(
 );
 $sections['blog']= array(
 		'title' => esc_html__('Blog', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'n',
 		'fields' => array(
 						array(
 							'id'      => 'posts_grid',
@@ -220,7 +220,7 @@ $smpgAdsLocs = array(
 				);
 $sections['advertisements']= array(
 		'title' => esc_html__('Advertisements', TEXTDOM),
-		'icon' => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon' => 'E',
 		'fields' => array(
 						array(
 							'id'      => 'ad_block_one',
@@ -293,7 +293,7 @@ $defaultEnFonts = array(
 
 $sections['arabic-fonts']= array(
 		'title'  => esc_html__('Arabic fonts', TEXTDOM),
-		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon'   => 'W',
 		'fields' => array(
 						array(
 							'id'      => 'smpg_headings_ar_font',
@@ -325,7 +325,7 @@ $sections['arabic-fonts']= array(
 
 $sections['english-fonts']= array(
 		'title'  => esc_html__('English fonts', TEXTDOM),
-		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon'   => 'W',
 		'fields' => array(
 
 						array(
@@ -358,7 +358,7 @@ $sections['english-fonts']= array(
 );
 $sections['socials']= array(
 		'title'  => esc_html__('Social Media', TEXTDOM),
-		'icon'   => SMPG_OPTIONS_DIR. 'imgs/icons/icon.png',
+		'icon'   => 'B',
 		'fields' => array(
 						array(
 							'id'      => 'facebook',
