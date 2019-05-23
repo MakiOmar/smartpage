@@ -1,24 +1,44 @@
+var SettingsView = Backbone.View.extend({
+	el: "#options-nav",
+	events: {
+		'click': function(e){
+			"use strict";
+
+			if($(e.target).hasClass('nav-toggle')){
+
+				e.preventDefault();
+
+				var targetID = e.target.id.split('-')[0];
+
+				$('#' + targetID).toggle();	
+
+			}
+
+		}
+	},
+});
+
+ var settingsView = new SettingsView();
+
+SettingsRouter = Backbone.Router.extend({
+        routes: {
+            'section/:section': function(section) {
+				"use strict";
+				var target = $('a[href="#section/' + section + '"]'),
+					content = $('#smpg-' + section + '-section-group');
+				$('.smpg-nav-link').parent().removeClass('active');
+				$('.smpg-section-group').removeClass('smpg-show-section');
+				target.parent().addClass('active');
+				content.addClass('smpg-show-section');
+			}
+        },
+        
+    });
+var settingsRouter = new SettingsRouter();
+
+Backbone.history.start();
 jQuery(document).ready(function($){
 	"use strict";
-	$('.nav-toggle').click(function(e){
-		e.preventDefault();
-		toggle_sections($(this).attr('role'));
-	});
-	
-	$(document).on('click','.smpg-nav-link', function(e){
-		e.preventDefault();
-		var linkId = $(this).attr('id');
-		
-		$('.smpg-section-group').each(function(){
-			if($(this).hasClass('smpg-show-section')){
-				$(this).removeClass('smpg-show-section');
-			}
-		});
-		
-		$('#smpg-'+linkId+'-section-group').addClass('smpg-show-section');
-		
-	});
-	
 	$('.smpg-radio-slider').find('input[type="radio"]').change(function(){
 		var clicked = $(this);
 
@@ -47,24 +67,3 @@ jQuery(document).ready(function($){
 	});
 	
 });
-
-function toggle_sections(section){
-	jQuery('.toggle-dropdown').each(function(){
-			jQuery(this).text('+');
-	});
-	
-	jQuery('.' + section).each(function(){
-		if(jQuery(this).text() === '+'){
-			jQuery(this).text('-');
-		}else{
-			jQuery(this).text('+');
-		}
-	});
-	
-	jQuery('.smpg-dropdown').each(function(){
-		if(jQuery(this).attr('style') === "display: block;"){
-			jQuery(this).attr('style', "display: none;");
-		}
-	});
-	jQuery('#' + section).toggle();
-}

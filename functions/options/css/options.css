@@ -1,4 +1,11 @@
 @font-face {
+	font-family: 'Pictos';
+	src: url('../fonts/pictos-web.eot');
+	src: url('../fonts/pictos-web.woff') format('woff'), url('../fonts/pictos-web.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
     font-family: 'Raleway';
     src: url('../fonts/raleway-bold-webfont.eot');
     src: url('../fonts/raleway-bold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -40,6 +47,20 @@
          url('../fonts/raleway-thin-webfont.svg#ralewaythin') format('svg');
     font-weight: 100;
     font-style: normal;
+}
+.icon{
+	margin: 5px;
+}
+.icon::before {
+    content: attr(data-icon);
+    font-family: "Pictos" !important;
+    font-weight: normal;
+    line-height: 0;
+    font-size: 1.4em;
+    text-transform: none;
+}
+.active{
+	background:#871928;
 }
 #logo{
 	padding: 27px 10px;
@@ -84,8 +105,9 @@
 .smpg-nav-item{
 	display: block;
 	padding: 0 5px;
-	width: 75%;
+	width: 100%;
 }
+
 .smpg-nav-item:hover{
 	color: #ffffff;
 	background: #871928;
