@@ -2,9 +2,7 @@
 @-ms-viewport{
   width: device-width;
 }
-.post-wrapper{
-	float: left;
-}
+
 @font-face {
     font-family: 'ralewaybold';
     src: url('../../fonts/raleway-bold-webfont.eot');
@@ -674,9 +672,9 @@ img {
 
 	/***Blog post***/
 	#masonary{
-		-moz-column-count: 1;
-		-webkit-column-count: 1;
-		column-count: 1;
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
 
 		-moz-column-gap: 0;
 		-webkit-column-gap: 0;
@@ -684,6 +682,15 @@ img {
 	}
 	#masonary .post-wrapper{
 		width:100%;
+	}
+	.post-wrapper{
+		max-width: 540px;
+	}
+
+	#blog-posts{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 	.nothumb-post{
 		padding: 5px;
@@ -1034,6 +1041,10 @@ img {
 	/***End Category***/
 	
 	/***Downloads***/
+	.download-wrapper{
+		max-width: 200px;
+	}
+
 	.download-meta{
 		padding-right: 5px;
 	}
