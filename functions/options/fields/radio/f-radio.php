@@ -20,12 +20,15 @@ class Options__Fields__Radio__F_Radio extends Options__Theme_Settings{
 		
 		echo '<fieldset id="'.$this->field['id'].'">';
 			foreach($this->field['options'] as $k => $v){
+				
+				$radioClass =  isset($v['class']) ?'class="'.$v['class'].'"'  : '';
+
 				echo '<div class="smpg-radio-item">';
 					$selected = (checked($this->value, $k, false) != '')?' smpg-radio-img-selected':'';
 				
 					echo '<label class="smpg-radio'.$selected.' smpg-radio-'.$this->field['id'].'" for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
 				
-						echo '<input type="radio" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'. $name . '" '.$class.' value="'.$k.'" '.checked($this->value, $k, false).' onclick="jQuery:smpg_radio_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');"/>';
+						echo '<input '.$radioClass.' type="radio" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'. $name . '" '.$class.' value="'.$k.'" '.checked($this->value, $k, false).' onclick="jQuery:smpg_radio_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');"/>';
 				
 					echo '</label>';
 				
