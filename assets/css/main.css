@@ -672,9 +672,9 @@ img {
 
 	/***Blog post***/
 	#masonary{
-		-moz-column-count: 2;
-		-webkit-column-count: 2;
-		column-count: 2;
+		-moz-column-count: 1;
+		-webkit-column-count: 1;
+		column-count: 1;
 
 		-moz-column-gap: 0;
 		-webkit-column-gap: 0;
@@ -685,12 +685,6 @@ img {
 	}
 	.post-wrapper{
 		max-width: 540px;
-	}
-
-	#blog-posts{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
 	}
 	.nothumb-post{
 		padding: 5px;
