@@ -209,9 +209,9 @@ $sections['blog']= array(
 							'validate'=> 'no_html',
 							'options' => array(
 											'standard'     => esc_html__('Standard', TEXTDOM),
-											'masonary'=> esc_html__('Masonary', TEXTDOM),
+											'masonry'=> esc_html__('Masonary', TEXTDOM),
 											),
-							'default'  => 'masonary',
+							'default'  => 'masonry',
 							
 						),
 

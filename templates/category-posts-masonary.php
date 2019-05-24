@@ -33,7 +33,7 @@
 
 $cpm= new Smpg__Generate_Posts_View(
 					$args,
-					'masonary',
+					'masonry',
 					true
 				);
 

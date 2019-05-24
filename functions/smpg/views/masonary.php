@@ -21,9 +21,9 @@ class Smpg__Views__Masonary extends Smpg__Generate_Posts_View{
 				<h4 class="section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
 			</div>
 			
-			<div id="masonary">
+			<div id="masonry">
 		<?php }else{?>
-			<div><div id="masonary">
+			<div><div id="masonry">
 		<?php }?>
 			<div id="blog-posts">
 			<?php
