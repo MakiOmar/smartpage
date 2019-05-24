@@ -106,13 +106,19 @@
 	display: block;
 	padding: 0 5px;
 	width: 100%;
+	border-bottom: 1px solid;
 }
 
 .smpg-nav-item:hover{
 	color: #ffffff;
 	background: #871928;
 }
-
+.featured-cat, .rev_slider{
+	display: none;
+}
+.show-in-table{
+	display: table-row;
+}
 #options-sections{
 	width: 70%;
 }
@@ -276,11 +282,6 @@
     transition: .25s ease-out;
     -webkit-backface-visibility: hidden;
 }
-
-.featured-cat, .rev_slider{
-	display: none;
-}
-
 .slider_show, .home_slider{
 	display: table-row;
 }
@@ -290,6 +291,7 @@
 
 .smpg-dropdown{
 	display: none;
+	background: #b73a4c;
 }
 .smpg-dropdown .smpg-nav-item{
 	width: auto;

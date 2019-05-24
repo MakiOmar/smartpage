@@ -9,7 +9,9 @@ var SettingsView = Backbone.View.extend({
 				e.preventDefault();
 
 				var targetID = e.target.id.split('-')[0];
-
+				
+				$('.smpg-dropdown').hide();
+				
 				$('#' + targetID).toggle();	
 
 			}
@@ -34,36 +36,20 @@ SettingsRouter = Backbone.Router.extend({
         },
         
     });
+
 var settingsRouter = new SettingsRouter();
 
 Backbone.history.start();
+
 jQuery(document).ready(function($){
 	"use strict";
-	$('.smpg-radio-slider').find('input[type="radio"]').change(function(){
-		var clicked = $(this);
 
-		$('.slider_show').each(function(){
-			$(this).removeClass('slider_show');
-		});
-
-		$('.' + clicked.val()).addClass('slider_show');
-		
+	$( "input[type=checkbox]" ).change(function(){
+		$('.' + this.id + '_').toggle();
 	});
-	
-	$("#home_slider").change(function() {
-		
-			$('.rev_slider').each(function(){
-				
-				if($(this).hasClass('home_slider')){
-					
-					$(this).removeClass('home_slider');
-					
-				}else{
-					
-					$(this).addClass('home_slider');
-					
-				}	
-			});
+	$( "input[type=radio]" ).change(function(){
+		$('.'+ this.className +'_').hide();
+		$('.' + this.value ).toggle();
 	});
 	
 });
