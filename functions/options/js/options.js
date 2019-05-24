@@ -1,11 +1,8 @@
 var SettingsView = Backbone.View.extend({
 	el: "#options-nav",
 	events: {
-		'click': function(e){
+		'click .nav-toggle': function(e){
 			"use strict";
-
-			if($(e.target).hasClass('nav-toggle')){
-
 				e.preventDefault();
 
 				var targetID = e.target.id.split('-')[0];
@@ -13,8 +10,6 @@ var SettingsView = Backbone.View.extend({
 				$('.smpg-dropdown').hide();
 				
 				$('#' + targetID).toggle();	
-
-			}
 
 		}
 	},
