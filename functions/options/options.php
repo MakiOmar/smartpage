@@ -76,7 +76,7 @@ $sections['slider']= array(
 							'validate'=> 'no_html',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
 							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
-							'class'    => 'rev_slider' . (isset($smpgOptions) && $smpgOptions->home_slider == '1') ? ' home_slider' : ''
+							'class'    => 'home_slider_' . (isset($smpgOptions) && $smpgOptions->home_slider == '1' ? ' show-in-table' : '')
 						),
 	
 						array(
@@ -85,10 +85,17 @@ $sections['slider']= array(
 							'type'    => 'radio',
 							'validate'=> 'no_html',
 							'options' => array(
-											'featured-cat'	=> array('title' => esc_html__('Featured category', TEXTDOM)),
+											'featured-cat'	=> array(
+												'title' => esc_html__('Featured category', TEXTDOM),
+												'class' => 'slider'
+											),
 	
-											'featured-post'	=> array('title' => esc_html__('Featured posts', TEXTDOM)),
+											'featured-post'	=> array(
+												'title' => esc_html__('Featured posts', TEXTDOM),
+												'class' => 'slider'
+											),
 										),
+							'default'  => 'featured-cat',
 							'default'  => 'featured-cat',
 						),
 						array(
@@ -98,7 +105,7 @@ $sections['slider']= array(
 							'validate'=> 'no_html',
 							'options' => get_taxonomies(),
 							'default' => 'category',
-							'class'    => 'featured-cat'. (isset($smpgOptions) && $smpgOptions->slider == 'featured-cat') ? ' slider_show' : ''
+							'class'    => 'slider_ featured-cat'. (isset($smpgOptions) && $smpgOptions->slider == 'featured-cat' ? ' show-in-table' : '')
 						),
 	
 						array(
@@ -107,8 +114,8 @@ $sections['slider']= array(
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => isset($smpgOptions)  ?admin_get_terms_options($smpgOptions->featured_tax) : array(),
-							'class'    => 'featured-cat'.( isset($smpgOptions) && $smpgOptions->slider == 'featured-cat') ? ' slider_show' : '',
-							'note'    => (isset($smpgOptions) && empty($smpgOptions->featured_cat)) ? esc_html__('No category selected, you have to select one', TEXTDOM) : ''
+							'class'    => 'slider_ featured-cat'.( isset($smpgOptions) && $smpgOptions->slider == 'featured-cat' ? ' show-in-table' : ''),
+							'note'    => (isset($smpgOptions) && empty($smpgOptions->featured_cat) ? esc_html__('No category selected, you have to select one', TEXTDOM) : '')
 						),
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
