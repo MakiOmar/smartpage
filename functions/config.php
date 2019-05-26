@@ -41,8 +41,10 @@ function smpg_autoloader( $class_name ) {
     $classes_dir = THEME_DIR .DIRECTORY_SEPARATOR.'functions'.DIRECTORY_SEPARATOR;
 	  
     $class_path =  $classes_dir . str_replace('_','-',$class_sub) . '.php';
-	
-    require_once wp_normalize_path($class_path);
+	if(file_exists(wp_normalize_path($class_path))){
+		require_once wp_normalize_path($class_path);
+	}
+    
 	  
   }
 	
