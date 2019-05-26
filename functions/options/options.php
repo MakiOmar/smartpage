@@ -1,10 +1,6 @@
 <?php
-if(!defined('SMPG_OPTIONS_DIR')){
-	define('SMPG_OPTIONS_DIR', wp_normalize_path( trailingslashit(dirname(__FILE__))));
-}
-if(!defined('SMPG_OPTIONS_URI')){
-	define('SMPG_OPTIONS_URI', THEME_URI ."/functions/options/");	
-}
+require_once('config.php');
+
 
 if(get_option(SMPG_OPTIONS)){
 	$smpgOptions = Smpg__Options_Model::get_instance();
@@ -209,7 +205,7 @@ $sections['blog']= array(
 							'validate'=> 'no_html',
 							'options' => array(
 											'standard'     => esc_html__('Standard', TEXTDOM),
-											'masonry'=> esc_html__('Masonary', TEXTDOM),
+											'masonry'=> esc_html__('Masonry', TEXTDOM),
 											),
 							'default'  => 'masonry',
 							
@@ -436,7 +432,7 @@ $sections['socials']= array(
 
 $widgets = array('Options__Widgets__Sidebar_Ad');
 
-$Smpg_Options = new Options__Theme_Settings( $options_nav, $sections, $widgets );
+$Smpg_Options = new Theme_Settings( $options_nav, $sections, $widgets );
 
 /*
 *Show ads hooked to custom hook
