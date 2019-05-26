@@ -4,17 +4,21 @@
 function reg_smpg_post_type() {
 	$custom_posts = array(
 			'Download'=>array(
-					esc_html__('Download',TEXTDOM)   => esc_html__('Downloads',TEXTDOM)),
+					esc_html__('Download',TEXTDOM)   , esc_html__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
-					esc_html__('Portfolio',TEXTDOM)  => esc_html__('Portfolios',TEXTDOM)),
+					esc_html__('Portfolio',TEXTDOM)  , esc_html__('Portfolios',TEXTDOM)),
 			'Testimonial'=>array(
-					esc_html__('Testimonial',TEXTDOM)=> esc_html__('Testimonials',TEXTDOM)),
+					esc_html__('Testimonial',TEXTDOM), esc_html__('Testimonials',TEXTDOM)),
+			'Project'=>array(
+					esc_html__('Project',TEXTDOM), esc_html__('Projects',TEXTDOM)),
+			'Bid'=>array(
+					esc_html__('Bid',TEXTDOM), esc_html__('Bids',TEXTDOM)),
 			'News'=>array(
-					esc_html__('New',TEXTDOM)        => esc_html__('News',TEXTDOM)),
+					esc_html__('New',TEXTDOM)        , esc_html__('News',TEXTDOM)),
 			);
 	foreach($custom_posts as $custom_post=> $translatable){
-		
-		foreach($translatable as $t_s => $t_p){
+		$t_s = $translatable[0];
+		$t_p = $translatable[1];
 			
 		$labels = array(
 			'name'                  => sprintf(esc_html_x( '%s', 'General Name'    , TEXTDOM),$t_p ),
@@ -67,7 +71,11 @@ function reg_smpg_post_type() {
 			'capability_type'       => 'page',
 			'rewrite' => array('slug' => 'smpg_'.lcfirst($custom_post)),
 		);
-	}
+		
+		if($custom_post == 'Bid'){
+			$args ['supports'][] = 'page-attributes';
+		}
+		
 		register_post_type( 'smpg_'.lcfirst($custom_post), $args );
 	}
 }
