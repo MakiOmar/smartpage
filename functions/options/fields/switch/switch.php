@@ -8,7 +8,6 @@ class Field__Switch extends Theme_Settings{
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;	
-		$this->enqueue();
 	}
 
 	/**
