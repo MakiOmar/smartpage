@@ -1,7 +1,6 @@
 <?php
 require_once('config.php');
 
-
 if(get_option(SMPG_OPTIONS)){
 	$smpgOptions = Smpg__Options_Model::get_instance();
 }
@@ -173,7 +172,7 @@ $sections['sidebars']= array(
 							'type'    => 'radio_img',
 							'validate'=> 'no_html',
 							'options' => array(
-											//'' 				=> array('title' => 'Use Post Meta', 'img' => Options__Theme_Settings_URI.'img/question.png'),
+											//'' 				=> array('title' => 'Use Post Meta', 'img' => Theme_Settings_URI.'img/question.png'),
 											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
 											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
@@ -430,7 +429,7 @@ $sections['socials']= array(
 					)
 );
 
-$widgets = array('Options__Widgets__Sidebar_Ad');
+$widgets = array('Sidebar_Ad');
 
 $Smpg_Options = new Theme_Settings( $options_nav, $sections, $widgets );
 
