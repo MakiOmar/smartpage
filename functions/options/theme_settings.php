@@ -24,7 +24,7 @@ if (!class_exists('Theme_Settings')) {
 			
 			$defaults['opt_name'] = SMPG_OPTIONS;
 			
-			//$defaults['menu_icon'] = Options__Theme_Settings_URI.'/img/menu_icon.png';
+			//$defaults['menu_icon'] = Theme_Settings_URI.'/img/menu_icon.png';
 			$defaults['menu_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
 			$defaults['page_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
@@ -220,7 +220,7 @@ if (!class_exists('Theme_Settings')) {
 			}
 			
 			if(isset($field['type'])){
-				$field_class = 'Options__Fields__'.ucfirst($field['type']).'__F_'.ucfirst($field['type']);
+				$field_class = 'Field__'.ucfirst($field['type']);
 				
 				if(class_exists($field_class)){
 					
