@@ -407,9 +407,7 @@ if (!class_exists('Theme_Settings')) {
 						
 						if(isset($field['type'])){
 							
-							$n = ucfirst($field['type']);
-							
-							$field_class = 'Options__Fields__'.$n.'__F_'.$n;
+							$field_class = 'Field__'.ucfirst($field['type']);
 					
 							if(class_exists($field_class) && method_exists($field_class, 'enqueue')){
 								$enqueue = new $field_class('','',$this);
