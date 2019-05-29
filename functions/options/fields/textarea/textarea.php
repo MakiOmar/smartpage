@@ -1,5 +1,5 @@
 <?php
-class Options__Fields__Textarea__F_Textarea extends Options__Theme_Settings{	
+class Field__Textarea extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

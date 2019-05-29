@@ -1,5 +1,5 @@
 <?php
-class Options__Fields__Select__F_Select extends Options__Theme_Settings{	
+class Field__Select extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

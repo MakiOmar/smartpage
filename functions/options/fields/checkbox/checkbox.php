@@ -1,5 +1,5 @@
 <?php
-class Options__Fields__Switch__F_Switch extends Options__Theme_Settings{	
+class Field__Checkbox extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
@@ -23,16 +23,19 @@ class Options__Fields__Switch__F_Switch extends Options__Theme_Settings{
 		// fix for WordPress 3.6 meta options
 		if(strpos( $this->field['id'] ,'[]') === false) echo '<input type="hidden" name="'. $name .'" value="0" />';
 		
-		echo '<input type="checkbox" data-toggle="switch" id="'.$this->field['id'].'" name="'. $name .'" '.$class.' value="1" '.checked($this->value, 1, false).' />';
+		if(isset($this->field['options']) && is_array($this->field['options'])){
+			foreach($this->field['options'] as $opt => $title){
+				$checked = (is_array($this->value) && in_array($opt, $this->value)) ? ' checked="checked"' : '';
+				echo '<label>'.$title.'</label>';
+				echo '<input type="checkbox" id="'. $opt .'" name="'. $name.'[]" '.$class.' value="'. $opt .'"'.$checked.'/>';
+			}
+			
+		}else{
+			echo '<input type="checkbox" id="'.$this->field['id'].'" name="'. $name .'" '.$class.' value="1" '.checked($this->value, 1, false).' />';
+		}
+		
 		
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<div class="description btn-desc">'.$this->field['desc'].'</div>':'';	
-	}
-	
-	/**
-	 * Enqueue Function.
-	*/
-	function enqueue(){		
-		wp_enqueue_script('smpg-opts-field-switch-js', SMPG_OPTIONS_URI.'fields/switch/field_switch.js', array('jquery'),time(),true);
 	}
 	
 }

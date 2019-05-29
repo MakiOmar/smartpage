@@ -1,5 +1,5 @@
 <?php
-class Options__Fields__Text__F_Text extends Options__Theme_Settings{	
+class Field__Text extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

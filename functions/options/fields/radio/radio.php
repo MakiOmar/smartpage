@@ -1,5 +1,5 @@
 <?php
-class Options__Fields__Radio__F_Radio extends Options__Theme_Settings{	
+class Field__Radio extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

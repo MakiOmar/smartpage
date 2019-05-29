@@ -1,5 +1,5 @@
 <?php
-class Options__Theme_Settings_pages_select extends Options__Theme_Settings{	
+class Field__Pages_select extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

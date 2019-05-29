@@ -1,5 +1,5 @@
 <?php
-class Options__Fields__Color__F_Color extends Options__Theme_Settings{
+class Field__Color extends Theme_Settings{
 	
 	/**
 	 * Field Constructor.

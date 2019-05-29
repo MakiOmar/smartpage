@@ -1,5 +1,5 @@
 <?php
-class Options__Theme_Settings_sliderbar extends Options__Theme_Settings{	
+class Field__Sliderbar extends Theme_Settings{	
 	
 	
 	/**
@@ -32,7 +32,7 @@ class Options__Theme_Settings_sliderbar extends Options__Theme_Settings{
 		
 		wp_enqueue_script(
 			'jquery-slider', 
-			Options__Theme_Settings_URI.'fields/sliderbar/jquery.ui.slider.js', 
+			Theme_Settings_URI.'fields/sliderbar/jquery.ui.slider.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
 			time(), 
 			true
@@ -40,7 +40,7 @@ class Options__Theme_Settings_sliderbar extends Options__Theme_Settings{
 
 		wp_enqueue_script(
 			'mfn-opts-field-sliderbar-js', 
-			Options__Theme_Settings_URI.'fields/sliderbar/field_sliderbar.js', 
+			Theme_Settings_URI.'fields/sliderbar/field_sliderbar.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-dialog'),
 			time(),
 			true

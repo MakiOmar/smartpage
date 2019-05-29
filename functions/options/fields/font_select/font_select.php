@@ -1,5 +1,5 @@
 <?php
-class Options__Theme_Settings_font_select extends Options__Theme_Settings{	
+class Field__Font_select extends Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

@@ -1,5 +1,5 @@
 <?php
-class Options__Theme_Settings_upload extends Options__Theme_Settings{
+class Field__Upload extends Theme_Settings{
 
 	/**
 	 * Field Constructor.
@@ -38,7 +38,7 @@ class Options__Theme_Settings_upload extends Options__Theme_Settings{
         if ( $wp_version < "3.5" ) {
             wp_enqueue_script(
                 'mfn-opts-field-upload-js', 
-                Options__Theme_Settings_URI . 'fields/upload/field_upload_3_4.js', 
+                Theme_Settings_URI . 'fields/upload/field_upload_3_4.js', 
                 array('jquery', 'thickbox', 'media-upload'),
                 time(),
                 true
@@ -47,7 +47,7 @@ class Options__Theme_Settings_upload extends Options__Theme_Settings{
         } else {
             wp_enqueue_script(
                 'mfn-opts-field-upload-js', 
-                Options__Theme_Settings_URI . 'fields/upload/field_upload.js', 
+                Theme_Settings_URI . 'fields/upload/field_upload.js', 
                 array('jquery'),
                 time(),
                 true
