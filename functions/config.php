@@ -35,7 +35,7 @@ spl_autoload_register( 'smpg_autoloader' );
 */
 function smpg_autoloader( $class_name ) {
 	
-  if ( false !== strpos( $class_name, 'Smpg__' ) || false !== strpos( $class_name, 'Options__' )) {
+  if ( false !== strpos( $class_name, 'Smpg__' ) /*|| false !== strpos( $class_name, 'Options__' )*/) {
 	  
 	$class_sub =  preg_replace('/__/', DIRECTORY_SEPARATOR, strtolower($class_name));
     $classes_dir = THEME_DIR .DIRECTORY_SEPARATOR.'functions'.DIRECTORY_SEPARATOR;
