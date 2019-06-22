@@ -1,5 +1,24 @@
 <?php
 /*
+*Generate Path
+*@param array  An array of folders tree
+*@return string Requied path
+*/
+
+function abstracted_generate_path($dir_tree){
+	$path = '';
+	
+	if(!is_array($dir_tree)) return;
+	
+	foreach($dir_tree as $folder){
+		$path .= DIRECTORY_SEPARATOR . $folder ;
+	}
+	
+	$path .= DIRECTORY_SEPARATOR;
+	
+	return $path;
+}
+/*
 *Check if link exists
 */
 function abstracted_is_link_exist($url){
