@@ -23,29 +23,30 @@ spl_autoload_register( 'opts_anony_autoloader' );
 *@param  string $class_name 
 */
 function opts_anony_autoloader( $class_name ) {
+	$class_name = strtolower($class_name);
 	$subFolder = '';
 	
 	$classDir = SMPG_OPTIONS_DIR;
 	
-	$class_file = $classDir . strtolower($class_name) . '.php';
+	$class_file = $classDir . $class_name . '.php';
 	
 	
 	if(strpos( $class_name, 'Field__' ) !== false){
 
 		$class_name = str_replace('Field__','', $class_name);
-		$subFolder = strtolower($class_name) . DIRECTORY_SEPARATOR;
+		$subFolder = $class_name . DIRECTORY_SEPARATOR;
 		$classDir = SMPG_OPTIONS_FIELDS; 
 		
 	}
 	
-	$class_file = wp_normalize_path($classDir . $subFolder . strtolower($class_name) . '.php');
+	$class_file = wp_normalize_path($classDir . $subFolder . $class_name . '.php');
 
 	if(file_exists($class_file)){
 		require_once($class_file);
 	}else{
 
 		foreach(unserialize( SMPG_OPTIONS_AUTOLOADS ) as $path){
-			$class_file = wp_normalize_path($path . DIRECTORY_SEPARATOR . strtolower($class_name) . '.php');
+			$class_file = wp_normalize_path($path . DIRECTORY_SEPARATOR . $class_name . '.php');
 			if(file_exists($class_file)){
 				require_once($class_file);
 			}
