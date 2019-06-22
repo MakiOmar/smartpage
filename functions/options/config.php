@@ -1,5 +1,5 @@
 <?php
-$consts = array( 
+$opts_consts = array( 
 	'SMPG_OPTIONS_DIR'      => THEME_DIR . "/functions/options/",
 	'SMPG_OPTIONS_URI'      => THEME_URI . "/functions/options/",
 	'SMPG_OPTIONS_FIELDS'   => THEME_DIR . "/functions/options/fields/",
@@ -7,9 +7,9 @@ $consts = array(
 	
 );
 
-foreach($consts as $const => $v){
-	if(!defined($const)){
-		define($const, $v);
+foreach($opts_consts as $opts_const => $v){
+	if(!defined($opts_const)){
+		define($opts_const, $v);
 	}
 }
 
