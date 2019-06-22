@@ -218,6 +218,56 @@ function smartpage_comment( $comment, $args, $depth ) {
 	endswitch; // end comment_type check
 }
 endif;
+
+/*
+*Get lates comments
+*/
+function latest_comments(){
+	
+	$args = array('number'=>4,'author__not_in' => array(get_current_user_id()));
+	
+		$comments = get_comments($args);
+	
+		if(count($comments) > 0){
+			
+			foreach($comments as $comment) {?>	
+			
+				<div  class="recent-comment-wrapper">
+				
+					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented',TEXTDOM) ?></h3>
+					
+					<p class='recent-comment'>
+					<?php echo substr($comment->comment_content,0 , 150).'... ' ?>
+					
+					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php esc_html_e('View Post',TEXTDOM) ?></a>
+					
+					</p>
+					
+				</div>
+				
+		<?php }}else{?>
+				
+					<p><?php esc_html_e('No comments yet',TEXTDOM);?></p>
+					
+				<?php };
+}
+
+/*
+*define post types to search for
+*/
+add_filter('pre_get_posts','searchFilter');
+
+function searchFilter($query) {
+ 
+    if ($query->is_search && !is_admin() ) {
+		
+        $query->set('post_type',array('post','page'));
+		
+    }
+ 
+	return $query;
+}
+
 /*
 *Create term for custom post to be set as default
 */
