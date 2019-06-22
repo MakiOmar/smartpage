@@ -31,9 +31,9 @@ function opts_anony_autoloader( $class_name ) {
 	$class_file = $classDir . $class_name . '.php';
 	
 	
-	if(strpos( $class_name, 'Field__' ) !== false){
+	if(strpos( $class_name, 'field__' ) !== false){
 
-		$class_name = str_replace('Field__','', $class_name);
+		$class_name = str_replace('field__','', $class_name);
 		$subFolder = $class_name . DIRECTORY_SEPARATOR;
 		$classDir = SMPG_OPTIONS_FIELDS; 
 		
