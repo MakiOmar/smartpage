@@ -43,7 +43,7 @@ function smpg_autoloader( $class_name ) {
 
 		$class_sub =  preg_replace('/__/', DIRS, strtolower($class_name));
 
-		$classes_dir = THEME_DIR .DIRS.'functions'.DIRS;
+		$classes_dir = THEME_DIR .abstracted_generate_path(array('functions'));
 
 		$class_path =  wp_normalize_path($classes_dir) . str_replace('_','-',$class_sub) . '.php';
 
