@@ -48,7 +48,7 @@ class Smpg__Generate_Posts_View{
 	public $PostsIds = array();
 	
 	/*
-	*@var array  $PostsIds post ids inside the loop for further use
+	*@var string message to show 
 	*/
 	public $msg = null;
 	
