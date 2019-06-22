@@ -1,5 +1,5 @@
 <?php
-class Field__Color_gradient extends Theme_Settings{	
+class Field__Color_gradient extends Smpg__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

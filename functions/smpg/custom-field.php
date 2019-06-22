@@ -47,7 +47,7 @@ if( ! class_exists( 'Smpg__Custom_Field' )){
 		
 		public function smpg_metabox_cb($post, $metaBox){
 
-			$class_name = 'Smpg__Cf__'.ucfirst($metaBox['args'][0]['type']);
+			$class_name = 'Cf__'.ucfirst($metaBox['args'][0]['type']);
 			
 			if(class_exists($class_name)){
 				

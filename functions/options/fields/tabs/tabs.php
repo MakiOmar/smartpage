@@ -1,5 +1,5 @@
 <?php
-class Field__Tabs extends Theme_Settings{	
+class Field__Tabs extends Smpg__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

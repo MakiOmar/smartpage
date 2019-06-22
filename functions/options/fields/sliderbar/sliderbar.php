@@ -1,5 +1,5 @@
 <?php
-class Field__Sliderbar extends Theme_Settings{	
+class Field__Sliderbar extends Smpg__Theme_Settings{	
 	
 	
 	/**

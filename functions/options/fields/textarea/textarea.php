@@ -1,5 +1,5 @@
 <?php
-class Field__Textarea extends Theme_Settings{	
+class Field__Textarea extends Smpg__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

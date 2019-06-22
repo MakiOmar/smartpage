@@ -1,5 +1,5 @@
 <?php
-class Field__Switch extends Theme_Settings{	
+class Field__Switch extends Smpg__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

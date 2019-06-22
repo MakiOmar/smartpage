@@ -1,6 +1,6 @@
 <?php
-if (!class_exists('Theme_Settings')) {
-	class Theme_Settings{
+if (!class_exists('Smpg__Theme_Settings')) {
+	class Smpg__Theme_Settings{
 		public $page = '';
 		public $OptionGroup = '';
 		public $sections = array();

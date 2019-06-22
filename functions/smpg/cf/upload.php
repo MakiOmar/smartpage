@@ -1,6 +1,6 @@
 <?php 
 
-class Smpg__Cf__Upload extends Smpg__Custom_Field{
+class Cf__Upload extends Smpg__Custom_Field{
 	public $post, $metaBox, $id;
 	public function __construct($post, $metaBox){
 		parent::__construct();

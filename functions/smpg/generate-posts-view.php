@@ -77,7 +77,7 @@ class Smpg__Generate_Posts_View{
 	*Display posts list view
 	*/
 	public function postsView(){
-		$className= 'Smpg__Views__'.ucfirst($this->postsTemplate);
+		$className= 'Views__'.ucfirst($this->postsTemplate);
 		
 		if(class_exists($className)){
 				

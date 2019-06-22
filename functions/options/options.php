@@ -429,9 +429,9 @@ $sections['socials']= array(
 					)
 );
 
-$widgets = array('Sidebar_Ad');
+$widgets = array('Smpg__Sidebar_Ad');
 
-$Smpg_Options = new Theme_Settings( $options_nav, $sections, $widgets );
+$Smpg_Options = new Smpg__Theme_Settings( $options_nav, $sections, $widgets );
 
 /*
 *Show ads hooked to custom hook

@@ -1,6 +1,6 @@
 <?php 
 
-class Smpg__Cf__Text extends Smpg__Custom_Field{
+class Cf__Text extends Smpg__Custom_Field{
 	public $post, $metaBox, $id;
 	public function __construct($post, $metaBox){
 		parent::__construct();

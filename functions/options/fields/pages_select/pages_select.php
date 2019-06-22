@@ -1,5 +1,5 @@
 <?php
-class Field__Pages_select extends Theme_Settings{	
+class Field__Pages_select extends Smpg__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
