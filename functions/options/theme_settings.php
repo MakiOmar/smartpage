@@ -339,7 +339,7 @@ if (!class_exists('Smpg__Theme_Settings')) {
 					foreach($this->navigation as $nav => $details){
 
 						echo '<li><div><a id="'.$nav.'-nav" href="#"  class="smpg-nav-item nav-toggle" role="'.$nav.'">'.$details['title'].'<span class="icon" data-icon="y"></a></div>';
-						echo '<ul id="'.$nav.'" class="smpg-dropdown">';
+						echo '<ul id="'.$nav.'-dropdown" class="smpg-dropdown">';
 						
 							foreach($details['sections'] as $sec){
 								echo '<li class="smpg-nav-item"><a id="'.$sec.'" href="#section/'.$sec.'" class="smpg-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';

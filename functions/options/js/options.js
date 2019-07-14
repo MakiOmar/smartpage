@@ -9,7 +9,7 @@ var SettingsView = Backbone.View.extend({
 				
 				$('.smpg-dropdown').hide();
 				
-				$('#' + targetID).toggle();	
+				$('#' + targetID + '-dropdown').toggle();	
 
 		}
 	},
