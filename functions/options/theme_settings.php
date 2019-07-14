@@ -337,17 +337,22 @@ if (!class_exists('Smpg__Theme_Settings')) {
 				echo '<div id="options-wrap"><div id="options-nav"><div id="logo"><img src="'.SMPG_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
 			
 					foreach($this->navigation as $nav => $details){
+						if(isset($details['sections'])){
+								echo '<li><div><a id="'.$nav.'-nav" href="#"  class="smpg-nav-item nav-toggle" role="'.$nav.'">'.$details['title'].'<span class="icon" data-icon="y"></a></div>';
+								echo '<ul id="'.$nav.'-dropdown" class="smpg-dropdown">';
 
-						echo '<li><div><a id="'.$nav.'-nav" href="#"  class="smpg-nav-item nav-toggle" role="'.$nav.'">'.$details['title'].'<span class="icon" data-icon="y"></a></div>';
-						echo '<ul id="'.$nav.'-dropdown" class="smpg-dropdown">';
-						
-							foreach($details['sections'] as $sec){
-								echo '<li class="smpg-nav-item"><a id="'.$sec.'" href="#section/'.$sec.'" class="smpg-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';
+									foreach($details['sections'] as $sec){
+										echo '<li class="smpg-nav-item"><a id="'.$sec.'" href="#section/'.$sec.'" class="smpg-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';
+									}
+
+								echo '</ul></li>';
+
+							 }else{
+								echo '<li class="smpg-nav-item"><a id="'.$nav.'" href="#section/'.$nav.'" class="smpg-nav-link">'.(isset($this->sections[$nav]) ? $this->sections[$nav]['title'] : ucfirst(str_replace('-', ' ', $nav))).'</a><span class="icon" data-icon="'.$this->sections[$nav]['icon'].'"></span></li>';	
+
 							}
-						
-						echo '</ul></li>';
-
-					 }
+						}
+					
 
 					echo '</ul></div><div id="options-sections">';
 					// output setting sections and their fields

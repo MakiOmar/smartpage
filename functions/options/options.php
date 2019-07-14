@@ -15,7 +15,6 @@ $options_nav = array(
 	// Slider --------------------------------------------
 	'slider' => array(
 		'title' => esc_html__('Slider', TEXTDOM),
-		'sections' => array('slider'),
 	),
 	// Layout --------------------------------------------
 	'layout' => array(
@@ -36,15 +35,15 @@ $options_nav = array(
 	),
 
 	// Translate --------------------------------------------
-	'translate' => array(
+	/*'translate' => array(
 		'title' => esc_html__('Translate', TEXTDOM),
 		'sections' => array('translate'),
 	),
-	
+	*/
 	// Socials --------------------------------------------
 	'socials' => array(
 		'title' => esc_html__('Socials', TEXTDOM),
-		'sections' => array('socials'),
+		//'sections' => array('socials'),
 	),
 );
 

@@ -8,8 +8,10 @@ var SettingsView = Backbone.View.extend({
 				var targetID = e.target.id.split('-')[0];
 				
 				$('.smpg-dropdown').hide();
-				
-				$('#' + targetID + '-dropdown').toggle();	
+				if($('#' + targetID + '-dropdown')){
+					$('#' + targetID + '-dropdown').toggle();
+				}
+					
 
 		}
 	},
