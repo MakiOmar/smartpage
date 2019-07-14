@@ -45,6 +45,12 @@ $options_nav = array(
 		'title' => esc_html__('Socials', TEXTDOM),
 		//'sections' => array('socials'),
 	),
+	
+	// Miscellanous --------------------------------------------
+	'miscellanous' => array(
+		'title' => esc_html__('Miscellanous', TEXTDOM),
+		//'sections' => array('socials'),
+	),
 );
 
 //Sectoins
@@ -428,6 +434,47 @@ $sections['socials']= array(
 					)
 );
 
+$sections['miscellanous']= array(
+		'title' => esc_html__('Miscellanous', TEXTDOM),
+		'icon' => 'x',
+		'fields' => array(
+						array(
+							'id'      => 'admin_bar',
+							'title'   => esc_html__('Hide admin bar', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    =>esc_html__('Will show admin bar only for admins', TEXTDOM)
+						),	
+						array(
+							'id'      => 'not_admin_restricted',
+							'title'   => esc_html__('Restrict access to admin', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    =>esc_html__('Will restrict non-admins to access the dashboard', TEXTDOM)
+						),
+						array(
+							'id'      => 'change_login_title',
+							'title'   => esc_html__('Change login header title', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    =>esc_html__('Will change the default header title in WordPress login page to be your site title', TEXTDOM)
+						),
+						array(
+							'id'      => 'query_string',
+							'title'   => esc_html__('Remove query string', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    =>esc_html__('Remove query string from styles/scripts and help speed up your website', TEXTDOM)
+						),
+						array(
+							'id'      => 'keep_query_string',
+							'title'   => esc_html__('Keep query string', TEXTDOM),
+							'type'    => 'text',
+							'validate'=> 'no_html',
+							'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', TEXTDOM)
+						),				
+					)
+);
 $widgets = array('Smpg__Sidebar_Ad');
 
 $Smpg_Options = new Smpg__Theme_Settings( $options_nav, $sections, $widgets );
