@@ -82,6 +82,7 @@ class Views__Standard extends Smpg__Generate_Posts_View{
 
 				<?php } ?>
 			</div>	
+			</div>
 	<?php }
 	
 	public function IfNot(){
