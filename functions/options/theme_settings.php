@@ -311,7 +311,7 @@ if (!class_exists('Smpg__Theme_Settings')) {
 			}
 
 			// add settings saved message with the class of "updated"
-			add_settings_error( $this->OptionGroup, esc_attr( 'smpg_settings_updated' ), 'testtt', 'update' );
+			add_settings_error( $this->args['opt_name'], esc_attr( 'smpg_settings_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
 			
 			return $validated;
 		}
@@ -320,6 +320,7 @@ if (!class_exists('Smpg__Theme_Settings')) {
 		 * HTML OUTPUT.
 		*/
 		function _options_page_html(){
+			settings_errors($this->args['opt_name']);
 			//neat_print_r(new WP_Term_Query(array('taxonomy' => 'post_tag')));
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
@@ -447,7 +448,7 @@ if (!class_exists('Smpg__Theme_Settings')) {
 		}
 		
 		public function smpg_save_notify(){
-			settings_errors($this->OptionGroup);
+			
 		}
 	}
 }
