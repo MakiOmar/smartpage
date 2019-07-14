@@ -336,6 +336,7 @@
 }
 .form-table td{
 	display: flex;
+	flex-direction: column;
 }
 .wp-core-ui .button-primary {
     background: #d1354b;
