@@ -74,6 +74,8 @@ if (!class_exists('Smpg__Theme_Settings')) {
 			
 			//get the options for use later on
 			$this->options = Smpg__Options_Model::get_instance();
+			
+			add_action('admin_notices', array(&$this, 'smpg_save_notify'));
 
 		}
 		
@@ -105,7 +107,9 @@ if (!class_exists('Smpg__Theme_Settings')) {
 		 * Set default options if option doesnt exist
 		*/
 		function smpg_set_default_options(){
-			if(!get_option($this->args['opt_name'])){
+			
+			
+			if(!get_option($this->args['opt_name']) || empty(get_option($this->args['opt_name']))){
 				
 				add_option($this->args['opt_name'], $this->defaultOptions);
 								
@@ -306,20 +310,10 @@ if (!class_exists('Smpg__Theme_Settings')) {
 				}
 			}
 
-			return $validated;
-			/*add error/update messages
-			*check if the user have submitted the settings
-			*wordpress will add the "settings-updated" $_GET parameter to the url
-			*/
-			if ( isset( $_GET['settings-updated'] ) ) {
-				 // add settings saved message with the class of "updated"
-				 add_settings_error( 'smpg_messages', esc_attr( 'smpg_settings_updated' ), $message, $type );
-			 }
-
-			// show error/update messages
-			//settings_errors( 'smpg_messages' );
+			// add settings saved message with the class of "updated"
+			add_settings_error( $this->OptionGroup, esc_attr( 'smpg_settings_updated' ), 'testtt', 'update' );
 			
-			//return $validated;
+			return $validated;
 		}
 		
 		/**
@@ -450,6 +444,10 @@ if (!class_exists('Smpg__Theme_Settings')) {
 				});
 				
 			}
+		}
+		
+		public function smpg_save_notify(){
+			settings_errors($this->OptionGroup);
 		}
 	}
 }
