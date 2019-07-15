@@ -1,9 +1,10 @@
 <?php
-define( 'DIRS', DIRECTORY_SEPARATOR );
 
 define( 'THEME_DIR', wp_normalize_path( get_template_directory() ) );
 
 define( 'THEME_URI', get_template_directory_uri() );
+
+define( 'LIBS_URI', get_template_directory_uri(). '/functions' );
 
 define( 'THEME_NAME', 'Smartpage' );
 
