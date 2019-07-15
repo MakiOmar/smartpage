@@ -28,6 +28,8 @@ $socials_follow = array(
 		
 		<li><a href="mailto:<?php echo $smpgOptions->email ?>" class="email-me"><i class="fa fa-envelope"></i></a></li>
 		
+		<a href="<?php echo wp_logout_url(); ?>">Logout</a>
+		
 	  </ul>
 	  <?php echo smpg_main_navigation('languages-menu','') ?>
 	</nav>
