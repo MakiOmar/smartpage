@@ -57,7 +57,7 @@ add_action( 'init', function() use($smpgOptions){
 
 
 // custom login logo tooltip
-add_filter('login_headertitle', function() use($smpgOptions){
+add_filter('login_headertext', function() use($smpgOptions){
 	if(isset($smpgOptions->change_login_title) && $smpgOptions->change_login_title != '0'){
 		
 		return get_bloginfo();
