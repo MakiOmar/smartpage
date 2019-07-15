@@ -177,7 +177,6 @@ $sections['sidebars']= array(
 							'type'    => 'radio_img',
 							'validate'=> 'no_html',
 							'options' => array(
-											//'' 				=> array('title' => 'Use Post Meta', 'img' => Theme_Settings_URI.'img/question.png'),
 											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
 											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
