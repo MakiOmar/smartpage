@@ -14,7 +14,7 @@ define( 'THEME_VERSION', '1.0' );
 
 //define( 'LIBS_DIR', wp_normalize_path (THEME_DIR . abstracted_generate_path(array('functions'))));
 
-define( 'SMPG_CLASSES', wp_normalize_path (LIBS_DIR . abstracted_generate_path(array('smpg'))));
+define( 'SMPG_CLASSES', wp_normalize_path (LIBS_DIR . abstracted_generate_path(array('theme-classes'))));
 
 //Custom fileds classes
 define( 'SMPG_CF_CLASSES', wp_normalize_path (SMPG_CLASSES . abstracted_generate_path(array('cf'))));

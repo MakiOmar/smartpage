@@ -15,7 +15,7 @@ class Views__Downloads extends Smpg__Generate_Posts_View{
 	
 	public function render(){?>
 		
-		<div class="section">
+		<div class="section<?php echo (is_front_page() || ishome()) ? ' section-front-page' : '' ?>">
 			<div><h4 class="section_title clearfix"><?php esc_html_e('Suggested downloads',TEXTDOM);?></h4></div>
 				<div class="posts-wrapper">
 					<div id="download">
@@ -26,6 +26,7 @@ class Views__Downloads extends Smpg__Generate_Posts_View{
 							$this->child->post->the_post();
 
 							$tdPostId = get_the_ID();
+							$tdPostTitle = get_the_title();
 
 							$curr_download_meta = get_post_meta( $tdPostId, 'smpg_download_attachment', true );
 
@@ -48,13 +49,14 @@ class Views__Downloads extends Smpg__Generate_Posts_View{
 									<span id="download-<?php echo $tdPostId?>-count" class="download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',TEXTDOM) ?></span>
 
 
-									  <?php if( has_post_thumbnail() ){
+									  <?php if( has_post_thumbnail() ){?>
+											<a href="<?php the_permalink() ?>" title="<?php echo $tdPostTitle ?>"><
+												<?php the_post_thumbnail(array('160','180'));?>
+											</a>
 
-												the_post_thumbnail(array('160','180'));
+											<?php }else{?>
 
-											}else{?>
-
-												<img src="<?php echo get_theme_file_uri();?>/images/temporary-book-bg.png" alt="<?php the_title() ?>"/>
+												<a href="<?php the_permalink() ?>" title="<?php echo $tdPostTitle ?>"><img src="<?php echo get_theme_file_uri();?>/images/temporary-book-bg.png" alt="<?php echo $tdPostTitle ?>"/></a>
 
 												<?php }?>
 
@@ -62,7 +64,7 @@ class Views__Downloads extends Smpg__Generate_Posts_View{
 
 									</div>
 
-									<h4 class="download-title"><?php the_title() ?></h4>
+									<h4 class="download-title"><?php echo $tdPostTitle ?></h4>
 
 									<div class="download">
 
