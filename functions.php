@@ -2,12 +2,15 @@
 if(!defined('LIBS_DIR')){
 	define('LIBS_DIR', wp_normalize_path ( get_template_directory() . '/functions/'));
 }
+if(!defined('DIRS')){
+	define( 'DIRS', DIRECTORY_SEPARATOR );
+}
 
 $smpglibs = [
-	'php-helpers'       =>'helper/',
-	'wordpress-helpers' =>'helper/',
+	'php-helpers'       =>'helper'. DIRS,
+	'wordpress-helpers' =>'helper' . DIRS,
 	'config'            =>'',
-	'options'           =>'options/',
+	'options'           =>'options' . DIRS,
 	'posts'     		=>'',
 	'theme'     		=>'',
 	'menus'     		=>'',
@@ -15,7 +18,8 @@ $smpglibs = [
 	'media'     		=>'',
 	'db'        		=>'',
 	'opts'      		=>'',
-	'ajax-comments'     =>'ajax/',
+	'ajax-comments'     =>'ajax' . DIRS,
+	'tinymce-editor-btns' =>'mce' . DIRS,
 ];
 
 foreach($smpglibs as $smpglib=>$path){
