@@ -13,12 +13,12 @@
 				menu : [ {
 					text : 'Inline English',
 					onclick : function() {
-						editor.insertContent('[ien][/ien]');
+						editor.insertContent('[ltrtext][/ltrtext]');
 					}
 				}, {
 					text : 'Neat quote',
 					onclick : function() {
-						editor.insertContent('[neat_quote][/neat_quote]');
+						editor.insertContent('[quoteit][/quoteit]');
 					}
 				},
 			   ]
