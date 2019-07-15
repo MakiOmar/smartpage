@@ -9,7 +9,7 @@
   	<div class="grid-row grid-col">
        <?php get_sidebar();?>
         <div class="grid-col-sm-9">
-      		 <div class="grid-col section blog-section">
+      		 <div class="grid-col blog-section">
 				<div class="posts-section">
        		 		<div class="grid-col post-contents">
                       <?php
