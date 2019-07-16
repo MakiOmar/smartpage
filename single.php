@@ -1,6 +1,6 @@
 <?php 
 get_header();
-$smpgOptions = Smpg__Options_Model::get_instance();
+$smpgOptions = opt_init();
 ?>
   <div class="grid">
   	<div class="grid-row grid-col">

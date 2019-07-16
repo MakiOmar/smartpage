@@ -1,5 +1,5 @@
 <?php
-$smpgOptions = Smpg__Options_Model::get_instance();
+$smpgOptions = opt_init();
 
 $socials_follow = array(
 				'facebook' => $smpgOptions->facebook,

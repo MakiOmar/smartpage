@@ -1,4 +1,4 @@
-<?php $smpgOptions = Smpg__Options_Model::get_instance();?>
+<?php $smpgOptions = opt_init();?>
 
 <footer class="grid-col-md-12 grid-col">
 	<?php 

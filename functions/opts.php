@@ -1,6 +1,6 @@
 <?php
 
-$smpgOptions = Smpg__Options_Model::get_instance();
+$smpgOptions = opt_init();
 
 add_action('wp_head', function() use($smpgOptions){?>
 	<style type="text/css">

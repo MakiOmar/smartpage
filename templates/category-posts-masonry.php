@@ -1,5 +1,5 @@
 <?php
-	$smpgOptions = Smpg__Options_Model::get_instance();
+	$smpgOptions = opt_init();
 	
 	$args = array('post_type' => 'post', 'posts_per_page' => 5);
 
