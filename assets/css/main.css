@@ -1284,6 +1284,10 @@ img {
 	.widgeted ul li:last-child{
 		border-bottom: none;
 	}
+	
+	.widgeted:first-child{
+		padding-top: 0;
+	}
 	/***End sidebars***/
 	#fixed-body-bg{
 		/*background: url(../../images/pattern-2.png) repeat fixed;
