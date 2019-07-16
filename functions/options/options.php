@@ -5,12 +5,12 @@ require_once('config.php');
 *Simple function to instantiate the options object
 */
 
-function opt_init(){
+function opt_init_(){
 	return Smpg__Options_Model::get_instance();
 }
 
 if(get_option(SMPG_OPTIONS)){
-	$smpgOptions = opt_init();
+	$smpgOptions = opt_init_();
 }
 
 // Navigation elements

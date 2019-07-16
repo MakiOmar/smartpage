@@ -73,7 +73,7 @@ if (!class_exists('Smpg__Theme_Settings')) {
 			}
 			
 			//get the options for use later on
-			$this->options = opt_init();
+			$this->options = opt_init_();
 			
 			add_action('admin_notices', array(&$this, 'smpg_save_notify'));
 

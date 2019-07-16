@@ -3,7 +3,7 @@ get_header();
 ?>
   <div class="grid">
 	<?php
-	$smpgOptions = opt_init();
+	$smpgOptions = opt_init_();
 
 	if(isset($smpgOptions->slider )){
 		

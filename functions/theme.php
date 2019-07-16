@@ -23,7 +23,7 @@ function smartpage_theme_textdomain(){
 add_action('wp_enqueue_scripts','smartpage_enqueue_styles');
 
 function smartpage_enqueue_styles() {
-	$smpgOptions = opt_init();
+	$smpgOptions = opt_init_();
 
 	$styles = array('main','font-awesome','responsive','prettyPhoto');
 	foreach($styles as $style){

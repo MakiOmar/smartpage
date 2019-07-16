@@ -78,7 +78,7 @@ function active_language($lang){
 	return;
 }
 
-if(opt_init()->cats_in_nav != '0'){
+if(opt_init_()->cats_in_nav != '0'){
 	add_filter("wp_nav_menu_items","add_cats_menu",10 , 3);
 }
 

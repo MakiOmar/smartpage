@@ -1,6 +1,6 @@
 <?php
 
-$smpgOptions = opt_init();
+$smpgOptions = opt_init_();
 
 if(isset($smpgOptions->slider )){
 		$args = array(
