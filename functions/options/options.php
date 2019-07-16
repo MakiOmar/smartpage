@@ -480,6 +480,13 @@ $sections['miscellanous']= array(
 							'type'    => 'text',
 							'validate'=> 'no_html',
 							'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', TEXTDOM)
+						),
+						array(
+							'id'      => 'cats_in_nav',
+							'title'   => esc_html__('Add categories to Navigation', TEXTDOM),
+							'type'    => 'switch',
+							'validate'=> 'no_html',
+							'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', TEXTDOM)
 						),	
 					)
 );
