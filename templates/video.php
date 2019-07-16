@@ -1,5 +1,5 @@
 <div class="section">
-	<h4>Choosen Videos</h4>
+	<h4 section_title clearfix>Choosen Videos</h4>
 	<div class="grid-col-md-12 videos">
 	  <div class="grid-col">
 		<div class="grid-col-md-3 grid-col-av-6">
