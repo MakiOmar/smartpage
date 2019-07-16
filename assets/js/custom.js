@@ -95,23 +95,21 @@ jQuery(document).ready(function($){
 	};
 	animateMe('#dun-text','#dun_text_wrapper','.dun_text',60000);
 	
-	//Apply effect if element is in view port
-	$(window).scroll(function(){
-		
-	  // This is then function used to detect if the element is scrolled into view
-		function elementScrolled(elem){
+	// This is then function used to detect if the element is scrolled into view
+	function elementScrolled(elem){
 
-			var docViewTop = $(window).scrollTop();
+		var docViewTop = $(window).scrollTop();
 
-			var docViewBottom = docViewTop + $(window).height();
+		var docViewBottom = docViewTop + $(window).height();
 
-			var elemTop = elem.offset().top;
+		var elemTop = elem.offset().top;
 
-			return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+		return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
 
-		}
-		
-		$('.section').each(function(){
+	}
+	
+	function slideToTop(element){
+		$(element).each(function(){
 
 			if(elementScrolled($(this))) {
 
@@ -122,8 +120,17 @@ jQuery(document).ready(function($){
 			  }
 			}
 		});
+	}
+	
+	//Slide to top if scrolled down
+	$(window).scroll(function(){
+		
+		slideToTop('.section');
+		
 	  
 	});
+	
+	slideToTop('.section');
 	
 	//toggle content
 	function smpgTogglecontent(toggle,toggledClass,toggled,ifCase,elseCase,callBack){
