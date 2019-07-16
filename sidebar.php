@@ -1,3 +1,10 @@
+<?php
+
+/*
+*Main sidebar
+*/
+
+?>
 <div class="grid-col-sm-2-5 asidebar">
 	<?php  
 		if (is_active_sidebar('right-sidebar')){
@@ -13,6 +20,6 @@
 				esc_url($url)
 			);
 		}
-		//get_template_part('templates/newsletters') ;
+		get_template_part('templates/newsletters') ;
 	?>
 </div>

@@ -1,3 +1,10 @@
+<?php
+
+/*
+*This is the sidebar in the featured section
+*/
+
+?>
 <div id="secondary-sidebar" class="grid-col-md-4 grid-col">
 	  <div class="grid-col-12">
 		<ul class="tabs">

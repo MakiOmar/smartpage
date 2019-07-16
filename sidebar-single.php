@@ -1,3 +1,12 @@
+<?php
+
+/*
+*Sidebar only shows on a Single post
+*Can be controlled for theme options > layout > sidebar -> single post sidebar
+*/
+
+?>
+
 <span class="toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
 <div class="grid-col-sm-2-5 asidebar single-sidebar">
 	<?php  
