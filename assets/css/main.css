@@ -200,6 +200,7 @@ img {
 		background-color: #FFFFFF;
 		margin: auto;
 		position: relative;
+		max-width: 1560px;
 	}
 	#top-header-wrapper {
 		visibility: visible;
@@ -684,7 +685,7 @@ img {
 		width:100%;
 	}
 	.post-wrapper{
-		max-width: 540px;
+		/*max-width: 540px;*/
 	}
 	.nothumb-post{
 		padding: 5px;

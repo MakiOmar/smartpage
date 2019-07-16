@@ -431,3 +431,10 @@
 	
 }
 
+@media screen and (min-width:1559px){
+	body{
+		background: url(../../images/6fe4bb926f48f7ef104b56f95d53e999c3cd.jpg) no-repeat fixed;
+		background-size: cover;
+	}
+}
+
