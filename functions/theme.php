@@ -80,8 +80,7 @@ add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form'
 add_action( 'after_setup_theme', 'supp_theme_features', 20 );
 
 //Sidebars
-add_action('widgets_init','smp_main_sidebar');
-function smp_main_sidebar(){
+add_action('widgets_init',function(){
 	$sidebars = array('Right Sidebar','left Sidebar','Secondary Sidebar','Footer Widget 1','Footer Widget 2','Footer Widget 3','Footer Widget 4');
 	foreach($sidebars as $sidebar){
 	    $sidebar_id = strtolower(str_replace(' ','-',$sidebar ));
@@ -96,7 +95,8 @@ function smp_main_sidebar(){
 	    );
 	   register_sidebar( $args );
 	}
-}
+});
+
 
 
 
@@ -115,18 +115,6 @@ function smartpage_custom_logo($color='main') {
 
 }
 
-/*For wordpress 's default login page*/
-// custom login logo tooltip
-add_filter('login_headertitle', 'change_title_on_logo');
-function change_title_on_logo() {
-	return get_bloginfo();
-}
-
-// custom login logo link
-add_filter('login_headerurl','loginpage_custom_link');
-function loginpage_custom_link() {
-	return get_bloginfo('url');
-}
 /*=============================*/
 
 function rand_custom_colors(){
