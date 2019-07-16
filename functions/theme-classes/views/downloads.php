@@ -50,7 +50,7 @@ class Views__Downloads extends Smpg__Generate_Posts_View{
 
 
 									  <?php if( has_post_thumbnail() ){?>
-											<a href="<?php the_permalink() ?>" title="<?php echo $tdPostTitle ?>"><
+											<a href="<?php the_permalink() ?>" title="<?php echo $tdPostTitle ?>">
 												<?php the_post_thumbnail(array('160','180'));?>
 											</a>
 
