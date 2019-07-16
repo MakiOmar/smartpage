@@ -11,6 +11,8 @@ function register_smartpage_menu() {
 		register_nav_menu($name, $description);
 	}
 }
+
+
 function smpg_main_navigation($location_slug, $container = 'nav'){
 	if ($location_slug == 'main-menu'){
 		$walker = new Smpg__Nav_Menu_Walk;
@@ -76,7 +78,15 @@ function active_language($lang){
 	return;
 }
 
-add_filter("wp_nav_menu_items","add_cats_menu",10 , 3);
+if(opt_init()->cats_in_nav != '0'){
+	add_filter("wp_nav_menu_items","add_cats_menu",10 , 3);
+}
+
+/*
+*Add Adds categories menu to the main navigation menu
+*(Show only if on mobile device)
+*/
+
 function add_cats_menu($item , $args){
 	if($args->theme_location == 'main-menu'){
 	$item.='<li><ul id="smpg-cat-list" class="smpg-cat-list">';
