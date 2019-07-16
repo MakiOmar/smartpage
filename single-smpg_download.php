@@ -45,12 +45,14 @@ if(empty($download_times)){
 								<div class="single-download-title">
 									<div class="title-date-wrapper">
 									
-										<?php 
-											$date = explode(' ',get_the_date()) ;
-											echo '<div class="date"><div class="date-wrapper"><h1 class="day">'.$date[0].'</h1>';
-											echo '<span>'.$date[1].' '.$date[2].'</span></div></div>';
+										<?php $date = explode(' ',get_the_date()) ;?>
+										<div class="date">
+											<div class="date-wrapper">
+												<h1 class="day"><?php echo $date[0] ?></h1>
+												<span><?php echo $date[1].' '.$date[2] ?></span>
+											</div>
+										</div>
 
-										?>
 										
 										<div class="download-title">
 										
