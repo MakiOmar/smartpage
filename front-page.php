@@ -43,7 +43,7 @@ get_header();
 
 				get_template_part('templates/category-posts-'.$smpgOptions->posts_grid) ;
 			
-				//get_template_part('templates/video') ;
+				get_template_part('templates/video') ;
 			
 			 ?>	
         </div>
