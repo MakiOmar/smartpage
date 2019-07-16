@@ -10,15 +10,6 @@ function opt_init_(){
 	return Smpg__Options_Model::get_instance();
 }
 
-/*
-*Simple function to get option value
-*@return mixed an option value
-*/
-
-function get_opt_($option_name){
-	return opt_init_()->$option_name;
-}
-
 if(get_option(SMPG_OPTIONS)){
 	$smpgOptions = opt_init_();
 }
