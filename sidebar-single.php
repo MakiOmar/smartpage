@@ -12,7 +12,7 @@ if ( is_single() ) {
 		
 		<span class="toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
 
-		<div class="grid-col-sm-2-5 asidebar single-sidebar grid-col">
+		<ul class="grid-col-sm-2-5 asidebar single-sidebar grid-col">
 		<?php
 		if ($catpostcount >= 1){
 				$args=array(
@@ -32,7 +32,7 @@ if ( is_single() ) {
 						echo '<h3 class="widgeted_title"><a href="'.get_category_link( $first_cat ).'">'.get_cat_name( $first_cat ).'</a></h3>';
 						while ($same_cat_posts->have_posts()) : $same_cat_posts->the_post(); ?>
 
-							<h5 class="same_cat_post"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a></h5>
+							<li class="same_cat_post"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a></li>
 
 					   <?php 
 							endwhile;
@@ -45,5 +45,5 @@ if ( is_single() ) {
 			echo '<p>'. esc_html__('No more posts in this category') . '</p>';
 		}
 	} //if ($cats)?>
-	</div>
+	</ul>
 <?php }?>	
