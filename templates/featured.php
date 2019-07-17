@@ -18,7 +18,7 @@ if(isset($smpgOptions->slider )){
 			if($FreaturedCat){
 				$args['cat'] = $FreaturedCat->term_id;
 			}else{
-				$fc->msg = esc_html__('Please make sure you select a category and it corresponding taxonomy from theme options->slider', TEXTDOM);
+				$fc->msg = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', TEXTDOM);
 			}
 		
 		}elseif($smpgOptions->slider == 'featured-post'){
