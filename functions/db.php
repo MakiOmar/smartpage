@@ -58,7 +58,7 @@ function smpg_get_rating($post_id){
 	
 	$table_name = STAR_RATE;
 	
-	$result = $wpdb->get_results("SELECT * FROM $table_name where post_id='$post_id'");
+	$result = $wpdb->get_results("SELECT * FROM $table_name WHERE post_id='$post_id'");
 	return $result;
 }
 
@@ -78,7 +78,7 @@ function implement_rate_ajax() {
 		
     	$thepost = stripslashes_deep($_POST['post_id']);
 		
-		$result = $wpdb->get_results("SELECT * FROM $table_name WHERE user_ip= '$ip' AND post_id = '$thepost' ");
+		$result = $wpdb->get_results("SELECT * FROM $table_name WHERE user_ip = '$ip' AND post_id = '$thepost' ");
 		
 		if(!empty($result) && !is_null($result)){
 			//If the user has been rated before
