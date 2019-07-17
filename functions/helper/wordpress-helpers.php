@@ -80,7 +80,7 @@ function post_image_html( $html, $post_id, $post_image_id ) {
 	return preg_replace('/(width|height)="\d+"\s/', "", $html);
 }
 
-//add_filter( 'post_thumbnail_html', 'post_image_html', 10, 3 );
+add_filter( 'post_thumbnail_html', 'post_image_html', 10, 3 );
 
 /*
 **Use instead of get_terms for admin purpuses

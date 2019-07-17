@@ -49,12 +49,11 @@ class Views__Downloads extends Class__Generate_Posts_View{
 									<span id="download-<?php echo $tdPostId?>-count" class="download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',TEXTDOM) ?></span>
 
 
-									  <?php if( has_post_thumbnail() ){?>
-											<a href="<?php the_permalink() ?>" title="<?php echo $tdPostTitle ?>">
-												<?php the_post_thumbnail(array('160','180'));?>
-											</a>
+									  <?php if( has_post_thumbnail() ){
+								
+												the_post_thumbnail(array('160','180'));
 
-											<?php }else{?>
+											}else{?>
 
 												<a href="<?php the_permalink() ?>" title="<?php echo $tdPostTitle ?>"><img src="<?php echo get_theme_file_uri();?>/images/temporary-book-bg.png" alt="<?php echo $tdPostTitle ?>"/></a>
 
