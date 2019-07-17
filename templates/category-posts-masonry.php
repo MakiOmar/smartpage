@@ -21,8 +21,7 @@
 				
 
 			}elseif($smpgOptions->slider == 'featured-post'){
-
-				$args['posts__not_in'] =  get_posts_ids_by_meta('smpg_set_featured', 'on');
+				$args['post__not_in'] =  get_posts_ids_by_meta('smpg_set_featured', 'on');
 
 			}
 			
