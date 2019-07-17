@@ -1,10 +1,11 @@
 <?php
 $opts_consts = array( 
 	'DIRS'                 => DIRECTORY_SEPARATOR ,
-	'SMPG_OPTIONS_DIR'     => THEME_DIR . "/functions/options/",
+	'SMPG_OPTIONS_DIR'     => wp_normalize_path(THEME_DIR . "/functions/options/"),
 	'SMPG_OPTIONS_URI'     => THEME_URI . "/functions/options/",
-	'SMPG_OPTIONS_FIELDS'  => THEME_DIR . "/functions/options/fields/",
-	'SMPG_OPTIONS_WIDGETS' => THEME_DIR . "/functions/options/widgets/",
+	'SMPG_OPTIONS_FIELDS'  => wp_normalize_path(THEME_DIR . "/functions/options/fields/"),
+	'SMPG_OPTIONS_WIDGETS' => wp_normalize_path(THEME_DIR . "/functions/options/widgets/"),
+	'SMPG_OPTIONS'         => "Smpg_Options",
 	
 );
 

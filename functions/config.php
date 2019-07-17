@@ -1,42 +1,58 @@
 <?php
+/*
+*Theme configuration codes
+*/
 
-define( 'THEME_DIR', wp_normalize_path( get_template_directory() ) );
 
-define( 'THEME_URI', get_template_directory_uri() );
 
-define( 'LIBS_URI', get_template_directory_uri(). '/functions' );
 
-define( 'THEME_NAME', 'Smartpage' );
+/*
+*Define theme constants
+*Other constants depends on these ones
+*/
+$theme_constants = array(
+	'THEME_NAME'    => 'Smartpage',
+	'THEME_DIR'     => wp_normalize_path( get_template_directory() ),
+);
+foreach($theme_constants as $theme_constant => $v){
+	if(!defined($theme_constant)){
+		define($theme_constant, $v);
+	}
+}
 
-define( 'TEXTDOM', strtolower(THEME_NAME) );
+//Define theme constants
+$theme_constants = array(
+	'THEME_VERSION' => '1.0',
+	'THEME_URI'     => get_template_directory_uri(),
+	'LIBS_URI'      => get_template_directory_uri(). '/functions',
+	'TEXTDOM'       => strtolower(THEME_NAME),
+	'LANG_DIR'      => wp_normalize_path(THEME_DIR. '/languages/'),
+	'STAR_RATE'     => $GLOBALS['wpdb']->prefix . 'star_rating' ,
+	'BLOG_TITLE'    => esc_html(get_bloginfo() ),
+	'BLOG_URL'      => esc_url(get_bloginfo('url') ),
+	'SuppTypes'     => serialize(array(
+									'pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd')
+								),
+);
+foreach($theme_constants as $theme_constant => $v){
+	if(!defined($theme_constant)){
+		define($theme_constant, $v);
+	}
+}
+/*----------------------------------------------------------------------
+*Autoloading
+*---------------------------------------------------------------------*/
 
-define( 'THEME_VERSION', '1.0' );
-
-//define( 'LIBS_DIR', wp_normalize_path (THEME_DIR . abstracted_generate_path(array('functions'))));
-
-define( 'SMPG_CLASSES', wp_normalize_path (LIBS_DIR . abstracted_generate_path(array('class'))));
+//Main classes folder
+define( 'SMPG_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
 
 //Custom fileds classes
-define( 'SMPG_CF_CLASSES', wp_normalize_path (SMPG_CLASSES . abstracted_generate_path(array('cf'))));
+define( 'SMPG_CF_CLASSES', wp_normalize_path (SMPG_CLASSES . '/cf/'));
 
 //views classes
-define( 'SMPG_VIEWS_CLASSES', wp_normalize_path (SMPG_CLASSES . abstracted_generate_path(array('views'))));
+define( 'SMPG_VIEWS_CLASSES', wp_normalize_path (SMPG_CLASSES . '/views/'));
 
-define( 'LANG_DIR', wp_normalize_path(THEME_DIR. abstracted_generate_path(array('languages'))));
-
-define( 'STAR_RATE', $GLOBALS['wpdb']->prefix . 'star_rating' );
-
-define( 'BLOG_TITLE', get_bloginfo() );
-
-define( 'BLOG_URL', get_bloginfo('url') );
-
-define( 'SMPG_OPTIONS', 'Smpg_Options' );
-
-define( 'SMPG_OPTIONS_URI', wp_normalize_path (THEME_URI . abstracted_generate_path(array('functions', 'options'))));
-
-define('SuppTypes',serialize(array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd')));
-
-
+//Hoolds a serialized array of all classes folders
 define('SMPG_THEME_AUTOLOADS' ,serialize(array(SMPG_CLASSES, SMPG_CF_CLASSES, SMPG_VIEWS_CLASSES)));
 /*
 *Classes Auto loader
@@ -62,3 +78,5 @@ function thm_autoloader( $class_name ) {
 
 	}
 }
+
+/*---------------------End autoloading---------------------------------*/
