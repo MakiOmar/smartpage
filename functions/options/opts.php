@@ -12,6 +12,10 @@ function opt_init_(){
 
 $smpgOptions = opt_init_();
 
+/*----------------------------------------------------------------------------------
+*Apply style options
+*---------------------------------------------------------------------------------*/
+
 add_action('wp_head', function() use($smpgOptions){?>
 	<style type="text/css">
 		<?php
