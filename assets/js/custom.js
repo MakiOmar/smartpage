@@ -665,7 +665,7 @@ $(function(){
 		$.ajax({
 		   type : "POST",
 		   data: {
-			  //'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db_functions
+			  //'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db
 			  action: 'rate_post',
 			  act:'rate',
 			  post_id : postId,
