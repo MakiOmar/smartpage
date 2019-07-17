@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Smpg__Related_Posts_Widget' ) ) {
-	class Smpg__Related_Posts_Widget extends WP_Widget{
+if ( ! class_exists( 'Class__Related_Posts_Widget' ) ) {
+	class Class__Related_Posts_Widget extends WP_Widget{
 		public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays list of posts within the same category',TEXTDOM),
 				'name' => esc_html__('SmartPage related posts',TEXTDOM)
 			);
-			parent::__construct('Smpg__Related_Posts_Widget','',$parms);
+			parent::__construct('Class__Related_Posts_Widget','',$parms);
 		}
 		public function form($instance){
 			extract($instance);?>

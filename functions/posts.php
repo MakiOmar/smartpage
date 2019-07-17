@@ -490,5 +490,5 @@ $metaBoxes = array(
 
 );
 
-$metaboxes = new Smpg__Custom_Field($metaBoxes);
+$metaboxes = new Class__Custom_Field($metaBoxes);
 ?>

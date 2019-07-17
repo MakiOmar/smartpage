@@ -1,5 +1,5 @@
 <?php
-class Field__Checkbox extends Smpg__Theme_Settings{	
+class Field__Checkbox extends Class__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

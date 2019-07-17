@@ -1,6 +1,6 @@
 <?php
-if(!class_exists('Smpg__Validate_Inputs')){
-	class Smpg__Validate_Inputs{
+if(!class_exists('Class__Validate_Inputs')){
+	class Class__Validate_Inputs{
 		public $errors = array();
 		public $warnings = array();
 		public $valid    = false;

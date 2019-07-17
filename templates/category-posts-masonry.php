@@ -31,7 +31,7 @@
 		
 	}
 
-$cpm= new Smpg__Generate_Posts_View(
+$cpm= new Class__Generate_Posts_View(
 					$args,
 					'masonry',
 					true

@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'Smpg__Sidebar_Ad' ) ) {
-	class Smpg__Sidebar_Ad extends WP_Widget{
+if ( ! class_exists( 'Class__Sidebar_Ad' ) ) {
+	class Class__Sidebar_Ad extends WP_Widget{
 		public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays the sidebar AD from theme options',TEXTDOM),

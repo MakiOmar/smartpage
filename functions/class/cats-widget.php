@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Smpg__Cats_Widget' ) ) {
-	class Smpg__Cats_Widget extends WP_Widget{
+if ( ! class_exists( 'Class__Cats_Widget' ) ) {
+	class Class__Cats_Widget extends WP_Widget{
 		public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays an organized dropdown list of your categories',TEXTDOM),
 				'name' => esc_html__('Smart Page categories',TEXTDOM)
 			);
-			parent::__construct('Smpg__Cats_Widget','',$parms);
+			parent::__construct('Class__Cats_Widget','',$parms);
 		}
 		public function form($instance){
 			extract($instance);?>
@@ -36,7 +36,7 @@ if ( ! class_exists( 'Smpg__Cats_Widget' ) ) {
 					'hide_empty' => 0,
 					'title_li' => '',
 					'order'=> 'DESC',
-					'walker' => new Smpg__Cats_Walk()
+					'walker' => new Class__Cats_Walk()
 				   );
 			
 					wp_list_categories($args);

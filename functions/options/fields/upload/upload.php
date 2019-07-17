@@ -1,5 +1,5 @@
 <?php
-class Field__Upload extends Smpg__Theme_Settings{
+class Field__Upload extends Class__Theme_Settings{
 
 	/**
 	 * Field Constructor.

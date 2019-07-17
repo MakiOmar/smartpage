@@ -62,8 +62,8 @@ add_filter('option_users_can_register', function($value) {
 add_action('widgets_init', function (){
 	
 	$reg_widgets = array(
-		'Smpg__Cats_Widget',
-		'Smpg__Related_Posts_Widget',
+		'Class__Cats_Widget',
+		'Class__Related_Posts_Widget',
 	);
 	
 	foreach($reg_widgets as $reg_widget){

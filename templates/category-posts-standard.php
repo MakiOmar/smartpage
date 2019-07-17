@@ -27,7 +27,7 @@
 		
 	}
 
-$cps= new Smpg__Generate_Posts_View(
+$cps= new Class__Generate_Posts_View(
 					$args,
 					'standard',
 					true

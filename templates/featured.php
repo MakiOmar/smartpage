@@ -24,7 +24,7 @@ if(isset($smpgOptions->slider )){
 			$args['meta_key'] = 'smpg_set_featured';
 		}
 		
-		$fc= new Smpg__Generate_Posts_View(
+		$fc= new Class__Generate_Posts_View(
 					$args,
 					'featured',
 					true

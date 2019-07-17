@@ -1,6 +1,6 @@
 <?php
-if (!class_exists('Smpg__Theme_Settings')) {
-	class Smpg__Theme_Settings{
+if (!class_exists('Class__Theme_Settings')) {
+	class Class__Theme_Settings{
 		public $page = '';
 		public $OptionGroup = '';
 		public $sections = array();
@@ -18,7 +18,7 @@ if (!class_exists('Smpg__Theme_Settings')) {
 			
 			$this->navigation = $menu;
 			
-			$this->validate = new Smpg__Validate_Inputs();
+			$this->validate = new Class__Validate_Inputs();
 				
 			$defaults = array();
 			

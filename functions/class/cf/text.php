@@ -1,6 +1,6 @@
 <?php 
 
-class Cf__Textarea extends Smpg__Custom_Field{
+class Cf__Text extends Class__Custom_Field{
 	public $post, $metaBox, $id;
 	public function __construct($post, $metaBox){
 		parent::__construct();
@@ -23,8 +23,9 @@ class Cf__Textarea extends Smpg__Custom_Field{
 			$value = '';
 			
 		}
-		
-		echo '<textarea rows="4" cols="20" id="'.$this->idAttr.'" name="'.$this->id.'">'.esc_textarea($value).'</textarea> ';
+
+		neat_var_dump(get_transient($this->id)) ;
+		//neat_var_dump(get_transient('posted')) ;
+		echo '<input class="widefat" type="text" id="'.$this->idAttr.'" name="'.$this->id.'" value="'.esc_attr($value).'" autocomplete="off"/>';
 	}
 } 
-

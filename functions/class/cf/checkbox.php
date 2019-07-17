@@ -1,6 +1,6 @@
 <?php 
 
-class Cf__Checkbox extends Smpg__Custom_Field{
+class Cf__Checkbox extends Class__Custom_Field{
 	public $post, $metaBox, $id, $idAttr;
 	public function __construct($post, $metaBox){
 		parent::__construct();

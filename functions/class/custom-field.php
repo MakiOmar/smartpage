@@ -1,8 +1,8 @@
 <?php
 	
-if( ! class_exists( 'Smpg__Custom_Field' )){
+if( ! class_exists( 'Class__Custom_Field' )){
 	
-	class Smpg__Custom_Field{
+	class Class__Custom_Field{
 
 		public $metaBoxes, $postType;
 		
@@ -11,7 +11,7 @@ if( ! class_exists( 'Smpg__Custom_Field' )){
 		public function __construct($meta_boxes = array()){
 			$this->metaBoxes = $meta_boxes;
 			
-			$this->validate = new Smpg__Validate_Inputs();
+			$this->validate = new Class__Validate_Inputs();
 			
 			foreach($this->metaBoxes as $boxPostType => $metaBoxes){
 				foreach($metaBoxes as $metaBox){

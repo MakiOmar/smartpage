@@ -7,7 +7,7 @@ require_once('config.php');
 */
 
 function opt_init_(){
-	return Smpg__Options_Model::get_instance();
+	return Class__Options_Model::get_instance();
 }
 
 if(get_option(SMPG_OPTIONS)){
@@ -491,9 +491,9 @@ $sections['miscellanous']= array(
 						),	
 					)
 );
-$widgets = array('Smpg__Sidebar_Ad');
+$widgets = array('Class__Sidebar_Ad');
 
-$Smpg_Options = new Smpg__Theme_Settings( $options_nav, $sections, $widgets );
+$Smpg_Options = new Class__Theme_Settings( $options_nav, $sections, $widgets );
 
 /*
 *Show ads hooked to custom hook

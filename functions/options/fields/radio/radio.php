@@ -1,5 +1,5 @@
 <?php
-class Field__Radio extends Smpg__Theme_Settings{	
+class Field__Radio extends Class__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

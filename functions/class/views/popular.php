@@ -1,5 +1,5 @@
 <?php
-class Views__Popular extends Smpg__Generate_Posts_View{
+class Views__Popular extends Class__Generate_Posts_View{
 	
 	public $IfNot = '';
 	

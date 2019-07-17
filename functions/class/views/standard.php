@@ -1,5 +1,5 @@
 <?php
-class Views__Masonry extends Smpg__Generate_Posts_View{
+class Views__Standard extends Class__Generate_Posts_View{
 	
 	public $IfNot = '';
 	
@@ -20,19 +20,16 @@ class Views__Masonry extends Smpg__Generate_Posts_View{
 			<div>
 				<h4 class="section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
 			</div>
-
-			<div id="masonry">
 		<?php }else{?>
 			<div>
-				
 		<?php }?>
-			<div id="blog-posts">
-			<?php
-					while($this->child->post->have_posts()){
+				<div id="blog-posts">
+				<?php  while($this->child->post->have_posts()){
 					 
 					$this->child->post->the_post();
 					 
-					$tbp_post_id = get_the_ID();?>
+					$tbp_post_id = get_the_ID();
+		?>
 
 					<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper grid-col-max-480-12 grid-col-av-12 grid-col-md-6 grid-col">
 						<div class="post-contents blog-post grid-col">
@@ -84,12 +81,8 @@ class Views__Masonry extends Smpg__Generate_Posts_View{
 					</div>
 
 				<?php } ?>
-				</div>
-				</div>
+			</div>	
 			</div>
-				
-		
-		
 	<?php }
 	
 	public function IfNot(){
