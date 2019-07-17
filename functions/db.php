@@ -1,11 +1,10 @@
 <?php
-global $rating_db_version;
 $rating_db_version = '1.0';
 
 /*
 *Create rating table
 */
-function smpg_rating_table_install () {
+add_action("after_switch_theme", function() {
 	
     global $wpdb;
 	
@@ -24,13 +23,12 @@ function smpg_rating_table_install () {
 	  PRIMARY KEY  (id)
 	) $charset_collate";
 	
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	require_once( wp_normalize_path ( ABSPATH . 'wp-admin/includes/upgrade.php' ) );
 	dbDelta( $sql );
 	
-	add_option( 'rating_db_version', $rating_db_version );
+	update_option( 'rating_db_version', $rating_db_version );
     
-}
-add_action("after_switch_theme", "smpg_rating_table_install");
+});
 
 /*
 *Insert rating
@@ -80,48 +78,26 @@ function implement_rate_ajax() {
 		
     	$thepost = stripslashes_deep($_POST['post_id']);
 		
-		$result = $wpdb->get_results("SELECT * FROM $table_name WHERE user_ip= '$ip'");
+		$result = $wpdb->get_results("SELECT * FROM $table_name WHERE user_ip= '$ip' AND post_id = '$thepost' ");
 		
-		if(!empty($result) || !is_null($result)){
-			
-			foreach($result as $r){
-				
-				if($r->post_id == $thepost){
-					
-					$rated_post[] = $thepost;
-				}
-				
-			}
-			
-			if(!empty($rated_post)){
-				
-				$wpdb->update($table_name, array('rate'=>$therate), array('user_ip'=>$ip,'post_id'=>$thepost));
-				
-			}else{
-				
-				$z = $wpdb->insert( 
-				$table_name,
-					array( 
-						'post_id' => $thepost,
-						'user_ip' => $ip,
-						'rate' => $therate,
-					) 
-				);
-				
-			}
-			
+		if(!empty($result) && !is_null($result)){
+			//If the user has been rated before
+
+			$wpdb->update($table_name, array('rate'=>$therate), array('user_ip'=>$ip,'post_id'=>$thepost));
+
 		}else{
-			
+			//Insert new rating
 			$z = $wpdb->insert( 
-				$table_name, 
+			$table_name,
 				array( 
 					'post_id' => $thepost,
 					'user_ip' => $ip,
 					'rate' => $therate,
 				) 
 			);
-			
+
 		}
+
 	$return = array(
             'resp'  => '',
             );

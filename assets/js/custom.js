@@ -674,7 +674,7 @@ $(function(){
 		  url : SmpgAjaxUrl,
 		  success:function(response){
 			  //resp is define within the wp_ajax_{action} hooked function
-			  console.log(response.resp);
+			  //console.log(response.resp);
 		  }
 		});
 	});
