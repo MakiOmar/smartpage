@@ -1,15 +1,6 @@
 <?php
 require_once('config.php');
 
-/*
-*Simple function to instantiate the options object
-*@return object options object
-*/
-
-function opt_init_(){
-	return Class__Options_Model::get_instance();
-}
-
 if(get_option(SMPG_OPTIONS)){
 	$smpgOptions = opt_init_();
 }

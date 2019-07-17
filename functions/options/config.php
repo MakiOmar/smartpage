@@ -53,3 +53,5 @@ function opts_autoloader( $class_name ) {
 	}
 	
 }
+
+require_once('opts.php');

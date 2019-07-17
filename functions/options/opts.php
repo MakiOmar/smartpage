@@ -1,5 +1,15 @@
 <?php
 
+/*
+*Simple function to instantiate the options object
+*@return object options object
+*/
+
+function opt_init_(){
+	return Class__Options_Model::get_instance();
+}
+
+
 $smpgOptions = opt_init_();
 
 add_action('wp_head', function() use($smpgOptions){?>
