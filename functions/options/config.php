@@ -1,4 +1,5 @@
 <?php
+//Opions constants
 $opts_consts = array( 
 	'DIRS'                 => DIRECTORY_SEPARATOR ,
 	'SMPG_OPTIONS_DIR'     => wp_normalize_path(THEME_DIR . "/functions/options/"),
