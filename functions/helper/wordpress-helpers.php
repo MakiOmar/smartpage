@@ -43,11 +43,12 @@ function get_posts_ids_by_meta($key, $value){
 	global $wpdb;
 	
 	$postIDs = array();
-	$query = 'SELECT post_id FROM '. $wpdb->prefix .'postmeta WHERE meta_key="'.$key.'" AND meta_value="'.$value.'"';
+
+	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'smpg_set_featured' AND meta_value = 'on'";
+
+	$results = $wpdb->get_results($query);
 	
-	$results = $wpdb->get_results($query, ARRAY_N);
-	
-	if($results){
+	if(!empty($results) && !is_null($results)){
 		foreach($results as $result){
 			foreach($result as $id){
 				$postIDs[] = $id;
@@ -55,10 +56,12 @@ function get_posts_ids_by_meta($key, $value){
 		}
 	}
 	
-	if(WP_DEBUG == true){
+	//get_results return null on failure
+	if(is_null($results) && WP_DEBUG == true){
 		$wpdb->show_errors();
 		$wpdb->print_error();
 	}
+	
 	return $postIDs;
 	
 }
