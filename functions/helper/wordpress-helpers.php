@@ -1,4 +1,79 @@
 <?php
+function smartpage_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+		case 'trackback' :
+		// Display trackbacks differently than normal comments.
+	?>
+	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+		<p><?php esc_html_e( 'Pingback:', TEXTDOM ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', TEXTDOM ), '<span class="edit-link">', '</span>' ); ?></p>
+	<?php
+			break;
+		default :
+		// Proceed with normal comments.
+		global $post;
+	?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+		<article id="comment-<?php comment_ID(); ?>" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<?php
+					echo get_avatar( $comment, 44 );
+					printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
+						get_comment_author_link(),
+						// If current post author is also comment author, make it known visually.
+						( $comment->user_id === $post->post_author ) ? '<span>' . esc_html__( 'Post author', TEXTDOM ) . '</span>' : ''
+					);
+					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+						esc_url( get_comment_link( $comment->comment_ID ) ),
+						get_comment_time( 'c' ),
+						/* translators: 1: date, 2: time */
+						sprintf( esc_html__( '%1$s at %2$s', TEXTDOM ), get_comment_date(), get_comment_time() )
+					);
+				?>
+			</header><!-- .comment-meta -->
+
+			<?php if ( '0' == $comment->comment_approved ) : ?>
+				<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', TEXTDOM ); ?></p>
+			<?php endif; ?>
+
+			<section class="comment-content comment">
+				<?php comment_text(); ?>
+				<?php edit_comment_link( esc_html__( 'Edit', TEXTDOM ), '<p class="edit-link">', '</p>' ); ?>
+			</section><!-- .comment-content -->
+
+			<div class="reply">
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', TEXTDOM ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<?php
+		break;
+	endswitch; // end comment_type check
+}
+/**
+ * Gets post excerp.
+ *
+ * **Dscription: ** Echoes out an excerpt depending on the language
+ * @param int $id The post ID to get excerpt for
+ * @param int $words_count number of words
+ * @return void
+ */
+function anony_get_excerpt( $id,$words_count= 25 ) {
+		$text = get_the_content($id);
+		$text = strip_shortcodes( $text );
+		$text = str_replace(']]>', ']]&gt;', $text);
+		$text = wp_strip_all_tags( $text );
+		$text = explode(' ',$text);
+		$text = array_slice($text, 0 , $words_count);
+		$text = '<p>'.implode(' ',$text).'...</p>';
+		if(get_bloginfo('language')=='ar'){
+			echo $text;
+		}else{
+			echo '<p>'.get_the_excerpt($id).'</p>';
+		}
+	}
+
 /*
 *Gets revolution slider list of silders
 *@return array  Associative array of slider id = name

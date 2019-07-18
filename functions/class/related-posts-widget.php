@@ -40,7 +40,7 @@ if ( ! class_exists( 'Class__Related_Posts_Widget' ) ) {
 
 				$first_cat = $cats[0];
 
-				$catpostcount = number_postpercat($first_cat);?>
+				$catpostcount = anony_cat_posts_count($first_cat);?>
 
 				<ul class="grid-col">
 				<?php

@@ -21,7 +21,7 @@ $smpgOptions = opt_init_();
 		?>
         <div class="grid-col <?php echo ($smpgOptions->single_sidebar == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
         
-        <?php smpg_breadcrumbs()?>
+        <?php anony_breadcrumbs()?>
         
         <div class="post-title-image">
 			<div class="post-title-cover"></div>
@@ -37,7 +37,7 @@ $smpgOptions = opt_init_();
 			
 			<div class="comments">
 				<i class="fa fa-comments-o"></i>
-				<?php echo smpg_comments_number(); ?>
+				<?php echo anony_comments_number(); ?>
 			</div>
 			
 			<?php if(is_array(get_the_category()) && !empty(get_the_category())) {?>

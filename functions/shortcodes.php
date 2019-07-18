@@ -1,8 +1,13 @@
 <?php
-/*
-*Shortcodes
-*/
+/**
+ * Adding shortcodes
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 
+//Array of shortcodes to be added
 $shcods = array('ltrtext');
 
 foreach($shcods as $code){

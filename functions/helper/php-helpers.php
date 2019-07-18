@@ -234,3 +234,17 @@ function is_url_exist($url){
    return $status;
 }
 
+
+/**
+ * Generates a random color.
+ *
+ * **Description: ** Can be useful if you want to have dynamic style colors.
+ * @return string Random color
+ */
+
+function rand_custom_colors(){
+	$colors = array('#861618','#3568E1','#f33806','#CF2629');
+	$rand_color= array_rand($colors);
+	return $colors[$rand_color];
+}
+

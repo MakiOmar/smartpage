@@ -1,4 +1,16 @@
 <?php
+/**
+ * Group many options of our themes into 1
+ * Create an option group in wp_options using the name provided when construct the object, e.g.:
+ * 		$anony_option = new Class__Options_Model("anony_option");
+ * Get & Set new option in this group using assignments & save() function, e.g.:
+ * 		$anony_option->logo = {url};
+ * 		$anony_option->save();
+ * 		echo $anony_option->logo;
+ * Options in this group will be stored as an array, however to get an option, use -> instead of [], since this class use __get & __set methods.
+ * This class keeps the old ways of retrieving options, so you can also use $anony_option->get_option() & update_options(), add_options()
+ */
+
 if (!class_exists('Class__Options_Model')) {
     class Class__Options_Model
     {

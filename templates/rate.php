@@ -1,6 +1,6 @@
 <?php 
 $p_ID = get_the_ID();
-  $post_ratings = smpg_get_rating($p_ID);
+  $post_ratings = anony_get_rating($p_ID);
 	$user_ips = array();									 
 	foreach($post_ratings as $post_rating){
 		$rate_db[] = $post_rating->rate;

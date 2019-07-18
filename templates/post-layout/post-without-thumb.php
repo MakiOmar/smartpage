@@ -8,7 +8,7 @@
 		
 		<div class="comments">
 			<i class="fa fa-comments-o meta-text"></i>
-			<?php echo smpg_comments_number(); ?>
+			<?php echo anony_comments_number(); ?>
 		</div>
 		<?php if(has_category()){?>
 		

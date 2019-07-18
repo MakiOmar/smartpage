@@ -17,6 +17,7 @@ $smpglibs = [
 	'admin'     		=>'',
 	'media'     		=>'',
 	'db'        		=>'',
+	'metaboxes'         =>'',
 	'ajax-comments'     =>'ajax' . DIRS,
 	'tinymce-editor-btns' =>'mce' . DIRS,
 ];

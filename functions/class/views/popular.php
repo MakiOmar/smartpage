@@ -41,7 +41,7 @@ class Views__Popular extends Class__Generate_Posts_View{
 								</div>
 								
 								<div class="metadata"><i class="fa fa-calendar"></i>&nbsp;<?php echo get_the_date('Y-m-d'); ?></div>
-								<div class="metadata"><i class="fa fa-eye"></i>&nbsp;<?php echo getPostViews($tplID)?></div>
+								<div class="metadata"><i class="fa fa-eye"></i>&nbsp;<?php echo anony_get_post_views($tplID)?></div>
 								
 								<?php get_template_part('templates/rate') ?>
 								

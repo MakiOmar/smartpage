@@ -30,7 +30,7 @@ ob_start('ob_gzhandler');
 								<a class="search-form-toggle" href="#"><i class="fa fa-search"></i></a>
 							</div>
 
-							 <?php echo smartpage_custom_logo('orange') ;?>
+							 <?php echo anony_get_custom_logo('orange') ;?>
 
 							 <?php if(has_action('header_ad')){?>
 								 <div id="ads" class="grid-col-md-6 grid-col-sm-6">
@@ -53,7 +53,7 @@ ob_start('ob_gzhandler');
 							?>
 
 						</div>
-						<?php echo smpg_main_navigation('main-menu') ?>
+						<?php echo anony_main_navigation('main-menu') ?>
 					</header>
 			</div>
 		</div>

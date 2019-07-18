@@ -1,9 +1,17 @@
 <?php
+/**
+ * Database operations
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 $rating_db_version = '1.0';
 
-/*
-*Create rating table
-*/
+/**
+ *Create rating table
+ */
 add_action("after_switch_theme", function() {
 	
     global $wpdb;
@@ -30,10 +38,14 @@ add_action("after_switch_theme", function() {
     
 });
 
-/*
-*Insert rating
-*/
-function smpg_install_rating($post_id,$user_ip,$user_rate) {
+/**
+ * Inserts rating data into rating table.
+ * @param  string $post_id Been rated Post ID
+ * @param  string $user_ip Rated user IP
+ * @param  string $user_rate The rate
+ * @return void
+ */
+function anony_set_rating($post_id,$user_ip,$user_rate) {
 	global $wpdb;
 	
 	$table_name = STAR_RATE;
@@ -49,23 +61,27 @@ function smpg_install_rating($post_id,$user_ip,$user_rate) {
 	);
 }
 
-/*
-*Get rating
-*/
-function smpg_get_rating($post_id){
+/**
+ * Gets rating data from rating table by post ID.
+ * @param  string $post_id Been rated Post ID
+ * @return Array  Returns an array of objects contains the ratings data of queried post ID
+ */
+function anony_get_rating($post_id){
 	
 	global $wpdb;
 	
 	$table_name = STAR_RATE;
 	
 	$result = $wpdb->get_results("SELECT * FROM $table_name WHERE post_id='$post_id'");
+	
 	return $result;
 }
 
-/*
-*Rate with ajax
-*/
-function implement_rate_ajax() {
+/**
+ * Rate with AJAX.
+ * @return json For now just empty json
+ */
+function anony_implement_rate_ajax() {
 	global $wpdb;
 	
 	$table_name = STAR_RATE;
@@ -87,26 +103,18 @@ function implement_rate_ajax() {
 
 		}else{
 			//Insert new rating
-			$z = $wpdb->insert( 
-			$table_name,
-				array( 
-					'post_id' => $thepost,
-					'user_ip' => $ip,
-					'rate' => $therate,
-				) 
-			);
-
+			anony_set_rating($thepost,$ip,$therate);
 		}
 
-	$return = array(
-            'resp'  => '',
-            );
+		$return = array(
+				'resp'  => '',
+				);
 
-    wp_send_json($return);
-		
-	wp_die();
+		wp_send_json($return);
+
+		wp_die();
 	}
 }
-add_action('wp_ajax_rate_post', 'implement_rate_ajax');
+add_action('wp_ajax_rate_post', 'anony_implement_rate_ajax');
 
-add_action('wp_ajax_nopriv_rate_post', 'implement_rate_ajax');//for users that are not logged in.
+add_action('wp_ajax_nopriv_rate_post', 'anony_implement_rate_ajax');//for users that are not logged in.

@@ -1,7 +1,11 @@
 <?php
-/*
-*Theme configuration codes
-*/
+/**
+ * Theme confugurations
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 
 
 
@@ -43,26 +47,43 @@ foreach($theme_constants as $theme_constant => $v){
 *Autoloading
 *---------------------------------------------------------------------*/
 
-//Main classes folder
+/**
+ * Holds a path to main classes folder
+ * @const
+ */
 define( 'SMPG_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
 
-//Custom fileds classes
+/**
+ * Holds a path to Custom fileds classes folder
+ * @const
+ */
 define( 'SMPG_CF_CLASSES', wp_normalize_path (SMPG_CLASSES . '/cf/'));
 
-//views classes
+/**
+ * Holds a path to views classes folder
+ * @const
+ */
 define( 'SMPG_VIEWS_CLASSES', wp_normalize_path (SMPG_CLASSES . '/views/'));
 
-//Hoolds a serialized array of all classes folders
+/**
+ * Holds a serialized array of all pathes to classes folders
+ * @const
+ */
 define('SMPG_THEME_AUTOLOADS' ,serialize(array(SMPG_CLASSES, SMPG_CF_CLASSES, SMPG_VIEWS_CLASSES)));
+
 /*
 *Classes Auto loader
 */
-spl_autoload_register( 'thm_autoloader' );
+spl_autoload_register( 'anony_theme_autoloader' );
 
-/*
-*@param  string $class_name 
-*/
-function thm_autoloader( $class_name ) {
+/**
+ * Theme autoloading.
+ * **Description: ** Any class should be writtn in the structure of Class__{class_name} or CF__{class_name}<br/>
+ * **Note: ** Class or CF should correspond to classes folder name, and can be any name not just Class or CF
+ * @param  string $class_name
+ * @return void
+ */
+function anony_theme_autoloader( $class_name ) {
 	if ( false !== strpos( $class_name, '__' )) {
 		$class_name = preg_replace('/\w+__/', '', strtolower($class_name));
 

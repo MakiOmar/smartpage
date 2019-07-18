@@ -2,7 +2,7 @@
 
 $tbp_post_id = get_the_ID();
 
-setPostViews($tbp_post_id);?>
+anony_set_post_views($tbp_post_id);?>
 
 <div id="post-<?php echo $tbp_post_id?>" class="post-wrapper grid-col-max-480-12 grid-col-av-12 grid-col-md-6 grid-col">
 	<div class="post-contents blog-post grid-col">

@@ -1,15 +1,19 @@
 <?php
 /**
- *ALL administraion side functions
+ * Admin side Functions
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
  */
-
-/*--------------------------------------------------------------------
- *Hook to enqueue admin styles and scripts
- *------------------------------------------------------------------*/
+ 
+/*-------------------------------------------------------------
+ * admin hooks
+ *-----------------------------------------------------------*/
 /*
  * Enqueue admin side styles/scripts.
  *
- * Looping through arrays of styles/scripts, with care of using filemtime
+ * Looping through custom arrays of styles/scripts, with care of using filemtime
  * to override caching.
  */
 add_action( 'admin_enqueue_scripts', function() {

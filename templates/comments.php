@@ -1,3 +1,3 @@
 <div id="comments" class="tab_content">
-		<?php latest_comments() ?>
+		<?php anony_latest_comments() ?>
 </div>
