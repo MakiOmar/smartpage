@@ -1,11 +1,17 @@
 <?php
-/*
-*ALL administraion side functions
-*/
+/**
+ *ALL administraion side functions
+ */
 
 /*--------------------------------------------------------------------
-*Hook to enqueue admin styles and scripts
-*-------------------------------------------------------------------*/
+ *Hook to enqueue admin styles and scripts
+ *------------------------------------------------------------------*/
+/*
+ * Enqueue admin side styles/scripts.
+ *
+ * Looping through arrays of styles/scripts, with care of using filemtime
+ * to override caching.
+ */
 add_action( 'admin_enqueue_scripts', function() {
 	
 	$styles = array('smpg-admin');
