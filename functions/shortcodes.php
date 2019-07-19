@@ -14,9 +14,13 @@ foreach($shcods as $code){
 	add_shortcode( $code, $code.'_shcode' );
 }
 
-/*------------------------------------------------------------
-*Display LTR text correctly within RTL text
-*-----------------------------------------------------------*/
+/**
+ * Display LTR text correctly within RTL text
+ *
+ * @param string $atts  the shortcode attributes
+ * @param string $content  the shortcode content
+ * @return string the text that is to be used to replace the shortcode
+ */
 function ltrtext_shcode( $atts,$content = null ){
 	return '<span dir="ltr">'.$content.'</span>';
 }

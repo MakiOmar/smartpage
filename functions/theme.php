@@ -8,28 +8,9 @@
  */
 
 
-/**
- * Get current page url.
- *
- * **Description: ** Gets current page url and takes in account the ssl also port 80.
- *
- * @return string
- */
-
-function anony_get_curr_url() {
-	$pageURL = 'http';
-	if ( key_exists("HTTPS", $_SERVER) && ( $_SERVER["HTTPS"] == "on" ) ){
-		$pageURL .= "s";
-	}
-	$pageURL .= "://";
-	if ($_SERVER["SERVER_PORT"] != "80") {
-		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-	} else {
-		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
- }
- return $pageURL;
-}
-
+/*-------------------------------------------------------------
+ * Theme hooks
+ *-----------------------------------------------------------*/
 //Load Text Domain
 add_action('after_setup_theme', function(){
 	load_theme_textdomain(TEXTDOM, LANG_DIR);
@@ -108,7 +89,41 @@ add_action('widgets_init',function(){
 	}
 });
 
+//Remove width|height from img
+add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}, 10, 5 );
 
+//Remove type attribute from styles.
+add_filter('style_loader_tag', 'anony_remove_type_attr', 10, 2);
+
+//Remove type attribute from scripts.
+add_filter('script_loader_tag', 'anony_remove_type_attr', 10, 2);
+
+/*-------------------------------------------------------------
+ * Theme hooks
+ *-----------------------------------------------------------*/
+/**
+ * Get current page url.
+ *
+ * **Description: ** Gets current page url and takes in account the ssl also port 80.
+ *
+ * @return string
+ */
+function anony_get_curr_url() {
+	$pageURL = 'http';
+	if ( key_exists("HTTPS", $_SERVER) && ( $_SERVER["HTTPS"] == "on" ) ){
+		$pageURL .= "s";
+	}
+	$pageURL .= "://";
+	if ($_SERVER["SERVER_PORT"] != "80") {
+		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	} else {
+		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+ }
+ return $pageURL;
+}
 
 /**
  * Generates logo markup.
@@ -136,12 +151,6 @@ function anony_get_custom_logo($color='main') {
 
 }
 
-//Remove width|height from img
-add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
-}, 10, 5 );
- 
 /**
  * Remove type attribute from styles/scripts.
  *
@@ -153,13 +162,6 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_thumbnail_i
 function anony_remove_type_attr($tag, $handle) {
     return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
 }
-
-add_filter('style_loader_tag', 'anony_remove_type_attr', 10, 2);
-add_filter('script_loader_tag', 'anony_remove_type_attr', 10, 2);
-
-/* ---------------------------------------------------------------------------
- *	Comments number with text
- * --------------------------------------------------------------------------- */
 
 /**
  * Generates comments number markup.
@@ -202,7 +204,6 @@ function anony_is_wpml_active(){
 	}
 	return false;
 }
-
 
 /**
  * Get the AJAX url.
