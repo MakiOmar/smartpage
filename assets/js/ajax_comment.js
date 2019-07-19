@@ -76,7 +76,7 @@ jQuery(document).ready(function($){
 					type : 'POST',
 					url : SmpgAjaxUrl, // admin-ajax.php URL
 				
-					data: CommentsSerialized + '&action=smpg_ajax_comments', // send form data + action parameter
+					data: CommentsSerialized + '&action=anony_ajax_comments', // send form data + action parameter
 					
 					beforeSend: function(){
 						// what to do just after the form has been submitted
