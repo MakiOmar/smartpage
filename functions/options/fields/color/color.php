@@ -17,7 +17,7 @@ class Field__Color extends Class__Theme_Settings{
 	 * @param object $parent Field parent object
 	 */
 	public function __construct($field = array(), $value ='', $parent){	
-		parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
+		parent::__construct($parent->sections, $parent->args);
 		$this->field = $field;
 		$this->value = $value;
 	}

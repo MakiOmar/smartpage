@@ -11,7 +11,7 @@ class Field__Pages_select extends Class__Theme_Settings{
 	 * @param object $parent Field parent object
 	 */
 	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
 		$this->field = $field;
 		$this->value = $value;
 	}

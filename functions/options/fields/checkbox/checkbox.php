@@ -16,7 +16,7 @@ class Field__Checkbox extends Class__Theme_Settings{
 	 * @param object $parent Field parent object
 	 */
 	public function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
 		$this->field = $field;
 		$this->value = $value;	
 	}

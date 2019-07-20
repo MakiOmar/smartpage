@@ -11,7 +11,7 @@ class Field__Font_select extends Class__Theme_Settings{
 	 * @param object $parent Field parent object
 	*/
 	function __construct( $field = array(), $value ='', $parent = NULL ){
-		parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		parent::__construct($parent->sections, $parent->args);
 		$this->field = $field;
 		$this->value = $value;
 	}
