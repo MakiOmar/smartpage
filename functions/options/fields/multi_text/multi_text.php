@@ -3,6 +3,12 @@ class Field__Multi_text extends Class__Theme_Settings{
 	
 	/**
 	 * Field Constructor.
+	 *
+	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
+	 *
+	 * @param array $field Array of field's data
+	 * @param string $value Field's value
+	 * @param object $parent Field parent object
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
@@ -14,8 +20,11 @@ class Field__Multi_text extends Class__Theme_Settings{
 
 	
 	/**
-	 * Field Render Function.
-	*/
+	 * Color field render Function.
+	 * **Description: ** Echoes out the field markup.
+	 *
+	 * @return void
+	 */
 	function render(){
 		
 		$class = (isset($this->field['class']))?$this->field['class']:'';
@@ -51,11 +60,11 @@ class Field__Multi_text extends Class__Theme_Settings{
 	
 	/**
 	 * Enqueue Function.
-	*/
+	 */
 	function enqueue(){
 		
 		wp_enqueue_script(
-			'mfn-opts-field-multi-text-js', 
+			'anony-opts-field-multi-text-js', 
 			Theme_Settings_URI.'fields/multi_text/field_multi_text.js', 
 			array('jquery'),
 			time(),

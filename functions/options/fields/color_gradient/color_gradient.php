@@ -1,4 +1,11 @@
 <?php
+/**
+ * Color field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 class Field__Color_gradient extends Class__Theme_Settings{	
 	
 	/**
@@ -7,25 +14,26 @@ class Field__Color_gradient extends Class__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @since Theme_Settings 1.0
+	 * @param array $field Array of field's data
+	 * @param string $value Field's value
+	 * @param object $parent Field parent object
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
 		parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
 		$this->field = $field;
 		$this->value = $value;
-		//$this->render();
 		
 	}//function
 	
 	
 	
 	/**
-	 * Field Render Function.
+	 * Color field render Function.
+	 * **Description: ** Echoes out the field markup.
 	 *
-	 * Takes the vars and outputs the HTML for the field in the settings
-	 *
-	 * @since Theme_Settings 1.0
-	*/
+	 * @return void
+	 */
 	function render(){
 		
 		$class = (isset($this->field['class']))?$this->field['class']:'';
@@ -62,7 +70,7 @@ class Field__Color_gradient extends Class__Theme_Settings{
 	function enqueue(){
 		
 		wp_enqueue_script(
-			'mfn-opts-field-color-js', 
+			'anony-opts-field-color-js', 
 			Theme_Settings_URI.'fields/color/field_color.js', 
 			array('jquery', 'farbtastic'),
 			time(),

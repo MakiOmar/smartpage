@@ -4,9 +4,9 @@ function MfnUpload(){
 		var header_clicked = false;
 		var item_clicked = '';
 		 
-		jQuery("img[src='']").attr("src", mfn_upload.url);
+		jQuery("img[src='']").attr("src", anony_upload.url);
 		
-		jQuery('.mfn-opts-upload').click(function() {
+		jQuery('.anony-opts-upload').click(function() {
 			item_clicked = jQuery(this);
 			header_clicked = true;
 			formfield = jQuery(this).attr('rel-id');
@@ -22,7 +22,7 @@ function MfnUpload(){
 			if (header_clicked) {
 				imgurl = jQuery('img',html).attr('src');
 				jQuery(item_clicked).siblings('input').val(imgurl);
-				jQuery(item_clicked).siblings('.mfn-opts-upload-remove').fadeIn('slow');
+				jQuery(item_clicked).siblings('.anony-opts-upload-remove').fadeIn('slow');
 				jQuery(item_clicked).hide();
 				jQuery(preview).attr('src' , imgurl).fadeIn('slow');;
 				tb_remove();
@@ -32,10 +32,10 @@ function MfnUpload(){
 			}
 		}
 		
-		jQuery('.mfn-opts-upload-remove').click(function(){
+		jQuery('.anony-opts-upload-remove').click(function(){
 			jQuery(this).siblings('input').val('');
 			jQuery(this).prev().fadeIn('slow');
-			jQuery(this).prev().prev().fadeOut('slow', function(){jQuery(this).attr("src", mfn_upload.url);});
+			jQuery(this).prev().prev().fadeOut('slow', function(){jQuery(this).attr("src", anony_upload.url);});
 			jQuery(this).fadeOut('slow');
 		});
 	
@@ -43,5 +43,5 @@ function MfnUpload(){
 }
 	
 jQuery(document).ready(function($){
-	var mfn_upload = new MfnUpload();
+	var anony_upload = new MfnUpload();
 });

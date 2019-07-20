@@ -3,7 +3,13 @@ class Field__Text extends Class__Theme_Settings{
 	
 	/**
 	 * Field Constructor.
-	*/
+	 *
+	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
+	 *
+	 * @param array $field Array of field's data
+	 * @param string $value Field's value
+	 * @param object $parent Field parent object
+	 */
 	function __construct( $field = array(), $value ='', $parent = NULL ){
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
@@ -11,8 +17,11 @@ class Field__Text extends Class__Theme_Settings{
 	}
 	
 	/**
-	 * Field Render Function.
-	*/
+	 * Color field render Function.
+	 * **Description: ** Echoes out the field markup.
+	 *
+	 * @return void
+	 */
 	function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? $this->field['class'] : 'regular-text';

@@ -10,10 +10,10 @@ jQuery(document).ready(function($){
 	
 	
 	// add
-	$('.mfn-add-tab').click(function(){
+	$('.anony-add-tab').click(function(){
 		
 		// increase tabs counter
-		var tabs_counter = $(this).siblings('.mfn-tabs-count');
+		var tabs_counter = $(this).siblings('.anony-tabs-count');
 		tabs_counter.val(tabs_counter.val()*1 + 1);
 		
 		var name = $(this).attr('rel-name');
@@ -32,11 +32,11 @@ jQuery(document).ready(function($){
 	});
 	
 	// delete
-	$('.mfn-remove-tab').click(function(e){
+	$('.anony-remove-tab').click(function(e){
 		e.preventDefault();
 		
 		// decrease tabs counter
-		var tabs_counter = $(this).parents('td').children('.mfn-tabs-count');
+		var tabs_counter = $(this).parents('td').children('.anony-tabs-count');
 		tabs_counter.val(tabs_counter.val()*1 - 1);
 		
 		$(this).parent().fadeOut(300, function(){$(this).remove();});

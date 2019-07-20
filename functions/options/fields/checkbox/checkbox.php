@@ -1,19 +1,34 @@
 <?php
+/**
+ * Checkbox field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class Field__Checkbox extends Class__Theme_Settings{	
 	
 	/**
-	 * Field Constructor.
-	*/
-	function __construct( $field = array(), $value ='', $parent = NULL ){
+	 * Checkbox field Constructor.
+	 * @param array $field Array of field's data
+	 * @param string $value Field's value
+	 * @param object $parent Field parent object
+	 */
+	public function __construct( $field = array(), $value ='', $parent = NULL ){
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;	
 	}
 
 	/**
-	 * Field Render Function.
-	*/
-	function render( $meta = false ){
+	 * Checkbox field render Function.
+	 * **Description: ** Echoes out the field markup.
+	 *
+	 * @param boolean $meta To decide field name attribute.
+	 * @return void
+	 */
+	public function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';	
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];

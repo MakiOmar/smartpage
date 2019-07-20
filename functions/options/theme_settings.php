@@ -1,16 +1,60 @@
 <?php
+/**
+ * Theme options class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 if (!class_exists('Class__Theme_Settings')) {
 	class Class__Theme_Settings{
-		public $page = '';
-		public $OptionGroup = '';
-		public $sections = array();
-		public $args = array();
-		public $widgets = array();
-		public $extraTabs = array();
-		public $options = array();
-		public $validate;
-		public $navigation;
-		public $defaultOptions;
+		public
+		/**
+		 * @var string Holds the resulting page's hook_suffix from add_theme_page
+		 */
+		$page = '',
+
+		/**
+		 * @var string Holds the option group name for register_setting
+		 */
+		$OptionGroup = '',
+
+		/**
+		 * @var array Holds An array of options page's sections
+		 */
+		$sections = array(),
+
+		/**
+		 * @var array Holds An array of options page's data
+		 */
+		$args = array(),
+
+		/**
+		 * @var array Holds An array of widgets to be registered
+		 */
+		$widgets = array(),
+
+		/**
+		 * @var
+		 */
+		$options = array(),
+
+		/**
+		 * @var
+		 */
+		$validate,
+
+		/**
+		 * @var
+		 */
+		$navigation,
+
+		/**
+		 * @var
+		 */
+		$defaultOptions;
+
 		/**
 		 * Class Constructor. Defines the args for the theme options class
 		*/

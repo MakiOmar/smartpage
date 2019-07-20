@@ -1,19 +1,34 @@
 <?php
+/**
+ * Color field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
+
 class Field__Color extends Class__Theme_Settings{
 	
 	/**
-	 * Field Constructor.
-	*/
-	function __construct($field = array(), $value ='', $parent){	
+	 * Color field Constructor.
+	 * @param array $field Array of field's data
+	 * @param string $value Field's value
+	 * @param object $parent Field parent object
+	 */
+	public function __construct($field = array(), $value ='', $parent){	
 		parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
 		$this->value = $value;
 	}
 	
 	/**
-	 * Field Render Function.
-	*/
-	function render(){	
+	 * Color field render Function.
+	 * **Description: ** Echoes out the field markup.
+	 *
+	 * @return void
+	 */
+	public function render(){	
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : '';
 		$value = ( $this->value ) ? $this->value : $this->field['default'];
 		
@@ -25,9 +40,9 @@ class Field__Color extends Class__Theme_Settings{
 		echo '</div>';
 	}
 	
-	/**
+		/**
 	 * Enqueue Function.
-	*/
+	 */
 	function enqueue(){
 		wp_enqueue_script('smpg-opts-field-color-js', SMPG_OPTIONS_URI.'fields/color/field_color.js', array('jquery', 'farbtastic'), time(), true);
 	}

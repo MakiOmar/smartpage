@@ -3,7 +3,13 @@ class Field__Switch extends Class__Theme_Settings{
 	
 	/**
 	 * Field Constructor.
-	*/
+	 *
+	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
+	 *
+	 * @param array $field Array of field's data
+	 * @param string $value Field's value
+	 * @param object $parent Field parent object
+	 */
 	function __construct( $field = array(), $value ='', $parent = NULL ){
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->extraTabs);
 		$this->field = $field;
@@ -11,8 +17,11 @@ class Field__Switch extends Class__Theme_Settings{
 	}
 
 	/**
-	 * Field Render Function.
-	*/
+	 * Color field render Function.
+	 * **Description: ** Echoes out the field markup.
+	 *
+	 * @return void
+	 */
 	function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';	
@@ -28,9 +37,9 @@ class Field__Switch extends Class__Theme_Settings{
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<div class="description btn-desc">'.$this->field['desc'].'</div>':'';	
 	}
 	
-	/**
+		/**
 	 * Enqueue Function.
-	*/
+	 */
 	function enqueue(){		
 		wp_enqueue_script('smpg-opts-field-switch-js', SMPG_OPTIONS_URI.'fields/switch/field_switch.js', array('jquery'),time(),true);
 	}
