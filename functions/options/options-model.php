@@ -1,5 +1,14 @@
 <?php
 /**
+ * Theme options class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
+
+/**
  * Group many options of our themes into 1
  * Create an option group in wp_options using the name provided when construct the object, e.g.:
  * 		$anony_option = new Class__Options_Model("anony_option");
