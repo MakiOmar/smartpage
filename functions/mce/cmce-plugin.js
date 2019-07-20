@@ -5,8 +5,8 @@
 		editor.addButton('cbtnmce', {
 			text : false,
 			type : 'menubutton',
-			icon : 'smpg-shortcode',
-			classes: 'widget btn smpg-shortcode',
+			icon : 'anony-shortcode',
+			classes: 'widget btn anony-shortcode',
 			menu : [ 
 				{
 				text : 'Content',

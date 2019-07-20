@@ -1,5 +1,5 @@
 /*Main colors*/
-.active, .active-tab,.page-numbers a,.widgeted_title,#dun-title,#submit,.form_submit,.featured-posts-title,.section_title,#page-scroll,.smpg-button,.post-image-wrapper h4,.f-post-title,.reply{
+.active, .active-tab,.page-numbers a,.widgeted_title,#dun-title,#submit,.form_submit,.featured-posts-title,.section_title,#page-scroll,.anony-button,.post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 !important;
 }
 .section,#slider-wrapper {
@@ -33,10 +33,10 @@ body{
 	border-bottom: 5px solid #ef1450;
 }
 
-#smpg-page-loading-bg{
+#anony-page-loading-bg{
 	border-top: 8px solid #ef1450;
 }
-.smpg-warning {
+.anony-warning {
 	background-color: #e09352;
 	border-left: 6px solid #230005;
 }

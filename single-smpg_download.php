@@ -1,13 +1,13 @@
 <?php 
 /*
-*Download custom post type smpg_download
+*Download custom post type anony_download
 */
 
 get_header();
 
 $dPost_Id = get_the_ID();
 
-$curr_download_meta = get_post_meta( $dPost_Id, 'smpg_download_attachment', true );
+$curr_download_meta = get_post_meta( $dPost_Id, 'anony_download_attachment', true );
 
 $download_times = get_post_meta($dPost_Id,'download_times',true);
 
@@ -82,7 +82,7 @@ if(empty($download_times)){
 											
 											<div class="single-download">
 											
-												<a title="download-<?php echo $dPost_Id?>" target="_blank" class="smpg-download" href="<?php echo $curr_download_meta ?>">
+												<a title="download-<?php echo $dPost_Id?>" target="_blank" class="anony-download" href="<?php echo $curr_download_meta ?>">
 													<i class="fa fa-download"></i>
 													<span><?php esc_html_e('Download',TEXTDOM) ?></span>
 												</a>

@@ -9,58 +9,62 @@
 
 if (!class_exists('Class__Theme_Settings')) {
 	class Class__Theme_Settings{
-		public
+		
 		/**
 		 * @var string Holds the resulting page's hook_suffix from add_theme_page
 		 */
-		$page = '',
+		public $page;
 
 		/**
 		 * @var string Holds the option group name for register_setting
 		 */
-		$OptionGroup = '',
+		public $OptionGroup;
 
 		/**
 		 * @var array Holds An array of options page's sections
 		 */
-		$sections = array(),
+		public $sections = array();
 
 		/**
 		 * @var array Holds An array of options page's data
 		 */
-		$args = array(),
+		public $args = array();
 
 		/**
 		 * @var array Holds An array of widgets to be registered
 		 */
-		$widgets = array(),
+		public $widgets = array();
 
 		/**
-		 * @var
+		 * @var object Holds an object from Class__Options_Model
 		 */
-		$options = array(),
+		public $options;
 
 		/**
-		 * @var
+		 * @var object Holds an object from Class__Validate_Inputs
 		 */
-		$validate,
+		public $validate;
 
 		/**
-		 * @var
+		 * @var array Holds an array of options page's menu items
 		 */
-		$navigation,
+		public $menu;
 
 		/**
-		 * @var
+		 * @var array Holds an array of options default values
 		 */
-		$defaultOptions;
+		public $defaultOptions;
 
 		/**
 		 * Class Constructor. Defines the args for the theme options class
-		*/
+		 *
+		 * @param array $menu array of options page's menu items
+		 * @param array $sections array of options page's sections
+		 * @param array $widgets array of widgets to be registered
+		 */
 		public function __construct($menu = array(), $sections = array(), $widgets = array()){
 			
-			$this->navigation = $menu;
+			$this->menu = $menu;
 			
 			$this->validate = new Class__Validate_Inputs();
 				
@@ -91,42 +95,42 @@ if (!class_exists('Class__Theme_Settings')) {
 			$this->widgets = $widgets;
 			
 			//register widgets
-			$this->smpg_register_widgets();
+			$this->anony_register_widgets();
 			
 			/*
 			*Styles for options in front end
 			*/
 
-			add_action('wp_head', array(&$this, 'smpg_frontend_styles'));
+			add_action('wp_head', array(&$this, 'anony_frontend_styles'));
 			
 			
 			//options page
-			add_action('admin_menu', array(&$this, '_options_page'));
+			add_action('admin_menu', array(&$this, 'anony_options_page'));
 			
 			/**
-			 * register smpg_settings_init to the admin_init action hook
+			 * register anony_settings_init to the admin_init action hook
 			 */
-			add_action('admin_init', array(&$this, 'smpg_settings_init'));
+			add_action('admin_init', array(&$this, 'anony_settings_init'));
 			
 			//set default values
-			$this->smpg_default_values();
+			$this->anony_default_values();
 			
 			//set option with defaults
 			if(!get_option(SMPG_OPTIONS)){
-				$this->smpg_set_default_options();
+				$this->anony_set_default_options();
 			}
 			
 			//get the options for use later on
 			$this->options = opt_init_();
 			
-			add_action('admin_notices', array(&$this, 'smpg_save_notify'));
+			//add_action('admin_notices', array(&$this, 'anony_save_notify'));
 
 		}
 		
 		/**
 		 * Get default options into an array suitable for the settings API
-		*/
-		public function smpg_default_values(){		
+		 */
+		public function anony_default_values(){		
 			$defaults = array();
 			
 			foreach($this->sections as $secKey => $section){
@@ -149,8 +153,8 @@ if (!class_exists('Class__Theme_Settings')) {
 		
 		/**
 		 * Set default options if option doesnt exist
-		*/
-		function smpg_set_default_options(){
+		 */
+		public function anony_set_default_options(){
 			
 			
 			if(!get_option($this->args['opt_name']) || empty(get_option($this->args['opt_name']))){
@@ -175,41 +179,41 @@ if (!class_exists('Class__Theme_Settings')) {
 		
 		/**
 		 * Class Theme Options Page Function, creates main options page.
-		*/
-		function _options_page(){
+		 */
+		public function anony_options_page(){
 			
 			$this->page = add_theme_page(
 				$this->args['page_title'], 
 				$this->args['menu_title'], 
 				$this->args['page_cap'], 
 				$this->args['page_slug'], 
-				array(&$this, '_options_page_html')
+				array(&$this, 'anony_options_page_html')
 			);
 			/*
 			*Load page scripts
 			*/
-			add_action('admin_print_styles-'.$this->page, array(&$this, 'page_scripts'));
+			add_action('admin_print_styles-'.$this->page, array(&$this, 'anony_page_scripts'));
 		}
 		
 		/*
-		*Class register settings function
-		*/
-		function smpg_settings_init(){
+		 * Class register settings function
+		 */
+		public function anony_settings_init(){
 			// register a new setting for "smartpage" page
 			register_setting(
 				$this->OptionGroup,
 				$this->args['opt_name'],
-				array(&$this,'smpg_options_validate')
+				array(&$this,'anony_options_validate')
 			);
 			
 			foreach($this->sections as $secKey => $section){
 				
 				add_settings_section(
-					'smpg_'.$secKey.'_section',
+					'anony_'.$secKey.'_section',
 					$section['title'],
-					array(&$this,'smpg__section_cb'),
+					array(&$this,'anony__section_cb'),
 					//Make sure to add the same in add_settings_field
-					'smpg_'.$secKey.'_section_group'
+					'anony_'.$secKey.'_section_group'
 				);
 				
 				if(isset($section['fields'])){
@@ -229,10 +233,10 @@ if (!class_exists('Class__Theme_Settings')) {
 							add_settings_field(
 								$fieldKey.'_field',
 								$fieldTitle,
-								array(&$this,'smpg__field_input'),
+								array(&$this,'anony__field_input'),
 								//You should pass the page passed to add_settings_section
-								'smpg_'.$secKey.'_section_group',
-								'smpg_'.$secKey.'_section',
+								'anony_'.$secKey.'_section_group',
+								'anony_'.$secKey.'_section',
 								$field
 							);
 
@@ -244,24 +248,24 @@ if (!class_exists('Class__Theme_Settings')) {
 		}
 		
 		/*
-		*class settings sections callback function
-		*/
-		function smpg__section_cb($section){
+		 * class settings sections callback function
+		 */
+		public function anony__section_cb($section){
 			
-			$id = preg_match('/smpg_(.*)_section/', $section['id'], $m);
+			$id = preg_match('/anony_(.*)_section/', $section['id'], $m);
 			
 			$id = $m[1];
 			
 			if(isset($this->sections[$id]['note'])){
-				echo '<p class=smpg-section-warning>'.$this->sections[$id]['note'].'<p>';
+				echo '<p class=anony-section-warning>'.$this->sections[$id]['note'].'<p>';
 			}
 			
 		}
 		
 		/*
-		*class section fields callback function
-		*/
-		function smpg__field_input($field){
+		 * class section fields callback function
+		 */
+		public function anony__field_input($field){
 
 			if(isset($field['callback']) && function_exists($field['callback'])){
 
@@ -282,13 +286,13 @@ if (!class_exists('Class__Theme_Settings')) {
 					$render = new $field_class($field, $value, $this);
 					
 					if(isset($field['note'])){
-						echo '<p class=smpg-warning>'.$field['note'].'<p>';
+						echo '<p class=anony-warning>'.$field['note'].'<p>';
 					}
 					
 					if( get_transient( $fieldID ) ){ 
 			
 						foreach(get_transient( $fieldID ) as $msg){?>
-							<p class="smpg-error"><?php echo $msg ;?></p>
+							<p class="anony-error"><?php echo $msg ;?></p>
 						<?php }
 
 						delete_transient( $fieldID );
@@ -300,12 +304,12 @@ if (!class_exists('Class__Theme_Settings')) {
 			}
  		}
 		
-		/*
-		*class settings fields validation function
-		*@param  array  $notValidated  array of options sent by options form, not validated
-		*return  array  $validated     array of form values after validation
-		*/
-		function smpg_options_validate($notValidated){
+		/**
+		 * Validation function
+		 * @param  array  $notValidated  array of not validated options sent by options form
+		 * return  array  $validated     array of form values after validation
+		 */
+		public function anony_options_validate($notValidated){
 			
 			$validated = array();
 			
@@ -355,21 +359,21 @@ if (!class_exists('Class__Theme_Settings')) {
 			}
 
 			// add settings saved message with the class of "updated"
-			add_settings_error( $this->args['opt_name'], esc_attr( 'smpg_settings_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
+			add_settings_error( $this->args['opt_name'], esc_attr( 'anony_settings_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
 			
 			return $validated;
 		}
 		
 		/**
 		 * HTML OUTPUT.
-		*/
-		function _options_page_html(){
+		 */
+		public function anony_options_page_html(){
 			settings_errors($this->args['opt_name']);
 			//neat_print_r(new WP_Term_Query(array('taxonomy' => 'post_tag')));
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
 
-			<div id="smpg-options-wrapper">
+			<div id="anony-options-wrapper">
 				<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 				<form action="options.php" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -380,19 +384,19 @@ if (!class_exists('Class__Theme_Settings')) {
 			
 				echo '<div id="options-wrap"><div id="options-nav"><div id="logo"><img src="'.SMPG_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
 			
-					foreach($this->navigation as $nav => $details){
+					foreach($this->menu as $nav => $details){
 						if(isset($details['sections'])){
-								echo '<li><div><a id="'.$nav.'-nav" href="#"  class="smpg-nav-item nav-toggle" role="'.$nav.'">'.$details['title'].'<span class="icon" data-icon="y"></a></div>';
-								echo '<ul id="'.$nav.'-dropdown" class="smpg-dropdown">';
+								echo '<li><div><a id="'.$nav.'-nav" href="#"  class="anony-nav-item nav-toggle" role="'.$nav.'">'.$details['title'].'<span class="icon" data-icon="y"></a></div>';
+								echo '<ul id="'.$nav.'-dropdown" class="anony-dropdown">';
 
 									foreach($details['sections'] as $sec){
-										echo '<li class="smpg-nav-item"><a id="'.$sec.'" href="#section/'.$sec.'" class="smpg-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';
+										echo '<li class="anony-nav-item"><a id="'.$sec.'" href="#section/'.$sec.'" class="anony-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';
 									}
 
 								echo '</ul></li>';
 
 							 }else{
-								echo '<li class="smpg-nav-item"><a id="'.$nav.'" href="#section/'.$nav.'" class="smpg-nav-link">'.(isset($this->sections[$nav]) ? $this->sections[$nav]['title'] : ucfirst(str_replace('-', ' ', $nav))).'</a><span class="icon" data-icon="'.$this->sections[$nav]['icon'].'"></span></li>';	
+								echo '<li class="anony-nav-item"><a id="'.$nav.'" href="#section/'.$nav.'" class="anony-nav-link">'.(isset($this->sections[$nav]) ? $this->sections[$nav]['title'] : ucfirst(str_replace('-', ' ', $nav))).'</a><span class="icon" data-icon="'.$this->sections[$nav]['icon'].'"></span></li>';	
 
 							}
 						}
@@ -402,9 +406,9 @@ if (!class_exists('Class__Theme_Settings')) {
 					// output setting sections and their fields
 					// (sections are registered for "Smpg_Options", each field is registered to a specific section)
 
-					foreach($this->sections as $secKey => $section){ $groupID = 'smpg_'.$secKey.'_section_group';?>
+					foreach($this->sections as $secKey => $section){ $groupID = 'anony_'.$secKey.'_section_group';?>
 
-								<div id="<?php echo str_replace('_','-',$groupID) ?>" class="smpg-section-group<?php echo (($secKey == 'general') ? ' smpg-show-section' : '') ?>">
+								<div id="<?php echo str_replace('_','-',$groupID) ?>" class="anony-section-group<?php echo (($secKey == 'general') ? ' anony-show-section' : '') ?>">
 									<?php do_settings_sections( $groupID );?>
 								</div>
 
@@ -418,14 +422,18 @@ if (!class_exists('Class__Theme_Settings')) {
 			</div>
 <?php
 }
-		function page_scripts(){
-			wp_register_style( 'smpg-options-css', SMPG_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
+		
+		/**
+		 * Page scripts registration.
+		 */		
+		public function anony_page_scripts(){
+			wp_register_style( 'anony-options-css', SMPG_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
 			
-			wp_enqueue_style( 'smpg-options-css' );
+			wp_enqueue_style( 'anony-options-css' );
 			
 			if(is_rtl()){
-				wp_register_style( 'smpg-options-rtl-css', SMPG_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
-				wp_enqueue_style( 'smpg-options-rtl-css' );
+				wp_register_style( 'anony-options-rtl-css', SMPG_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
+				wp_enqueue_style( 'anony-options-rtl-css' );
 			}
 			
 			if(!is_rtl()){
@@ -441,7 +449,7 @@ if (!class_exists('Class__Theme_Settings')) {
 				
 			}
 			
-			wp_enqueue_script( 'smpg-options-js', SMPG_OPTIONS_URI.'js/options.js', array('jquery', 'backbone'), time(), true);
+			wp_enqueue_script( 'anony-options-js', SMPG_OPTIONS_URI.'js/options.js', array('jquery', 'backbone'), time(), true);
 			
 			foreach($this->sections as $k => $section){
 				
@@ -467,12 +475,12 @@ if (!class_exists('Class__Theme_Settings')) {
 			}
 		}
 		
-		/*
-		*Adds styles related to some options in front end
-		*/
-		function smpg_frontend_styles(){ ?>
+		/**
+		 * Adds styles related to some options in front end
+		 */
+		public function anony_frontend_styles(){ ?>
 			<style type="text/css">
-				#smpg-ads{
+				#anony-ads{
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -480,10 +488,10 @@ if (!class_exists('Class__Theme_Settings')) {
 			</style>
 		<?php }
 		
-		/*
-		*Registers option related widgets
-		*/
-		function smpg_register_widgets(){
+		/**
+		 * Registers option related widgets
+		 */
+		public function anony_register_widgets(){
 			
 			foreach($this->widgets as $widget){
 				
@@ -495,10 +503,7 @@ if (!class_exists('Class__Theme_Settings')) {
 				
 			}
 		}
-		
-		public function smpg_save_notify(){
-			
-		}
+
 	}
 }
 ?>

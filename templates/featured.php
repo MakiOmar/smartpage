@@ -1,18 +1,18 @@
 <?php
 
-$smpgOptions = opt_init_();
+$anonyOptions = opt_init_();
 
-if(isset($smpgOptions->slider )){
+if(isset($anonyOptions->slider )){
 		$args = array(
 					'posts_per_page' => 5,
 					'orderby'        => 'rand',
 				);
 		
-		if($smpgOptions->slider == 'featured-cat' && $smpgOptions->featured_cat != '0'){
+		if($anonyOptions->slider == 'featured-cat' && $anonyOptions->featured_cat != '0'){
 			$FreaturedCat = get_term_by( 
 							'id', 
-							$smpgOptions->featured_cat,
-							$smpgOptions->featured_tax
+							$anonyOptions->featured_cat,
+							$anonyOptions->featured_tax
 						);
 			
 			if($FreaturedCat){
@@ -21,8 +21,8 @@ if(isset($smpgOptions->slider )){
 				$fc->msg = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', TEXTDOM);
 			}
 		
-		}elseif($smpgOptions->slider == 'featured-post'){
-			$args['meta_key'] = 'smpg_set_featured';
+		}elseif($anonyOptions->slider == 'featured-post'){
+			$args['meta_key'] = 'anony_set_featured';
 		}
 		
 		$fc= new Class__Generate_Posts_View(

@@ -7,7 +7,7 @@ var SettingsView = Backbone.View.extend({
 
 				var targetID = e.target.id.split('-')[0];
 				
-				$('.smpg-dropdown').hide();
+				$('.anony-dropdown').hide();
 				if($('#' + targetID + '-dropdown')){
 					$('#' + targetID + '-dropdown').toggle();
 				}
@@ -24,11 +24,11 @@ SettingsRouter = Backbone.Router.extend({
             'section/:section': function(section) {
 				"use strict";
 				var target = $('a[href="#section/' + section + '"]'),
-					content = $('#smpg-' + section + '-section-group');
-				$('.smpg-nav-link').parent().removeClass('active');
-				$('.smpg-section-group').removeClass('smpg-show-section');
+					content = $('#anony-' + section + '-section-group');
+				$('.anony-nav-link').parent().removeClass('active');
+				$('.anony-section-group').removeClass('anony-show-section');
 				target.parent().addClass('active');
-				content.addClass('smpg-show-section');
+				content.addClass('anony-show-section');
 			}
         },
         

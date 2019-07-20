@@ -198,20 +198,20 @@ add_action( 'init', function() {
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
 			'capability_type'       => 'page',
-			'rewrite' => array('slug' => 'smpg_'.lcfirst($custom_post)),
+			'rewrite' => array('slug' => 'anony_'.lcfirst($custom_post)),
 		);
 		
 		if($custom_post == 'Bid'){
 			$args ['supports'][] = 'page-attributes';
 		}
 		
-		register_post_type( 'smpg_'.lcfirst($custom_post), $args );
+		register_post_type( 'anony_'.lcfirst($custom_post), $args );
 	}
 }, 0 );
 
 //Register Taxonomies
 add_action( 'init', function(){
-	$smpg_custom_taxs = array(
+	$anony_custom_taxs = array(
 			'Download'=>array(
 					esc_html__('Download',TEXTDOM)=> esc_html__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
@@ -219,11 +219,11 @@ add_action( 'init', function(){
 			'Testimonial'=>array(
 					esc_html__('Testimonial',TEXTDOM)=> esc_html__('Testimonials',TEXTDOM)),
 			);;
-	foreach($smpg_custom_taxs as $smpg_custom_tax => $translatable ){
+	foreach($anony_custom_taxs as $anony_custom_tax => $translatable ){
 	foreach($translatable as $t_s => $t_p){
 		register_taxonomy(
-			lcfirst($smpg_custom_tax).'_category',
-			array("smpg_".lcfirst($smpg_custom_tax)),
+			lcfirst($anony_custom_tax).'_category',
+			array("anony_".lcfirst($anony_custom_tax)),
 			array(
 				 "hierarchical" => true,
 				 "label" => sprintf(esc_html__('%s categories',TEXTDOM),$t_p),
@@ -262,7 +262,7 @@ add_filter('pre_get_posts',function($query) {
 	return $query;
 });
 
-//Create term for custom post (smpg_download) to be set as default
+//Create term for custom post (anony_download) to be set as default
 add_action('init',function( ) {
 	if(!term_exists('general_downloads', 'download_category')){
 		$args = array('slug' => 'general_downloads');
@@ -271,8 +271,8 @@ add_action('init',function( ) {
 	
 });
 
-//Set default term for custom post smpg_download
-add_action( 'save_post_smpg_download', function( $post_id, $post ) {
+//Set default term for custom post anony_download
+add_action( 'save_post_anony_download', function( $post_id, $post ) {
     if ( 'publish' === $post->post_status) {
 		
         $defaults = array('download_category' => array( 'general_downloads'));

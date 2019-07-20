@@ -31,7 +31,7 @@ if ( ! class_exists( 'Class__Sidebar_Ad' ) ) {
 			echo $before_title.$title.$after_title;
 			
 			if(has_action('sidebar_ad')){
-				echo '<div id="smpg-ads">';
+				echo '<div id="anony-ads">';
 					do_action('sidebar_ad');
 				echo '</div>';
 			}

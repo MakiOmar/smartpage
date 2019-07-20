@@ -3,7 +3,7 @@ html,body{
 }
 /***Header***/
 	/***menus***/
-	.widgeted #smpg-cat-list li, .widgeted #smpg-cat-list li ul li{
+	.widgeted #anony-cat-list li, .widgeted #anony-cat-list li ul li{
 		background: none;
 		background-color:transparent;
 	}
@@ -20,10 +20,10 @@ html,body{
 /***End Header***/
 
 /***Sidebar***/
-.widgeted #smpg-cat-list li{
+.widgeted #anony-cat-list li{
 	border-bottom: 1px solid rgba(0,0,0,0.1)
 }
-.widgeted #smpg-cat-list li a,.toggle-category{
+.widgeted #anony-cat-list li a,.toggle-category{
 	color: #444444;
 }
 .widgeted .dropdown{

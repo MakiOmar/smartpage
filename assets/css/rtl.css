@@ -142,7 +142,7 @@ body{
 /***End header**/
 
 /***body***/
-.smpg-warning {
+.anony-warning {
 	border-left: none;
 	border-right: 6px solid #1E1E1E;
 }
@@ -164,7 +164,7 @@ body{
 #hidden-search-form #searchform{
     flex-direction: row;
 }
-#hidden-search-form #searchform .smpg-search-input{
+#hidden-search-form #searchform .anony-search-input{
     border-radius:0px 10px 10px 0px; 
 }
 #hidden-search-form #searchform .form_submit{
@@ -214,7 +214,7 @@ display: flex;
     align-items: center;
     direction: ltr;
     }
-.smpg-search-input{
+.anony-search-input{
 	padding-right: 10px;
 	padding-left: 0;
 }

@@ -10,7 +10,7 @@ class Cf__Upload extends Class__Custom_Field{
 		$this->idAttr= str_replace('_', '-', $this->id);
 		
 		//Show admin notice if no supported file type
-		add_action( 'admin_notices', array($this, 'smpg_upload_admin_notice') );	
+		add_action( 'admin_notices', array($this, 'anony_upload_admin_notice') );	
 	}
 	
 	public function render(){
@@ -49,7 +49,7 @@ class Cf__Upload extends Class__Custom_Field{
 		
 		<?php 
 			
-		function smpg_upload_admin_notice() {
+		function anony_upload_admin_notice() {
 			$screen = get_current_screen();
 			if( $this->post->post_type == $screen->post_type && 'post' == $screen->base ){
 				

@@ -67,12 +67,12 @@
 	background-color: #f8f8f8;
 	text-align: center;
 }
-#smpg-options-wrapper{
+#anony-options-wrapper{
 	background-color: #fff;
 	padding: 20px;
 	margin: 20px;
 }
-#smpg-options-wrapper > h1{
+#anony-options-wrapper > h1{
 	text-align: center;
 	font-family: "EXO";
 }
@@ -87,22 +87,22 @@
 	background-color: rgb(209, 53, 75);
 	box-shadow: 10px 5px 6px #dbd1d1;
 }
-.smpg-nav-link,.smpg-nav-item{
+.anony-nav-link,.anony-nav-item{
 	line-height: 50px;
 	color: #fff;
 	font-size: 18px;
 	text-decoration: none;
 	font-family: 'Anton'
 }
-.smpg-nav-link:hover{
+.anony-nav-link:hover{
 	color: #ffffff;
     font-size: 20px;
 	padding: 10px;
 }
-.smpg-nav-link{
+.anony-nav-link{
 	padding: 0 20px;
 }
-.smpg-nav-item{
+.anony-nav-item{
 	display: block;
 	padding: 0 5px;
 	width: 100%;
@@ -110,7 +110,7 @@
 	box-sizing: border-box;
 }
 
-.smpg-nav-item:hover{
+.anony-nav-item:hover{
 	color: #ffffff;
 	background: #871928;
 }
@@ -128,19 +128,19 @@
 #options-sections{
 	width: 70%;
 }
-.smpg-radio-img input[type="radio"]{display: none}
-.smpg-radio-item{
+.anony-radio-img input[type="radio"]{display: none}
+.anony-radio-item{
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
 	margin: 5px;
 }
-.smpg-radio-img-selected{
+.anony-radio-img-selected{
 	padding: 5px;
 	border: 1px solid #ff3600;
 }
 
-.smpg-section-group > h2{
+.anony-section-group > h2{
 	padding: 50px 10px;
 	font-size: 35px;
 	color: #ffffff;
@@ -156,10 +156,10 @@
 	margin: 15px;
 }
 
-.smpg-section-group{
+.anony-section-group{
 	display: none;
 }
-.smpg-show-section{
+.anony-show-section{
 	display: block;
 }
 
@@ -167,11 +167,11 @@
 	width: 20em;
 }
 
-.smpg-section-group .form-table tr {
+.anony-section-group .form-table tr {
     border-bottom: 2px solid #ebecec;
 }
 
-.smpg-section-warning{
+.anony-section-warning{
 	font-weight: bold;
 	color: #f6f6f6;
 	padding: 10px;
@@ -295,11 +295,11 @@
 	font-family: "Gugi";
 }
 
-.smpg-dropdown{
+.anony-dropdown{
 	display: none;
 	background: #b73a4c;
 }
-.smpg-dropdown .smpg-nav-item{
+.anony-dropdown .anony-nav-item{
 	width: auto;
 } 
 #options-nav ul{

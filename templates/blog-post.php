@@ -42,7 +42,7 @@ anony_set_post_views($tbp_post_id);?>
 			
 			<div>
 			
-				<a class="button smpg-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
+				<a class="button anony-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
 				
 			</div>
 			

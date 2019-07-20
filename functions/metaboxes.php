@@ -11,7 +11,7 @@
 $metaBoxes = array(
 	'post' => array(
 				array(
-					'id' => 'smpg_set_featured',
+					'id' => 'anony_set_featured',
 					'title' => esc_html__( 'Set as featured post', TEXTDOM ),
 					'context' => 'side',
 					'type' => 'checkbox',
@@ -19,9 +19,9 @@ $metaBoxes = array(
 				),
 				
 			),
-	'smpg_download' => array(
+	'anony_download' => array(
 							array(
-								'id' => 'smpg_download_attachment',
+								'id' => 'anony_download_attachment',
 								'title' => esc_html__( 'Upload your attachment', TEXTDOM ),
 								'context' => 'normal',
 								'type' => 'upload',

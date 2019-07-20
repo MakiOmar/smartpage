@@ -202,7 +202,7 @@ add_filter('nav_menu_css_class' , function($classes, $item) {
 if(opt_init_()->cats_in_nav != '0'){
 	add_filter("wp_nav_menu_items",function($item , $args){
 		if($args->theme_location == 'main-menu'){
-			$item.='<li><ul id="smpg-cat-list" class="smpg-cat-list">';
+			$item.='<li><ul id="anony-cat-list" class="anony-cat-list">';
 				$args = array(
 						'hide_empty' => 0,
 						'title_li' => '',

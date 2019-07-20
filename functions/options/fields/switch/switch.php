@@ -41,7 +41,7 @@ class Field__Switch extends Class__Theme_Settings{
 	 * Enqueue Function.
 	 */
 	function enqueue(){		
-		wp_enqueue_script('smpg-opts-field-switch-js', SMPG_OPTIONS_URI.'fields/switch/field_switch.js', array('jquery'),time(),true);
+		wp_enqueue_script('anony-opts-field-switch-js', SMPG_OPTIONS_URI.'fields/switch/field_switch.js', array('jquery'),time(),true);
 	}
 	
 }

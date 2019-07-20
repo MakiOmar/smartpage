@@ -189,7 +189,7 @@ if (!class_exists('Class__Options_Model')) {
          * @return bool
          */
         protected static function validate($type, $value) {
-            $validate = new smpg_Validator();
+            $validate = new anony_Validator();
             return $validate->validate($type, $value);
         }
     }

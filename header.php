@@ -40,12 +40,12 @@ ob_start('ob_gzhandler');
 								 </div>
 							<?php  }
 
-								 if(function_exists('smpg_user_main')){
+								 if(function_exists('anony_user_main')){
 									 
 									echo '<div class="grid-col-md-3 grid-col-sm-3">';
 
 									 //User control plugin's menu
-									 echo smpg_user_main('user-control');
+									 echo anony_user_main('user-control');
 
 									echo '</div>';	
 								 }

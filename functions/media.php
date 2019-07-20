@@ -11,7 +11,7 @@
  * Media hooks
  *-----------------------------------------------------------*/
 
-//Enqueue media scripts for uploader in smpg_download post type
+//Enqueue media scripts for uploader in anony_download post type
 add_action("admin_enqueue_scripts", function(){
     wp_enqueue_media();
 	

@@ -4,7 +4,7 @@
 #main_menu_con li a:hover,#dun-title,.active, .active-tab,#submit,.form_submit,.button,.widgettitle,.widgeted_title a,.widgeted_title span, .page-numbers a, .ca-nav span, .reply, .single-download, .widgeted_title, #dun-title, .featured-posts-title, .f-post-title,.section_title,#page-scroll{
 	background-color:#5680de;
 }
-.section,#smpg-page-loading-bg{
+.section,#anony-page-loading-bg{
 	border-top: 5px solid #5680de;
 }
 a{
@@ -25,7 +25,7 @@ color:#350c86;
 .widgeted_title{
 	color: #fff;
 }
-#secondary-sidebar h2,#smpg-cat-list li, #smpg-cat-list li ul li,#secondary-sidebar ul li:nth-child(2){
+#secondary-sidebar h2,#anony-cat-list li, #anony-cat-list li ul li,#secondary-sidebar ul li:nth-child(2){
 	background-color: #222222;
 }
 

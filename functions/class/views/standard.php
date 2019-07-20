@@ -66,7 +66,7 @@ class Views__Standard extends Class__Generate_Posts_View{
 
 								<div>
 
-									<a class="button smpg-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
+									<a class="button anony-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
 									
 									
 

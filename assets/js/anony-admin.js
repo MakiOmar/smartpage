@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 	"use strict";
-	$("#smpg_download_attachment_input").change(function () {
+	$("#anony_download_attachment_input").change(function () {
 	var fileName = $(this).val().replace('C:\\fakepath\\', '');
 	$("#file-upload-filename").html(fileName);
 	});

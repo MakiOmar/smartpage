@@ -18,7 +18,7 @@ add_action('after_setup_theme', function(){
 
 //Theme Scripts
 add_action('wp_enqueue_scripts',function() {
-		$smpgOptions = opt_init_();
+		$anonyOptions = opt_init_();
 
 		$styles = array('main','font-awesome','responsive','prettyPhoto');
 		foreach($styles as $style){
@@ -28,8 +28,8 @@ add_action('wp_enqueue_scripts',function() {
 			wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/rtl.css'))));
 		}
 
-		if($smpgOptions->color_skin !== 'custom' /*&& !empty($smpgOptions->color_skin)*/){
-			wp_enqueue_style( $smpgOptions->color_skin.'-skin' , get_theme_file_uri('/assets/css/skins/'.$smpgOptions->color_skin.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$smpgOptions->color_skin.'.css'))));
+		if($anonyOptions->color_skin !== 'custom' /*&& !empty($anonyOptions->color_skin)*/){
+			wp_enqueue_style( $anonyOptions->color_skin.'-skin' , get_theme_file_uri('/assets/css/skins/'.$anonyOptions->color_skin.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$anonyOptions->color_skin.'.css'))));
 		}
 
 		if(is_single()){
@@ -47,16 +47,16 @@ add_action('wp_enqueue_scripts',function() {
 			}
 
 		// Localize the script with new data
-		$smpg_loca = array(
+		$anony_loca = array(
 			'ajaxURL'         => anony_get_ajax_url(),
 			'textDir'         => (is_rtl() ? 'rtl' : 'ltr'),
 			'themeLang'       => get_bloginfo('language'),
-			'smpgFormAuthor'  => esc_html__("Please enter a valid name", TEXTDOM),
-			'smpgFormEmail'   => esc_html__("Please enter a valid email", TEXTDOM),
-			'smpgFormUrl'     => esc_html__("Please use a valid website address", TEXTDOM),
-			'smpgFormComment' => esc_html__("Comment must be at least 20 characters", TEXTDOM),
+			'anonyFormAuthor'  => esc_html__("Please enter a valid name", TEXTDOM),
+			'anonyFormEmail'   => esc_html__("Please enter a valid email", TEXTDOM),
+			'anonyFormUrl'     => esc_html__("Please use a valid website address", TEXTDOM),
+			'anonyFormComment' => esc_html__("Comment must be at least 20 characters", TEXTDOM),
 		);
-		wp_localize_script( 'custom', 'SmpgLoca', $smpg_loca );
+		wp_localize_script( 'custom', 'SmpgLoca', $anony_loca );
 	});
 
 //Add theme support
@@ -65,7 +65,7 @@ add_action( 'after_setup_theme', function() {
 	add_theme_support( 'custom-logo' );
 	add_theme_support( 'custom-header' );
 	add_theme_support( 'custom-background');
-	add_theme_support( 'post-thumbnails', array( 'post','smpg_download' ) );
+	add_theme_support( 'post-thumbnails', array( 'post','anony_download' ) );
 	add_theme_support( 'customize-selective-refresh-widgets' );
 	add_theme_support( 'post-formats', array( 'gallery', 'quote', 'video', 'aside', 'image', 'link' ) );
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );

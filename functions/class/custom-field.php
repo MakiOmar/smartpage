@@ -15,7 +15,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 			foreach($this->metaBoxes as $boxPostType => $metaBoxes){
 				foreach($metaBoxes as $metaBox){
-					add_action( 'add_meta_boxes_'.$boxPostType, array(&$this, 'smpg_add_meta_boxes') );
+					add_action( 'add_meta_boxes_'.$boxPostType, array(&$this, 'anony_add_meta_boxes') );
 				}
 				
 				$action = 'save_post';
@@ -26,7 +26,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				
 				$this->postType = $boxPostType;
 				
-				add_action( $action, array(&$this, 'smpg_save_post'),11);
+				add_action( $action, array(&$this, 'anony_save_post'),11);
 			}
 			
 			add_action('wp_ajax_download', array($this, 'implement_download_ajax'));
@@ -34,18 +34,18 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 		}
 		
-		public function smpg_add_meta_boxes(){
+		public function anony_add_meta_boxes(){
 			
 			foreach($this->metaBoxes as $boxPostType => $metaBoxes){
 				
 				foreach($metaBoxes as $metaBox){
 
-					add_meta_box( $metaBox['id'], $metaBox['title'], array($this, 'smpg_metabox_cb'), $boxPostType, $metaBox['context'],'core', array($metaBox));
+					add_meta_box( $metaBox['id'], $metaBox['title'], array($this, 'anony_metabox_cb'), $boxPostType, $metaBox['context'],'core', array($metaBox));
 				}
 			}
 		}
 		
-		public function smpg_metabox_cb($post, $metaBox){
+		public function anony_metabox_cb($post, $metaBox){
 
 			$class_name = 'Cf__'.ucfirst($metaBox['args'][0]['type']);
 			
@@ -59,7 +59,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 		}
 		
-		public function smpg_save_post($post_ID){
+		public function anony_save_post($post_ID){
 			
 			if ( ! current_user_can( 'edit_post', $post_ID ) ) return;
 			
@@ -67,18 +67,18 @@ if( ! class_exists( 'Class__Custom_Field' )){
 						
 					$field = $metaBox['id'];
 					
-					if($field == 'smpg_download_attachment'){
-						if(isset($_POST['smpg_download_attachment']) && !empty($_POST['smpg_download_attachment'])) {
+					if($field == 'anony_download_attachment'){
+						if(isset($_POST['anony_download_attachment']) && !empty($_POST['anony_download_attachment'])) {
 							
-							$ext = pathinfo($_POST['smpg_download_attachment'], PATHINFO_EXTENSION);
+							$ext = pathinfo($_POST['anony_download_attachment'], PATHINFO_EXTENSION);
 							
 								if(in_array($ext,unserialize(SuppTypes))){
 									
-									update_post_meta($post_ID, 'smpg_download_attachment',$_POST['smpg_download_attachment']);
+									update_post_meta($post_ID, 'anony_download_attachment',$_POST['anony_download_attachment']);
 									
 								}else{
 									
-									add_filter( 'redirect_post_location', array($this, 'smpg_download_redirect_post_location'));
+									add_filter( 'redirect_post_location', array($this, 'anony_download_redirect_post_location'));
 								}
 						}
 					}else{
@@ -113,7 +113,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 		}
 		
-		public function smpg_download_redirect_post_location( $location ){
+		public function anony_download_redirect_post_location( $location ){
 			$location = add_query_arg( 'c_error' , '1' , $location );
 			return $location;
 		}

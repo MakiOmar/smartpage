@@ -32,12 +32,12 @@ class Field__Radio extends Class__Theme_Settings{
 				
 				$radioClass =  isset($v['class']) ?'class="'.$v['class'].'"'  : '';
 
-				echo '<div class="smpg-radio-item">';
-					$selected = (checked($this->value, $k, false) != '')?' smpg-radio-img-selected':'';
+				echo '<div class="anony-radio-item">';
+					$selected = (checked($this->value, $k, false) != '')?' anony-radio-img-selected':'';
 				
-					echo '<label class="smpg-radio'.$selected.' smpg-radio-'.$this->field['id'].'" for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
+					echo '<label class="anony-radio'.$selected.' anony-radio-'.$this->field['id'].'" for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
 				
-						echo '<input '.$radioClass.' type="radio" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'. $name . '" '.$class.' value="'.$k.'" '.checked($this->value, $k, false).' onclick="jQuery:smpg_radio_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');"/>';
+						echo '<input '.$radioClass.' type="radio" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'. $name . '" '.$class.' value="'.$k.'" '.checked($this->value, $k, false).' onclick="jQuery:anony_radio_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');"/>';
 				
 					echo '</label>';
 				
@@ -53,7 +53,7 @@ class Field__Radio extends Class__Theme_Settings{
 	 * Enqueue Function.
 	 */
 	function enqueue(){	
-		wp_enqueue_script('smpg-opts-field-radio-js', SMPG_OPTIONS_URI.'fields/radio/f_radio.js', array('jquery'),time(),true);	
+		wp_enqueue_script('anony-opts-field-radio-js', SMPG_OPTIONS_URI.'fields/radio/f_radio.js', array('jquery'),time(),true);	
 	}
 	
 }

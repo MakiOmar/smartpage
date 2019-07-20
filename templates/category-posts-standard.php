@@ -1,24 +1,24 @@
 <?php
-	$smpgOptions = opt_init_();
+	$anonyOptions = opt_init_();
 	
 	$args = array('post_type' => 'post', 'posts_per_page' => 5);
 
-	if(isset($smpgOptions->slider ) ){
+	if(isset($anonyOptions->slider ) ){
 		
-		if($smpgOptions->slider != 'rev-slider'){
+		if($anonyOptions->slider != 'rev-slider'){
 			
-			if($smpgOptions->slider == 'featured-cat' && $smpgOptions->featured_cat != '0'){
+			if($anonyOptions->slider == 'featured-cat' && $anonyOptions->featured_cat != '0'){
 				$FreaturedCat = get_term_by( 
 								'id', 
-								$smpgOptions->featured_cat,
-								$smpgOptions->featured_tax
+								$anonyOptions->featured_cat,
+								$anonyOptions->featured_tax
 							);
 
 				$args['category__not_in'] = $FreaturedCat->term_id;
 
-			}elseif($smpgOptions->slider == 'featured-post'){
+			}elseif($anonyOptions->slider == 'featured-post'){
 
-				$args['posts__not_in'] =  get_posts_ids_by_meta('smpg_set_featured', 'on');
+				$args['posts__not_in'] =  get_posts_ids_by_meta('anony_set_featured', 'on');
 
 			}
 			

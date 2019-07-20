@@ -30,7 +30,7 @@ if ( ! class_exists( 'Class__Cats_Widget' ) ) {
 			
 			echo $before_title.$title.$after_title;
 			
-			echo '<ul id="smpg-cat-list">';
+			echo '<ul id="anony-cat-list">';
 			
 			$args = array(
 					'hide_empty' => 0,

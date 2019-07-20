@@ -1,14 +1,14 @@
 <?php 
 get_header();
-$smpgOptions = opt_init_();
+$anonyOptions = opt_init_();
 ?>
   <div class="grid">
   	<div class="grid-row grid-col">
        <?php
 		
-		if($smpgOptions->sidebar == 'left-sidebar'){
+		if($anonyOptions->sidebar == 'left-sidebar'){
 			get_sidebar();
-		}elseif($smpgOptions->single_sidebar == '1'){
+		}elseif($anonyOptions->single_sidebar == '1'){
 			get_sidebar('single');
 		}
 		
@@ -19,7 +19,7 @@ $smpgOptions = opt_init_();
 				do_action('post_ad');
 			}
 		?>
-        <div class="grid-col <?php echo ($smpgOptions->single_sidebar == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
+        <div class="grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
         
         <?php anony_breadcrumbs()?>
         
@@ -67,9 +67,9 @@ $smpgOptions = opt_init_();
         </div>
        <?php
 		
-		if($smpgOptions->sidebar == 'right-sidebar'){
+		if($anonyOptions->sidebar == 'right-sidebar'){
 			get_sidebar();
-		}elseif($smpgOptions->single_sidebar == '1'){
+		}elseif($anonyOptions->single_sidebar == '1'){
 			get_sidebar('single');
 		}
 		

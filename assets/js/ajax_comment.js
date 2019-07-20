@@ -43,10 +43,10 @@ jQuery(document).ready(function($){
 					
 				},
 				messages: {
-					author  : SmpgLoca.smpgFormAuthor ,
-					email   : SmpgLoca.smpgFormEmail ,
-					url     : SmpgLoca.smpgFormUrl ,
-					comment : SmpgLoca.smpgFormComment ,
+					author  : SmpgLoca.anonyFormAuthor ,
+					email   : SmpgLoca.anonyFormEmail ,
+					url     : SmpgLoca.anonyFormUrl ,
+					comment : SmpgLoca.anonyFormComment ,
 				},
 				errorPlacement: function(error, element) {
 						error.insertAfter( "label[for='" + element.attr( "id" ) + "']" );	
@@ -80,7 +80,7 @@ jQuery(document).ready(function($){
 					
 					beforeSend: function(){
 						// what to do just after the form has been submitted
-						$('#smpg-loading').addClass('show-loading');
+						$('#anony-loading').addClass('show-loading');
 					},
 					error: function (request, status, error) {
 							if( status === 500 ){
@@ -137,7 +137,7 @@ jQuery(document).ready(function($){
 						
 						$('#cancel-comment-reply-link').css('display', 'none');
 						
-						$('#smpg-loading').removeClass('show-loading');
+						$('#anony-loading').removeClass('show-loading');
 						
 						//Change comment counter
 						$('.comments-title').each(function(){

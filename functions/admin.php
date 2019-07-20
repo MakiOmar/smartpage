@@ -18,7 +18,7 @@
  */
 add_action( 'admin_enqueue_scripts', function() {
 	
-	$styles = array('smpg-admin');
+	$styles = array('anony-admin');
 	
 		foreach($styles as $style){
 			
@@ -31,7 +31,7 @@ add_action( 'admin_enqueue_scripts', function() {
 			
 		}
 
-		$scripts = array('smpg-admin');
+		$scripts = array('anony-admin');
 	
 			foreach($scripts as $script){
 				

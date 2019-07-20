@@ -60,12 +60,12 @@ position: relative;
 .insert-media:hover{
 	color: #ffffff;
 }
-#smpg_download_attachment .inside{
+#anony_download_attachment .inside{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
-#smpg_download_attachment .inside div{
+#anony_download_attachment .inside div{
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -73,4 +73,4 @@ position: relative;
 	float: none;
 }
 
-.mce-tinymce .mce-i-smpg-shortcode { background:url(../../images/ico-shortcode.png) no-repeat center;}
+.mce-tinymce .mce-i-anony-shortcode { background:url(../../images/ico-shortcode.png) no-repeat center;}

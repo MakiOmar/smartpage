@@ -79,7 +79,7 @@ function anony_get_excerpt( $id,$words_count= 25 ) {
 *@return array  Associative array of slider id = name
 */
 
-function smpg_get_rev_sliders(){
+function anony_get_rev_sliders(){
 	$sliders = array();
 	
 	if ( class_exists( 'RevSlider' ) ) {
@@ -100,7 +100,7 @@ function smpg_get_rev_sliders(){
 *@var string $path  Path of plugin file
 */
 
-function smpg_is_active_plugin($path){
+function anony_is_active_plugin($path){
 	if(!is_admin()){
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	}
@@ -119,7 +119,7 @@ function get_posts_ids_by_meta($key, $value){
 	
 	$postIDs = array();
 
-	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'smpg_set_featured' AND meta_value = 'on'";
+	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'anony_set_featured' AND meta_value = 'on'";
 
 	$results = $wpdb->get_results($query);
 	

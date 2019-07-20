@@ -28,7 +28,7 @@ class Views__Downloads extends Class__Generate_Posts_View{
 							$tdPostId = get_the_ID();
 							$tdPostTitle = get_the_title();
 
-							$curr_download_meta = get_post_meta( $tdPostId, 'smpg_download_attachment', true );
+							$curr_download_meta = get_post_meta( $tdPostId, 'anony_download_attachment', true );
 
 							$download_times = get_post_meta($tdPostId,'download_times',true);
 
@@ -67,7 +67,7 @@ class Views__Downloads extends Class__Generate_Posts_View{
 
 									<div class="download">
 
-										<a title="download-<?php echo $tdPostId?>" target="_blank" class="smpg-download" href="<?php echo $curr_download_meta ?>"><i class="fa fa-download"></a></i>
+										<a title="download-<?php echo $tdPostId?>" target="_blank" class="anony-download" href="<?php echo $curr_download_meta ?>"><i class="fa fa-download"></a></i>
 
 									</div>
 

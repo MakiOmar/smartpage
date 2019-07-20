@@ -133,7 +133,7 @@ jQuery(document).ready(function($){
 	slideToTop('.section');
 	
 	//toggle content
-	function smpgTogglecontent(toggle,toggledClass,toggled,ifCase,elseCase,callBack){
+	function anonyTogglecontent(toggle,toggledClass,toggled,ifCase,elseCase,callBack){
 		
 		$(toggle).click(function(event){
 			
@@ -159,14 +159,14 @@ jQuery(document).ready(function($){
 	}
 	
 	//Toggle language menu
-	smpgTogglecontent("#lang-toggle","show-lang-menu","#languages_menu_con",'','',function(){
+	anonyTogglecontent("#lang-toggle","show-lang-menu","#languages_menu_con",'','',function(){
 		
 		$(".lang").toggle();
 		
 	});
 	
 	//toggle search form
-	smpgTogglecontent(".search-form-toggle","show-search-form","#hidden-search-form",function(){
+	anonyTogglecontent(".search-form-toggle","show-search-form","#hidden-search-form",function(){
 		
 			$('#hidden-search-form > .search-form-toggle').html('<i class="fa fa-search" aria-hidden="true"></i></a></li>');
 		
@@ -226,7 +226,7 @@ jQuery(document).ready(function($){
 	});
 	
 	//toggle nav menu on small screens
-	/*smpgTogglecontent("#menu-toggle",'show-main-nav',"#main_nav_con",'',function(){
+	/*anonyTogglecontent("#menu-toggle",'show-main-nav',"#main_nav_con",'',function(){
 		
 			}		
 	});*/
@@ -296,7 +296,7 @@ jQuery(document).ready(function($){
 	});
 	
 	//update download_times meta with AJAX
-	$(".smpg-download").click(function() {	
+	$(".anony-download").click(function() {	
 		var anchor_Title = $(this).attr('title');
 		var acnchor_Title_array = anchor_Title.split('-');
 		var download_ID = acnchor_Title_array[1];
@@ -324,7 +324,7 @@ jQuery(document).ready(function($){
 				}
     	});
 	});
-	$(".smpg-download").hover(function() {
+	$(".anony-download").hover(function() {
 		var s = $(this).parent().siblings('div').find('.hover-toggle span');
 		s.css({"opacity" :"1"/*,"height":"25%"*/});
 	},function(){
@@ -372,7 +372,7 @@ jQuery(document).ready(function($){
 	});
 	
 	//ctegories list
-	function smpg_menu_toggle(toggle, toggled_item,menu,close){
+	function anony_menu_toggle(toggle, toggled_item,menu,close){
 		$(toggle).click(function(event) {
 		$(close).hide();
 		  event.stopPropagation();
@@ -411,8 +411,8 @@ jQuery(document).ready(function($){
 
 	  });
 	}
-	smpg_menu_toggle('.toggle-category', '.dropdown','smpg-cat-list','.sub-menu');
-	smpg_menu_toggle('.main-menu-toggle', '.sub-menu','main_menu_con','.dropdown');
+	anony_menu_toggle('.toggle-category', '.dropdown','anony-cat-list','.sub-menu');
+	anony_menu_toggle('.main-menu-toggle', '.sub-menu','main_menu_con','.dropdown');
 
 	//Close all dropdowns when click on any place in the document
 	$(document).click( function(){

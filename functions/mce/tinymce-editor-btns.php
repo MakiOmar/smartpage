@@ -12,9 +12,9 @@
  *	WordPress uses TinyMCE 4 since 3.9
  *	For safety reasons no support for TinyMCE 3 ( WordPress 3.8 )
  * ----------------------------------------------------------------------------------- */
-$smpg_wp_version = floatval( get_bloginfo( 'version' ) );
+$anony_wp_version = floatval( get_bloginfo( 'version' ) );
 
-if( $smpg_wp_version >= 3.9 ){
+if( $anony_wp_version >= 3.9 ){
 	/**
 	 * Initialize TinyMce.
 	 * **Description: ** Hooked to <code>init</code> to initialize TinyMce.

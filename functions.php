@@ -6,7 +6,7 @@ if(!defined('DIRS')){
 	define( 'DIRS', DIRECTORY_SEPARATOR );
 }
 
-$smpglibs = [
+$anonylibs = [
 	'php-helpers'       =>'helper'. DIRS,
 	'wordpress-helpers' =>'helper' . DIRS,
 	'config'            =>'',
@@ -22,8 +22,8 @@ $smpglibs = [
 	'tinymce-editor-btns' =>'mce' . DIRS,
 ];
 
-foreach($smpglibs as $smpglib=>$path){
-	require_once(LIBS_DIR.$path.$smpglib.'.php');
+foreach($anonylibs as $anonylib=>$path){
+	require_once(LIBS_DIR.$path.$anonylib.'.php');
 }
 
 add_action('wp_footer', function(){

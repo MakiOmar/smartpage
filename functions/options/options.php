@@ -2,7 +2,7 @@
 require_once('config.php');
 
 if(get_option(SMPG_OPTIONS)){
-	$smpgOptions = opt_init_();
+	$anonyOptions = opt_init_();
 }
 
 // Navigation elements
@@ -56,7 +56,7 @@ $options_nav = array(
 //Sectoins
 $sections = array();
 
-$sliders = smpg_get_rev_sliders();
+$sliders = anony_get_rev_sliders();
 
 $sections['slider']= array(
 		'title' => esc_html__('Slider', TEXTDOM),
@@ -76,7 +76,7 @@ $sections['slider']= array(
 							'validate'=> 'no_html',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
 							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
-							'class'    => 'home_slider_' . (isset($smpgOptions) && $smpgOptions->home_slider == '1' ? ' show-in-table' : '')
+							'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
 						),
 	
 						array(
@@ -105,7 +105,7 @@ $sections['slider']= array(
 							'validate'=> 'no_html',
 							'options' => get_taxonomies(),
 							'default' => 'category',
-							'class'    => 'slider_ featured-cat'. (isset($smpgOptions) && $smpgOptions->slider == 'featured-cat' ? ' show-in-table' : '')
+							'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && $anonyOptions->slider == 'featured-cat' ? ' show-in-table' : '')
 						),
 	
 						array(
@@ -113,9 +113,9 @@ $sections['slider']= array(
 							'title'   => esc_html__('Select featured category', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
-							'options' => isset($smpgOptions)  ?admin_get_terms_options($smpgOptions->featured_tax) : array(),
-							'class'    => 'slider_ featured-cat'.( isset($smpgOptions) && $smpgOptions->slider == 'featured-cat' ? ' show-in-table' : ''),
-							'note'    => (isset($smpgOptions) && empty($smpgOptions->featured_cat) ? esc_html__('No category selected, you have to select one', TEXTDOM) : '')
+							'options' => isset($anonyOptions)  ?admin_get_terms_options($anonyOptions->featured_tax) : array(),
+							'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider == 'featured-cat' ? ' show-in-table' : ''),
+							'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', TEXTDOM) : '')
 						),
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
@@ -217,7 +217,7 @@ $sections['blog']= array(
 					)
 );
 
-$smpgAdsLocs = array(
+$anonyAdsLocs = array(
 					'header'  => esc_html__('Header', TEXTDOM),
 					'footer'  => esc_html__('Footer', TEXTDOM),
 					'sidebar' => esc_html__('Sidebar', TEXTDOM),
@@ -239,7 +239,7 @@ $sections['advertisements']= array(
 							'title'   => esc_html__('AD block one location', TEXTDOM),
 							'type'    => 'checkbox',
 							'validate'=> 'multi_checkbox',
-							'options' => $smpgAdsLocs,
+							'options' => $anonyAdsLocs,
 							
 						),
 						array(
@@ -253,7 +253,7 @@ $sections['advertisements']= array(
 							'title'   => esc_html__('AD block two location', TEXTDOM),
 							'type'    => 'checkbox',
 							'validate'=> 'multi_checkbox',
-							'options' => $smpgAdsLocs,
+							'options' => $anonyAdsLocs,
 							
 						),
 						array(
@@ -267,14 +267,14 @@ $sections['advertisements']= array(
 							'title'   => esc_html__('AD block three location', TEXTDOM),
 							'type'    => 'checkbox',
 							'validate'=> 'multi_checkbox',
-							'options' => $smpgAdsLocs,
+							'options' => $anonyAdsLocs,
 							
 						),
 
 					)
 );
 
-$arFonts = (isset($smpgOptions) && is_array($smpgOptions->get_option('custom_ar_fonts'))) ? $smpgOptions->get_option('custom_ar_fonts') : array();
+$arFonts = (isset($anonyOptions) && is_array($anonyOptions->get_option('custom_ar_fonts'))) ? $anonyOptions->get_option('custom_ar_fonts') : array();
 
 $defaultArFonts = array(
 						'droid_arabic_kufiregular' => 'Droid kufi regular',
@@ -287,7 +287,7 @@ $defaultArFonts = array(
 
 					);
 
-$enFonts = (isset($smpgOptions) && is_array($smpgOptions->get_option('custom_en_fonts'))) ? $smpgOptions->get_option('custom_en_fonts') : array();
+$enFonts = (isset($anonyOptions) && is_array($anonyOptions->get_option('custom_en_fonts'))) ? $anonyOptions->get_option('custom_en_fonts') : array();
 
 $defaultEnFonts = array(
 						'ralewaybold'    => 'Raleway bold',
@@ -302,7 +302,7 @@ $sections['arabic-fonts']= array(
 		'icon'   => 'W',
 		'fields' => array(
 						array(
-							'id'      => 'smpg_headings_ar_font',
+							'id'      => 'anony_headings_ar_font',
 							'title'   => esc_html__('Arabic font for headings', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -310,7 +310,7 @@ $sections['arabic-fonts']= array(
 							'default' => 'ae_almohanadregular',
 						),
 						array(
-							'id'      => 'smpg_links_ar_font',
+							'id'      => 'anony_links_ar_font',
 							'title'   => esc_html__('Arabic font for links', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -318,7 +318,7 @@ $sections['arabic-fonts']= array(
 							'default' => 'ae_almohanadregular',
 						),
 						array(
-							'id'      => 'smpg_paragraph_ar_font',
+							'id'      => 'anony_paragraph_ar_font',
 							'title'   => esc_html__('Arabic font for paragraph', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -335,7 +335,7 @@ $sections['english-fonts']= array(
 		'fields' => array(
 
 						array(
-							'id'      => 'smpg_headings_en_font',
+							'id'      => 'anony_headings_en_font',
 							'title'   => esc_html__('English font for headings', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -344,7 +344,7 @@ $sections['english-fonts']= array(
 						),
 						
 						array(
-							'id'      => 'smpg_links_en_font',
+							'id'      => 'anony_links_en_font',
 							'title'   => esc_html__('English font for links', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -352,7 +352,7 @@ $sections['english-fonts']= array(
 							'default' => 'ralewaybold',
 						),
 						array(
-							'id'      => 'smpg_paragraph_en_font',
+							'id'      => 'anony_paragraph_en_font',
 							'title'   => esc_html__('English font for paragraph', TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'no_html',
@@ -493,21 +493,21 @@ $Smpg_Options = new Class__Theme_Settings( $options_nav, $sections, $widgets );
 *Available locations are header, footer, sidebar, post, page
 */
 
-add_action('init', function() use($smpgOptions){
+add_action('init', function() use($anonyOptions){
 	
-	$smpgADs = array('one', 'two', 'three');
+	$anonyADs = array('one', 'two', 'three');
 
-	foreach($smpgADs as $adBlock){
+	foreach($anonyADs as $adBlock){
 		
 		 $block = 'ad_block_'.$adBlock;
 		 $blockLoc = $block.'_location';
 		
-		if(isset($smpgOptions->$blockLoc) && !empty($smpgOptions->$blockLoc)){
+		if(isset($anonyOptions->$blockLoc) && !empty($anonyOptions->$blockLoc)){
 			
-			foreach($smpgOptions->$blockLoc as $loc){
+			foreach($anonyOptions->$blockLoc as $loc){
 				
-				 add_action($loc.'_ad', function() use($smpgOptions, $block){
-					 echo $smpgOptions->$block;
+				 add_action($loc.'_ad', function() use($anonyOptions, $block){
+					 echo $anonyOptions->$block;
 				 });
 				
 			 }
