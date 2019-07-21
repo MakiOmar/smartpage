@@ -113,7 +113,7 @@ $sections['slider']= array(
 							'type'    => 'select',
 							'validate'=> 'no_html',
 							'options' => isset($anonyOptions)  ?admin_get_terms_options($anonyOptions->featured_tax) : array(),
-							'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider == 'featured-cat' ? ' show-in-table' : ''),
+							'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : ''),
 							'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', TEXTDOM) : '')
 						),
 					),
