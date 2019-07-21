@@ -70,18 +70,8 @@ $sections['slider']= array(
 							'desc'    => esc_html('If checked, it will show revolution slider on Homepage', TEXTDOM),
 						),
 						array(
-							'id'      => 'rev_slider',
-							'title'   => esc_html__('Select a slider', TEXTDOM),
-							'type'    => 'select',
-							'validate'=> 'no_html',
-							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
-							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
-							'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
-						),
-	
-						array(
-							'id'      => 'slider',
-							'title'   => esc_html__('Featured Posts slider', TEXTDOM),
+							'id'      => 'slider_content',
+							'title'   => esc_html__('Featured Posts slider content', TEXTDOM),
 							'type'    => 'radio',
 							'validate'=> 'no_html',
 							'options' => array(
@@ -96,7 +86,6 @@ $sections['slider']= array(
 											),
 										),
 							'default'  => 'featured-cat',
-							'default'  => 'featured-cat',
 						),
 						array(
 							'id'      => 'featured_tax',
@@ -107,6 +96,16 @@ $sections['slider']= array(
 							'default' => 'category',
 							'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && $anonyOptions->slider == 'featured-cat' ? ' show-in-table' : '')
 						),
+						array(
+							'id'      => 'rev_slider',
+							'title'   => esc_html__('Select a slider', TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'no_html',
+							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
+							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
+							'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
+						),
+	
 	
 						array(
 							'id'      => 'featured_cat',
