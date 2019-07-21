@@ -5,6 +5,11 @@ class Views__Downloads extends Class__Generate_Posts_View{
 	
 	public $child;
 	
+	/*
+	*@var string message to show 
+	*/
+	public $msg;
+	
 	public function __construct($parent){
 		parent::__construct($parent->args, $parent->postsTemplate, $parent->resetLoop);
 		
@@ -18,9 +23,14 @@ class Views__Downloads extends Class__Generate_Posts_View{
 		<div class="section<?php echo (is_front_page() || ishome()) ? ' section-front-page' : '' ?>">
 			<div><h4 class="section_title clearfix"><?php esc_html_e('Suggested downloads',TEXTDOM);?></h4></div>
 				<div class="posts-wrapper">
+				<?php
+					if($this->msg){
+						echo '<p class="anony-warning">'.$this->msg.'</p>';
+					}
+				?>
 					<div id="download">
 
-						<?php 
+						<?php
 						 while($this->child->post->have_posts()){
 
 							$this->child->post->the_post();

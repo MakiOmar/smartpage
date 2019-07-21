@@ -5,6 +5,11 @@ class Views__Featured extends Class__Generate_Posts_View{
 	
 	public $child;
 	
+	/*
+	*@var string message to show 
+	*/
+	public $msg;
+	
 	public $featuredIDs = array();
 	
 	public function __construct($parent){
@@ -18,10 +23,14 @@ class Views__Featured extends Class__Generate_Posts_View{
 	public function render(){?>
 		
 		<div id="slider-wrapper">
-	
+		<?php
+			if($this->msg){
+				echo '<p class="anony-warning">'.$this->msg.'</p>';
+			}
+		?>
 		<div id="featured">
 			<div id="active-slide">
-				<?php 
+				<?php
 					 while($this->child->post->have_posts()){
 
 						$this->child->post->the_post();

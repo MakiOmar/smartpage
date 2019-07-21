@@ -5,6 +5,11 @@ class Views__Popular extends Class__Generate_Posts_View{
 	
 	public $child;
 	
+	/*
+	*@var string message to show 
+	*/
+	public $msg;
+	
 	public function __construct($parent){
 		parent::__construct($parent->args, $parent->postsTemplate, $parent->resetLoop);
 		
@@ -17,7 +22,10 @@ class Views__Popular extends Class__Generate_Posts_View{
 		
 		<div id="popular" class ="tab_content">
 			
-				<?php 
+				<?php
+				if($this->msg){
+					echo '<p class="anony-warning">'.$this->msg.'</p>';
+				}
 				 while($this->child->post->have_posts()){
 			
 					$this->child->post->the_post();

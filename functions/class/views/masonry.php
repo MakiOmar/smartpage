@@ -4,6 +4,10 @@ class Views__Masonry extends Class__Generate_Posts_View{
 	public $IfNot = '';
 	
 	public $child;
+	/*
+	*@var string message to show 
+	*/
+	public $msg;
 	
 	public function __construct($parent){
 		parent::__construct($parent->args, $parent->postsTemplate, $parent->resetLoop);
@@ -20,7 +24,11 @@ class Views__Masonry extends Class__Generate_Posts_View{
 			<div>
 				<h4 class="section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
 			</div>
-
+			<?php
+				if($this->msg){
+					echo '<p class="anony-warning">'.$this->msg.'</p>';
+				}
+			?>
 			<div id="masonry">
 		<?php }else{?>
 			<div>

@@ -5,6 +5,11 @@ class Views__News extends Class__Generate_Posts_View{
 	
 	public $child;
 	
+	/*
+	*@var string message to show 
+	*/
+	public $msg;
+	
 	public function __construct($parent){
 		parent::__construct($parent->args, $parent->postsTemplate, $parent->resetLoop);
 		
@@ -19,11 +24,15 @@ class Views__News extends Class__Generate_Posts_View{
 			<?php echo get_search_form(false);?>
 
 		</div>
-		
+		<?php
+			if($this->msg){
+				echo '<p class="anony-warning">'.$this->msg.'</p>';
+			}
+		?>
 		<div id="dun-text">
 			<div id="dun_text_wrapper"<?php echo (is_rtl() ? ' class="is-rtl"' : '') ;?>>
 			
-				<?php 
+				<?php
 				 while($this->child->post->have_posts()){
 			
 					$this->child->post->the_post();

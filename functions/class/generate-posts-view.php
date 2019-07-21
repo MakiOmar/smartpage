@@ -92,7 +92,7 @@ class Class__Generate_Posts_View{
 		if($this->post->have_posts()){
 			if(isset($view)){
 				if(!is_null($this->msg) && !empty($this->msg)){
-					echo $this->msg;
+					$view->msg = $this->msg;
 				}
 				$view->render();
 			}

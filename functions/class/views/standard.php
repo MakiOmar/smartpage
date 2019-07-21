@@ -5,6 +5,11 @@ class Views__Standard extends Class__Generate_Posts_View{
 	
 	public $child;
 	
+	/*
+	*@var string message to show 
+	*/
+	public $msg;
+	
 	public function __construct($parent){
 		parent::__construct($parent->args, $parent->postsTemplate, $parent->resetLoop);
 		
@@ -20,16 +25,22 @@ class Views__Standard extends Class__Generate_Posts_View{
 			<div>
 				<h4 class="section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
 			</div>
+			<?php
+				if($this->msg){
+					echo '<p class="anony-warning">'.$this->msg.'</p>';
+				}
+			?>
 		<?php }else{?>
 			<div>
 		<?php }?>
 				<div id="blog-posts">
-				<?php  while($this->child->post->have_posts()){
+				
+				<?php
+					while($this->child->post->have_posts()){
 					 
 					$this->child->post->the_post();
 					 
-					$tbp_post_id = get_the_ID();
-		?>
+					$tbp_post_id = get_the_ID();?>
 
 					<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper grid-col-max-480-12 grid-col-av-12 grid-col-md-6 grid-col">
 						<div class="post-contents blog-post grid-col">
