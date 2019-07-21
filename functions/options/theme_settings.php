@@ -97,10 +97,7 @@ if (!class_exists('Class__Theme_Settings')) {
 			//register widgets
 			$this->anony_register_widgets();
 			
-			/*
-			*Styles for options in front end
-			*/
-
+			//Styles for options in front end
 			add_action('wp_head', array(&$this, 'anony_frontend_styles'));
 			
 			
@@ -114,17 +111,13 @@ if (!class_exists('Class__Theme_Settings')) {
 			
 			//set default values
 			$this->anony_default_values();
-			
-			//set option with defaults
-			if(!get_option(ANONY_OPTIONS)){
-				$this->anony_set_default_options();
-			}
+
+			//set option with defaults		
+			add_action('after_setup_theme', array(&$this, 'anony_set_default_options'));
 			
 			//get the options for use later on
 			$this->options = opt_init_();
 			
-			//add_action('admin_notices', array(&$this, 'anony_save_notify'));
-
 		}
 		
 		/**
@@ -156,8 +149,11 @@ if (!class_exists('Class__Theme_Settings')) {
 		 */
 		public function anony_set_default_options(){
 			
+			if( empty(get_option($this->args['opt_name']))){
+				delete_option($this->args['opt_name']);
+			}
 			
-			if(!get_option($this->args['opt_name']) || empty(get_option($this->args['opt_name']))){
+			if(!get_option($this->args['opt_name'])){
 				
 				add_option($this->args['opt_name'], $this->defaultOptions);
 								
