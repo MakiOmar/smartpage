@@ -11,7 +11,7 @@ if (!class_exists('Class__Options_Model')) {
         
         public static function get_instance() {
             if (self::$instance == null) {
-                self::$instance = new Class__Options_Model(SMPG_OPTIONS);
+                self::$instance = new Class__Options_Model(ANONY_OPTIONS);
             }
             return self::$instance;
         }
@@ -20,7 +20,7 @@ if (!class_exists('Class__Options_Model')) {
          * construct the option using the provided option_name,
          * @param string $option_name
          */
-        public function __construct($option_name = SMPG_OPTIONS.' ') {
+        public function __construct($option_name = ANONY_OPTIONS.' ') {
             $this->option_group = trim($option_name);
             
             // get the current value of this option

@@ -53,7 +53,7 @@ class Field__Radio extends Class__Theme_Settings{
 	 * Enqueue Function.
 	 */
 	function enqueue(){	
-		wp_enqueue_script('anony-opts-field-radio-js', SMPG_OPTIONS_URI.'fields/radio/f_radio.js', array('jquery'),time(),true);	
+		wp_enqueue_script('anony-opts-field-radio-js', ANONY_OPTIONS_URI.'fields/radio/f_radio.js', array('jquery'),time(),true);	
 	}
 	
 }

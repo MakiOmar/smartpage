@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
 
-if(get_option(SMPG_OPTIONS)){
+if(get_option(ANONY_OPTIONS)){
 	$anonyOptions = opt_init_();
 }
 
@@ -129,7 +129,7 @@ $sections['general']= array(
 							'title'   => esc_html__('Copyright', TEXTDOM),
 							'type'    => 'text',
 							'validate'=> 'no_html',
-							'default' => sprintf(__('All rights are reserved to SmartPage %s', TEXTDOM), date('Y'))
+							'default' => sprintf(__('All rights are reserved to Anonymous %s', TEXTDOM), date('Y'))
 						),						
 					)
 );
@@ -177,11 +177,11 @@ $sections['sidebars']= array(
 							'type'    => 'radio_img',
 							'validate'=> 'no_html',
 							'options' => array(
-											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
+											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
-											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
+											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
 											
-											'no-sidebar' 	=> array('title' => esc_html__('Full width', TEXTDOM), 'img' => SMPG_OPTIONS_URI.'imgs/icons/full-width.png'),
+											'no-sidebar' 	=> array('title' => esc_html__('Full width', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/full-width.png'),
 										),
 							'default'  => 'left-sidebar',
 							'desc'  => esc_html__('This controls the direction of the main sidebar', TEXTDOM),
@@ -484,7 +484,7 @@ $sections['miscellanous']= array(
 );
 $widgets = array('Class__Sidebar_Ad');
 
-$Smpg_Options = new Class__Theme_Settings( $options_nav, $sections, $widgets );
+$Anony_Options = new Class__Theme_Settings( $options_nav, $sections, $widgets );
 
 /*
 *Show ads hooked to custom hook

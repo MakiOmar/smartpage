@@ -1,5 +1,5 @@
 <?php
-function smartpage_comment( $comment, $args, $depth ) {
+function Anony_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	
 	switch ( $comment->comment_type ) :

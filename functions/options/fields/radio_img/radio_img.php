@@ -52,7 +52,7 @@ class Field__Radio_img extends Class__Theme_Settings{
 	 * Enqueue Function.
 	 */
 	function enqueue(){	
-		wp_enqueue_script('anony-opts-field-radio_img-js', SMPG_OPTIONS_URI.'fields/radio-img/f_radio_img.js', array('jquery'),time(),true);	
+		wp_enqueue_script('anony-opts-field-radio_img-js', ANONY_OPTIONS_URI.'fields/radio-img/f_radio_img.js', array('jquery'),time(),true);	
 	}
 	
 }

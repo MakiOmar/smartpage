@@ -70,13 +70,13 @@ if (!class_exists('Class__Theme_Settings')) {
 				
 			$defaults = array();
 			
-			$defaults['opt_name'] = SMPG_OPTIONS;
+			$defaults['opt_name'] = ANONY_OPTIONS;
 			
 			//$defaults['menu_icon'] = Theme_Settings_URI.'/img/menu_icon.png';
-			$defaults['menu_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
+			$defaults['menu_title'] = esc_html__('Anonymous Theme Options', TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
-			$defaults['page_title'] = esc_html__('SmartPage Theme Options', TEXTDOM);
-			$defaults['page_slug'] = 'Smpg_Options';
+			$defaults['page_title'] = esc_html__('Anonymous Theme Options', TEXTDOM);
+			$defaults['page_slug'] = 'Anony_Options';
 			$defaults['page_cap'] = 'manage_options';
 			$defaults['page_type'] = 'menu';
 			$defaults['page_parent'] = '';
@@ -116,7 +116,7 @@ if (!class_exists('Class__Theme_Settings')) {
 			$this->anony_default_values();
 			
 			//set option with defaults
-			if(!get_option(SMPG_OPTIONS)){
+			if(!get_option(ANONY_OPTIONS)){
 				$this->anony_set_default_options();
 			}
 			
@@ -199,7 +199,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		 * Class register settings function
 		 */
 		public function anony_settings_init(){
-			// register a new setting for "smartpage" page
+			// register a new setting for "Anonymous" page
 			register_setting(
 				$this->OptionGroup,
 				$this->args['opt_name'],
@@ -379,10 +379,10 @@ if (!class_exists('Class__Theme_Settings')) {
 				<form action="options.php" method="post" enctype="multipart/form-data" autocomplete="off">
 
 				<?php
-				// output security fields for the registered setting "Smpg_Options"
+				// output security fields for the registered setting "Anony_Options"
 				settings_fields( $this->OptionGroup );
 			
-				echo '<div id="options-wrap"><div id="options-nav"><div id="logo"><img src="'.SMPG_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
+				echo '<div id="options-wrap"><div id="options-nav"><div id="logo"><img src="'.ANONY_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
 			
 					foreach($this->menu as $nav => $details){
 						if(isset($details['sections'])){
@@ -404,7 +404,7 @@ if (!class_exists('Class__Theme_Settings')) {
 
 					echo '</ul></div><div id="options-sections">';
 					// output setting sections and their fields
-					// (sections are registered for "Smpg_Options", each field is registered to a specific section)
+					// (sections are registered for "Anony_Options", each field is registered to a specific section)
 
 					foreach($this->sections as $secKey => $section){ $groupID = 'anony_'.$secKey.'_section_group';?>
 
@@ -427,12 +427,12 @@ if (!class_exists('Class__Theme_Settings')) {
 		 * Page scripts registration.
 		 */		
 		public function anony_page_scripts(){
-			wp_register_style( 'anony-options-css', SMPG_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
+			wp_register_style( 'anony-options-css', ANONY_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
 			
 			wp_enqueue_style( 'anony-options-css' );
 			
 			if(is_rtl()){
-				wp_register_style( 'anony-options-rtl-css', SMPG_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
+				wp_register_style( 'anony-options-rtl-css', ANONY_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
 				wp_enqueue_style( 'anony-options-rtl-css' );
 			}
 			
@@ -449,7 +449,7 @@ if (!class_exists('Class__Theme_Settings')) {
 				
 			}
 			
-			wp_enqueue_script( 'anony-options-js', SMPG_OPTIONS_URI.'js/options.js', array('jquery', 'backbone'), time(), true);
+			wp_enqueue_script( 'anony-options-js', ANONY_OPTIONS_URI.'js/options.js', array('jquery', 'backbone'), time(), true);
 			
 			foreach($this->sections as $k => $section){
 				

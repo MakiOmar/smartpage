@@ -28,7 +28,7 @@ add_action('wp_enqueue_scripts',function() {
 			wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/rtl.css'))));
 		}
 
-		if($anonyOptions->color_skin !== 'custom' /*&& !empty($anonyOptions->color_skin)*/){
+		if($anonyOptions->color_skin !== 'custom' && !empty($anonyOptions->color_skin)){
 			wp_enqueue_style( $anonyOptions->color_skin.'-skin' , get_theme_file_uri('/assets/css/skins/'.$anonyOptions->color_skin.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$anonyOptions->color_skin.'.css'))));
 		}
 

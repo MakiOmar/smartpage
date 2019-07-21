@@ -4,7 +4,7 @@ if ( ! class_exists( 'Class__Cats_Widget' ) ) {
 		public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays an organized dropdown list of your categories',TEXTDOM),
-				'name' => esc_html__('Smart Page categories',TEXTDOM)
+				'name' => esc_html__('Anonymous categories',TEXTDOM)
 			);
 			parent::__construct('Class__Cats_Widget','',$parms);
 		}

@@ -2,11 +2,11 @@
 //Opions constants
 $opts_consts = array( 
 	'DIRS'                 => DIRECTORY_SEPARATOR ,
-	'SMPG_OPTIONS_DIR'     => wp_normalize_path(THEME_DIR . "/functions/options/"),
-	'SMPG_OPTIONS_URI'     => THEME_URI . "/functions/options/",
-	'SMPG_OPTIONS_FIELDS'  => wp_normalize_path(THEME_DIR . "/functions/options/fields/"),
-	'SMPG_OPTIONS_WIDGETS' => wp_normalize_path(THEME_DIR . "/functions/options/widgets/"),
-	'SMPG_OPTIONS'         => "Smpg_Options",
+	'ANONY_OPTIONS_DIR'     => wp_normalize_path(THEME_DIR . "/functions/options/"),
+	'ANONY_OPTIONS_URI'     => THEME_URI . "/functions/options/",
+	'ANONY_OPTIONS_FIELDS'  => wp_normalize_path(THEME_DIR . "/functions/options/fields/"),
+	'ANONY_OPTIONS_WIDGETS' => wp_normalize_path(THEME_DIR . "/functions/options/widgets/"),
+	'ANONY_OPTIONS'         => "Anony_Options",
 	
 );
 
@@ -16,7 +16,7 @@ foreach($opts_consts as $opts_const => $v){
 	}
 }
 
-define('SMPG_OPTIONS_AUTOLOADS' ,serialize(array(SMPG_OPTIONS_DIR , SMPG_OPTIONS_FIELDS, SMPG_OPTIONS_WIDGETS)));
+define('ANONY_OPTIONS_AUTOLOADS' ,serialize(array(ANONY_OPTIONS_DIR , ANONY_OPTIONS_FIELDS, ANONY_OPTIONS_WIDGETS)));
 /*
 *Classes Auto loader
 */
@@ -31,7 +31,7 @@ function opts_autoloader( $class_name ) {
 		
 		$class_name = preg_replace('/\w+__/', '', strtolower($class_name));
 		
-		foreach(unserialize( SMPG_OPTIONS_AUTOLOADS ) as $path){
+		foreach(unserialize( ANONY_OPTIONS_AUTOLOADS ) as $path){
 			$class_file = wp_normalize_path($path) .$class_name . '.php';
 			
 			if(file_exists($class_file)){

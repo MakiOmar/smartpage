@@ -4,7 +4,7 @@ if ( ! class_exists( 'Class__Related_Posts_Widget' ) ) {
 		public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays list of posts within the same category',TEXTDOM),
-				'name' => esc_html__('SmartPage related posts',TEXTDOM)
+				'name' => esc_html__('Anonymous related posts',TEXTDOM)
 			);
 			parent::__construct('Class__Related_Posts_Widget','',$parms);
 		}

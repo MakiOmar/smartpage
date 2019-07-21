@@ -15,7 +15,7 @@
 *Other constants depends on these ones
 */
 $theme_constants = array(
-	'THEME_NAME'    => 'Smartpage',
+	'THEME_NAME'    => 'Anonymous',
 	'THEME_DIR'     => wp_normalize_path( get_template_directory() ),
 );
 foreach($theme_constants as $theme_constant => $v){
@@ -51,25 +51,25 @@ foreach($theme_constants as $theme_constant => $v){
  * Holds a path to main classes folder
  * @const
  */
-define( 'SMPG_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
+define( 'ANONY_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
 
 /**
  * Holds a path to Custom fileds classes folder
  * @const
  */
-define( 'SMPG_CF_CLASSES', wp_normalize_path (SMPG_CLASSES . '/cf/'));
+define( 'ANONY_CF_CLASSES', wp_normalize_path (ANONY_CLASSES . '/cf/'));
 
 /**
  * Holds a path to views classes folder
  * @const
  */
-define( 'SMPG_VIEWS_CLASSES', wp_normalize_path (SMPG_CLASSES . '/views/'));
+define( 'ANONY_VIEWS_CLASSES', wp_normalize_path (ANONY_CLASSES . '/views/'));
 
 /**
  * Holds a serialized array of all pathes to classes folders
  * @const
  */
-define('SMPG_THEME_AUTOLOADS' ,serialize(array(SMPG_CLASSES, SMPG_CF_CLASSES, SMPG_VIEWS_CLASSES)));
+define('ANONY_THEME_AUTOLOADS' ,serialize(array(ANONY_CLASSES, ANONY_CF_CLASSES, ANONY_VIEWS_CLASSES)));
 
 /*
 *Classes Auto loader
@@ -89,7 +89,7 @@ function anony_theme_autoloader( $class_name ) {
 
 		$class_name  = str_replace('_', '-', $class_name);
 
-		foreach(unserialize( SMPG_THEME_AUTOLOADS ) as $path){
+		foreach(unserialize( ANONY_THEME_AUTOLOADS ) as $path){
 			$class_file = wp_normalize_path($path) .$class_name . '.php';
 			if(file_exists($class_file)){
 				require_once($class_file);
