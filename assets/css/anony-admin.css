@@ -51,13 +51,15 @@ position: relative;
 	height: auto;
 	padding: 8px;
 }
-.anony-insert-media{
+
+/*insert-media name shouldn't be changed (It is a WordPress built-in class)*/
+.insert-media{
 	color: #ffffff;
     text-decoration: none;
     padding: 10px;
     display: block;
 }
-.anony-insert-media:hover{
+.insert-media:hover{
 	color: #ffffff;
 }
 #anony_download_attachment .inside{

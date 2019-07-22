@@ -22,7 +22,7 @@ add_action("admin_enqueue_scripts", function(){
 		wp_register_script( 
 			$script ,
 			THEME_URI.'/assets/js/wordpress-media-uploader/dist/jquery.'.$script.'.js'
-			,array('jquery'),
+			,array('jquery', 'jquery-ui-core'),
 			filemtime(wp_normalize_path(THEME_DIR.'/assets/js/wordpress-media-uploader/dist/jquery.'.$script.'.js')),
 			true
 		);

@@ -21,7 +21,7 @@ $anonyOptions = opt_init_();
 		?>
         <div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
         
-        <?php anony_anony-breadcrumbs()?>
+        <?php anony_breadcrumbs()?>
         
         <div class="anony-post-title-image">
 			<div class="anony-post-title-cover"></div>

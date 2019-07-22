@@ -5,7 +5,8 @@ jQuery(document).ready(function($){
 		target: "#anony-upload-result"
 	});
 	mediaUploader.add([]);
-	$('.anony-insert-media').click(function(e){
+	/*insert-media name shouldn't be changed (It is a WordPress built-in class)*/
+	$('.insert-media').click(function(e){
 		e.preventDefault();
 		$('.anony-current-upload').hide();
 		$('#anony-download-file a').hide();
