@@ -53,9 +53,9 @@ class Views__Featured extends Class__Generate_Posts_View{
 
 								  <?php echo get_the_post_thumbnail($pID, 'full');?>
 
-								  <div class="title-readmore">
+								  <div class="anony-title-readmore">
 
-									  <h2 class="slide-title"><a href="<?php echo $link ?>"><?php echo get_the_title($pID) ;?></a></h2>
+									  <h2 class="anony-slide-title"><a href="<?php echo $link ?>"><?php echo get_the_title($pID) ;?></a></h2>
 
 									  <a class="featured-button" href="<?php echo $link?>"><?php esc_html_e('Read more', TEXTDOM)?></a>
 
@@ -63,7 +63,7 @@ class Views__Featured extends Class__Generate_Posts_View{
 								</div>
 						<?php 
 
-						$slider_nav .= '<a href="'.get_the_permalink($pID).'" class="'. (array_search($pID,$this->featuredIDs) == 0 ?  'active-slide ': '').'slide-item grid-col-'.count($this->featuredIDs).'">
+						$slider_nav .= '<a href="'.get_the_permalink($pID).'" class="'. (array_search($pID,$this->featuredIDs) == 0 ?  'active-slide ': '').'anony-slide-item anony-grid-col-'.count($this->featuredIDs).'">
 
 							<img src="'.get_the_post_thumbnail_url($pID,'thumbnail').'" alt="'.get_the_title($pID).'"/>
 
@@ -84,7 +84,7 @@ class Views__Featured extends Class__Generate_Posts_View{
 
 				</h3>
 
-				<div id="slides-list" class="">
+				<div id="anony-slides-list" class="">
 					<?php echo $slider_nav; ?>
 				</div>
 

@@ -19,7 +19,7 @@ class Views__News extends Class__Generate_Posts_View{
 	public function render(){?>
 		<div id="didyouknow" class="group">
 
-			<p id="dun-title"><?php esc_html_e('Simple Info',TEXTDOM);?></p>
+			<p id="anony-dun-title"><?php esc_html_e('Simple Info',TEXTDOM);?></p>
 
 			<?php echo get_search_form(false);?>
 
@@ -29,7 +29,7 @@ class Views__News extends Class__Generate_Posts_View{
 				echo '<p class="anony-warning">'.$this->msg.'</p>';
 			}
 		?>
-		<div id="dun-text">
+		<div id="anony-dun-text">
 			<div id="dun_text_wrapper"<?php echo (is_rtl() ? ' class="is-rtl"' : '') ;?>>
 			
 				<?php
@@ -39,7 +39,7 @@ class Views__News extends Class__Generate_Posts_View{
 
 					$tnlID = get_the_ID();?>
 
-					<p id="dun-text-<?php echo $tnlID?>" class="dun_text"><?php echo strip_tags(get_the_content($tnlID))?></p>
+					<p id="anony-dun-text-<?php echo $tnlID?>" class="dun_text"><?php echo strip_tags(get_the_content($tnlID))?></p>
 
 				<?php } ?>
 				

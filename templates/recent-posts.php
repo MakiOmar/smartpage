@@ -1,4 +1,4 @@
-<div id="recent" class ="tab_content">
+<div id="recent" class ="anony-tab_content">
 	 <?php 
 		$args = array(
 			'posts_per_page' => 4,//NO. of posts you want to show 

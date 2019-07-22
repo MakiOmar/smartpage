@@ -15,22 +15,22 @@ if(empty($download_times)){
 	$download_times = 0;
 }
 ?>
-  <div class="grid">
-  	<div class="grid-row grid-col">
+  <div class="anony-grid">
+  	<div class="anony-grid-row anony-grid-col">
       
        <?php get_sidebar();?>
        
-        <div class="grid-col-sm-9">
-      		 <div class="grid-col blog-section">
-				<div class="posts-section">
-       		 		<div class="grid-col post-contents">
+        <div class="anony-grid-col-sm-9">
+      		 <div class="anony-grid-col anony-blog-section">
+				<div class="anony-posts-section">
+       		 		<div class="anony-grid-col anony-post-contents">
                       <?php
 						if ( have_posts() ) {
 							
 					   		while (have_posts() ) {
 							the_post();?>
                        	
-                        	<div class="hover-toggle download-meta post-info grid-col-lg-3">
+                        	<div class="anony-hover-toggle anony-download-meta anony-post-info anony-grid-col-lg-3">
                         	
 							  <?php if ( has_post_thumbnail() ) {?>
 							  
@@ -41,7 +41,7 @@ if(empty($download_times)){
 							  <?php }?>
                             </div>
                             
-                            <div class="grid-col-lg-9">
+                            <div class="anony-grid-col-lg-9">
 								<div class="single-download-title">
 									<div class="title-date-wrapper">
 									

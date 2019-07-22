@@ -378,7 +378,7 @@ if (!class_exists('Class__Theme_Settings')) {
 				// output security fields for the registered setting "Anony_Options"
 				settings_fields( $this->OptionGroup );
 			
-				echo '<div id="options-wrap"><div id="options-nav"><div id="logo"><img src="'.ANONY_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
+				echo '<div id="options-wrap"><div id="options-nav"><div id="anony-logo"><img src="'.ANONY_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
 			
 					foreach($this->menu as $nav => $details){
 						if(isset($details['sections'])){

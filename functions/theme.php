@@ -80,7 +80,7 @@ add_action('widgets_init',function(){
 			'name'=> esc_html__( $sidebar, TEXTDOM ),
 			'id'=> $sidebar_id,
 			'class'=>$sidebar_id,
-			'before_widget' => '<div class="widgeted grid-col-md-6 grid-col-av-6 grid-col-sm-12 grid-col">',
+			'before_widget' => '<div class="widgeted anony-grid-col-md-6 anony-grid-col-av-6 anony-grid-col-sm-12 anony-grid-col">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widgeted_title">',
 			'after_title'   => '</h3>' 
@@ -138,10 +138,10 @@ function anony_get_curr_url() {
  */
 function anony_get_custom_logo($color='main') {	
 	if ( has_custom_logo() ) {
-		$logo ='<id="logo" class="grid-col-md-4 grid-col-sm-3">'.get_custom_logo().'</div>';	
+		$logo ='<id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">'.get_custom_logo().'</div>';	
 	}else{
 
-		$logo= '<div id="logo" class="grid-col-md-4 grid-col-sm-3"><h1>';
+		$logo= '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3"><h1>';
 		$logo .='<a href="'.BLOG_URL.'" title="'.BLOG_TITLE.'">';
 		$logo .='<img alt="'.BLOG_TITLE.'" '; 
 		$logo .= 'src="'.THEME_URI.'/images/logo-'.$color.'.png"/>';

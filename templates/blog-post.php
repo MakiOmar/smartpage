@@ -4,10 +4,10 @@ $tbp_post_id = get_the_ID();
 
 anony_set_post_views($tbp_post_id);?>
 
-<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper grid-col-max-480-12 grid-col-av-12 grid-col-md-6 grid-col">
-	<div class="post-contents blog-post grid-col">
+<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper anony-grid-col-max-480-12 anony-grid-col-av-12 anony-grid-col-md-6 anony-grid-col">
+	<div class="anony-post-contents blog-post anony-grid-col">
   
-	  <div class="post-info">
+	  <div class="anony-post-info">
 	  
 	   <?php if( has_post_thumbnail() && is_url_exist(get_the_post_thumbnail_url($tbp_post_id))){
 	

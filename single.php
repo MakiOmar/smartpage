@@ -2,8 +2,8 @@
 get_header();
 $anonyOptions = opt_init_();
 ?>
-  <div class="grid">
-  	<div class="grid-row grid-col">
+  <div class="anony-grid">
+  	<div class="anony-grid-row anony-grid-col">
        <?php
 		
 		if($anonyOptions->sidebar == 'left-sidebar'){
@@ -19,14 +19,14 @@ $anonyOptions = opt_init_();
 				do_action('post_ad');
 			}
 		?>
-        <div class="grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'grid-col-sm-7' : 'grid-col-sm-9-5' ?>">
+        <div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
         
-        <?php anony_breadcrumbs()?>
+        <?php anony_anony-breadcrumbs()?>
         
         <div class="post-title-image">
 			<div class="post-title-cover"></div>
 			<?php if(has_post_thumbnail()) the_post_thumbnail('full') ?>
-			<h1 class="single_post_title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h1>
+			<h1 class="anony-single_post_title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h1>
 		</div>
 		
 		 <div class="post_meta meta">
@@ -54,9 +54,9 @@ $anonyOptions = opt_init_();
 				<?php 
 					if ( have_posts() ) {
 					while (have_posts() ) { the_post();?>
-					<div class="grid-col post-contents single_post">
-					  <div class="post-info">
-						  <div class="single-text">
+					<div class="anony-grid-col anony-post-contents anony-single_post">
+					  <div class="anony-post-info">
+						  <div class="anony-single-text">
         					<?php the_content();?>
 							</div>
 						</div>

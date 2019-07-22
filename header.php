@@ -13,27 +13,27 @@ ob_start('ob_gzhandler');
 </head>
 
 <body <?php body_class() ;?>>
-	<div id="hidden-search-form">
-		<a class="search-form-toggle" href="#" title="Scroll page"><i class="fa fa-search"></i></a>
+	<div id="anony-hidden-search-form">
+		<a class="anony-search-form-toggle" href="#" title="Scroll page"><i class="fa fa-search"></i></a>
 			<?php get_search_form() ?>
 	</div>
-	<div id="grid-wrapper">
-		<div class="grid">
-			 <div class="grid-col-">
+	<div id="anony-grid-wrapper">
+		<div class="anony-grid">
+			 <div class="anony-grid-col-">
 					<header>
 						<?php get_template_part('templates/top-header') ;?>
 						
-						<div id="sub-top-wrapper">
+						<div id="anony-sub-top-wrapper">
 						
-							<div id="toggles-wrapper">
-								<a href="#" id="menu-toggle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-								<a class="search-form-toggle" href="#"><i class="fa fa-search"></i></a>
+							<div id="anony-toggles-wrapper">
+								<a href="#" id="anony-menu-toggle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+								<a class="anony-search-form-toggle" href="#"><i class="fa fa-search"></i></a>
 							</div>
 
 							 <?php echo anony_get_custom_logo('orange') ;?>
 
 							 <?php if(has_action('header_ad')){?>
-								 <div id="ads" class="grid-col-md-6 grid-col-sm-6">
+								 <div id="anony-ads" class="anony-grid-col-md-6 anony-grid-col-sm-6">
 
 									<?php do_action('header_ad'); ?>
 
@@ -42,7 +42,7 @@ ob_start('ob_gzhandler');
 
 								 if(function_exists('anony_user_main')){
 									 
-									echo '<div class="grid-col-md-3 grid-col-sm-3">';
+									echo '<div class="anony-grid-col-md-3 anony-grid-col-sm-3">';
 
 									 //User control plugin's menu
 									 echo anony_user_main('user-control');

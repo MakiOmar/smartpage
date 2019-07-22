@@ -1,7 +1,7 @@
 <?php 
 get_header();
 ?>
-  <div class="grid">
+  <div class="anony-grid">
 	<?php
 	$anonyOptions = opt_init_();
 
@@ -24,12 +24,12 @@ get_header();
 	}
 
 	?>
-  	<div class="grid-row grid-col">
-        <div class="grid-col-sm-9-5">
-			<div class="content-wrapper">
+  	<div class="anony-grid-row anony-grid-col">
+        <div class="anony-grid-col-sm-9-5">
+			<div class="anony-content-wrapper">
                <?php get_sidebar('secondary');?>
                
-				<div id="section-top" class="grid-col-md-8 grid-col">
+				<div id="anony-section-top" class="anony-grid-col-md-8 anony-grid-col">
 
 					<?php get_template_part('templates/news') ;?>
 					

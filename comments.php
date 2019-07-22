@@ -3,7 +3,7 @@ if ( post_password_required() )
 	return;
 ?>
 
-<div id="comments" class="comments-area grid-col">
+<div id="comments" class="comments-area anony-grid-col">
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php printf( _nx( 'One Comment', '%1$s Comments', get_comments_number(), 'comments title', TEXTDOM ), number_format_i18n( get_comments_number() ) );?>
@@ -23,7 +23,7 @@ if ( post_password_required() )
 
 	<?php endif; 
 	comment_form(array( 
-		'class_form' => 'grid-col',
+		'class_form' => 'anony-grid-col',
 		'action'     =>'',
 	));
 	?>

@@ -22,7 +22,7 @@ class Views__Masonry extends Class__Generate_Posts_View{
 		if(is_front_page() or is_home()){?>
 		<div class="section">
 			<div>
-				<h4 class="section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
+				<h4 class="anony-section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
 			</div>
 			<?php
 				if($this->msg){
@@ -42,10 +42,10 @@ class Views__Masonry extends Class__Generate_Posts_View{
 					 
 					$tbp_post_id = get_the_ID();?>
 
-					<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper grid-col-max-480-12 grid-col-av-12 grid-col-md-6 grid-col">
-						<div class="post-contents blog-post grid-col">
+					<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper anony-grid-col-max-480-12 anony-grid-col-av-12 anony-grid-col-md-6 anony-grid-col">
+						<div class="anony-post-contents blog-post anony-grid-col">
 
-						  <div class="post-info">
+						  <div class="anony-post-info">
 
 						   <?php if( has_post_thumbnail() && is_url_exist(get_the_post_thumbnail_url($tbp_post_id))){
 

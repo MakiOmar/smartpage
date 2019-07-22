@@ -10,11 +10,11 @@ class Class__Nav_Menu_Walk extends Walker_Nav_Menu {
 		$indent = str_repeat( $t, $depth );
 
 		// Default class.
-		$classes = array( 'sub-menu' );
+		$classes = array( 'anony-sub-menu' );
 
 		$class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-		$output .= "<span class='main-menu-toggle'><i class='fa fa-plus'></i></span>";
+		$output .= "<span class='anony-main-menu-toggle'><i class='fa fa-plus'></i></span>";
 		$output .= "{$n}{$indent}<ul $class_names>{$n}";
 	}
 

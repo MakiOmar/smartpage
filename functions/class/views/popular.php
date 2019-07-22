@@ -20,7 +20,7 @@ class Views__Popular extends Class__Generate_Posts_View{
 	
 	public function render(){?>
 		
-		<div id="popular" class ="tab_content">
+		<div id="anony-popular" class ="anony-tab_content">
 			
 				<?php
 				if($this->msg){
@@ -32,7 +32,7 @@ class Views__Popular extends Class__Generate_Posts_View{
 
 					$tplID = get_the_ID();?>
 					
-					<div id="popular-<?php echo $tplID ?>" class="posts-list-wrapper">
+					<div id="anony-popular-<?php echo $tplID ?>" class="posts-list-wrapper">
 					
 						<?php if(has_post_thumbnail()){?>
 						

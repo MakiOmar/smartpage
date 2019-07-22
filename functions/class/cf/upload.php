@@ -17,8 +17,8 @@ class Cf__Upload extends Class__Custom_Field{
 		
 		wp_nonce_field( $this->id.'_action', $this->id.'_nonce' );?>
 		
-		<div class="file-upload-override-button">
-			<a href="#" class="insert-media" data-editor="my-editor"><?php esc_html_e('Select your file',TEXTDOM) ;?></a>
+		<div class="anony-file-upload-override-button">
+			<a href="#" class="anony-insert-media" data-editor="my-editor"><?php esc_html_e('Select your file',TEXTDOM) ;?></a>
 		</div>
 		
 		<?php
@@ -45,7 +45,7 @@ class Cf__Upload extends Class__Custom_Field{
 		</span>
 
 		<!-- Results placeholder -->
-		<div id="upload-result"></div>
+		<div id="anony-upload-result"></div>
 		
 		<?php 
 			

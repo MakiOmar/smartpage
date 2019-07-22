@@ -42,7 +42,7 @@ if ( ! class_exists( 'Class__Related_Posts_Widget' ) ) {
 
 				$catpostcount = anony_cat_posts_count($first_cat);?>
 
-				<ul class="grid-col">
+				<ul class="anony-grid-col">
 				<?php
 				if ($catpostcount >= 1){
 						$args=array(

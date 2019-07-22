@@ -21,8 +21,8 @@ class Views__Downloads extends Class__Generate_Posts_View{
 	public function render(){?>
 		
 		<div class="section<?php echo (is_front_page() || ishome()) ? ' section-front-page' : '' ?>">
-			<div><h4 class="section_title clearfix"><?php esc_html_e('Suggested downloads',TEXTDOM);?></h4></div>
-				<div class="posts-wrapper">
+			<div><h4 class="anony-section_title clearfix"><?php esc_html_e('Suggested downloads',TEXTDOM);?></h4></div>
+				<div class="anony-posts-wrapper">
 				<?php
 					if($this->msg){
 						echo '<p class="anony-warning">'.$this->msg.'</p>';
@@ -48,15 +48,15 @@ class Views__Downloads extends Class__Generate_Posts_View{
 
 							}?>
 
-							<div id="download-<?php echo $tdPostId ?>" class="download-wrapper grid-col-max-480-6 grid-col-av-4 grid-10-col-md-2">
+							<div id="download-<?php echo $tdPostId ?>" class="download-wrapper anony-grid-col-max-480-6 anony-grid-col-av-4 grid-10-col-md-2">
 
-								<div class="grid-col post-contents">
+								<div class="anony-grid-col anony-post-contents">
 
-								  <div class="download-meta">
+								  <div class="anony-download-meta">
 
-									<div class="hover-toggle post-image-wrapper" style="background-color: transparent">
+									<div class="anony-hover-toggle anony-post-image-wrapper" style="background-color: transparent">
 
-									<span id="download-<?php echo $tdPostId?>-count" class="download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',TEXTDOM) ?></span>
+									<span id="download-<?php echo $tdPostId?>-count" class="anony-download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',TEXTDOM) ?></span>
 
 
 									  <?php if( has_post_thumbnail() ){

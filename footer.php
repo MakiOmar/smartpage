@@ -1,6 +1,6 @@
 <?php $anonyOptions = opt_init_();?>
 
-<footer class="grid-col-md-12 grid-col">
+<footer class="anony-grid-col-md-12 anony-grid-col">
 	<?php 
 		if(has_action('footer_ad')){
 			do_action('footer_ad');
@@ -11,11 +11,11 @@
 	
 </footer>
 
-<div id="page-scroll-wrapper">
+<div id="anony-page-scroll-wrapper">
 
-	<div id="page-scroll-bg"></div>
+	<div id="anony-page-scroll-bg"></div>
 	
-	<a href="#" id="page-scroll"><i class="fa fa-angle-down fa-3x"></i></a>
+	<a href="#" id="anony-page-scroll"><i class="fa fa-angle-down fa-3x"></i></a>
 	
 </div>
 

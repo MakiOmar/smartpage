@@ -5,7 +5,7 @@
 */
 
 ?>
-<div class="grid-col-sm-2-5 asidebar">
+<div class="anony-grid-col-sm-2-5 anony-asidebar">
 	<?php  
 		if (is_active_sidebar('right-sidebar')){
 		   dynamic_sidebar('right-sidebar');

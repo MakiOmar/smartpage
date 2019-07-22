@@ -7,8 +7,8 @@
 
 ?>
 
-<span class="toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
-<div class="grid-col-sm-2-5 asidebar single-sidebar">
+<span class="anony-toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
+<div class="anony-grid-col-sm-2-5 anony-asidebar anony-single-sidebar">
 	<?php  
 		if (is_active_sidebar('left-sidebar')){
 		   dynamic_sidebar('left-sidebar');

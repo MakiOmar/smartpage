@@ -1,21 +1,21 @@
 <?php get_header();?>
-  <div class="grid">
-  	<div class="grid-row grid-col">
-        <div class="grid-col-sm-9-5">
-        	<div class="grid-col posts-wrapper">
+  <div class="anony-grid">
+  	<div class="anony-grid-row anony-grid-col">
+        <div class="anony-grid-col-sm-9-5">
+        	<div class="anony-grid-col anony-posts-wrapper">
         	<?php 
 				if(has_action('page_ad')){
 					do_action('page_ad');
 				}
 			?>
-				<div class="grid-container">
+				<div class="anony-grid-container">
 				<?php 
 					if ( have_posts() ) {
 					while (have_posts() ) { the_post();
 				?>
-					<div class="grid-col post-contents single_post">
-						<div class="post-info">
-							<div class="single-text">
+					<div class="anony-grid-col anony-post-contents anony-single_post">
+						<div class="anony-post-info">
+							<div class="anony-single-text">
 								<?php the_content(); ?>
 							</div>
 						</div>

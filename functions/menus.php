@@ -49,7 +49,7 @@ function anony_main_navigation($location_slug, $container = 'nav'){
 				'echo' => false,
 				'include' => array($page_for_posts),
 			);
-			$menu = '<nav id="main_nav_con"><ul id="main_menu_con">'.wp_list_pages($args).'</ul></nav>';
+			$menu = '<nav id="anony-main_nav_con"><ul id="anony-main_menu_con">'.wp_list_pages($args).'</ul></nav>';
 			return $menu;
 		}
 	 }
@@ -78,15 +78,15 @@ function anony_active_language($lang){
 }
 
 /**
- * Generates breadcrumbs menu
+ * Generates anony-breadcrumbs menu
  *
  * **Description: ** Echoes out the breadcrumps menu
  * @return void
  */
-function anony_breadcrumbs() {
+function anony_anony-breadcrumbs() {
 	global $post;
 	$homeLink = home_url();
-	echo '<ul class="breadcrumbs">';
+	echo '<ul class="anony-breadcrumbs">';
 	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. esc_html__('Home',TEXTDOM) .'</a> <span>/</span></li>';
 
 	// Blog Category
@@ -140,14 +140,14 @@ function anony_breadcrumbs() {
 	// Page with parent
 	} elseif ( is_page() && $post->post_parent ) {
 		$parent_id  = $post->post_parent;
-		$breadcrumbs = array();
+		$anony-breadcrumbs = array();
 		while ($parent_id) {
 			$page = get_page($parent_id);
-			$breadcrumbs[] = '<li><a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a> <span>/</span></li>';
+			$anony-breadcrumbs[] = '<li><a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a> <span>/</span></li>';
 			$parent_id  = $page->post_parent;
 		}
-		$breadcrumbs = array_reverse($breadcrumbs);
-		foreach ($breadcrumbs as $crumb) echo $crumb;
+		$anony-breadcrumbs = array_reverse($anony-breadcrumbs);
+		foreach ($anony-breadcrumbs as $crumb) echo $crumb;
 
 		echo '<li><a href="' . anony_get_curr_url() . '">'. get_the_title() .'</a></li>';
 
@@ -223,7 +223,7 @@ if(opt_init_()->cats_in_nav != '0'){
 //Add search form to main menu
 add_filter("wp_nav_menu_items",function($item , $args){
 	if($args->theme_location == 'main-menu' && !is_front_page() && !is_page()){
-		$item.='<li class="search-form-toggle active"><a href="#"><i class="fa fa-search"></i></a></li>';
+		$item.='<li class="anony-search-form-toggle active"><a href="#"><i class="fa fa-search"></i></a></li>';
 		return $item;
 	}else{
 		return $item;
@@ -241,13 +241,13 @@ add_filter("wp_nav_menu_items",function($item , $args){
 				if($l['language_code'] == ICL_LANGUAGE_CODE){
 					$curr_lang = $l;
 				}
-				$item .='<li class="lang">';
+				$item .='<li class="anony-lang">';
 				$item .= '<a class="'.anony_active_language($l['language_code']).'" href="'.$l['url'].'">';
 				$item .= icl_disp_language(strtoupper($l['language_code']));
 				$item .='</a>';
 				$item .='</li>';
 			}
-			$item .= '<li id="lang-toggle"><img src="'.$curr_lang['country_flag_url'].'" width="32" height="20" alt="'.$l['language_code'].'"/></li>';
+			$item .= '<li id="anony-lang-toggle"><img src="'.$curr_lang['country_flag_url'].'" width="32" height="20" alt="'.$l['language_code'].'"/></li>';
 		}
 		return $item;
 	}else{

@@ -12,9 +12,9 @@ $socials_follow = array(
 				'rss' => $anonyOptions->rss,
 				);
 ?>
-<div id="top-header-wrapper">
-	<nav id="follow-contact">
-	  <ul id="follow">
+<div id="anony-top-header-wrapper">
+	<nav id="anony-follow-contact">
+	  <ul id="anony-follow">
 		<?php 
 			foreach($socials_follow as $social_follow => $url){
 				

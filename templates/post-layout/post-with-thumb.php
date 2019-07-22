@@ -1,5 +1,5 @@
-<div class="post-image-wrapper">
-	<div class="toggle-excerpt"><i class="fa fa-arrow-up"></i></div>
+<div class="anony-post-image-wrapper">
+	<div class="anony-toggle-excerpt"><i class="fa fa-arrow-up"></i></div>
 	
 	<div class="text">
 		<h3 class="thumb-post-title"><a href="<?php echo esc_url(get_the_permalink()) ;?>"><?php echo get_the_title() ?></a></h3>

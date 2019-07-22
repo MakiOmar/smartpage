@@ -3,8 +3,8 @@
 		<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
 		</ul>
 <?php if($category->name == 'C#'){?>
-<div class="grid-col-md-1 hidden">
-	<div class="grid-col hidden-child" <?php //if($category->count < 2) echo 'style="display: none"' ?>>
+<div class="anony-grid-col-md-1 hidden">
+	<div class="anony-grid-col hidden-child" <?php //if($category->count < 2) echo 'style="display: none"' ?>>
 	  <div  class="ver-nav">
 		<div class="prev-next prev">
 		  <a href="#"><i class="fa fa-arrow-circle-o-right"></i></a>

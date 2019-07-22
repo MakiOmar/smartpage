@@ -1,10 +1,10 @@
 <?php 
 get_header();
 ?>
-  <div class="grid">
-  	<div class="grid-row">
-      <div class="grid-col">
-        <div class="grid-col-sm-9-5 grid-col">
+  <div class="anony-grid">
+  	<div class="anony-grid-row">
+      <div class="anony-grid-col">
+        <div class="anony-grid-col-sm-9-5 anony-grid-col">
         <?php 
 			if ( have_posts() ) {
 				while (have_posts() ) { the_post();

@@ -135,7 +135,7 @@ body{
 }
 */
 /***Header***/
-.search-form-toggle{
+.anony-search-form-toggle{
 	right: auto;
 	left: 0;
 }
@@ -157,26 +157,26 @@ body{
 /***End body***/
 
 /***Footer***/
-#page-scroll-wrapper{
+#anony-page-scroll-wrapper{
 	right: auto;
 	left: 20px;
 }
-#hidden-search-form #searchform{
+#anony-hidden-search-form #anony-searchform{
     flex-direction: row;
 }
-#hidden-search-form #searchform .anony-search-input{
+#anony-hidden-search-form #anony-searchform .anony-search-input{
     border-radius:0px 10px 10px 0px; 
 }
-#hidden-search-form #searchform .form_submit{
+#anony-hidden-search-form #anony-searchform .anony-form_submit{
     border-radius: 10px 0px 0px 10px;
 }
-#hidden-search-form > .search-form-toggle{
+#anony-hidden-search-form > .anony-search-form-toggle{
 	right: auto;
 	left: 20px;
 }
 /***End Footer***/
 
-.download-meta{
+.anony-download-meta{
 	padding-right: 0;
 	padding-left: 5px;
 }
@@ -184,25 +184,25 @@ body{
 	margin-right: 0;
 	margin-left: 5px;
 }
-.cat-more{
+.anony-cat-more{
 	left: 0;
 	right: auto;
 	font-style: normal;
 }
-.ca-item h4 span{
+.anony-ca-item h4 span{
 	text-align: right;
 }
-.ca-item h4 span.ca-quote{
+.anony-ca-item h4 span.anony-ca-quote{
 	left: auto;
 	right: 10px;
 }
-.ca-item h4{
+.anony-ca-item h4{
 	    border-right: 10px solid #ccbda2;
 	border-left: none;
 	padding-left: 0;
 	padding-right: 10px;
 }
-.popular{
+.anony-popular{
 	margin-right: auto;
 	margin-left: 0.6%;
 }
@@ -218,7 +218,7 @@ display: flex;
 	padding-right: 10px;
 	padding-left: 0;
 }
-.featured-posts-title,.post-image-wrapper h4{
+.featured-posts-title,.anony-post-image-wrapper h4{
 	left: auto;
 	right: 0;
 }
@@ -242,7 +242,7 @@ display: flex;
 
 /***Body***/
 	/***blog post***/
-	.toggle-excerpt{
+	.anony-toggle-excerpt{
 		right: auto;
 		left: 10px;
 	}
@@ -272,10 +272,10 @@ display: flex;
 
 @media screen and (min-width: 768px){
 	/***Header***/
-	#main_menu_con li a {
+	#anony-main_menu_con li a {
 		border-right: 0;
 	}
-	.sub-menu{
+	.anony-sub-menu{
 		right: 0;
 	}
 	/***End header*/
