@@ -37,15 +37,15 @@ class Views__Featured extends Class__Generate_Posts_View{
 		} 
 		
 		if(count($this->featuredIDs) > 0){ ?>
-		<div id="slider-wrapper">
+		<div id="anony-slider-wrapper">
 			<?php
 				if($this->msg){
 					echo '<p class="anony-warning">'.$this->msg.'</p>';
 				}
 			?>
-			<div id="featured">
+			<div id="anony-featured">
 			
-				<div id="active-slide">
+				<div id="anony-active-slide">
 					<?php foreach($this->featuredIDs as $pID) {
 							$link = get_the_permalink($pID);?>
 
@@ -57,20 +57,20 @@ class Views__Featured extends Class__Generate_Posts_View{
 
 									  <h2 class="anony-slide-title"><a href="<?php echo $link ?>"><?php echo get_the_title($pID) ;?></a></h2>
 
-									  <a class="featured-button" href="<?php echo $link?>"><?php esc_html_e('Read more', TEXTDOM)?></a>
+									  <a class="anony-featured-button" href="<?php echo $link?>"><?php esc_html_e('Read more', TEXTDOM)?></a>
 
 								  </div>
 								</div>
 						<?php 
 
-						$slider_nav .= '<a href="'.get_the_permalink($pID).'" class="'. (array_search($pID,$this->featuredIDs) == 0 ?  'active-slide ': '').'anony-slide-item anony-grid-col-'.count($this->featuredIDs).'">
+						$slider_nav .= '<a href="'.get_the_permalink($pID).'" class="'. (array_search($pID,$this->featuredIDs) == 0 ?  'anony-active-slide ': '').'anony-slide-item anony-grid-col-'.count($this->featuredIDs).'">
 
 							<img src="'.get_the_post_thumbnail_url($pID,'thumbnail').'" alt="'.get_the_title($pID).'"/>
 
 						</a>';} ?>
 					</div>
 
-				<h3 class="featured-posts-title">
+				<h3 class="anony-featured-posts-title">
 					<?php
 						if(isset($this->child->args['cat'])){?>
 

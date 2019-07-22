@@ -218,7 +218,7 @@ display: flex;
 	padding-right: 10px;
 	padding-left: 0;
 }
-.featured-posts-title,.anony-post-image-wrapper h4{
+.anony-featured-posts-title,.anony-post-image-wrapper h4{
 	left: auto;
 	right: 0;
 }
@@ -231,7 +231,7 @@ display: flex;
 	padding-left: 10px;
 }
 
-.featured-excerpt{
+.anony-featured-excerpt{
 	padding-right: 10px;
 	padding-left: 0;
 }

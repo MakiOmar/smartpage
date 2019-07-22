@@ -1,7 +1,7 @@
 #anony-main_nav_con{
 	background-color: #444444;
 }
-#anony-main_menu_con li a:hover,#anony-dun-title,.active, .anony-active-tab,#submit,.anony-form_submit,.button,.widgettitle,.widgeted_title a,.widgeted_title span, .anony-page-numbers a, .ca-nav span, .reply, .single-download, .widgeted_title, #anony-dun-title, .featured-posts-title, .f-post-title,.anony-section_title,#anony-page-scroll{
+#anony-main_menu_con li a:hover,#anony-dun-title,.active, .anony-active-tab,#submit,.anony-form_submit,.button,.widgettitle,.widgeted_title a,.widgeted_title span, .anony-page-numbers a, .ca-nav span, .reply, .single-download, .widgeted_title, #anony-dun-title, .anony-featured-posts-title, .f-post-title,.anony-section_title,#anony-page-scroll{
 	background-color:#5680de;
 }
 .section,#anony-page-loading-bg{
@@ -16,7 +16,7 @@ color:#350c86;
 #anony-dun-text {
 	border-bottom-color:#5680de;
 }
-.widgeted_title, #slider-wrapper{
+.widgeted_title, #anony-slider-wrapper{
 	border-top-color:#5680de;
 }
 .anony-tab_content div h3,.same_cat_post a,h1,h2,h3,h4,h5,h6,.fa-bars, .anony-ca-icon i, .download a {
