@@ -23,7 +23,7 @@ SettingsRouter = Backbone.Router.extend({
         routes: {
             'section/:section': function(section) {
 				"use strict";
-				var target = $('a[href="#section/' + section + '"]'),
+				var target = $('a[href="#anony-section/' + section + '"]'),
 					content = $('#anony-' + section + '-section-group');
 				$('.anony-nav-link').parent().removeClass('active');
 				$('.anony-section-group').removeClass('anony-show-section');

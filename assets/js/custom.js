@@ -113,9 +113,9 @@ jQuery(document).ready(function($){
 
 			if(elementScrolled($(this))) {
 
-			  if(!$(this).hasClass('section-animate')){
+			  if(!$(this).hasClass('anony-section-animate')){
 
-				  $(this).addClass('section-animate');
+				  $(this).addClass('anony-section-animate');
 
 			  }
 			}
@@ -125,12 +125,12 @@ jQuery(document).ready(function($){
 	//Slide to top if scrolled down
 	$(window).scroll(function(){
 		
-		slideToTop('.section');
+		slideToTop('.anony-section');
 		
 	  
 	});
 	
-	slideToTop('.section');
+	slideToTop('.anony-section');
 	
 	//toggle content
 	function anonyTogglecontent(toggle,toggledClass,toggled,ifCase,elseCase,callBack){
@@ -411,12 +411,12 @@ jQuery(document).ready(function($){
 
 	  });
 	}
-	anony_menu_toggle('.toggle-category', '.dropdown','anony-cat-list','.anony-sub-menu');
-	anony_menu_toggle('.anony-main-menu-toggle', '.anony-sub-menu','anony-main_menu_con','.dropdown');
+	anony_menu_toggle('.toggle-category', '.anony-dropdown','anony-cat-list','.anony-sub-menu');
+	anony_menu_toggle('.anony-main-menu-toggle', '.anony-sub-menu','anony-main_menu_con','.anony-dropdown');
 
 	//Close all dropdowns when click on any place in the document
 	$(document).click( function(){
-		$('.dropdown').hide();
+		$('.anony-dropdown').hide();
 		$('i').each(function(){
 						if($(this).hasClass("fa-minus")){
 							$(this).removeClass("fa-minus").addClass("fa-plus");

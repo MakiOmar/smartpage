@@ -1,4 +1,4 @@
-<div class="section">
+<div class="anony-section">
 	<h4 anony-section_title clearfix>Choosen Videos</h4>
 	<div class="anony-grid-col-md-12 videos">
 	  <div class="anony-grid-col">

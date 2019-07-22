@@ -20,7 +20,7 @@ class Views__Downloads extends Class__Generate_Posts_View{
 	
 	public function render(){?>
 		
-		<div class="section<?php echo (is_front_page() || ishome()) ? ' section-front-page' : '' ?>">
+		<div class="anony-section<?php echo (is_front_page() || ishome()) ? ' section-front-page' : '' ?>">
 			<div><h4 class="anony-section_title clearfix"><?php esc_html_e('Suggested downloads',TEXTDOM);?></h4></div>
 				<div class="anony-posts-wrapper">
 				<?php

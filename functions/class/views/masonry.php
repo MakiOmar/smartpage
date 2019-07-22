@@ -20,7 +20,7 @@ class Views__Masonry extends Class__Generate_Posts_View{
 	public function render(){
 		
 		if(is_front_page() or is_home()){?>
-		<div class="section">
+		<div class="anony-section">
 			<div>
 				<h4 class="anony-section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
 			</div>

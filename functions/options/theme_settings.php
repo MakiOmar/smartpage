@@ -386,13 +386,13 @@ if (!class_exists('Class__Theme_Settings')) {
 								echo '<ul id="'.$nav.'-dropdown" class="anony-dropdown">';
 
 									foreach($details['sections'] as $sec){
-										echo '<li class="anony-nav-item"><a id="'.$sec.'" href="#section/'.$sec.'" class="anony-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';
+										echo '<li class="anony-nav-item"><a id="'.$sec.'" href="#anony-section/'.$sec.'" class="anony-nav-link">'.(isset($this->sections[$sec]) ? $this->sections[$sec]['title'] : ucfirst(str_replace('-', ' ', $sec))).'</a><span class="icon" data-icon="'.$this->sections[$sec]['icon'].'"></span></li>';
 									}
 
 								echo '</ul></li>';
 
 							 }else{
-								echo '<li class="anony-nav-item"><a id="'.$nav.'" href="#section/'.$nav.'" class="anony-nav-link">'.(isset($this->sections[$nav]) ? $this->sections[$nav]['title'] : ucfirst(str_replace('-', ' ', $nav))).'</a><span class="icon" data-icon="'.$this->sections[$nav]['icon'].'"></span></li>';	
+								echo '<li class="anony-nav-item"><a id="'.$nav.'" href="#anony-section/'.$nav.'" class="anony-nav-link">'.(isset($this->sections[$nav]) ? $this->sections[$nav]['title'] : ucfirst(str_replace('-', ' ', $nav))).'</a><span class="icon" data-icon="'.$this->sections[$nav]['icon'].'"></span></li>';	
 
 							}
 						}

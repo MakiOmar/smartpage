@@ -26,11 +26,11 @@ html,body{
 .widgeted #anony-cat-list li a,.toggle-category{
 	color: #444444;
 }
-.widgeted .dropdown{
+.widgeted .anony-dropdown{
 	background-color: transparent;
 	box-shadow:none;
 }
-.widgeted .dropdown li{
+.widgeted .anony-dropdown li{
 	background-color: transparent!important;
 }
 /***End sidebar***/

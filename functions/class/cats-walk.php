@@ -16,7 +16,7 @@
 
 				public function start_lvl( &$output, $depth = 0, $args = array() ) {
 					$indent = str_repeat( "\t", $depth );
-					$output .= "\n$indent<ul class = \"dropdown\" style=\"display: none;\">\n";
+					$output .= "\n$indent<ul class = \"anony-dropdown\" style=\"display: none;\">\n";
 				}
 
 				public function start_el(  &$output, $category, $depth = 0, $args = array(), $id = 0 ) {

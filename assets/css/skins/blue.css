@@ -4,7 +4,7 @@
 #anony-main_menu_con li a:hover,#anony-dun-title,.active, .anony-active-tab,#submit,.anony-form_submit,.button,.widgettitle,.widgeted_title a,.widgeted_title span, .anony-page-numbers a, .anony-ca-nav span, .reply, .single-download, .widgeted_title, #anony-dun-title, .anony-featured-posts-title, .f-post-title,.anony-section_title,#anony-page-scroll{
 	background-color:#5680de;
 }
-.section,#anony-page-loading-bg{
+.anony-section,#anony-page-loading-bg{
 	border-top: 5px solid #5680de;
 }
 a{

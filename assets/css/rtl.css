@@ -206,10 +206,10 @@ body{
 	margin-right: auto;
 	margin-left: 0.6%;
 }
-.reply{
+.anony-reply{
 	
 }
-#contacts li{
+#anony-contacts li{
 display: flex;
     align-items: center;
     direction: ltr;
