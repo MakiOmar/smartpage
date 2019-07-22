@@ -48,7 +48,7 @@ add_action('wp_footer', function(){
 				<script type="text/javascript">
 					if(tinymce !== 'undefined'){
 						tinymce.init({
-							selector: '#comment',
+							selector: '#anony-comment',
 						});
 					}
 
@@ -62,7 +62,7 @@ add_filter('comment_reply_link', function($link, $args, $comment, $post){
 	if(wp_doing_ajax()){
 		if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) {
 				$link = sprintf(
-					'<a rel="nofollow" class="comment-reply-login" href="%s">%s</a>',
+					'<a rel="nofollow" class="anony-comment-reply-login" href="%s">%s</a>',
 					esc_url( wp_login_url( get_permalink($post) ) ),
 					$args['login_text']
 				);

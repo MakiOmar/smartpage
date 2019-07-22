@@ -8,16 +8,16 @@ jQuery(document).ready(function($){
 		}
 	}, "");
 
-	var CommentSubmit =$('#commentform').find('#submit'),
+	var CommentSubmit =$('#anony-commentform').find('#submit'),
 		
 	SmpgAjaxUrl = SmpgLoca.ajaxURL;
 	var commentsCount;
-	var replyTo = $('#comment_parent').val();
+	var replyTo = $('#anony-comment_parent').val();
 	$(CommentSubmit).click(function(e){
 		
 		e.preventDefault();
 		
-		$('#commentform').validate({
+		$('#anony-commentform').validate({
 				rules: {
 					author: {
 						required: true,
@@ -63,14 +63,14 @@ jQuery(document).ready(function($){
 
 				}
 			});
-		if($('#commentform').valid()){
+		if($('#anony-commentform').valid()){
 			var commentID = '',
 			    respond = $('#respond'), // comment form container
-		   		commentList = $('.commentlist');// comment list container
+		   		commentList = $('.anony-commentlist');// comment list container
 			
-				$('#comment').html(tinymce.get('comment').getContent());
+				$('#anony-comment').html(tinymce.get('comment').getContent());
 			
-				var CommentsSerialized = $('#commentform').serialize(),
+				var CommentsSerialized = $('#anony-commentform').serialize(),
 				c;
 			$.ajax({
 					type : 'POST',
@@ -92,18 +92,18 @@ jQuery(document).ready(function($){
 							}
 						},
 					success: function(response){
-						commentID        = response.comment_id;
-						commentsCount = response.comment_count;
+						commentID        = response.anony-comment_id;
+						commentsCount = response.anony-comment_count;
 						
 						if(commentList.length > 0){
 							
 							if( replyTo !== '0'){
 								
-								$('#comment-'+replyTo).append(response.html);
+								$('#anony-comment-'+replyTo).append(response.html);
 								
-								$('#comment-'+replyTo).addClass('parent');
+								$('#anony-comment-'+replyTo).addClass('parent');
 								
-								$('#comment-'+commentID).addClass('child');
+								$('#anony-comment-'+commentID).addClass('child');
 
 							}else{
 
@@ -112,7 +112,7 @@ jQuery(document).ready(function($){
 							
 						}else{
 							// if no comments yet
-							var addedCommentHTML = '<div class="commentlist">' + response.html + '</div>';
+							var addedCommentHTML = '<div class="anony-commentlist">' + response.html + '</div>';
 							
 							respond.before( addedCommentHTML );
 						}
@@ -128,19 +128,19 @@ jQuery(document).ready(function($){
 							
 							$("html, body").animate({
 
-								scrollTop: $("#comment-"+commentID).offset().top
+								scrollTop: $("#anony-comment-"+commentID).offset().top
 
 							}, 2000);
 							
 						}
-						$('#comment_parent').val('0');
+						$('#anony-comment_parent').val('0');
 						
 						$('#cancel-comment-reply-link').css('display', 'none');
 						
 						$('#anony-loading').removeClass('show-loading');
 						
 						//Change comment counter
-						$('.comments-title').each(function(){
+						$('.anony-comments-title').each(function(){
 							
 							var titleText = $(this).text();
 							
@@ -159,18 +159,18 @@ jQuery(document).ready(function($){
 			
 	});
 	
-	$(document).on('click','.comment-reply-link',function(e){
+	$(document).on('click','.anony-comment-reply-link',function(e){
 		e.preventDefault();
 		
 		$("html, body").animate({
 			
-			scrollTop: $("#commentform").offset().top
+			scrollTop: $("#anony-commentform").offset().top
 			
 		}, 2000);
 		
 		replyTo = $(this).attr('data-commentid');
 		
-		$('#comment_parent').val(replyTo);
+		$('#anony-comment_parent').val(replyTo);
 		
 		$('#cancel-comment-reply-link').css('display', 'block');
 
@@ -180,7 +180,7 @@ jQuery(document).ready(function($){
 		
 		e.preventDefault();
 		
-		$('#comment_parent').val('0');
+		$('#anony-comment_parent').val('0');
 		
 		tinymce.get('comment').setContent('');
 		

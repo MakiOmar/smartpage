@@ -35,7 +35,7 @@ $anonyOptions = opt_init_();
 				<span class="single-meta-text"><?php echo get_the_date() ?></span>
 			</div>
 			
-			<div class="comments">
+			<div class="anony-comments">
 				<i class="fa fa-comments-o"></i>
 				<?php echo anony_comments_number(); ?>
 			</div>

@@ -74,25 +74,25 @@ function anony_submit_ajax_comment(){
 	$GLOBALS['comment'] = $comment;
 	$GLOBALS['comment_depth'] = $comment_depth;
 
-	$comment_html = '<div ' . comment_class('', null, null, false ) . ' id="comment-' . $comment->comment_ID . '">			
+	$comment_html = '<div ' . comment_class('', null, null, false ) . ' id="anony-comment-' . $comment->comment_ID . '">			
 
-			<div class="comment-author vcard">
+			<div class="anony-comment-author vcard">
 				' . get_avatar( $comment, 64 ) .
 				sprintf( __( '%s <span class="says">says:</span>' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link( $comment ) )).'
 			</div>
 
-			<div class="comment-metadata">
+			<div class="anony-comment-metadata">
 				<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf( esc_html__( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() ) . '</a> ';
 
 				if( $edit_link = get_edit_comment_link() )
-					$comment_html .= '<span class="edit-link"><a class="comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', TEXTDOM).'</a></span>';
+					$comment_html .= '<span class="edit-link"><a class="anony-comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', TEXTDOM).'</a></span>';
 
 			$comment_html .= '</div>';
 
 			if ( $comment->comment_approved == '0' )
-				$comment_html .= '<p class="comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', TEXTDOM).'</p>';
+				$comment_html .= '<p class="anony-comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', TEXTDOM).'</p>';
 
-		$comment_html .= '<div class="comment-content">' . apply_filters( 'comment_text', get_comment_text( $comment ), $comment ) . '</div>';
+		$comment_html .= '<div class="anony-comment-content">' . apply_filters( 'comment_text', get_comment_text( $comment ), $comment ) . '</div>';
 
 		if($maxNOcomments > $comment_depth){
 			$comment_html .= '<div class="reply">'.get_comment_reply_link( array('depth' => $comment_depth,'max_depth'     => $maxNOcomments), $comment , '' ).'</div>';

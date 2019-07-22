@@ -7,7 +7,7 @@ function Anony_comment( $comment, $args, $depth ) {
 		case 'trackback' :
 		// Display trackbacks differently than normal comments.
 	?>
-	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+	<li <?php comment_class(); ?> id="anony-comment-<?php comment_ID(); ?>">
 		<p><?php esc_html_e( 'Pingback:', TEXTDOM ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', TEXTDOM ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
@@ -16,8 +16,8 @@ function Anony_comment( $comment, $args, $depth ) {
 		global $post;
 	?>
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<header class="comment-meta comment-author vcard">
+		<article id="anony-comment-<?php comment_ID(); ?>" class="anony-comment">
+			<header class="anony-comment-meta comment-author vcard">
 				<?php
 					echo get_avatar( $comment, 44 );
 					printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
@@ -32,21 +32,21 @@ function Anony_comment( $comment, $args, $depth ) {
 						sprintf( esc_html__( '%1$s at %2$s', TEXTDOM ), get_comment_date(), get_comment_time() )
 					);
 				?>
-			</header><!-- .comment-meta -->
+			</header><!-- .anony-comment-meta -->
 
 			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', TEXTDOM ); ?></p>
+				<p class="anony-comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', TEXTDOM ); ?></p>
 			<?php endif; ?>
 
-			<section class="comment-content comment">
+			<section class="anony-comment-content comment">
 				<?php comment_text(); ?>
 				<?php edit_comment_link( esc_html__( 'Edit', TEXTDOM ), '<p class="edit-link">', '</p>' ); ?>
-			</section><!-- .comment-content -->
+			</section><!-- .anony-comment-content -->
 
 			<div class="reply">
 				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', TEXTDOM ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
-		</article><!-- #comment-## -->
+		</article><!-- #anony-comment-## -->
 	<?php
 		break;
 	endswitch; // end comment_type check

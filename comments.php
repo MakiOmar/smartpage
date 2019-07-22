@@ -3,14 +3,14 @@ if ( post_password_required() )
 	return;
 ?>
 
-<div id="comments" class="comments-area anony-grid-col">
+<div id="anony-comments" class="anony-comments-area anony-grid-col">
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+		<h2 class="anony-comments-title">
 			<?php printf( _nx( 'One Comment', '%1$s Comments', get_comments_number(), 'comments title', TEXTDOM ), number_format_i18n( get_comments_number() ) );?>
 		</h2>
-		<div class="commentlist">
+		<div class="anony-commentlist">
 			<?php wp_list_comments( array( 'avatar_size'=>'64','format'=>'xhtml','style' => 'div' ) ); ?>
-		</div><!-- .commentlist -->
+		</div><!-- .anony-commentlist -->
 
 
 		<?php
@@ -24,8 +24,9 @@ if ( post_password_required() )
 	<?php endif; 
 	comment_form(array( 
 		'class_form' => 'anony-grid-col',
+		'id_form'    => 'anony-commentform',
 		'action'     =>'',
 	));
 	?>
 
-</div><!-- #comments .comments-area -->
+</div><!-- #anony-comments .anony-comments-area -->
