@@ -49,7 +49,7 @@ class Views__Featured extends Class__Generate_Posts_View{
 					<?php foreach($this->featuredIDs as $pID) {
 							$link = get_the_permalink($pID);?>
 
-							<div class="view">
+							<div class="anony-view">
 
 								  <?php echo get_the_post_thumbnail($pID, 'full');?>
 

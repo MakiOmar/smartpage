@@ -62,7 +62,7 @@ if ( ! class_exists( 'Class__Related_Posts_Widget' ) ) {
 								/*echo '<h3 class="widgeted_title"><a href="'.get_category_link( $first_cat ).'">'.get_cat_name( $first_cat ).'</a></h3>';*/
 								while ($same_cat_posts->have_posts()) : $same_cat_posts->the_post(); ?>
 
-									<li class="same_cat_post"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a></li>
+									<li class="anony-same_cat_post"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a></li>
 
 							   <?php 
 									endwhile;

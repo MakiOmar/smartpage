@@ -23,13 +23,13 @@ $anonyOptions = opt_init_();
         
         <?php anony_anony-breadcrumbs()?>
         
-        <div class="post-title-image">
-			<div class="post-title-cover"></div>
+        <div class="anony-post-title-image">
+			<div class="anony-post-title-cover"></div>
 			<?php if(has_post_thumbnail()) the_post_thumbnail('full') ?>
 			<h1 class="anony-single_post_title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h1>
 		</div>
 		
-		 <div class="post_meta meta">
+		 <div class="anony-post_meta meta">
 			<div class="date">
 				<i class="fa fa-calendar"></i>
 				<span class="single-meta-text"><?php echo get_the_date() ?></span>

@@ -429,27 +429,27 @@ jQuery(document).ready(function($){
 	$('#anony-ca-container').contentcarousel();
 	
 	//Home featured slider
-	$('.view').eq(0).addClass('animate');
+	$('.anony-view').eq(0).addClass('animate');
 	
 	var Imageslider;
 	
 	var SlideIndex;
 	
-	var SlidesNo = $('.view').length;
+	var SlidesNo = $('.anony-view').length;
 	
 	for(var i=0; i < SlidesNo; i++){
 		
-		$('.view').eq(i).css({"z-index":SlidesNo - i});
+		$('.anony-view').eq(i).css({"z-index":SlidesNo - i});
 		
 		//the is to reset prev items on click
-		$('.view').eq(i).attr("role", SlidesNo - i);
+		$('.anony-view').eq(i).attr("role", SlidesNo - i);
 		
 		$('.anony-slide-item').eq(i).attr("role", SlidesNo - i);
 		
 	}
 	function imageSlider(t){
 		
-		if($('.view').hasClass('animate')){
+		if($('.anony-view').hasClass('animate')){
 			
 		Imageslider = setTimeout(function(){
 			
@@ -486,14 +486,14 @@ jQuery(document).ready(function($){
 							
 							$('.anony-slide-item').eq(0).addClass('anony-active-slide');
 							
-							$('.view').eq(0).addClass('animate');
+							$('.anony-view').eq(0).addClass('animate');
 							
-							$('.view').animate({"opacity":"1"},{duration:t});
+							$('.anony-view').animate({"opacity":"1"},{duration:t});
 							
 							//Reset views indexes
 							var resetIndex = SlidesNo;
 							
-							$('.view').each(function(){
+							$('.anony-view').each(function(){
 								
 								if(resetIndex !== 0){
 									
@@ -524,7 +524,7 @@ jQuery(document).ready(function($){
 		  
 		var currAnimate = $('.animate');
 		
-		var SlidesNo = $('.view').length;
+		var SlidesNo = $('.anony-view').length;
 		  
 		var clicked = $(this);
 		  
@@ -534,9 +534,9 @@ jQuery(document).ready(function($){
 		  
 		clicked.addClass('anony-active-slide');
  		  
-		$('.view').css({"opacity":"0"});
+		$('.anony-view').css({"opacity":"0"});
 
-		$('.view').each(function(){
+		$('.anony-view').each(function(){
 			if($(this).attr('role') === clicked.attr('role')){
 				var clickedView = $(this);
 				clickedView.prevAll().each(function(){
@@ -568,7 +568,7 @@ jQuery(document).ready(function($){
 		imageSlider(500);
 	}
 	
-	$('.view').hover(enterSlide,leaveSlide);
+	$('.anony-view').hover(enterSlide,leaveSlide);
 	
 // Rating
 //The following will automatically display the post rate on page load

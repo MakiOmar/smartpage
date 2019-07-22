@@ -18,7 +18,7 @@ $p_ID = get_the_ID();
 	}
 
   ?>
- <div id="rating-<?php echo $p_ID ;?>" class="metadata">
+ <div id="rating-<?php echo $p_ID ;?>" class="anony-metadata">
  
 	<i id="rate-ico" class="fa fa-star"></i>
 	<?php

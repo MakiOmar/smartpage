@@ -168,7 +168,7 @@
 						
 						// add navigation buttons
 						if( cache.totalItems > 3 )	
-							$el.prepend('<div class="ca-nav"><span class="ca-nav-prev"><i class="fa fa fa-angle-left fa-2x"></i></span><span class="ca-nav-next"><i class="fa fa fa-angle-right fa-2x"></i></span></div>')	
+							$el.prepend('<div class="anony-ca-nav"><span class="anony-ca-nav-prev"><i class="fa fa fa-angle-left fa-2x"></i></span><span class="anony-ca-nav-next"><i class="fa fa fa-angle-right fa-2x"></i></span></div>')	
 						
 						// control the scroll value
 						if( settings.scroll < 1 )
@@ -176,8 +176,8 @@
 						else if( settings.scroll > 3 )
 							settings.scroll = 3;	
 						
-						var $navPrev		= $el.find('span.ca-nav-prev'),
-							$navNext		= $el.find('span.ca-nav-next');
+						var $navPrev		= $el.find('span.anony-ca-nav-prev'),
+							$navNext		= $el.find('span.anony-ca-nav-next');
 						
 						// hide the items except the first 3
 						$wrapper.css( 'overflow', 'hidden' );
@@ -202,7 +202,7 @@
 						});
 						
 						// click to close the item(s)
-						$el.find('a.ca-close').live('click.contentcarousel', function( event ) {
+						$el.find('a.anony-ca-close').live('click.contentcarousel', function( event ) {
 							if( cache.isAnimating ) return false;
 							cache.isAnimating	= true;
 							var $item	= $(this).closest('div.anony-ca-item');

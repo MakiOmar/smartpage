@@ -231,7 +231,7 @@ add_action( 'init', function(){
 				  "labels"=>array(
 							 "all_items"=>sprintf(esc_html__('All %s categories',TEXTDOM),$t_s),
 							 "edit_item"=>sprintf(esc_html__('Edit %s category',TEXTDOM),$t_s),
-							 "view_item"=>sprintf(esc_html__('view %s category',TEXTDOM),$t_s),
+							 "view_item"=>sprintf(esc_html__('View %s category',TEXTDOM),$t_s),
 							 "update_item"=>sprintf(esc_html__('update %s category',TEXTDOM),$t_s),
 							 "add_new_item"=>sprintf(esc_html__('Add new %s category',TEXTDOM),$t_s),
 							 "new_item_name"=>sprintf(esc_html__('new %s category',TEXTDOM),$t_s),
@@ -365,7 +365,7 @@ function anony_latest_comments(){
 			
 			foreach($comments as $comment) {?>	
 			
-				<div  class="recent-comment-wrapper">
+				<div  class="anony-recent-comment-wrapper">
 				
 					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented',TEXTDOM) ?></h3>
 					

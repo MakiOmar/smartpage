@@ -31,9 +31,9 @@ function anony_main_navigation($location_slug, $container = 'nav'){
 			$args = array (
 					'theme_location'=>$location_slug,
 					'depth'=>0,
-					'menu_id' =>$location_array[0].'_menu_con',
+					'menu_id' =>'anony-'.$location_array[0].'_menu_con',
 					'container' =>$container,
-					'container_id' =>$location_array[0].'_nav_con',
+					'container_id' =>'anony-'.$location_array[0].'_nav_con',
 					'echo' => false,
 					);
 			if(isset($walker)){
@@ -83,7 +83,7 @@ function anony_active_language($lang){
  * **Description: ** Echoes out the breadcrumps menu
  * @return void
  */
-function anony_anony-breadcrumbs() {
+function anony_breadcrumbs() {
 	global $post;
 	$homeLink = home_url();
 	echo '<ul class="anony-breadcrumbs">';
@@ -140,13 +140,13 @@ function anony_anony-breadcrumbs() {
 	// Page with parent
 	} elseif ( is_page() && $post->post_parent ) {
 		$parent_id  = $post->post_parent;
-		$anony-breadcrumbs = array();
+		$breadcrumbs = array();
 		while ($parent_id) {
 			$page = get_page($parent_id);
-			$anony-breadcrumbs[] = '<li><a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a> <span>/</span></li>';
+			$breadcrumbs[] = '<li><a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a> <span>/</span></li>';
 			$parent_id  = $page->post_parent;
 		}
-		$anony-breadcrumbs = array_reverse($anony-breadcrumbs);
+		$breadcrumbs = array_reverse($anony-breadcrumbs);
 		foreach ($anony-breadcrumbs as $crumb) echo $crumb;
 
 		echo '<li><a href="' . anony_get_curr_url() . '">'. get_the_title() .'</a></li>';

@@ -18,7 +18,7 @@ class Cf__Upload extends Class__Custom_Field{
 		wp_nonce_field( $this->id.'_action', $this->id.'_nonce' );?>
 		
 		<div class="anony-file-upload-override-button">
-			<a href="#" class="anony-insert-media" data-editor="my-editor"><?php esc_html_e('Select your file',TEXTDOM) ;?></a>
+			<a href="#" class="anony-insert-media" data-editor="anony-my-editor"><?php esc_html_e('Select your file',TEXTDOM) ;?></a>
 		</div>
 		
 		<?php
@@ -29,15 +29,15 @@ class Cf__Upload extends Class__Custom_Field{
 			}
 		
 			if(!empty($file_url)){
-				   $html = '<div id="download-file"><p>'.esc_html__('Current file:',TEXTDOM).'<span>'.basename($file_url).'</span></p><a href="'.esc_url($file_url).'">'.esc_html__('Download',TEXTDOM).'</a></div>';
+				   $html = '<div id="anony-download-file"><p>'.esc_html__('Current file:',TEXTDOM).'<span>'.basename($file_url).'</span></p><a href="'.esc_url($file_url).'">'.esc_html__('Download',TEXTDOM).'</a></div>';
 			}else{
-				$html = '<div id="download-file"><p>'.'<span>'.esc_html__('No selected file ',TEXTDOM).'</span></p></div>';
+				$html = '<div id="anony-download-file"><p>'.'<span>'.esc_html__('No selected file ',TEXTDOM).'</span></p></div>';
 			}
 		
 			echo $html;
 		?>
 		<!-- Caller -->
-		<span id="media-caller">
+		<span id="anony-media-caller">
 			<div class="attachment">
 				<img width="277" height="300" alt="{{ alt }}">
 				<input type="hidden" name ="<?php echo $this->id ?>" value="{{ url }}">

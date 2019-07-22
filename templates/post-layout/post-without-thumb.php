@@ -1,6 +1,6 @@
-<div class="nothumb-post">
-	<h3 class="thumb-post-title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h3>
-	<div class="post_meta">
+<div class="anony-nothumb-post">
+	<h3 class="anony-thumb-post-title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h3>
+	<div class="anony-post_meta">
 		<div class="date">
 			<i class="fa fa-calendar meta-text"></i>
 			<span class="meta-text"><?php echo get_the_date(); ?></span>

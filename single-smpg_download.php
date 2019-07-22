@@ -58,7 +58,7 @@ if(empty($download_times)){
 										
 											<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 											
-											<div class="post_meta">
+											<div class="anony-post_meta">
 												<div class="category">
 												
 													<i class="fa fa-folder-open"></i>

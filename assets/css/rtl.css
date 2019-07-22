@@ -222,11 +222,11 @@ display: flex;
 	left: auto;
 	right: 0;
 }
-.posts-list{
+.anony-posts-list{
 	margin-left: auto;
 	margin-right: 5px;
 }
-.metadata{
+.anony-metadata{
 	padding-right: 0;
 	padding-left: 10px;
 }
@@ -249,15 +249,15 @@ display: flex;
 	.text h3, .text p{
 		text-align: right;
 	}
-.post_meta div{
+.anony-post_meta div{
 	margin-left: 5px;
 	margin-right: 0px;
 }
-.inside-thumb{
+.anony-inside-thumb{
 	right: auto;
 	left: 0;
 }
-.extra-metas{
+.anony-extra-metas{
 	
 }
 #reply-title small{

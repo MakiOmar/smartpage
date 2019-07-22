@@ -33,7 +33,7 @@ class Views__Standard extends Class__Generate_Posts_View{
 		<?php }else{?>
 			<div>
 		<?php }?>
-				<div id="blog-posts">
+				<div id="anony-blog-posts">
 				
 				<?php
 					while($this->child->post->have_posts()){
@@ -42,8 +42,8 @@ class Views__Standard extends Class__Generate_Posts_View{
 					 
 					$tbp_post_id = get_the_ID();?>
 
-					<div id="post-<?php echo $tbp_post_id?>" class="post-wrapper anony-grid-col-max-480-12 anony-grid-col-av-12 anony-grid-col-md-6 anony-grid-col">
-						<div class="anony-post-contents blog-post anony-grid-col">
+					<div id="post-<?php echo $tbp_post_id?>" class="anony-post-wrapper anony-grid-col-max-480-12 anony-grid-col-av-12 anony-grid-col-md-6 anony-grid-col">
+						<div class="anony-post-contents anony-blog-post anony-grid-col">
 
 						  <div class="anony-post-info">
 
@@ -57,9 +57,9 @@ class Views__Standard extends Class__Generate_Posts_View{
 
 							}?>
 
-							<div class="extra-metas">
+							<div class="anony-extra-metas">
 
-								<div class="author-avatar">
+								<div class="anony-author-avatar">
 
 									<?php echo get_avatar(get_the_author_meta('ID'),32) ?>
 
