@@ -29,9 +29,6 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				add_action( $action, array(&$this, 'anony_save_post'),11);
 			}
 			
-			add_action('wp_ajax_download', array($this, 'implement_download_ajax'));
-			add_action('wp_ajax_nopriv_download', array($this, 'implement_download_ajax'));//for users that are not logged in.
-			
 		}
 		
 		public function anony_add_meta_boxes(){
@@ -117,22 +114,5 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			$location = add_query_arg( 'c_error' , '1' , $location );
 			return $location;
 		}
-		
-		
-		function implement_download_ajax() {
-			//Add and update downloads counter
-			if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
-					$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
-					if(empty($download_counter)){
-						add_post_meta($_POST['download_id'], 'download_times',1);
-					}else{
-						$download_counter +=  1;
-						update_post_meta($_POST['download_id'], 'download_times',$download_counter);
-					}
-				wp_die();
-				}
-		}
-		
-		
 	}
 }

@@ -292,6 +292,12 @@ add_action( 'save_post_anony_download', function( $post_id, $post ) {
     }
 }, 100, 2 );
 
+//Ajax download for logged in users
+add_action('wp_ajax_download','anony_download_ajax');
+
+//Ajax download for users that are not logged in.
+add_action('wp_ajax_nopriv_download', 'anony_download_ajax');
+
 /*-------------------------------------------------------------
  * Posts functions
  *-----------------------------------------------------------*/
@@ -384,4 +390,24 @@ function anony_latest_comments(){
 					
 				<?php };
 }
+
+
+/**
+ * //Add or update downloads counter.
+ *
+ * @return void
+ */
+function anony_download_ajax() {
+			
+			if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
+					$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
+					if(empty($download_counter)){
+						add_post_meta($_POST['download_id'], 'download_times',1);
+					}else{
+						$download_counter +=  1;
+						update_post_meta($_POST['download_id'], 'download_times',$download_counter);
+					}
+				wp_die();
+				}
+		}
 ?>
