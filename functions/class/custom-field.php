@@ -73,17 +73,6 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				
 					if ( array_key_exists( $field, $_POST ) && !empty($_POST[$field]) ) {
 
-						if($field_type == 'upload'){
-
-							$ext = pathinfo($_POST[$field], PATHINFO_EXTENSION);
-
-								if(isset($metaBox['supported']) && is_array($metaBox['supported']) && !in_array($ext,$metaBox['supported'])){
-
-									$this->errors[$field] = 'unsupported';
-
-								}
-						}
-
 						delete_transient($field);
 						
 						$current_value = get_post_meta($post_ID , $field, true);
@@ -98,7 +87,9 @@ if( ! class_exists( 'Class__Custom_Field' )){
 						if($args['current_value'] === $_POST[$field]) continue;
 
 						$this->validate->validate_inputs($args);
-
+						
+						$this->errors = $this->validate->errors;
+						
 						if(is_null($this->validate->value)) continue;
 
 						if(empty($this->errors) ) update_post_meta( $post_ID, $field, $this->validate->value );
@@ -131,7 +122,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 					
 						<div class="error <?php echo $field ?>">
 
-							<p><?php echo $this->anony_get_error_msg($code);?>
+							<p><?php echo $this->validate->anony_get_error_msg($code);?>
 
 						</div>
 
@@ -145,15 +136,5 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 		}
 		
-		public function anony_get_error_msg($code){
-			if (empty($code)) return;
-			switch($code){
-				case "unsupported":
-					return esc_html__( 'Sorry!! Please select another file, your file is not supported', TEXTDOM ) ;
-					break;
-				default:
-					return esc_html__( 'Sorry!! Something wrong, Please make sure all your inputs is correct', TEXTDOM );
-			}
-		}
 	}
 }

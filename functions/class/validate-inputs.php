@@ -11,11 +11,34 @@ if(!class_exists('Class__Validate_Inputs')){
 		}
 		
 		public function validate_inputs($args){
+			$limits = '';
 			if(!is_null($args['validation']) && !empty($args['validation'])){
-				
-				$validationFunction = 'valid_'.$args['validation'];
+				if(strpos($args['validation'], '|') !== FALSE){
+					$validations = explode('|', $args['validation']);
+					
+					foreach($validations as $validation){
+						
+						$validationFunction = 'valid_'.$validation;
+						
+						if(strpos($validation, ':') !== FALSE){
+							
+							$vald = explode(':', $validation);
+							
+							$validationFunction = 'valid_'.$vald[0];
+							
+							$limits = $vald[1];
 			
-				$this->$validationFunction($args['id'],$args['new_value'], $args['current_value']);
+						}
+						
+			
+						$this->$validationFunction($args['id'],$args['new_value'], $args['current_value'], $limits);
+					}
+				}else{
+					$validationFunction = 'valid_'.$args['validation'];
+			
+					$this->$validationFunction($args['id'],$args['new_value'], $args['current_value'], $limits );
+				}
+				
 				
 			}else{
 				
@@ -29,7 +52,7 @@ if(!class_exists('Class__Validate_Inputs')){
 		/*
 		*accept html within input
 		*/
-		public function valid_html($id, $field, $current){
+		public function valid_html($id, $field, $current, $limits ){
 			
 			$this->valid = true;
 			
@@ -40,12 +63,12 @@ if(!class_exists('Class__Validate_Inputs')){
 		/*
 		*Remove html within input
 		*/
-		public function valid_no_html($id, $field, $current){
+		public function valid_no_html($id, $field, $current, $limits){
 			
 			$this->value = sanitize_text_field($field);
 		
 			if($field != $this->value){
-				$this->warnings[$id][] = esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM);
+				$this->errors[$id] = 'remove-html';
 			}
 			
 			$this->valid = true;
@@ -55,7 +78,7 @@ if(!class_exists('Class__Validate_Inputs')){
 		/*
 		*check valid email
 		*/
-		public function valid_email($id, $field, $current){
+		public function valid_email($id, $field, $current, $limits){
 			if($field == '#'){
 				
 				$this->value = $field;
@@ -68,7 +91,7 @@ if(!class_exists('Class__Validate_Inputs')){
 
 					$this->value = $current;
 
-					$this->errors[$id] = esc_html__('You must enter a valid email address.', TEXTDOM);
+					$this->errors[$id] = 'not-email';
 
 					$this->valid = false;
 
@@ -80,7 +103,7 @@ if(!class_exists('Class__Validate_Inputs')){
 		/*
 		*check valid url
 		*/
-		public function valid_url($id, $field, $current){
+		public function valid_url($id, $field, $current, $limits){
 			
 			if($field == '#'){
 				
@@ -90,7 +113,7 @@ if(!class_exists('Class__Validate_Inputs')){
 				
 				$this->value = $current;
 				
-				$this->errors[$id] = esc_html__('You must provide a valid URL for this option.', TEXTDOM);
+				$this->errors[$id] = 'not-url';
 				
 			}else{
 				
@@ -104,7 +127,7 @@ if(!class_exists('Class__Validate_Inputs')){
 		*cast to ineger value
 		*/
 		
-		public function valid_integer($id, $field, $current){
+		public function valid_integer($id, $field, $current, $limits){
 			if(empty($field)){
 				$this->value = $field;
 				
@@ -115,7 +138,7 @@ if(!class_exists('Class__Validate_Inputs')){
 			
 			if(intval($this->value) === 0 && $this->value !== 0){
 				
-				$this->errors[$id][] = esc_html__('Please add a valid number (e.g. 1,2,-5)', TEXTDOM);
+				$this->errors[$id] = 'not-integer';
 				
 				$this->value = intval($current);
 				
@@ -129,7 +152,7 @@ if(!class_exists('Class__Validate_Inputs')){
 		*cast to ineger value
 		*/
 		
-		public function valid_absolute_integer($id, $field, $current){
+		public function valid_absolute_integer($id, $field, $current, $limits){
 			if(empty($field)){
 				$this->value = $field;
 				return;
@@ -140,10 +163,45 @@ if(!class_exists('Class__Validate_Inputs')){
 			
 		}
 		
-		public function valid_multi_checkbox($id, $field, $current){
+		public function valid_multi_checkbox($id, $field, $current, $limits){
 			
 			$this->value = $field;
 			
+		}
+		
+		public function valid_file_type($id, $field, $current, $limits){
+			$limits = explode(',',$limits);
+			$ext = pathinfo($field, PATHINFO_EXTENSION);
+
+				if(!empty($limits) &&!in_array($ext, $limits)){
+
+					$this->errors[$id] = 'unsupported';
+
+				}
+
+		}
+		
+		public function anony_get_error_msg($code){
+			if (empty($code)) return;
+			switch($code){
+				case "unsupported":
+					return esc_html__( 'Sorry!! Please select another file, your file is not supported', TEXTDOM ) ;
+					break;
+				case "not-integer":
+					return esc_html__('Please add a valid number (e.g. 1,2,-5)', TEXTDOM) ;
+					break;
+				case "not-url":
+					return esc_html__('You must provide a valid URL for this option.', TEXTDOM) ;
+					break;
+				case "not-email":
+					return esc_html__('You must enter a valid email address.', TEXTDOM) ;
+					break;
+				case "remove-html":
+					return esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM) ;
+					break;
+				default:
+					return esc_html__( 'Sorry!! Something wrong, Please make sure all your inputs is correct', TEXTDOM );
+			}
 		}
 	}
 }
