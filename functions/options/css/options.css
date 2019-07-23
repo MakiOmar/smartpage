@@ -82,7 +82,7 @@
 	margin-top: 50px;
 	min-height: 768px;
 }
-#options-nav{
+#anony-options-nav{
 	width: 20%;
 	background-color: rgb(209, 53, 75);
 	box-shadow: 10px 5px 6px #dbd1d1;
@@ -302,16 +302,16 @@
 .anony-dropdown .anony-nav-item{
 	width: auto;
 } 
-#options-nav ul{
+#anony-options-nav ul{
 	padding-top: 0;
 	margin-top: 0;
 	border-bottom: 1px solid #fff;
 }
-#options-nav ul li{
+#anony-options-nav ul li{
 	
 	margin: 0;
 }
-#options-nav ul li div{
+#anony-options-nav ul li div{
 	position: relative;
 	display: flex;
 	justify-content: space-between;

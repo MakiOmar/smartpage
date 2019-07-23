@@ -1,5 +1,5 @@
 var SettingsView = Backbone.View.extend({
-	el: "#options-nav",
+	el: "#anony-options-nav",
 	events: {
 		'click .nav-toggle': function(e){
 			"use strict";
