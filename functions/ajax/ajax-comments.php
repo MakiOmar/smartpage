@@ -74,7 +74,7 @@ function anony_submit_ajax_comment(){
 	$GLOBALS['comment'] = $comment;
 	$GLOBALS['comment_depth'] = $comment_depth;
 
-	$comment_html = '<div ' . comment_class('', null, null, false ) . ' id="anony-comment-' . $comment->comment_ID . '">			
+	$comment_html = '<div ' . comment_class('', null, null, false ) . ' id="comment-' . $comment->comment_ID . '">			
 
 			<div class="anony-comment-author vcard">
 				' . get_avatar( $comment, 64 ) .

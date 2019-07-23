@@ -12,7 +12,8 @@ jQuery(document).ready(function($){
 		
 	SmpgAjaxUrl = SmpgLoca.ajaxURL;
 	var commentsCount;
-	var replyTo = $('#anony-comment_parent').val();
+	//comment_parent name shouldn't be changed. (WordPress defaults)
+	var replyTo = $('#comment_parent').val();
 	$(CommentSubmit).click(function(e){
 		
 		e.preventDefault();
@@ -66,12 +67,15 @@ jQuery(document).ready(function($){
 		if($('#anony-commentform').valid()){
 			var commentID = '',
 			    respond = $('#respond'), // comment form container
-		   		commentList = $('.anony-commentlist');// comment list container
+		   		commentList = $('.anony-commentlist'),// comment list container
+				anonyComment = tinymce.get('comment').getContent();
+				
+				//Don't do any thing if no comment
+				if(anonyComment === '') {return;}
 			
-				$('#anony-comment').html(tinymce.get('comment').getContent());
+				$('#comment').html(anonyComment);
 			
-				var CommentsSerialized = $('#anony-commentform').serialize(),
-				c;
+				var CommentsSerialized = $('#anony-commentform').serialize();
 			$.ajax({
 					type : 'POST',
 					url : SmpgAjaxUrl, // admin-ajax.php URL
@@ -79,7 +83,7 @@ jQuery(document).ready(function($){
 					data: CommentsSerialized + '&action=anony_ajax_comments', // send form data + action parameter
 					
 					beforeSend: function(){
-						// what to do just after the form has been submitted
+						// what to do just after the form has been submitted and before sending
 						$('#anony-loading').addClass('show-loading');
 					},
 					error: function (request, status, error) {
@@ -92,18 +96,18 @@ jQuery(document).ready(function($){
 							}
 						},
 					success: function(response){
-						commentID        = response.anony-comment_id;
-						commentsCount = response.anony-comment_count;
-						
+						commentID        = response.comment_id;
+						commentsCount = response.comment_count;
+						console.log(commentList);
 						if(commentList.length > 0){
 							
 							if( replyTo !== '0'){
 								
-								$('#anony-comment-'+replyTo).append(response.html);
+								$('#comment-'+replyTo).append(response.html);
 								
-								$('#anony-comment-'+replyTo).addClass('parent');
+								$('#comment-'+replyTo).addClass('parent');
 								
-								$('#anony-comment-'+commentID).addClass('child');
+								$('#comment-'+commentID).addClass('child');
 
 							}else{
 
@@ -123,17 +127,15 @@ jQuery(document).ready(function($){
 					complete: function(){
 						
 						tinymce.get('comment').setContent('');
-						
 						if(commentID !== ''){
 							
 							$("html, body").animate({
-
-								scrollTop: $("#anony-comment-"+commentID).offset().top
+								scrollTop: $("#comment-"+commentID).offset().top,
 
 							}, 2000);
 							
 						}
-						$('#anony-comment_parent').val('0');
+						$('#comment_parent').val('0');
 						
 						$('#cancel-comment-reply-link').css('display', 'none');
 						
@@ -159,7 +161,7 @@ jQuery(document).ready(function($){
 			
 	});
 	
-	$(document).on('click','.anony-comment-reply-link',function(e){
+	$(document).on('click','.comment-reply-link',function(e){
 		e.preventDefault();
 		
 		$("html, body").animate({
@@ -170,7 +172,7 @@ jQuery(document).ready(function($){
 		
 		replyTo = $(this).attr('data-commentid');
 		
-		$('#anony-comment_parent').val(replyTo);
+		$('#comment_parent').val(replyTo);
 		
 		$('#cancel-comment-reply-link').css('display', 'block');
 
@@ -180,7 +182,7 @@ jQuery(document).ready(function($){
 		
 		e.preventDefault();
 		
-		$('#anony-comment_parent').val('0');
+		$('#comment_parent').val('0');
 		
 		tinymce.get('comment').setContent('');
 		
