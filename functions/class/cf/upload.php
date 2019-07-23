@@ -1,4 +1,11 @@
 <?php 
+/**
+ * Upload custom field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 
 class Cf__Upload extends Class__Custom_Field{
 	public $post, $metaBox, $id;
@@ -8,9 +15,6 @@ class Cf__Upload extends Class__Custom_Field{
 		$this->metaBox= $metaBox;
 		$this->id= $this->metaBox['id'];
 		$this->idAttr= str_replace('_', '-', $this->id);
-		
-		//Show admin notice if no supported file type
-		add_action( 'admin_notices', array($this, 'anony_upload_admin_notice') );	
 	}
 	
 	public function render(){
@@ -48,21 +52,6 @@ class Cf__Upload extends Class__Custom_Field{
 		<div id="anony-upload-result"></div>
 		
 		<?php 
-			
-		function anony_upload_admin_notice() {
-			$screen = get_current_screen();
-			if( $this->post->post_type == $screen->post_type && 'post' == $screen->base ){
-				
-			if ( array_key_exists( 'c_error', $_GET) ) {?>
-			
-				<div class="error">
-				
-					<p><?php esc_html_e( 'Sorry!! Please make sure your file type is one of the following', TEXTDOM );?><br><?php echo implode("-",unserialize(SuppTypes)); ?></p>
-					
-				</div>
-				
-			<?php }}
-		}
 	}
 } 
 

@@ -24,8 +24,6 @@ class Cf__Text extends Class__Custom_Field{
 			
 		}
 
-		neat_var_dump(get_transient($this->id)) ;
-		//neat_var_dump(get_transient('posted')) ;
 		echo '<input class="widefat" type="text" id="'.$this->idAttr.'" name="'.$this->id.'" value="'.esc_attr($value).'" autocomplete="off"/>';
 	}
 } 
