@@ -25,8 +25,8 @@ $metaBoxes = array(
 								'title'     => esc_html__( 'Upload your attachment', TEXTDOM ),
 								'context'   => 'normal',
 								'type'      => 'upload',
-								'validate'  => 'url',
-								'supported' => array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd'),
+								'validate'  => 'url|file_type:pdf,doc,docx,7z,arj,deb,zip,iso,pkg,rar,rpm,z,gz,bin,dmg,toast,vcd,csv,dat,log,mdb,sav,tar,ods,xlr,xls,xlsx,odt,txt,rtf,tex,wks,wps,wpd',
+
 							),
 			),
 
