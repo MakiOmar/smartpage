@@ -21,7 +21,7 @@ var SettingsView = Backbone.View.extend({
 
 SettingsRouter = Backbone.Router.extend({
         routes: {
-            'section/:section': function(section) {
+            'anony-section/:section': function(section) {
 				"use strict";
 				var target = $('a[href="#anony-section/' + section + '"]'),
 					content = $('#anony-' + section + '-section-group');
