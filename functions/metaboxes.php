@@ -11,21 +11,22 @@
 $metaBoxes = array(
 	'post' => array(
 				array(
-					'id' => 'anony_set_featured',
-					'title' => esc_html__( 'Set as featured post', TEXTDOM ),
-					'context' => 'side',
-					'type' => 'checkbox',
+					'id'       => 'anony_set_featured',
+					'title'    => esc_html__( 'Set as featured post', TEXTDOM ),
+					'context'  => 'side',
+					'type'     => 'checkbox',
 					'validate' => 'no_html',
 				),
 				
 			),
 	'anony_download' => array(
 							array(
-								'id' => 'anony_download_attachment',
-								'title' => esc_html__( 'Upload your attachment', TEXTDOM ),
-								'context' => 'normal',
-								'type' => 'upload',
-								//'validate' => 'no_html',
+								'id'        => 'anony_download_attachment',
+								'title'     => esc_html__( 'Upload your attachment', TEXTDOM ),
+								'context'   => 'normal',
+								'type'      => 'upload',
+								'validate'  => 'url',
+								'supported' => array('pdf','doc','docx','7z','arj','deb','zip','iso','pkg','rar','rpm','z','gz','bin','dmg','toast','vcd','csv','dat','log','mdb','sav','tar','ods','xlr','xls','xlsx','odt','txt','rtf','tex','wks','wps','wpd'),
 							),
 			),
 
