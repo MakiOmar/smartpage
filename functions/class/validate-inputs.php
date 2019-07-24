@@ -1,52 +1,157 @@
 <?php
+/**
+ * Inputs validation
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 if(!class_exists('Class__Validate_Inputs')){
 	class Class__Validate_Inputs{
+		/**
+		 * @var array Holds an array of fields and there corresponding error code as key/value pairs
+		 */
 		public $errors = array();
+		
+		/**
+		 * @var array Holds an array of fields and there corresponding warning code as key/value pairs
+		 */
+		
 		public $warnings = array();
+		
+		/**
+		 * @var boolean Decide if valid input. Default is <code>false</code>
+		 *
+		 */
 		public $valid    = false;
+		
+		/**
+		 * @var string Inputs value
+		 *
+		 */
 		public $value;
-
+		
+		/**
+		 * Constructor
+		 */
 		public function __construct(){
 			
 		}
 		
+		/**
+		 * Inputs validation base function
+		 *
+		 * **Description: **Invoke the corresponding validtion function according to the <code>$args['validation']</code>.<br>
+		 * **Note: **<br/>
+		 * * <code>$args['validation']</code> value can be equal to <code>'int|file_type:pdf,doc,docx'</code>.
+		 * * validation types are separated with <code>|</code> and if the validation has any limits like supported file types, so sholud be followd by <code>:</code> then the limits.
+		 * * Limits should be separated with <code>,</code>.
+		 *
+		 *@param array $args array of fields's validation data
+		 *@return void Just set fields value afte validation
+		 */
 		public function validate_inputs($args){
-			$limits = '';
+			
+			//Set field's value to the one the new value before validation
+			$this->value = $args['new_value'];
+			
+			//Start checking if validation is needed
+			
 			if(!is_null($args['validation']) && !empty($args['validation'])){
+				
+				//Check if need multiple validations
 				if(strpos($args['validation'], '|') !== FALSE){
-					$validations = explode('|', $args['validation']);
 					
-					foreach($validations as $validation){
-						
-						$validationFunction = 'valid_'.$validation;
-						
-						if(strpos($validation, ':') !== FALSE){
-							
-							$vald = explode(':', $validation);
-							
-							$validationFunction = 'valid_'.$vald[0];
-							
-							$limits = $vald[1];
-			
-						}
-						
-			
-						$this->$validationFunction($args['id'],$args['new_value'], $args['current_value'], $limits);
-					}
+					$this->multiple_validation($args);
+					
 				}else{
-					$validationFunction = 'valid_'.$args['validation'];
-			
-					$this->$validationFunction($args['id'],$args['new_value'], $args['current_value'], $limits );
+					
+					$this->single_validation($args);
 				}
 				
-				
-			}else{
-				
-				$this->value = $args['new_value'];
 				
 			}
 			
 			
+		}
+		
+		public function single_validation($args){
+			//If validations has any limits
+			$limits    = '';
+			
+			//Field's ID
+			$field_id  = $args['id'];
+			
+			//Field's new value
+			$new_value = $args['new_value'];
+			
+			//Field's current value
+			$current_value = $args['current_value'];
+			
+			$validation = $args['validation'];
+			
+			//Check if validation has limits
+			if(strpos($validation, ':') !== FALSE){
+
+				$vald = explode(':', $validation);
+
+				//Validation method name
+				$validationFunction = 'valid_'.$vald[0];
+
+				//Set Validation limits
+				$limits = $vald[1];
+
+			}else{
+
+				//Validation method name
+				$validationFunction = 'valid_'.$validation;
+			}
+
+			//Apply validation method
+			$this->$validationFunction($field_id,$new_value, $current_value, $limits );
+		}
+		
+		public function multiple_validation($args){
+			//If validations has any limits
+			$limits    = '';
+			
+			//Field's ID
+			$field_id  = $args['id'];
+			
+			//Field's new value
+			$new_value = $args['new_value'];
+			
+			//Field's current value
+			$current_value = $args['current_value'];
+			
+			$validations = $args['validation'];
+			//Array to hold validation types
+			$validations = explode('|', $validations);
+			
+			//Validate fore each validation type
+			foreach($validations as $validation){
+
+				//Check if validation has limits
+				if(strpos($validation, ':') !== FALSE){
+
+					$vald = explode(':', $validation);
+
+					//Validation method name
+					$validationFunction = 'valid_'.$vald[0];
+
+					//Set Validation limits
+					$limits = $vald[1];
+
+				}else{
+
+					//Validation method name
+					$validationFunction = 'valid_'.$validation;
+				}
+
+				//Apply validation method for each validation type
+				$this->$validationFunction($field_id,$new_value, $current_value, $limits);
+			}
 		}
 		
 		/*
