@@ -33,10 +33,45 @@ if(!class_exists('Class__Validate_Inputs')){
 		public $value;
 		
 		/**
+		 * @var string validations limits
+		 *
+		 */
+		public $limits = '';
+
+		/**
+		 * @var string Field ID
+		 *
+		 */
+		public $field_id;
+
+		/**
+		 * @var string Field's current value
+		 *
+		 */
+		public $current_value;
+
+		/**
+		 * @var string Field's validation type
+		 *
+		 */
+		public $validation;
+		
+		/**
 		 * Constructor
 		 */
-		public function __construct(){
-			
+		public function __construct($args = ''){
+			if(!empty($args)){
+				//Set field's value to the one the new value before validation
+				$this->value = $args['new_value'];
+
+				$this->field_id= $args['id'];
+				
+				$this->current_value = $args['current_value'];
+
+				$this->validation = $args['validation'];
+				
+				if(!is_null($this->validation)) $this->validate_inputs();
+			}
 		}
 		
 		/**
@@ -51,23 +86,21 @@ if(!class_exists('Class__Validate_Inputs')){
 		 *@param array $args array of fields's validation data
 		 *@return void Just set fields value afte validation
 		 */
-		public function validate_inputs($args){
-			
-			//Set field's value to the one the new value before validation
-			$this->value = $args['new_value'];
+		public function validate_inputs(){
+				
 			
 			//Start checking if validation is needed
 			
-			if(!is_null($args['validation']) && !empty($args['validation'])){
+			if(!is_null($this->validation) && !empty($this->validation)){
 				
 				//Check if need multiple validations
-				if(strpos($args['validation'], '|') !== FALSE){
+				if(strpos($this->validation, '|') !== FALSE){
 					
-					$this->multiple_validation($args);
+					$this->multiple_validation();
 					
 				}else{
 					
-					$this->single_validation($args);
+					$this->single_validation();
 				}
 				
 				
@@ -76,58 +109,33 @@ if(!class_exists('Class__Validate_Inputs')){
 			
 		}
 		
-		public function single_validation($args){
-			//If validations has any limits
-			$limits    = '';
-			
-			//Field's ID
-			$field_id  = $args['id'];
-			
-			//Field's new value
-			$new_value = $args['new_value'];
-			
-			//Field's current value
-			$current_value = $args['current_value'];
-			
-			$validation = $args['validation'];
-			
-			//Check if validation has limits
-			if(strpos($validation, ':') !== FALSE){
+		public function single_validation(){
 
-				$vald = explode(':', $validation);
+			//Check if validation has limits
+			if(strpos($this->validation, ':') !== FALSE){
+
+				$vald = explode(':', $this->validation);
 
 				//Validation method name
-				$validationFunction = 'valid_'.$vald[0];
+				$method = 'valid_'.$vald[0];
 
 				//Set Validation limits
-				$limits = $vald[1];
+				$this->limits = $vald[1];
 
 			}else{
 
 				//Validation method name
-				$validationFunction = 'valid_'.$validation;
+				$method = 'valid_'.$this->validation;
 			}
 
 			//Apply validation method
-			$this->$validationFunction($field_id,$new_value, $current_value, $limits );
+			$this->$method();
 		}
 		
-		public function multiple_validation($args){
-			//If validations has any limits
-			$limits    = '';
+		public function multiple_validation(){
 			
-			//Field's ID
-			$field_id  = $args['id'];
-			
-			//Field's new value
-			$new_value = $args['new_value'];
-			
-			//Field's current value
-			$current_value = $args['current_value'];
-			
-			$validations = $args['validation'];
 			//Array to hold validation types
-			$validations = explode('|', $validations);
+			$validations = explode('|', $this->validation);
 			
 			//Validate fore each validation type
 			foreach($validations as $validation){
@@ -138,91 +146,77 @@ if(!class_exists('Class__Validate_Inputs')){
 					$vald = explode(':', $validation);
 
 					//Validation method name
-					$validationFunction = 'valid_'.$vald[0];
+					$method = 'valid_'.$vald[0];
 
 					//Set Validation limits
-					$limits = $vald[1];
+					$this->limits = $vald[1];
 
 				}else{
 
 					//Validation method name
-					$validationFunction = 'valid_'.$validation;
+					$method = 'valid_'.$validation;
 				}
 
 				//Apply validation method for each validation type
-				$this->$validationFunction($field_id,$new_value, $current_value, $limits);
+				$this->$method();
 			}
 		}
 		
 		/*
 		*accept html within input
 		*/
-		public function valid_html($id, $field, $current, $limits ){
+		public function valid_html(){
 			
-			$this->valid = true;
-			
-			$this->value =  wp_kses_post($field);
+			$this->value =  wp_kses_post($this->field_id);
 			
 		}
 		
 		/*
 		*Remove html within input
 		*/
-		public function valid_no_html($id, $field, $current, $limits){
-			
-			$this->value = sanitize_text_field($field);
-		
-			if($field != $this->value){
-				$this->errors[$id] = 'remove-html';
+		public function valid_no_html(){
+				
+			if(sanitize_text_field($this->value) != $this->value){
+				
+				$this->value = !is_null($this->current_value) ? $this->current_value : '';
+				
+				$this->errors[$this->field_id] = 'remove-html';
 			}
-			
-			$this->valid = true;
 			
 		}
 		
 		/*
 		*check valid email
 		*/
-		public function valid_email($id, $field, $current, $limits){
-			if($field == '#'){
-				
-				$this->value = $field;
-				
-			}else{
-				
-				$this->value = $field;
+		public function valid_email(){
+			if($this->value == '#') return;
+							
+			if(!is_email($this->value)){
 
-				if(!is_email($this->value)){
+				$this->value = !is_null($this->current_value) ? $this->current_value: '';
 
-					$this->value = $current;
-
-					$this->errors[$id] = 'not-email';
-
-					$this->valid = false;
-
-				}
+				$this->errors[$this->field_id] = 'not-email';
 			}
+			
 			
 		}
 		
 		/*
 		*check valid url
 		*/
-		public function valid_url($id, $field, $current, $limits){
+		public function valid_url(){
 			
-			if($field == '#'){
+			if($this->value == '#') return;
+			
+			if (filter_var($this->value, FILTER_VALIDATE_URL) == false) {
 				
-				$this->value = $field;
+				$this->value = !is_null($this->current_value) ? $this->current_value: '';
 				
-			}elseif (filter_var($field, FILTER_VALIDATE_URL) == false) {
-				
-				$this->value = $current;
-				
-				$this->errors[$id] = 'not-url';
+				$this->errors[$this->field_id] = 'not-url';
 				
 			}else{
 				
-				$this->value = esc_url_raw($field);
+				$this->value = esc_url_raw($this->value);
 				
 			}
 			
@@ -232,80 +226,138 @@ if(!class_exists('Class__Validate_Inputs')){
 		*cast to ineger value
 		*/
 		
-		public function valid_integer($id, $field, $current, $limits){
-			if(empty($field)){
-				$this->value = $field;
+		public function valid_number(){
+			
+			if(empty($this->value))return;
+			
+			if(preg_replace('/[0-9\.\-]/', '', $this->value) != ""){
 				
-				return;
+				$this->current_value = (preg_replace('/[0-9\.\-]/', '', $this->current_value) != "" && !is_null($this->current_value))? $this->current_value :  '';
+
+				$this->value = $this->current_value;
+				
+				$this->errors[$this->field_id] = 'not-number';
+				
 			}
 			
-			$this->valid_no_html($id, $field, $current);
 			
-			if(intval($this->value) === 0 && $this->value !== 0){
-				
-				$this->errors[$id] = 'not-integer';
-				
-				$this->value = intval($current);
-				
-			}else{
-				
-				$this->value = intval($this->value);
-			}
 			
 		}
 		/*
 		*cast to ineger value
 		*/
 		
-		public function valid_absolute_integer($id, $field, $current, $limits){
-			if(empty($field)){
-				$this->value = $field;
-				return;
+		public function valid_abs(){
+			
+			if(empty($this->value))return;
+			
+			if(!ctype_digit($this->value)) {
+				$this->value = !is_null($this->current_value) ? $this->current_value: '';
+				
+				$this->errors[$this->field_id] = 'not-abs';
 			}
-			$this->valid_integer($id, $field, $current);
-			
-			$this->value = absint($this->value);
 			
 		}
 		
-		public function valid_multi_checkbox($id, $field, $current, $limits){
+		public function valid_multi_checkbox(){
 			
-			$this->value = $field;
 			
 		}
 		
-		public function valid_file_type($id, $field, $current, $limits){
-			$limits = explode(',',$limits);
-			$ext = pathinfo($field, PATHINFO_EXTENSION);
+		public function valid_file_type(){
+			
+			$limits = explode(',',$this->limits);
+			
+			$ext = pathinfo($this->value, PATHINFO_EXTENSION);
 
-				if(!empty($limits) &&!in_array($ext, $limits)){
+				if(!empty($limits) && !in_array($ext, $limits)){
 
-					$this->errors[$id] = 'unsupported';
+					$this->errors[$this->field_id] = 'unsupported';
 
 				}
 
 		}
 		
-		public function anony_get_error_msg($code){
+		public function anony_get_error_msg($code, $field_title){
 			if (empty($code)) return;
+			$accepted_tags = array('strong'=>array());
 			switch($code){
 				case "unsupported":
-					return esc_html__( 'Sorry!! Please select another file, your file is not supported', TEXTDOM ) ;
+					
+					return sprintf(
+						wp_kses(
+							__( '<strong>%s field error:</strong> Sorry!! Please select another file, the selected file type is not supported', TEXTDOM ), 
+							$accepted_tags
+						), 
+						$field_title
+					);
+					
 					break;
-				case "not-integer":
-					return esc_html__('Please add a valid number (e.g. 1,2,-5)', TEXTDOM) ;
+					
+				case "not-number":
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> Please enter a valid number (e.g. 1,2,-5)', TEXTDOM), 
+							$accepted_tags
+						), 
+						$field_title
+					);
+					
 					break;
 				case "not-url":
-					return esc_html__('You must provide a valid URL for this option.', TEXTDOM) ;
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> You must provide a valid URL', TEXTDOM),
+							$accepted_tags
+						),
+						$field_title
+					);
+					
 					break;
+					
 				case "not-email":
-					return esc_html__('You must enter a valid email address.', TEXTDOM) ;
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> You must enter a valid email address.', TEXTDOM), 
+							$accepted_tags
+						), 
+						$field_title
+					);
+					
 					break;
+					
 				case "remove-html":
-					return esc_html__('You must not enter any HTML in this field, all HTML tags have been removed.', TEXTDOM) ;
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> HTML is not allowed', TEXTDOM), 
+							$accepted_tags
+						), 
+						$field_title
+					);
+					
 					break;
+					
+				case "'not-abs'":
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> You must enter an absolute integer', TEXTDOM), 
+							$accepted_tags
+							   ), 
+						$field_title
+					);
+					
+					break;
+					
 				default:
-					return esc_html__( 'Sorry!! Something wrong, Please make sure all your inputs is correct', TEXTDOM );
+					return wp_kses(
+						__( '<strong>Sorry!! Something wrong:</strong> Please make sure all your inputs are correct', TEXTDOM ), 
+						$accepted_tags
+					);
 			}
 		}
 	}
