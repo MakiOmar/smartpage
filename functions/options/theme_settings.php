@@ -65,8 +65,6 @@ if (!class_exists('Class__Theme_Settings')) {
 		public function __construct($menu = array(), $sections = array(), $widgets = array()){
 			
 			$this->menu = $menu;
-			
-			$this->validate = new Class__Validate_Inputs();
 				
 			$defaults = array();
 			
@@ -318,6 +316,8 @@ if (!class_exists('Class__Theme_Settings')) {
 							
 							$fieldID = $field['id'];
 							
+							$fieldTitle = $field['title'];
+							
 							$args = array(
 								'id'            => $fieldID,
 								'validation'    => isset($field['validate'])? $field['validate'] : '',
@@ -334,8 +334,8 @@ if (!class_exists('Class__Theme_Settings')) {
 								
 								continue;
 							}
-														
-							$this->validate->validate_inputs($args);
+							
+							$this->validate = new Class__Validate_Inputs($args);
 							
 							if(isset($this->validate->errors[$fieldID])){
 								set_transient($fieldID, $this->validate->errors[$fieldID], 1000);
