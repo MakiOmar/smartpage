@@ -70,8 +70,11 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				if(class_exists($class_name)){
 
 					$input = new $class_name($post->ID, $field);
-
+										
 					$input->render();
+					
+					if(method_exists($input, 'enqueue_scripts')) $input->enqueue_scripts();
+					
 
 				}	
 			}
