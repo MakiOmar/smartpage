@@ -4,73 +4,118 @@ if( ! class_exists( 'Class__Custom_Field' )){
 	
 	class Class__Custom_Field{
 
-		public $metaBoxes, $errors = array();
+		public $errors = array();
+		public $id;
+		public $label;
+		public $context;
+		public $priority;
+		public $hook_priority;
+		public $post_type;
+		public $fields;
 		
 		private $validate;
 		
-		public function __construct($meta_boxes = array()){
+		public function __construct($meta_box = array()){
 
-			if(empty($meta_boxes)) return;
+			if(empty($meta_box) || !is_array($meta_box)) return;
 			
-			$this->metaBoxes = $meta_boxes;
+			$this->id            = $meta_box['id'];
+			$this->label         = $meta_box['label'];
+			$this->context       = $meta_box['context'];
+			$this->priority      = $meta_box['priority'];
+			$this->hook_priority = $meta_box['hook_priority'];
+			$this->post_type     = $meta_box['post_type'];
+			$this->fields        = $meta_box['fields'];
 			
-			foreach($this->metaBoxes as $boxPostType => $metaBoxes){
-								
-				foreach($metaBoxes as $metaBox){
-					add_action( 'add_meta_boxes_'.$boxPostType, array(&$this, 'anony_add_meta_boxes') );
-				}
-							
-				add_action( 'post_updated', array(&$this, 'anony_save_post'),11);
-			}
-			
-			add_action( 'admin_notices', array(&$this, 'anony_admin_notice') );
+			$this->hooks();
 			
 		}
 		
-		public function anony_save_post($post_ID){
-			$postType = get_post_type();
-
+		public function hooks(){
+			add_action( 'add_meta_boxes' , array( $this, 'add_meta_box' ), $this->hook_priority );
+			
+			add_action( 'post_updated', array(&$this, 'update_post_meta'));
+			
+			add_action( 'admin_notices', array(&$this, 'admin_notices') );
+						
+			add_action( 'admin_head', array( $this, 'head_scripts' ) );
+		}
+		
+		public function add_meta_box(){
+			if( is_array( $this->post_type ) ){
 				
+				foreach ( $this->post_type as $post_type ) {
+					add_meta_box( $this->id, $this->label, array( $this, 'meta_fields_callback' ), $post_type, $this->context, $this->priority );
+				}
+				
+			}else{
+				
+				add_meta_box( $this->id, $this->label, array( $this, 'meta_fields_callback' ), $this->post_type, $this->context, $this->priority );
+				
+			}
+		}
+		
+		public function meta_fields_callback(){
+			global $post;
+			
+			$mixed_types = ['text','number','email', 'password','url'];
+			
+			foreach($this->fields as $field){
+				
+				$class_name = 'Cf__'.ucfirst($field['type']);
+				
+				if(in_array($field['type'], $mixed_types)) $class_name = 'Cf__Mixed';
+				
+				
+				if(class_exists($class_name)){
+
+					$input = new $class_name($post->ID, $field);
+
+					$input->render();
+
+				}	
+			}
+		}
+		
+		public function update_post_meta($post_ID){
+			
+			$postType = get_post_type();
+	
 			if ( ! current_user_can( 'edit_post', $post_ID )) return;
 			
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE()) return;
 			
 			if( ! ( wp_is_post_revision( $post_ID) || wp_is_post_autosave( $post_ID ) ) ) {
 				
-				foreach($this->metaBoxes[$postType] as $metaBox){
+				foreach($this->fields as $field){
 
-					$field      = $metaBox['id'];
+					$field_id   = $field['id'];
 
-					$field_type = $metaBox['type'];
+					$field_type = $field['type'];
+					
+					
+					if ( !isset( $_POST[$field_id] )|| !wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
+						
+						$current_value = get_post_meta($post_ID , $field_id, true);
 
-					if ( !isset( $_POST[$field] )|| !wp_verify_nonce( $_POST[$field.'_nonce'], $field.'_action' )) continue;
-
-					if ( !empty($_POST[$field]) ) {
-
-						$current_value = get_post_meta($post_ID , $field, true);
-
-						if($current_value === $_POST[$field]) continue;
+						if($current_value === $_POST[$field_id]) continue;
 
 						$args = array(
-							'id'            => $field,
-							'validation'    => ( isset($metaBox['validate']) ) ? $metaBox['validate'] : null,
-							'new_value'     => $_POST[$field],
+							'id'            => $field_id,
+							'validation'    => ( isset($field['validate']) ) ? $field['validate'] : null,
+							'new_value'     => $_POST[$field_id],
 							'current_value' => ($current_value) ? $current_value : null ,
 						);
 
 						$this->validate = new Class__Validate_Inputs($args);
-
-
+						
 						if(is_null($this->validate->value)) continue;
 
 						if(!empty($this->validate->errors)){
 							$this->errors[] =  $this->validate->errors;
 						}
 
-						if(!array_key_exists($field, $this->validate->errors) )update_post_meta( $post_ID, $field, $this->validate->value );
-
-
-					}
+						if(!array_key_exists($field, $this->validate->errors) )update_post_meta( $post_ID, $field_id, $this->validate->value );
 
 				}
 
@@ -88,46 +133,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 		}
 		
-		public function anony_add_meta_boxes(){
-			
-			foreach($this->metaBoxes as $boxPostType => $metaBoxes){
-				
-				foreach($metaBoxes as $metaBox){
-
-					add_meta_box( 
-						$metaBox['id'], 
-						$metaBox['title'], 
-						array($this, 'anony_metabox_cb'), 
-						$boxPostType, 
-						$metaBox['context'],
-						'core', 
-						array($metaBox)
-					);
-				}
-			}
-		}
-		
-		public function anony_metabox_cb($post, $metaBox){
-
-			$class_name = 'Cf__'.ucfirst($metaBox['args'][0]['type']);
-			
-			if(class_exists($class_name)){
-				
-				$input = new $class_name($post, $metaBox);
-				
-				$input->render();
-				
-			}			
-			
-		}
-		
-		
-		
-		public function anony_redirect_post_location( $location ){
-			//If you want to edit location; 
-		}
-		
-		public function anony_admin_notice(){
+		public function admin_notices(){
 			
 			$postType = get_post_type();
 			
@@ -169,6 +175,10 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 			
 		}
+		
+		public function head_scripts(){
+			
+		}	
 		
 	}
 }
