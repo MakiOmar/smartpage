@@ -53,6 +53,12 @@ class Cf__Upload extends Class__Custom_Field{
 		
 		$html = sprintf('<fieldset class="anony-row" id="fieldset_%1$s">', esc_attr($this->field_id));
 		
+		$html	.= sprintf( 
+						'<label class="anony-label" for="anony_%1$s">%2$s</label>', 
+						$this->field_id, 
+						$this->field_label
+					);
+		
 		$html .= sprintf( 
 						'<div class="anony-file-upload-override-button">
 							<a href="#" class="insert-media" data-editor="anony-my-editor">%1$s</a>
@@ -63,8 +69,8 @@ class Cf__Upload extends Class__Custom_Field{
 		if(!empty($file_url)){
 			   $html .= sprintf(
 				   		'<div id="anony-download-file">
-			   				<p>%1$s<span>%2$s</span>
-							</p>
+			   				<span>%1$s<span>%2$s</span>
+							</span>
 							<a href="%3$s">%4$s</a>
 						</div>', 
 						esc_html__('Current file:',TEXTDOM),
