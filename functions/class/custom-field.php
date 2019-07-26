@@ -179,9 +179,19 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			
 		}
 		
-		public function head_scripts(){
-			
-		}	
+		public function head_scripts(){?>
+			<style type="text/css">
+				.anony-row{
+					margin: 15px;
+					border-bottom: 1px solid #e3e1e1;
+				}
+				.anony-label{
+					display: block;
+					font-weight: bold;
+					margin-bottom: 15px;
+				}
+			</style>
+		<?php }	
 		
 	}
 }
