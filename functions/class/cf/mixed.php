@@ -89,7 +89,7 @@ class Cf__Mixed extends Class__Custom_Field{
 					);
 
 		$html  .= sprintf( 
-						'<input type="%1$s" class="widefat %2$s" id="anony_%3$s" name="%3$s" value="%5$s" %6$s %7$s %8$s/>', 
+						'<input type="%1$s" class="%2$s" id="anony_%3$s" name="%3$s" value="%5$s" %6$s %7$s %8$s/>', 
 						esc_attr($this->field_type), 
 						$class, 
 						$this->field_id, 
