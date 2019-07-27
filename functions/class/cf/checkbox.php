@@ -11,19 +11,9 @@ class Cf__Checkbox extends Class__Custom_Field{
 	public $post_id;
 	
 	/**
-	 * @var int Current field ID
+	 * @var array Current field data
 	 */
-	public $field_id;
-	
-	/**
-	 * @var int Current field type
-	 */
-	public $field_type;
-	
-	/**
-	 * @var int Current field label
-	 */
-	public $field_label;
+	public $field;
 	
 	//Consructor
 	public function __construct($post_id, $field){
@@ -31,13 +21,10 @@ class Cf__Checkbox extends Class__Custom_Field{
 		parent::__construct();
 		
 		//Set field object properties
-		$this->post_id     = $post_id;
+		$this->post_id = $post_id;
 		
-		$this->field_type  = $field['type'];
-		
-		$this->field_id    = $field['id'];
-		
-		$this->field_label = $field['label'];
+		$this->field   = $field;
+
 
 	}
 	
@@ -46,11 +33,11 @@ class Cf__Checkbox extends Class__Custom_Field{
 	 */
 	public function render(){
 		
-		wp_nonce_field( $this->field_id.'_action', $this->field_id.'_nonce' );
+		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
-		if(get_post_meta( $this->post_id, $this->field_id, true )){
+		if(get_post_meta( $this->post_id, $this->field['id'], true )){
 			
-			$checked = checked(get_post_meta( $this->post_id, $this->field_id, true ), 'on', false);
+			$checked = checked(get_post_meta( $this->post_id, $this->field['id'], true ), '1', false);
 			
 		}else{
 			
@@ -58,28 +45,28 @@ class Cf__Checkbox extends Class__Custom_Field{
 			
 		}
 		
-		$class  = isset( $field['class'] ) && ! is_null( $field['class'] ) ? $field['class'] : 'anony-meta-field';
+		$class  = isset( $this->field['class'] ) && ! is_null( $this->field['class'] ) ? $this->field['class'] : 'anony-meta-field';
 		
-		$disabled  = isset( $field['disabled'] ) && ( $field['disabled'] == true ) ? " disabled" : "";
+		$disabled  = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled" : "";
 		
 		
 		
 		
 		$html	= sprintf( 
 						'<fieldset class="anony-row" id="fieldset_%1$s">', 
-						$this->field_id 
+						$this->field['id'] 
 					);
 		
 		$html	.= sprintf( 
-						'<label class="anony-label" for="anony_%1$s">%2$s</label>', 
-						$this->field_id, 
-						$this->field_label
+						'<label class="anony-label" for="%1$s">%2$s</label>', 
+						$this->field['id'], 
+						$this->field['label']
 					);
 
 		$html  .= sprintf( 
-						'<input type="checkbox" class="widefat %1$s" id="anony_%2$s" name="anony_%2$s" %3$s %4$s/>', 
+						'<input type="checkbox" class="widefat %1$s" id="%2$s" name="%2$s" value="1" '.$checked.' %3$s %4$s/>',
 						$class, 
-						$this->field_id,  
+						$this->field['id'],  
 						$checked,
 						$disabled
 					);
