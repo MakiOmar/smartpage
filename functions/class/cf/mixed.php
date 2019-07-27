@@ -12,25 +12,9 @@ class Cf__Mixed extends Class__Custom_Field{
 	public $post_id;
 	
 	/**
-	 * @var int Current field ID
+	 * @var array Current field data
 	 */
-	public $field_id;
-	
-	/**
-	 * @var int Current field type
-	 */
-	public $field_type;
-	
-	/**
-	 * @var int Current field label
-	 */
-	public $field_label;
-	
-	/**
-	 * @var int Current field default value
-	 */
-	public $field_default = '';
-	
+	public $field;
 	
 	//Consructor
 	public function __construct($post_id, $field){
@@ -38,17 +22,11 @@ class Cf__Mixed extends Class__Custom_Field{
 		parent::__construct();
 		
 		//Set field object properties
-		$this->post_id     = $post_id;
+		$this->post_id = $post_id;
 		
-		$this->field_type  = $field['type'];
-		
-		$this->field_id    = $field['id'];
-		
-		$this->field_label = $field['label'];
-		
-		if(isset($field['default'])){
-			$this->field_default= $field['default'];
-		}
+		$this->field   = $field;
+
+
 	}
 	
 	/**
@@ -56,44 +34,48 @@ class Cf__Mixed extends Class__Custom_Field{
 	 */
 	public function render(){
 		
-		wp_nonce_field( $this->field_id.'_action', $this->field_id.'_nonce' );
+		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
-		$value = $this->field_default;
-		
-		if(get_post_meta( $this->post_id, $this->field_id, true ) ){
+		if(isset($this->field['default'])){
 			
-			$value = esc_attr(get_post_meta( $this->post_id, $this->field_id, true ));
+			$value = $this->field['default'];
 			
 		}
 		
-		$class  = isset( $field['class'] ) && ! is_null( $field['class'] ) ? $field['class'] : 'anony-meta-field';
+		if(get_post_meta( $this->post_id, $this->field['id'], true ) ){
+			
+			$value = esc_attr(get_post_meta( $this->post_id, $this->field['id'], true ));
+			
+		}
 		
-		$readonly  = isset( $field['readonly'] ) && ( $field['readonly'] == true ) ? " readonly" : "";
+		$class  = isset( $this->field['class'] ) && ! is_null( $this->field['class'] ) ? $this->field['class'] : 'anony-meta-field';
 		
-		$disabled  = isset( $field['disabled'] ) && ( $field['disabled'] == true ) ? " disabled" : "";
+		$readonly  = isset( $this->field['readonly'] ) && ( $this->field['readonly'] == true ) ? " readonly" : "";
 		
-		$autocomplete  = (isset( $field['auto-complete']) && $field['auto-complete'] == 'on') ? 'autocomplete="on"' : 'autocomplete="off"';
+		$disabled  = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled" : "";
+		
+		$autocomplete  = (isset( $this->field['auto-complete']) && $this->field['auto-complete'] == 'on') ? 'autocomplete="on"' : 'autocomplete="off"';
 		
 		
 		
 		
 		$html	= sprintf( 
 						'<fieldset class="anony-row" id="fieldset_%1$s">', 
-						$this->field_id
+						$this->field['id']
 					);
 		
 		$html	.= sprintf( 
 						'<label class="anony-label" for="anony_%1$s">%2$s</label>', 
-						$this->field_id, 
-						$this->field_label
+						$this->field['id'], 
+						$this->field['label']
 					);
 
 		$html  .= sprintf( 
 						'<input type="%1$s" class="%2$s" id="anony_%3$s" name="%3$s" value="%5$s" %6$s %7$s %8$s/>', 
-						esc_attr($this->field_type), 
+						esc_attr($this->field['type']), 
 						$class, 
-						$this->field_id, 
-						$this->field_id, 
+						$this->field['id'], 
+						$this->field['id'], 
 						$value, 
 						$readonly, 
 						$disabled,
