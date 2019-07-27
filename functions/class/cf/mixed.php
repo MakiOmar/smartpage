@@ -65,13 +65,13 @@ class Cf__Mixed extends Class__Custom_Field{
 					);
 		
 		$html	.= sprintf( 
-						'<label class="anony-label" for="anony_%1$s">%2$s</label>', 
+						'<label class="anony-label" for="%1$s">%2$s</label>', 
 						$this->field['id'], 
 						$this->field['label']
 					);
 
 		$html  .= sprintf( 
-						'<input type="%1$s" class="%2$s" id="anony_%3$s" name="%3$s" value="%5$s" %6$s %7$s %8$s/>', 
+						'<input type="%1$s" class="%2$s" id="%3$s" name="%3$s" value="%5$s" %6$s %7$s %8$s/>', 
 						esc_attr($this->field['type']), 
 						$class, 
 						$this->field['id'], 

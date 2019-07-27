@@ -54,7 +54,7 @@ class Cf__Upload extends Class__Custom_Field{
 		$html = sprintf('<fieldset class="anony-row" id="fieldset_%1$s">', esc_attr($this->field_id));
 		
 		$html	.= sprintf( 
-						'<label class="anony-label" for="anony_%1$s">%2$s</label>', 
+						'<label class="anony-label" for="%1$s">%2$s</label>', 
 						$this->field_id, 
 						$this->field_label
 					);
