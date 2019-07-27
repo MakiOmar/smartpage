@@ -36,6 +36,8 @@ class Cf__Textarea extends Class__Custom_Field{
 		
 		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
+		$value = '';
+		
 		if(isset($this->field['default'])){
 			
 			$value = $this->field['default'];
@@ -44,7 +46,7 @@ class Cf__Textarea extends Class__Custom_Field{
 		
 		if(get_post_meta( $this->post_id, $this->field['id'], true ) ){
 			
-			$value = esc_attr(get_post_meta( $this->post_id, $this->field['id'], true ));
+			$value = esc_textarea(get_post_meta( $this->post_id, $this->field['id'], true ));
 			
 		}
 		
@@ -72,12 +74,12 @@ class Cf__Textarea extends Class__Custom_Field{
 					);
 
 		$html  .= sprintf( 
-						'<textarea class="anony-%1$s" rows="'.$rows.'" cols="'.$cols.'" id="anony-%2$s" name="anony-%2$s" %3$s %4$s>%5$s</textarea>', 
+						'<textarea class="anony-%1$s" rows="'.$rows.'" cols="'.$cols.'" id="%2$s" name="%2$s" %3$s %4$s>%5$s</textarea>', 
 						$class,
 						$this->field['id'], 
 						$readonly,
 						$disabled,
-						esc_textarea($value)
+						$value
 					);
 		
 		$html	.= '</fieldset>';
