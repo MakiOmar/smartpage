@@ -143,7 +143,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE()) return;
 			
 			if( ( wp_is_post_revision( $post_ID) || wp_is_post_autosave( $post_ID ) ) ) return;
-				
+
 			foreach($this->fields as $field){
 
 				$field_id   = $field['id'];
@@ -151,28 +151,34 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				$field_type = $field['type'];
 
 
-				if ( !isset( $_POST[$field_id] )|| !wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
+				if (!wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
+				
+				//Something like a checkbox is not set if unchecked
+				if(!isset($_POST[$field_id])) {
+					delete_post_meta( $post_ID, $field_id );
+					continue;
+				}
 
-					$current_value = get_post_meta($post_ID , $field_id, true);
+				$current_value = get_post_meta($post_ID , $field_id, true);
 
-					if($current_value === $_POST[$field_id]) continue;
+				if($current_value === $_POST[$field_id]) continue;
 
-					$args = array(
-						'id'            => $field_id,
-						'validation'    => ( isset($field['validate']) ) ? $field['validate'] : null,
-						'new_value'     => $_POST[$field_id],
-						'current_value' => ($current_value) ? $current_value : null ,
-					);
+				$args = array(
+					'id'            => $field_id,
+					'validation'    => ( isset($field['validate']) ) ? $field['validate'] : null,
+					'new_value'     => $_POST[$field_id],
+					'current_value' => ($current_value) ? $current_value : null ,
+				);
 
-					$this->validate = new Class__Validate_Inputs($args);
+				$this->validate = new Class__Validate_Inputs($args);
 
-					if(is_null($this->validate->value)) continue;
+				if(is_null($this->validate->value)) continue;
 
-					if(!empty($this->validate->errors)){
-						$this->errors[] =  $this->validate->errors;
-					}
+				if(!empty($this->validate->errors)){
+					$this->errors[] =  $this->validate->errors;
+				}
 
-					if(!array_key_exists($field_id, $this->validate->errors) ) update_post_meta( $post_ID, $field_id, $this->validate->value );
+				if(!array_key_exists($field_id, $this->validate->errors) ) update_post_meta( $post_ID, $field_id, $this->validate->value );
 
 			}
 
