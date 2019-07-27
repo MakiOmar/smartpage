@@ -31,6 +31,19 @@ add_action('admin_init', function(){
 									'type'     => 'text',
 									'validate' => 'number',
 								),
+		
+								array(
+									'id'       => 'anony__test_post_checkbox',
+									'label'    => esc_html__( 'Test post checkbox', TEXTDOM ),
+									'type'     => 'checkbox',
+									'validate' => 'no_html',
+								),
+								array(
+									'id'       => 'anony__test_post_textarea',
+									'label'    => esc_html__( 'Test post textarea', TEXTDOM ),
+									'type'     => 'textarea',
+									'validate' => 'no_html',
+								),
 
 							),
 	);
