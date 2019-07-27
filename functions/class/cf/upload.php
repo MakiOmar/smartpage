@@ -60,18 +60,20 @@ class Cf__Upload extends Class__Custom_Field{
 					);
 		
 		$html .= sprintf( 
-						'<div class="anony-file-upload-override-button">
-							<a href="#" class="insert-media" data-editor="anony-my-editor">%1$s</a>
-						</div>',
+						'<div id="anony-upload-wrapper">
+							<div class="anony-upload-button">
+								<a href="#" class="insert-media" data-editor="anony-my-editor">%1$s</a>
+							</div>',
 						esc_html__('Select your file',TEXTDOM)
 					);
 		
 		if(!empty($file_url)){
 			   $html .= sprintf(
 				   		'<div id="anony-download-file">
-			   				<span>%1$s<span>%2$s</span>
-							</span>
-							<a href="%3$s">%4$s</a>
+			   				<p id="anony-file-name">%1$s<span>%2$s</span></p>
+							<div class="anony-upload-button anony-upload">
+								<a href="%3$s" class="anony-download-link">%4$s</a>
+							</div>
 						</div>', 
 						esc_html__('Current file:',TEXTDOM),
 						basename($file_url),
@@ -81,7 +83,7 @@ class Cf__Upload extends Class__Custom_Field{
 		}else{
 			$html .= sprintf(
 						'<div id="anony-download-file">
-							<p>'.'<span>%1$s</span></p>
+							<p id="anony-file-name">'.'<span>%1$s</span></p>
 					 	</div>', 
 						esc_html__('No selected file ',TEXTDOM)
 					);
@@ -101,7 +103,7 @@ class Cf__Upload extends Class__Custom_Field{
 						esc_attr($this->field_id)
 					);
 			
-		$html .= '</fieldset>';
+		$html .= '</div></fieldset>';
 		
 		echo $html;
 

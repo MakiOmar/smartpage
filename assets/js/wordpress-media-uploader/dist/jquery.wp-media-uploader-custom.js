@@ -9,12 +9,12 @@ jQuery(document).ready(function($){
 	$('.insert-media').click(function(e){
 		e.preventDefault();
 		$('.anony-current-upload').hide();
-		$('#anony-download-file a').hide();
+		$('.anony-upload').hide();
 	});
 	$('#anony-upload-result').bind("DOMSubtreeModified",function(){
 		var imgUrl = $( ".attachment input[type=hidden]" ).val();
 		var slashIndex = imgUrl.lastIndexOf("/") + 1;
 		var fullfilename = imgUrl.substr(slashIndex);
-		$('#anony-download-file p span').text(fullfilename);
+		$('#anony-file-name span').text(fullfilename);
 	});
 });
