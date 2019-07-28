@@ -53,7 +53,7 @@ class Cf__Checkbox extends Class__Custom_Field{
 		
 		
 		$html	= sprintf( 
-						'<fieldset class="anony-row" id="fieldset_%1$s">', 
+						'<fieldset class="anony-row anony-row-inline" id="fieldset_%1$s">', 
 						$this->field['id'] 
 					);
 		

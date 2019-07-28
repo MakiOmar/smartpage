@@ -44,7 +44,7 @@ class CF__Color extends Class__Custom_Field{
 
 		
 		$html	= sprintf( 
-					'<fieldset class="anony-row" id="anony_fieldset_%1$s">', 
+					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
 					$this->field['id'] 
 					);
 		
