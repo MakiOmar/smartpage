@@ -35,13 +35,13 @@ class Cf__Checkbox extends Class__Custom_Field{
 		
 		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
-		if(get_post_meta( $this->post_id, $this->field['id'], true )){
+		$checked = '';
+		
+		$value = get_post_meta( $this->post_id, $this->field['id'], true );
+		
+		if($value){
 			
-			$checked = checked(get_post_meta( $this->post_id, $this->field['id'], true ), '1', false);
-			
-		}else{
-			
-			$checked = '';
+			$checked = checked($value, '1', false);
 			
 		}
 		
