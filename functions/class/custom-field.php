@@ -254,15 +254,25 @@ if( ! class_exists( 'Class__Custom_Field' )){
 					border-radius: 5px;
 					padding: 5px;
 				}
+				fieldset div{
+					margin: 15px 0;
+				}
 				.anony-row{
 					padding: 15px;
 					border-bottom: 1px solid #e3e1e1;
 					display: flex;
 					align-items: center;
 				}
+					
+				.anony-row-inline{
+					flex-direction: row!important;
+				}
+				.anony-textarea{
+					max-width: 760px;
+				}
 				.anony-label{
 					font-weight: bold;
-					margin: 15px;
+					margin: 15px 0;
 					min-width: 200px;
 				}
 				.anony-download-link{
@@ -270,6 +280,9 @@ if( ! class_exists( 'Class__Custom_Field' )){
 					padding: 10px;
 					text-decoration: none;
 					font-size: 14px;
+					display: block;
+					width: 100%;
+					text-align: center;
 				}
 					
 				.anony-file-upload-container {
@@ -344,6 +357,8 @@ if( ! class_exists( 'Class__Custom_Field' )){
 					text-decoration: none;
 					padding: 10px;
 					display: block;
+					width: 100%;
+					text-align: center;
 				}
 				.insert-media:hover{
 					color: #ffffff;
@@ -384,6 +399,27 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				}
 				.wp-picker-container{
 					display: inline-flex;
+				}
+				@media screen and (max-width:760px){
+					
+					.anony-row, #anony-upload-wrapper,#anony-download-file{
+						flex-direction: column;
+						align-items: initial;
+					}
+					.anony-textarea{
+						max-width: 460px;
+					}
+				}
+				@media screen and (max-width:960px){
+					fieldset div a,fieldset span,fieldset p,button{
+						font-size: 14px!important;
+					}
+				}	
+				@media screen and (min-width:850px){
+					#anony-upload-wrapper,#anony-download-file{
+						flex-direction: column;
+						align-items: center;
+					}
 				}
 			</style>
 			<?php }
