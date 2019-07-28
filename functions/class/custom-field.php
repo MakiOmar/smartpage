@@ -164,8 +164,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				if($current_value === $_POST[$field_id]) continue;
 
 				$args = array(
-					'id'            => $field_id,
-					'validation'    => ( isset($field['validate']) ) ? $field['validate'] : null,
+					'field'            => $field,
 					'new_value'     => $_POST[$field_id],
 					'current_value' => ($current_value) ? $current_value : null ,
 				);
