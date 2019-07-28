@@ -257,10 +257,13 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				.anony-row{
 					padding: 15px;
 					border-bottom: 1px solid #e3e1e1;
+					display: flex;
+					align-items: center;
 				}
 				.anony-label{
 					font-weight: bold;
 					margin: 15px;
+					min-width: 200px;
 				}
 				.anony-download-link{
 					color: #fff;
@@ -359,6 +362,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				}
 				#anony-download-file{
 					display: inline-flex;
+					align-items: center;
 				}
 				#anony-upload-wrapper{
 					justify-content: space-around;
@@ -369,6 +373,17 @@ if( ! class_exists( 'Class__Custom_Field' )){
 					font-size: 16px;
 					font-weight: bold;
 					color: #55bf05;
+					margin: 0 20px;
+				}
+				.farb-popup {
+					position: absolute;
+					background-color: #fff;
+					border: 2px solid #EBECEC;
+					padding: 5px;
+					z-index: 100;
+				}
+				.wp-picker-container{
+					display: inline-flex;
 				}
 			</style>
 			<?php }
