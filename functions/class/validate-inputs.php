@@ -45,12 +45,6 @@ if(!class_exists('Class__Validate_Inputs')){
 		public $field;
 
 		/**
-		 * @var string Field's current value
-		 *
-		 */
-		public $current_value;
-
-		/**
 		 * @var string Field's validation type
 		 *
 		 */
@@ -64,8 +58,6 @@ if(!class_exists('Class__Validate_Inputs')){
 				$this->field = $args['field'];
 				//Set field's value to the one the new value before validation
 				$this->value = $args['new_value'];
-				
-				$this->current_value = $args['current_value'];
 				
 				if(isset($this->field['validate'])){
 					
@@ -165,6 +157,33 @@ if(!class_exists('Class__Validate_Inputs')){
 		}
 		
 		/*
+		* Check through multiple options
+		*/
+		public function valid_multiple_options(){
+			
+			$options_keys = array_keys($this->field['options']);
+			
+			if(is_array($this->value)){
+				
+				$intersection = array_intersect($this->value, $options_keys);
+				
+				if(count($intersection) != count($this->value)){
+					
+					$this->value = null;
+					
+					$this->errors[$this->field['id']] = 'strange-options';
+					
+				}
+			}elseif(!in_array($this->value, $options_keys)){
+				
+				$this->value = null;
+					
+				$this->errors[$this->field['id']] = 'strange-options';
+			}
+			
+		}
+		
+		/*
 		*accept html within input
 		*/
 		public function valid_html(){
@@ -183,7 +202,7 @@ if(!class_exists('Class__Validate_Inputs')){
 					
 					if(sanitize_text_field($key) != $key){
 						
-						$this->value = !is_null($this->current_value) ? $this->current_value : '';
+						$this->value = null;
 						$this->errors[$this->field['id']] = 'remove-html';
 						break;
 					}
@@ -193,7 +212,7 @@ if(!class_exists('Class__Validate_Inputs')){
 			}else{
 					if(sanitize_text_field($this->value) != $this->value){
 
-					$this->value = !is_null($this->current_value) ? $this->current_value : '';
+					$this->value = null;
 
 					$this->errors[$this->field['id']] = 'remove-html';
 				}
@@ -210,7 +229,7 @@ if(!class_exists('Class__Validate_Inputs')){
 							
 			if(!is_email($this->value)){
 
-				$this->value = !is_null($this->current_value) ? $this->current_value: '';
+				$this->value = null;
 
 				$this->errors[$this->field['id']] = 'not-email';
 			}
@@ -227,7 +246,7 @@ if(!class_exists('Class__Validate_Inputs')){
 			
 			if (filter_var($this->value, FILTER_VALIDATE_URL) == false) {
 				
-				$this->value = !is_null($this->current_value) ? $this->current_value: '';
+				$this->value = null;
 				
 				$this->errors[$this->field['id']] = 'not-url';
 				
@@ -248,10 +267,8 @@ if(!class_exists('Class__Validate_Inputs')){
 			if(empty($this->value))return;
 			
 			if(preg_replace('/[0-9\.\-]/', '', $this->value) != ""){
-				
-				$this->current_value = (preg_replace('/[0-9\.\-]/', '', $this->current_value) != "" && !is_null($this->current_value))? $this->current_value :  '';
 
-				$this->value = $this->current_value;
+				$this->value = null;
 				
 				$this->errors[$this->field['id']] = 'not-number';
 				
@@ -269,7 +286,7 @@ if(!class_exists('Class__Validate_Inputs')){
 			if(empty($this->value))return;
 			
 			if(!ctype_digit($this->value)) {
-				$this->value = !is_null($this->current_value) ? $this->current_value: '';
+				$this->value = null;
 				
 				$this->errors[$this->field['id']] = 'not-abs';
 			}
@@ -303,7 +320,7 @@ if(!class_exists('Class__Validate_Inputs')){
 			
 			if ( !$check_hex || $check_hex === 0 ) { // if user insert a HEX color with #   
 				
-				$this->value = !is_null($this->current_value) ? $this->current_value: '';
+				$this->value = null;
 				
 				$this->errors[$this->field['id']] = 'not-hex';
 				
@@ -393,6 +410,18 @@ if(!class_exists('Class__Validate_Inputs')){
 					return sprintf(
 						wp_kses(
 							__('<strong>%s field error:</strong> You must enter a valid hex color', TEXTDOM), 
+							$accepted_tags
+							   ), 
+						$field_title
+					);
+					
+					break;
+					
+				case "strange-options":
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> Unvalid option/s', TEXTDOM), 
 							$accepted_tags
 							   ), 
 						$field_title
