@@ -62,7 +62,7 @@ add_action('admin_init', function(){
 									'id'           => 'anony__test_post_select',
 									'label'        => esc_html__( 'Test post select', TEXTDOM ),
 									'type'         => 'select',
-									'validate'     => 'no_html',
+									'validate'     => 'multiple_options',
 									'multiple'     => true,
 									'autocomplete' => 'off',
 									'options'      => array(
