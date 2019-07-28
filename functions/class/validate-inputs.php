@@ -175,13 +175,28 @@ if(!class_exists('Class__Validate_Inputs')){
 		*Remove html within input
 		*/
 		public function valid_no_html(){
+			if(is_array($this->value)){
 				
-			if(sanitize_text_field($this->value) != $this->value){
+				foreach($this->value as $key => $value){
+					
+					if(sanitize_text_field($key) != $key){
+						
+						$this->value = !is_null($this->current_value) ? $this->current_value : '';
+						$this->errors[$this->field_id] = 'remove-html';
+						break;
+					}
+					
+				}
 				
-				$this->value = !is_null($this->current_value) ? $this->current_value : '';
-				
-				$this->errors[$this->field_id] = 'remove-html';
-			}
+			}else{
+					if(sanitize_text_field($this->value) != $this->value){
+
+					$this->value = !is_null($this->current_value) ? $this->current_value : '';
+
+					$this->errors[$this->field_id] = 'remove-html';
+				}
+			}	
+			
 			
 		}
 		
