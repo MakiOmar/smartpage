@@ -1,8 +1,7 @@
 <?php 
 /**
- * Multi-input types render class. 
+ * Textarea render class. 
  *
- * Handles rendring these type ['text','number','email', 'password','url']
  */
 
 class Cf__Textarea extends Class__Custom_Field{
