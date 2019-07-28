@@ -29,6 +29,7 @@ $theme_constants = array(
 	'THEME_VERSION' => '1.0',
 	'THEME_URI'     => get_template_directory_uri(),
 	'LIBS_URI'      => get_template_directory_uri(). '/functions',
+	'CLASSES_URI'   => get_template_directory_uri(). '/functions/class',
 	'TEXTDOM'       => strtolower(THEME_NAME),
 	'LANG_DIR'      => wp_normalize_path(THEME_DIR. '/languages/'),
 	'STAR_RATE'     => $GLOBALS['wpdb']->prefix . 'star_rating' ,
