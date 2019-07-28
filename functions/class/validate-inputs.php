@@ -39,10 +39,10 @@ if(!class_exists('Class__Validate_Inputs')){
 		public $limits = '';
 
 		/**
-		 * @var string Field ID
+		 * @var array field data
 		 *
 		 */
-		public $field_id;
+		public $field;
 
 		/**
 		 * @var string Field's current value
@@ -61,16 +61,18 @@ if(!class_exists('Class__Validate_Inputs')){
 		 */
 		public function __construct($args = ''){
 			if(!empty($args)){
+				$this->field = $args['field'];
 				//Set field's value to the one the new value before validation
 				$this->value = $args['new_value'];
-
-				$this->field_id= $args['id'];
 				
 				$this->current_value = $args['current_value'];
-
-				$this->validation = $args['validation'];
 				
-				if(!is_null($this->validation)) $this->validate_inputs();
+				if(isset($this->field['validate'])){
+					
+					$this->validation = $this->field['validate'];
+					
+					$this->validate_inputs();
+				}
 			}
 		}
 		
@@ -182,7 +184,7 @@ if(!class_exists('Class__Validate_Inputs')){
 					if(sanitize_text_field($key) != $key){
 						
 						$this->value = !is_null($this->current_value) ? $this->current_value : '';
-						$this->errors[$this->field_id] = 'remove-html';
+						$this->errors[$this->field['id']] = 'remove-html';
 						break;
 					}
 					
@@ -193,7 +195,7 @@ if(!class_exists('Class__Validate_Inputs')){
 
 					$this->value = !is_null($this->current_value) ? $this->current_value : '';
 
-					$this->errors[$this->field_id] = 'remove-html';
+					$this->errors[$this->field['id']] = 'remove-html';
 				}
 			}	
 			
@@ -210,7 +212,7 @@ if(!class_exists('Class__Validate_Inputs')){
 
 				$this->value = !is_null($this->current_value) ? $this->current_value: '';
 
-				$this->errors[$this->field_id] = 'not-email';
+				$this->errors[$this->field['id']] = 'not-email';
 			}
 			
 			
@@ -227,7 +229,7 @@ if(!class_exists('Class__Validate_Inputs')){
 				
 				$this->value = !is_null($this->current_value) ? $this->current_value: '';
 				
-				$this->errors[$this->field_id] = 'not-url';
+				$this->errors[$this->field['id']] = 'not-url';
 				
 			}else{
 				
@@ -251,7 +253,7 @@ if(!class_exists('Class__Validate_Inputs')){
 
 				$this->value = $this->current_value;
 				
-				$this->errors[$this->field_id] = 'not-number';
+				$this->errors[$this->field['id']] = 'not-number';
 				
 			}
 			
@@ -269,7 +271,7 @@ if(!class_exists('Class__Validate_Inputs')){
 			if(!ctype_digit($this->value)) {
 				$this->value = !is_null($this->current_value) ? $this->current_value: '';
 				
-				$this->errors[$this->field_id] = 'not-abs';
+				$this->errors[$this->field['id']] = 'not-abs';
 			}
 			
 		}
@@ -287,7 +289,7 @@ if(!class_exists('Class__Validate_Inputs')){
 
 				if(!empty($limits) && !in_array($ext, $limits)){
 
-					$this->errors[$this->field_id] = 'unsupported';
+					$this->errors[$this->field['id']] = 'unsupported';
 
 				}
 
@@ -303,7 +305,7 @@ if(!class_exists('Class__Validate_Inputs')){
 				
 				$this->value = !is_null($this->current_value) ? $this->current_value: '';
 				
-				$this->errors[$this->field_id] = 'not-hex';
+				$this->errors[$this->field['id']] = 'not-hex';
 				
 			}
 
