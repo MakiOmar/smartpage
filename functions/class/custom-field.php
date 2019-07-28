@@ -166,16 +166,15 @@ if( ! class_exists( 'Class__Custom_Field' )){
 				$args = array(
 					'field'            => $field,
 					'new_value'     => $_POST[$field_id],
-					'current_value' => ($current_value) ? $current_value : null ,
 				);
 
 				$this->validate = new Class__Validate_Inputs($args);
 
-				if(is_null($this->validate->value)) continue;
-
 				if(!empty($this->validate->errors)){
 					$this->errors[] =  $this->validate->errors;
 				}
+				
+				if(is_null($this->validate->value)) continue;
 
 				if(!array_key_exists($field_id, $this->validate->errors) ) update_post_meta( $post_ID, $field_id, $this->validate->value );
 
