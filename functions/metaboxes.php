@@ -77,8 +77,21 @@ add_action('admin_init', function(){
 									'id'           => 'anony__test_post_select_single',
 									'label'        => esc_html__( 'Test post select single', TEXTDOM ),
 									'type'         => 'select',
-									'validate'     => 'no_html',
+									'validate'     => 'multiple_options',
 									'autocomplete' => 'off',
+									'options'      => array(
+														'1' => 'a',
+														'2' => 'b',
+														'3' => 'c',
+													),
+									'default'      => '1',
+									
+								),
+								array(
+									'id'           => 'anony__test_post_select_radio',
+									'label'        => esc_html__( 'Test post select radio', TEXTDOM ),
+									'type'         => 'radio',
+									'validate'     => 'multiple_options',
 									'options'      => array(
 														'1' => 'a',
 														'2' => 'b',
