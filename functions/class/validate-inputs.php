@@ -278,6 +278,24 @@ if(!class_exists('Class__Validate_Inputs')){
 
 		}
 		
+		public function valid_hex_color(){
+			
+			if(empty($this->value))return;
+			
+			$check_hex = preg_match( '/^#[a-f0-9]{6}$/i', $this->value );
+			
+			if ( !$check_hex || $check_hex === 0 ) { // if user insert a HEX color with #   
+				
+				$this->value = !is_null($this->current_value) ? $this->current_value: '';
+				
+				$this->errors[$this->field_id] = 'not-hex';
+				
+			}
+
+			return false;
+
+		}
+		
 		public function anony_get_error_msg($code, $field_title){
 			if (empty($code)) return;
 			$accepted_tags = array('strong'=>array());
@@ -341,11 +359,23 @@ if(!class_exists('Class__Validate_Inputs')){
 					
 					break;
 					
-				case "'not-abs'":
+				case "not-abs":
 					
 					return sprintf(
 						wp_kses(
 							__('<strong>%s field error:</strong> You must enter an absolute integer', TEXTDOM), 
+							$accepted_tags
+							   ), 
+						$field_title
+					);
+					
+					break;
+					
+				case "not-hex":
+					
+					return sprintf(
+						wp_kses(
+							__('<strong>%s field error:</strong> You must enter a valid hex color', TEXTDOM), 
 							$accepted_tags
 							   ), 
 						$field_title
