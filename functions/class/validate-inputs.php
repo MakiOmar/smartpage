@@ -167,7 +167,7 @@ if(!class_exists('Class__Validate_Inputs')){
 		*/
 		public function valid_html(){
 			
-			$this->value =  wp_kses_post($this->field_id);
+			$this->value =  wp_kses_post($this->value);
 			
 		}
 		
