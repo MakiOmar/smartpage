@@ -58,6 +58,35 @@ add_action('admin_init', function(){
 									'validate' => 'html',
 									'options'  => array('drag_drop_upload' => true),
 								),
+								array(
+									'id'           => 'anony__test_post_select',
+									'label'        => esc_html__( 'Test post select', TEXTDOM ),
+									'type'         => 'select',
+									'validate'     => 'no_html',
+									'multiple'     => true,
+									'autocomplete' => 'off',
+									'options'      => array(
+														'1' => 'a',
+														'2' => 'b',
+														'3' => 'c',
+													),
+									'default'      => '2',
+									
+								),
+								array(
+									'id'           => 'anony__test_post_select_single',
+									'label'        => esc_html__( 'Test post select single', TEXTDOM ),
+									'type'         => 'select',
+									'validate'     => 'no_html',
+									'autocomplete' => 'off',
+									'options'      => array(
+														'1' => 'a',
+														'2' => 'b',
+														'3' => 'c',
+													),
+									'default'      => '1',
+									
+								),
 
 							),
 	);
