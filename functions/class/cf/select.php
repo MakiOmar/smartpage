@@ -64,7 +64,7 @@ class Cf__Select extends Class__Custom_Field{
 				
 		$class  = isset( $this->field['class'] ) && ! is_null( $this->field['class'] ) ? $this->field['class'] : 'anony-meta-field';
 		
-		$multiple  = isset( $this->field['multiple'] ) && ( $this->field['multiple'] == true ) ? " multiple " : "";
+		$multiple  = (!$single) ? " multiple " : "";
 
 		$disabled  = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled" : "";
 		
@@ -92,7 +92,7 @@ class Cf__Select extends Class__Custom_Field{
 					$autocomplete
 				);
 		
-        if( $multiple == '' ) :
+        if( $single ) :
 
         foreach ( $this->field['options'] as $key => $label ) {
             $html .= sprintf( 
