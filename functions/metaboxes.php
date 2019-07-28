@@ -51,6 +51,13 @@ add_action('admin_init', function(){
 									'validate' => 'hex_color',
 									'default' => '#222',
 								),
+								array(
+									'id'       => 'anony__test_post_wysiwyg',
+									'label'    => esc_html__( 'Test post wysiwyg', TEXTDOM ),
+									'type'     => 'wysiwyg',
+									'validate' => 'html',
+									'options'  => array('drag_drop_upload' => true),
+								),
 
 							),
 	);
