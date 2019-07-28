@@ -41,7 +41,7 @@ class Field__Color extends Class__Theme_Settings{
 	}
 	
 		/**
-	 * Enqueue Function.
+	 * Enqueue scripts.
 	 */
 	function enqueue(){
 		wp_enqueue_script('anony-opts-field-color-js', ANONY_OPTIONS_URI.'fields/color/field_color.js', array('jquery', 'farbtastic'), time(), true);

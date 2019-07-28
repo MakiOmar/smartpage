@@ -38,7 +38,7 @@ class Field__Upload extends Class__Theme_Settings{
 	}
 
     /**
-     * Enqueue Function.
+     * Enqueue scripts.
     */
     function enqueue() {
         $wp_version = floatval( get_bloginfo( 'version' ) );

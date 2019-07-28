@@ -33,7 +33,7 @@ class Field__Sliderbar extends Class__Theme_Settings{
 	
 	
 		/**
-	 * Enqueue Function.
+	 * Enqueue scripts.
 	 */
 	function enqueue(){
 		

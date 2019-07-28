@@ -36,6 +36,8 @@ class Cf__Mixed extends Class__Custom_Field{
 		
 		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
+		$value = '';
+		
 		if(isset($this->field['default'])){
 			
 			$value = $this->field['default'];

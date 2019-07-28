@@ -59,7 +59,7 @@ class Field__Multi_text extends Class__Theme_Settings{
 	
 	
 	/**
-	 * Enqueue Function.
+	 * Enqueue scripts.
 	 */
 	function enqueue(){
 		

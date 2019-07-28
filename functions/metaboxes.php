@@ -44,6 +44,13 @@ add_action('admin_init', function(){
 									'type'     => 'textarea',
 									'validate' => 'no_html',
 								),
+								array(
+									'id'       => 'anony__test_post_color',
+									'label'    => esc_html__( 'Test post color', TEXTDOM ),
+									'type'     => 'color',
+									'validate' => 'hex_color',
+									'default' => '#222',
+								),
 
 							),
 	);

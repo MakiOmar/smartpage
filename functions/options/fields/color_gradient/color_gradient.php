@@ -61,7 +61,7 @@ class Field__Color_gradient extends Class__Theme_Settings{
 	
 	
 	/**
-	 * Enqueue Function.
+	 * Enqueue scripts.
 	 *
 	 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 	 *

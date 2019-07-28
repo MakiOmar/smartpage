@@ -11,19 +11,9 @@ class Cf__Upload extends Class__Custom_Field{
 	public $post_id;
 	
 	/**
-	 * @var int Current field ID
+	 * @var array Current field data
 	 */
-	public $field_id;
-	
-	/**
-	 * @var int Current field type
-	 */
-	public $field_type;
-	
-	/**
-	 * @var int Current field label
-	 */
-	public $field_label;
+	public $field;
 	
 	//Consructor
 	public function __construct($post_id, $field){
@@ -31,32 +21,29 @@ class Cf__Upload extends Class__Custom_Field{
 		parent::__construct();
 		
 		//Set field object properties
-		$this->post_id     = $post_id;
+		$this->post_id = $post_id;
 		
-		$this->field_type  = $field['type'];
-		
-		$this->field_id    = $field['id'];
-		
-		$this->field_label = $field['label'];
+		$this->field   = $field;
+
 
 	}
 	
 	public function render(){
 		
-		wp_nonce_field( $this->field_id.'_action', $this->field_id.'_nonce' );
+		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
-		$file_url = get_post_meta( $this->post_id, $this->field_id, true );
+		$file_url = get_post_meta( $this->post_id, $this->field['id'], true );
 
 		if(is_array($file_url)){
-			delete_post_meta( $this->post_id, $this->field_id );
+			delete_post_meta( $this->post_id, $this->field['id'] );
 		}
 		
-		$html = sprintf('<fieldset class="anony-row" id="fieldset_%1$s">', esc_attr($this->field_id));
+		$html = sprintf('<fieldset class="anony-row" id="fieldset_%1$s">', esc_attr($this->field['id']));
 		
 		$html	.= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
-						$this->field_id, 
-						$this->field_label
+						$this->field['id'], 
+						$this->field['label']
 					);
 		
 		$html .= sprintf( 
@@ -100,7 +87,7 @@ class Cf__Upload extends Class__Custom_Field{
 
 						<!-- Results placeholder -->
 						<div id="anony-upload-result"></div>', 
-						esc_attr($this->field_id)
+						esc_attr($this->field['id'])
 					);
 			
 		$html .= '</div></fieldset>';

@@ -64,7 +64,7 @@ class Field__Tabs extends Class__Theme_Settings{
 	}
 	
 		/**
-	 * Enqueue Function.
+	 * Enqueue scripts.
 	 */
 	function enqueue(){
 		wp_enqueue_script('anony-opts-field-tabs-js', Theme_Settings_URI.'fields/tabs/field_tabs.js', array('jquery'), time(), true);
