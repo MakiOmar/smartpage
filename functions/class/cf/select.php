@@ -37,17 +37,28 @@ class Cf__Select extends Class__Custom_Field{
 		
 		$value = '';
 		
+		$single = true;
+		
 		if(isset($this->field['default'])){
 			
 			$value = $this->field['default'];
 			
 		}
 		
-		$single = true;
+		
+		$class        = isset( $this->field['class'] ) && ! is_null( $this->field['class'] ) ? $this->field['class'] : 'anony-meta-field';
+		
+		$disabled     = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled" : "";
+		
+		$autocomplete = (isset( $this->field['auto-complete']) && $this->field['auto-complete'] == 'on') ? 'autocomplete="on"' : 'autocomplete="off"';
+				
+		$name 	      = isset( $this->field['multiple'] ) && ( $this->field['multiple'] == true ) ? $this->field['id'] . '[]' : $this->field['id'];
 		
 		if (isset( $this->field['multiple'] ) && ( $this->field['multiple'] == true )) $single = false;
 		
-		if(get_post_meta( $this->post_id, $this->field['id'], $single ) ){
+		$multiple  = (!$single) ? " multiple " : "";
+		
+		if(get_post_meta( $this->post_id, $this->field['id']) ){
 			
 			if($single){
 
@@ -61,16 +72,7 @@ class Cf__Select extends Class__Custom_Field{
 			
 			
 		}
-				
-		$class  = isset( $this->field['class'] ) && ! is_null( $this->field['class'] ) ? $this->field['class'] : 'anony-meta-field';
-		
-		$multiple  = (!$single) ? " multiple " : "";
-
-		$disabled  = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled" : "";
-		
-		$autocomplete  = (isset( $this->field['auto-complete']) && $this->field['auto-complete'] == 'on') ? 'autocomplete="on"' : 'autocomplete="off"';
-				
-		$name 	   = isset( $this->field['multiple'] ) && ( $this->field['multiple'] == true ) ? $this->field['id'] . '[]' : $this->field['id'];
+	
 
 		$html	= sprintf( 
 					'<fieldset class="anony-row" id="anony_fieldset_%1$s">', 
