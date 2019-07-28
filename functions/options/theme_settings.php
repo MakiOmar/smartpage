@@ -319,14 +319,12 @@ if (!class_exists('Class__Theme_Settings')) {
 							$fieldTitle = $field['title'];
 							
 							$args = array(
-								'id'            => $fieldID,
-								'validation'    => isset($field['validate'])? $field['validate'] : '',
+								'field'            => $field,
 								'new_value'     => $notValidated[$fieldID],
-								'current_value' => (isset($this->options->$fieldID)) ? $this->options->$fieldID : null,
 							);
 							
 							
-							$currentValue = $args['current_value'];
+							$currentValue = $this->options->$fieldID;
 
 							if($currentValue === $notValidated[$fieldID]) {
 								
