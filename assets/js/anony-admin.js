@@ -4,7 +4,4 @@ jQuery(document).ready(function($){
 	var fileName = $(this).val().replace('C:\\fakepath\\', '');
 	$("#anony-file-upload-filename").html(fileName);
 	});
-	  if ($('#anony-upload-result').html() !== '') {
-		  console.log($('#anony-upload-result').html());
-	  }
 });
