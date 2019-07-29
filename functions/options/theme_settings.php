@@ -116,6 +116,9 @@ if (!class_exists('Class__Theme_Settings')) {
 		public function hooks(){
 			//Styles for options in front end
 			add_action('wp_head', array(&$this, 'anony_frontend_styles'));
+			
+			//Load page scripts
+			add_action('admin_enqueue_scripts', array(&$this, 'anony_page_scripts'));
 				
 			//options page
 			add_action('admin_menu', array(&$this, 'anony_options_page'));
@@ -193,10 +196,9 @@ if (!class_exists('Class__Theme_Settings')) {
 				$this->args['page_slug'], 
 				array(&$this, 'anony_options_page_html')
 			);
-			/*
-			*Load page scripts
-			*/
-			add_action('admin_print_styles-'.$this->page, array(&$this, 'anony_page_scripts'));
+			
+			//Head styles
+			add_action('admin_print_styles-'.$this->page, array(&$this, 'anony_admin_styles'));
 		}
 		
 		/*
@@ -372,7 +374,7 @@ if (!class_exists('Class__Theme_Settings')) {
 			}
 			if(!empty($this->errors)){
 				// add settings saved message with the class of "updated"
-				add_settings_error( $this->args['opt_name'], esc_attr( 'anony_settings_errors' ), esc_html__('Please fix these errors', TEXTDOM), 'updated' );
+				add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'] ), esc_html__('Options are saved except those with the following errors', TEXTDOM), 'error' );
 
 				foreach($this->errors as $error){
 					foreach($error as $field_id => $code){
@@ -382,7 +384,7 @@ if (!class_exists('Class__Theme_Settings')) {
 
 			}else{
 				// add settings saved message with the class of "updated"
-				add_settings_error( $this->args['opt_name'], esc_attr( 'anony_settings_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
+				add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'].'_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
 			}
 
 			/*neat_var_dump($this->errors);
@@ -446,57 +448,76 @@ if (!class_exists('Class__Theme_Settings')) {
 
 				</form>
 			</div>
-<?php
-}
+		<?php
+		}
 		
 		/**
 		 * Page scripts registration.
 		 */		
 		public function anony_page_scripts(){
-			wp_register_style( 'anony-options-css', ANONY_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
+			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){
 			
-			wp_enqueue_style( 'anony-options-css' );
-			
-			if(is_rtl()){
-				wp_register_style( 'anony-options-rtl-css', ANONY_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
-				wp_enqueue_style( 'anony-options-rtl-css' );
-			}
-			
-			if(!is_rtl()){
-				$enGoogleFonts = array(
-					'Gugi'  => 'https://fonts.googleapis.com/css?family=Gugi', 
-					'Anton' => 'https://fonts.googleapis.com/css?family=Anton',
-					'Exo'   => 'https://fonts.googleapis.com/css?family=Exo',
-				);
-				
-				foreach($enGoogleFonts as $name => $link){
-					wp_enqueue_style( $name, $link, array(), time(), 'all');
+				wp_register_style( 'anony-options-css', ANONY_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
+
+				wp_enqueue_style( 'anony-options-css' );
+
+				if(is_rtl()){
+					wp_register_style( 'anony-options-rtl-css', ANONY_OPTIONS_URI.'css/options-rtl.css', array(), time(), 'all');
+					wp_enqueue_style( 'anony-options-rtl-css' );
 				}
-				
-			}
-			
-			wp_enqueue_script( 'anony-options-js', ANONY_OPTIONS_URI.'js/options.js', array('jquery', 'backbone'), time(), true);
-			
-			foreach($this->sections as $k => $section){
-				
-				if(isset($section['fields'])){
-					
-					foreach($section['fields'] as $fieldKey => $field){
-						
-						if(isset($field['type'])){
-							
-							$field_class = 'Field__'.ucfirst($field['type']);
-					
-							if(class_exists($field_class) && method_exists($field_class, 'enqueue')){
-								$enqueue = new $field_class('','',$this);
-								$enqueue->enqueue();
-							}
-							
-						}
-						
+
+				if(!is_rtl()){
+					$enGoogleFonts = array(
+						'Gugi'  => 'https://fonts.googleapis.com/css?family=Gugi', 
+						'Anton' => 'https://fonts.googleapis.com/css?family=Anton',
+						'Exo'   => 'https://fonts.googleapis.com/css?family=Exo',
+					);
+
+					foreach($enGoogleFonts as $name => $link){
+						wp_enqueue_style( $name, $link, array(), time(), 'all');
 					}
-				
+
 				}
+
+				wp_enqueue_script( 'anony-options-js', ANONY_OPTIONS_URI.'js/options.js', array('jquery', 'backbone'), time(), true);
+
+				foreach($this->sections as $k => $section){
+
+					if(isset($section['fields'])){
+
+						foreach($section['fields'] as $fieldKey => $field){
+
+							if(isset($field['type'])){
+
+								$field_class = 'Field__'.ucfirst($field['type']);
+
+								if(class_exists($field_class) && method_exists($field_class, 'enqueue')){
+									$enqueue = new $field_class('','',$this);
+									$enqueue->enqueue();
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+			}
+		}
+		
+		/**
+		 * Registers option related widgets
+		 */
+		public function anony_register_widgets(){
+			
+			foreach($this->widgets as $widget){
+				
+				add_action('widgets_init', function () use($widget){
+	
+					register_widget($widget);
+
+				});
 				
 			}
 		}
@@ -515,21 +536,23 @@ if (!class_exists('Class__Theme_Settings')) {
 		<?php }
 		
 		/**
-		 * Registers option related widgets
+		 * Adds styles related to some options in admin
 		 */
-		public function anony_register_widgets(){
+		public function anony_admin_styles(){ 
+			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){?>
+				<style type="text/css">
+				#setting-error-<?php echo ANONY_OPTIONS ?>{
+					background-color: #d1354b;
+					color: #fff;
+				}
+				#setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss, #setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss:before{
+					color: #fff;
+				}
+			</style>
+			<?php }
+
 			
-			foreach($this->widgets as $widget){
-				
-				add_action('widgets_init', function () use($widget){
-	
-					register_widget($widget);
-
-				});
-				
-			}
 		}
-
 	}
 }
 ?>
