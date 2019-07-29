@@ -85,7 +85,8 @@ if (!class_exists('Class__Options_Model')) {
         public function save() {
             return update_option($this->option_group, $this->options_arr);
         }
-        /**
+        
+		/**
          * save the current option values into database
          * @param array $option_arr
          * @return bool result of update option function
@@ -168,17 +169,6 @@ if (!class_exists('Class__Options_Model')) {
          */
         public function get_all_options_in_database() {
             return get_option($this->option_group);
-        }
-        
-        /**
-         * validate option
-         * @param $type data type
-         * @param $value will be validate
-         * @return bool
-         */
-        protected static function validate($type, $value) {
-            $validate = new anony_Validator();
-            return $validate->validate($type, $value);
         }
     }
 }
