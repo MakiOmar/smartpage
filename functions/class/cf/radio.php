@@ -47,6 +47,8 @@ class Cf__Radio extends Class__Custom_Field{
 				);
         $html .= '<label class="anony-label">'.$this->field['label'].'</label>';
 		
+		$html .= '<div class="anony-options">';
+		
         foreach ( $this->field['options'] as $key => $label ) {
 			
             $html .= sprintf( 
@@ -69,7 +71,9 @@ class Cf__Radio extends Class__Custom_Field{
 						$label 
 					);
         }
-
+		
+		$html .= '</div>';
+		
         $html .= '</fieldset>';
 		
 		echo $html;
