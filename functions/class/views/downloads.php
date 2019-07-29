@@ -38,7 +38,7 @@ class Views__Downloads extends Class__Generate_Posts_View{
 							$tdPostId = get_the_ID();
 							$tdPostTitle = get_the_title();
 
-							$curr_download_meta = get_post_meta( $tdPostId, 'anony_download_attachment', true );
+							$curr_download_meta = get_post_meta( $tdPostId, 'anony__upload_attachment', true );
 
 							$download_times = get_post_meta($tdPostId,'download_times',true);
 
