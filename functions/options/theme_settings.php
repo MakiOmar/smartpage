@@ -11,6 +11,11 @@ if (!class_exists('Class__Theme_Settings')) {
 	class Class__Theme_Settings{
 		
 		/**
+		 * @var array Array of input fields errors. array('field_id' => 'error')
+		 */
+		public $errors = array();
+		
+		/**
 		 * @var string Holds the resulting page's hook_suffix from add_theme_page
 		 */
 		public $page;
@@ -86,36 +91,41 @@ if (!class_exists('Class__Theme_Settings')) {
 			//Set option groups
 			$this->OptionGroup = $this->args['opt_name'].'_group';
 			
+			//get the options for use later on
+			$this->options = opt_init_();
+			
 			//get sections
 			$this->sections = $sections;
 			
 			//widgets sections
 			$this->widgets = $widgets;
 			
+			//set default values
+			$this->anony_default_values();
+			
 			//register widgets
 			$this->anony_register_widgets();
 			
+			$this->hooks();
+			
+		}
+		
+		/**
+		 * Theme options hooks
+		 */
+		public function hooks(){
 			//Styles for options in front end
 			add_action('wp_head', array(&$this, 'anony_frontend_styles'));
-			
-			
+				
 			//options page
 			add_action('admin_menu', array(&$this, 'anony_options_page'));
 			
-			/**
-			 * register anony_settings_init to the admin_init action hook
-			 */
+			//register anony_settings_init to the admin_init action hook
 			add_action('admin_init', array(&$this, 'anony_settings_init'));
-			
-			//set default values
-			$this->anony_default_values();
-
+		
 			//set option with defaults		
 			add_action('after_setup_theme', array(&$this, 'anony_set_default_options'));
-			
-			//get the options for use later on
-			$this->options = opt_init_();
-			
+
 		}
 		
 		/**
@@ -283,7 +293,7 @@ if (!class_exists('Class__Theme_Settings')) {
 						echo '<p class=anony-warning>'.$field['note'].'<p>';
 					}
 					
-					if( get_transient( $fieldID ) ){ 
+					/*if( get_transient( $fieldID ) ){ 
 			
 						foreach(get_transient( $fieldID ) as $msg){?>
 							<p class="anony-error"><?php echo $msg ;?></p>
@@ -292,7 +302,7 @@ if (!class_exists('Class__Theme_Settings')) {
 						delete_transient( $fieldID );
 
 					}
-					
+					*/
 					$render->render();
 				}
 			}
@@ -308,53 +318,75 @@ if (!class_exists('Class__Theme_Settings')) {
 			$validated = array();
 			
 			foreach($this->sections as $secKey => $section){
+				
 				if(isset($section['fields'])){
+					
 					foreach($section['fields'] as $fieldKey => $field){
-						if(isset($field['validate']) && isset($notValidated[$field['id']])){
+						
+						$fieldID = $field['id'];
 							
-							$currentValue = null;
-							
-							$fieldID = $field['id'];
-							
-							$fieldTitle = $field['title'];
-							
+						$fieldTitle = $field['title'];
+						
+						//Current value in database
+						$currentValue = $this->options->$fieldID;
+						
+						//Something like a checkbox is not set if unchecked
+						if(!isset($notValidated[$fieldID])) {
+							$this->options->unset($fieldID);
+							$this->options->save();
+							continue;
+						}
+						
+						if($currentValue === $notValidated[$fieldID]) {
+								
+							$validated[$fieldID] = $currentValue;
+
+							continue;
+						}
+						
+						//First validated value will be equal to the not validated one
+						$validated[$fieldID] = $notValidated[$fieldID];
+						
+						//them check if validation required
+						if(isset($field['validate'])){
+								
 							$args = array(
 								'field'            => $field,
 								'new_value'     => $notValidated[$fieldID],
 							);
 							
-							
-							$currentValue = $this->options->$fieldID;
-
-							if($currentValue === $notValidated[$fieldID]) {
-								
-								$validated[$fieldID] = $currentValue;
-								
-								continue;
-							}
-							
 							$this->validate = new Class__Validate_Inputs($args);
 							
-							if(isset($this->validate->errors[$fieldID])){
-								set_transient($fieldID, $this->validate->errors[$fieldID], 1000);
+							if(!empty($this->validate->errors)){
+								$this->errors[] =  $this->validate->errors;
 							}
 							
-							if(isset($this->validate->warnings[$fieldID])){
-								set_transient($fieldID, $this->validate->warnings[$fieldID], 1000);
-							}
+							if(is_null($this->validate->value)) unset($validated[$fieldID]); continue;
 							
-							if(is_null($this->validate->value)) continue;
-							
-							$validated[$fieldID] = $this->validate->value;
+							if(!array_key_exists($fieldID, $this->validate->errors) ) $validated[$fieldID] = $this->validate->value;
 							
 						}
 					}
+					
 				}
 			}
+			if(!empty($this->errors)){
+				// add settings saved message with the class of "updated"
+				add_settings_error( $this->args['opt_name'], esc_attr( 'anony_settings_errors' ), esc_html__('Please fix these errors', TEXTDOM), 'updated' );
 
-			// add settings saved message with the class of "updated"
-			add_settings_error( $this->args['opt_name'], esc_attr( 'anony_settings_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
-			
+				foreach($this->errors as $error){
+					foreach($error as $field_id => $code){
+						add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->anony_get_error_msg($code, $field_id), 'error' );
+					}
+				}
+
+			}else{
+				// add settings saved message with the class of "updated"
+				add_settings_error( $this->args['opt_name'], esc_attr( 'anony_settings_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
+			}
+
+			/*neat_var_dump($this->errors);
+					die();*/
 			return $validated;
 		}
 		
@@ -434,7 +466,7 @@ if (!class_exists('Class__Theme_Settings')) {
 				$enGoogleFonts = array(
 					'Gugi'  => 'https://fonts.googleapis.com/css?family=Gugi', 
 					'Anton' => 'https://fonts.googleapis.com/css?family=Anton',
-					'Exo' => 'https://fonts.googleapis.com/css?family=Exo',
+					'Exo'   => 'https://fonts.googleapis.com/css?family=Exo',
 				);
 				
 				foreach($enGoogleFonts as $name => $link){
