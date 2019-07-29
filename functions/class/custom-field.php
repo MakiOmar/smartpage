@@ -152,18 +152,17 @@ if( ! class_exists( 'Class__Custom_Field' )){
 
 				$field_type = $field['type'];
 
-
-				if (!wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
+				$current_value = get_post_meta($post_ID , $field_id, true);
 				
 				//Something like a checkbox is not set if unchecked
 				if(!isset($_POST[$field_id])) {
 					delete_post_meta( $post_ID, $field_id );
 					continue;
 				}
-
-				$current_value = get_post_meta($post_ID , $field_id, true);
-
+				
 				if($current_value === $_POST[$field_id]) continue;
+				
+				if (!wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
 
 				$args = array(
 					'field'            => $field,
