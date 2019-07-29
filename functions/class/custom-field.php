@@ -239,11 +239,16 @@ if( ! class_exists( 'Class__Custom_Field' )){
 		}
 		
 		/**
-		 * Add needed scripts|styles to admin's head
+		 * Enqueue needed scripts|styles
 		 */
 		public function enqueue_scripts(){
 			if(in_array( get_current_screen()->base , array('post') ) ){
-				wp_enqueue_style( 'anony-metaboxs' , get_theme_file_uri('/assets/css/metaboxes.css') , false, filemtime(wp_normalize_path(get_theme_file_path('/assets/css/metaboxes.css'))) );
+				wp_enqueue_style( 
+					'anony-metaboxs' , 
+					get_theme_file_uri('/assets/css/metaboxes.css') , 
+					false, 
+					filemtime(wp_normalize_path(get_theme_file_path('/assets/css/metaboxes.css'))) 
+				);
 			}
 			
 		}	
