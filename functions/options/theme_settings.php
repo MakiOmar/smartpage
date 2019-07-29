@@ -541,14 +541,14 @@ if (!class_exists('Class__Theme_Settings')) {
 		public function anony_admin_styles(){ 
 			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){?>
 				<style type="text/css">
-				#setting-error-<?php echo ANONY_OPTIONS ?>{
-					background-color: #d1354b;
-					color: #fff;
-				}
-				#setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss, #setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss:before{
-					color: #fff;
-				}
-			</style>
+					#setting-error-<?php echo ANONY_OPTIONS ?>{
+						background-color: #d1354b;
+						color: #fff;
+					}
+					#setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss, #setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss:before{
+						color: #fff;
+					}
+				</style>
 			<?php }
 
 			
