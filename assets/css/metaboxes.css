@@ -1,4 +1,21 @@
-input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea{
+[id*='anony-meta-'] input[type="checkbox"], 
+[id*='anony-meta-'] input[type="color"], 
+[id*='anony-meta-'] input[type="date"], 
+[id*='anony-meta-'] input[type="datetime-local"], 
+[id*='anony-meta-'] input[type="datetime"], 
+[id*='anony-meta-'] input[type="email"], 
+[id*='anony-meta-'] input[type="month"], 
+[id*='anony-meta-'] input[type="number"], 
+[id*='anony-meta-'] input[type="password"], 
+[id*='anony-meta-'] input[type="radio"], 
+[id*='anony-meta-'] input[type="search"], 
+[id*='anony-meta-'] input[type="tel"], 
+[id*='anony-meta-'] input[type="text"], 
+[id*='anony-meta-'] input[type="time"], 
+[id*='anony-meta-'] input[type="url"], 
+[id*='anony-meta-'] input[type="week"], 
+[id*='anony-meta-'] select, 
+[id*='anony-meta-'] textarea{
 	border: navajowhite;
 	box-shadow: inset 0 1px 5px rgba(0,0,0,.2);
 	background-color: #fff;
