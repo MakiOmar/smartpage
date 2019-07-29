@@ -12,7 +12,7 @@
 
 add_action('admin_init', function(){
 	$metaBoxes = array(
-		'id'            => 'anony-post-meta',//Meta box ID
+		'id'            => 'anony-meta-download',//Meta box ID
 		'label'         => esc_html__( 'Anonymous custom fields', TEXTDOM ),
 		'context'       => 'normal',
 		'priority'      =>  'high', // high|low
