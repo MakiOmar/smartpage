@@ -71,13 +71,15 @@ if( ! class_exists( 'Class__Custom_Field' )){
 		 * Add metabox hooks.
 		 */
 		public function hooks(){
+			
+			add_action( 'admin_init', array(&$this, 'enqueue_scripts'));
+			
 			add_action( 'add_meta_boxes' , array( $this, 'add_meta_box' ), $this->hook_priority );
 			
 			add_action( 'post_updated', array(&$this, 'update_post_meta'));
 			
 			add_action( 'admin_notices', array(&$this, 'admin_notices') );
-						
-			add_action( 'admin_head', array( $this, 'head_scripts' ) );
+	
 		}
 		
 		/**
@@ -239,188 +241,10 @@ if( ! class_exists( 'Class__Custom_Field' )){
 		/**
 		 * Add needed scripts|styles to admin's head
 		 */
-		public function head_scripts(){
-			if(in_array( get_current_screen()->base , array('post') ) ){?>
-				<style type="text/css">
-				input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea{
-					border: navajowhite;
-					box-shadow: inset 0 1px 5px rgba(0,0,0,.2);
-					background-color: #fff;
-					color: #32373c;
-					outline: 0;
-					transition: 50ms border-color ease-in-out;
-					border-radius: 5px;
-					padding: 5px;
-				}
-				fieldset div{
-					margin: 15px 0;
-				}
-				.anony-row{
-					padding: 15px;
-					border-bottom: 1px solid #e3e1e1;
-					display: flex;
-					align-items: center;
-				}
-					
-				.anony-row-inline{
-					flex-direction: row!important;
-				}
-				.anony-textarea{
-					max-width: 760px;
-				}
-				.anony-label{
-					font-weight: bold;
-					margin: 15px 0;
-					min-width: 200px;
-				}
-				.anony-download-link{
-					color: #fff;
-					padding: 10px;
-					text-decoration: none;
-					font-size: 14px;
-					display: block;
-					width: 100%;
-					text-align: center;
-				}
-					
-				.anony-file-upload-container {
-					width:400px;
-					border: 1px solid #efefef;
-					padding:10px;
-					-webkit-border-radius: 6px;
-					-moz-border-radius: 6px;
-					border-radius: 6px;
-					background: #fbfbfa;
-				}
-				.anony-upload-button {
-					position: relative;
-					overflow: hidden;
-					cursor: pointer;
-					background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
-					background: -moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
-					filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
-					background-color: #79bbff;
-					-moz-border-radius: 6px;
-					-webkit-border-radius: 6px;
-					border-radius: 6px;
-					border: 1px solid #84bbf3;
-					display: inline-flex;
-					color: #ffffff;
-					font-size: 16px;
-					font-weight: bold;
-					text-decoration: none;
-					max-height: 50px;
-				}
-				.anony-upload-button:hover {
-					background-color:#378de5;
-				}
-				.anony-upload-button:hover, .anony-download-link:hover{
-					font-size: 18px;
-					color: #fff;
-				}
-				.anony-upload-button:active {
-					position:relative; top:1px;
-				}
-				
-				.anony-upload-button a:focus,.anony-upload-button a:active{
-					color: #fff;
-				}
-				.anony-upload{
-					display: flex;
-					background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77ea21), color-stop(1, #55bf05) );
-					background-color: rgba(0, 0, 0, 0);
-					background: -moz-linear-gradient( center top, #77ea21 5%, #55bf05 100% );
-					filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#77ea21', endColorstr='#55bf05');
-					background-color: #77ea21;
-					margin: 5px;
-				}
-				.anony-file-upload-button {
-					position: absolute;
-					height: 50px;
-					top: -10px;
-					left: -10px;
-					cursor: pointer!important;
-					opacity: 0;
-					filter:alpha(opacity=0)!important;
-				}
-				.anony-file-upload-filename {
-					margin-left: 10px;
-					height: auto;
-					padding: 8px;
-				}
-
-				/*insert-media name shouldn't be changed (It is a WordPress built-in class)*/
-				.insert-media{
-					color: #ffffff;
-					text-decoration: none;
-					padding: 10px;
-					display: block;
-					width: 100%;
-					text-align: center;
-				}
-				.insert-media:hover{
-					color: #ffffff;
-				}
-				#anony_download_attachment .inside{
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-				}
-				#anony_download_attachment .inside div{
-					display: inline-block;
-					vertical-align: middle;
-				}
-				#anony-upload-result .attachment{
-					float: none;
-				}
-				#anony-download-file{
-					display: inline-flex;
-					align-items: center;
-				}
-				#anony-upload-wrapper{
-					justify-content: space-around;
-					display: flex;
-					align-items: center;
-				}
-				#anony-file-name{
-					font-size: 16px;
-					font-weight: bold;
-					color: #55bf05;
-					margin: 0 20px;
-				}
-				.farb-popup {
-					position: absolute;
-					background-color: #fff;
-					border: 2px solid #EBECEC;
-					padding: 5px;
-					z-index: 100;
-				}
-				.wp-picker-container{
-					display: inline-flex;
-				}
-				@media screen and (max-width:760px){
-					
-					.anony-row, #anony-upload-wrapper,#anony-download-file{
-						flex-direction: column;
-						align-items: initial;
-					}
-					.anony-textarea{
-						max-width: 460px;
-					}
-				}
-				@media screen and (max-width:960px){
-					fieldset div a,fieldset span,fieldset p,button{
-						font-size: 14px!important;
-					}
-				}	
-				@media screen and (min-width:850px){
-					#anony-upload-wrapper,#anony-download-file{
-						flex-direction: column;
-						align-items: center;
-					}
-				}
-			</style>
-			<?php }
+		public function enqueue_scripts(){
+			if(in_array( get_current_screen()->base , array('post') ) ){
+				wp_enqueue_style( 'anony-metaboxs' , get_theme_file_uri('/assets/css/metaboxes.css') , false, filemtime(wp_normalize_path(get_theme_file_path('/assets/css/metaboxes.css'))) );
+			}
 			
 		}	
 		
