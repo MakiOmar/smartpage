@@ -110,4 +110,36 @@ add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
 
 //controls add query strings to styles
 add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
+
+
+/**
+ * Show ads hooked to custom hook.
+ *
+ * Hook name will be {location}_ad.<br>
+ * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
+ */
+
+add_action('init', function() use($anonyOptions){
+	
+	$anonyADs = array('one', 'two', 'three');
+
+	foreach($anonyADs as $adBlock){
+		
+		 $block = 'ad_block_'.$adBlock;
+		 $blockLoc = $block.'_location';
+		
+		if(isset($anonyOptions->$blockLoc) && !empty($anonyOptions->$blockLoc)){
+			
+			foreach($anonyOptions->$blockLoc as $loc){
+				
+				 add_action($loc.'_ad', function() use($anonyOptions, $block){
+					 echo $anonyOptions->$block;
+				 });
+				
+			 }
+			
+		}
+		 
+	 }
+});
 	

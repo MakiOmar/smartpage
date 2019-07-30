@@ -1,4 +1,12 @@
 <?php
+/**
+ * Options fields and navigation
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 require_once('opts.php');
 
 if(get_option(ANONY_OPTIONS)){
@@ -484,34 +492,3 @@ $sections['miscellanous']= array(
 $widgets = array('Class__Sidebar_Ad');
 
 $Anony_Options = new Class__Theme_Settings( $options_nav, $sections, $widgets );
-
-/*
-*Show ads hooked to custom hook
-*Hook name will be {location}_ad
-*do_action('{location}_ad') should be existed in the desired location
-*Available locations are header, footer, sidebar, post, page
-*/
-
-add_action('init', function() use($anonyOptions){
-	
-	$anonyADs = array('one', 'two', 'three');
-
-	foreach($anonyADs as $adBlock){
-		
-		 $block = 'ad_block_'.$adBlock;
-		 $blockLoc = $block.'_location';
-		
-		if(isset($anonyOptions->$blockLoc) && !empty($anonyOptions->$blockLoc)){
-			
-			foreach($anonyOptions->$blockLoc as $loc){
-				
-				 add_action($loc.'_ad', function() use($anonyOptions, $block){
-					 echo $anonyOptions->$block;
-				 });
-				
-			 }
-			
-		}
-		 
-	 }
-});
