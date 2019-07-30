@@ -77,7 +77,7 @@ class ANONY__Generate_Posts_View{
 	*Display posts list view
 	*/
 	public function postsView(){
-		$className= 'Views__'.ucfirst($this->postsTemplate);
+		$className= 'ANONY_views__'.ucfirst($this->postsTemplate);
 		
 		if(class_exists($className)){
 				

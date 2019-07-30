@@ -1,5 +1,5 @@
 <?php
-class Views__Featured extends ANONY__Generate_Posts_View{
+class ANONY_views__Featured extends ANONY__Generate_Posts_View{
 	
 	public $IfNot = '';
 	
