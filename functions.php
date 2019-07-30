@@ -17,6 +17,7 @@ $anonylibs = [
 	'menus'     		  =>'',
 	'admin'     		  =>'',
 	'media'     		  =>'',
+	'widgets'     		  =>'',
 	'db'        		  =>'',
 	'ajax-comments'       =>'ajax' . DIRS,
 	'tinymce-editor-btns' =>'mce' . DIRS,
