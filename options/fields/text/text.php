@@ -1,5 +1,5 @@
 <?php
-class ANONY_field__Text extends ANONY__Theme_Settings{	
+class ANONY_optf__Text extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

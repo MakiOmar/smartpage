@@ -8,7 +8,7 @@
  */
 
 
-class ANONY_field__Color extends ANONY__Theme_Settings{
+class ANONY_optf__Color extends ANONY__Theme_Settings{
 	
 	/**
 	 * Color field Constructor.

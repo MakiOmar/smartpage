@@ -1,5 +1,5 @@
 <?php
-class ANONY_field__Tabs extends ANONY__Theme_Settings{	
+class ANONY_optf__Tabs extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

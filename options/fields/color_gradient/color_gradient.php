@@ -6,7 +6,7 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-class ANONY_field__Color_gradient extends ANONY__Theme_Settings{	
+class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

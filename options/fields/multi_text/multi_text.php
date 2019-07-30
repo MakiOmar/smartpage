@@ -1,5 +1,5 @@
 <?php
-class ANONY_field__Multi_text extends ANONY__Theme_Settings{	
+class ANONY_optf__Multi_text extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
