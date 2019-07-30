@@ -1,5 +1,5 @@
 <?php
-class Field__Sliderbar extends ANONY__Theme_Settings{	
+class ANONY_field__Sliderbar extends ANONY__Theme_Settings{	
 	
 	
 	/**

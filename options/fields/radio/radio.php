@@ -1,5 +1,5 @@
 <?php
-class Field__Radio extends ANONY__Theme_Settings{	
+class ANONY_field__Radio extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

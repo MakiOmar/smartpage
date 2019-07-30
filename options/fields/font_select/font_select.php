@@ -1,5 +1,5 @@
 <?php
-class Field__Font_select extends ANONY__Theme_Settings{	
+class ANONY_field__Font_select extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
