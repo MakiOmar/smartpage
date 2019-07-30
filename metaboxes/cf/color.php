@@ -4,7 +4,7 @@
  *
  * This color input depends on wp-color-picker
  */
-class CF__Color extends Class__Custom_Field{
+class CF__Color extends Class__Meta_Box{
 	
 	/**
 	 * @var int Current post ID

@@ -1,8 +1,8 @@
 <?php
 	
-if( ! class_exists( 'Class__Custom_Field' )){
+if( ! class_exists( 'Class__Meta_Box' )){
 	
-	class Class__Custom_Field{
+	class Class__Meta_Box{
 		/**
 		 * @var array Array of input fields errors. array('field_id' => 'error')
 		 */

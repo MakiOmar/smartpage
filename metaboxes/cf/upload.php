@@ -4,7 +4,7 @@
  *
  */
 
-class Cf__Upload extends Class__Custom_Field{
+class Cf__Upload extends Class__Meta_Box{
 	/**
 	 * @var int Current post ID
 	 */

@@ -5,7 +5,7 @@
  * Handles rendring these type ['text','number','email', 'password','url']
  */
 
-class Cf__Mixed extends Class__Custom_Field{
+class Cf__Mixed extends Class__Meta_Box{
 	/**
 	 * @var int Current post ID
 	 */

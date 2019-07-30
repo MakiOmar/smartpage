@@ -4,7 +4,7 @@
  *
  */
 
-class Cf__Select extends Class__Custom_Field{
+class Cf__Select extends Class__Meta_Box{
 	/**
 	 * @var int Current post ID
 	 */

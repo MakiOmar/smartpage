@@ -106,5 +106,5 @@ add_action('admin_init', function(){
 	);
 	
 	//Custom fields object
-	$postMetaboxes = new Class__Custom_Field($metaBoxes);
+	$postMetaboxes = new Class__Meta_Box($metaBoxes);
 });
