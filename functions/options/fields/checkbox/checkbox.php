@@ -41,8 +41,8 @@ class Field__Checkbox extends Class__Theme_Settings{
 		if(isset($this->field['options']) && is_array($this->field['options'])){
 			foreach($this->field['options'] as $opt => $title){
 				$checked = (is_array($this->value) && in_array($opt, $this->value)) ? ' checked="checked"' : '';
-				echo '<label>'.$title.'</label>';
-				echo '<input type="checkbox" id="'. $opt .'" name="'. $name.'[]" '.$class.' value="'. $opt .'"'.$checked.'/>';
+				echo '<label class="anony-options-row">'.$title;
+				echo '<input type="checkbox" id="'. $opt .'" name="'. $name.'[]" '.$class.' value="'. $opt .'"'.$checked.'/></label>';
 			}
 			
 		}else{
