@@ -26,6 +26,8 @@ foreach($anonylibs as $anonylib=>$path){
 	require_once( LIBS_DIR . $path . $anonylib.'.php');
 }
 
+
+//Just for testing purposes
 add_action('wp_footer', function(){
 	//neat_print_r(get_option(ANONY_OPTIONS));
 });
