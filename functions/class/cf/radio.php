@@ -47,7 +47,7 @@ class Cf__Radio extends Class__Custom_Field{
 				);
         $html .= '<label class="anony-label">'.$this->field['label'].'</label>';
 		
-		$html .= '<div class="anony-options">';
+		$html .= '<div class="anony-metabox-col">';
 		
         foreach ( $this->field['options'] as $key => $label ) {
 			
