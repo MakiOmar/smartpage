@@ -330,7 +330,7 @@ if(!class_exists('Class__Validate_Inputs')){
 
 		}
 		
-		public function anony_get_error_msg($code, $field_title){
+		public function get_error_msg($code, $field_title){
 			if (empty($code)) return;
 			$accepted_tags = array('strong'=>array());
 			switch($code){

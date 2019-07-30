@@ -101,10 +101,10 @@ if (!class_exists('Class__Theme_Settings')) {
 			$this->widgets = $widgets;
 			
 			//set default values
-			$this->anony_default_values();
+			$this->default_values();
 			
 			//register widgets
-			$this->anony_register_widgets();
+			$this->register_widgets();
 			
 			$this->hooks();
 			
@@ -115,26 +115,26 @@ if (!class_exists('Class__Theme_Settings')) {
 		 */
 		public function hooks(){
 			//Styles for options in front end
-			add_action('wp_head', array(&$this, 'anony_frontend_styles'));
+			add_action('wp_head', array(&$this, 'frontend_styles'));
 			
 			//Load page scripts
-			add_action('admin_enqueue_scripts', array(&$this, 'anony_page_scripts'));
+			add_action('admin_enqueue_scripts', array(&$this, 'page_scripts'));
 				
 			//options page
-			add_action('admin_menu', array(&$this, 'anony_options_page'));
+			add_action('admin_menu', array(&$this, 'options_page'));
 			
-			//register anony_settings_init to the admin_init action hook
-			add_action('admin_init', array(&$this, 'anony_settings_init'));
+			//register settings_init to the admin_init action hook
+			add_action('admin_init', array(&$this, 'settings_init'));
 		
 			//set option with defaults		
-			add_action('after_setup_theme', array(&$this, 'anony_set_default_options'));
+			add_action('after_setup_theme', array(&$this, 'set_default_options'));
 
 		}
 		
 		/**
 		 * Get default options into an array suitable for the settings API
 		 */
-		public function anony_default_values(){		
+		public function default_values(){		
 			$defaults = array();
 			
 			foreach($this->sections as $secKey => $section){
@@ -158,7 +158,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * Set default options if option doesnt exist
 		 */
-		public function anony_set_default_options(){
+		public function set_default_options(){
 			
 			if( empty(get_option($this->args['opt_name']))){
 				delete_option($this->args['opt_name']);
@@ -187,29 +187,29 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * Class Theme Options Page Function, creates main options page.
 		 */
-		public function anony_options_page(){
+		public function options_page(){
 			
 			$this->page = add_theme_page(
 				$this->args['page_title'], 
 				$this->args['menu_title'], 
 				$this->args['page_cap'], 
 				$this->args['page_slug'], 
-				array(&$this, 'anony_options_page_html')
+				array(&$this, 'options_page_html')
 			);
 			
 			//Head styles
-			add_action('admin_print_styles-'.$this->page, array(&$this, 'anony_admin_styles'));
+			add_action('admin_print_styles-'.$this->page, array(&$this, 'admin_styles'));
 		}
 		
 		/*
 		 * Class register settings function
 		 */
-		public function anony_settings_init(){
+		public function settings_init(){
 			// register a new setting for "Anonymous" page
 			register_setting(
 				$this->OptionGroup,
 				$this->args['opt_name'],
-				array(&$this,'anony_options_validate')
+				array(&$this,'options_validate')
 			);
 			
 			foreach($this->sections as $secKey => $section){
@@ -217,7 +217,7 @@ if (!class_exists('Class__Theme_Settings')) {
 				add_settings_section(
 					'anony_'.$secKey.'_section',
 					$section['title'],
-					array(&$this,'anony__section_cb'),
+					array(&$this,'section_cb'),
 					//Make sure to add the same in add_settings_field
 					'anony_'.$secKey.'_section_group'
 				);
@@ -239,7 +239,7 @@ if (!class_exists('Class__Theme_Settings')) {
 							add_settings_field(
 								$fieldKey.'_field',
 								$fieldTitle,
-								array(&$this,'anony__field_input'),
+								array(&$this,'field_input'),
 								//You should pass the page passed to add_settings_section
 								'anony_'.$secKey.'_section_group',
 								'anony_'.$secKey.'_section',
@@ -256,7 +256,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/*
 		 * class settings sections callback function
 		 */
-		public function anony__section_cb($section){
+		public function section_cb($section){
 			
 			$id = preg_match('/anony_(.*)_section/', $section['id'], $m);
 			
@@ -271,7 +271,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/*
 		 * class section fields callback function
 		 */
-		public function anony__field_input($field){
+		public function field_input($field){
 
 			if(isset($field['callback']) && function_exists($field['callback'])){
 
@@ -315,7 +315,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		 * @param  array  $notValidated  array of not validated options sent by options form
 		 * return  array  $validated     array of form values after validation
 		 */
-		public function anony_options_validate($notValidated){
+		public function options_validate($notValidated){
 			
 			$validated = array();
 			
@@ -378,7 +378,7 @@ if (!class_exists('Class__Theme_Settings')) {
 
 				foreach($this->errors as $error){
 					foreach($error as $field_id => $code){
-						add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->anony_get_error_msg($code, $field_id), 'error' );
+						add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->get_error_msg($code, $field_id), 'error' );
 					}
 				}
 
@@ -395,7 +395,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * HTML OUTPUT.
 		 */
-		public function anony_options_page_html(){
+		public function options_page_html(){
 			settings_errors($this->args['opt_name']);
 			//neat_print_r(new WP_Term_Query(array('taxonomy' => 'post_tag')));
 			// check user capabilities
@@ -454,7 +454,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * Page scripts registration.
 		 */		
-		public function anony_page_scripts(){
+		public function page_scripts(){
 			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){
 			
 				wp_register_style( 'anony-options-css', ANONY_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
@@ -509,7 +509,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * Registers option related widgets
 		 */
-		public function anony_register_widgets(){
+		public function register_widgets(){
 			
 			foreach($this->widgets as $widget){
 				
@@ -525,7 +525,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * Adds styles related to some options in front end
 		 */
-		public function anony_frontend_styles(){ ?>
+		public function frontend_styles(){ ?>
 			<style type="text/css">
 				#anony-ads{
 					display: flex;
@@ -538,7 +538,7 @@ if (!class_exists('Class__Theme_Settings')) {
 		/**
 		 * Adds styles related to some options in admin
 		 */
-		public function anony_admin_styles(){ 
+		public function admin_styles(){ 
 			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){?>
 				<style type="text/css">
 					#setting-error-<?php echo ANONY_OPTIONS ?>{

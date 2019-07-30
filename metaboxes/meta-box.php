@@ -229,7 +229,7 @@ if( ! class_exists( 'Class__Meta_Box' )){
 
 							<div class="error <?php echo $field ?>">
 
-								<p><?php echo $validator->anony_get_error_msg($code, $field_title);?>
+								<p><?php echo $validator->get_error_msg($code, $field_title);?>
 
 							</div>
 
