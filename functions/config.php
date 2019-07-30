@@ -52,22 +52,28 @@ foreach($theme_constants as $theme_constant => $v){
 define( 'ANONY_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
 
 /**
- * Holds a path to Custom fileds classes folder
+ * Holds a path to metaboxes class folder
  * @const
  */
-define( 'ANONY_CF_CLASSES', wp_normalize_path (ANONY_CLASSES . '/cf/'));
+define( 'ANONY_METABOXES', wp_normalize_path (LIBS_DIR . '/metaboxes/'));
+
+/**
+ * Holds a path to Custom fields classes folder
+ * @const
+ */
+define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/cf/'));
 
 /**
  * Holds a path to views classes folder
  * @const
  */
-define( 'ANONY_VIEWS_CLASSES', wp_normalize_path (ANONY_CLASSES . '/views/'));
+define( 'ANONY_CONTENTS_VIEWS', wp_normalize_path (ANONY_CLASSES . '/views/'));
 
 /**
  * Holds a serialized array of all pathes to classes folders
  * @const
  */
-define('ANONY_THEME_AUTOLOADS' ,serialize(array(ANONY_CLASSES, ANONY_CF_CLASSES, ANONY_VIEWS_CLASSES)));
+define('ANONY_THEME_AUTOLOADS' ,serialize(array(ANONY_CLASSES, ANONY_METABOXES, ANONY_CUSTOM_FIELDS, ANONY_CONTENTS_VIEWS)));
 
 /*
 *Classes Auto loader
