@@ -278,7 +278,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			}
 			
 			if(isset($field['type'])){
-				$field_class = 'ANONY_field__'.ucfirst($field['type']);
+				$field_class = 'ANONY_optf__'.ucfirst($field['type']);
 				
 				if(class_exists($field_class)){
 					
@@ -489,7 +489,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 
 							if(isset($field['type'])){
 
-								$field_class = 'ANONY_field__'.ucfirst($field['type']);
+								$field_class = 'ANONY_optf__'.ucfirst($field['type']);
 
 								if(class_exists($field_class) && method_exists($field_class, 'enqueue')){
 									$enqueue = new $field_class('','',$this);
