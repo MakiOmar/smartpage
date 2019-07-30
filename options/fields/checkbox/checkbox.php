@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class Field__Checkbox extends Class__Theme_Settings{	
+class Field__Checkbox extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Checkbox field Constructor.

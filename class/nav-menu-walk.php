@@ -2,7 +2,7 @@
 /**
  * Custom Frontend Main Menu Walker
  */
-class Class__Nav_Menu_Walk extends Walker_Nav_Menu {
+class ANONY__Nav_Menu_Walk extends Walker_Nav_Menu {
 
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$t = "\t";

@@ -1,6 +1,6 @@
 <?php
-if (!class_exists('Class__Options_Model')) {
-    class Class__Options_Model
+if (!class_exists('ANONY__Options_Model')) {
+    class ANONY__Options_Model
     {
         protected $option_group;
          // equivalent 'option_name' of wp_options table. 'option_value' contains all options of the theme
@@ -11,7 +11,7 @@ if (!class_exists('Class__Options_Model')) {
         
         public static function get_instance() {
             if (self::$instance == null) {
-                self::$instance = new Class__Options_Model(ANONY_OPTIONS);
+                self::$instance = new ANONY__Options_Model(ANONY_OPTIONS);
             }
             return self::$instance;
         }

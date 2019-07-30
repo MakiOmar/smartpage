@@ -7,8 +7,8 @@
  * @link http://makiomar.com
  */
 
-if(!class_exists('Class__Validate_Inputs')){
-	class Class__Validate_Inputs{
+if(!class_exists('ANONY__Validate_Inputs')){
+	class ANONY__Validate_Inputs{
 		/**
 		 * @var array Holds an array of fields and there corresponding error code as key/value pairs
 		 */

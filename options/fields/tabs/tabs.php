@@ -1,5 +1,5 @@
 <?php
-class Field__Tabs extends Class__Theme_Settings{	
+class Field__Tabs extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

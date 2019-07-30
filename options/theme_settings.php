@@ -7,8 +7,8 @@
  * @link http://makiomar.com
  */
 
-if (!class_exists('Class__Theme_Settings')) {
-	class Class__Theme_Settings{
+if (!class_exists('ANONY__Theme_Settings')) {
+	class ANONY__Theme_Settings{
 		
 		/**
 		 * @var array Array of input fields errors. array('field_id' => 'error')
@@ -41,12 +41,12 @@ if (!class_exists('Class__Theme_Settings')) {
 		public $widgets = array();
 
 		/**
-		 * @var object Holds an object from Class__Options_Model
+		 * @var object Holds an object from ANONY__Options_Model
 		 */
 		public $options;
 
 		/**
-		 * @var object Holds an object from Class__Validate_Inputs
+		 * @var object Holds an object from ANONY__Validate_Inputs
 		 */
 		public $validate;
 
@@ -357,7 +357,7 @@ if (!class_exists('Class__Theme_Settings')) {
 								'new_value'     => $notValidated[$fieldID],
 							);
 							
-							$this->validate = new Class__Validate_Inputs($args);
+							$this->validate = new ANONY__Validate_Inputs($args);
 							
 							if(!empty($this->validate->errors)){
 								$this->errors[] =  $this->validate->errors;

@@ -8,7 +8,7 @@
  */
 
 
-class Field__Color extends Class__Theme_Settings{
+class Field__Color extends ANONY__Theme_Settings{
 	
 	/**
 	 * Color field Constructor.

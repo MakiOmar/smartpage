@@ -1,5 +1,5 @@
 <?php
-class Field__Radio_img extends Class__Theme_Settings{	
+class Field__Radio_img extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

@@ -1,5 +1,5 @@
 <?php
-class Field__Info extends Class__Theme_Settings{	
+class Field__Info extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

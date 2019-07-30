@@ -27,7 +27,7 @@
 		
 	}
 
-$cps= new Class__Generate_Posts_View(
+$cps= new ANONY__Generate_Posts_View(
 					$args,
 					'standard',
 					true

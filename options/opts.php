@@ -18,7 +18,7 @@
  */
 
 function opt_init_(){
-	return Class__Options_Model::get_instance();
+	return ANONY__Options_Model::get_instance();
 }
 
 //controls add query strings to scripts/styles

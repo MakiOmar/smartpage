@@ -13,8 +13,8 @@
 add_action('widgets_init', function (){
 	
 	$reg_widgets = array(
-		'Class__Cats_Widget',
-		'Class__Related_Posts_Widget',
+		'ANONY__Cats_Widget',
+		'ANONY__Related_Posts_Widget',
 	);
 	
 	foreach($reg_widgets as $reg_widget){

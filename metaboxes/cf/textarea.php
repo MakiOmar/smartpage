@@ -4,7 +4,7 @@
  *
  */
 
-class Cf__Textarea extends Class__Meta_Box{
+class Cf__Textarea extends ANONY__Meta_Box{
 	/**
 	 * @var int Current post ID
 	 */

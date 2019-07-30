@@ -24,7 +24,7 @@
  */
 function anony_main_navigation($location_slug, $container = 'nav'){
 	if ($location_slug == 'main-menu'){
-		$walker = new Class__Nav_Menu_Walk;
+		$walker = new ANONY__Nav_Menu_Walk;
 	}
 	if ( has_nav_menu( $location_slug ) ) {
 		$location_array = explode('-',$location_slug);
@@ -208,7 +208,7 @@ if(opt_init_()->cats_in_nav != '0'){
 						'title_li' => '',
 						'order'=> 'DESC',
 						'echo' => false,
-						'walker' => new Class__Cats_Walk()
+						'walker' => new ANONY__Cats_Walk()
 					   );
 			$item.= wp_list_categories($args);
 			$item.='</ul></li>';

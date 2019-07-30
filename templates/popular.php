@@ -1,5 +1,5 @@
 <?php
-	$tcp= new Class__Generate_Posts_View(
+	$tcp= new ANONY__Generate_Posts_View(
 						array(
 							//NO. of posts you want to show 
 							'posts_per_page' => 4,

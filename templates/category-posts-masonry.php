@@ -30,7 +30,7 @@
 		
 	}
 
-$cpm= new Class__Generate_Posts_View(
+$cpm= new ANONY__Generate_Posts_View(
 					$args,
 					'masonry',
 					true

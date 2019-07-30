@@ -1,5 +1,5 @@
 <?php
-class Field__Pages_select extends Class__Theme_Settings{	
+class Field__Pages_select extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

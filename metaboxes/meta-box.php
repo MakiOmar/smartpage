@@ -1,8 +1,8 @@
 <?php
 	
-if( ! class_exists( 'Class__Meta_Box' )){
+if( ! class_exists( 'ANONY__Meta_Box' )){
 	
-	class Class__Meta_Box{
+	class ANONY__Meta_Box{
 		/**
 		 * @var array Array of input fields errors. array('field_id' => 'error')
 		 */
@@ -178,7 +178,7 @@ if( ! class_exists( 'Class__Meta_Box' )){
 					'new_value'     => $_POST[$field_id],
 				);
 
-				$this->validate = new Class__Validate_Inputs($args);
+				$this->validate = new ANONY__Validate_Inputs($args);
 
 				if(!empty($this->validate->errors)){
 					$this->errors[] =  $this->validate->errors;
@@ -217,7 +217,7 @@ if( ! class_exists( 'Class__Meta_Box' )){
 
 				$errors = get_transient('anony_cf_errors_'.$postType);
 
-				$validator = new Class__Validate_Inputs();
+				$validator = new ANONY__Validate_Inputs();
 
 				if($errors){
 

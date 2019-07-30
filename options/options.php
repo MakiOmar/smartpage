@@ -489,6 +489,6 @@ $sections['miscellanous']= array(
 						),	
 					)
 );
-$widgets = array('Class__Sidebar_Ad');
+$widgets = array('ANONY__Sidebar_Ad');
 
-$Anony_Options = new Class__Theme_Settings( $options_nav, $sections, $widgets );
+$Anony_Options = new ANONY__Theme_Settings( $options_nav, $sections, $widgets );
