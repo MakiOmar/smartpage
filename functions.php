@@ -1,11 +1,6 @@
 <?php
 
-if(!defined('LIBS_DIR')){
-	define('LIBS_DIR', wp_normalize_path ( get_template_directory() . '/functions/'));
-}
-if(!defined('DIRS')){
-	define( 'DIRS', DIRECTORY_SEPARATOR );
-}
+require_once(wp_normalize_path(get_template_directory() . '/config/config.php'));
 
 require_once(wp_normalize_path(LIBS_DIR . 'helper/php-helpers.php'));
 
@@ -16,7 +11,6 @@ require_once(wp_normalize_path('options/options.php'));
 require_once(wp_normalize_path('metaboxes/metaboxes.php'));
 
 $anonylibs = [
-	'config'              =>'',
 	'posts'     		  =>'',
 	'theme'     		  =>'',
 	'menus'     		  =>'',

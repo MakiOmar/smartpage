@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('opts.php');
 
 if(get_option(ANONY_OPTIONS)){
 	$anonyOptions = opt_init_();
