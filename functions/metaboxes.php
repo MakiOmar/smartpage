@@ -12,6 +12,7 @@
 
 add_action('admin_init', function(){
 	$metaBoxes = array(
+		/*Any meta box ID should start with anony-meta- to have correct style*/
 		'id'            => 'anony-meta-download',//Meta box ID
 		'label'         => esc_html__( 'Anonymous custom fields', TEXTDOM ),
 		'context'       => 'normal',
