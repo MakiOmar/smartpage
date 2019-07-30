@@ -16,19 +16,19 @@ require_once(wp_normalize_path('options/options.php'));
 require_once(wp_normalize_path('metaboxes/metaboxes.php'));
 
 $anonylibs = [
-	'config'            =>'',
-	'posts'     		=>'',
-	'theme'     		=>'',
-	'menus'     		=>'',
-	'admin'     		=>'',
-	'media'     		=>'',
-	'db'        		=>'',
-	'ajax-comments'     =>'ajax' . DIRS,
+	'config'              =>'',
+	'posts'     		  =>'',
+	'theme'     		  =>'',
+	'menus'     		  =>'',
+	'admin'     		  =>'',
+	'media'     		  =>'',
+	'db'        		  =>'',
+	'ajax-comments'       =>'ajax' . DIRS,
 	'tinymce-editor-btns' =>'mce' . DIRS,
 ];
 
 foreach($anonylibs as $anonylib=>$path){
-	require_once(LIBS_DIR.$path.$anonylib.'.php');
+	require_once( LIBS_DIR . $path . $anonylib.'.php');
 }
 
 add_action('wp_footer', function(){
