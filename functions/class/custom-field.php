@@ -54,13 +54,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			if(empty($meta_box) || !is_array($meta_box)) return;
 			
 			//Set metabox's data
-			$this->id            = $meta_box['id'];
-			$this->label         = $meta_box['label'];
-			$this->context       = $meta_box['context'];
-			$this->priority      = $meta_box['priority'];
-			$this->hook_priority = isset($meta_box['hook_priority']) ? $meta_box['hook_priority'] : $this->hook_priority;
-			$this->post_type     = $meta_box['post_type'];
-			$this->fields        = $meta_box['fields'];
+			$this->set_metabox_data();
 			
 			//add metabox needed hooks
 			$this->hooks();
@@ -68,13 +62,28 @@ if( ! class_exists( 'Class__Custom_Field' )){
 		}
 		
 		/**
+		 * Set metabox properties.
+		 * @param array $meta_box Array of meta box data
+		 * @return void
+		 */
+		public function set_metabox_data($meta_box){
+			
+			$this->id            = $meta_box['id'];
+			$this->label         = $meta_box['label'];
+			$this->context       = $meta_box['context'];
+			$this->priority      = $meta_box['priority'];
+			$this->hook_priority = isset($meta_box['hook_priority']) ? $meta_box['hook_priority'] : $this->hook_priority;
+			$this->post_type     = $meta_box['post_type'];
+			$this->fields        = $meta_box['fields'];
+		}
+		/**
 		 * Add metabox hooks.
 		 */
 		public function hooks(){
 			
 			add_action( 'admin_init', array(&$this, 'enqueue_scripts'));
 			
-			add_action( 'add_meta_boxes' , array( $this, 'add_meta_box' ), $this->hook_priority );
+			add_action( 'add_meta_boxes' , array( &$this, 'add_meta_box' ), $this->hook_priority );
 			
 			add_action( 'post_updated', array(&$this, 'update_post_meta'));
 			
