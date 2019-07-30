@@ -1,4 +1,8 @@
-.has-switch > div.switch-off{
+.anony-options-row{
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
+has-switch > div.switch-off{
 	left: auto;
 	/*right: -63%;*/
 }

@@ -48,6 +48,35 @@
     font-weight: 100;
     font-style: normal;
 }
+
+[id*='anony-options-'] input[type="checkbox"], 
+[id*='anony-options-'] input[type="color"], 
+[id*='anony-options-'] input[type="date"], 
+[id*='anony-options-'] input[type="datetime-local"], 
+[id*='anony-options-'] input[type="datetime"], 
+[id*='anony-options-'] input[type="email"], 
+[id*='anony-options-'] input[type="month"], 
+[id*='anony-options-'] input[type="number"], 
+[id*='anony-options-'] input[type="password"], 
+[id*='anony-options-'] input[type="radio"], 
+[id*='anony-options-'] input[type="search"], 
+[id*='anony-options-'] input[type="tel"], 
+[id*='anony-options-'] input[type="text"], 
+[id*='anony-options-'] input[type="time"], 
+[id*='anony-options-'] input[type="url"], 
+[id*='anony-options-'] input[type="week"], 
+[id*='anony-options-'] select, 
+[id*='anony-options-'] textarea{
+	border: navajowhite;
+	box-shadow: inset 0 1px 5px rgba(0,0,0,.2);
+	background-color: #fff;
+	color: #32373c;
+	outline: 0;
+	transition: 50ms border-color ease-in-out;
+	border-radius: 10px;
+	padding: 5px;
+}
+
 .icon{
 	margin: 5px;
 }
@@ -61,6 +90,14 @@
 }
 .active{
 	background:#871928;
+}
+.anony-options-row{
+	display: flex;
+	align-items: center;
+}
+.anony-options-row input{
+	margin: 0 5px;
+	border-radius: 2px !important;
 }
 #anony-logo{
 	padding: 27px 10px;
