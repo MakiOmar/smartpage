@@ -7,12 +7,5 @@
  * @link http://makiomar.com
  */
 
-/*-------------------------------------------------------------
- * Media hooks
- *-----------------------------------------------------------*/
-
-//Enqueue media scripts for uploader in anony_download post type
-add_action("admin_enqueue_scripts", function(){
-  
-});
+//Ready for later use
 ?>
