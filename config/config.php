@@ -90,7 +90,7 @@ define('BLOG_URL'      , esc_url(get_bloginfo('url') ));
  * Holds a path to main classes folder
  * @const
  */
-define( 'ANONY_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
+define( 'ANONY_CLASSES', wp_normalize_path (THEME_DIR . '/class/'));
 
 /**
  * Holds a path to metaboxes class folder
