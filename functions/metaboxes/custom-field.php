@@ -54,7 +54,7 @@ if( ! class_exists( 'Class__Custom_Field' )){
 			if(empty($meta_box) || !is_array($meta_box)) return;
 			
 			//Set metabox's data
-			$this->set_metabox_data();
+			$this->set_metabox_data($meta_box);
 			
 			//add metabox needed hooks
 			$this->hooks();
