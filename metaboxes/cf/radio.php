@@ -4,7 +4,7 @@
  *
  */
 
-class Cf__Radio extends ANONY__Meta_Box{
+class ANONY_cf__Radio extends ANONY__Meta_Box{
 	/**
 	 * @var int Current post ID
 	 */

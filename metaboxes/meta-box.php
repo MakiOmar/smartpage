@@ -121,10 +121,10 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 			foreach($this->fields as $field){
 				
 				//Dynamic class name for inputs
-				$class_name = 'Cf__'.ucfirst($field['type']);
+				$class_name = 'ANONY_cf__'.ucfirst($field['type']);
 				
 				//Static class name for inputs that have same HTML markup
-				if(in_array($field['type'], $mixed_types)) $class_name = 'Cf__Mixed';
+				if(in_array($field['type'], $mixed_types)) $class_name = 'ANONY_cf__Mixed';
 				
 				if(class_exists($class_name)){
 					

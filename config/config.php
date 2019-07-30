@@ -123,7 +123,7 @@ spl_autoload_register( 'anony_theme_autoloader' );
 
 /**
  * Theme classes autoloading.
- * **Description: ** Any class should be writtn in the structure of CLASS_{class_name} or CF__{class_name}<br/>
+ * **Description: ** Any class should be writtn in the structure of CLASS_{class_name} or ANONY_cf__{class_name}<br/>
  * **Note: ** Class or CF is optional prefixes, but any prefix should be followed by double underscore, so can get class file name. For example: a class name of XYZ__Class_name is located in file class_name.php.
  * @param  string $class_name
  * @return void

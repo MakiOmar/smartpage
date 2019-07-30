@@ -5,7 +5,7 @@
  * Handles rendring these type ['text','number','email', 'password','url']
  */
 
-class Cf__Mixed extends ANONY__Meta_Box{
+class ANONY_cf__Mixed extends ANONY__Meta_Box{
 	/**
 	 * @var int Current post ID
 	 */

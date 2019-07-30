@@ -4,7 +4,7 @@
  *
  * This color input depends on wp-color-picker
  */
-class CF__Color extends ANONY__Meta_Box{
+class ANONY_cf__Color extends ANONY__Meta_Box{
 	
 	/**
 	 * @var int Current post ID
