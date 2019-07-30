@@ -55,7 +55,7 @@ define( 'ANONY_CLASSES', wp_normalize_path (LIBS_DIR . '/class/'));
  * Holds a path to metaboxes class folder
  * @const
  */
-define( 'ANONY_METABOXES', wp_normalize_path (LIBS_DIR . '/metaboxes/'));
+define( 'ANONY_METABOXES', wp_normalize_path (THEME_DIR . '/metaboxes/'));
 
 /**
  * Holds a path to Custom fields classes folder
