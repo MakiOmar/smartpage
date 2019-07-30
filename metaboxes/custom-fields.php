@@ -89,7 +89,7 @@ add_action('admin_init', function(){
 									
 								),
 								array(
-									'id'           => 'anony__test_post_select_radio',
+									'id'           => 'anony__test_post_radio',
 									'label'        => esc_html__( 'Test post select radio', TEXTDOM ),
 									'type'         => 'radio',
 									'validate'     => 'multiple_options',
@@ -99,6 +99,19 @@ add_action('admin_init', function(){
 														'3' => 'c',
 													),
 									'default'      => '1',
+									
+								),
+								array(
+									'id'           => 'anony__test_post_multi_checkbox',
+									'label'        => esc_html__( 'Test post select multi checkbox', TEXTDOM ),
+									'type'         => 'checkbox',
+									'validate'     => 'multiple_options',
+									'options'      => array(
+														'1' => 'a',
+														'2' => 'b',
+														'3' => 'c',
+													),
+									'default'      => '2',
 									
 								),
 
