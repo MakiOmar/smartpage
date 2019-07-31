@@ -1,4 +1,40 @@
 <?php
+/**
+ * Render select option groups.
+ * @param  array  $options      Array of all options groups.
+ * @param  array  $opts_groups  array of option groups names and there option group lable ['system' => 'option group label']
+ * @param  string $selected     Value to check selected option against
+ * @return string $html         HTML of options groups
+ */
+function anony_render_opts_groups( $options, $opts_groups, $selected ){
+
+	$html = '';
+
+	foreach ($opts_groups as $key => $group_name) {
+
+		if(isset($options[$key])){
+
+			$html = '<optgroup label="'. $group_name .'">';
+
+			foreach ( $options[$key] as $option ) {
+
+				$html .= sprintf(
+							'<option value="%1$s"%2$s>%1$s</option>', 
+							$option, 
+							selected($selected, $option, false)
+						);
+
+			}
+
+			$html .= '</optgroup>';
+
+		}
+
+	}
+
+	return $html;
+}
+
 function Anony_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	
