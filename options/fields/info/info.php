@@ -17,8 +17,7 @@ class ANONY_optf__Info extends ANONY__Theme_Settings{
 	}
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Info field render Function.
 	 *
 	 * @return void
 	 */
