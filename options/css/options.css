@@ -76,7 +76,10 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	border-radius: 10px;
 	padding: 5px;
 }
-
+.anony-input-lable{
+    display: block!important;
+    font-weight: bold;
+}
 .icon{
 	margin: 5px;
 }

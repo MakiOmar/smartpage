@@ -486,6 +486,12 @@ $sections['miscellanous']= array(
 							'type'    => 'switch',
 							'validate'=> 'no_html',
 							'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', TEXTDOM)
+						),
+						array(
+							'id'      => 'color_gradient',
+							'title'   => esc_html__('Color Gradient', TEXTDOM),
+							'type'    => 'color_gradient',
+							'validate'=> 'no_html',
 						),	
 					)
 );

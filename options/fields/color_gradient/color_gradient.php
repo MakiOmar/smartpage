@@ -36,26 +36,88 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 	 */
 	function render(){
 		
-		$class = (isset($this->field['class']))?$this->field['class']:'';
+		$class = (isset($this->field['class']))?$this->field['class'].' ':'';
+
+		$from_style = '';
+		$from_value = '';
 		
-		echo '<div class="farb-popup-wrapper" id="'.$this->field['id'].'">';
+		if(isset($this->value['from'])){
+			$from_style = 'style="background-color:'.$this->value['from'].';"';
+			$from_value = $this->value['from'];
+		}
+
+		$to_style = '';
+		$to_value = '';
+
+		if(isset($this->value['to'])){
+			$to_style = 'style="background-color:'.$this->value['to'].';"';
+			$to_value = $this->value['to'] ;
+		}
+		$html = '<div class="farb-popup-wrapper" id="'.$this->field['id'].'">';		
+
+		$html .= '<fieldset>';
+
+		//from field
+		$html .= sprintf(
+					'<label for="%1$s-from" class="anony-input-lable">%2$s</label>',
+					$this->field['id'], 
+					esc_html( 'From', TEXTDOM )
+				);
+
+		$html .= sprintf(
+					'<input type="text" id="%1$s-from" name="%2$s[%1$s][from]" value="%3$s" class="%4$spopup-colorpicker"/>', 
+					$this->field['id'], 
+					$this->args['opt_name'], 
+					$from_value, 
+					$class
+				);
+			 
 		
-			echo '<fieldset>';
+		$html .= sprintf(
+					'<div class="farb-popup"><div class="farb-popup-inside"><div id="%1$s-frompicker" class="color-picker"></div></div></div>', 
+					$this->field['id']
+				);
+
+		$html .= sprintf(
+					'<div class="color-prev prev-%1$s-from" %2$s rel="%1$s-from"></div>', 
+					$this->field['id'], 
+					$from_style
+				);
+
+		//to field
+		$html .= sprintf(
+					'<label for="%1$s-to" class="anony-input-lable">%2$s</label>',
+					$this->field['id'], 
+					esc_html( 'To', TEXTDOM )
+				);
+
+		$html .= sprintf(
+					'<input type="text" id="%1$s-to" name="%2$s[%1$s][to]" value="%3$s" class="%4$spopup-colorpicker"/>', 
+					$this->field['id'], 
+					$this->args['opt_name'], 
+					$to_value, 
+					$class
+				);
+			 
 		
-				echo '<input type="text" id="'.$this->field['id'].'-from" name="'.$this->args['opt_name'].'['.$this->field['id'].'][from]" value="'.$this->value['from'].'" class="'.$class.' popup-colorpicker"/>';
-				echo '<div class="farb-popup"><div class="farb-popup-inside"><div id="'.$this->field['id'].'-frompicker" class="color-picker"></div></div></div>';
-				echo '<div class="color-prev prev-'.$this->field['id'].'-from" style="background-color:'.$this->value['from'].';" rel="'.$this->field['id'].'-from"></div>';
-				
-				echo '<input type="text" id="'.$this->field['id'].'-to" name="'.$this->args['opt_name'].'['.$this->field['id'].'][to]" value="'.$this->value['to'].'" class="'.$class.' popup-colorpicker"/>';
-				echo '<div class="farb-popup"><div class="farb-popup-inside"><div id="'.$this->field['id'].'-topicker" class="color-picker"></div></div></div>';
-				echo '<div class="color-prev prev-'.$this->field['id'].'-to" style="background-color:'.$this->value['to'].';" rel="'.$this->field['id'].'-to"></div>';
-				
-			echo '</fieldset>';
+		$html .= sprintf(
+					'<div class="farb-popup"><div class="farb-popup-inside"><div id="%1$s-topicker" class="color-picker"></div></div></div>', 
+					$this->field['id']
+				);
+
+		$html .= sprintf(
+					'<div class="color-prev prev-%1$s-to" %2$s rel="%1$s-to"></div>', 
+					$this->field['id'], 
+					$to_style
+				);
+		
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
 			
-			echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
+		$html .= '</fieldset>';
+		
+		$html .= '</div>';
 
-
-		echo '</div>';
+		echo $html;
 		
 	}//function
 	
