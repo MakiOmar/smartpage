@@ -24,20 +24,40 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 	
 	/**
 	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
 	 *
 	 * @return void
 	 */
 	public function render(){	
+
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : '';
+
 		$value = ( $this->value ) ? $this->value : $this->field['default'];
 		
-		echo '<div class="farb-popup-wrapper">';
-			echo '<input type="text" id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" value="'. $value .'" class="'.$class.' popup-colorpicker"/>';
-			echo '<div class="farb-popup"><div class="farb-popup-inside"><div id="'.$this->field['id'].'picker" class="color-picker"></div></div></div>';
-			echo '<div class="color-prev prev-'.$this->field['id'].'" style="background-color:'. $value .';" rel="'.$this->field['id'].'"></div>';
-			echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
-		echo '</div>';
+		$html =  '<div class="farb-popup-wrapper">';
+
+		$html = sprintf('<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%3$s popup-colorpicker"/>',
+					$this->field['id'], 
+					$this->args['opt_name'], 
+					$value, 
+					$class
+				);
+
+		$html .= sprintf(
+					'<div class="farb-popup"><div class="farb-popup-inside"><div id="%1$spicker" class="color-picker"></div></div></div>', 
+					$this->field['id']
+				);
+
+		$html .= sprintf(
+					'<div class="color-prev prev-%1$s" style="background-color:%2$s;" rel="%1$s"></div>', 
+					$this->field['id'], 
+					$value
+				);
+
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
+
+		$html .= '</div>';
+
+		echo $html;
 	}
 	
 		/**
