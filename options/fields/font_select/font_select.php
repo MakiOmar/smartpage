@@ -27,38 +27,25 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		$fonts = anony_fonts(); 
+		$fonts = anony_fonts();
+
+		$opts_groups = 
+		[
+			'default' => esc_html__('Default Webfont','anony-opts'),
+			'system'  => esc_html__('System','anony-opts'),
+			'popular' => esc_html__('Popular Google Fonts','anony-opts'),
+			'all'     => esc_html__('Google Fonts','anony-opts'),
+		];
 		
-		echo '<select name="'. $name .'" '.$class.'rows="6" >';	
+		$html =  '<select name="'. $name .'" '.$class.'rows="6" >';	
 		
-			echo '<optgroup label="'. esc_html__('Default Webfont','anony-opts') .'">';
-			foreach ( $fonts['default'] as $font ) {
-				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
-			}
-			echo '</optgroup>';
-			
-			echo '<optgroup label="'. esc_html__('System','anony-opts') .'">';
-			foreach ( $fonts['system'] as $font ) {
-				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
-			}
-			echo '</optgroup>';
-			
-			echo '<optgroup label="'. esc_html__('Popular Google Fonts','anony-opts') .'">';
-			foreach ( $fonts['popular'] as $font ) {
-				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
-			}
-			echo '</optgroup>';
-			
-			echo '<optgroup label="'. esc_html__('Google Fonts','anony-opts') .'">';
-			foreach ( $fonts['all'] as $font ) {
-				echo '<option value="'. $font .'"'.selected($this->value, $font, false).'>'. $font .'</option>';
-			}
-			echo '</optgroup>';
-			
-		echo '</select>';
+			$html .= anony_render_opts_groups( $fonts, $opts_groups, $this->value );
+
+		$html .= '</select>';
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
 		
+		echo $html;
 	}
 	
 }
