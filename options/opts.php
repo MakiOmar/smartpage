@@ -12,6 +12,24 @@
 *Options functions
 *---------------------------------------------------------------------------------*/
 
+require_once('fonts.php');
+
+/**
+ * Theme Fonts list - system & Google Fonts.
+ * @param mixed $type type of font ['system', 'default', 'popular', 'all']
+ * @return array Array of fonts names
+ */
+function anony_fonts( $type = false ){
+	$fonts = unserialize(THEME_FONTS);
+	
+	if( $type ) {
+		return $fonts[$type];
+	} else {
+		return $fonts;
+	}
+}
+
+
 /**
  * Simple function to instantiate the options object
  * @return object options object
