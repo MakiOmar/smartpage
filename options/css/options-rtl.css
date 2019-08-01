@@ -2,7 +2,7 @@
 	flex-direction: row-reverse;
 	justify-content: flex-end;
 }
-has-switch > div.switch-off{
+.has-switch > div.switch-off{
 	left: auto;
 	/*right: -63%;*/
 }
@@ -12,14 +12,14 @@ has-switch > div.switch-off{
 	right: -63%;
 }
 
-.anony-section-group > h2{
+.smpg-section-group > h2{
 	box-shadow: -5px 10px 6px #dbd1d1;
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 0;
 }
-#anony-options-nav {
+#options-nav {
     box-shadow: -10px 5px 6px #dbd1d1;
 }
-#anony-options-wrapper > h1{
+#smpg-options-wrapper > h1{
 	
 }
