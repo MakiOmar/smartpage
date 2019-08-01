@@ -20,8 +20,7 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Multi text field render Function.
 	 *
 	 * @return void
 	 */
