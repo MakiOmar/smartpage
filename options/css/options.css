@@ -76,6 +76,17 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	border-radius: 10px;
 	padding: 5px;
 }
+/* -------------- .multi-text -------------- */
+#anony-options-wrapper .anony-section-group input.multi-text-add { margin-right:10px;}
+#anony-options-wrapper .anony-section-group .multi-text-btn { float:left;}
+#anony-options-wrapper .anony-section-group .multi-text-desc { float:left;}
+#anony-options-wrapper .anony-section-group .multi-text-ul { float:left; margin:0;}
+#anony-options-wrapper .anony-section-group .multi-text-ul li { display:block; width: 338px; height:37px; color:#fff; position:relative; margin:8px 0 5px 0; background: #34495e;}
+#anony-options-wrapper .anony-section-group .multi-text-ul li.multi-text-default { display:none;}
+#anony-options-wrapper .anony-section-group .multi-text-ul li a.multi-text-remove { display:block; position:absolute; top:0; right:0; width: 37px; height:37px; overflow: hidden; text-indent: -9999px; color:#34495e; background: #2f4052;  }
+#anony-options-wrapper .anony-section-group .multi-text-ul li a.multi-text-remove em { width: 37px; height:37px; display: block; overflow: hidden; background:url(../img/ico-delete.png) no-repeat center center;}
+#anony-options-wrapper .anony-section-group .multi-text-ul li a:hover.multi-text-remove { background: #FB5656;}
+#anony-options-wrapper .anony-section-group .multi-text-ul li span { color:#fff; font-weight:bold; line-height:37px; padding:0 17px; font-size:14px; margin:0;}
 .anony-input-lable{
     display: block!important;
     font-weight: bold;
