@@ -64,7 +64,7 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 		
 		wp_enqueue_script(
 			'anony-opts-field-multi-text-js', 
-			Theme_Settings_URI.'fields/multi_text/field_multi_text.js', 
+			Theme_Settings_URI.'/fields/multi_text/field_multi_text.js', 
 			array('jquery'),
 			time(),
 			true
