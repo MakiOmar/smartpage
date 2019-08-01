@@ -35,7 +35,7 @@ function anony_render_opts_groups( $options, $opts_groups, $selected ){
 	return $html;
 }
 
-function Anony_comment( $comment, $args, $depth ) {
+function anony_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	
 	switch ( $comment->comment_type ) :
