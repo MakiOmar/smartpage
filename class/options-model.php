@@ -1,4 +1,25 @@
 <?php
+/**
+ * Theme options class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
+
+/**
+ * Group many options of our themes into 1
+ * Create an option group in wp_options using the name provided when construct the object, e.g.:
+ *      $anony_option = new ANONY__Options_Model("anony_option");
+ * Get & Set new option in this group using assignments & save() function, e.g.:
+ *      $anony_option->logo = {url};
+ *      $anony_option->save();
+ *      echo $anony_option->logo;
+ * Options in this group will be stored as an array, however to get an option, use -> instead of [], since this class use __get & __set methods.
+ * This class keeps the old ways of retrieving options, so you can also use $anony_option->get_option() & update_options(), add_options()
+ */
+
 if (!class_exists('ANONY__Options_Model')) {
     class ANONY__Options_Model
     {
@@ -85,8 +106,7 @@ if (!class_exists('ANONY__Options_Model')) {
         public function save() {
             return update_option($this->option_group, $this->options_arr);
         }
-        
-		/**
+        /**
          * save the current option values into database
          * @param array $option_arr
          * @return bool result of update option function
@@ -156,6 +176,24 @@ if (!class_exists('ANONY__Options_Model')) {
                 return self::update_option($option_name, $value);
             } else return false;
         }
+
+        /**
+         * add new option
+         *
+         * @author dakachi
+         *
+         * if options containing null, return false.
+         * if successful return true
+         * @param string $option_name
+         * @param $value
+         * @return bool
+         */
+        public function delete_option($option_name) {
+            if (current_user_can('manage_options') && isset($this->options_arr[$option_name])) {
+                unset($this->options_arr[$option_name]);
+                return update_option($this->option_group, $this->options_arr);
+            } else return false;
+        }
         
         /**
          *  return current option values of this object
@@ -169,6 +207,17 @@ if (!class_exists('ANONY__Options_Model')) {
          */
         public function get_all_options_in_database() {
             return get_option($this->option_group);
+        }
+        
+        /**
+         * validate option
+         * @param $type data type
+         * @param $value will be validate
+         * @return bool
+         */
+        protected static function validate($type, $value) {
+            $validate = new anony_Validator();
+            return $validate->validate($type, $value);
         }
     }
 }

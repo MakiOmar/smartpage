@@ -176,6 +176,24 @@ if (!class_exists('ANONY__Options_Model')) {
                 return self::update_option($option_name, $value);
             } else return false;
         }
+
+        /**
+         * add new option
+         *
+         * @author dakachi
+         *
+         * if options containing null, return false.
+         * if successful return true
+         * @param string $option_name
+         * @param $value
+         * @return bool
+         */
+        public function delete_option($option_name) {
+            if (current_user_can('manage_options') && isset($this->options_arr[$option_name])) {
+                unset($this->options_arr[$option_name]);
+                return update_option($this->option_group, $this->options_arr);
+            } else return false;
+        }
         
         /**
          *  return current option values of this object
