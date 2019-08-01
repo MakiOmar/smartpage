@@ -334,8 +334,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 						
 						//Something like a checkbox is not set if unchecked
 						if(!isset($notValidated[$fieldID])) {
-							$this->options->unset($fieldID);
-							$this->options->save();
+							$this->options->delete_option($fieldID);
 							continue;
 						}
 						
