@@ -32,8 +32,8 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 		echo '<img class="anony-opts-screenshot" src="'.$this->value.'" />';
 
 		if($this->value == ''){$remove = ' style="display:none;"';$upload = '';}else{$remove = '';$upload = ' style="display:none;"';}
-		echo ' <a href="javascript:void(0);" data-choose="Choose a File" data-update="Select File" class="anony-opts-upload"'.$upload.' ><span></span>'.__('Browse', 'anony-opts').'</a>';
-		echo ' <a href="javascript:void(0);" class="anony-opts-upload-remove"'.$remove.'>'.__('Remove Upload', 'anony-opts').'</a>';
+		echo ' <a href="javascript:void(0);" data-choose="Choose a File" data-update="Select File" class="anony-opts-upload"'.$upload.' ><span></span>'.__('Browse', TEXTDOM).'</a>';
+		echo ' <a href="javascript:void(0);" class="anony-opts-upload-remove"'.$remove.'>'.__('Remove Upload', TEXTDOM).'</a>';
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
 	}
 

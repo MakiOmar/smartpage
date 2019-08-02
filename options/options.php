@@ -516,6 +516,12 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('sliderbar', TEXTDOM),
 							'type'    => 'sliderbar',
 							'validate'=> 'no_html',
+						),			
+						array(
+							'id'      => 'tabs',
+							'title'   => esc_html__('tabs', TEXTDOM),
+							'type'    => 'tabs',
+							'validate'=> 'no_html',
 						),	
 					)
 );

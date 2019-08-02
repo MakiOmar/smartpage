@@ -35,7 +35,7 @@ class ANONY_optf__Pages_select extends ANONY__Theme_Settings{
 					$class
 				);
 
-			$html .= sprintf('<option value="">%1$s</option>', esc_html__('-- select --','anony-opts'));
+			$html .= sprintf('<option value="">%1$s</option>', esc_html__('-- select --',TEXTDOM));
 
 			foreach ( $pages as $page ) {
 

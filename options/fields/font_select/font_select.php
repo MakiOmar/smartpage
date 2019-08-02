@@ -31,10 +31,10 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 
 		$opts_groups = 
 		[
-			'default' => esc_html__('Default Webfont','anony-opts'),
-			'system'  => esc_html__('System','anony-opts'),
-			'popular' => esc_html__('Popular Google Fonts','anony-opts'),
-			'all'     => esc_html__('Google Fonts','anony-opts'),
+			'default' => esc_html__('Default Webfont',TEXTDOM),
+			'system'  => esc_html__('System',TEXTDOM),
+			'popular' => esc_html__('Popular Google Fonts',TEXTDOM),
+			'all'     => esc_html__('Google Fonts',TEXTDOM),
 		];
 		
 		$html =  '<select name="'. $name .'" '.$class.'rows="6" >';	
