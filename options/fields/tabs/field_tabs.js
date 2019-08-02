@@ -11,23 +11,26 @@ jQuery(document).ready(function($){
 	
 	// add
 	$('.anony-add-tab').click(function(){
-		
-		// increase tabs counter
-		var tabs_counter = $(this).siblings('.anony-tabs-count');
-		tabs_counter.val(tabs_counter.val()*1 + 1);
-		
-		var name = $(this).attr('rel-name');
-		var tabs_wrapper = $(this).siblings('.tabs-ul');
-		var new_tab = tabs_wrapper.children('li.tabs-default').clone(true);
+		if($('.tabs-default').length != 0){
+			// increase tabs counter
+			var tabs_counter = $(this).siblings('.anony-tabs-count');
+			tabs_counter.val(tabs_counter.val()*1 + 1);
+			console.log(tabs_counter);
+			
+			var name = $(this).attr('rel-name');
+			var tabs_wrapper = $(this).siblings('.tabs-ul');
+			var new_tab = tabs_wrapper.children('li.tabs-default').clone(true);
 
-		new_tab.removeClass('tabs-default');	
-		new_tab.children('input').attr('name',name+'[title][]');
-		new_tab.children('textarea').attr('name',name+'[content][]');
+			new_tab.removeClass('tabs-default');	
+			new_tab.children('input').attr('name',name+'[data-'+tabs_counter.val()+'][title]');
+			new_tab.children('textarea').attr('name',name+'[data-'+tabs_counter.val()+'][content]');
 
-		tabs_wrapper
-			.append( new_tab )
-			.children('li:last')
-				.fadeIn(500);
+			tabs_wrapper
+				.append( new_tab )
+				.children('li:last')
+					.fadeIn(500);
+			}
+		
 		
 	});
 	
