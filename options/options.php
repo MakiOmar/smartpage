@@ -522,6 +522,12 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('tabs', TEXTDOM),
 							'type'    => 'tabs',
 							'validate'=> 'no_html',
+						),				
+						array(
+							'id'      => 'upload',
+							'title'   => esc_html__('upload', TEXTDOM),
+							'type'    => 'upload',
+							//'validate'=> 'url',
 						),	
 					)
 );
