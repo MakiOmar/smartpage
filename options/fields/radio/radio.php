@@ -17,8 +17,7 @@ class ANONY_optf__Radio extends ANONY__Theme_Settings{
 	}
 
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Radio field render Function.
 	 *
 	 * @return void
 	 */
