@@ -19,16 +19,34 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Slidebar field render Function.
 	 *
 	 * @return void
 	 */
-	function render(){	
+	function render(){
 		$class = (isset($this->field['class']))?'class="'.$this->field['class'].'" ':'';
-		echo '<div id="'.$this->field['id'].'_sliderbar" class="sliderbar '.$class.'" rel="'.$this->field['id'].'"></div>';
-		echo '<input type="text" id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" value="'.esc_attr($this->value).'" class="sliderbar_input '.$class.'" readonly="readonly"/>';	
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description sliderbar_desc'.$class.'">'.$this->field['desc'].'</div>':'';
+
+		$default = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = !empty($this->value) ? $this->value : $default;
+
+		$html = sprintf(
+					'<div class="anony-options-row"><div id="%1$s_sliderbar" class="sliderbar %2$s" rel="%1$s"></div>', 
+					$this->field['id'],
+					$class
+				);
+
+		$html .= sprintf(
+					'<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="sliderbar_input %4$s" readonly="readonly"/></div>', 
+					$this->field['id'], 
+					$this->args['opt_name'], 
+					esc_attr($this->value), 
+					$class
+				);	
+
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description sliderbar_desc'.$class.'">'.$this->field['desc'].'</div>':'';
+
+		echo $html;
 	}
 	
 	
@@ -37,11 +55,11 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	 */
 	function enqueue(){
 		
-		wp_enqueue_style('anony-opts-jquery-ui-css');
+		wp_enqueue_style('mfn-opts-jquery-ui-css');
 		
 		wp_enqueue_script(
 			'jquery-slider', 
-			Theme_Settings_URI.'fields/sliderbar/jquery.ui.slider.js', 
+			Theme_Settings_URI.'/fields/sliderbar/jquery.ui.slider.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
 			time(), 
 			true
@@ -49,7 +67,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 
 		wp_enqueue_script(
 			'anony-opts-field-sliderbar-js', 
-			Theme_Settings_URI.'fields/sliderbar/field_sliderbar.js', 
+			Theme_Settings_URI.'/fields/sliderbar/field_sliderbar.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-dialog'),
 			time(),
 			true
