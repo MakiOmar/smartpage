@@ -55,7 +55,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	 */
 	function enqueue(){
 		
-		wp_enqueue_style('mfn-opts-jquery-ui-css');
+		wp_enqueue_style('anony-opts-jquery-ui-css');
 		
 		wp_enqueue_script(
 			'jquery-slider', 

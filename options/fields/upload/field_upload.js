@@ -1,4 +1,4 @@
-function MfnUpload(){
+function AnonyUpload(){
 	(function($) {
 
 		jQuery( "img[src='']" ).attr( "src", anony_upload.url );
@@ -54,5 +54,5 @@ function MfnUpload(){
 }
 	
 jQuery(document).ready(function($){
-	var anony_upload = new MfnUpload();
+	var anony_upload = new AnonyUpload();
 });

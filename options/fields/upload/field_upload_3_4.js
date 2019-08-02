@@ -1,4 +1,4 @@
-function MfnUpload(){
+function AnonyUpload(){
 	(function($) {
 		
 		var header_clicked = false;
@@ -43,5 +43,5 @@ function MfnUpload(){
 }
 	
 jQuery(document).ready(function($){
-	var anony_upload = new MfnUpload();
+	var anony_upload = new AnonyUpload();
 });
