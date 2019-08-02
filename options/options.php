@@ -510,6 +510,12 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('Page select', TEXTDOM),
 							'type'    => 'pages_select',
 							'validate'=> 'no_html',
+						),		
+						array(
+							'id'      => 'sliderbar',
+							'title'   => esc_html__('sliderbar', TEXTDOM),
+							'type'    => 'sliderbar',
+							'validate'=> 'no_html',
 						),	
 					)
 );
