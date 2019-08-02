@@ -23,3 +23,13 @@
 #smpg-options-wrapper > h1{
 	
 }
+
+#anony-options-wrapper .anony-section-group .multi-text-ul li a.multi-text-remove{
+	right: auto;
+	left: 0;
+}
+
+.anony-normal-flex{
+	flex-direction: row;
+	justify-content: space-around;
+}
