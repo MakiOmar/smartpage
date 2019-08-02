@@ -504,6 +504,12 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('Multi text', TEXTDOM),
 							'type'    => 'multi_text',
 							'validate'=> 'no_html',
+						),		
+						array(
+							'id'      => 'pages_select',
+							'title'   => esc_html__('Page select', TEXTDOM),
+							'type'    => 'pages_select',
+							'validate'=> 'no_html',
 						),	
 					)
 );
