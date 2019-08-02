@@ -27,33 +27,65 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 	function render(){
 		
 		$class = (isset($this->field['class']))?$this->field['class']:'';
+
+		$buttonText = (isset($this->field['button-text'])) ? ' placeholder="'.$this->field['button-text'].'"' : esc_html__( 'Add', TEXTDOM );
+
+		$placeholder = (isset($this->field['placeholder'])) ? $this->field['placeholder'] : '';
 		
-		echo '<input type="text" class="multi-text-add small-text" placeholder="type sidebar title here">';
-		echo '<a href="javascript:void(0);" class="multi-text-btn btn-blue" rel-id="'.$this->field['id'].'-ul" rel-name="'.$this->args['opt_name'].'['.$this->field['id'].'][]">Add sidebar</a>';
+		$html = sprintf(
+					'<div class="anony-options-row anony-normal-flex"><input type="text" class="multi-text-add small-text"%1$s>', 
+					$placeholder
+				);
+
+		$html .= sprintf(
+					'<a href="javascript:void(0);" class="multi-text-btn btn-blue" rel-id="%1$s-ul" rel-name="%2$s[%1$s][]">%3$s</a></div>', 
+					$this->field['id'], 
+					$this->args['opt_name'], 
+					$buttonText
+				);
 		
-		echo '<ul class="multi-text-ul" id="'.$this->field['id'].'-ul">';
+		$html .= sprintf(
+					'<ul class="multi-text-ul" id="%1$s-ul">', 
+					$this->field['id']
+				);
 			
 			if(isset($this->value) && is_array($this->value)){
+
 				foreach($this->value as $k => $value){
-					if($value != ''){	
-						echo '<li>';
-							echo '<input type="hidden" id="'.$this->field['id'].'-'.$k.'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][]" value="'.esc_attr($value).'" class="'.$class.'" />';
-							echo '<span>'.esc_attr($value).'</span>';
-							echo '<a href="" class="multi-text-remove"><em>delete</em></a>';
-						echo '</li>';
+
+					if($value != ''){
+
+						$html .= '<li>';
+
+							$html .= sprintf(
+										'<input type="hidden" id="%1$s-%2$s" name="%3$s[%1$s][]" value="%4$s" class="%5$s"/>', 
+										$this->field['id'], 
+										$k, 
+										$this->args['opt_name'], 
+										esc_attr($value), 
+										$class
+									);
+
+							$html .= sprintf('<span>%1$s</span>', esc_attr($value));
+
+							$html .= '<a href="" class="multi-text-remove"><em>delete</em></a>';
+
+						$html .= '</li>';
 					}
 				}
 			}
 			
-			echo '<li class="multi-text-default">';
-				echo '<input type="hidden" name="" value="" class="'.$class.'" />';
-				echo '<span></span>';
-				echo '<a href="" class="multi-text-remove"><em>delete</em></a>';
-			echo '</li>';	
+			$html .= '<li class="multi-text-default">';
+				$html .= '<input type="hidden" name="" value="" class="'.$class.'" />';
+				$html .= '<span></span>';
+				$html .= '<a href="" class="multi-text-remove"><em>delete</em></a>';
+			$html .= '</li>';	
 	
-		echo '</ul>';
+		$html .= '</ul>';
 
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description multi-text-desc">'.$this->field['desc'].'</div>':'';	
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <div class="description multi-text-desc">'.$this->field['desc'].'</div>' : '';	
+
+		echo $html;
 	}
 	
 	
