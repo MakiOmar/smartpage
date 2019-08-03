@@ -1,4 +1,11 @@
 <?php
+/**
+ * Info field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 class ANONY_optf__Info extends ANONY__Theme_Settings{	
 	
 	/**
