@@ -1,4 +1,12 @@
 <?php
+/**
+ * Text field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class ANONY_optf__Text extends ANONY__Theme_Settings{	
 	
 	/**
@@ -17,8 +25,7 @@ class ANONY_optf__Text extends ANONY__Theme_Settings{
 	}
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Text field render Function.
 	 *
 	 * @return void
 	 */
@@ -28,9 +35,16 @@ class ANONY_optf__Text extends ANONY__Theme_Settings{
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		echo '<input type="text" name="'. $name .'" value="'.esc_attr($this->value).'" class="'.$class.'" />';
+		$html = sprintf(
+					'<input type="text" name="%1$s" value="%2$s" class="%3$s" />', 
+					$name, 
+					esc_attr($this->value), 
+					$class
+				);
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
+
+		echo $html;
 		
 	}
 	
