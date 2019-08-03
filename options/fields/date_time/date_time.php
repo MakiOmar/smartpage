@@ -24,7 +24,7 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 		$this->get = isset($this->field['get']) ? $this->field['get'] : 'datetime';
 
 		$this->picker_options = isset($this->field['picker-options']) ? $this->field['picker-options'] : 
-		
+
 		array(
 			'dateFormat' => $this->date_format,
 			'timeFormat' => $this->time_format,
@@ -43,10 +43,21 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 		$class = ( isset( $this->field['class']) ) ? $this->field['class'] : 'regular-text';
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+
+		$placeholder = isset($this->field['placeholder']) ? ' placeholder="'.$this->field['placeholder'].'"' : ' placeholder="'.$this->field['title'].'"';
 		
-		echo '<input type="text" name="'. $name .'" id="anony-'. $this->field['id'] .'" value="'.esc_attr($this->value).'" class="'.$class.'" />';
+		$html =  sprintf(
+					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
+					$name, 
+					$this->field['id'], 
+					esc_attr($this->value), 
+					$class, 
+					$placeholder
+				);
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
+
+		echo $html;
 		
 	}
 
