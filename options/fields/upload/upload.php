@@ -38,11 +38,9 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 
     /**
      * Enqueue scripts.
-    */
+     */
     function enqueue() {
         $wp_version = floatval( get_bloginfo( 'version' ) );
-//         print_r($wp_version);
-
         if ( $wp_version < "3.5" ) {
             wp_enqueue_script(
                 'anony-opts-field-upload-js', 

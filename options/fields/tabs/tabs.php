@@ -73,7 +73,7 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 		echo $html;
 	}
 	
-		/**
+	/**
 	 * Enqueue scripts.
 	 */
 	function enqueue(){

@@ -50,7 +50,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	}
 	
 	
-		/**
+	/**
 	 * Enqueue scripts.
 	 */
 	function enqueue(){
