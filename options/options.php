@@ -517,17 +517,39 @@ $sections['miscellanous']= array(
 							'type'    => 'sliderbar',
 							'validate'=> 'no_html',
 						),			
+						/*
+						Has problem
 						array(
 							'id'      => 'tabs',
 							'title'   => esc_html__('tabs', TEXTDOM),
 							'type'    => 'tabs',
 							'validate'=> 'no_html',
-						),				
+						),*/				
 						array(
 							'id'      => 'upload',
 							'title'   => esc_html__('upload', TEXTDOM),
 							'type'    => 'upload',
 							//'validate'=> 'url',
+						),				
+						array(
+							'id'      => 'date',
+							'title'   => esc_html__('Date', TEXTDOM),
+							'type'    => 'date_time',
+							'get'     => 'date',
+							'validate'=> 'no-html',
+						),				
+						array(
+							'id'      => 'time',
+							'title'   => esc_html__('Time', TEXTDOM),
+							'type'    => 'date_time',
+							'get'     => 'time',
+							'validate'=> 'no-html',
+						),					
+						array(
+							'id'      => 'date_time',
+							'title'   => esc_html__('Date and time', TEXTDOM),
+							'type'    => 'date_time',
+							'validate'=> 'no-html',
 						),	
 					)
 );
