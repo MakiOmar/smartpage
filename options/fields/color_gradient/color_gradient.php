@@ -29,8 +29,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 	
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Color gradient field render Function.
 	 *
 	 * @return void
 	 */
