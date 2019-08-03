@@ -1,4 +1,12 @@
 <?php
+/**
+ * Upload field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class ANONY_optf__Upload extends ANONY__Theme_Settings{
 
 	/**
@@ -27,13 +35,38 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : 'regular-text';
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
-		echo '<input type="hidden" name="'. $name .'" value="'.$this->value.'" class="'.$class.'" />';
-		echo '<img class="anony-opts-screenshot" style="max-width:180px;" src="'.$this->value.'" />';
+		$html = sprintf(
+				'<input type="hidden" name="%1$s" value="%2$s" class="%3$s" />', 
+				$name, 
+				$this->value, 
+				$class
+			);
 
-		if($this->value == ''){$remove = ' style="display:none;"';$upload = '';}else{$remove = '';$upload = ' style="display:none;"';}
-		echo ' <a href="javascript:void(0);" data-choose="Choose a File" data-update="Select File" class="anony-opts-upload"'.$upload.' ><span></span>'.__('Browse', TEXTDOM).'</a>';
-		echo ' <a href="javascript:void(0);" class="anony-opts-upload-remove"'.$remove.'>'.__('Remove Upload', TEXTDOM).'</a>';
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+		$html .= '<img class="anony-opts-screenshot" style="max-width:180px;" src="'.$this->value.'" />';
+
+		if($this->value == ''){
+			$remove = ' style="display:none;"';
+			$upload = '';
+		}else{
+			$remove = '';
+			$upload = ' style="display:none;"';
+		}
+
+		$html .= sprintf(
+					' <a href="javascript:void(0);" data-choose="Choose a File" data-update="Select File" class="anony-opts-upload"%1$s><span></span>%2$s</a>', 
+					$upload, 
+					esc_html__('Browse', TEXTDOM)
+				);
+
+		$html .= sprintf(
+					' <a href="javascript:void(0);" class="anony-opts-upload-remove"%1$s>%2$s</a>', 
+					$remove, 
+					__('Remove Upload', TEXTDOM)
+				);
+		
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+
+		echo $html;
 	}
 
     /**
