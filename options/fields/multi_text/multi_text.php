@@ -1,4 +1,12 @@
 <?php
+/**
+ * Multi text field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class ANONY_optf__Multi_text extends ANONY__Theme_Settings{	
 	
 	/**
@@ -96,7 +104,7 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 		
 		wp_enqueue_script(
 			'anony-opts-field-multi-text-js', 
-			ANONY_OPTIONS_URI.'/fields/multi_text/field_multi_text.js', 
+			ANONY_OPTIONS_URI.'fields/multi_text/field_multi_text.js', 
 			array('jquery'),
 			time(),
 			true
