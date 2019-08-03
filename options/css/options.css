@@ -122,7 +122,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 #anony-options-wrapper tr td span.sliderbar_desc { float:left; width:163px;}
 
 #anony-options-wrapper label{
-    display: block;
+    display: flex;
 }
 .anony-input-lable,.anony-btn-close, .anony-remove-tab{
     display: block!important;
