@@ -1,4 +1,11 @@
 <?php
+/**
+ * Sliderbar field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{	
 	
 	
