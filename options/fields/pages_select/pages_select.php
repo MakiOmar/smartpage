@@ -1,4 +1,11 @@
 <?php
+/**
+ * Pages select field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 class ANONY_optf__Pages_select extends ANONY__Theme_Settings{	
 	
 	/**
