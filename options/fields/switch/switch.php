@@ -1,4 +1,11 @@
 <?php
+/**
+ * Switch field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 class ANONY_optf__Switch extends ANONY__Theme_Settings{	
 	
 	/**
@@ -17,27 +24,35 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 	}
 
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Switch field render Function.
 	 *
 	 * @return void
 	 */
 	function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';	
+
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		// fix for value "off = 0"
 		if( ! $this->value ) $this->value = 0;
 		// fix for WordPress 3.6 meta options
-		if(strpos( $this->field['id'] ,'[]') === false) echo '<input type="hidden" name="'. $name .'" value="0" />';
+		if(strpos( $this->field['id'] ,'[]') === false) $html .= '<input type="hidden" name="'. $name .'" value="0" />';
 		
-		echo '<input type="checkbox" data-toggle="switch" id="'.$this->field['id'].'" name="'. $name .'" '.$class.' value="1" '.checked($this->value, 1, false).' />';
+		$html = sprintf(
+					'<input type="checkbox" data-toggle="switch" id="%1$s" name="%2$s" %3$s value="1" %4$s />',
+					$this->field['id'], 
+					$name, 
+					$class, 
+					checked($this->value, 1, false)
+				);
 		
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<div class="description btn-desc">'.$this->field['desc'].'</div>':'';	
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'&nbsp;&nbsp;<div class="description btn-desc">'.$this->field['desc'].'</div>':'';
+
+		echo $html;	
 	}
 	
-		/**
+	/**
 	 * Enqueue scripts.
 	 */
 	function enqueue(){		
