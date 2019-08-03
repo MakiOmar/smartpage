@@ -1,4 +1,12 @@
 <?php
+/**
+ * Select field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class ANONY_optf__Select extends ANONY__Theme_Settings{	
 	
 	/**
@@ -17,8 +25,7 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 	}
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Select field render Function.
 	 *
 	 * @return void
 	 */
@@ -29,16 +36,32 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		$class = (isset($this->field['class']) && !empty($this->field['class'])) ? ' class="'.$this->field['class'].'"' : '';
+
+		$selected = !empty(selected($this->value, $k, false)) ' '.selected($this->value, $k, false): '';
 		
-		echo '<select name="'. $name .'" '.$class.'rows="6" autocomplete="off"'.$class.'>';
+		$html = sprintf(
+					'<select name="%1$s" %2$s size="6" autocomplete="off">', 
+					$name, 
+					$class
+				);
+
 			if( is_array( $this->field['options'] ) ){
 				foreach( $this->field['options'] as $k => $v ){
-					echo '<option value="'.$k.'" '.selected($this->value, $k, false).'>'.$v.'</option>';
+
+					$html .= sprintf(
+								'<option value="%1$s"%2$s>%3$s</option>', 
+								$k, 
+								$selected, 
+								$v
+							);
 				}
 			}
-		echo '</select>';
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
+
+		$html .= '</select>';
 		
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';
+		
+		echo  $html;
 	}
 	
 }
