@@ -35,12 +35,6 @@ define('TEXTDOM'       , strtolower(THEME_NAME));
 define('THEME_URI'     , get_template_directory_uri());
 
 /**
- * Holds theme's options URI
- * @const
- */
-define('Theme_Settings_URI'     , THEME_URI . '/options');
-
-/**
  * Holds theme's path
  * @const
  */

@@ -59,7 +59,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 		
 		wp_enqueue_script(
 			'jquery-slider', 
-			Theme_Settings_URI.'/fields/sliderbar/jquery.ui.slider.js', 
+			ANONY_OPTIONS_URI.'/fields/sliderbar/jquery.ui.slider.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
 			time(), 
 			true
@@ -67,7 +67,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 
 		wp_enqueue_script(
 			'anony-opts-field-sliderbar-js', 
-			Theme_Settings_URI.'/fields/sliderbar/field_sliderbar.js', 
+			ANONY_OPTIONS_URI.'/fields/sliderbar/field_sliderbar.js', 
 			array('jquery', 'jquery-ui-core', 'jquery-ui-dialog'),
 			time(),
 			true

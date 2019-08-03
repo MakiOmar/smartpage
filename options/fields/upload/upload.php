@@ -44,7 +44,7 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
         if ( $wp_version < "3.5" ) {
             wp_enqueue_script(
                 'anony-opts-field-upload-js', 
-                Theme_Settings_URI . '/fields/upload/field_upload_3_4.js', 
+                ANONY_OPTIONS_URI . '/fields/upload/field_upload_3_4.js', 
                 array('jquery', 'thickbox', 'media-upload'),
                 time(),
                 true
@@ -53,13 +53,13 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
         } else {
             wp_enqueue_script(
                 'anony-opts-field-upload-js', 
-                Theme_Settings_URI . '/fields/upload/field_upload.js', 
+                ANONY_OPTIONS_URI . '/fields/upload/field_upload.js', 
                 array('jquery'),
                 time(),
                 true
             );
             wp_enqueue_media();
         }
-        wp_localize_script('anony-opts-field-upload-js', 'anony_upload', array('url' => Theme_Settings_URI.'/fields/upload/blank.png'));
+        wp_localize_script('anony-opts-field-upload-js', 'anony_upload', array('url' => ANONY_OPTIONS_URI.'/fields/upload/blank.png'));
     }
 }

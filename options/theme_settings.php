@@ -75,7 +75,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			
 			$defaults['opt_name'] = ANONY_OPTIONS;
 			
-			//$defaults['menu_icon'] = Theme_Settings_URI.'/img/menu_icon.png';
+			//$defaults['menu_icon'] = ANONY_OPTIONS_URI.'/img/menu_icon.png';
 			$defaults['menu_title'] = esc_html__('Anonymous Theme Options', TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
 			$defaults['page_title'] = esc_html__('Anonymous Theme Options', TEXTDOM);

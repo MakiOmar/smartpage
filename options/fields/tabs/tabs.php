@@ -77,7 +77,7 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 	 * Enqueue scripts.
 	 */
 	function enqueue(){
-		wp_enqueue_script('anony-opts-field-tabs-js', Theme_Settings_URI.'/fields/tabs/field_tabs.js', array('jquery'), time(), true);
+		wp_enqueue_script('anony-opts-field-tabs-js', ANONY_OPTIONS_URI.'/fields/tabs/field_tabs.js', array('jquery'), time(), true);
 	}
 	
 }

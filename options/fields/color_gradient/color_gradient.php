@@ -133,7 +133,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 		
 		wp_enqueue_script(
 			'anony-opts-field-color-js', 
-			Theme_Settings_URI.'fields/color/field_color.js', 
+			ANONY_OPTIONS_URI.'fields/color/field_color.js', 
 			array('jquery', 'farbtastic'),
 			time(),
 			true
