@@ -1,4 +1,12 @@
 <?php
+/**
+ * Tabs field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class ANONY_optf__Tabs extends ANONY__Theme_Settings{	
 	
 	/**
@@ -17,8 +25,7 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 	}
 	
 	/**
-	 * Color field render Function.
-	 * **Description: ** Echoes out the field markup.
+	 * Tabs field render Function.
 	 *
 	 * @return void
 	 */
