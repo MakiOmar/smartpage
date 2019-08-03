@@ -1,4 +1,12 @@
 <?php
+/**
+ * Date and Time field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
+
 class ANONY_optf__Date_Time extends ANONY__Theme_Settings{	
 	
 	/**
@@ -72,7 +80,7 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
         wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-core');
 		wp_enqueue_script('jquery-ui-datepicker');
-		wp_enqueue_script('jquery-ui-timepicker-addon',ANONY_OPTIONS_URI.'/fields/date_time/jquery-ui-timepicker-addon.js',array('jquery', 'jquery-ui-datepicker', 'jquery-ui-core'));
+		wp_enqueue_script('jquery-ui-timepicker-addon',ANONY_OPTIONS_URI.'fields/date_time/jquery-ui-timepicker-addon.js',array('jquery', 'jquery-ui-datepicker', 'jquery-ui-core'));
 
 		//Styles
 		wp_enqueue_style('jquery-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/' . $wp_scripts->registered['jquery-ui-core']->ver . '/themes/smoothness/jquery-ui.css');
