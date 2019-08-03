@@ -1,4 +1,11 @@
 <?php
+/**
+ * Radio field class
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 class ANONY_optf__Radio extends ANONY__Theme_Settings{	
 	
 	/**
