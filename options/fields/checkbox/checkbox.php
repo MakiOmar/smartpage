@@ -23,7 +23,6 @@ class ANONY_optf__Checkbox extends ANONY__Theme_Settings{
 
 	/**
 	 * Checkbox field render Function.
-	 * **Description: ** Echoes out the field markup.
 	 *
 	 * @param boolean $meta To decide field name attribute.
 	 * @return void
@@ -33,6 +32,8 @@ class ANONY_optf__Checkbox extends ANONY__Theme_Settings{
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';	
 
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+
+		$disabled  = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled = 'disabled' " : "";
 		
 		// fix for value "off = 0"
 		if( ! $this->value ) $this->value = 0;
@@ -58,17 +59,18 @@ class ANONY_optf__Checkbox extends ANONY__Theme_Settings{
 							$title
 						) ;
 
-				$html .= sprintf('<input type="checkbox" id="%1$s" name="%2$s[]" %3$s value="%4$s" %5$s/></label>', 
+				$html .= sprintf('<input type="checkbox" id="%1$s" name="%2$s[]" %3$s value="%4$s"%5$s%6$s/></label>', 
 							$opt, 
 							$name, 
 							$class, 
 							$opt, 
-							$checked
+							$checked,
+							$disabled
 						) ;
 			}
 			
 		}else{
-			$html .= sprintf('<input type="checkbox" id="%1$s" name="%2$s" %3$s value="1" $4$s />',$this->field['id'], $name, $class, checked($this->value, 1, false));
+			$html .= sprintf('<input type="checkbox" id="%1$s" name="%2$s" %3$s value="1"%4$s%5$s/>',$this->field['id'], $name, $class, checked($this->value, 1, false), $disabled);
 		}
 		
 		
