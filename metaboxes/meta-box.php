@@ -255,7 +255,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 					'anony-metaboxs' , 
 					get_theme_file_uri('/assets/css/metaboxes.css') , 
 					false, 
-					filemtime(wp_normalize_path(get_theme_file_path('/assets/css/metaboxes.css'))) 
+					filemtime(wp_normalize_path(THEME_DIR . '/assets/css/metaboxes.css')) 
 				);
 			}
 			
