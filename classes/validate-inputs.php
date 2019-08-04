@@ -314,22 +314,50 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		
 		public function valid_hex_color(){
 			
-			if(empty($this->value))return;
+			if(empty($this->value)) return;
+
+			$valid = true;
+
+			if(is_array($this->value)){
+				foreach ($this->value as $key => $hex) {
+
+					if ( !$this->is_hex_color($hex) ){
+						$valid = false;
+						break; //Break if any of values is not a hex color
+					}
+				}
+
+			}elseif( !$this->is_hex_color($this->value) ){
+
+				$valid = false;
+
+			}
 			
-			$check_hex = preg_match( '/^#[a-f0-9]{6}$/i', $this->value );
-			
-			if ( !$check_hex || $check_hex === 0 ) { // if user insert a HEX color with #   
+			if(!$valid) {
 				
 				$this->value = null;
 				
 				$this->errors[$this->field['id']] = 'not-hex';
-				
+	
 			}
 
-			return false;
-
 		}
-		
+
+		/**
+		 * Check if is hex color.
+		 *
+		 * @param string $string String to be check
+		 * @return bool  Returns true if is valid hex or false if not.
+		 */
+		public function is_hex_color($string){
+
+			$check_hex = preg_match( '/^#[a-f0-9]{6}$/i', $string );
+					
+			if ( !$check_hex || $check_hex === 0 ) return false;
+
+			return true;
+		}
+				
 		public function get_error_msg($code, $field_title){
 			if (empty($code)) return;
 			$accepted_tags = array('strong'=>array());
