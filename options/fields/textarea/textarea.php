@@ -43,6 +43,8 @@ class ANONY_optf__Textarea extends ANONY__Theme_Settings{
 				);
 
 		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<br/><div class="description">'.$this->field['desc'].'</div>':'';
+
+		echo $html;
 		
 	}
 	

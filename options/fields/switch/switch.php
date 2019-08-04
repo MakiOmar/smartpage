@@ -34,12 +34,13 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
+		$html = '';
 		// fix for value "off = 0"
 		if( ! $this->value ) $this->value = 0;
 		// fix for WordPress 3.6 meta options
 		if(strpos( $this->field['id'] ,'[]') === false) $html .= '<input type="hidden" name="'. $name .'" value="0" />';
 		
-		$html = sprintf(
+		$html .= sprintf(
 					'<input type="checkbox" data-toggle="switch" id="%1$s" name="%2$s" %3$s value="1" %4$s />',
 					$this->field['id'], 
 					$name, 
