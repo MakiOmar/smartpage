@@ -55,7 +55,7 @@ class ANONY_cf__Color extends ANONY__Meta_Box{
 					);
 
         $html  .= sprintf( 
-					'<input type="text" class="%1$s-text wp-color-picker-field" id="%2$s" name="%2$s" value="%3$s" data-default-color="%4$s" />', 
+					'<input type="text" class="%1$s-text anony-color wp-color-picker-field" id="%2$s" name="%2$s" value="%3$s" data-default-color="%4$s" />', 
 					$class, 
 					$this->field['id'], 
 					$value, 
@@ -87,7 +87,7 @@ class ANONY_cf__Color extends ANONY__Meta_Box{
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				//color picker
-				$('.wp-color-picker-field').wpColorPicker();
+				$('.anony-color').wpColorPicker();
 			});
 		</script>
 		
