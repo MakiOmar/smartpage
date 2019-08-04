@@ -114,6 +114,13 @@ add_action('admin_init', function(){
 									'default'      => '2',
 									
 								),
+								array(
+									'id'           => 'anony__test_post_color_gradient',
+									'label'        => esc_html__( 'Test post select color gradient', TEXTDOM ),
+									'type'         => 'color_gradient',
+									'validate'     => 'hex_color',
+									
+								),
 
 							),
 	);
