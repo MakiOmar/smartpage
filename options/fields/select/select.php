@@ -36,8 +36,6 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		$class = (isset($this->field['class']) && !empty($this->field['class'])) ? ' class="'.$this->field['class'].'"' : '';
-
-		$selected = !empty(selected($this->value, $k, false)) ' '.selected($this->value, $k, false): '';
 		
 		$html = sprintf(
 					'<select name="%1$s" %2$s size="6" autocomplete="off">', 
@@ -51,7 +49,7 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 					$html .= sprintf(
 								'<option value="%1$s"%2$s>%3$s</option>', 
 								$k, 
-								$selected, 
+								selected($this->value, $k, false), 
 								$v
 							);
 				}
