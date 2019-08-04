@@ -288,23 +288,15 @@ if (!class_exists('ANONY__Theme_Settings')) {
 
 					$value = (isset($this->options->$fieldID))? $this->options->$fieldID : $fieldDefault;
 										
-					$render = '';
 					$render = new $field_class($field, $value, $this);
+
+					//neat_var_dump($render);
 					
 					if(isset($field['note'])){
 						echo '<p class=anony-warning>'.$field['note'].'<p>';
 					}
 					
-					/*if( get_transient( $fieldID ) ){ 
-			
-						foreach(get_transient( $fieldID ) as $msg){?>
-							<p class="anony-error"><?php echo $msg ;?></p>
-						<?php }
 
-						delete_transient( $fieldID );
-
-					}
-					*/
 					$render->render();
 				}
 			}
