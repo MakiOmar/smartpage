@@ -17,10 +17,16 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;	
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
 	}
 
 	/**
@@ -37,9 +43,13 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 		// fix for value "off = 0"
 		if( ! $this->value ) $this->value = 0;
 		// fix for WordPress 3.6 meta options
-		if(strpos( $this->field['id'] ,'[]') === false) $html .= '<input type="hidden" name="'. $name .'" value="0" />';
+		if(strpos( $this->field['id'] ,'[]') === false) $html = '<input type="hidden" name="'. $name .'" value="0" />';
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
-		$html = sprintf(
+		$html .= sprintf(
 					'<input type="checkbox" data-toggle="switch" id="%1$s" name="%2$s" %3$s value="1" %4$s />',
 					$this->field['id'], 
 					$name, 

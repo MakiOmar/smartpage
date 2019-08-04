@@ -17,11 +17,16 @@ class ANONY_optf__Info extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	*/
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;		
-	}
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Info field render Function.

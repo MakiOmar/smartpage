@@ -18,11 +18,16 @@ class ANONY_optf__Radio_img extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;		
-	}
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 
 	/**
 	 * Radioo img field render Function.
@@ -33,6 +38,10 @@ class ANONY_optf__Radio_img extends ANONY__Theme_Settings{
 		
 		$class = ( isset( $this->field['class'])) ? 'class="'.$this->field['class'].'" ' : '';
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
 		echo '<fieldset id="'.$this->field['id'].'">';
 			foreach($this->field['options'] as $k => $v){

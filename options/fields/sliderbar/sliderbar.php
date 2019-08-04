@@ -18,11 +18,16 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct($field = array(), $value ='', $parent){	
-		parent::__construct($parent->sections, $parent->args);
+	function __construct($field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;	
-	}
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 
 	
 	/**
@@ -36,6 +41,10 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 		$default = isset($this->field['default']) ? $this->field['default'] : '';
 
 		$this->value = !empty($this->value) ? $this->value : $default;
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 
 		$html = sprintf(
 					'<div class="anony-options-row"><div id="%1$s_sliderbar" class="sliderbar %2$s" rel="%1$s"></div>', 

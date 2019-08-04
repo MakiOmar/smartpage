@@ -15,11 +15,16 @@ class ANONY_optf__Checkbox extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	public function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	public function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;	
-	}
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 
 	/**
 	 * Checkbox field render Function.
@@ -37,6 +42,10 @@ class ANONY_optf__Checkbox extends ANONY__Theme_Settings{
 		
 		// fix for value "off = 0"
 		if( ! $this->value ) $this->value = 0;
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 
 		$html = '';
 

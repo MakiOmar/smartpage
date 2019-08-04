@@ -1,13 +1,14 @@
 <?php
 /**
- * Text field class
+ * Multi-input types render class. 
  *
+ * Handles rendring these type ['text','number','email', 'password','url'].
  * @package Anonymous theme
  * @author Makiomar
  * @link http://makiomar.com
  */
 
-class ANONY_optf__Text extends ANONY__Theme_Settings{	
+class ANONY_optf__Mixed extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
@@ -18,11 +19,16 @@ class ANONY_optf__Text extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;		
-	}
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Text field render Function.
@@ -34,9 +40,14 @@ class ANONY_optf__Text extends ANONY__Theme_Settings{
 		$class = ( isset( $this->field['class']) ) ? $this->field['class'] : 'regular-text';
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
 		$html = sprintf(
-					'<input type="text" name="%1$s" value="%2$s" class="%3$s" />', 
+					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s"/>', 
+					$this->field['type'],
 					$name, 
 					esc_attr($this->value), 
 					$class

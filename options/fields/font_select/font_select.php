@@ -18,11 +18,16 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	*/
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		parent::__construct($parent->sections, $parent->args);
+	function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
 		$this->field = $field;
-		$this->value = $value;
-	}
+
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Font select field render Function.
@@ -44,6 +49,10 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 			'all'     => esc_html__('Google Fonts',TEXTDOM),
 		];
 		
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
+
 		$html =  '<select name="'. $name .'" '.$class.'rows="6" >';	
 		
 			$html .= anony_render_opts_groups( $fonts, $opts_groups, $this->value );

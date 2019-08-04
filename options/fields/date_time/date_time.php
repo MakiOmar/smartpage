@@ -18,12 +18,17 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	function __construct( $field = array(), $parent = NULL ){
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
 		$this->field = $field;
 
-		$this->value = $value;
+		$fieldID = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+
 
 		$this->date_format = isset($this->field['date-format']) ? $this->field['date-format'] : 'dd-mm-yy';
 
@@ -33,10 +38,10 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 
 		$this->picker_options = isset($this->field['picker-options']) ? $this->field['picker-options'] : 
 
-		array(
-			'dateFormat' => $this->date_format,
-			'timeFormat' => $this->time_format,
-		);
+			array(
+				'dateFormat' => $this->date_format,
+				'timeFormat' => $this->time_format,
+			);
 
 		add_action('admin_print_footer_scripts', array(&$this, 'footer_scripts'));	
 	}
@@ -53,6 +58,10 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 
 		$placeholder = isset($this->field['placeholder']) ? ' placeholder="'.$this->field['placeholder'].'"' : ' placeholder="'.$this->field['title'].'"';
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
 		$html =  sprintf(
 					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
