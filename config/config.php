@@ -102,7 +102,7 @@ define( 'ANONY_METABOXES', wp_normalize_path (THEME_DIR . '/metaboxes/'));
  * Holds a path to Custom fields classes folder
  * @const
  */
-define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/cf/'));
+define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/fields/'));
 
 /**
  * Holds a path to views classes folder
