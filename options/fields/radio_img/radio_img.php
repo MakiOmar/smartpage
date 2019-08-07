@@ -57,7 +57,7 @@ class ANONY_optf__Radio_img extends ANONY__Theme_Settings{
 					$search   = array_search(
 									$k,
 									array_keys($this->field['options'])
-								)
+								);
 
 					$html .= sprintf(
 								'<label class="anony-radio-img%1$s anony-radio-img-%2$s" for="%2$s_%3$s">', 
@@ -94,6 +94,8 @@ class ANONY_optf__Radio_img extends ANONY__Theme_Settings{
 			$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<br style="clear:both;"/><div class="description">'.$this->field['desc'].'</div>':'';
 
 		$html .= '</fieldset>';
+
+		echo $html;
 		
 	}
 	

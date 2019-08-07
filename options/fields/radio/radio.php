@@ -81,8 +81,12 @@ class ANONY_optf__Radio extends ANONY__Theme_Settings{
 					
 				$html .= '</div>';
 			}
+
 			$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<br style="clear:both;"/><div class="description">'.$this->field['desc'].'</div>':'';
+
 		$html .= '</fieldset>';
+
+		echo $html;
 		
 	}
 	
