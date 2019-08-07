@@ -60,7 +60,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				//Set field's value to the new value before validation
 				$this->value = $args['new_value'];
 
-				if(empty($this->value)) return;
+				if(empty($this->value)) return;//if level 2-1
 
 
 				$this->field = $args['field'];
@@ -70,9 +70,11 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					$this->validation = $this->field['validate'];
 					
 					$this->validate_inputs();
-				}
-			}
-		}
+				}//if level 2-2
+
+			}//if level 1
+
+		}//function
 		
 		/**
 		 * Inputs validation base function
@@ -99,13 +101,12 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				}else{
 					
 					$this->single_validation($this->validation);
-				}
+				}//if level 2
 				
 				
-			}
-			
-			
-		}
+			}//if level 1	
+		}//function
+
 		/**
 		 * Decide which validation method should be called and sets validation limits.
 		 * 
@@ -128,8 +129,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 				//Validation method name
 				return $method = 'valid_'.$value;
-			}
-		}
+
+			}//if level 1
+		}//function
 
 		/**
 		 * Call validation method if the validation is single. e.g. url
@@ -143,8 +145,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			//Apply validation method
 			if(method_exists($this, $method)) $this->$method();
-			
-		}
+		}//function
 		
 		/**
 		 * Call validation method if the validation is single. e.g. url|file_type: pdf,docx.
@@ -162,8 +163,8 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 				$this->single_validation($validation);
 
-			}
-		}
+			}//forach
+		}//function
 		
 		/**
 		 * Check through multiple options (select, radio, multi-checkbox)
@@ -185,11 +186,10 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 				if(!in_array($this->value, $options_keys)) $this->valid = false;
 
-			}
+			}//if level 1
 
-			$this->set_error_code('strange-options');
-			
-		}
+			$this->set_error_code('strange-options');	
+		}//function
 		
 		/**
 		 * Accept html within input.
@@ -197,7 +197,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		public function valid_html(){
 
 			$this->value =  wp_kses_post($this->value);
-		}
+		}//function
 		
 		/**
 		 * Remove html within input
@@ -206,9 +206,8 @@ if(!class_exists('ANONY__Validate_Inputs')){
 	
 			if(sanitize_text_field($this->value) != $this->value) $this->valid = false;
 
-			$this->set_error_code('remove-html');
-			
-		}
+			$this->set_error_code('remove-html');	
+		}//function
 		
 		/**
 		 * Check valid email
@@ -220,7 +219,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			if(!is_email($this->value) ) $this->valid = false;
 
 			$this->set_error_code('not-email');
-		}
+		}//function
 		
 		/**
 		 * check valid url
@@ -240,8 +239,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				$this->value = esc_url_raw($this->value);
 				
 			}
-			
-		}
+		}//function
 		
 		/**
 		 * Check if valid number.
@@ -251,7 +249,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			if(preg_replace('/[0-9\.\-]/', '', $this->value) != '') $this->valid = false;
 				
 			$this->set_error_code('not-number');
-		}
+		}//function
 
 		/**
 		 * Check valid integer
@@ -261,7 +259,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			if(!ctype_digit($this->value)) $this->valid = false;
 			
 			$this->set_error_code('not-abs');
-		}
+		}//function
 		
 		/**
 		 * Check valid file type
@@ -275,7 +273,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			if(!empty($limits) && !in_array($ext, $limits)) $this->valid = false;
 		
 			$this->set_error_code('unsupported');
-		}
+		}//function
 		
 		/**
 		 * Check valid hex color
@@ -290,17 +288,17 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					if ( !$this->is_hex_color($hex) ){
 						$this->valid = false;
 						break; //Break if any of values is not a hex color
-					}
-				}
+					}//if level 2
+				}//foreach
 
 			}elseif( !$this->is_hex_color($this->value) ){
 
 				$this->valid = false;
 
-			}
+			}//if level 1
 
 			$this->set_error_code('not-hex');
-		}
+		}//function
 
 		/**
 		 * Check if a string is hex color.
@@ -315,7 +313,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			if ( !$check_hex || $check_hex === 0 ) return false;
 
 			return true;
-		}
+		}//function
 		
 		/**
 		 * Set error message code
@@ -328,8 +326,8 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				$this->value = null;
 					
 				$this->errors[$this->field['id']] = $code;
-			}
-		}
+			}//if level 1
+		}//function
 
 		/**
 		 * Gets the error message attached to $code
@@ -342,7 +340,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			if (empty($code)) return;
 
 			$accepted_tags = array('strong'=>array());
-			
+
 			switch($code){
 				case "unsupported":
 					
@@ -367,6 +365,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					);
 					
 					break;
+
 				case "not-url":
 					
 					return sprintf(
@@ -444,7 +443,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 						__( '<strong>Sorry!! Something wrong:</strong> Please make sure all your inputs are correct', TEXTDOM ), 
 						$accepted_tags
 					);
-			}
-		}
+			}//switch
+		}//function
 	}
 }
