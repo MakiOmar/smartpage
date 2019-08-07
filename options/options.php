@@ -127,6 +127,7 @@ $sections['slider']= array(
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
 	);
+
 $sections['general']= array(
 		'title' => esc_html__('General', TEXTDOM),
 		'icon' => 'x',
@@ -140,6 +141,7 @@ $sections['general']= array(
 						),						
 					)
 );
+
 $sections['menu-colors']= array(
 		'title' => esc_html__('Menu Colors', TEXTDOM),
 		'icon' => 'E',
@@ -440,6 +442,7 @@ $sections['socials']= array(
 					)
 );
 
+
 $sections['miscellanous']= array(
 		'title' => esc_html__('Miscellanous', TEXTDOM),
 		'icon' => 'x',
@@ -517,14 +520,7 @@ $sections['miscellanous']= array(
 							'type'    => 'sliderbar',
 							'validate'=> 'no_html',
 						),			
-						/*
-						Has problem
-						array(
-							'id'      => 'tabs',
-							'title'   => esc_html__('tabs', TEXTDOM),
-							'type'    => 'tabs',
-							'validate'=> 'no_html',
-						),*/				
+				
 						array(
 							'id'      => 'upload',
 							'title'   => esc_html__('upload', TEXTDOM),
@@ -553,6 +549,7 @@ $sections['miscellanous']= array(
 						),	
 					)
 );
+
 $widgets = array('ANONY__Sidebar_Ad');
 
 $Anony_Options = new ANONY__Theme_Settings( $options_nav, $sections, $widgets );
