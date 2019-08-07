@@ -1,12 +1,14 @@
 <?php
 /**
- * Pages select field class
+ * Multi-input types render class. 
  *
+ * Handles rendring these type ['text','number','email', 'password','url'].
  * @package Anonymous theme
  * @author Makiomar
  * @link http://makiomar.com
  */
-class ANONY_optf__Pages_select extends ANONY__Theme_Settings{	
+
+class ANONY_optf__Mixed extends ANONY__Theme_Settings{	
 	
 	/**
 	 * Field Constructor.
@@ -30,42 +32,29 @@ class ANONY_optf__Pages_select extends ANONY__Theme_Settings{
 		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
-	 * Pages select field render Function.
+	 * Text field render Function.
 	 *
 	 * @return void
 	 */
 	public function render( $meta = false ){
 		
-		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';
-
-		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		$class = ( isset( $this->field['class']) ) ? $this->field['class'] : 'regular-text';
 		
-		$pages = get_pages('sort_column=post_title&hierarchical=0');
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$field['note'].'<p>';
 		}
-
-		$html = sprintf(
-					'<select name="%1$s" %2$srows="6" >', 
+		
+		$html  = sprintf(
+					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s"/>', 
+					$this->field['type'],
 					$name, 
+					esc_attr($this->value), 
 					$class
-				);
-
-			$html .= sprintf('<option value="">%1$s</option>', esc_html__('-- select --',TEXTDOM));
-
-			foreach ( $pages as $page ) {
-
-				$html .= sprintf(
-							'<option value="%1$s"%2$s>%3$s</option>', 
-							$page->ID, 
-							selected($this->value, $page->ID, false), 
-							$page->post_title
-						);
-			}
-		$html .= '</select>';
-
-		$html .= (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <div class="description">'.$this->field['desc'].'</div>' : '';
+				 );
+		
+		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
 
 		echo $html;
 		

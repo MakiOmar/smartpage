@@ -15,28 +15,34 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
+	public function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
 
-		$this->field = $field;
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
-		$this->value = $value;
+		$this->field  = $field;
 
-		$this->date_format = isset($this->field['date-format']) ? $this->field['date-format'] : 'dd-mm-yy';
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->time_format = isset($this->field['time-format']) ? $this->field['time-format'] : 'hh:mm:s';
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
 
-		$this->get = isset($this->field['get']) ? $this->field['get'] : 'datetime';
+
+		$this->date_format    = isset($this->field['date-format']) ? $this->field['date-format'] : 'dd-mm-yy';
+
+		$this->time_format    = isset($this->field['time-format']) ? $this->field['time-format'] : 'hh:mm:s';
+
+		$this->get            = isset($this->field['get']) ? $this->field['get'] : 'datetime';
 
 		$this->picker_options = isset($this->field['picker-options']) ? $this->field['picker-options'] : 
 
-		array(
-			'dateFormat' => $this->date_format,
-			'timeFormat' => $this->time_format,
-		);
+			array(
+				'dateFormat' => $this->date_format,
+				'timeFormat' => $this->time_format,
+			);
 
 		add_action('admin_print_footer_scripts', array(&$this, 'footer_scripts'));	
 	}
@@ -46,13 +52,17 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
+	public function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? $this->field['class'] : 'regular-text';
 		
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 
 		$placeholder = isset($this->field['placeholder']) ? ' placeholder="'.$this->field['placeholder'].'"' : ' placeholder="'.$this->field['title'].'"';
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
 		$html =  sprintf(
 					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
@@ -72,7 +82,7 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 	/**
      * Enqueue scripts.
      */
-    function enqueue() {
+    public function enqueue() {
 
     	$wp_scripts = wp_scripts();
 
@@ -86,6 +96,9 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 		wp_enqueue_style('jquery-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/' . $wp_scripts->registered['jquery-ui-core']->ver . '/themes/smoothness/jquery-ui.css');
     }
 
+    /**
+     * Add date/time picker footer scripts
+     */
     public function footer_scripts(){
     	global $hook_suffix;
 
@@ -93,8 +106,10 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 	    	?>
 			<script type="text/javascript">
 				jQuery(document).ready(function($){
+					//$this->get?>picker should be translated as timepicker , datepicker or datetimepicker
 				    $(<?php echo '"#anony-'.$this->field['id'].'"' ?>).<?php echo $this->get?>picker({
 				    	<?php 
+				    		//Options for datetime picker
 				    		foreach ($this->picker_options as $key => $value) {
 				    			echo $key . ':' . '"' . $value . '",';
 				    		}

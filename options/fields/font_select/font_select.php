@@ -15,21 +15,27 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	*/
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		parent::__construct($parent->sections, $parent->args);
-		$this->field = $field;
-		$this->value = $value;
-	}
+	public function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
+		$this->field  = $field;
+
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Font select field render Function.
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
+	public function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';
 		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
@@ -44,9 +50,13 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 			'all'     => esc_html__('Google Fonts',TEXTDOM),
 		];
 		
-		$html =  '<select name="'. $name .'" '.$class.'rows="6" >';	
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
+
+		$html  =  '<select name="'. $name .'" '.$class.'rows="6" >';	
 		
-			$html .= anony_render_opts_groups( $fonts, $opts_groups, $this->value );
+		$html .= anony_render_opts_groups( $fonts, $opts_groups, $this->value );
 
 		$html .= '</select>';
 		

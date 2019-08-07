@@ -15,14 +15,20 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
-		$this->field = $field;
-		$this->value = $value;		
-	}
+	function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
+		$this->field  = $field;
+
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Tabs field render Function.
@@ -39,8 +45,14 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 		
 		$count = isset($this->value['count']) ? $this->value['count'] + 1 : 1;
 
-		$html = '<a href="javascript:void(0);" class="btn-blue anony-add-tab" rel-name="'. $name .'">Add tab</a>';
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
+
+		$html  = '<a href="javascript:void(0);" class="btn-blue anony-add-tab" rel-name="'. $name .'">Add tab</a>';
+
 		$html .= '<input type="hidden" name="'. $name .'[count]" class="anony-tabs-count" value="'. $count .'" />';
+		
 		$html .= '<br style="clear:both;" />';
 		
 		$html .= '<ul class="tabs-ul">';

@@ -15,50 +15,92 @@ class ANONY_optf__Radio_img extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
-		$this->field = $field;
-		$this->value = $value;		
-	}
+	public function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
+		$this->field  = $field;
+
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 
 	/**
 	 * Radioo img field render Function.
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
+	public function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class'])) ? 'class="'.$this->field['class'].'" ' : '';
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
-		echo '<fieldset id="'.$this->field['id'].'">';
+		$html = '<fieldset id="'.$this->field['id'].'">';
+
 			foreach($this->field['options'] as $k => $v){
-				echo '<div class="anony-radio-item">';
-					$selected = (checked($this->value, $k, false) != '')?' anony-radio-img-selected':'';
+
+				$html .= '<div class="anony-radio-item">';
+
+					$checked  = checked($this->value, $k, false);
+
+					$selected = ($checked != '') ? ' anony-radio-img-selected':'';
+					
+					$search   = array_search(
+									$k,
+									array_keys($this->field['options'])
+								)
+
+					$html .= sprintf(
+								'<label class="anony-radio-img%1$s anony-radio-img-%2$s" for="%2$s_%3$s">', 
+								$selected, 
+								$this->field['id'], 
+								$search
+							);
 				
-					echo '<label class="anony-radio-img'.$selected.' anony-radio-img-'.$this->field['id'].'" for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
+						$html .= sprintf(
+									'<input type="radio" id="%1$s_%2$s" name="%3$s" %4$s value="%5$s" %6$s/>', 
+									$this->field['id'], 
+									$search, 
+									$name, 
+									$class, 
+									$k, 
+									$checked
+								);
 				
-						echo '<input type="radio" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'. $name . '" '.$class.' value="'.$k.'" '.checked($this->value, $k, false).'/>';
+						$html .= sprintf(
+									'<img src="%1$s" alt="%2$s" onclick="jQuery:anony_radio_img_select(\'%3$s_%4$s\', \'%3$s\');" />',
+									$v['img'], 
+									$v['title'], 
+									$this->field['id'], 
+									$search
+								);
 				
-						echo '<img src="'.$v['img'].'" alt="'.$v['title'].'" onclick="jQuery:anony_radio_img_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');" />';
+					$html .= '</label>';
 				
-					echo '</label>';
-				
-					echo '<span class="description">'.$v['title'].'</span>';
-				echo '</div>';
+					$html .= '<span class="description">'.$v['title'].'</span>';
+
+				$html .= '</div>';
 			}
-			echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<br style="clear:both;"/><div class="description">'.$this->field['desc'].'</div>':'';
-		echo '</fieldset>';
+
+			$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<br style="clear:both;"/><div class="description">'.$this->field['desc'].'</div>':'';
+
+		$html .= '</fieldset>';
 		
 	}
 	
-		/**
+	/**
 	 * Enqueue scripts.
 	 */
-	function enqueue(){	
+	public function enqueue(){	
 		wp_enqueue_script('anony-opts-field-radio_img-js', ANONY_OPTIONS_URI.'fields/radio_img/field_radio_img.js', array('jquery'),time(),true);	
 	}
 	

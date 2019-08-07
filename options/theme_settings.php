@@ -276,28 +276,21 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			if(isset($field['callback']) && function_exists($field['callback'])){
 
 			}
-			
+			//Array of inputs that have same HTML markup
+			$mixed_types = ['text','number','email', 'password','url'];
+
 			if(isset($field['type'])){
 				$field_class = 'ANONY_optf__'.ucfirst($field['type']);
+
+				//Static class name for inputs that have same HTML markup
+				if(in_array($field['type'], $mixed_types)) $field_class = 'ANONY_optf__Mixed';
 				
 				if(class_exists($field_class)){
-					
-					$fieldID = $field['id'];
-					
-					$fieldDefault = isset($field['default']) ? $field['default'] : '';
 
-					$value = (isset($this->options->$fieldID))? $this->options->$fieldID : $fieldDefault;
-										
-					$render = new $field_class($field, $value, $this);
-
-					//neat_var_dump($render);
+					$field = new $field_class($field, $this);
 					
-					if(isset($field['note'])){
-						echo '<p class=anony-warning>'.$field['note'].'<p>';
-					}
-					
+					$field->render();
 
-					$render->render();
 				}
 			}
  		}

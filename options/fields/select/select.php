@@ -15,30 +15,38 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
-		$this->field = $field;
-		$this->value = $value;
-	}
+	public function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
+		$this->field  = $field;
+
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Select field render Function.
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
-
-		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';
+	public function render( $meta = false ){
 		
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		$class = (isset($this->field['class']) && !empty($this->field['class'])) ? ' class="'.$this->field['class'].'"' : '';
+
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
 		$html = sprintf(
-					'<select name="%1$s" %2$s size="6" autocomplete="off">', 
+					'<select name="%1$s" %2$s autocomplete="off">', 
 					$name, 
 					$class
 				);

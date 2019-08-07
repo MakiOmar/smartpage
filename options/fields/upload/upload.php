@@ -15,14 +15,20 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $value ='', $parent = NULL ){
-		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args);
-		$this->field = $field;
-		$this->value = $value;		
-	}
+	function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
+		$this->field  = $field;
+
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 
 	
 	/**
@@ -33,7 +39,12 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 	function render( $meta = false ){
 		
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : 'regular-text';
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
 		
 		$html = sprintf(
 				'<input type="hidden" name="%1$s" value="%2$s" class="%3$s" />', 

@@ -13,13 +13,20 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 	/**
 	 * Color field Constructor.
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	public function __construct($field = array(), $value ='', $parent){	
-		parent::__construct($parent->sections, $parent->args);
-		$this->field = $field;
-		$this->value = $value;
+	public function __construct($field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
+		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
+
+		$this->field  = $field;
+
+		$fieldID      = $this->field['id'];
+					
+		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
+
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
 	}
 	
 	/**
@@ -32,10 +39,14 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : '';
 
 		$value = ( $this->value ) ? $this->value : $this->field['default'];
-		
-		$html =  '<div class="farb-popup-wrapper">';
 
-		$html = sprintf('<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%3$s popup-colorpicker"/>',
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$field['note'].'<p>';
+		}
+		
+		$html  =  '<div class="farb-popup-wrapper">';
+
+		$html .= sprintf('<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%3$s popup-colorpicker"/>',
 					$this->field['id'], 
 					$this->args['opt_name'], 
 					$value, 
@@ -60,7 +71,7 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 		echo $html;
 	}
 	
-		/**
+	/**
 	 * Enqueue scripts.
 	 */
 	function enqueue(){
