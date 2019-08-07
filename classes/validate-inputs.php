@@ -53,11 +53,17 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		/**
 		 * Constructor
 		 */
-		public function __construct($args = ''){
-			if(!empty($args)){
-				$this->field = $args['field'];
-				//Set field's value to the one the new value before validation
+		public function __construct($args){
+
+			if(is_array($args) && !empty($args)){
+
+				//Set field's value to the new value before validation
 				$this->value = $args['new_value'];
+
+				if(empty($this->value)) return;
+
+
+				$this->field = $args['field'];
 				
 				if(isset($this->field['validate'])){
 					
@@ -77,24 +83,22 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * * validation types are separated with <code>|</code> and if the validation has any limits like supported file types, so sholud be followd by <code>:</code> then the limits.
 		 * * Limits should be separated with <code>,</code>.
 		 *
-		 *@param array $args array of fields's validation data
-		 *@return void Just set fields value afte validation
+		 * @param  array $args array of fields's validation data
+		 * @return void  Just set fields value afte validation
 		 */
 		public function validate_inputs(){
 				
-			
 			//Start checking if validation is needed
-			
-			if(!is_null($this->validation) && !empty($this->validation)){
+			if(!is_null($this->validation) || !empty($this->validation)){
 				
 				//Check if need multiple validations
 				if(strpos($this->validation, '|') !== FALSE){
 					
-					$this->multiple_validation();
+					$this->multiple_validation($this->validation);
 					
 				}else{
 					
-					$this->single_validation();
+					$this->single_validation($this->validation);
 				}
 				
 				
@@ -102,80 +106,88 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 			
 		}
-		
-		public function single_validation(){
-
+		/**
+		 * Decide which validation method should be called and sets validation limits.
+		 * 
+		 * @param  string $value String that contains validation and its limits
+		 * @return string Returns validation method name
+		 */
+		public function select_method($value ='' ){
 			//Check if validation has limits
-			if(strpos($this->validation, ':') !== FALSE){
+			if(strpos($value, ':') !== FALSE){
 
-				$vald = explode(':', $this->validation);
-
-				//Validation method name
-				$method = 'valid_'.$vald[0];
+				$vald = explode(':', $value);
 
 				//Set Validation limits
 				$this->limits = $vald[1];
 
+				//Validation method name
+				return $method = 'valid_'.$vald[0];
+
 			}else{
 
 				//Validation method name
-				$method = 'valid_'.$this->validation;
+				return $method = 'valid_'.$value;
 			}
+		}
+
+		/**
+		 * Call validation method if the validation is single. e.g. url
+		 * @param string $validation Validation string. can be something like (file_type: pdf, docx).
+		 * 
+		 * @return void
+		 */
+		public function single_validation($validation = ''){
+
+			$method = select_method($validation);
 
 			//Apply validation method
-			$this->$method();
+			if(method_exists($this, $method)) $this->$method();
+			
 		}
 		
-		public function multiple_validation(){
+		/**
+		 * Call validation method if the validation is single. e.g. url|file_type: pdf,docx.
+		 * 
+		 * @param  string $validation Validation string.
+		 * @return void
+		 */
+		public function multiple_validation($validations = ''){
 			
 			//Array to hold validation types
-			$validations = explode('|', $this->validation);
+			$_validations = explode('|', $validations);
 			
 			//Validate fore each validation type
-			foreach($validations as $validation){
+			foreach($_validations as $validation){
 
-				//Check if validation has limits
-				if(strpos($validation, ':') !== FALSE){
+				$this->single_validation($validation);
 
-					$vald = explode(':', $validation);
-
-					//Validation method name
-					$method = 'valid_'.$vald[0];
-
-					//Set Validation limits
-					$this->limits = $vald[1];
-
-				}else{
-
-					//Validation method name
-					$method = 'valid_'.$validation;
-				}
-
-				//Apply validation method for each validation type
-				$this->$method();
 			}
 		}
 		
-		/*
-		* Check through multiple options
-		*/
+		/**
+		 * Check through multiple options (select, radio, multi-checkbox)
+		 */
 		public function valid_multiple_options(){
 			
 			$options_keys = array_keys($this->field['options']);
+
+			$valid = true;
 			
 			if(is_array($this->value)){
 				
+				//Get intersection between values array and preset options array keys.
 				$intersection = array_intersect($this->value, $options_keys);
 				
-				if(count($intersection) != count($this->value)){
-					
-					$this->value = null;
-					
-					$this->errors[$this->field['id']] = 'strange-options';
-					
-				}
-			}elseif(!in_array($this->value, $options_keys)){
-				
+				if(count($intersection) != count($this->value)) $valid = false;
+
+			}else{
+
+				if(!in_array($this->value, $options_keys)) $valid = false;
+
+			}
+
+			if(!$valid){
 				$this->value = null;
 					
 				$this->errors[$this->field['id']] = 'strange-options';
@@ -183,51 +195,37 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 		}
 		
-		/*
-		*accept html within input
-		*/
+		/**
+		 * Accept html within input.
+		 */
 		public function valid_html(){
 			
 			$this->value =  wp_kses_post($this->value);
 			
 		}
 		
-		/*
-		*Remove html within input
-		*/
+		/**
+		 * Remove html within input
+		 */
 		public function valid_no_html(){
-			if(is_array($this->value)){
-				
-				foreach($this->value as $key => $value){
-					
-					if(sanitize_text_field($key) != $key){
-						
-						$this->value = null;
-						$this->errors[$this->field['id']] = 'remove-html';
-						break;
-					}
-					
-				}
-				
-			}else{
-					if(sanitize_text_field($this->value) != $this->value){
+	
+			if(sanitize_text_field($this->value) != $this->value){
 
-					$this->value = null;
+				$this->value = null;
 
-					$this->errors[$this->field['id']] = 'remove-html';
-				}
+				$this->errors[$this->field['id']] = 'remove-html';
 			}	
-			
 			
 		}
 		
-		/*
-		*check valid email
-		*/
+		/**
+		 * Check valid email
+		 */
 		public function valid_email(){
+
 			if($this->value == '#') return;
 							
-			if(!is_email($this->value)){
+			if(!is_email($this->value) ){
 
 				$this->value = null;
 
@@ -237,14 +235,14 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 		}
 		
-		/*
-		*check valid url
-		*/
+		/**
+		 * check valid url
+		 */
 		public function valid_url(){
 			
-			if($this->value == '#') return;
+			if($this->value == '#' || empty($this->value)) return;
 			
-			if (filter_var($this->value, FILTER_VALIDATE_URL) == false) {
+			if (esc_url($this->value) != $this->value ) {
 				
 				$this->value = null;
 				
@@ -258,13 +256,10 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 		}
 		
-		/*
-		*cast to ineger value
-		*/
-		
+		/**
+		 * Check if valid number.
+		 */
 		public function valid_number(){
-			
-			if(empty($this->value))return;
 			
 			if(preg_replace('/[0-9\.\-]/', '', $this->value) != ""){
 
@@ -273,31 +268,23 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				$this->errors[$this->field['id']] = 'not-number';
 				
 			}
-			
-			
-			
 		}
-		/*
-		*cast to ineger value
-		*/
-		
+
+		/**
+		 * Check valid integer
+		 */
 		public function valid_abs(){
-			
-			if(empty($this->value))return;
 			
 			if(!ctype_digit($this->value)) {
 				$this->value = null;
 				
 				$this->errors[$this->field['id']] = 'not-abs';
-			}
-			
+			}	
 		}
 		
-		public function valid_multi_checkbox(){
-			
-			
-		}
-		
+		/**
+		 * Check valid file type
+		 */
 		public function valid_file_type(){
 			
 			$limits = explode(',',$this->limits);
@@ -309,13 +296,13 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					$this->errors[$this->field['id']] = 'unsupported';
 
 				}
-
 		}
 		
+		/**
+		 * Check valid hex color
+		 */
 		public function valid_hex_color(){
 			
-			if(empty($this->value)) return;
-
 			$valid = true;
 
 			if(is_array($this->value)){
@@ -340,11 +327,10 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				$this->errors[$this->field['id']] = 'not-hex';
 	
 			}
-
 		}
 
 		/**
-		 * Check if is hex color.
+		 * Check if a string is hex color.
 		 *
 		 * @param string $string String to be check
 		 * @return bool  Returns true if is valid hex or false if not.
@@ -357,7 +343,13 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			return true;
 		}
-				
+		
+		/**
+		 * Gets the error message attached to $code
+		 * @param string $code Message code
+		 * @param string $field_title Field title to be shown with message
+		 * @return string The error message
+		 */		
 		public function get_error_msg($code, $field_title){
 			if (empty($code)) return;
 			$accepted_tags = array('strong'=>array());
