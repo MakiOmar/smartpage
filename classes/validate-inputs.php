@@ -141,7 +141,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 */
 		public function single_validation($validation = ''){
 
-			$method = select_method($validation);
+			$method = $this->select_method($validation);
 
 			//Apply validation method
 			if(method_exists($this, $method)) $this->$method();
