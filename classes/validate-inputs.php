@@ -24,7 +24,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * @var boolean Decide if valid input. Default is <code>false</code>
 		 *
 		 */
-		public $valid    = false;
+		public $valid = true;
 		
 		/**
 		 * @var string Inputs value
@@ -179,19 +179,15 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				//Get intersection between values array and preset options array keys.
 				$intersection = array_intersect($this->value, $options_keys);
 				
-				if(count($intersection) != count($this->value)) $valid = false;
+				if(count($intersection) != count($this->value)) $this->valid = false;
 
 			}else{
 
-				if(!in_array($this->value, $options_keys)) $valid = false;
+				if(!in_array($this->value, $options_keys)) $this->valid = false;
 
 			}
 
-			if(!$valid){
-				$this->value = null;
-					
-				$this->errors[$this->field['id']] = 'strange-options';
-			}
+			$this->set_error_code('strange-options');
 			
 		}
 		
@@ -199,9 +195,8 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * Accept html within input.
 		 */
 		public function valid_html(){
-			
+
 			$this->value =  wp_kses_post($this->value);
-			
 		}
 		
 		/**
@@ -209,12 +204,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 */
 		public function valid_no_html(){
 	
-			if(sanitize_text_field($this->value) != $this->value){
+			if(sanitize_text_field($this->value) != $this->value) $this->valid = false;
 
-				$this->value = null;
-
-				$this->errors[$this->field['id']] = 'remove-html';
-			}	
+			$this->set_error_code('remove-html');
 			
 		}
 		
@@ -225,14 +217,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			if($this->value == '#') return;
 							
-			if(!is_email($this->value) ){
+			if(!is_email($this->value) ) $this->valid = false;
 
-				$this->value = null;
-
-				$this->errors[$this->field['id']] = 'not-email';
-			}
-			
-			
+			$this->set_error_code('not-email');
 		}
 		
 		/**
@@ -244,9 +231,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 			if (esc_url($this->value) != $this->value ) {
 				
-				$this->value = null;
-				
-				$this->errors[$this->field['id']] = 'not-url';
+				$this->valid = false;
+
+				$this->set_error_code('not-url');
 				
 			}else{
 				
@@ -261,13 +248,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 */
 		public function valid_number(){
 			
-			if(preg_replace('/[0-9\.\-]/', '', $this->value) != ""){
-
-				$this->value = null;
+			if(preg_replace('/[0-9\.\-]/', '', $this->value) != '') $this->valid = false;
 				
-				$this->errors[$this->field['id']] = 'not-number';
-				
-			}
+			$this->set_error_code('not-number');
 		}
 
 		/**
@@ -275,11 +258,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 */
 		public function valid_abs(){
 			
-			if(!ctype_digit($this->value)) {
-				$this->value = null;
-				
-				$this->errors[$this->field['id']] = 'not-abs';
-			}	
+			if(!ctype_digit($this->value)) $this->valid = false;
+			
+			$this->set_error_code('not-abs');
 		}
 		
 		/**
@@ -291,11 +272,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 			$ext = pathinfo($this->value, PATHINFO_EXTENSION);
 
-				if(!empty($limits) && !in_array($ext, $limits)){
-
-					$this->errors[$this->field['id']] = 'unsupported';
-
-				}
+			if(!empty($limits) && !in_array($ext, $limits)) $this->valid = false;
+		
+			$this->set_error_code('unsupported');
 		}
 		
 		/**
@@ -309,24 +288,18 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				foreach ($this->value as $key => $hex) {
 
 					if ( !$this->is_hex_color($hex) ){
-						$valid = false;
+						$this->valid = false;
 						break; //Break if any of values is not a hex color
 					}
 				}
 
 			}elseif( !$this->is_hex_color($this->value) ){
 
-				$valid = false;
+				$this->valid = false;
 
 			}
-			
-			if(!$valid) {
-				
-				$this->value = null;
-				
-				$this->errors[$this->field['id']] = 'not-hex';
-	
-			}
+
+			$this->set_error_code('not-hex');
 		}
 
 		/**
@@ -345,14 +318,31 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		}
 		
 		/**
+		 * Set error message code
+		 * @param string $code 
+		 * @return void
+		 */
+		public function set_error_code($code){
+			if(!$this->valid){
+				
+				$this->value = null;
+					
+				$this->errors[$this->field['id']] = $code;
+			}
+		}
+
+		/**
 		 * Gets the error message attached to $code
 		 * @param string $code Message code
 		 * @param string $field_title Field title to be shown with message
 		 * @return string The error message
 		 */		
 		public function get_error_msg($code, $field_title){
+
 			if (empty($code)) return;
+
 			$accepted_tags = array('strong'=>array());
+			
 			switch($code){
 				case "unsupported":
 					
