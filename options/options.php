@@ -99,7 +99,7 @@ $sections['slider']= array(
 							'id'      => 'featured_tax',
 							'title'   => esc_html__('Select featured taxonomy', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => get_taxonomies(),
 							'default' => 'category',
 							'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && $anonyOptions->slider == 'featured-cat' ? ' show-in-table' : '')
@@ -108,7 +108,7 @@ $sections['slider']= array(
 							'id'      => 'rev_slider',
 							'title'   => esc_html__('Select a slider', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
 							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
 							'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
@@ -119,7 +119,7 @@ $sections['slider']= array(
 							'id'      => 'featured_cat',
 							'title'   => esc_html__('Select featured category', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => isset($anonyOptions)  ?admin_get_terms_options($anonyOptions->featured_tax) : array(),
 							'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : ''),
 							'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', TEXTDOM) : '')
@@ -163,7 +163,7 @@ $sections['general-colors']= array(
 							'id'      => 'color_skin',
 							'title'   => esc_html__('Color skin', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array(
 											'blue'     => esc_html__('Blue', TEXTDOM),
 											'firebrick'=> esc_html__('Firebrick', TEXTDOM),
@@ -184,7 +184,7 @@ $sections['sidebars']= array(
 							'id'      => 'sidebar',
 							'title'   => esc_html__('Sidebar', TEXTDOM),
 							'type'    => 'radio_img',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array(
 											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
@@ -214,7 +214,7 @@ $sections['blog']= array(
 							'id'      => 'posts_grid',
 							'title'   => esc_html__('Posts grid', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array(
 											'standard'     => esc_html__('Standard', TEXTDOM),
 											'masonry'=> esc_html__('Masonry', TEXTDOM),
@@ -247,7 +247,7 @@ $sections['advertisements']= array(
 							'id'      => 'ad_block_one_location',
 							'title'   => esc_html__('AD block one location', TEXTDOM),
 							'type'    => 'checkbox',
-							'validate'=> 'multi_checkbox',
+							'validate'=> 'multiple_options',
 							'options' => $anonyAdsLocs,
 							
 						),
@@ -261,7 +261,7 @@ $sections['advertisements']= array(
 							'id'      => 'ad_block_two_location',
 							'title'   => esc_html__('AD block two location', TEXTDOM),
 							'type'    => 'checkbox',
-							'validate'=> 'multi_checkbox',
+							'validate'=> 'multiple_options',
 							'options' => $anonyAdsLocs,
 							
 						),
@@ -275,7 +275,7 @@ $sections['advertisements']= array(
 							'id'      => 'ad_block_three_location',
 							'title'   => esc_html__('AD block three location', TEXTDOM),
 							'type'    => 'checkbox',
-							'validate'=> 'multi_checkbox',
+							'validate'=> 'multiple_options',
 							'options' => $anonyAdsLocs,
 							
 						),
@@ -314,7 +314,7 @@ $sections['arabic-fonts']= array(
 							'id'      => 'anony_headings_ar_font',
 							'title'   => esc_html__('Arabic font for headings', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
 							'default' => 'ae_almohanadregular',
 						),
@@ -322,7 +322,7 @@ $sections['arabic-fonts']= array(
 							'id'      => 'anony_links_ar_font',
 							'title'   => esc_html__('Arabic font for links', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
 							'default' => 'ae_almohanadregular',
 						),
@@ -330,7 +330,7 @@ $sections['arabic-fonts']= array(
 							'id'      => 'anony_paragraph_ar_font',
 							'title'   => esc_html__('Arabic font for paragraph', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
 							'default' => 'ae_almohanadregular',
 						),
@@ -347,7 +347,7 @@ $sections['english-fonts']= array(
 							'id'      => 'anony_headings_en_font',
 							'title'   => esc_html__('English font for headings', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array_merge( $defaultEnFonts, $enFonts),
 							'default' => 'ralewaybold',
 						),
@@ -356,7 +356,7 @@ $sections['english-fonts']= array(
 							'id'      => 'anony_links_en_font',
 							'title'   => esc_html__('English font for links', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array_merge( $defaultEnFonts, $enFonts),
 							'default' => 'ralewaybold',
 						),
@@ -364,7 +364,7 @@ $sections['english-fonts']= array(
 							'id'      => 'anony_paragraph_en_font',
 							'title'   => esc_html__('English font for paragraph', TEXTDOM),
 							'type'    => 'select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array_merge( $defaultEnFonts, $enFonts),
 							'default' => 'ralewaybold',
 						),
@@ -490,17 +490,17 @@ $sections['miscellanous']= array(
 							'validate'=> 'no_html',
 							'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', TEXTDOM)
 						),
-						array(
+						/*array(
 							'id'      => 'color_gradient',
 							'title'   => esc_html__('Color Gradient', TEXTDOM),
 							'type'    => 'color_gradient',
-							'validate'=> 'no_html',
-						),	
+							'validate'=> 'hex_color',
+						),*/	
 						array(
 							'id'      => 'font_select',
 							'title'   => esc_html__('Select font', TEXTDOM),
 							'type'    => 'font_select',
-							'validate'=> 'no_html',
+							//'validate'=> 'no_html',
 						),		
 						array(
 							'id'      => 'multi_text',
