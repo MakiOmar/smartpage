@@ -362,7 +362,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 
 				foreach($this->errors as $error){
 					foreach($error as $field_id => $code){
-						add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->get_error_msg($code, $field_id), 'error' );
+						add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->get_error_msg($code), 'error' );
 					}
 				}
 
@@ -371,8 +371,6 @@ if (!class_exists('ANONY__Theme_Settings')) {
 				add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'].'_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
 			}
 
-			/*neat_var_dump($this->errors);
-					die();*/
 			return $validated;
 		}
 		
@@ -380,8 +378,9 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		 * HTML OUTPUT.
 		 */
 		public function options_page_html(){
+
 			settings_errors($this->args['opt_name']);
-			//neat_print_r(new WP_Term_Query(array('taxonomy' => 'post_tag')));
+
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
 
