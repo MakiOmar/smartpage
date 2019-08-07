@@ -51,9 +51,11 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		public $validation;
 		
 		/**
-		 * Constructor
+		 * Constructor.
+		 * 
+		 * @param string|array array of field's date required for validation.<br/>**Note: **Empty $args so the class can be instantiated without $args if needed
 		 */
-		public function __construct($args){
+		public function __construct($args = ''){
 
 			if(is_array($args) && !empty($args)){
 
@@ -335,9 +337,11 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * @param string $field_title Field title to be shown with message
 		 * @return string The error message
 		 */		
-		public function get_error_msg($code, $field_title){
+		public function get_error_msg($code, $field_title = ''){
 
 			if (empty($code)) return;
+
+			if (empty($field_title)) $field_title = $this->field['title'];
 
 			$accepted_tags = array('strong'=>array());
 
