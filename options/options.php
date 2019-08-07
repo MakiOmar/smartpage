@@ -199,7 +199,7 @@ $sections['sidebars']= array(
 							'id'      => 'single_sidebar',
 							'title'   => esc_html__('Single post sidebar', TEXTDOM),
 							'type'    => 'switch',
-							'validate'=> 'multiple_options',
+							'validate'=> 'no_html',
 							'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', TEXTDOM),
 						),
 
