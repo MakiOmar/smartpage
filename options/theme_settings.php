@@ -61,6 +61,13 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		public $defaultOptions;
 
 		/**
+		 * Used as a hack to prevent error messages duplication.
+		 * 
+		 * @var integer Holds a number that represents how many a function is called
+		 */
+		public static $called = 0;
+
+		/**
 		 * Class Constructor. Defines the args for the theme options class
 		 *
 		 * @param array $menu array of options page's menu items
@@ -128,6 +135,9 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		
 			//set option with defaults		
 			add_action('after_setup_theme', array(&$this, 'set_default_options'));
+
+			//Show admin notices		
+			add_action('admin_notices', array(&$this, 'admin_notices'));
 
 		}
 		
@@ -209,7 +219,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			register_setting(
 				$this->OptionGroup,
 				$this->args['opt_name'],
-				array(&$this,'options_validate')
+				$args = array('sanitize_callback' => array(&$this,'options_validate'))
 			);
 			
 			foreach($this->sections as $secKey => $section){
@@ -301,85 +311,94 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		 * return  array  $validated     array of form values after validation
 		 */
 		public function options_validate($notValidated){
-			
-			$validated = array();
-			
-			foreach($this->sections as $secKey => $section){
-				
-				if(isset($section['fields'])){
-					
-					foreach($section['fields'] as $fieldKey => $field){
-						
-						$fieldID = $field['id'];
-							
-						$fieldTitle = $field['title'];
-						
-						//Current value in database
-						$currentValue = $this->options->$fieldID;
-						
-						//Something like a checkbox is not set if unchecked
-						if(!isset($notValidated[$fieldID])) {
-							$this->options->delete_option($fieldID);
-							continue;
-						}
-						
-						if($currentValue === $notValidated[$fieldID]) {
-								
-							$validated[$fieldID] = $currentValue;
 
-							continue;
-						}
+			self::$called++;
+
+			//Make sure this code runs once to prevent error messages duplication
+			if(self::$called <= 1){
+			
+				$validated = array();
+			
+				foreach($this->sections as $secKey => $section){
+					
+					if(isset($section['fields'])){
 						
-						//First validated value will be equal to the not validated one
-						$validated[$fieldID] = $notValidated[$fieldID];
-						
-						//them check if validation required
-						if(isset($field['validate'])){
+						foreach($section['fields'] as $fieldKey => $field){
+							
+							$fieldID = $field['id'];
 								
-							$args = array(
-								'field'            => $field,
-								'new_value'     => $notValidated[$fieldID],
-							);
+							$fieldTitle = $field['title'];
 							
-							$this->validate = new ANONY__Validate_Inputs($args);
+							//Current value in database
+							$currentValue = $this->options->$fieldID;
 							
-							if(!empty($this->validate->errors)){
-								$this->errors[] =  $this->validate->errors;
+							//Something like a checkbox is not set if unchecked
+							if(!isset($notValidated[$fieldID])) {
+								$this->options->delete_option($fieldID);
+								continue;
 							}
 							
-							if(is_null($this->validate->value)) unset($validated[$fieldID]); continue;
+							if($currentValue === $notValidated[$fieldID]) {
+									
+								$validated[$fieldID] = $currentValue;
+
+								continue;
+							}
 							
-							if(!array_key_exists($fieldID, $this->validate->errors) ) $validated[$fieldID] = $this->validate->value;
+							//First validated value will be equal to the not validated one
+							$validated[$fieldID] = $notValidated[$fieldID];
 							
+							//them check if validation required
+							if(isset($field['validate'])){
+									
+								$args = array(
+									'field'            => $field,
+									'new_value'     => $notValidated[$fieldID],
+								);
+								
+								$this->validate = new ANONY__Validate_Inputs($args);
+								
+								if(!empty($this->validate->errors)){
+									$this->errors[] =  $this->validate->errors;
+								}
+								
+								if(is_null($this->validate->value)) unset($validated[$fieldID]); continue;
+								
+								if(!array_key_exists($fieldID, $this->validate->errors) ) $validated[$fieldID] = $this->validate->value;
+								
+							}
+						}
+						
+					}
+				}
+				if(!empty($this->errors)){
+					// add settings saved message with the class of "updated"
+					add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'] ), esc_html__('Options are saved except those with the following errors', TEXTDOM), 'error' );
+
+					foreach($this->errors as $error){
+						foreach($error as $field_id => $code){
+							
+							add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->get_error_msg($code), 'error' );
+
 						}
 					}
-					
-				}
-			}
-			if(!empty($this->errors)){
-				// add settings saved message with the class of "updated"
-				add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'] ), esc_html__('Options are saved except those with the following errors', TEXTDOM), 'error' );
 
-				foreach($this->errors as $error){
-					foreach($error as $field_id => $code){
-						add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->get_error_msg($code), 'error' );
-					}
+				}else{
+					// add settings saved message with the class of "updated"
+					add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'].'_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
 				}
 
-			}else{
-				// add settings saved message with the class of "updated"
-				add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'].'_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
+				return $validated;
+			
 			}
-
-			return $validated;
+			
+			
 		}
 		
 		/**
 		 * HTML OUTPUT.
 		 */
 		public function options_page_html(){
-
-			settings_errors($this->args['opt_name']);
 
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
@@ -535,6 +554,14 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			<?php }
 
 			
+		}
+
+		/**
+		 * Display settings errors
+		 */
+		public function admin_notices(){
+	
+			settings_errors($this->args['opt_name']);
 		}
 	}
 }
