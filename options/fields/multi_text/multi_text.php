@@ -15,7 +15,6 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	*/
 	function __construct($field = array(), $parent = NULL ){
@@ -23,13 +22,13 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
-		$this->field = $field;
+		$this->field  = $field;
 
-		$fieldID = $this->field['id'];
+		$fieldID      = $this->field['id'];
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 
 	
 	/**
@@ -39,9 +38,9 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 	 */
 	function render(){
 		
-		$class = (isset($this->field['class']))?$this->field['class']:'';
+		$class       = (isset($this->field['class']))?$this->field['class']:'';
 
-		$buttonText = (isset($this->field['button-text'])) ? ' placeholder="'.$this->field['button-text'].'"' : esc_html__( 'Add', TEXTDOM );
+		$buttonText  = (isset($this->field['button-text'])) ? ' placeholder="'.$this->field['button-text'].'"' : esc_html__( 'Add', TEXTDOM );
 
 		$placeholder = (isset($this->field['placeholder'])) ? $this->field['placeholder'] : '';
 		
@@ -109,7 +108,7 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 	/**
 	 * Enqueue scripts.
 	 */
-	function enqueue(){
+	public function enqueue(){
 		
 		wp_enqueue_script(
 			'anony-opts-field-multi-text-js', 

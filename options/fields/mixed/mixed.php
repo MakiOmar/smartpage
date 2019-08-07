@@ -16,44 +16,43 @@ class ANONY_optf__Mixed extends ANONY__Theme_Settings{
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $parent = NULL ){
+	public function __construct( $field = array(), $parent = NULL ){
 		if (!is_array($field) || empty($field)) return;
 
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
-		$this->field = $field;
+		$this->field  = $field;
 
-		$fieldID = $this->field['id'];
+		$fieldID      = $this->field['id'];
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
 	
 	/**
 	 * Text field render Function.
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
+	public function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? $this->field['class'] : 'regular-text';
 		
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$field['note'].'<p>';
 		}
 		
-		$html = sprintf(
+		$html  = sprintf(
 					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s"/>', 
 					$this->field['type'],
 					$name, 
 					esc_attr($this->value), 
 					$class
-				);
+				 );
 		
 		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description '.$class.'">'.$this->field['desc'].'</div>':'';
 

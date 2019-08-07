@@ -15,21 +15,21 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 	 *
 	 * @since Theme_Settings 1.0
 	 * @param array $field Array of field's data
-	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	*/
-	function __construct($field = array(), $parent = NULL ){
+	public function __construct($field = array(), $parent = NULL ){
 		if (!is_array($field) || empty($field)) return;
 
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
-		$this->field = $field;
+		$this->field  = $field;
 
-		$fieldID = $this->field['id'];
+		$fieldID      = $this->field['id'];
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}//function
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+	}
 	
 	
 	
@@ -38,7 +38,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 	 *
 	 * @return void
 	 */
-	function render(){
+	public function render(){
 		
 		$class = (isset($this->field['class']))?$this->field['class'].' ':'';
 
@@ -62,7 +62,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 			echo '<p class=anony-warning>'.$field['note'].'<p>';
 		}
 		
-		$html = '<div class="farb-popup-wrapper" id="'.$this->field['id'].'">';		
+		$html  = '<div class="farb-popup-wrapper" id="'.$this->field['id'].'">';		
 
 		$html .= '<fieldset>';
 
@@ -138,7 +138,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 	 *
 	 * @since Theme_Settings 1.0
 	*/
-	function enqueue(){
+	public function enqueue(){
 		
 		wp_enqueue_script(
 			'anony-opts-field-color-js', 
