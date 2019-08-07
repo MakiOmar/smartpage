@@ -17,7 +17,10 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 	 * @param string $value Field's value
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $parent = NULL ){
+	function __construct( $field , $parent = NULL ){
+		
+		if (!is_array($field) || empty($field)) return;
+
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
 		$this->field = $field;

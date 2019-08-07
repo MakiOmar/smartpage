@@ -19,6 +19,8 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 	 * @param object $parent Field parent object
 	 */
 	function __construct( $field = array(), $parent = NULL ){
+		if (!is_array($field) || empty($field)) return;
+
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
 
 		$this->field = $field;
