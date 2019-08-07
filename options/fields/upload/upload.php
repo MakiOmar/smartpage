@@ -39,7 +39,8 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 	function render( $meta = false ){
 		
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : 'regular-text';
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$field['note'].'<p>';

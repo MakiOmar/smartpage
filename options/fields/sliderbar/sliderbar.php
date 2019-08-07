@@ -17,7 +17,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	 * @param array $field Array of field's data
 	 * @param object $parent Field parent object
 	 */
-	function __construct($field = array(), $parent = NULL ){
+	public function __construct($field = array(), $parent = NULL ){
 		if (!is_array($field) || empty($field)) return;
 
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
@@ -36,7 +36,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	 *
 	 * @return void
 	 */
-	function render(){
+	public function render(){
 		$class = (isset($this->field['class']))?'class="'.$this->field['class'].'" ':'';
 
 		$default = isset($this->field['default']) ? $this->field['default'] : '';
@@ -70,7 +70,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 	/**
 	 * Enqueue scripts.
 	 */
-	function enqueue(){
+	public function enqueue(){
 		
 		wp_enqueue_style('anony-opts-jquery-ui-css');
 		

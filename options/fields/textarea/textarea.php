@@ -17,7 +17,7 @@ class ANONY_optf__Textarea extends ANONY__Theme_Settings{
 	 * @param array $field Array of field's data
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field = array(), $parent = NULL ){
+	public function __construct( $field = array(), $parent = NULL ){
 		if (!is_array($field) || empty($field)) return;
 
 		if( is_object($parent) ) parent::__construct($parent->sections, $parent->args, $parent->widgets);
@@ -35,11 +35,11 @@ class ANONY_optf__Textarea extends ANONY__Theme_Settings{
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
+	public function render( $meta = false ){
 		
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : 'large-text';
 
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$field['note'].'<p>';

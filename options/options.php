@@ -81,7 +81,7 @@ $sections['slider']= array(
 							'id'      => 'slider_content',
 							'title'   => esc_html__('Featured Posts slider content', TEXTDOM),
 							'type'    => 'radio',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'options' => array(
 											'featured-cat'	=> array(
 												'title' => esc_html__('Featured category', TEXTDOM),
@@ -199,7 +199,7 @@ $sections['sidebars']= array(
 							'id'      => 'single_sidebar',
 							'title'   => esc_html__('Single post sidebar', TEXTDOM),
 							'type'    => 'switch',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
 							'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', TEXTDOM),
 						),
 
@@ -546,7 +546,7 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('Date and time', TEXTDOM),
 							'type'    => 'date_time',
 							'validate'=> 'no-html',
-						),	
+						),
 					)
 );
 

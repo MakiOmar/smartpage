@@ -16,7 +16,7 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 	 * @param array $field Array of field's data
 	 * @param object $parent Field parent object
 	 */
-	function __construct( $field , $parent = NULL ){
+	public function __construct( $field , $parent = NULL ){
 		
 		if (!is_array($field) || empty($field)) return;
 
@@ -36,11 +36,11 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 	 *
 	 * @return void
 	 */
-	function render( $meta = false ){
+	public function render( $meta = false ){
 		
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';	
 
-		$name = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
+		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
 		
 		// fix for value "off = 0"
 		if( ! $this->value ) $this->value = 0;
@@ -67,7 +67,7 @@ class ANONY_optf__Switch extends ANONY__Theme_Settings{
 	/**
 	 * Enqueue scripts.
 	 */
-	function enqueue(){		
+	public function enqueue(){		
 		wp_enqueue_script('anony-opts-field-switch-js', ANONY_OPTIONS_URI.'fields/switch/field_switch.js', array('jquery'),time(),true);
 	}
 	
