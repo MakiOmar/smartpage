@@ -136,7 +136,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			//set option with defaults		
 			add_action('after_setup_theme', array(&$this, 'set_default_options'));
 
-			//Show admin notices		
+			//Show admin notices
 			add_action('admin_notices', array(&$this, 'admin_notices'));
 
 		}
@@ -219,7 +219,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			register_setting(
 				$this->OptionGroup,
 				$this->args['opt_name'],
-				$args = array('sanitize_callback' => array(&$this,'options_validate'))
+				array('sanitize_callback' => array(&$this,'options_validate'))
 			);
 			
 			foreach($this->sections as $secKey => $section){
@@ -389,7 +389,6 @@ if (!class_exists('ANONY__Theme_Settings')) {
 				}
 
 				return $validated;
-			
 			}
 			
 			
