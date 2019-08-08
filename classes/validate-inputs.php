@@ -49,6 +49,12 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 *
 		 */
 		public $validation;
+
+		/**
+		 * @var string Field's sanitization function name
+		 *
+		 */
+		public $sanitization = 'sanitize_text_field';
 		
 		/**
 		 * Constructor.
@@ -68,6 +74,8 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				$this->field = $args['field'];
 				
 				if(isset($this->field['validate'])){
+
+					$this->select_sanitization();
 					
 					$this->validation = $this->field['validate'];
 					
@@ -75,6 +83,36 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				}//if level 2-2
 
 			}//if level 1
+
+		}//function
+
+		/**
+		 * Select sanitization function name for a field
+		 * @return string Returns the name of sanitization function.
+		 */
+		public function select_sanitization(){
+
+			switch ($this->field['type']) {
+				case 'textarea':
+					$this->sanitization = 'sanitize_textarea_field';
+					break;
+
+				case 'email':
+					$this->sanitization = 'sanitize_email';
+					break;
+
+				case 'url':
+					$this->sanitization = 'esc_url_raw';
+					break;
+
+				case 'upload':
+					$this->sanitization = 'esc_url_raw';
+					break;
+				
+				default:
+					$this->sanitization = 'sanitize_text_field';
+					break;
+			}
 
 		}//function
 		
@@ -167,6 +205,17 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			}//forach
 		}//function
+
+		/**
+		 * Sanitize field value dynamicaly
+		 * @return string sanitized value
+		 */
+		public function sanitize(){
+
+			$sanitization = $this->sanitization;
+
+			return $this->value  = $sanitization($this->value);
+		}
 		
 		/**
 		 * Check through multiple options (select, radio, multi-checkbox)
@@ -174,16 +223,16 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		public function valid_multiple_options(){
 			
 			$options_keys = array_keys($this->field['options']);
-
-			$valid = true;
 			
+			//If checked/selected multiple options
 			if(is_array($this->value)){
 				
-				//Get intersection between values array and preset options array keys.
+				//Get intersection between values array and the pre-set options array keys.
 				$intersection = array_intersect($this->value, $options_keys);
 				
 				if(count($intersection) != count($this->value)) $this->valid = false;
 
+			//If checked/selected one option e.g. radio
 			}else{
 
 				if(!in_array($this->value, $options_keys)) $this->valid = false;
@@ -205,10 +254,18 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * Remove html within input
 		 */
 		public function valid_no_html(){
-	
-			if(sanitize_text_field($this->value) != $this->value) $this->valid = false;
+			
+			$sanitization = $this->sanitization;
 
-			$this->set_error_code('remove-html');	
+			if($sanitization($this->value) != $this->value){
+
+				$this->valid = false;
+
+				return $this->set_error_code('remove-html');
+			}
+
+			$this->sanitize();
+
 		}//function
 		
 		/**
@@ -218,9 +275,15 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			if($this->value == '#') return;
 							
-			if(!is_email($this->value) ) $this->valid = false;
+			if(!is_email($this->value) ){
 
-			$this->set_error_code('not-email');
+				$this->valid = false;
+
+				return $this->set_error_code('not-email');
+			}
+
+			
+			$this->sanitize();
 		}//function
 		
 		/**
@@ -234,13 +297,12 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				
 				$this->valid = false;
 
-				$this->set_error_code('not-url');
-				
-			}else{
-				
-				$this->value = esc_url_raw($this->value);
+				return $this->set_error_code('not-url');
 				
 			}
+				
+			$this->sanitize();
+				
 		}//function
 		
 		/**
@@ -248,9 +310,15 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 */
 		public function valid_number(){
 			
-			if(preg_replace('/[0-9\.\-]/', '', $this->value) != '') $this->valid = false;
+			if(preg_replace('/[0-9\.\-]/', '', $this->value) != '') {
+
+				$this->valid = false;
+
+				return $this->set_error_code('not-number');
+			}
 				
-			$this->set_error_code('not-number');
+			$this->sanitize();
+
 		}//function
 
 		/**
@@ -258,9 +326,14 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 */
 		public function valid_abs(){
 			
-			if(!ctype_digit($this->value)) $this->valid = false;
+			if(!ctype_digit($this->value)) {
+
+				$this->valid = false;
+
+				return $this->set_error_code('not-abs');
+			}
 			
-			$this->set_error_code('not-abs');
+			$this->sanitize();
 		}//function
 		
 		/**
@@ -270,11 +343,17 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			
 			$limits = explode(',',$this->limits);
 			
-			$ext = pathinfo($this->value, PATHINFO_EXTENSION);
+			$ext = pathinfo(esc_url($this->value), PATHINFO_EXTENSION);
 
-			if(!empty($limits) && !in_array($ext, $limits)) $this->valid = false;
+			if(!empty($limits) && !in_array($ext, $limits)) {
+
+				$this->valid = false;
+
+				return $this->set_error_code('unsupported');;
+			}
 		
-			$this->set_error_code('unsupported');
+			$this->sanitze();	
+
 		}//function
 		
 		/**
@@ -299,7 +378,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			}//if level 1
 
-			$this->set_error_code('not-hex');
+			if(!$this->valid) return $this->set_error_code('not-hex');
+
+			$this->sanitze();
 		}//function
 
 		/**
