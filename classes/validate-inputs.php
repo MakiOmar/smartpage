@@ -208,11 +208,22 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 		/**
 		 * Sanitize field value dynamicaly
-		 * @return string sanitized value
+		 * @return string|array  Sanitized value/s
 		 */
 		public function sanitize(){
-
 			$sanitization = $this->sanitization;
+
+			if(is_array($this->value)){
+				//Temporary array to holde sanitized values
+				$tem_value = [];
+
+				foreach ($this->value as $value) {
+					$tem_value[] = $sanitization($value);
+				}
+
+				return $this->value = $tem_value;
+
+			}
 
 			return $this->value  = $sanitization($this->value);
 		}
