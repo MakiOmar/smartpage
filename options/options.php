@@ -512,7 +512,8 @@ $sections['miscellanous']= array(
 							'id'      => 'pages_select',
 							'title'   => esc_html__('Page select', TEXTDOM),
 							'type'    => 'pages_select',
-							'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
+							'options' => anony_pages_basic_data(),
 						),		
 						array(
 							'id'      => 'sliderbar',
@@ -525,7 +526,7 @@ $sections['miscellanous']= array(
 							'id'      => 'upload',
 							'title'   => esc_html__('upload', TEXTDOM),
 							'type'    => 'upload',
-							//'validate'=> 'url',
+							'validate'=> 'url',
 						),				
 						array(
 							'id'      => 'date',
