@@ -39,8 +39,6 @@ class ANONY_optf__Pages_select extends ANONY__Theme_Settings{
 		$class = ( isset( $this->field['class']) ) ? 'class="'.$this->field['class'].'" ' : '';
 
 		$name  = ( ! $meta ) ? ( $this->args['opt_name'].'['.$this->field['id'].']' ) : $this->field['id'];
-		
-		$pages = get_pages('sort_column=post_title&hierarchical=0');
 
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$field['note'].'<p>';
@@ -54,13 +52,13 @@ class ANONY_optf__Pages_select extends ANONY__Theme_Settings{
 
 			$html .= sprintf('<option value="">%1$s</option>', esc_html__('-- select --',TEXTDOM));
 
-			foreach ( $pages as $page ) {
+			foreach ( $this->field['options'] as $id => $title ) {
 
 				$html .= sprintf(
 							'<option value="%1$s"%2$s>%3$s</option>', 
-							esc_attr($page->ID), 
-							selected($this->value, $page->ID, false), 
-							sanitize_title( $page->post_title )
+							esc_attr($id), 
+							selected($this->value, $id, false), 
+							esc_html($title)
 						);
 			}
 		$html .= '</select>';
