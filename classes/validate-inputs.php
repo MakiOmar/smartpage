@@ -352,7 +352,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				return $this->set_error_code('unsupported');;
 			}
 		
-			$this->sanitze();	
+			$this->sanitize();	
 
 		}//function
 		
@@ -380,7 +380,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			if(!$this->valid) return $this->set_error_code('not-hex');
 
-			$this->sanitze();
+			$this->sanitize();
 		}//function
 
 		/**
