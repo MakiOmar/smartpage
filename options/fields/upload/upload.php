@@ -28,7 +28,10 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+
+		$this->value  = esc_url( $this->value );
+	}
 
 	
 	/**

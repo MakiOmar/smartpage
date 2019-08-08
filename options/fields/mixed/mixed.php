@@ -29,7 +29,10 @@ class ANONY_optf__Mixed extends ANONY__Theme_Settings{
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+
+		$this->value  = ($this->field['type'] == 'url') ? esc_url($this->value) : esc_attr($this->value);
+	}
 	
 	/**
 	 * Text field render Function.
@@ -50,7 +53,7 @@ class ANONY_optf__Mixed extends ANONY__Theme_Settings{
 					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s"/>', 
 					$this->field['type'],
 					$name, 
-					esc_attr($this->value), 
+					$this->value, 
 					$class
 				 );
 		
