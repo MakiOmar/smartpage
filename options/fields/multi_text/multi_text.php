@@ -71,6 +71,8 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 
 					if($value != ''){
 
+						$value = esc_attr($value);
+						
 						$html .= '<li>';
 
 							$html .= sprintf(
@@ -78,11 +80,11 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 										$this->field['id'], 
 										$k, 
 										$this->args['opt_name'], 
-										esc_attr($value), 
+										$value, 
 										$class
 									);
 
-							$html .= sprintf('<span>%1$s</span>', esc_attr($value));
+							$html .= sprintf('<span>%1$s</span>', $value);
 
 							$html .= '<a href="" class="multi-text-remove"><em>delete</em></a>';
 

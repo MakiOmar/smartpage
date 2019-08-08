@@ -28,7 +28,10 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+		
+		$this->value  = esc_attr($this->value);
+	}
 
 	
 	/**
@@ -57,7 +60,7 @@ class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{
 					'<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="sliderbar_input %4$s" readonly="readonly"/></div>', 
 					$this->field['id'], 
 					$this->args['opt_name'], 
-					esc_attr($this->value), 
+					$this->value, 
 					$class
 				);	
 

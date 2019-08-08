@@ -27,7 +27,8 @@ class ANONY_optf__Radio extends ANONY__Theme_Settings{
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+	}
 
 	/**
 	 * Radio field render Function.
@@ -52,27 +53,31 @@ class ANONY_optf__Radio extends ANONY__Theme_Settings{
 
 				$html .= '<div class="anony-radio-item">';
 
-					$selected = (checked($this->value, $k, false) != '') ? ' anony-radio-img-selected' : '';
+					$checked  = checked($this->value, $k, false);
+
+					$search   = array_search(
+									$k,
+									array_keys($this->field['options'])
+								);
+
+					$selected = ( $checked != '' ) ? ' anony-radio-img-selected' : '';
 				
 					$html .= sprintf(
 								'<label class="anony-radio%1$s anony-radio-%2$s" for="%2$s_%3$s">', 
 								$selected, 
 								$this->field['id'], 
-								array_search(
-									$k,
-									array_keys($this->field['options'])
-								)
+								$search
 							);
 				
 						$html .= sprintf(
 									'<input %1$s type="radio" id="%2$s_%3$s" name="%4$s" %5$s value="%6$s" %7$s onclick="jQuery:anony_radio_select(\'%2$s_%3$s\', \'%2$s\');"/>',
 									 $radioClass, 
 									 $this->field['id'], 
-									 array_search($k,array_keys($this->field['options'])), 
+									 $search, 
 									 $name, 
 									 $class, 
 									 $k, 
-									 checked($this->value, $k, false)
+									 $checked
 								);
 				
 					$html .= '</label>';

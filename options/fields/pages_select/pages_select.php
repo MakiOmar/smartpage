@@ -58,9 +58,9 @@ class ANONY_optf__Pages_select extends ANONY__Theme_Settings{
 
 				$html .= sprintf(
 							'<option value="%1$s"%2$s>%3$s</option>', 
-							$page->ID, 
+							esc_attr($page->ID), 
 							selected($this->value, $page->ID, false), 
-							$page->post_title
+							sanitize_title( $page->post_title )
 						);
 			}
 		$html .= '</select>';

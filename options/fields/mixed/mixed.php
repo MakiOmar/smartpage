@@ -33,15 +33,15 @@ class ANONY_optf__Mixed extends ANONY__Theme_Settings{
 
 		switch ($this->field['type']) {
 			case 'url':
-				$this->value  = esc_url($this->value)
+				$this->value  = esc_url($this->value);
 				break;
 
 			case 'email':
-				$this->value  = sanitize_email($this->value)
+				$this->value  = sanitize_email($this->value);
 				break;
 
 			case 'password':
-				$this->value  = '',//Passwords can't be visible 
+				$this->value  = '';//Passwords can't be visible 
 				break;
 			
 			default:

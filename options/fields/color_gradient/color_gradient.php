@@ -46,16 +46,21 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 		$from_value = '';
 		
 		if(isset($this->value['from'])){
-			$from_style = 'style="background-color:'.$this->value['from'].';"';
-			$from_value = $this->value['from'];
+			$from_value = esc_attr( $this->value['from'] );
+
+			$from_style = 'style="background-color:'.$from_value.';"';
+			
 		}
 
 		$to_style = '';
 		$to_value = '';
 
 		if(isset($this->value['to'])){
-			$to_style = 'style="background-color:'.$this->value['to'].';"';
-			$to_value = $this->value['to'] ;
+
+			$to_value = esc_attr( $this->value['to'] );
+
+			$to_style = 'style="background-color:'.$to_value.';"';
+			
 		}
 
 		if(isset($field['note'])){
@@ -70,7 +75,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 		$html .= sprintf(
 					'<label for="%1$s-from" class="anony-input-lable">%2$s</label>',
 					$this->field['id'], 
-					esc_html( 'From', TEXTDOM )
+					esc_html__( 'From', TEXTDOM )
 				);
 
 		$html .= sprintf(
@@ -97,7 +102,7 @@ class ANONY_optf__Color_gradient extends ANONY__Theme_Settings{
 		$html .= sprintf(
 					'<label for="%1$s-to" class="anony-input-lable">%2$s</label>',
 					$this->field['id'], 
-					esc_html( 'To', TEXTDOM )
+					esc_html__( 'To', TEXTDOM )
 				);
 
 		$html .= sprintf(

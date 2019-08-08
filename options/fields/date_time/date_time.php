@@ -30,6 +30,8 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 
 		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
 
+		$this->value  = esc_attr($this->value);
+
 
 		$this->date_format    = isset($this->field['date-format']) ? $this->field['date-format'] : 'dd-mm-yy';
 
@@ -68,7 +70,7 @@ class ANONY_optf__Date_Time extends ANONY__Theme_Settings{
 					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
 					$name, 
 					$this->field['id'], 
-					esc_attr($this->value), 
+					$this->value, 
 					$class, 
 					$placeholder
 				);

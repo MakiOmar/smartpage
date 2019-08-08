@@ -23,11 +23,7 @@ class ANONY_optf__Info extends ANONY__Theme_Settings{
 
 		$this->field  = $field;
 
-		$fieldID      = $this->field['id'];
-					
-		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
-
-		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+	}
 	
 	/**
 	 * Info field render Function.

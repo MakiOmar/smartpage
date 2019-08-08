@@ -27,6 +27,8 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
 		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+
+		$this->value = esc_attr( $this->value );
 	}
 	
 	/**
@@ -38,8 +40,6 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 
 		$class = ( isset($this->field['class']) ) ? $this->field['class'] : '';
 
-		$value = ( $this->value ) ? $this->value : $this->field['default'];
-
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$field['note'].'<p>';
 		}
@@ -49,7 +49,7 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 		$html .= sprintf('<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%3$s popup-colorpicker"/>',
 					$this->field['id'], 
 					$this->args['opt_name'], 
-					$value, 
+					$this->value, 
 					$class
 				);
 
@@ -61,7 +61,7 @@ class ANONY_optf__Color extends ANONY__Theme_Settings{
 		$html .= sprintf(
 					'<div class="color-prev prev-%1$s" style="background-color:%2$s;" rel="%1$s"></div>', 
 					$this->field['id'], 
-					$value
+					$this->value
 				);
 
 		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?' <div class="description">'.$this->field['desc'].'</div>':'';

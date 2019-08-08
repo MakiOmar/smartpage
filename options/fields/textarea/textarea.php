@@ -28,7 +28,10 @@ class ANONY_optf__Textarea extends ANONY__Theme_Settings{
 					
 		$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
 
-		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;}
+		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
+		
+		$this->value  = esc_textarea($this->value);
+	}
 	
 	/**
 	 * Textarea field render Function.
@@ -49,7 +52,7 @@ class ANONY_optf__Textarea extends ANONY__Theme_Settings{
 					'<textarea name="%1$s" class="%2$s" rows="6" >%3$s</textarea>', 
 					$name, 
 					$class, 
-					esc_textarea($this->value)
+					$this->value
 				);
 
 		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<br/><div class="description">'.$this->field['desc'].'</div>':'';
