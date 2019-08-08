@@ -1,5 +1,20 @@
 <?php
 /**
+ * Gets an array of pages IDs and titles
+ * @return array Return an associative array of pages IDs and titles key (id) equal value (title)
+ */
+function anony_pages_basic_data(){
+	$pages_data = [];
+
+	$pages = get_pages('sort_column=post_title&hierarchical=0');
+
+	foreach ($pages as $page) {
+		$pages_data[$page->ID] = $page->post_title;
+	}
+
+	return $pages_data;
+}
+/**
  * Render select option groups.
  * @param  array  $options      Array of all options groups.
  * @param  array  $opts_groups  array of option groups names and there option group lable ['system' => 'option group label']
