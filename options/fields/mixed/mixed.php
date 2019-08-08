@@ -31,7 +31,23 @@ class ANONY_optf__Mixed extends ANONY__Theme_Settings{
 
 		$this->value  = (isset($parent->options->$fieldID))? $parent->options->$fieldID : $fieldDefault;
 
-		$this->value  = ($this->field['type'] == 'url') ? esc_url($this->value) : esc_attr($this->value);
+		switch ($this->field['type']) {
+			case 'url':
+				$this->value  = esc_url($this->value)
+				break;
+
+			case 'email':
+				$this->value  = sanitize_email($this->value)
+				break;
+
+			case 'password':
+				$this->value  = '',//Passwords can't be visible 
+				break;
+			
+			default:
+				esc_attr($this->value);
+				break;
+		}
 	}
 	
 	/**
