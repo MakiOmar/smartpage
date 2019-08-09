@@ -160,44 +160,38 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 				$field_id   = $field['id'];
 
 				$field_type = $field['type'];
-
-				$current_value = get_post_meta($post_ID , $field_id, true);
 				
 				//Something like a checkbox is not set if unchecked
 				if(!isset($_POST[$field_id])) {
+
 					delete_post_meta( $post_ID, $field_id );
 					continue;
 				}
-				
-				if($current_value === $_POST[$field_id]) continue;
-				
+
 				if (!wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
+
+				if (get_post_meta($post_ID , $field_id, true) === $_POST[$field_id]) continue;
+				
 
 				$args = array(
 					'field'            => $field,
 					'new_value'     => $_POST[$field_id],
 				);
 
-				$this->validate = new ANONY__Validate_Inputs($args);
+				$this->validate = new ANONY__Validate_Inputs($args, true);
 
 				if(!empty($this->validate->errors)){
-					$this->errors[] =  $this->validate->errors;
+					
+					$this->errors =  array_merge((array)$this->errors, (array)$this->validate->errors);
+
+					continue;
 				}
 				
-				if(is_null($this->validate->value)) continue;
-
-				if(!array_key_exists($field_id, $this->validate->errors) ) update_post_meta( $post_ID, $field_id, $this->validate->value );
+				update_post_meta( $post_ID, $field_id, $this->validate->value );
 
 			}
 
-			if(!empty($this->errors)){
-
-				set_transient('anony_cf_errors_'.$postType, $this->errors);
-				//If you want to edit location;
-				//add_filter( 'redirect_post_location', array($this, 'anony_redirect_post_location'));
-
-			}	
-				
+			if(!empty($this->errors)) set_transient('anony_cf_errors_'.$postType, $this->errors);	
 		}
 		
 		/**
@@ -215,28 +209,23 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 				get_transient('anony_cf_errors_'.$postType)
 			){
 
-				$errors = get_transient('anony_cf_errors_'.$postType);
-
 				$validator = new ANONY__Validate_Inputs();
+
+				$errors = get_transient('anony_cf_errors_'.$postType);
 
 				if($errors){
 
-					foreach($errors as $error){
+					foreach($errors as $field => $data){?>
 
-						foreach($error as $field => $code){
-							$field_title = ucfirst(str_replace('_',' ',preg_replace('/.*?__/','',$field)));
-						?>
+						<div class="error <?php echo $field ?>">
 
-							<div class="error <?php echo $field ?>">
+							<p><?php echo $validator->get_error_msg($data['code'], $data['title']);?>
 
-								<p><?php echo $validator->get_error_msg($code, $field_title);?>
-
-							</div>
+						</div>
 
 
-						<?php  }
-					}
-
+					<?php  }
+				
 					delete_transient('anony_cf_errors_'.$postType);
 				}
 
