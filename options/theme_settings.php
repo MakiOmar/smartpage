@@ -348,27 +348,29 @@ if (!class_exists('ANONY__Theme_Settings')) {
 								continue;
 							}
 							
-							//First validated value will be equal to the not validated one
-							$validated[$fieldID] = $notValidated[$fieldID];
-							
-							//them check if validation required
+							//Check if validation required
 							if(isset($field['validate'])){
 									
 								$args = array(
-									'field'            => $field,
-									'new_value'     => $notValidated[$fieldID],
-								);
+											'field'     => $field,
+											'new_value' => $notValidated[$fieldID],
+										);
 								
 								$this->validate = new ANONY__Validate_Inputs($args);
 								
 								if(!empty($this->validate->errors)){
+									
 									$this->errors[] =  $this->validate->errors;
+
+									continue;
 								}
 								
-								if(is_null($this->validate->value)) unset($validated[$fieldID]); continue;
+								if(!array_key_exists($fieldID, $this->validate->errors) ) 
+									$validated[$fieldID] = $this->validate->value;
 								
-								if(!array_key_exists($fieldID, $this->validate->errors) ) $validated[$fieldID] = $this->validate->value;
-								
+							}else{
+
+								$validated[$fieldID] = $notValidated[$fieldID];
 							}
 						}
 						
