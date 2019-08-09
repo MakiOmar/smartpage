@@ -214,14 +214,14 @@ if(!class_exists('ANONY__Validate_Inputs')){
 			$sanitization = $this->sanitization;
 
 			if(is_array($this->value)){
-				//Temporary array to holde sanitized values
-				$tem_value = [];
+				//Temporary array to hold sanitized values
+				$temp_value = [];
 
 				foreach ($this->value as $value) {
-					$tem_value[] = $sanitization($value);
+					$temp_value[] = $sanitization($value);
 				}
 
-				return $this->value = $tem_value;
+				return $this->value = $temp_value;
 
 			}
 
@@ -399,7 +399,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * @return bool  Returns true if is valid hex or false if not.
 		 */
 		public function is_hex_color($string){
-			
+
 			if(empty($string)) return true;
 
 			$check_hex = preg_match( '/^#[a-f0-9]{6}$/i', $string );
