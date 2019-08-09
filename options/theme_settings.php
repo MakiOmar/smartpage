@@ -198,8 +198,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 					
 				}
 				
-			}
-			
+			}	
 		}
 		
 		/**
@@ -268,7 +267,6 @@ if (!class_exists('ANONY__Theme_Settings')) {
 
 				}
 			}
-
 		}
 		
 		/*
@@ -282,8 +280,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			
 			if(isset($this->sections[$id]['note'])){
 				echo '<p class=anony-section-warning>'.$this->sections[$id]['note'].'<p>';
-			}
-			
+			}	
 		}
 		
 		/*
@@ -334,9 +331,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 						foreach($section['fields'] as $fieldKey => $field){
 							
 							$fieldID = $field['id'];
-								
-							$fieldTitle = $field['title'];
-							
+															
 							//Current value in database
 							$currentValue = $this->options->$fieldID;
 							
