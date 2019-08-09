@@ -127,4 +127,26 @@ add_action('admin_init', function(){
 	
 	//Custom fields object
 	$postMetaboxes = new ANONY__Meta_Box($metaBoxes);
+
+	$metaBoxes = array(
+		/*Any meta box ID should start with anony-meta- to have correct style*/
+		'id'            => 'anony-meta-post',//Meta box ID
+		'title'         => esc_html__( 'Post custom fields', TEXTDOM ),
+		'context'       => 'normal',
+		'priority'      =>  'high', // high|low
+        'hook_priority' =>  '10', // Default 10
+		'post_type'     => array('post'),
+		'fields'        => array(
+								array(
+									'id'       => 'anony__set_as_featured',
+									'title'    => esc_html__( 'set as featured', TEXTDOM ),
+									'type'      => 'checkbox',
+									'validate'  => 'no_html',
+									'default'  => '1',
+								),
+							)
+	);
+
+	//Custom fields object
+	$postMetaboxes = new ANONY__Meta_Box($metaBoxes);
 });
