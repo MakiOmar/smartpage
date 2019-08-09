@@ -358,9 +358,10 @@ if (!class_exists('ANONY__Theme_Settings')) {
 								
 								$this->validate = new ANONY__Validate_Inputs($args);
 								
+								//Add to errors if not valid
 								if(!empty($this->validate->errors)){
 
-									$this->errors[] =  $this->validate->errors;
+									$this->errors =  array_merge((array)$this->errors, (array)$this->validate->errors);
 
 									continue;//We will not add to $validated 
 								}
@@ -376,20 +377,34 @@ if (!class_exists('ANONY__Theme_Settings')) {
 					}
 				}
 				if(!empty($this->errors)){
+
 					// add settings saved message with the class of "updated"
-					add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'] ), esc_html__('Options are saved except those with the following errors', TEXTDOM), 'error' );
+					add_settings_error( 
+						$this->args['opt_name'], 
+						esc_attr( $this->args['opt_name'] ), 
+						esc_html__('Options are saved except those with the following errors', TEXTDOM), 
+						'error' 
+					);
 
-					foreach($this->errors as $error){
-						foreach($error as $field_id => $code){
-							
-							add_settings_error( $this->args['opt_name'], esc_attr( $field_id ), $this->validate->get_error_msg($code), 'error' );
+					foreach($this->errors as $field_id => $data){
+						
+						add_settings_error( 
+							$this->args['opt_name'], 
+							esc_attr( $field_id ), 
+							$this->validate->get_error_msg($data['code'], $data['title']), 
+							'error'
+						);
 
-						}
 					}
 
 				}else{
 					// add settings saved message with the class of "updated"
-					add_settings_error( $this->args['opt_name'], esc_attr( $this->args['opt_name'].'_updated' ), esc_html__('Options saved', TEXTDOM), 'updated' );
+					add_settings_error( 
+						$this->args['opt_name'], 
+						esc_attr( $this->args['opt_name'].'_updated' ), 
+						esc_html__('Options saved', TEXTDOM), 
+						'updated' 
+					);
 				}
 
 				return $validated;
