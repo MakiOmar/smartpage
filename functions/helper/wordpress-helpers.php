@@ -1,5 +1,19 @@
 <?php
 /**
+ * Debug query result.
+ * 
+ * @param mixed $results Query result
+ * @return void
+ */
+function anony_debug($results){
+	//get_results returns null on failure
+	if(is_null($results) && WP_DEBUG == true){
+		$wpdb->show_errors();
+		$wpdb->print_error();
+	}
+}
+
+/**
  * Gets an array of pages IDs and titles
  * @return array Return an associative array of pages IDs and titles key (id) equal value (title)
  */
@@ -170,7 +184,7 @@ function get_posts_ids_by_meta($key, $value){
 	
 	$postIDs = array();
 
-	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'anony_set_featured' AND meta_value = 'on'";
+	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'anony__set_as_featured' AND meta_value = 'on'";
 
 	$results = $wpdb->get_results($query);
 	
@@ -181,14 +195,40 @@ function get_posts_ids_by_meta($key, $value){
 			}
 		}
 	}
-	
-	//get_results return null on failure
-	if(is_null($results) && WP_DEBUG == true){
-		$wpdb->show_errors();
-		$wpdb->print_error();
-	}
+
+	anony_debug($results)l
 	
 	return $postIDs;
+	
+}
+
+/**
+* Query meta values by meta key.
+* 
+* @param string $key    the meta key you want to query with
+* @return array Returns an array of meta values
+*/
+
+function get_meta_values_by_meta_key($key){
+	global $wpdb;
+	
+	$metaValues = array();
+
+	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = '$key'";
+
+	$results = $wpdb->get_results($query);
+	
+	if(!empty($results) && !is_null($results)){
+		foreach($results as $result){
+			foreach($result as $value){
+				$metaValues[] = $value;
+			}
+		}
+	}
+	
+	anony_debug($results);
+
+	return array_values($metaValues);
 	
 }
 /**
