@@ -24,7 +24,7 @@ if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_ca
 	}
 
 }elseif($anonyOptions->slider_content == 'featured-post'){
-	$args['meta_key'] = 'anony_set_featured';
+	$args['meta_key'] = 'anony__set_as_featured';
 }	
 
 
