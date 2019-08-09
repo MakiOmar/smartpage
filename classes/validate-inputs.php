@@ -17,14 +17,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		/**
 		 * @var array Holds an array of fields and there corresponding warning code as key/value pairs
 		 */
-		
 		public $warnings = array();
-		
-		/**
-		 * @var boolean Decide if is metabox field
-		 *
-		 */
-		public $meta;
 
 		/**
 		 * @var boolean Decide if valid input. Default is <code>false</code>
@@ -67,10 +60,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * 
 		 * @param string|array array of field's date required for validation.<br/>**Note: **Empty $args so the class can be instantiated without $args if needed
 		 */
-		public function __construct($args = '', $meta = false){
+		public function __construct($args = ''){
 
 			if(is_array($args) && !empty($args)){
-				$this->meta = $meta;
 
 				//Set field's value to the new value before validation
 				$this->value = $args['new_value'];
@@ -426,7 +418,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 				$this->errors[$this->field['id']] = [
 					'code'  => $code, 
-					'title' => !$this->meta ? $this->field['title'] : $this->field['label']
+					'title' => $this->field['title']
 				];
 			}//if level 1
 		}//function

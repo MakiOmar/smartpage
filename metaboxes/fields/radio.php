@@ -45,7 +45,7 @@ class ANONY_cf__Radio extends ANONY__Meta_Box{
 					'<fieldset class="anony-row" id="anony_fieldset_%1$s">', 
 					$this->field['id'] 
 				);
-        $html .= '<label class="anony-label">'.$this->field['label'].'</label>';
+        $html .= '<label class="anony-label">'.$this->field['title'].'</label>';
 		
 		$html .= '<div class="anony-metabox-col">';
 		

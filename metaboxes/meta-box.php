@@ -69,7 +69,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 		public function set_metabox_data($meta_box){
 			
 			$this->id            = $meta_box['id'];
-			$this->label         = $meta_box['label'];
+			$this->label         = $meta_box['title'];
 			$this->context       = $meta_box['context'];
 			$this->priority      = $meta_box['priority'];
 			$this->hook_priority = isset($meta_box['hook_priority']) ? $meta_box['hook_priority'] : $this->hook_priority;
@@ -178,7 +178,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 					'new_value'     => $_POST[$field_id],
 				);
 
-				$this->validate = new ANONY__Validate_Inputs($args, true);
+				$this->validate = new ANONY__Validate_Inputs($args);
 
 				if(!empty($this->validate->errors)){
 					

@@ -67,7 +67,7 @@ class ANONY_cf__Wysiwyg extends ANONY__Meta_Box{
         $html	.= sprintf( 
 					'<label class="anony-label" for="%1$s">%2$s</label>', 
 					$this->field['id'], 
-					$this->field['label']
+					$this->field['title']
 				);
 		
         $html	.= '<div calss="anony-textarea" float:right">';

@@ -69,7 +69,7 @@ class ANONY_cf__Textarea extends ANONY__Meta_Box{
 		$html	.= sprintf( 
 						'<label class="anony-label" for="anony_%1$s">%2$s</label>', 
 						$this->field['id'], 
-						$this->field['label']
+						$this->field['title']
 					);
 
 		$html  .= sprintf( 
