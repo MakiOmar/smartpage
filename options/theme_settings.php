@@ -77,7 +77,37 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		public function __construct($menu = array(), $sections = array(), $widgets = array()){
 			
 			$this->menu = $menu;
-				
+
+			//get page defaults
+			$this->args = $this->opt_page_defaults();
+			
+			//Set option groups
+			$this->OptionGroup = $this->args['opt_name'].'_group';
+			
+			//Obtions object
+			$this->options = opt_init_();
+			
+			//Options page sections
+			$this->sections = $sections;
+			
+			//Options related widgets
+			$this->widgets = $widgets;
+			
+			//set default values
+			$this->default_values();
+			
+			//register widgets
+			$this->register_widgets();
+			
+			$this->hooks();
+			
+		}
+		
+		/**
+		 * Set options page defaults
+		 * @return array An array of page's defaults e.g. [menu_title, page_title, page_slug, etc]
+		 */
+		public function opt_page_defaults(){
 			$defaults = array();
 			
 			$defaults['opt_name'] = ANONY_OPTIONS;
@@ -91,32 +121,10 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$defaults['page_type'] = 'menu';
 			$defaults['page_parent'] = '';
 			$defaults['page_position'] = 100;
-			
-			//get args
-			$this->args = $defaults;
-			
-			//Set option groups
-			$this->OptionGroup = $this->args['opt_name'].'_group';
-			
-			//get the options for use later on
-			$this->options = opt_init_();
-			
-			//get sections
-			$this->sections = $sections;
-			
-			//widgets sections
-			$this->widgets = $widgets;
-			
-			//set default values
-			$this->default_values();
-			
-			//register widgets
-			$this->register_widgets();
-			
-			$this->hooks();
-			
+
+			return $defaults;
 		}
-		
+
 		/**
 		 * Theme options hooks
 		 */
