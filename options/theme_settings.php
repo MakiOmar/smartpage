@@ -359,14 +359,13 @@ if (!class_exists('ANONY__Theme_Settings')) {
 								$this->validate = new ANONY__Validate_Inputs($args);
 								
 								if(!empty($this->validate->errors)){
-									
+
 									$this->errors[] =  $this->validate->errors;
 
-									continue;
+									continue;//We will not add to $validated 
 								}
 								
-								if(!array_key_exists($fieldID, $this->validate->errors) ) 
-									$validated[$fieldID] = $this->validate->value;
+								$validated[$fieldID] = $this->validate->value;
 								
 							}else{
 
