@@ -1,4 +1,11 @@
 <?php
+/**
+ * Featured posts template
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 
 $anonyOptions = opt_init_();
 
@@ -11,11 +18,12 @@ $args = array(
 
 		
 if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_cat != '0'){
+	
 	$FreaturedCat = get_term_by( 
-					'id', 
-					$anonyOptions->featured_cat,
-					$anonyOptions->featured_tax
-				);
+						'id', 
+						$anonyOptions->featured_cat,
+						$anonyOptions->featured_tax
+					);
 
 	if($FreaturedCat){
 		$args['cat'] = $FreaturedCat->term_id;
