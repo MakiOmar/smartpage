@@ -21,7 +21,7 @@
 				
 
 			}elseif($anonyOptions->slider == 'featured-post'){
-				$args['post__not_in'] =  get_posts_ids_by_meta('anony__set_as_featured', 'on');
+				$args['post__not_in'] =  anony_posts_ids_by_meta('anony__set_as_featured', 'on');
 
 			}
 			
@@ -29,7 +29,6 @@
 		
 		
 	}
-neat_print_r(get_meta_value_by_meta_key('anony__set_as_featured'));
 $cpm= new ANONY__Generate_Posts_View(
 					$args,
 					'masonry',
