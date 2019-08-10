@@ -51,7 +51,7 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 					$class
 				);
 
-			if( is_array( $this->field['options'] ) ){
+			if( is_array( $this->field['options'] ) && !empty($this->field['options']) ){
 				foreach( $this->field['options'] as $k => $v ){
 
 					$html .= sprintf(
@@ -61,6 +61,11 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 								$v
 							);
 				}
+			}else{
+				$html .= sprintf(
+								'<option value="">%1$s</option>', 
+								esc_html__( 'No options', TEXTDOM )
+							);
 			}
 
 		$html .= '</select>';
