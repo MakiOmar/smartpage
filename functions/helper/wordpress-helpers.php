@@ -15,7 +15,7 @@ function anony_debug($results){
 
 /**
  * Gets an array of pages IDs and titles
- * @return array Return an associative array of pages IDs and titles key (id) equal value (title)
+ * @return array Return an associative array of pages IDs and titles. key (id) equal value (title)
  */
 function anony_pages_basic_data(){
 	$pages_data = [];
@@ -28,6 +28,7 @@ function anony_pages_basic_data(){
 
 	return $pages_data;
 }
+
 /**
  * Render select option groups.
  * @param  array  $options      Array of all options groups.
@@ -64,7 +65,14 @@ function anony_render_opts_groups( $options, $opts_groups, $selected ){
 	return $html;
 }
 
-function anony_comment( $comment, $args, $depth ) {
+/**
+ * Comments render
+ * @param object $comment 
+ * @param array  $args 
+ * @param integer $depth 
+ * @return void
+ */
+function anony_render_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	
 	switch ( $comment->comment_type ) :
@@ -116,8 +124,9 @@ function anony_comment( $comment, $args, $depth ) {
 		break;
 	endswitch; // end comment_type check
 }
+
 /**
- * Gets post excerp.
+ * Gets post excerpt.
  *
  * **Dscription: ** Echoes out an excerpt depending on the language
  * @param int $id The post ID to get excerpt for
@@ -139,11 +148,10 @@ function anony_get_excerpt( $id,$words_count= 25 ) {
 		}
 	}
 
-/*
-*Gets revolution slider list of silders
-*@return array  Associative array of slider id = name
-*/
-
+/**
+ * Gets revolution slider list of silders
+ * @return array  Associative array of slider id = name
+ */
 function anony_get_rev_sliders(){
 	$sliders = array();
 	
@@ -160,11 +168,11 @@ function anony_get_rev_sliders(){
 	
 	return $sliders;
 }
-/*
-*Check if plugin is active
-*@var string $path  Path of plugin file
-*/
 
+/**
+ * Check if plugin is active
+ * @var string $path  Path of plugin file
+ */
 function anony_is_active_plugin($path){
 	if(!is_admin()){
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -172,14 +180,14 @@ function anony_is_active_plugin($path){
 	
 	return is_plugin_active($path);
 }
-/*
-*Query posts IDs by meta key and meta value
-*@param string $key    the meta key you want to query with
-*@param string $value  the meta value you want to query with
-*@return array of posts IDs
-*/
 
-function get_posts_ids_by_meta($key, $value){
+/**
+ * Query posts IDs by meta key and meta value
+ * @param  string $key    The meta key you want to query with
+ * @param  string $value  The meta value you want to query with
+ * @return array          An array of posts IDs
+ */
+function anony_posts_ids_by_meta($key, $value){
 	global $wpdb;
 	
 	$postIDs = array();
@@ -196,20 +204,18 @@ function get_posts_ids_by_meta($key, $value){
 		}
 	}
 
-	anony_debug($results)l
+	anony_debug($results);
 	
 	return $postIDs;
-	
 }
 
 /**
-* Query meta values by meta key.
-* 
-* @param string $key    the meta key you want to query with
-* @return array Returns an array of meta values
-*/
-
-function get_meta_values_by_meta_key($key){
+ * Query meta values by meta key.
+ * 
+ * @param string $key    the meta key you want to query with
+ * @return array Returns an array of meta values
+ */
+function anony_meta_values_by_meta_key($key){
 	global $wpdb;
 	
 	$metaValues = array();
@@ -228,135 +234,158 @@ function get_meta_values_by_meta_key($key){
 	
 	anony_debug($results);
 
-	return array_values($metaValues);
-	
+	return array_values($metaValues);	
 }
+
 /**
  * Link all post thumbnails to the post permalink and remove width and height atrr from img
  *
- * @param string $html          Post thumbnail HTML.
- * @param int    $post_id       Post ID.
- * @param int    $post_image_id Post image ID.
- * @return string Filtered post image HTML.
+ * @param  string $html          Post thumbnail HTML.
+ * @param  int    $post_id       Post ID.
+ * @param  int    $post_image_id Post image ID.
+ * @return string                Filtered post image HTML.
  */
-function post_image_html( $html, $post_id, $post_image_id ) {
+function anony_thumb_to_link( $html, $post_id, $post_image_id ) {
 
 	$html = '<a href="' . esc_url(get_permalink( $post_id )) . '" title="' . esc_attr( get_the_title( $post_id ) ) . '">' . $html . '</a>';
 	
 	return preg_replace('/(width|height)="\d+"\s/', "", $html);
 }
 
-add_filter( 'post_thumbnail_html', 'post_image_html', 10, 3 );
+add_filter( 'post_thumbnail_html', 'anony_thumb_to_link', 10, 3 );
 
-/*
-**Use instead of get_terms for admin purpuses
-*Get terms using WP_Term_Query class
-*@param  string  $taxonomy taxonomy to get terms from
-*@return  array of terms (id, name, slug)
-*/
-
-function admin_get_terms_query($taxonomy){
-	//This for first use when no featured taxonomy been set
-	if(empty($taxonomy)){
-		$taxonomy = 'category';
-	}
-	
-	$termsObject = new WP_Term_Query(array('taxonomy' => $taxonomy));
-	
-	$termsArray = array();
-	
-	if(!empty ($termsObject->terms)){
+/**
+ * Get terms using WP_Term_Query class.
+ * 
+ * Use instead of get_terms for admin purpuses.
+ * @param  string  $tax    Taxonomy to get terms from
+ * @param  string  $fields Fields to fetch.
+ * @return array             array of terms (id, name, slug)
+ */
+function anony_terms_query($tax, $fields){
+	/**
+	 * 'fields' to return Accepts:
+	 * 'all' (returns an array of complete term objects),
+	 * 'all_with_object_id' (returns an array of term objects with the 'object_id' param; works only when 
+	 * the $object_ids parameter is populated), 
+	 * 'ids' (returns an array of ids), 
+	 * 'tt_ids' (returns an array of term taxonomy ids), 
+	 * 'id=>parent' (returns an associative array with ids as keys, parent term IDs as values), 
+	 * 'names' (returns an array of term names), 
+	 * 'count' (returns the number of matching terms), 
+	 * 'id=>name' (returns an associative array with ids as keys, term names as values), or 
+	 * 'id=>slug' (returns an associative array with ids as keys, term slugs as values)
+	 */
+	$termsObject = new WP_Term_Query(
+							array(
+								'taxonomy' => $tax,
+								'fields'   => $fields
+							)
+						);
 		
-		foreach($termsObject->terms as $term){
-			
-			$termsArray[$term->term_id] = array('name' => $term->name, 'slug'=>$term->slug);
-			
-		}
-		
-	}else{
-		$termsArray[0] = array('name' => esc_html__('No terms found'), 'slug'=>'no-terms-found');
-	}
-	
-	
-	return $termsArray;
-}
-/*
-*Use instead of get_terms for admin purpuses
-*Get terms for slider options
-*@param  string  $taxonomy taxonomy to get terms from
-*@return  array of terms (id, name)
-*/
+	if(!empty ($termsObject->terms)) return $termsObject->terms;
 
-function admin_get_terms_options($taxonomy){
-	
-	$termsOptions = array();
-	
-	foreach(admin_get_terms_query($taxonomy) as $id => $meta){
-		$termsOptions[$id] = $meta['name'];
-	}
-	
-	return $termsOptions;
+	return '';
 }
-/*
-*Use instead of get_terms for admin purpuses
-*@param  string  $taxonomy taxonomy to get terms from
-*@return  array of terms objects
-*/
-function admin_load_terms_slugs($taxonomy){
+
+/**
+ * Query terms by taxonomy
+ * @param  string  $taxonomy taxonomy to get terms from
+ * @return array             An array of terms objects
+ */
+function anony_terms($taxonomy){
 	global $wpdb;
-	$query = 'SELECT DISTINCT 
-				  t.slug 
-			  FROM
-				' . $wpdb->prefix . 'terms t 
-			  INNER JOIN 
-				' . $wpdb->prefix . 'term_taxonomy tax 
-			  ON 
-				tax.term_id = t.term_id
-			  WHERE 
-				  ( tax.taxonomy = \'' . $taxonomy . '\')';                     
+	$query = "SELECT 
+					* 
+				FROM 
+					$wpdb->terms t 
+				INNER JOIN 
+					$wpdb->term_taxonomy tax 
+				ON 
+					tax.term_id = t.term_id 
+				WHERE 
+					tax.taxonomy = '$taxonomy'";
+
 	$result =  $wpdb->get_results($query);
-	if(WP_DEBUG == true){
-		$wpdb->show_errors();
-		$wpdb->print_error();
-	}
+
+	anony_debug($result);
+
 	return $result;                 
 } 
 
-/*
-*Use instead of get_terms for admin purpuses
-*@param  string  $taxonomy taxonomy to get terms from
-*@return  index array of terms
-*/
+/**
+ * Query terms slug names by taxonomy
+ * @param  string  $taxonomy taxonomy to get terms from
+ * @return array             An array of terms objects contains only slug name
+ */
+function anony_terms_slugs($taxonomy){
+	global $wpdb;
+	$query = "SELECT DISTINCT 
+				t.slug 
+				FROM 
+					$wpdb->terms t 
+				INNER JOIN 
+					$wpdb->term_taxonomy tax 
+				ON 
+					tax.term_id = t.term_id 
+				WHERE 
+					tax.taxonomy = '$taxonomy'";
 
-function admin_get_terms($taxonomy){
+	$result =  $wpdb->get_results($query);
+
+	anony_debug($result);
+
+	return $result;                 
+} 
+
+/**
+ * Gets an array of human readable terms slug names by taxonomy.
+ * 
+ * Use instead of get_terms for admin purpuses.
+ * @param  string  $taxonomy Taxonomy to get terms from
+ * @return arrsy             An indexed array of terms slugs
+ */
+function anony_terms_slugs_array($taxonomy){
 	
-	$terms = array();
-	foreach(admin_load_terms_slugs($taxonomy) as $term){
-		$terms[] = urldecode($term->slug);
-	}
-	
-	return $terms;
+	$terms = anony_obj_to_custom_array(
+				anony_terms($taxonomy),
+				'', 
+				'slug'
+			);
+	return array_map('urldecode', $terms);
 }
 
-/*
-*Use instead of get_terms for admin purpuses
-*@param  string  $taxonomy taxonomy to get terms from
-*@return  associative array of terms
-*/
+/**
+ * Gets an associative array as key/value pairs from any object properties.
+ * 
+ * Useful where a select input field has dynamic options.
+ * @param object $objects_array The array of objects to loop through
+ * @param string $key           The property that should be used as a key
+ * @param string $value         The property that should be used as a value
+ * @return array                An array of properties as key/value pairs    
+ */
+function anony_obj_to_custom_array($objects_array, $key, $value, $assoc = true){
 
-function admin_get_terms_assoc($taxonomy){
-	
-	$terms = array();
-	foreach(admin_load_terms_slugs($taxonomy) as $term){
-		$terms[$term->slug] = ucfirst(str_replace ('-',' ',$term->slug));
+	$arr = [];
+
+	foreach ($objects_array as $object) {
+		if($assoc && !empty($key)){
+			$arr[$object->$key] = $object->$value;
+		}else{
+			$arr[] = $object->$value;
+		}
+		
 	}
-	
-	return $terms;
+
+	return $arr;
 }
 
-
-//Get page ID from slug
-function get_id_by_slug($page_slug) {
+/**
+ * Get page id by its slug
+ * @param string $page_slug Page's slug
+ * @return null|int returns Pages id on success or null on failure
+ */
+function anony_get_id_by_slug($page_slug) {
 	$page = get_page_by_path($page_slug);
 	if ($page) {
 		return $page->ID;
@@ -365,17 +394,23 @@ function get_id_by_slug($page_slug) {
 	}
 }
 
-//GET USER ROLE
-function restrictly_get_current_user_role() {
-  if( is_user_logged_in() ) {
-    $user = wp_get_current_user();
-    $role = ( array ) $user->roles;
-    return $role[0];
-  } else {
-    return false;
-  }
- }
+/**
+ * Get curent user role
+ * @return string|bool Returns current user role on success or false on failure
+ */
+function anony_get_current_user_role() {
 
+	if( is_user_logged_in() ) {
+
+		$user = wp_get_current_user();
+
+		$role = ( array ) $user->roles;
+
+		return $role[0];
+	}
+
+	return false;
+ }
 
 /**
  * Get timestamp of remaining time for wordpress transient to be expired
@@ -385,7 +420,7 @@ function restrictly_get_current_user_role() {
  * @var    array    $transient_timeout      array contains the transient time for expiry.
  * @return string                           timestamp of transient expiry;                     
  */
-function get_transient_timeout( $transient ) {
+function anony_get_transient_timeout( $transient ) {
     global $wpdb;
     $transient_timeout = $wpdb->get_col( "
       SELECT option_value
