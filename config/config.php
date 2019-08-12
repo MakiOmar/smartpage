@@ -105,6 +105,12 @@ define( 'ANONY_METABOXES', wp_normalize_path (THEME_DIR . '/metaboxes/'));
 define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/fields/'));
 
 /**
+ * Holds a path to Custom fields classes folder
+ * @const
+ */
+define( 'ANONY_INPUT_FIELDS', wp_normalize_path (THEME_DIR . '/input-fields/'));
+
+/**
  * Holds a path to views classes folder
  * @const
  */
@@ -114,7 +120,7 @@ define( 'ANONY_CONTENTS_VIEWS', wp_normalize_path (ANONY_CLASSES . '/views/'));
  * Holds a serialized array of all pathes to classes folders
  * @const
  */
-define('ANONY_THEME_AUTOLOADS' ,serialize(array(ANONY_CLASSES, ANONY_METABOXES, ANONY_CUSTOM_FIELDS, ANONY_CONTENTS_VIEWS)));
+define('ANONY_THEME_AUTOLOADS' ,serialize(array(ANONY_CLASSES, ANONY_METABOXES, ANONY_CUSTOM_FIELDS, ANONY_CONTENTS_VIEWS, ANONY_INPUT_FIELDS)));
 
 /*
 *Classes Auto loader
@@ -138,7 +144,15 @@ function anony_theme_autoloader( $class_name ) {
 			$class_file = wp_normalize_path($path) .$class_name . '.php';
 			if(file_exists($class_file)){
 				require_once($class_file);
+			}else{
+				$class_file = wp_normalize_path($path) .$class_name .'/' .$class_name . '.php';
+
+				if(file_exists($class_file)){
+					require_once($class_file);
+				}
 			}
+
+			
 		}
 		
 
@@ -196,7 +210,8 @@ define(
 		array(
 			ANONY_OPTIONS_DIR , 
 			ANONY_OPTIONS_FIELDS, 
-			ANONY_OPTIONS_WIDGETS
+			ANONY_OPTIONS_WIDGETS,
+			ANONY_INPUT_FIELDS
 		)
 	)
 );
