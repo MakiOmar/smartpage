@@ -548,6 +548,13 @@ $sections['miscellanous']= array(
 							'type'    => 'date_time',
 							'validate'=> 'no-html',
 						),
+
+						array(
+							'id'      => 'test_checkbox',
+							'title'   => esc_html__('Test Checkbox', TEXTDOM),
+							'type'    => 'checkbox',
+							'validate'=> 'no-html',
+						),
 					)
 );
 

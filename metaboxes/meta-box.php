@@ -120,24 +120,32 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 			//Loop through inputs to render
 			foreach($this->fields as $field){
 				
-				//Dynamic class name for inputs
-				$class_name = 'ANONY_cf__'.ucfirst($field['type']);
-				
-				//Static class name for inputs that have same HTML markup
-				if(in_array($field['type'], $mixed_types)) $class_name = 'ANONY_cf__Mixed';
-				
-				if(class_exists($class_name)){
+				if($field['type'] == 'checkbox'){
+					$render_field = new ANONY__Input_Field($field, 'meta', $post->ID);
+
+					$render_field->field_init();
+				}else
+				{
+					//Dynamic class name for inputs
+					$class_name = 'ANONY_cf__'.ucfirst($field['type']);
 					
-					//Instantiat input object
-					$input = new $class_name($post->ID, $field);
+					//Static class name for inputs that have same HTML markup
+					if(in_array($field['type'], $mixed_types)) $class_name = 'ANONY_cf__Mixed';
 					
-					//Start rendering
-					$input->render();
+					if(class_exists($class_name)){
+						
+						//Instantiat input object
+						$input = new $class_name($post->ID, $field);
+						
+						//Start rendering
+						$input->render();
+						
+						//Eqnueue scripts|styles if exists
+						if(method_exists($input, 'enqueue_scripts')) $input->enqueue_scripts();
+						
+					}
+				}
 					
-					//Eqnueue scripts|styles if exists
-					if(method_exists($input, 'enqueue_scripts')) $input->enqueue_scripts();
-					
-				}	
 			}
 		}
 		

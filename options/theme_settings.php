@@ -295,18 +295,25 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$mixed_types = ['text','number','email', 'password','url'];
 
 			if(isset($field['type'])){
-				$field_class = 'ANONY_optf__'.ucfirst($field['type']);
+				if($field['type'] == 'checkbox'){
+					$render_field = new ANONY__Input_Field($field);
 
-				//Static class name for inputs that have same HTML markup
-				if(in_array($field['type'], $mixed_types)) $field_class = 'ANONY_optf__Mixed';
-				
-				if(class_exists($field_class)){
+					$render_field->field_init();
+				}else{
+					$field_class = 'ANONY_optf__'.ucfirst($field['type']);
 
-					$field = new $field_class($field, $this);
+					//Stat/';.';';;;ic class name for inputs that have same HTML markup
+					if(in_array($field['type'], $mixed_types)) $field_class = 'ANONY_optf__Mixed';
 					
-					$field->render();
+					if(class_exists($field_class)){
 
+						$field = new $field_class($field, $this);
+						
+						$field->render();
+
+					}
 				}
+				
 			}
  		}
 		
