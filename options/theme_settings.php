@@ -295,7 +295,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$mixed_types = ['text','number','email', 'password','url'];
 
 			if(isset($field['type'])){
-				if($field['type'] == 'checkbox'){
+				if($field['type'] == 'color_farbtastic'){
 					$render_field = new ANONY__Input_Field($field);
 
 					$render_field->field_init();

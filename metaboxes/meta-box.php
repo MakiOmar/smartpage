@@ -120,7 +120,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 			//Loop through inputs to render
 			foreach($this->fields as $field){
 				
-				if($field['type'] == 'checkbox'){
+				if($field['type'] == 'color_farbtastic'){
 					$render_field = new ANONY__Input_Field($field, 'meta', $post->ID);
 
 					$render_field->field_init();

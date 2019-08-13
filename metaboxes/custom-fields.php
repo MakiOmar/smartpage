@@ -48,7 +48,7 @@ add_action('admin_init', function(){
 								array(
 									'id'       => 'anony__test_post_color',
 									'title'    => esc_html__( 'Test post color', TEXTDOM ),
-									'type'     => 'color',
+									'type'     => 'color_farbtastic',
 									'validate' => 'hex_color',
 									'default' => '#222',
 								),

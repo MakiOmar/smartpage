@@ -533,27 +533,27 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('Date', TEXTDOM),
 							'type'    => 'date_time',
 							'get'     => 'date',
-							'validate'=> 'no-html',
+							'validate'=> 'no_html',
 						),				
 						array(
 							'id'      => 'time',
 							'title'   => esc_html__('Time', TEXTDOM),
 							'type'    => 'date_time',
 							'get'     => 'time',
-							'validate'=> 'no-html',
+							'validate'=> 'no_html',
 						),					
 						array(
 							'id'      => 'date_time',
 							'title'   => esc_html__('Date and time', TEXTDOM),
 							'type'    => 'date_time',
-							'validate'=> 'no-html',
+							'validate'=> 'no_html',
 						),
 
 						array(
-							'id'      => 'test_checkbox',
-							'title'   => esc_html__('Test Checkbox', TEXTDOM),
-							'type'    => 'checkbox',
-							'validate'=> 'no-html',
+							'id'      => 'test_color_farbtastic',
+							'title'   => esc_html__('Test Color farbtastic', TEXTDOM),
+							'type'    => 'color_farbtastic',
+							'validate'=> 'hex_color',
 						),
 					)
 );
