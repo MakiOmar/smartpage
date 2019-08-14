@@ -216,8 +216,9 @@ if(!class_exists('ANONY__Validate_Inputs')){
 				//Temporary array to hold sanitized values
 				$temp_value = [];
 
-				foreach ($this->value as $value) {
-					$temp_value[] = $sanitization($value);
+				foreach ($this->value as $key => $value) {
+					
+					$temp_value[$key] = $sanitization($value);
 				}
 
 				return $this->value = $temp_value;
@@ -372,6 +373,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		public function valid_hex_color(){
 			
 			if(is_array($this->value)){
+
 				foreach ($this->value as $key => $hex) {
 
 					if ( !$this->is_hex_color($hex) ){
