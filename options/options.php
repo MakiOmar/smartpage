@@ -548,13 +548,6 @@ $sections['miscellanous']= array(
 							'type'    => 'date_time',
 							'validate'=> 'no_html',
 						),
-
-						array(
-							'id'      => 'test_color_farbtastic',
-							'title'   => esc_html__('Test Color farbtastic', TEXTDOM),
-							'type'    => 'color_farbtastic',
-							'validate'=> 'hex_color',
-						),
 					)
 );
 
