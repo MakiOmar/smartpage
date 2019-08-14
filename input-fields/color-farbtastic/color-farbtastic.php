@@ -1,13 +1,16 @@
 <?php
 /**
- * Color field class
- *
+ * Color field class.
+ * 
  * @package Anonymous theme
  * @author Makiomar
  * @link http://makiomar.com
  */
 
 
+/**
+ * This field uses the Farbtastic color picker.
+ */
 class ANONY__Color_Farbtastic{
 	
 	/**
@@ -86,7 +89,7 @@ class ANONY__Color_Farbtastic{
 	 */
 	function enqueue(){
 		wp_enqueue_style('farbtastic');
-		wp_enqueue_script('anony-opts-field-color-js', ANONY_INPUT_FIELDS_URI.'color-farbtastic/field_color.js', array('jquery', 'farbtastic'), time(), true);
+		wp_enqueue_script('anony-farbtastic-color-js', ANONY_INPUT_FIELDS_URI.'color-farbtastic/field_color.js', array('jquery', 'farbtastic'), time(), true);
 		
 	}
 
