@@ -8,6 +8,9 @@
  */
 
 
+/**
+ * This field uses the WP color picker.
+ */
 class ANONY__Color{
 	
 	/**
