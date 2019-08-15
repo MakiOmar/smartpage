@@ -295,14 +295,23 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$mixed_types = ['text','number','email', 'password','url'];
 
 			if(isset($field['type'])){
-				if($field['type'] == 'color_gradient'){
+				$array = [
+						'date_time', 
+						'color', 
+						'color_farbtastic',
+						'color_gradient_farbtastic',
+						'color_gradient', 
+						'date_time',
+						'font_select',
+					];
+				if(in_array($field['type'], $array)){
 					$render_field = new ANONY__Input_Field($field);
 
 					$render_field->field_init();
 				}else{
 					$field_class = 'ANONY_optf__'.ucfirst($field['type']);
 
-					//Stat/';.';';;;ic class name for inputs that have same HTML markup
+					//Static class name for inputs that have same HTML markup
 					if(in_array($field['type'], $mixed_types)) $field_class = 'ANONY_optf__Mixed';
 					
 					if(class_exists($field_class)){
