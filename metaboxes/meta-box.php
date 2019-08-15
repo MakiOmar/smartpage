@@ -119,8 +119,16 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 			
 			//Loop through inputs to render
 			foreach($this->fields as $field){
-				
-				if($field['type'] == 'color_gradient'){
+				$array = [
+						'date_time', 
+						'color', 
+						'color_farbtastic',
+						'color_gradient_farbtastic',
+						'color_gradient', 
+						'date_time',
+						'font_select',
+					];
+				if(in_array($field['type'], $array)){
 					$render_field = new ANONY__Input_Field($field, 'meta', $post->ID);
 
 					$render_field->field_init();
