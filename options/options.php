@@ -500,7 +500,8 @@ $sections['miscellanous']= array(
 							'id'      => 'font_select',
 							'title'   => esc_html__('Select font', TEXTDOM),
 							'type'    => 'font_select',
-							//'validate'=> 'no_html',
+							'validate'=> 'multiple_options',
+							'options' => anony_fonts( 'all' ),
 						),		
 						array(
 							'id'      => 'multi_text',

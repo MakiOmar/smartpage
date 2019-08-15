@@ -106,6 +106,7 @@ add_action('admin_init', function(){
 									'title'        => esc_html__( 'Test post select multi checkbox', TEXTDOM ),
 									'type'         => 'checkbox',
 									'validate'     => 'multiple_options',
+									'multiple'     => true,
 									'options'      => array(
 														'1' => 'a',
 														'2' => 'b',
@@ -119,6 +120,14 @@ add_action('admin_init', function(){
 									'title'        => esc_html__( 'Test post select color gradient', TEXTDOM ),
 									'type'         => 'color_gradient',
 									'validate'     => 'hex_color',
+									
+								),
+								array(
+									'id'           => 'anony__test_font_select',
+									'title'        => esc_html__( 'Test font select', TEXTDOM ),
+									'type'         => 'font_select',
+									'validate'     => 'multiple_options',
+									'options'      => anony_fonts( 'all' ),
 									
 								),
 
