@@ -30,6 +30,32 @@ function anony_pages_basic_data(){
 }
 
 /**
+ * Renders an array of options to html select input
+ * @param  array       $options    Array of options to be rendered
+ * @param  string|null $selected   The selected option stored in DB 
+ * @return string      $html       Rendered ooptions
+ */
+function anony_render_options($options, $selected = null){
+
+	$html = '';
+
+	foreach ( $options as $option ) {
+		//Will be used to compare with the sanitized value
+		$sanitized_opt = sanitize_title($option);
+
+		$html .= sprintf(
+					'<option value="%1$s"%3$s>%2$s</option>', 
+					$sanitized_opt, 
+					$option, 
+					selected($selected, $sanitized_opt, false)
+				);
+
+	}
+
+	return $html;
+}
+
+/**
  * Render select option groups.
  * @param  array  $options      Array of all options groups.
  * @param  array  $opts_groups  array of option groups names and there option group lable ['system' => 'option group label']
@@ -44,17 +70,9 @@ function anony_render_opts_groups( $options, $opts_groups, $selected ){
 
 		if(isset($options[$key])){
 
-			$html = '<optgroup label="'. $group_name .'">';
+			$html .= '<optgroup label="'. $group_name .'">';
 
-			foreach ( $options[$key] as $option ) {
-
-				$html .= sprintf(
-							'<option value="%1$s"%2$s>%1$s</option>', 
-							$option, 
-							selected($selected, $option, false)
-						);
-
-			}
+			$html .= anony_render_options($options[$key], $selected);
 
 			$html .= '</optgroup>';
 
