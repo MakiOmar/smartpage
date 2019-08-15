@@ -36,8 +36,6 @@ class ANONY__Color_gradient_farbtastic{
 	 */
 	public function render(){
 		
-		$class = (isset($this->parent->field['class'])) ? $this->parent->field['class'].' ' : '';
-
 		$from_style = '';
 		$from_value = '';
 
@@ -79,7 +77,7 @@ class ANONY__Color_gradient_farbtastic{
 					$this->parent->field['id'], 
 					$this->parent->input_name, 
 					$from_value, 
-					$class
+					$this->parent->class_attr
 				);
 			 
 		
@@ -106,7 +104,7 @@ class ANONY__Color_gradient_farbtastic{
 					$this->parent->field['id'], 
 					$this->parent->input_name, 
 					$to_value, 
-					$class
+					$this->parent->class_attr
 				);
 			 
 		

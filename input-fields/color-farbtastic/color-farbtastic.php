@@ -37,8 +37,6 @@ class ANONY__Color_Farbtastic{
 	 */
 	public function render(){	
 
-		$class = ( isset($this->parent->field['class']) ) ? $this->parent->parent->field['class'] : '';
-
 		$html	= sprintf( 
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
 					$this->parent->field['id'] 
@@ -61,7 +59,7 @@ class ANONY__Color_Farbtastic{
 					$this->parent->field['id'], 
 					$this->parent->input_name, 
 					$this->parent->value, 
-					$class
+					$this->parent->class_attr
 				);
 
 		$html .= sprintf(

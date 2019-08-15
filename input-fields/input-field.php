@@ -74,7 +74,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 
 			$this->default = isset($this->field['default']) ? $this->field['default'] : '';
 
-			$this->class   = ( isset($this->field['class']) ) ? $this->field['class'] : 'anony-input-field';
+			$this->class_attr  = ( isset($this->field['class']) ) ? $this->field['class'] : 'anony-input-field';
 
 			$this->set_field_data();
 

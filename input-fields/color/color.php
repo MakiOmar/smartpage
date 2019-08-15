@@ -15,7 +15,6 @@ class ANONY__Color{
 	
 	/**
 	 * Color field Constructor.
-	 * @param array $field Array of field's data
 	 * @param object $parent Field parent object
 	 */
 	public function __construct($parent = NULL ){
@@ -37,21 +36,15 @@ class ANONY__Color{
 	 */
 	public function render(){	
 
-		$class = ( isset($this->parent->field['class']) ) ? $this->parent->field['class'] : '';
-
-		$html	= sprintf( 
+		$html = sprintf( 
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
 					$this->parent->field['id'] 
-					);
+				);
 
 		if(isset($this->parent->field['note'])){
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
-		
-		$html	= sprintf( 
-					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
-					$this->parent->field['id']
-					);
+
 		if($this->parent->context == 'meta'){
 			$html .= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
@@ -63,7 +56,7 @@ class ANONY__Color{
 
         $html  .= sprintf( 
 					'<input type="text" class="%1$s-text anony-color wp-color-picker-field" id="%2$s" name="%2$s" value="%3$s" data-default-color="%4$s" />', 
-					$class, 
+					$this->parent->class_attr,
 					$this->parent->input_name, 
 					$this->parent->value, 
 					$this->parent->default

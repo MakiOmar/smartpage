@@ -21,8 +21,7 @@ class ANONY__Checkbox
 		$this->parent = $parent;
 	}
 
-	public function render(){
-		$class    = ( isset( $this->parent->field['class']) ) ? $this->parent->field['class']  : 'anony-input-field';	
+	public function render(){	
 
 		$disabled = isset( $this->parent->field['disabled'] ) && ( $this->parent->field['disabled'] == true ) ? " disabled = 'disabled' " : "";
 
@@ -66,7 +65,7 @@ class ANONY__Checkbox
 						  ) ;
 
 				$html   .= sprintf('<input type="checkbox" class="checkbox %1$s" id="%2$s[%3$s]" name="%4$s[]" value="%3$s"%5$s%6$s/></label>',
-							$class,
+							$this->parent->class_attr,
 							$this->parent->field['id'],
 							$opt, 
 							$this->parent->input_name,  
@@ -79,7 +78,7 @@ class ANONY__Checkbox
 
 		}else{
 
-			$html .= sprintf('<input type="checkbox" id="%1$s" name="%2$s" class="checkbox %3$s" value="1"%4$s%5$s/>',$this->parent->field['id'], $this->parent->input_name, $class, checked($this->parent->value, 1, false), $disabled);
+			$html .= sprintf('<input type="checkbox" id="%1$s" name="%2$s" class="checkbox %3$s" value="1"%4$s%5$s/>',$this->parent->field['id'], $this->parent->input_name, $this->parent->class_attr, checked($this->parent->value, 1, false), $disabled);
 		}
 		
 		

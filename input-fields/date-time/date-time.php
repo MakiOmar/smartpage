@@ -48,9 +48,6 @@ class ANONY__Date_time{
 	 */
 	public function render( $meta = false ){
 
-		$class = ( isset( $this->parent->field['class']) ) ? $this->parent->field['class'] : 'anony-input-field';
-
-
 		$placeholder = isset($this->parent->field['placeholder']) ? ' placeholder="'.$this->parent->field['placeholder'].'"' : ' placeholder="'.$this->parent->field['title'].'"';
 
 		if(isset($field['note'])){
@@ -62,11 +59,11 @@ class ANONY__Date_time{
 					$this->parent->input_name, 
 					$this->parent->field['id'], 
 					$this->parent->value, 
-					$class, 
+					$this->parent->class_attr, 
 					$placeholder
 				);
 		
-		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description '.$class.'">'.$this->parent->field['desc'].'</div>':'';
+		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description '.$this->parent->class_attr.'">'.$this->parent->field['desc'].'</div>':'';
 
 		echo $html;
 		

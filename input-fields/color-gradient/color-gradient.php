@@ -20,8 +20,6 @@ class ANONY__Color_gradient{
 
 	public function render(){	
 
-		$class   = isset( $this->parent->field['class'] ) && ! is_null( $this->parent->field['class'] ) ? $this->parent->field['class'] : 'anony-meta-field';
-
 		$default = isset( $this->parent->default ) && ! is_null( $this->parent->default ) ? $this->parent->default : '#fff';
 
 		$from  = isset($this->parent->value['from']) ? esc_attr( $this->parent->value['from'] ) : $default;
@@ -55,7 +53,7 @@ class ANONY__Color_gradient{
 
 	        $html  .= sprintf( 
 						'<input type="text" class="%1$s-text anony-color-from wp-color-picker-field" id="%2$s-from" name="%2$s[from]" value="%3$s" data-default-color="%4$s" />', 
-						$class, 
+						$this->parent->class_attr, 
 						$this->parent->input_name, 
 						$from, 
 						$default 
@@ -70,7 +68,7 @@ class ANONY__Color_gradient{
 
 	        $html  .= sprintf( 
 						'<input type="text" class="%1$s-text anony-color-to wp-color-picker-field" id="%2$s-to" name="%2$s[to]" value="%3$s" data-default-color="%4$s" />', 
-						$class, 
+						$this->parent->class_attr, 
 						$this->parent->input_name, 
 						$to, 
 						$default 
