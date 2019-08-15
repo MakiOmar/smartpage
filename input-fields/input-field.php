@@ -12,7 +12,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		public $mixed_types = ['text','number','email', 'password','url'];
 
 		/**
-		 * @var string Field class name
+		 * @var string Field php class name
 		 */
 		public $field_class;
 
@@ -52,6 +52,11 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		public $default;
 
 		/**
+		 * @var string HTML class attibute value
+		 */
+		public $class_attr;
+
+		/**
 		 * Inpud field constructor That decides field context
 		 * @param array    $field    An array of field's data
 		 * @param string   $context  The context of where the field is used
@@ -61,7 +66,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		{
 			$this->options = opt_init_();
 
-			$this->field = $field;
+			$this->field   = $field;
 
 			$this->post_id = $post_id;
 
@@ -69,11 +74,16 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 
 			$this->default = isset($this->field['default']) ? $this->field['default'] : '';
 
+			$this->class   = ( isset($this->field['class']) ) ? $this->field['class'] : 'anony-input-field';
+
 			$this->set_field_data();
 
 			$this->select_field();
 		}
 
+		/**
+		 * Set field data depending on the context
+		 */
 		public function set_field_data(){
 			switch ($this->context) {
 				case 'option':
@@ -107,10 +117,10 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		public function meta_field_data(){
 			$this->input_name = $this->field['id'];
 
-			if(isset($this->field['options']) && is_array($this->field['options']))
+			if(isset($this->field['multiple']) && $this->field['multiple'])
 			{
-				$meta = get_post_meta( $this->post_id, $this->field['id'], false );
-				$this->value = ($meta != '') ? $meta[0] : $this->default;
+				$meta = get_post_meta( $this->post_id, $this->field['id']);
+				$this->value = (!empty($meta)) ? $meta : $this->default;
 			}else
 			{
 				$meta = get_post_meta( $this->post_id, $this->field['id'], true);
