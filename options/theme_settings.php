@@ -303,6 +303,8 @@ if (!class_exists('ANONY__Theme_Settings')) {
 						'color_gradient', 
 						'date_time',
 						'font_select',
+						'info',
+						'text',
 					];
 				if(in_array($field['type'], $array)){
 					$render_field = new ANONY__Input_Field($field);
