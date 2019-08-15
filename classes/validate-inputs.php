@@ -382,11 +382,15 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					}//if level 2
 				}//foreach
 
-			}elseif( !$this->is_hex_color($this->value) ){
+			}else{
 
-				$this->valid = false;
+				if( !$this->is_hex_color($this->value) ){
 
-			}//if level 1
+					$this->valid = false;
+
+				}//if level 2
+			}
+			
 
 			if(!$this->valid) return $this->set_error_code('not-hex');
 
@@ -403,7 +407,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 
 			if(empty($string)) return true;
 
-			$check_hex = preg_match( '/^#[a-f0-9]{6}$/i', $string );
+			$check_hex = preg_match( '/^#[a-f0-9]{3,6}$/i', $string );
 					
 			if ( !$check_hex || $check_hex === 0 ) return false;
 
