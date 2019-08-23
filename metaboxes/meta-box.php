@@ -129,6 +129,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 						'font_select',
 						'info',
 						'text',
+						'multi_text',
 					];
 				if(in_array($field['type'], $array)){
 					$render_field = new ANONY__Input_Field($field, 'meta', $post->ID);
@@ -163,6 +164,8 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 		 * Update metabox inputs in database.
 		 */
 		public function update_post_meta($post_ID){
+
+			
 			global $post;
 			
 			$postType = $post->post_type;
@@ -210,6 +213,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 			}
 
 			if(!empty($this->errors)) set_transient('anony_cf_errors_'.$postType, $this->errors);	
+			
 		}
 		
 		/**

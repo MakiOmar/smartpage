@@ -130,6 +130,23 @@ add_action('admin_init', function(){
 									'options'      => anony_fonts( 'all' ),
 									
 								),
+								array(
+									'id'           => 'anony__test_multi_text',
+									'title'        => esc_html__( 'Test multi text', TEXTDOM ),
+									'type'         => 'multi_text',
+									'validate'     => 'no_html',									
+								),
+								array(
+									'id'           => 'anony__test_select',
+									'title'        => esc_html__( 'Test select', TEXTDOM ),
+									'type'         => 'select',
+									'options'      => array(
+														'1' => 'a',
+														'2' => 'b',
+														'3' => 'c',
+													),
+									'default'      => '2',									
+								),
 
 							),
 	);
