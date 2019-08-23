@@ -17,7 +17,7 @@ class ANONY__Font_select{
 		if (!is_object($parent)) return;
 
 		$this->parent = $parent;
-		
+
 		$this->parent->value = esc_attr($this->parent->value );
 	}
 	
@@ -55,7 +55,7 @@ class ANONY__Font_select{
 					);
 		}
 
-		$html .=  sprintf('<select name="%1$s" class="%2$s-select %2$s" rows="6" >', $this->parent->input_name, $this->parent->class);	
+		$html .=  sprintf('<select name="%1$s" class="%2$s-select %2$s" rows="6" >', $this->parent->input_name, $this->parent->class_attr);	
 		
 		$html .= anony_render_opts_groups( $fonts, $opts_groups, $this->parent->value );
 
