@@ -60,7 +60,7 @@ class ANONY__Checkbox
 				$checked = (is_array($this->parent->value) && in_array($opt, $this->parent->value)) ? ' checked="checked"' : '';
 
 				$html   .= sprintf(
-							'<label class="anony-options-row">%1$s', 
+							'<label class="anony-inputs-row">%1$s', 
 							$title
 						  ) ;
 
