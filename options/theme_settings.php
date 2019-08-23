@@ -305,6 +305,8 @@ if (!class_exists('ANONY__Theme_Settings')) {
 						'font_select',
 						'info',
 						'text',
+						'multi_text',
+						'select',
 					];
 				if(in_array($field['type'], $array)){
 					$render_field = new ANONY__Input_Field($field);
