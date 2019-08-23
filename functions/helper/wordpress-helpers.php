@@ -1,5 +1,21 @@
 <?php
 /**
+ * Delete all terms connected supplied taxonomies. Can also delete taxonomy
+ * 
+ * @param array $taxonomies Array of taxonomies to delete terms connected to.
+ * @param bool  $dlt_tax    Boolean to decide weather to delete a taxonomy. default false
+ *
+ */
+function anony_delete_terms($taxonomies, $dlt_tax = false){
+	global $wpdb;
+	foreach ( $taxonomies as $taxonomy ) {
+		// Prepare & excecute SQL, Delete Terms
+		$result = $wpdb->get_results( $wpdb->prepare( "DELETE t.*, tt.* FROM $wpdb->terms AS t INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('%s')", $taxonomy ) );
+		// Delete Taxonomy
+		if($dlt_tax) $wpdb->delete( $wpdb->term_taxonomy, array( 'taxonomy' => $taxonomy ), array( '%s' ) );
+	}
+}
+/**
  * Debug query result.
  * 
  * @param mixed $results Query result
