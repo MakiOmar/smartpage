@@ -79,6 +79,8 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 			$this->set_field_data();
 
 			$this->select_field();
+
+			$this->enqueue_scripts();
 		}
 
 		/**
@@ -170,6 +172,18 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 					$field->render();
 				}
 
+			}
+		}
+
+
+		function enqueue_scripts(){
+			wp_register_style( 'anony-inputs', ANONY_INPUT_FIELDS_URI.'inputs-fields.css', array('farbtastic'), time(), 'all');	
+
+			wp_enqueue_style( 'anony-inputs' );
+
+			if(is_rtl()){
+				wp_register_style( 'anony-inputs-rtl', ANONY_INPUT_FIELDS_URI.'inputs-fields-rtl.css', array('anony-inputs'), time(), 'all');
+				wp_enqueue_style( 'anony-inputs-rtl' );
 			}
 		}
 		
