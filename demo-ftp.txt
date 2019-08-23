@@ -1,0 +1,4 @@
+FTP Username: pure@demo.prosentra.com
+FTP server: ftp.prosentra.com
+FTP & explicit FTPS port:  21
+pass: ZtEYsyDYdmW.
