@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="functions.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131987643642303209" remote="131987643640000000" Dst="0" />
-<file name="category.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634395243017" remote="131720634390000000" Dst="0" />
-<file name="comments.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131846727922078648" remote="131846727920000000" Dst="0" />
-<file name="footer.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131846787270630171" remote="131846787270000000" Dst="0" />
-<file name="header.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131846787390747041" remote="131846787390000000" Dst="0" />
-<file name="index.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634396063064" remote="131720634390000000" Dst="0" />
-<file name="page.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131723572767445355" remote="131723572760000000" Dst="0" />
+<file name="functions.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132101008359791223" remote="132101008350000000" Dst="0" />
+<file name="category.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294812956131" remote="132091294810000000" Dst="0" />
+<file name="comments.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813056069" remote="132091294810000000" Dst="0" />
+<file name="footer.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813096046" remote="132091294810000000" Dst="0" />
+<file name="header.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813215976" remote="132091294810000000" Dst="0" />
+<file name="index.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813225970" remote="132091294810000000" Dst="0" />
+<file name="page.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813872273" remote="132091294810000000" Dst="0" />
 <file name="screenshot.jpg" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634396113067" remote="131720634390000000" Dst="0" />
-<file name="search.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131987638220202499" remote="131987638220000000" Dst="0" />
-<file name="searchform.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131987627154403642" remote="131987627150000000" Dst="0" />
-<file name="sidebar-secondary.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634396123067" remote="131720634390000000" Dst="0" />
-<file name="sidebar-single.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131921961528957342" remote="131921961520000000" Dst="0" />
-<file name="sidebar.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634396133068" remote="131720634390000000" Dst="0" />
-<file name="single.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131921961145105387" remote="131921961140000000" Dst="0" />
-<file name="style.css" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634396143069" remote="131720634390000000" Dst="0" />
-<file name="taxonomy-download_category.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="131720634396143069" remote="131720634390000000" Dst="0" />
+<file name="search.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813882271" remote="132091294810000000" Dst="0" />
+<file name="searchform.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813892266" remote="132091294810000000" Dst="0" />
+<file name="sidebar-secondary.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813902258" remote="132091294810000000" Dst="0" />
+<file name="sidebar-single.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813902258" remote="132091294810000000" Dst="0" />
+<file name="sidebar.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813912251" remote="132091294810000000" Dst="0" />
+<file name="single.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813932256" remote="132091294810000000" Dst="0" />
+<file name="style.css" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813942240" remote="132091294810000000" Dst="0" />
+<file name="taxonomy-download_category.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813942240" remote="132091294810000000" Dst="0" />
 <file name="category.php" server="ftp.prosentra.com" local="131988408352202591" remote="131988324000000000" Dst="0" />
 <file name="comments.php" server="ftp.prosentra.com" local="131988408352747380" remote="131988324000000000" Dst="0" />
 <file name="footer.php" server="ftp.prosentra.com" local="131992720515316050" remote="131993299200000000" Dst="0" />
@@ -25,4 +25,7 @@
 <file name="sidebar-secondary.php" server="ftp.prosentra.com" local="131988408355775613" remote="131988324600000000" Dst="0" />
 <file name="sidebar.php" server="ftp.prosentra.com" local="131988408355835573" remote="131988324600000000" Dst="0" />
 <file name="taxonomy-download_category.php" server="ftp.prosentra.com" local="131988408356395238" remote="131988324600000000" Dst="0" />
+<file name="front-page.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132098900299210041" remote="132098900290000000" Dst="0" />
+<file name="single-anony_download.php" server="D:/xampp/htdocs/prosentra/wp-content/themes/smartpage/" local="132091294813922268" remote="132091294810000000" Dst="0" />
+<file name="functions.php" server="demo.prosentra.com" local="132109475214303617" remote="132109187400000000" Dst="0" />
 </dwsync>
