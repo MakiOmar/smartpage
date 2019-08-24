@@ -49,15 +49,16 @@
 
 html, body {
     height:100%;
-	font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
-	font-size: 16px;
 	box-sizing: border-box;
 	}
 body{
 	/*background: url(../../images/pattern-2.png) repeat fixed;*/
+	min-height: 100%;
 	font-family: "Georgia","Times New Roman",serif;
 	font-style: italic;
+	font-size: 16px;
 	color: #444444;
+	box-sizing: border-box;
 }
 .anony-grid-col-1 { width: 8.333%; }
 .anony-grid-col-2 { width: 16.666%; }
@@ -201,6 +202,7 @@ img {
 		margin: auto;
 		position: relative;
 		max-width: 1560px;
+		min-height: 100%;
 	}
 	#anony-top-header-wrapper {
 		visibility: visible;
@@ -1493,7 +1495,8 @@ img {
 
 /***Footer***/
 	footer{
-		position: static!important;
+		position: absolute !important;
+		bottom:0;
 		background: url(../../images/pattern-1.png) repeat;
 		background-color: rgba(0, 0, 0, 0.88);
 	}
@@ -1572,6 +1575,7 @@ img {
 		top: 0;
 		background-color: rgba(0,0,0,0.9);
 		z-index: 1000000;
+		display: none;
 	}
 	#anony-hidden-search-form #anony-searchform{
 		width: 90%;
@@ -1597,6 +1601,7 @@ img {
 	.anony-show-search-form{
 		opacity: 100!important;
 		visibility: visible!important;
+		display: flex;
 	}
 /***End footer***/
 

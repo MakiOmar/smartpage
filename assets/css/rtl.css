@@ -121,7 +121,7 @@
 
 }
 html{
-direction: rtl;
+    direction: rtl;
     unicode-bidi:embed;
 }
 body{
