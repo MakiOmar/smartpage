@@ -166,8 +166,7 @@ if(!class_exists('ANONY__User')){
 			/**--------------------------------------------------------------------------
 			 * Force change user password
 			 *-------------------------------------------------------------------------*/
-
-			if(isset($this->user_data->user_pass)) $this->set_user_pass($this->user_data->user_pass);
+			if(isset($this->user_data['user_pass'])) $this->set_user_pass($this->user_data['user_pass']);
 		}
 
 		/**
