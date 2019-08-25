@@ -22,7 +22,7 @@
  * @param string $container The HTML container of manu
  * @return string Menu list
  */
-function anony_main_navigation($location_slug, $container = 'nav'){
+function anony_navigation($location_slug, $container = 'nav'){
 	if ($location_slug == 'main-menu'){
 		$walker = new ANONY__Nav_Menu_Walk;
 	}

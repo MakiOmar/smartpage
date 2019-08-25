@@ -53,7 +53,7 @@ ob_start('ob_gzhandler');
 							?>
 
 						</div>
-						<?php echo anony_main_navigation('main-menu') ?>
+						<?php echo anony_navigation('main-menu') ?>
 					</header>
 			</div>
 		</div>

@@ -31,6 +31,7 @@ $socials_follow = array(
 		<a href="<?php echo wp_logout_url(); ?>">Logout</a>
 		
 	  </ul>
-	  <?php echo anony_main_navigation('languages-menu','') ?>
+
+	  <?php echo anony_navigation('languages-menu','') ?>
 	</nav>
 </div>
