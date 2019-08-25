@@ -64,7 +64,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		 */
 		function __construct($field, $context = 'option', $post_id = null)
 		{
-			$this->options = opt_init_();
+			$this->options = anony_opts_();
 
 			$this->field   = $field;
 

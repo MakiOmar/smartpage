@@ -1,5 +1,5 @@
 <?php
-	$anonyOptions = opt_init_();
+	$anonyOptions = anony_opts_();
 	
 	$args = array('post_type' => 'post', 'posts_per_page' => 5);
 

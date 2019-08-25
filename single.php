@@ -1,6 +1,6 @@
 <?php 
 get_header();
-$anonyOptions = opt_init_();
+$anonyOptions = anony_opts_();
 ?>
   <div class="anony-grid">
   	<div class="anony-grid-row anony-grid-col">

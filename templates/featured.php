@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-$anonyOptions = opt_init_();
+$anonyOptions = anony_opts_();
 
 $messege = '';
 

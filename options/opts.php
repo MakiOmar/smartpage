@@ -35,7 +35,7 @@ function anony_fonts( $type = false ){
  * @return object options object
  */
 
-function opt_init_(){
+function anony_opts_(){
 	return ANONY__Options_Model::get_instance();
 }
 
@@ -61,7 +61,7 @@ function anony_control_query_strings($src, $handle){
 /*----------------------------------------------------------------------------------
 *Options hooks
 *---------------------------------------------------------------------------------*/
-$anonyOptions = opt_init_();
+$anonyOptions = anony_opts_();
 
 add_action('wp_head', function() use($anonyOptions){?>
 	<style type="text/css">

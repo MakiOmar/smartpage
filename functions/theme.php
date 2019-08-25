@@ -18,7 +18,7 @@ add_action('after_setup_theme', function(){
 
 //Theme Scripts
 add_action('wp_enqueue_scripts',function() {
-		$anonyOptions = opt_init_();
+		$anonyOptions = anony_opts_();
 
 		$styles = array('main','font-awesome','responsive','prettyPhoto');
 		foreach($styles as $style){

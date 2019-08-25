@@ -85,7 +85,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$this->OptionGroup = $this->args['opt_name'].'_group';
 			
 			//Obtions object
-			$this->options = opt_init_();
+			$this->options = anony_opts_();
 			
 			//Options page sections
 			$this->sections = $sections;
