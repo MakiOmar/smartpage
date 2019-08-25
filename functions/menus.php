@@ -181,6 +181,7 @@ add_action( 'after_setup_theme', function() {
 		'main-menu'     => esc_html__('Shows on the main navigation',TEXTDOM),
 		'footer-menu'   => esc_html__('Shows on the footer',TEXTDOM),
 		'languages-menu'=> esc_html__('Shows on the top header',TEXTDOM),
+		'user-menu'     => esc_html__('Shows on the top header',TEXTDOM),
 	); 
 	
 	foreach($menus as $name => $description){
