@@ -23,7 +23,7 @@
  * @return string Menu list
  */
 function anony_navigation($location_slug, $container = 'nav'){
-	if ($location_slug == 'main-menu'){
+	if ($location_slug == 'anony-main-menu'){
 		$walker = new ANONY__Nav_Menu_Walk;
 	}
 	if ( has_nav_menu( $location_slug ) ) {
@@ -41,7 +41,7 @@ function anony_navigation($location_slug, $container = 'nav'){
 			}
 			return wp_nav_menu($args);
 	}else{
-		if($location_slug == 'main-menu'){
+		if($location_slug == 'anony-main-menu'){
 			$page_for_posts = get_option( 'page_for_posts' );
 			$args = array (
 				'title_li'=>0,
@@ -55,27 +55,6 @@ function anony_navigation($location_slug, $container = 'nav'){
 	 }
 }
 
-/**
- *  Active language html class
- *
- * **Description: ** Just return a string which meant to be a class to be added to the active language markup.
- *
- * **Note: ** Only if WPML plugin is active.
- * @param string $lang language code to check for
- * @return string 'active-lang' class if $lang is current active language else nothing
- */
-function anony_active_language($lang){
-	global $sitepress;
-	$pluginList = get_option( 'active_plugins' );
-	$wpml_plugin = 'wpml-translation-management/plugin.php';
-	
-	if ( in_array( $wpml_plugin , $pluginList ) ) {
-		if($lang == ICL_LANGUAGE_CODE){
-			return 'active-lang';
-		}
-	}
-	return;
-}
 
 /**
  * Generates anony-breadcrumbs menu
@@ -178,10 +157,10 @@ add_filter("wp_nav_menu_items",function($item , $args){
 add_action( 'after_setup_theme', function() {
 	
 	$menus= array(
-		'main-menu'     => esc_html__('Shows on the main navigation',TEXTDOM),
-		'footer-menu'   => esc_html__('Shows on the footer',TEXTDOM),
-		'languages-menu'=> esc_html__('Shows on the top header',TEXTDOM),
-		'user-menu'     => esc_html__('Shows on the top header',TEXTDOM),
+		'anony-main-menu'     => esc_html__('Main menu. Shows on the main navigation',TEXTDOM),
+		'anonyfooter-menu'    => esc_html__('Footer menu. Shows on the footer',TEXTDOM),
+		'anony-languages-menu'=> esc_html__('Languages menu. Shows on the top header',TEXTDOM),
+		'anony-user-menu'     => esc_html__('Users menu. Shows on the top header',TEXTDOM),
 	); 
 	
 	foreach($menus as $name => $description){
