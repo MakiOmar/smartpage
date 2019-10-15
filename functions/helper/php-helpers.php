@@ -1,4 +1,20 @@
 <?php
+
+/**
+ * trims a string to a custom number of words
+ * @param string $text 
+ * @param int    $length 
+ * @return string
+ */
+function anony_slice_text($text, $length){
+
+	$words = str_word_count($text, 1);
+
+	$len = min($length, count($words));
+
+	return join(' ', array_slice($words, 0, $len));	
+}
+
 /*
 * Remove script tags with REGEX.
 *
