@@ -165,54 +165,57 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 		 */
 		public function update_post_meta($post_ID){
 
-			
-			global $post;
-			
-			$postType = $post->post_type;
-	
-			if ( ! current_user_can( 'edit_post', $post_ID )) return;
-			
-			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE()) return;
-			
-			if( ( wp_is_post_revision( $post_ID) || wp_is_post_autosave( $post_ID ) ) ) return;
+			if(get_current_screen()->base == 'post'){
 
-			foreach($this->fields as $field){
-
-				$field_id   = $field['id'];
-
-				$field_type = $field['type'];
+				global $post;
+			
+				$postType = $post->post_type;
+		
+				if ( ! current_user_can( 'edit_post', $post_ID )) return;
 				
-				//Something like a checkbox is not set if unchecked
-				if(!isset($_POST[$field_id])) {
-
-					delete_post_meta( $post_ID, $field_id );
-					continue;
-				}
-
-				if (!wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
-
-				if (get_post_meta($post_ID , $field_id, true) === $_POST[$field_id]) continue;
+				if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE()) return;
 				
+				if( ( wp_is_post_revision( $post_ID) || wp_is_post_autosave( $post_ID ) ) ) return;
 
-				$args = array(
-					'field'            => $field,
-					'new_value'     => $_POST[$field_id],
-				);
+				foreach($this->fields as $field){
 
-				$this->validate = new ANONY__Validate_Inputs($args);
+					$field_id   = $field['id'];
 
-				if(!empty($this->validate->errors)){
+					$field_type = $field['type'];
 					
-					$this->errors =  array_merge((array)$this->errors, (array)$this->validate->errors);
+					//Something like a checkbox is not set if unchecked
+					if(!isset($_POST[$field_id])) {
 
-					continue;
+						delete_post_meta( $post_ID, $field_id );
+						continue;
+					}
+
+					if (!wp_verify_nonce( $_POST[$field_id.'_nonce'], $field_id.'_action' )) continue;
+
+					if (get_post_meta($post_ID , $field_id, true) === $_POST[$field_id]) continue;
+					
+
+					$args = array(
+						'field'            => $field,
+						'new_value'     => $_POST[$field_id],
+					);
+
+					$this->validate = new ANONY__Validate_Inputs($args);
+
+					if(!empty($this->validate->errors)){
+						
+						$this->errors =  array_merge((array)$this->errors, (array)$this->validate->errors);
+
+						continue;
+					}
+					
+					update_post_meta( $post_ID, $field_id, $this->validate->value );
+
 				}
-				
-				update_post_meta( $post_ID, $field_id, $this->validate->value );
 
-			}
+				if(!empty($this->errors)) set_transient('anony_cf_errors_'.$postType, $this->errors);
 
-			if(!empty($this->errors)) set_transient('anony_cf_errors_'.$postType, $this->errors);	
+			}	
 			
 		}
 		
