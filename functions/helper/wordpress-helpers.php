@@ -1,4 +1,51 @@
 <?php
+
+/**
+ * Check if valid date
+ * @param string $date 
+ * @return boolean true on success otherwise false
+ */
+function anony_is_date($date){
+    // date example mm-dd-year -> 09-25-2012
+    $datechunks = explode("-",$date);
+    if(sizeof($datechunks)==3){
+        if(is_numeric($datechunks[0]) && is_numeric($datechunks[1]) && is_numeric($datechunks[2]))
+        {
+            // now check if its a valid date
+            if(checkdate($datechunks[0], $datechunks[1], $datechunks[2])){
+            return true;
+            }else{
+            return false;
+            }
+
+        }else{
+        return false;
+        }
+    }
+	
+	return false;
+
+}
+/**
+ * Similar to wp_parse_args() just a bit extended to work with multidimensional arrays :)
+ * @param array &$a The default args
+ * @param array $b  To be parsed args
+ * @return array    Parsed array
+ */
+function anony_wp_parse_args( &$a, $b ) {
+	$a = (array) $a;
+	$b = (array) $b;
+	$result = $b;
+	foreach ( $a as $k => &$v ) {
+		if ( is_array( $v ) && isset( $result[ $k ] ) ) {
+			$result[ $k ] = meks_wp_parse_args( $v, $result[ $k ] );
+		} else {
+			$result[ $k ] = $v;
+		}
+	}
+	return $result;
+}
+
 /**
  * Delete all terms connected supplied taxonomies. Can also delete taxonomy
  * 
@@ -43,6 +90,21 @@ function anony_pages_basic_data(){
 	}
 
 	return $pages_data;
+}
+/**
+ * Gets an array of posts IDs and titles
+ * @return array Return an associative array of posts IDs and titles. key (id) equal value (title)
+ */
+function anony_posts_basic_data($args){
+	$posts_data = [];
+
+	$posts = get_posts($args);
+
+	foreach ($posts as $post) {
+		$posts_data[$post->ID] = $post->post_title;
+	}
+
+	return $posts_data;
 }
 
 /**
@@ -203,6 +265,9 @@ function anony_get_rev_sliders(){
 	return $sliders;
 }
 
+/**---------------------------------------------------------------------
+ * Plugins
+ * ---------------------------------------------------------------------*/
 /**
  * Check if plugin is active
  * @var string $path  Path of plugin file
@@ -327,7 +392,7 @@ function anony_terms_query($tax, $fields){
  * @param  string  $taxonomy taxonomy to get terms from
  * @return array             An array of terms objects
  */
-function anony_terms($taxonomy){
+function anony_terms($taxonomy, $operator = '='){
 	global $wpdb;
 	$query = "SELECT 
 					* 
@@ -338,7 +403,7 @@ function anony_terms($taxonomy){
 				ON 
 					tax.term_id = t.term_id 
 				WHERE 
-					tax.taxonomy = '$taxonomy'";
+					tax.taxonomy $operator '$taxonomy'";
 
 	$result =  $wpdb->get_results($query);
 
@@ -421,7 +486,7 @@ function anony_obj_to_custom_array($objects_array, $key, $value, $assoc = true){
  */
 function anony_get_id_by_slug($page_slug) {
 	$page = get_page_by_path($page_slug);
-	if ($page) {
+	if (is_object($page)) {
 		return $page->ID;
 	} else {
 		return null;
@@ -463,4 +528,163 @@ function anony_get_transient_timeout( $transient ) {
       LIKE '%_transient_timeout_$transient%'
     " );
     return $transient_timeout[0];
+}
+
+
+/**-----------------------------------------------------------------------
+ * WPML
+ *-----------------------------------------------------------------------*/
+
+/**
+ * Add WPML languages menu items
+ * @param  string $item menu items
+ * @return string
+ */
+function anony_language_menu($item = ''){
+
+	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
+
+	if ( anony_is_active_plugin( $wpml_plugin) && function_exists('icl_get_languages') ) {
+
+
+		$languages = icl_get_languages('skip_missing=0'/*make sure to include all available languages*/);
+
+		if(!empty($languages)){
+
+		    $item .='<ul class="anony-lang-container">';
+
+			foreach($languages as $l){
+			    
+				if($l['language_code'] == ICL_LANGUAGE_CODE){
+					$curr_lang = $l;
+				}
+
+				$item .='<li class="anony-lang-item">';
+				$item .= '<a class="'.active_language($l['language_code']).'" href="'.$l['url'].'">';
+				$item .= icl_disp_language(strtoupper($l['language_code']));
+				$item .='</a>';
+				$item .='</li>';
+				$item .= apply_filters( 'anony_wpml_lang_item', $item );
+			}
+			$item .='</ul>';
+			$item .= '<li id="anony-lang-toggle"><img src="'.$curr_lang['country_flag_url'].'" width="32" height="20" alt="'.$l['language_code'].'"/></li>';
+
+			return apply_filters( 'anony_wpml_lang_menu', $item );
+		}
+		return $item;
+	}else{
+		return $item;
+	}
+}
+
+/**
+ * Add WPML languages menu items flagged
+ * @return string
+ */
+function anony_language_menu_flagged(){
+
+	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
+
+	if ( anony_is_active_plugin( $wpml_plugin) && function_exists('icl_get_languages') ) {
+
+		$item = '';
+
+		$languages = icl_get_languages('skip_missing=0'/*make sure to include all available languages*/);
+
+		if(!empty($languages)){
+			$item .='<div id="anony-lang-flagged-wrapper">';
+		  
+			$item .='<ul id="anony-lang-flagged">';
+			foreach($languages as $l){
+				if($l['language_code'] != ICL_LANGUAGE_CODE){
+					$item .='<li class="anony-lang-item-flagged">';
+					$item .= '<a href="'.$l['url'].'" class="anony-lang-item-link">';
+					$item .= '<img src="'.$l['country_flag_url'].'" alt="'.$l['language_code'].'"/>&nbsp;<span class="anony-lang-name">'.$l['native_name'].'</span>';
+					$item .='</a>';
+					$item .='</li>';
+				}
+				
+			}
+			$item .='</ul>';
+			$item .='</div>';
+		 }
+		return $item;
+	}
+}
+
+/**
+ * Checks if plugin WPML is active
+ */
+function anony_is_active_wpml(){
+	
+	$wpml_plugin = 'wpml-translation-management/plugin.php';
+	
+	if (  anony_is_active_plugin( $wpml_plugin) && function_exists('icl_get_languages') ) return true;
+	
+	return false;
+}
+
+/**
+ *  Active language html class
+ *
+ * **Description: ** Just return a string which meant to be a class to be added to the active language markup.
+ *
+ * **Note: ** Only if WPML plugin is active.
+ * @param string $lang language code to check for
+ * @return string 'active-lang' class if $lang is current active language else nothing
+ */
+function anony_active_language($lang){
+	
+	if (  anony_is_active_wpml() ) {
+		global $sitepress;
+		
+		if($lang == ICL_LANGUAGE_CODE){
+			return 'active-lang';
+		}
+	}
+}
+
+/**
+ * Query posts when using WPML plugin
+ * @param  string $post_type    Queried post type
+ * @return mixed                An array of posts objects
+ */
+function anony_wpml_posts_query($post_type){
+	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
+
+	if ( anony_is_active_plugin( $wpml_plugin) || function_exists('icl_get_languages') ) {
+	
+		global $wpdb;
+
+		$lang = ICL_LANGUAGE_CODE;
+
+		$query = "SELECT * FROM {$wpdb->prefix}posts JOIN {$wpdb->prefix}icl_translations t ON {$wpdb->prefix}posts.ID = t.element_id AND t.element_type = CONCAT('post_', {$wpdb->prefix}posts.post_type)  WHERE {$wpdb->prefix}posts.post_type = '$post_type' AND {$wpdb->prefix}posts.post_status = 'publish' AND ( ( t.language_code = '$lang' AND {$wpdb->prefix}posts.post_type = '$post_type' ) )  ORDER BY {$wpdb->prefix}posts.post_date DESC";
+
+		$results = $wpdb->get_results($query);
+
+		return $results;
+	}
+	
+	return [];
+	
+}
+
+/**
+ * Get posts IDs and titles
+ * @param type $post_type 
+ * @return array Returns an array of post posts IDs and titles. empty array if no results
+ */
+function anony_wpml_posts_data_simple($post_type){
+		
+	$results = fama_wpml_posts_query($post_type);
+	
+	$postIDs = [];
+	
+	if(!empty($results) && !is_null($results)){
+		foreach($results as $result){
+			$postIDs[$result->ID] = $result->post_title;
+		}
+	}
+	
+	return $postIDs;
 }
