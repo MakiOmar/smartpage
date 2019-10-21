@@ -62,7 +62,7 @@ define('CLASSES_URI'   , get_template_directory_uri(). '/functions/class');
  * Holds a URI to Custom fields classes folder
  * @const
  */
-define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (THEME_URI . '/input-fields/'));
+//define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (THEME_URI . '/input-fields/'));
 
 /**
  * Holds languages folder URI
