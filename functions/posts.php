@@ -213,14 +213,15 @@ add_action( 'init', function() {
 add_action( 'init', function(){
 	$anony_custom_taxs = array(
 			'Download'=>array(
-					esc_html__('Download',TEXTDOM)=> esc_html__('Downloads',TEXTDOM)),
+					esc_html__('Download',TEXTDOM), esc_html__('Downloads',TEXTDOM)),
 			'Portfolio'=>array(
-					esc_html__('Portfolio',TEXTDOM)=> esc_html__('Portfolios',TEXTDOM)),
+					esc_html__('Portfolio',TEXTDOM), esc_html__('Portfolios',TEXTDOM)),
 			'Testimonial'=>array(
-					esc_html__('Testimonial',TEXTDOM)=> esc_html__('Testimonials',TEXTDOM)),
+					esc_html__('Testimonial',TEXTDOM), esc_html__('Testimonials',TEXTDOM)),
 			);;
 	foreach($anony_custom_taxs as $anony_custom_tax => $translatable ){
-	foreach($translatable as $t_s => $t_p){
+		$t_s = $translatable[0];
+		$t_p = $translatable[1];
 		register_taxonomy(
 			lcfirst($anony_custom_tax).'_category',
 			array("anony_".lcfirst($anony_custom_tax)),
@@ -243,8 +244,8 @@ add_action( 'init', function(){
 			"show_admin_column" => true,
 			)
 		);
+	
 	}
-}
 }, 0 );
 
 // Remove issues with prefetching adding extra views
