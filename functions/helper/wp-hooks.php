@@ -36,6 +36,9 @@ add_action('wp_head', function () {
  * To force map language you shoud use language&region query vars with the map url
  */ 
 add_action( 'wp_print_footer_scripts', function(){?>
+	<!--API should be always before map script-->
+	<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY&ver=4.9.10&language=ar&region=EG'></script> 
+
 	<script type="text/javascript">
 		var Gisborne = new google.maps.LatLng(
 	        <?php echo get_post_meta(get_the_ID(),'location_lat',true); ?>,
@@ -60,6 +63,6 @@ add_action( 'wp_print_footer_scripts', function(){?>
 	    }
 	    google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
-	<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY&ver=4.9.10&language=ar&region=EG'></script> 
+	
 
 <?php });
