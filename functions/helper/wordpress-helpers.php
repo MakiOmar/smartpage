@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Gets post id by it;s title
+ * @param string $title Post's title
+ * @return int Post's id
+ */
+function anony_post_id_by_title($title){
+	global $wpdb;
+	$post_id = $wpdb->get_col("select ID from $wpdb->posts where post_title LIKE '".$title."%' ");
+	return $post_id;;
+}
 /**
  * Check if valid date
  * @param string $date 
