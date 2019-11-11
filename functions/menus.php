@@ -66,7 +66,7 @@ function anony_breadcrumbs() {
 	global $post;
 	$homeLink = home_url();
 	echo '<ul class="anony-breadcrumbs">';
-	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. esc_html__('Home',TEXTDOM) .'</a> <span>/</span></li>';
+	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. esc_html__('Home',ANONY_TEXTDOM) .'</a> <span>/</span></li>';
 
 	// Blog Category
 	if ( is_category() ) {
@@ -157,10 +157,10 @@ add_filter("wp_nav_menu_items",function($item , $args){
 add_action( 'after_setup_theme', function() {
 	
 	$menus= array(
-		'anony-main-menu'     => esc_html__('Main menu. Shows on the main navigation',TEXTDOM),
-		'anonyfooter-menu'    => esc_html__('Footer menu. Shows on the footer',TEXTDOM),
-		'anony-languages-menu'=> esc_html__('Languages menu. Shows on the top header',TEXTDOM),
-		'anony-user-menu'     => esc_html__('Users menu. Shows on the top header',TEXTDOM),
+		'anony-main-menu'     => esc_html__('Main menu. Shows on the main navigation',ANONY_TEXTDOM),
+		'anonyfooter-menu'    => esc_html__('Footer menu. Shows on the footer',ANONY_TEXTDOM),
+		'anony-languages-menu'=> esc_html__('Languages menu. Shows on the top header',ANONY_TEXTDOM),
+		'anony-user-menu'     => esc_html__('Users menu. Shows on the top header',ANONY_TEXTDOM),
 	); 
 	
 	foreach($menus as $name => $description){
@@ -245,7 +245,7 @@ add_filter('page_css_class' , function ($css_class, $page, $depth, $args, $curre
 
 //add a menu item for homepage to pages menu
 add_filter('wp_list_pages',function($output, $r, $pages){
- $home = '<li><a href="'.get_home_url().'">'.__('<i class="fa fa-home"></i>',TEXTDOM).'</a></li>';
+ $home = '<li><a href="'.get_home_url().'">'.__('<i class="fa fa-home"></i>',ANONY_TEXTDOM).'</a></li>';
  $output = $home.$output;
         return $output;
 },10,3);

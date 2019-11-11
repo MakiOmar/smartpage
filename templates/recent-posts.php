@@ -12,12 +12,12 @@
 				  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3> 
 				</div>
 				<div class="anony-metadata"><i class="fa fa-calendar"></i>&nbsp;<?php echo get_the_date('Y-m-d'); ?></div>
-				<div class="anony-metadata"><i class="fa fa-comment-o"></i>&nbsp;<?php comments_number( esc_html__('No comments',TEXTDOM), esc_html__('One comment',TEXTDOM), '%'.__('comments',TEXTDOM) ); ?></div>
+				<div class="anony-metadata"><i class="fa fa-comment-o"></i>&nbsp;<?php comments_number( esc_html__('No comments',ANONY_TEXTDOM), esc_html__('One comment',ANONY_TEXTDOM), '%'.__('comments',ANONY_TEXTDOM) ); ?></div>
 				<div class="anony-metadata"><i class="fa fa-eye"></i>&nbsp;<?php echo anony_get_post_views(get_the_ID())?></div>
 		    </div>	
 	 <?php }
 		wp_reset_postdata();			
 		}else{
-			echo'<p>'.__('No published posts',TEXTDOM).'</p>';
+			echo'<p>'.__('No published posts',ANONY_TEXTDOM).'</p>';
 		}?>
 	  </div>

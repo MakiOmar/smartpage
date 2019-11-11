@@ -113,9 +113,9 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$defaults['opt_name'] = ANONY_OPTIONS;
 			
 			//$defaults['menu_icon'] = ANONY_OPTIONS_URI.'/img/menu_icon.png';
-			$defaults['menu_title'] = esc_html__('Anonymous Theme Options', TEXTDOM);
+			$defaults['menu_title'] = esc_html__('Anonymous Theme Options', ANONY_TEXTDOM);
 			//$defaults['page_icon'] = 'icon-themes';
-			$defaults['page_title'] = esc_html__('Anonymous Theme Options', TEXTDOM);
+			$defaults['page_title'] = esc_html__('Anonymous Theme Options', ANONY_TEXTDOM);
 			$defaults['page_slug'] = 'Anony_Options';
 			$defaults['page_cap'] = 'manage_options';
 			$defaults['page_type'] = 'menu';
@@ -402,7 +402,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 					add_settings_error( 
 						$this->args['opt_name'], 
 						esc_attr( $this->args['opt_name'] ), 
-						esc_html__('Options are saved except those with the following errors', TEXTDOM), 
+						esc_html__('Options are saved except those with the following errors', ANONY_TEXTDOM), 
 						'error' 
 					);
 
@@ -422,7 +422,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 					add_settings_error( 
 						$this->args['opt_name'], 
 						esc_attr( $this->args['opt_name'].'_updated' ), 
-						esc_html__('Options saved', TEXTDOM), 
+						esc_html__('Options saved', ANONY_TEXTDOM), 
 						'updated' 
 					);
 				}

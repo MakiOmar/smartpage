@@ -22,7 +22,7 @@ class ANONY_views__Masonry extends ANONY__Generate_Posts_View{
 		if(is_front_page() or is_home()){?>
 		<div class="anony-section">
 			<div>
-				<h4 class="anony-section_title clearfix"><?php esc_html_e('Recent Posts',TEXTDOM);?></h4>
+				<h4 class="anony-section_title clearfix"><?php esc_html_e('Recent Posts',ANONY_TEXTDOM);?></h4>
 			</div>
 			<?php
 				if($this->msg){
@@ -69,7 +69,7 @@ class ANONY_views__Masonry extends ANONY__Generate_Posts_View{
 
 									<span>
 
-										<?php echo  esc_html__('By',TEXTDOM).' '.get_the_author(); ?>
+										<?php echo  esc_html__('By',ANONY_TEXTDOM).' '.get_the_author(); ?>
 
 									</span>
 
@@ -77,7 +77,7 @@ class ANONY_views__Masonry extends ANONY__Generate_Posts_View{
 
 								<div>
 
-									<a class="button anony-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
+									<a class="button anony-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',ANONY_TEXTDOM) ?></a>
 									
 									
 

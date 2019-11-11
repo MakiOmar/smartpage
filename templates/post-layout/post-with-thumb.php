@@ -23,7 +23,7 @@
 	  	
 	  <?php } ?>
 	  <div class="anony-shares-count">
-	  	<i class="fa fa-share-alt"></i><span>1000 <?php esc_html_e('Shares',TEXTDOM) ?></span>
+	  	<i class="fa fa-share-alt"></i><span>1000 <?php esc_html_e('Shares',ANONY_TEXTDOM) ?></span>
 	  </div>
 	  
 	   <div class="anony-post-title-cover"><?php echo '<a href="' . esc_url( get_the_permalink() ) . '" title="' . esc_attr( get_the_title() ) . '">.</a>';?></div>

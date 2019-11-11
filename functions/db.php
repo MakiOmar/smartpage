@@ -20,7 +20,7 @@ add_action("after_switch_theme", function() {
 	
 	$charset_collate = $wpdb->get_charset_collate();
 	
-	$table_name = STAR_RATE;
+	$table_name = ANONY_STAR_RATE;
 	
 	$sql = "CREATE TABLE $table_name (
 	  id int(11) NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ add_action("after_switch_theme", function() {
 function anony_set_rating($post_id,$user_ip,$user_rate) {
 	global $wpdb;
 	
-	$table_name = STAR_RATE;
+	$table_name = ANONY_STAR_RATE;
 	
 	$wpdb->insert( 
 		$table_name, 
@@ -70,7 +70,7 @@ function anony_get_rating($post_id){
 	
 	global $wpdb;
 	
-	$table_name = STAR_RATE;
+	$table_name = ANONY_STAR_RATE;
 	
 	$result = $wpdb->get_results("SELECT * FROM $table_name WHERE post_id='$post_id'");
 	
@@ -84,7 +84,7 @@ function anony_get_rating($post_id){
 function anony_implement_rate_ajax() {
 	global $wpdb;
 	
-	$table_name = STAR_RATE;
+	$table_name = ANONY_STAR_RATE;
 	
 	if(isset($_POST['act']) && !empty($_POST['post_id']) && !empty($_POST['rate'])){
 		

@@ -2,9 +2,9 @@
 
 require_once(wp_normalize_path(get_template_directory() . '/config/config.php'));
 
-require_once(wp_normalize_path(LIBS_DIR . 'helper/php-helpers.php'));
+require_once(wp_normalize_path(ANONY_LIBS_DIR . 'helper/php-helpers.php'));
 
-require_once(wp_normalize_path(LIBS_DIR . 'helper/wordpress-helpers.php'));
+require_once(wp_normalize_path(ANONY_LIBS_DIR . 'helper/wordpress-helpers.php'));
 
 require_once(wp_normalize_path('options/options.php'));
 
@@ -19,12 +19,12 @@ $anonylibs = [
 	'media'     		  =>'',
 	'widgets'     		  =>'',
 	'db'        		  =>'',
-	'ajax-comments'       =>'ajax' . DIRS,
-	'tinymce-editor-btns' =>'mce' . DIRS,
+	'ajax-comments'       =>'ajax' . ANONY_DIRS,
+	'tinymce-editor-btns' =>'mce' . ANONY_DIRS,
 ];
 
 foreach($anonylibs as $anonylib=>$path){
-	require_once( LIBS_DIR . $path . $anonylib.'.php');
+	require_once( ANONY_LIBS_DIR . $path . $anonylib.'.php');
 }
 
 

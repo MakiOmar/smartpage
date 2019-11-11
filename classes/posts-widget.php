@@ -2,29 +2,29 @@
 class ANONY__Posts_Widget extends WP_Widget {
 public function __construct(){
 			$parms = array(
-				'description' => esc_html__('Displays posts by post type',ARABTRIP_TEXTDOM),
-				'name' => esc_html__('Anonymous posts',ARABTRIP_TEXTDOM)
+				'description' => esc_html__('Displays posts by post type',ANONY_TEXTDOM),
+				'name' => esc_html__('Anonymous posts',ANONY_TEXTDOM)
 			);
 			parent::__construct('ANONY__Posts_Widget','',$parms);
 		}
 		public function form($instance){
 			extract($instance);
 
-			if(!isset($instance['post_type']) || empty($instance['post_type'])) esc_html_e( 'You should select a post type', ARABTRIP_TEXTDOM );
+			if(!isset($instance['post_type']) || empty($instance['post_type'])) esc_html_e( 'You should select a post type', ANONY_TEXTDOM );
 			?>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id('title') ?>"><?php esc_html_e('Title:', ARABTRIP_TEXTDOM) ?></label>
+				<label for="<?php echo $this->get_field_id('title') ?>"><?php esc_html_e('Title:', ANONY_TEXTDOM) ?></label>
 				
-				<input type="text" class="widefat" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>"  value="<?php echo (isset($title) && !empty($title))? esc_attr($title) : esc_attr__('Top places', ARABTRIP_TEXTDOM);?>">
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>"  value="<?php echo (isset($title) && !empty($title))? esc_attr($title) : esc_attr__('Top places', ANONY_TEXTDOM);?>">
 				
 			</p>
 
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', ARABTRIP_TEXTDOM ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', ANONY_TEXTDOM ); ?></label>
 
-				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ARABTRIP_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
+				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ANONY_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 
 					<?php 
 						foreach(get_post_types(['public'   => true, '_builtin' => false]) as $post_type){
@@ -55,7 +55,7 @@ public function __construct(){
 
 			if ($query->have_posts()) {
 				
-				if(empty($title)) $title = esc_html__('Popular destinations', ARABTRIP_TEXTDOM);
+				if(empty($title)) $title = esc_html__('Popular destinations', ANONY_TEXTDOM);
 				
 				$output = '';
 
@@ -80,7 +80,7 @@ public function __construct(){
 
 				echo $output;
 			}else{
-				if(!isset($instance['post_type']) || empty($instance['post_type'])) esc_html_e( 'You should select a post type', ARABTRIP_TEXTDOM );
+				if(!isset($instance['post_type']) || empty($instance['post_type'])) esc_html_e( 'You should select a post type', ANONY_TEXTDOM );
 			}
 		}
 

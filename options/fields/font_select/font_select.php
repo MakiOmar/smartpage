@@ -44,10 +44,10 @@ class ANONY_optf__Font_select extends ANONY__Theme_Settings{
 
 		$opts_groups = 
 		[
-			'default' => esc_html__('Default Webfont',TEXTDOM),
-			'system'  => esc_html__('System',TEXTDOM),
-			'popular' => esc_html__('Popular Google Fonts',TEXTDOM),
-			'all'     => esc_html__('Google Fonts',TEXTDOM),
+			'default' => esc_html__('Default Webfont',ANONY_TEXTDOM),
+			'system'  => esc_html__('System',ANONY_TEXTDOM),
+			'popular' => esc_html__('Popular Google Fonts',ANONY_TEXTDOM),
+			'all'     => esc_html__('Google Fonts',ANONY_TEXTDOM),
 		];
 		
 		if(isset($field['note'])){

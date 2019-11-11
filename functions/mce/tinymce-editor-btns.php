@@ -39,7 +39,7 @@ if( $anony_wp_version >= 3.9 ){
 	 * @return array
 	 */
 	function anony_mce_plugin( $plugins ){
-		$plugins ['cbtnmce'] = LIBS_URI . '/mce/cmce-plugin.js';
+		$plugins ['cbtnmce'] = ANONY_LIBS_URI . '/mce/cmce-plugin.js';
 		return $plugins;
 	}
 	

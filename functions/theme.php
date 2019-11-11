@@ -13,7 +13,7 @@
  *-----------------------------------------------------------*/
 //Load Text Domain
 add_action('after_setup_theme', function(){
-	load_theme_textdomain(TEXTDOM, LANG_DIR);
+	load_theme_ANONY_TEXTDOMain(ANONY_TEXTDOM, ANONY_LANG_DIR);
 });
 
 //Theme Scripts
@@ -51,10 +51,10 @@ add_action('wp_enqueue_scripts',function() {
 			'ajaxURL'         => anony_get_ajax_url(),
 			'textDir'         => (is_rtl() ? 'rtl' : 'ltr'),
 			'themeLang'       => get_bloginfo('language'),
-			'anonyFormAuthor'  => esc_html__("Please enter a valid name", TEXTDOM),
-			'anonyFormEmail'   => esc_html__("Please enter a valid email", TEXTDOM),
-			'anonyFormUrl'     => esc_html__("Please use a valid website address", TEXTDOM),
-			'anonyFormComment' => esc_html__("Comment must be at least 20 characters", TEXTDOM),
+			'anonyFormAuthor'  => esc_html__("Please enter a valid name", ANONY_TEXTDOM),
+			'anonyFormEmail'   => esc_html__("Please enter a valid email", ANONY_TEXTDOM),
+			'anonyFormUrl'     => esc_html__("Please use a valid website address", ANONY_TEXTDOM),
+			'anonyFormComment' => esc_html__("Comment must be at least 20 characters", ANONY_TEXTDOM),
 		);
 		wp_localize_script( 'custom', 'SmpgLoca', $anony_loca );
 	});
@@ -77,7 +77,7 @@ add_action('widgets_init',function(){
 	foreach($sidebars as $sidebar){
 	    $sidebar_id = strtolower(str_replace(' ','-',$sidebar ));
 	    $args = array(
-			'name'=> esc_html__( $sidebar, TEXTDOM ),
+			'name'=> esc_html__( $sidebar, ANONY_TEXTDOM ),
 			'id'=> $sidebar_id,
 			'class'=>$sidebar_id,
 			'before_widget' => '<div class="widgeted anony-grid-col-md-6 anony-grid-col-av-6 anony-grid-col-sm-12 anony-grid-col">',
@@ -142,9 +142,9 @@ function anony_get_custom_logo($color='main') {
 	}else{
 
 		$logo= '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3"><h1>';
-		$logo .='<a href="'.BLOG_URL.'" title="'.BLOG_TITLE.'">';
-		$logo .='<img alt="'.BLOG_TITLE.'" '; 
-		$logo .= 'src="'.THEME_URI.'/images/logo-'.$color.'.png"/>';
+		$logo .='<a href="'.ANONY_BLOG_URL.'" title="'.ANONY_BLOG_TITLE.'">';
+		$logo .='<img alt="'.ANONY_BLOG_TITLE.'" '; 
+		$logo .= 'src="'.ANONY_THEME_URI.'/images/logo-'.$color.'.png"/>';
 		$logo .='</a></h1></div>';
 	}
 	return apply_filters('anony_get_custom_logo', $logo);
@@ -173,12 +173,12 @@ function anony_comments_number() {
 	
 	if ( comments_open() ) {
 		if ( $num_comments != 1 ) {
-			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.esc_html__('comments',TEXTDOM).'&nbsp;</span>';
+			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.esc_html__('comments',ANONY_TEXTDOM).'&nbsp;</span>';
 		} else {
-			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> 1 </a><span class="meta-text single-meta-text">&nbsp;'.esc_html__('comment',TEXTDOM).'&nbsp;</span>';
+			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> 1 </a><span class="meta-text single-meta-text">&nbsp;'.esc_html__('comment',ANONY_TEXTDOM).'&nbsp;</span>';
 		}
 	} else {
-		$comments = '<span class="meta-text single-meta-text">'.esc_html__('Comments-off',TEXTDOM).'</span>';
+		$comments = '<span class="meta-text single-meta-text">'.esc_html__('Comments-off',ANONY_TEXTDOM).'</span>';
 	}
 	return $comments;
 }

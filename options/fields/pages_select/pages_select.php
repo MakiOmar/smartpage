@@ -50,7 +50,7 @@ class ANONY_optf__Pages_select extends ANONY__Theme_Settings{
 					$class
 				);
 
-			$html .= sprintf('<option value="">%1$s</option>', esc_html__('-- select --',TEXTDOM));
+			$html .= sprintf('<option value="">%1$s</option>', esc_html__('-- select --',ANONY_TEXTDOM));
 
 			foreach ( $this->field['options'] as $id => $title ) {
 

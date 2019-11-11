@@ -84,7 +84,7 @@ if(empty($download_times)){
 											
 												<a title="download-<?php echo $dPost_Id?>" target="_blank" class="anony-download" href="<?php echo $curr_download_meta ?>">
 													<i class="fa fa-download"></i>
-													<span><?php esc_html_e('Download',TEXTDOM) ?></span>
+													<span><?php esc_html_e('Download',ANONY_TEXTDOM) ?></span>
 												</a>
 												
 											</div>

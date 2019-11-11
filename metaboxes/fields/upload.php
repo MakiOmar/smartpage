@@ -51,7 +51,7 @@ class ANONY_cf__Upload extends ANONY__Meta_Box{
 							<div class="anony-upload-button">
 								<a href="#" class="insert-media" data-editor="anony-my-editor">%1$s</a>
 							</div>',
-						esc_html__('Select your file',TEXTDOM)
+						esc_html__('Select your file',ANONY_TEXTDOM)
 					);
 		
 		if(!empty($file_url)){
@@ -62,17 +62,17 @@ class ANONY_cf__Upload extends ANONY__Meta_Box{
 								<a href="%3$s" class="anony-download-link">%4$s</a>
 							</div>
 						</div>', 
-						esc_html__('Current file:',TEXTDOM),
+						esc_html__('Current file:',ANONY_TEXTDOM),
 						basename($file_url),
 						esc_url($file_url),
-						esc_html__('Download',TEXTDOM)
+						esc_html__('Download',ANONY_TEXTDOM)
 					);
 		}else{
 			$html .= sprintf(
 						'<div id="anony-download-file">
 							<p id="anony-file-name">'.'<span>%1$s</span></p>
 					 	</div>', 
-						esc_html__('No selected file ',TEXTDOM)
+						esc_html__('No selected file ',ANONY_TEXTDOM)
 					);
 		}
 		
@@ -105,9 +105,9 @@ class ANONY_cf__Upload extends ANONY__Meta_Box{
 
 			wp_enqueue_script( 
 				$script ,
-				THEME_URI.'/assets/js/wordpress-media-uploader/dist/jquery.'.$script.'.js'
+				ANONY_THEME_URI.'/assets/js/wordpress-media-uploader/dist/jquery.'.$script.'.js'
 				,array('jquery', 'jquery-ui-core'),
-				filemtime(wp_normalize_path(THEME_DIR.'/assets/js/wordpress-media-uploader/dist/jquery.'.$script.'.js')),
+				filemtime(wp_normalize_path(ANONY_THEME_DIR.'/assets/js/wordpress-media-uploader/dist/jquery.'.$script.'.js')),
 				true
 			);
 

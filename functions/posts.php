@@ -133,56 +133,56 @@ add_filter( 'excerpt_length', function() { return 15; }, 999 );
 add_action( 'init', function() {
 	$custom_posts = array(
 			'Download'=>array(
-					esc_html__('Download',TEXTDOM)   , esc_html__('Downloads',TEXTDOM)),
+					esc_html__('Download',ANONY_TEXTDOM)   , esc_html__('Downloads',ANONY_TEXTDOM)),
 			'Portfolio'=>array(
-					esc_html__('Portfolio',TEXTDOM)  , esc_html__('Portfolios',TEXTDOM)),
+					esc_html__('Portfolio',ANONY_TEXTDOM)  , esc_html__('Portfolios',ANONY_TEXTDOM)),
 			'Testimonial'=>array(
-					esc_html__('Testimonial',TEXTDOM), esc_html__('Testimonials',TEXTDOM)),
+					esc_html__('Testimonial',ANONY_TEXTDOM), esc_html__('Testimonials',ANONY_TEXTDOM)),
 			'Project'=>array(
-					esc_html__('Project',TEXTDOM), esc_html__('Projects',TEXTDOM)),
+					esc_html__('Project',ANONY_TEXTDOM), esc_html__('Projects',ANONY_TEXTDOM)),
 			'Bid'=>array(
-					esc_html__('Bid',TEXTDOM), esc_html__('Bids',TEXTDOM)),
+					esc_html__('Bid',ANONY_TEXTDOM), esc_html__('Bids',ANONY_TEXTDOM)),
 			'News'=>array(
-					esc_html__('New',TEXTDOM)        , esc_html__('News',TEXTDOM)),
+					esc_html__('New',ANONY_TEXTDOM)        , esc_html__('News',ANONY_TEXTDOM)),
 			);
 	foreach($custom_posts as $custom_post=> $translatable){
 		$t_s = $translatable[0];
 		$t_p = $translatable[1];
 			
 		$labels = array(
-			'name'                  => sprintf(esc_html_x( '%s', 'General Name'    , TEXTDOM),$t_p ),
-			'singular_name'         => sprintf(esc_html_x( '%s', 'Singular Name'   , TEXTDOM ),$t_p),
-			'menu_name'             => sprintf(esc_html__( '%s'                    , TEXTDOM ),$t_p),
-			'name_admin_bar'        => sprintf(esc_html__( '%s'                    , TEXTDOM ),$t_p),
-			'archives'              => sprintf(esc_html__( '%s Archives'           , TEXTDOM ),$t_p),
-			'attributes'            => sprintf(esc_html__( '%s Attributes'         , TEXTDOM ),$t_p),
-			'parent_item_colon'     => sprintf(esc_html__( 'Parent %s:'            , TEXTDOM ),$t_s),
-			'all_items'             => sprintf(esc_html__( 'All %s'                , TEXTDOM ),$t_p),
-			'add_new_item'          => sprintf(esc_html__( 'Add New %s'            , TEXTDOM ),$t_s),
-			'add_new'               => sprintf(esc_html__( 'Add New'               , TEXTDOM ),$t_s),
-			'new_item'              => sprintf(esc_html__( 'New %s'                , TEXTDOM ),$t_s),
-			'edit_item'             => sprintf(esc_html__( 'Edit %s'               , TEXTDOM ),$t_s),
-			'update_item'           => sprintf(esc_html__( 'Update %s'             , TEXTDOM ),$t_s),
-			'view_item'             => sprintf(esc_html__( 'View %s'               , TEXTDOM ),$t_s),
-			'view_items'            => sprintf(esc_html__( 'View %s'               , TEXTDOM ),$t_p),
-			'search_items'          => sprintf(esc_html__( 'Search %s'             , TEXTDOM ),$t_p),
-			'not_found'             => esc_html__( 		   'Not found'             , TEXTDOM ),
-			'not_found_in_trash'    => esc_html__(         'Not found in Trash'    , TEXTDOM ),
-			'featured_image'        => esc_html__(         'Featured Image'        , TEXTDOM ),
-			'set_featured_image'    => esc_html__(         'Set featured image'    , TEXTDOM ),
-			'remove_featured_image' => esc_html__(         'Remove featured image' , TEXTDOM ),
-			'use_featured_image'    => esc_html__(          'Use as featured image', TEXTDOM ),
-			'insert_into_item'      => sprintf(esc_html__( 'Insert into %s'        , TEXTDOM ),$t_s),
-			'uploaded_to_this_item' => sprintf(esc_html__( 'Uploaded to this %s'   , TEXTDOM ),$t_s),
-			'items_list'            => sprintf(esc_html__( '%s list'               , TEXTDOM ),$t_p),
-			'items_list_navigation' => sprintf(esc_html__( '%s list navigation'    , TEXTDOM ),$t_p),
-			'filter_items_list'     => sprintf(esc_html__( 'Filter %s list'        , TEXTDOM ),$t_p),
+			'name'                  => sprintf(esc_html_x( '%s', 'General Name'    , ANONY_TEXTDOM),$t_p ),
+			'singular_name'         => sprintf(esc_html_x( '%s', 'Singular Name'   , ANONY_TEXTDOM ),$t_p),
+			'menu_name'             => sprintf(esc_html__( '%s'                    , ANONY_TEXTDOM ),$t_p),
+			'name_admin_bar'        => sprintf(esc_html__( '%s'                    , ANONY_TEXTDOM ),$t_p),
+			'archives'              => sprintf(esc_html__( '%s Archives'           , ANONY_TEXTDOM ),$t_p),
+			'attributes'            => sprintf(esc_html__( '%s Attributes'         , ANONY_TEXTDOM ),$t_p),
+			'parent_item_colon'     => sprintf(esc_html__( 'Parent %s:'            , ANONY_TEXTDOM ),$t_s),
+			'all_items'             => sprintf(esc_html__( 'All %s'                , ANONY_TEXTDOM ),$t_p),
+			'add_new_item'          => sprintf(esc_html__( 'Add New %s'            , ANONY_TEXTDOM ),$t_s),
+			'add_new'               => sprintf(esc_html__( 'Add New'               , ANONY_TEXTDOM ),$t_s),
+			'new_item'              => sprintf(esc_html__( 'New %s'                , ANONY_TEXTDOM ),$t_s),
+			'edit_item'             => sprintf(esc_html__( 'Edit %s'               , ANONY_TEXTDOM ),$t_s),
+			'update_item'           => sprintf(esc_html__( 'Update %s'             , ANONY_TEXTDOM ),$t_s),
+			'view_item'             => sprintf(esc_html__( 'View %s'               , ANONY_TEXTDOM ),$t_s),
+			'view_items'            => sprintf(esc_html__( 'View %s'               , ANONY_TEXTDOM ),$t_p),
+			'search_items'          => sprintf(esc_html__( 'Search %s'             , ANONY_TEXTDOM ),$t_p),
+			'not_found'             => esc_html__( 		   'Not found'             , ANONY_TEXTDOM ),
+			'not_found_in_trash'    => esc_html__(         'Not found in Trash'    , ANONY_TEXTDOM ),
+			'featured_image'        => esc_html__(         'Featured Image'        , ANONY_TEXTDOM ),
+			'set_featured_image'    => esc_html__(         'Set featured image'    , ANONY_TEXTDOM ),
+			'remove_featured_image' => esc_html__(         'Remove featured image' , ANONY_TEXTDOM ),
+			'use_featured_image'    => esc_html__(          'Use as featured image', ANONY_TEXTDOM ),
+			'insert_into_item'      => sprintf(esc_html__( 'Insert into %s'        , ANONY_TEXTDOM ),$t_s),
+			'uploaded_to_this_item' => sprintf(esc_html__( 'Uploaded to this %s'   , ANONY_TEXTDOM ),$t_s),
+			'items_list'            => sprintf(esc_html__( '%s list'               , ANONY_TEXTDOM ),$t_p),
+			'items_list_navigation' => sprintf(esc_html__( '%s list navigation'    , ANONY_TEXTDOM ),$t_p),
+			'filter_items_list'     => sprintf(esc_html__( 'Filter %s list'        , ANONY_TEXTDOM ),$t_p),
 		);
 			
 			
 		$args = array(
-			'label'                 => sprintf(esc_html__( '%s', TEXTDOM ),$t_p),
-			'description'           => sprintf(esc_html__( 'Here you can add your %s', TEXTDOM ),lcfirst($t_p)),
+			'label'                 => sprintf(esc_html__( '%s', ANONY_TEXTDOM ),$t_p),
+			'description'           => sprintf(esc_html__( 'Here you can add your %s', ANONY_TEXTDOM ),lcfirst($t_p)),
 			'labels'                => $labels,
 			'supports'              => ($custom_post == 'News') ? array( 'editor') : array( 'title', 'editor','thumbnail', 'comments'),
 			'taxonomies'            => array( lcfirst($custom_post).'_category' ),
@@ -213,11 +213,11 @@ add_action( 'init', function() {
 add_action( 'init', function(){
 	$anony_custom_taxs = array(
 			'Download'=>array(
-					esc_html__('Download',TEXTDOM), esc_html__('Downloads',TEXTDOM)),
+					esc_html__('Download',ANONY_TEXTDOM), esc_html__('Downloads',ANONY_TEXTDOM)),
 			'Portfolio'=>array(
-					esc_html__('Portfolio',TEXTDOM), esc_html__('Portfolios',TEXTDOM)),
+					esc_html__('Portfolio',ANONY_TEXTDOM), esc_html__('Portfolios',ANONY_TEXTDOM)),
 			'Testimonial'=>array(
-					esc_html__('Testimonial',TEXTDOM), esc_html__('Testimonials',TEXTDOM)),
+					esc_html__('Testimonial',ANONY_TEXTDOM), esc_html__('Testimonials',ANONY_TEXTDOM)),
 			);;
 	foreach($anony_custom_taxs as $anony_custom_tax => $translatable ){
 		$t_s = $translatable[0];
@@ -227,19 +227,19 @@ add_action( 'init', function(){
 			array("anony_".lcfirst($anony_custom_tax)),
 			array(
 				 "hierarchical" => true,
-				 "label" => sprintf(esc_html__('%s categories',TEXTDOM),$t_p),
-				 "singular_label" => sprintf(esc_html__('%s category',TEXTDOM),$t_s),
+				 "label" => sprintf(esc_html__('%s categories',ANONY_TEXTDOM),$t_p),
+				 "singular_label" => sprintf(esc_html__('%s category',ANONY_TEXTDOM),$t_s),
 				  "labels"=>array(
-							 "all_items"=>sprintf(esc_html__('All %s categories',TEXTDOM),$t_s),
-							 "edit_item"=>sprintf(esc_html__('Edit %s category',TEXTDOM),$t_s),
-							 "view_item"=>sprintf(esc_html__('View %s category',TEXTDOM),$t_s),
-							 "update_item"=>sprintf(esc_html__('update %s category',TEXTDOM),$t_s),
-							 "add_new_item"=>sprintf(esc_html__('Add new %s category',TEXTDOM),$t_s),
-							 "new_item_name"=>sprintf(esc_html__('new %s category',TEXTDOM),$t_s),
-							 "parent_item"=>sprintf(esc_html__('Parent %s category',TEXTDOM),$t_s),
-							 "parent_item_colon"=>sprintf(esc_html__('Parent %s category:',TEXTDOM),$t_s),
-							 "search_items"=>sprintf(esc_html__('search %s categories',TEXTDOM),$t_s),
-							 "not_found"=>sprintf(esc_html__('No %s category found',TEXTDOM),$t_s),
+							 "all_items"=>sprintf(esc_html__('All %s categories',ANONY_TEXTDOM),$t_s),
+							 "edit_item"=>sprintf(esc_html__('Edit %s category',ANONY_TEXTDOM),$t_s),
+							 "view_item"=>sprintf(esc_html__('View %s category',ANONY_TEXTDOM),$t_s),
+							 "update_item"=>sprintf(esc_html__('update %s category',ANONY_TEXTDOM),$t_s),
+							 "add_new_item"=>sprintf(esc_html__('Add new %s category',ANONY_TEXTDOM),$t_s),
+							 "new_item_name"=>sprintf(esc_html__('new %s category',ANONY_TEXTDOM),$t_s),
+							 "parent_item"=>sprintf(esc_html__('Parent %s category',ANONY_TEXTDOM),$t_s),
+							 "parent_item_colon"=>sprintf(esc_html__('Parent %s category:',ANONY_TEXTDOM),$t_s),
+							 "search_items"=>sprintf(esc_html__('search %s categories',ANONY_TEXTDOM),$t_s),
+							 "not_found"=>sprintf(esc_html__('No %s category found',ANONY_TEXTDOM),$t_s),
 							  ),
 			"show_admin_column" => true,
 			)
@@ -267,7 +267,7 @@ add_filter('pre_get_posts',function($query) {
 add_action('init',function( ) {
 	if(!term_exists('general_downloads', 'download_category')){
 		$args = array('slug' => 'general_downloads');
-		return wp_insert_term( esc_html__('General Downloads',TEXTDOM), 'download_category', $args  );
+		return wp_insert_term( esc_html__('General Downloads',ANONY_TEXTDOM), 'download_category', $args  );
 	}
 	
 });
@@ -374,12 +374,12 @@ function anony_latest_comments(){
 			
 				<div  class="anony-recent-comment-wrapper">
 				
-					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented',TEXTDOM) ?></h3>
+					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented',ANONY_TEXTDOM) ?></h3>
 					
 					<p class='recent-comment'>
 					<?php echo substr($comment->comment_content,0 , 150).'... ' ?>
 					
-					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php esc_html_e('View Post',TEXTDOM) ?></a>
+					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php esc_html_e('View Post',ANONY_TEXTDOM) ?></a>
 					
 					</p>
 					
@@ -387,7 +387,7 @@ function anony_latest_comments(){
 				
 		<?php }}else{?>
 				
-					<p><?php esc_html_e('No comments yet',TEXTDOM);?></p>
+					<p><?php esc_html_e('No comments yet',ANONY_TEXTDOM);?></p>
 					
 				<?php };
 }

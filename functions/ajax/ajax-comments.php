@@ -85,12 +85,12 @@ function anony_submit_ajax_comment(){
 				<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf( esc_html__( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() ) . '</a> ';
 
 				if( $edit_link = get_edit_comment_link() )
-					$comment_html .= '<span class="edit-link"><a class="anony-comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', TEXTDOM).'</a></span>';
+					$comment_html .= '<span class="edit-link"><a class="anony-comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', ANONY_TEXTDOM).'</a></span>';
 
 			$comment_html .= '</div>';
 
 			if ( $comment->comment_approved == '0' )
-				$comment_html .= '<p class="anony-comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', TEXTDOM).'</p>';
+				$comment_html .= '<p class="anony-comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', ANONY_TEXTDOM).'</p>';
 
 		$comment_html .= '<div class="anony-comment-content">' . apply_filters( 'comment_text', get_comment_text( $comment ), $comment ) . '</div>';
 

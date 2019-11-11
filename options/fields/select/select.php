@@ -51,7 +51,7 @@ class ANONY_optf__Select extends ANONY__Theme_Settings{
 			}else{
 				$html .= sprintf(
 								'<option value="">%1$s</option>', 
-								esc_html__( 'No options', TEXTDOM )
+								esc_html__( 'No options', ANONY_TEXTDOM )
 							);
 			}
 

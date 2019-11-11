@@ -446,7 +446,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__( '<strong>%s:</strong> Sorry!! Please select another file, the selected file type is not supported', TEXTDOM ), 
+							__( '<strong>%s:</strong> Sorry!! Please select another file, the selected file type is not supported', ANONY_TEXTDOM ), 
 							$accepted_tags
 						), 
 						$field_title
@@ -458,7 +458,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> Please enter a valid number (e.g. 1,2,-5)', TEXTDOM), 
+							__('<strong>%s:</strong> Please enter a valid number (e.g. 1,2,-5)', ANONY_TEXTDOM), 
 							$accepted_tags
 						), 
 						$field_title
@@ -470,7 +470,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> You must provide a valid URL', TEXTDOM),
+							__('<strong>%s:</strong> You must provide a valid URL', ANONY_TEXTDOM),
 							$accepted_tags
 						),
 						$field_title
@@ -482,7 +482,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> You must enter a valid email address.', TEXTDOM), 
+							__('<strong>%s:</strong> You must enter a valid email address.', ANONY_TEXTDOM), 
 							$accepted_tags
 						), 
 						$field_title
@@ -494,7 +494,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> HTML is not allowed', TEXTDOM), 
+							__('<strong>%s:</strong> HTML is not allowed', ANONY_TEXTDOM), 
 							$accepted_tags
 						), 
 						$field_title
@@ -506,7 +506,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> You must enter an absolute integer', TEXTDOM), 
+							__('<strong>%s:</strong> You must enter an absolute integer', ANONY_TEXTDOM), 
 							$accepted_tags
 							   ), 
 						$field_title
@@ -518,7 +518,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> You must enter a valid hex color', TEXTDOM), 
+							__('<strong>%s:</strong> You must enter a valid hex color', ANONY_TEXTDOM), 
 							$accepted_tags
 							   ), 
 						$field_title
@@ -530,7 +530,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 					return sprintf(
 						wp_kses(
-							__('<strong>%s:</strong> Unvalid option/s', TEXTDOM), 
+							__('<strong>%s:</strong> Unvalid option/s', ANONY_TEXTDOM), 
 							$accepted_tags
 							   ), 
 						$field_title
@@ -540,7 +540,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 					
 				default:
 					return wp_kses(
-						__( '<strong>Sorry!! Something wrong:</strong> Please make sure all your inputs are correct', TEXTDOM ), 
+						__( '<strong>Sorry!! Something wrong:</strong> Please make sure all your inputs are correct', ANONY_TEXTDOM ), 
 						$accepted_tags
 					);
 			}//switch

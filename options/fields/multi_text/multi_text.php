@@ -40,7 +40,7 @@ class ANONY_optf__Multi_text extends ANONY__Theme_Settings{
 		
 		$class       = (isset($this->field['class']))?$this->field['class']:'';
 
-		$buttonText  = (isset($this->field['button-text'])) ? ' placeholder="'.$this->field['button-text'].'"' : esc_html__( 'Add', TEXTDOM );
+		$buttonText  = (isset($this->field['button-text'])) ? ' placeholder="'.$this->field['button-text'].'"' : esc_html__( 'Add', ANONY_TEXTDOM );
 
 		$placeholder = (isset($this->field['placeholder'])) ? $this->field['placeholder'] : '';
 		

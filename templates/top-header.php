@@ -31,7 +31,7 @@ $socials_follow = array(
 		<?php 
 			foreach($socials_follow as $social_follow => $url){
 				
-				$link_title = esc_html__(sprintf('Follow on %s' , ucfirst($social_follow)),TEXTDOM);
+				$link_title = esc_html__(sprintf('Follow on %s' , ucfirst($social_follow)),ANONY_TEXTDOM);
 				
 				echo '<li><a class="icon" href="'.$url.'" title="'.$link_title.'" target="_blank"><i class="fa fa-'.$social_follow.'"></i></a></li>';
 				

@@ -24,9 +24,9 @@ add_action( 'admin_enqueue_scripts', function() {
 			
 			wp_enqueue_style( 
 				$style , 
-				THEME_URI . '/assets/css/'.$style.'.css' , 
+				ANONY_THEME_URI . '/assets/css/'.$style.'.css' , 
 				false, 
-				filemtime( wp_normalize_path( THEME_DIR . '/assets/css/'.$style.'.css')  )
+				filemtime( wp_normalize_path( ANONY_THEME_DIR . '/assets/css/'.$style.'.css')  )
 			);
 			
 		}
@@ -37,9 +37,9 @@ add_action( 'admin_enqueue_scripts', function() {
 				
 			wp_register_script( 
 				$script , 
-				THEME_URI . '/assets/js/'.$script.'.js' ,
+				ANONY_THEME_URI . '/assets/js/'.$script.'.js' ,
 				array('jquery'),
-				filemtime(wp_normalize_path( THEME_DIR . '/assets/js/'.$script.'.js' ) ),true
+				filemtime(wp_normalize_path( ANONY_THEME_DIR . '/assets/js/'.$script.'.js' ) ),true
 			);
 			wp_enqueue_script($script);
 			}

@@ -17,7 +17,7 @@
 			$allowed_tags = array('strong'=> array(), 'a' => array('href'=> array()));
 			printf(
 				wp_kses(
-						__( '<strong>Please add some widgets.</strong><a href="%s"> Add Here</a>', TEXTDOM ), 
+						__( '<strong>Please add some widgets.</strong><a href="%s"> Add Here</a>', ANONY_TEXTDOM ), 
 						$allowed_tags
 					),
 				esc_url($url)

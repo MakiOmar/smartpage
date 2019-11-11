@@ -28,7 +28,7 @@ if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_ca
 	if($FreaturedCat){
 		$args['cat'] = $FreaturedCat->term_id;
 	}else{
-		$messege = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', TEXTDOM);
+		$messege = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
 	}
 
 }elseif($anonyOptions->slider_content == 'featured-post'){

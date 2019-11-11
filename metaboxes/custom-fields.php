@@ -14,7 +14,7 @@ add_action('admin_init', function(){
 	$metaBoxes = array(
 		/*Any meta box ID should start with anony-meta- to have correct style*/
 		'id'            => 'anony-meta-download',//Meta box ID
-		'title'         => esc_html__( 'Anonymous custom fields', TEXTDOM ),
+		'title'         => esc_html__( 'Anonymous custom fields', ANONY_TEXTDOM ),
 		'context'       => 'normal',
 		'priority'      =>  'high', // high|low
         'hook_priority' =>  '10', // Default 10
@@ -22,46 +22,46 @@ add_action('admin_init', function(){
 		'fields'        => array(
 								array(
 									'id'       => 'anony__upload_attachment',
-									'title'    => esc_html__( 'Upload attachment', TEXTDOM ),
+									'title'    => esc_html__( 'Upload attachment', ANONY_TEXTDOM ),
 									'type'      => 'upload',
 									'validate'  => 'url|file_type:pdf,doc,docx,7z,arj,deb,zip,iso,pkg,rar,rpm,z,gz,bin,dmg,toast,vcd,csv,dat,log,mdb,sav,tar,ods,xlr,xls,xlsx,odt,txt,rtf,tex,wks,wps,wpd',
 								),
 								array(
 									'id'       => 'anony__test_post_text',
-									'title'    => esc_html__( 'Test post text', TEXTDOM ),
+									'title'    => esc_html__( 'Test post text', ANONY_TEXTDOM ),
 									'type'     => 'text',
 									'validate' => 'number',
 								),
 		
 								array(
 									'id'       => 'anony__test_post_checkbox',
-									'title'    => esc_html__( 'Test post checkbox', TEXTDOM ),
+									'title'    => esc_html__( 'Test post checkbox', ANONY_TEXTDOM ),
 									'type'     => 'checkbox',
 									'validate' => 'no_html',
 								),
 								array(
 									'id'       => 'anony__test_post_textarea',
-									'title'    => esc_html__( 'Test post textarea', TEXTDOM ),
+									'title'    => esc_html__( 'Test post textarea', ANONY_TEXTDOM ),
 									'type'     => 'textarea',
 									'validate' => 'no_html',
 								),
 								array(
 									'id'       => 'anony__test_post_color',
-									'title'    => esc_html__( 'Test post color', TEXTDOM ),
+									'title'    => esc_html__( 'Test post color', ANONY_TEXTDOM ),
 									'type'     => 'color_farbtastic',
 									'validate' => 'hex_color',
 									'default' => '#222',
 								),
 								array(
 									'id'       => 'anony__test_post_wysiwyg',
-									'title'    => esc_html__( 'Test post wysiwyg', TEXTDOM ),
+									'title'    => esc_html__( 'Test post wysiwyg', ANONY_TEXTDOM ),
 									'type'     => 'wysiwyg',
 									'validate' => 'html',
 									'options'  => array('drag_drop_upload' => true),
 								),
 								array(
 									'id'           => 'anony__test_post_select',
-									'title'        => esc_html__( 'Test post select', TEXTDOM ),
+									'title'        => esc_html__( 'Test post select', ANONY_TEXTDOM ),
 									'type'         => 'select',
 									'validate'     => 'multiple_options',
 									'multiple'     => true,
@@ -76,7 +76,7 @@ add_action('admin_init', function(){
 								),
 								array(
 									'id'           => 'anony__test_post_select_single',
-									'title'        => esc_html__( 'Test post select single', TEXTDOM ),
+									'title'        => esc_html__( 'Test post select single', ANONY_TEXTDOM ),
 									'type'         => 'select',
 									'validate'     => 'multiple_options',
 									'autocomplete' => 'off',
@@ -90,7 +90,7 @@ add_action('admin_init', function(){
 								),
 								array(
 									'id'           => 'anony__test_post_radio',
-									'title'        => esc_html__( 'Test post select radio', TEXTDOM ),
+									'title'        => esc_html__( 'Test post select radio', ANONY_TEXTDOM ),
 									'type'         => 'radio',
 									'validate'     => 'multiple_options',
 									'options'      => array(
@@ -103,7 +103,7 @@ add_action('admin_init', function(){
 								),
 								array(
 									'id'           => 'anony__test_post_multi_checkbox',
-									'title'        => esc_html__( 'Test post select multi checkbox', TEXTDOM ),
+									'title'        => esc_html__( 'Test post select multi checkbox', ANONY_TEXTDOM ),
 									'type'         => 'checkbox',
 									'validate'     => 'multiple_options',
 									'multiple'     => true,
@@ -117,14 +117,14 @@ add_action('admin_init', function(){
 								),
 								array(
 									'id'           => 'anony__test_post_color_gradient',
-									'title'        => esc_html__( 'Test post select color gradient', TEXTDOM ),
+									'title'        => esc_html__( 'Test post select color gradient', ANONY_TEXTDOM ),
 									'type'         => 'color_gradient',
 									'validate'     => 'hex_color',
 									
 								),
 								array(
 									'id'           => 'anony__test_font_select',
-									'title'        => esc_html__( 'Test font select', TEXTDOM ),
+									'title'        => esc_html__( 'Test font select', ANONY_TEXTDOM ),
 									'type'         => 'font_select',
 									'validate'     => 'multiple_options',
 									'options'      => anony_fonts( 'all' ),
@@ -132,13 +132,13 @@ add_action('admin_init', function(){
 								),
 								array(
 									'id'           => 'anony__test_multi_text',
-									'title'        => esc_html__( 'Test multi text', TEXTDOM ),
+									'title'        => esc_html__( 'Test multi text', ANONY_TEXTDOM ),
 									'type'         => 'multi_text',
 									'validate'     => 'no_html',									
 								),
 								array(
 									'id'           => 'anony__test_select',
-									'title'        => esc_html__( 'Test select', TEXTDOM ),
+									'title'        => esc_html__( 'Test select', ANONY_TEXTDOM ),
 									'type'         => 'select',
 									'options'      => array(
 														'1' => 'a',
@@ -157,7 +157,7 @@ add_action('admin_init', function(){
 	$metaBoxes = array(
 		/*Any meta box ID should start with anony-meta- to have correct style*/
 		'id'            => 'anony-meta-post',//Meta box ID
-		'title'         => esc_html__( 'Post custom fields', TEXTDOM ),
+		'title'         => esc_html__( 'Post custom fields', ANONY_TEXTDOM ),
 		'context'       => 'normal',
 		'priority'      =>  'high', // high|low
         'hook_priority' =>  '10', // Default 10
@@ -165,7 +165,7 @@ add_action('admin_init', function(){
 		'fields'        => array(
 								array(
 									'id'       => 'anony__set_as_featured',
-									'title'    => esc_html__( 'set as featured', TEXTDOM ),
+									'title'    => esc_html__( 'set as featured', ANONY_TEXTDOM ),
 									'type'      => 'checkbox',
 									'validate'  => 'no_html',
 									'default'  => '1',

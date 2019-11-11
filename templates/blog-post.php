@@ -32,7 +32,7 @@ anony_set_post_views($tbp_post_id);?>
 				<span>
 				
 					<?php 
-						esc_html_e('By',TEXTDOM);
+						esc_html_e('By',ANONY_TEXTDOM);
 						echo ' '.get_the_author(); 
 					?>
 					
@@ -42,7 +42,7 @@ anony_set_post_views($tbp_post_id);?>
 			
 			<div>
 			
-				<a class="button anony-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',TEXTDOM) ?></a>
+				<a class="button anony-button" href="<?php echo esc_url( get_the_permalink() ) ?>"><?php esc_html_e('Read more',ANONY_TEXTDOM) ?></a>
 				
 			</div>
 			

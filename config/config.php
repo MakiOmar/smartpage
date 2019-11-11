@@ -14,79 +14,79 @@
  * Holds theme's name
  * @const
  */
-define('THEME_NAME'    , 'Anonymous');
+define('ANONY_THEME_NAME'    , 'Anonymous');
 
 /**
  * Holds theme's version
  * @const
  */
-define('THEME_VERSION' , '1.0');
+define('ANONY_THEME_VERSION' , '1.0');
 
 /**
  * Holds theme's text domain
  * @const
  */
-define('TEXTDOM'       , strtolower(THEME_NAME));
+define('ANONY_TEXTDOM'       , strtolower(ANONY_THEME_NAME));
 
 /**
  * Holds theme's URI
  * @const
  */
-define('THEME_URI'     , get_template_directory_uri());
+define('ANONY_THEME_URI'     , get_template_directory_uri());
 
 /**
  * Holds theme's path
  * @const
  */
-define('THEME_DIR'     , wp_normalize_path( get_template_directory() ));
+define('ANONY_THEME_DIR'     , wp_normalize_path( get_template_directory() ));
 
 /**
  * Holds functions folder URI
  * @const
  */
-define('LIBS_URI'      , get_template_directory_uri(). '/functions');
+define('ANONY_LIBS_URI'      , get_template_directory_uri(). '/functions');
 
 /**
  * Holds functions folder DIR
  * @const
  */
-define('LIBS_DIR'      , THEME_DIR. '/functions/');
+define('ANONY_LIBS_DIR'      , ANONY_THEME_DIR. '/functions/');
 
 /**
  * Holds main classes folder URI
  * @const
  */
-define('CLASSES_URI'   , get_template_directory_uri(). '/functions/class');
+define('ANONY_CLASSES_URI'   , get_template_directory_uri(). '/functions/class');
 
 /**
  * Holds a URI to Custom fields classes folder
  * @const
  */
-//define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (THEME_URI . '/input-fields/'));
+//define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (ANONY_THEME_URI . '/input-fields/'));
 
 /**
  * Holds languages folder URI
  * @const
  */
-define('LANG_DIR'      , wp_normalize_path(THEME_DIR. '/languages/'));
+define('ANONY_LANG_DIR'      , wp_normalize_path(ANONY_THEME_DIR. '/languages/'));
 
 /**
  * Holds rating table name
  * @const
  */
-define('STAR_RATE'     , $GLOBALS['wpdb']->prefix . 'star_rating' );
+define('ANONY_STAR_RATE'     , $GLOBALS['wpdb']->prefix . 'star_rating' );
 
 /**
  * Holds blog's title
  * @const
  */
-define('BLOG_TITLE'    , esc_html(get_bloginfo() ));
+define('ANONY_BLOG_TITLE'    , esc_html(get_bloginfo() ));
 
 /**
  * Holds blog's URL
  * @const
  */
-define('BLOG_URL'      , esc_url(get_bloginfo('url') ));
+define('ANONY_BLOG_URL'      , esc_url(get_bloginfo('url') ));
 
 /*----------------------------------------------------------------------
 * Theme Autoloading
@@ -96,13 +96,13 @@ define('BLOG_URL'      , esc_url(get_bloginfo('url') ));
  * Holds a path to main classes folder
  * @const
  */
-define( 'ANONY_CLASSES', wp_normalize_path (THEME_DIR . '/classes/'));
+define( 'ANONY_CLASSES', wp_normalize_path (ANONY_THEME_DIR . '/classes/'));
 
 /**
  * Holds a path to metaboxes class folder
  * @const
  */
-define( 'ANONY_METABOXES', wp_normalize_path (THEME_DIR . '/metaboxes/'));
+define( 'ANONY_METABOXES', wp_normalize_path (ANONY_THEME_DIR . '/metaboxes/'));
 
 /**
  * Holds a path to Custom fields classes folder
@@ -114,7 +114,7 @@ define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/fields/'))
  * Holds a path to Custom fields classes folder
  * @const
  */
-define( 'ANONY_INPUT_FIELDS', wp_normalize_path (THEME_DIR . '/input-fields/'));
+define( 'ANONY_INPUT_FIELDS', wp_normalize_path (ANONY_THEME_DIR . '/input-fields/'));
 
 /**
  * Holds a path to views classes folder
@@ -173,7 +173,7 @@ function anony_theme_autoloader( $class_name ) {
  * Holds directory separator
  * @const
  */
-define('DIRS', DIRECTORY_SEPARATOR );
+define('ANONY_DIRS', DIRECTORY_SEPARATOR );
 
 /**
  * Holds options group name
@@ -185,7 +185,7 @@ define('ANONY_OPTIONS', "Anony_Options");
  * Holds options folder URI
  * @const
  */
-define('ANONY_OPTIONS_URI', THEME_URI . "/options/");
+define('ANONY_OPTIONS_URI', ANONY_THEME_URI . "/options/");
 
 /*----------------------------------------------------------------------
 * Options Autoloading
@@ -196,19 +196,19 @@ define('ANONY_OPTIONS_URI', THEME_URI . "/options/");
  * Holds options folder path
  * @const
  */
-define('ANONY_OPTIONS_DIR', wp_normalize_path(THEME_DIR . "/options/"));
+define('ANONY_OPTIONS_DIR', wp_normalize_path(ANONY_THEME_DIR . "/options/"));
 
 /**
  * Holds options fields folder path
  * @const
  */
-define('ANONY_OPTIONS_FIELDS', wp_normalize_path(THEME_DIR . "/options/fields/"));
+define('ANONY_OPTIONS_FIELDS', wp_normalize_path(ANONY_THEME_DIR . "/options/fields/"));
 
 /**
  * Holds options widgets folder path
  * @const
  */
-define('ANONY_OPTIONS_WIDGETS', wp_normalize_path(THEME_DIR . "/options/widgets/"));
+define('ANONY_OPTIONS_WIDGETS', wp_normalize_path(ANONY_THEME_DIR . "/options/widgets/"));
 
 define(
 	'ANONY_OPTIONS_AUTOLOADS' ,
@@ -248,7 +248,7 @@ function anony_opts_autoloader( $class_name ) {
 				
 			}else{
 				//die($class_file.' not exist');
-				$class_file = wp_normalize_path($path. $class_name . DIRS) .$class_name . '.php';
+				$class_file = wp_normalize_path($path. $class_name . ANONY_DIRS) .$class_name . '.php';
 				
 				if(file_exists($class_file)){
 					

@@ -59,9 +59,9 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 
 		// default tab to clone
 				$html .= '<li class="tabs-default">';
-					$html .= '<label class="anony-label">'. esc_html__('Title',TEXTDOM) .'</label>';
+					$html .= '<label class="anony-label">'. esc_html__('Title',ANONY_TEXTDOM) .'</label>';
 					$html .= '<input type="text" name="'. $name .'[data-'.($count).'][title]" value="" />';
-					$html .= '<label class="anony-label">'. esc_html__('Content',TEXTDOM) .'</label>';
+					$html .= '<label class="anony-label">'. esc_html__('Content',ANONY_TEXTDOM) .'</label>';
 					$html .= '<textarea name="'. $name .'[data-'.($count).'][content]" value=""></textarea>';
 					$html .= '<a href="" class="anony-btn-close anony-remove-tab"><em>delete</em></a>';
 				$html .= '</li>';
@@ -76,9 +76,9 @@ class ANONY_optf__Tabs extends ANONY__Theme_Settings{
 					if ( $i <= $count) {
 
 						$html .= '<li>';
-						$html .= '<label class="anony-label">'. esc_html__('Title',TEXTDOM) .'</label>';
+						$html .= '<label class="anony-label">'. esc_html__('Title',ANONY_TEXTDOM) .'</label>';
 						$html .= '<input type="text" name="'. $name .'[data-'.$i.'][title]" value="'. sanitize_title($value['title']) .'" />';
-						$html .= '<label class="anony-label">'. esc_html__('Content',TEXTDOM) .'</label>';
+						$html .= '<label class="anony-label">'. esc_html__('Content',ANONY_TEXTDOM) .'</label>';
 						$html .= '<textarea name="'. $name .'[data-'.$i.'][content]" value="" >'. esc_textarea( $value['content'] ) .'</textarea>';
 						$html .= '<a href="" class="anony-btn-close anony-remove-tab"><em>delete</em></a>';
 						$html .= '</li>';

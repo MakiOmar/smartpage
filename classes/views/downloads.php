@@ -21,7 +21,7 @@ class ANONY_views__Downloads extends ANONY__Generate_Posts_View{
 	public function render(){?>
 		
 		<div class="anony-section<?php echo (is_front_page() || ishome()) ? ' section-front-page' : '' ?>">
-			<div><h4 class="anony-section_title clearfix"><?php esc_html_e('Suggested downloads',TEXTDOM);?></h4></div>
+			<div><h4 class="anony-section_title clearfix"><?php esc_html_e('Suggested downloads',ANONY_TEXTDOM);?></h4></div>
 				<div class="anony-posts-wrapper">
 				<?php
 					if($this->msg){
@@ -56,7 +56,7 @@ class ANONY_views__Downloads extends ANONY__Generate_Posts_View{
 
 									<div class="anony-hover-toggle anony-post-image-wrapper" style="background-color: transparent">
 
-									<span id="download-<?php echo $tdPostId?>-count" class="anony-download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',TEXTDOM) ?></span>
+									<span id="download-<?php echo $tdPostId?>-count" class="anony-download-counter"><?php echo $download_times.'<br>'.esc_html__('Downloads',ANONY_TEXTDOM) ?></span>
 
 
 									  <?php if( has_post_thumbnail() ){

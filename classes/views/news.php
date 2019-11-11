@@ -19,7 +19,7 @@ class ANONY_views__News extends ANONY__Generate_Posts_View{
 	public function render(){?>
 		<div id="didyouknow" class="group">
 
-			<p id="anony-dun-title"><?php esc_html_e('Simple Info',TEXTDOM);?></p>
+			<p id="anony-dun-title"><?php esc_html_e('Simple Info',ANONY_TEXTDOM);?></p>
 
 			<?php echo get_search_form(false);?>
 

@@ -68,7 +68,7 @@ class ANONY_cf__Color_gradient extends ANONY__Meta_Box{
 			$html	.= sprintf( 
 						'<label class="anony-label-col" for="%1$s-from">%2$s</label>', 
 						$this->field['id'], 
-						esc_html__( 'From', TEXTDOM )
+						esc_html__( 'From', ANONY_TEXTDOM )
 						);
 
 	        $html  .= sprintf( 
@@ -83,7 +83,7 @@ class ANONY_cf__Color_gradient extends ANONY__Meta_Box{
 			$html	.= sprintf( 
 						'<label class="anony-label-col" for="%1$s-to">%2$s</label>', 
 						$this->field['id'], 
-						esc_html__( 'To', TEXTDOM )
+						esc_html__( 'To', ANONY_TEXTDOM )
 						);
 
 	        $html  .= sprintf( 

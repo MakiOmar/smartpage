@@ -17,46 +17,46 @@ if(get_option(ANONY_OPTIONS)){
 $options_nav = array(
 	// General --------------------------------------------
 	'general' => array(
-		'title' => esc_html__('Getting started', TEXTDOM),
+		'title' => esc_html__('Getting started', ANONY_TEXTDOM),
 		'sections' => array('general', 'advertisements'),
 	),
 	// Slider --------------------------------------------
 	'slider' => array(
-		'title' => esc_html__('Slider', TEXTDOM),
+		'title' => esc_html__('Slider', ANONY_TEXTDOM),
 	),
 	// Layout --------------------------------------------
 	'layout' => array(
-		'title' => esc_html__('Layout', TEXTDOM),
+		'title' => esc_html__('Layout', ANONY_TEXTDOM),
 		'sections' => array('sidebars', 'blog'),
 	),
 
 	// Colors --------------------------------------------
 	'colors' => array(
-		'title' => esc_html__('Colors', TEXTDOM),
+		'title' => esc_html__('Colors', ANONY_TEXTDOM),
 		'sections' => array('general-colors','menu-colors'),
 	),
 
 	// Fonts --------------------------------------------
 	'fonts' => array(
-		'title' => esc_html__('Fonts', TEXTDOM),
+		'title' => esc_html__('Fonts', ANONY_TEXTDOM),
 		'sections' => array( 'arabic-fonts', 'english-fonts' ),
 	),
 
 	// Translate --------------------------------------------
 	/*'translate' => array(
-		'title' => esc_html__('Translate', TEXTDOM),
+		'title' => esc_html__('Translate', ANONY_TEXTDOM),
 		'sections' => array('translate'),
 	),
 	*/
 	// Socials --------------------------------------------
 	'socials' => array(
-		'title' => esc_html__('Socials', TEXTDOM),
+		'title' => esc_html__('Socials', ANONY_TEXTDOM),
 		//'sections' => array('socials'),
 	),
 	
 	// Miscellanous --------------------------------------------
 	'miscellanous' => array(
-		'title' => esc_html__('Miscellanous', TEXTDOM),
+		'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
 		//'sections' => array('socials'),
 	),
 );
@@ -67,29 +67,29 @@ $sections = array();
 $sliders = anony_get_rev_sliders();
 
 $sections['slider']= array(
-		'title' => esc_html__('Slider', TEXTDOM),
+		'title' => esc_html__('Slider', ANONY_TEXTDOM),
 		'icon' => 'P',
 		'fields' => array(
 						array(
 							'id'      => 'home_slider',
-							'title'   => esc_html__('Revolution slider', TEXTDOM),
+							'title'   => esc_html__('Revolution slider', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    => esc_html('If checked, it will show revolution slider on Homepage', TEXTDOM),
+							'desc'    => esc_html('If checked, it will show revolution slider on Homepage', ANONY_TEXTDOM),
 						),
 						array(
 							'id'      => 'slider_content',
-							'title'   => esc_html__('Featured Posts slider content', TEXTDOM),
+							'title'   => esc_html__('Featured Posts slider content', ANONY_TEXTDOM),
 							'type'    => 'radio',
 							'validate'=> 'multiple_options',
 							'options' => array(
 											'featured-cat'	=> array(
-												'title' => esc_html__('Featured category', TEXTDOM),
+												'title' => esc_html__('Featured category', ANONY_TEXTDOM),
 												'class' => 'slider'
 											),
 	
 											'featured-post'	=> array(
-												'title' => esc_html__('Featured posts', TEXTDOM),
+												'title' => esc_html__('Featured posts', ANONY_TEXTDOM),
 												'class' => 'slider'
 											),
 										),
@@ -97,7 +97,7 @@ $sections['slider']= array(
 						),
 						array(
 							'id'      => 'featured_tax',
-							'title'   => esc_html__('Select featured taxonomy', TEXTDOM),
+							'title'   => esc_html__('Select featured taxonomy', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => get_taxonomies(),
@@ -106,7 +106,7 @@ $sections['slider']= array(
 						),
 						array(
 							'id'      => 'rev_slider',
-							'title'   => esc_html__('Select a slider', TEXTDOM),
+							'title'   => esc_html__('Select a slider', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
@@ -117,38 +117,38 @@ $sections['slider']= array(
 	
 						array(
 							'id'      => 'featured_cat',
-							'title'   => esc_html__('Select featured category', TEXTDOM),
+							'title'   => esc_html__('Select featured category', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => isset($anonyOptions)  ?anony_terms_query($anonyOptions->featured_tax, 'id=>name') : array(),
 							'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : ''),
-							'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', TEXTDOM) : '')
+							'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', ANONY_TEXTDOM) : '')
 						),
 					),
-			'note'     => esc_html__('This options only applies to the front-page.php', TEXTDOM), 
+			'note'     => esc_html__('This options only applies to the front-page.php', ANONY_TEXTDOM), 
 	);
 
 $sections['general']= array(
-		'title' => esc_html__('General', TEXTDOM),
+		'title' => esc_html__('General', ANONY_TEXTDOM),
 		'icon' => 'x',
 		'fields' => array(
 						array(
 							'id'      => 'copyright',
-							'title'   => esc_html__('Copyright', TEXTDOM),
+							'title'   => esc_html__('Copyright', ANONY_TEXTDOM),
 							'type'    => 'text',
 							'validate'=> 'no_html',
-							'default' => sprintf(__('All rights are reserved to Anonymous %s', TEXTDOM), date('Y'))
+							'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
 						),						
 					)
 );
 
 $sections['menu-colors']= array(
-		'title' => esc_html__('Menu Colors', TEXTDOM),
+		'title' => esc_html__('Menu Colors', ANONY_TEXTDOM),
 		'icon' => 'E',
 		'fields' => array(	
 						array(
 							'id'      => 'main_menu_color',
-							'title'   => esc_html__('Main menu', TEXTDOM),
+							'title'   => esc_html__('Main menu', ANONY_TEXTDOM),
 							'type'    => 'color',
 							'validate'=> 'no_html',
 							'default' => '#230005'
@@ -156,68 +156,68 @@ $sections['menu-colors']= array(
 					)
 );
 $sections['general-colors']= array(
-		'title' => esc_html__('General', TEXTDOM),
+		'title' => esc_html__('General', ANONY_TEXTDOM),
 		'icon' => 'E',
 		'fields' => array(
 						array(
 							'id'      => 'color_skin',
-							'title'   => esc_html__('Color skin', TEXTDOM),
+							'title'   => esc_html__('Color skin', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array(
-											'blue'     => esc_html__('Blue', TEXTDOM),
-											'firebrick'=> esc_html__('Firebrick', TEXTDOM),
-											'red'     => esc_html__('Red', TEXTDOM),
-											'custom'   => esc_html__('Custom', TEXTDOM),
+											'blue'     => esc_html__('Blue', ANONY_TEXTDOM),
+											'firebrick'=> esc_html__('Firebrick', ANONY_TEXTDOM),
+											'red'     => esc_html__('Red', ANONY_TEXTDOM),
+											'custom'   => esc_html__('Custom', ANONY_TEXTDOM),
 											),
 							'default' => 'firebrick',
-							'desc' => esc_html__('Other color options like (Menu colors, Headings colors) works only if color skin is custom', TEXTDOM),
+							'desc' => esc_html__('Other color options like (Menu colors, Headings colors) works only if color skin is custom', ANONY_TEXTDOM),
 						),						
 					)
 );
 
 $sections['sidebars']= array(
-		'title' => esc_html__('Sidebars', TEXTDOM),
+		'title' => esc_html__('Sidebars', ANONY_TEXTDOM),
 		'icon' => 'y',
 		'fields' => array(
 						array(
 							'id'      => 'sidebar',
-							'title'   => esc_html__('Sidebar', TEXTDOM),
+							'title'   => esc_html__('Sidebar', ANONY_TEXTDOM),
 							'type'    => 'radio_img',
 							'validate'=> 'multiple_options',
 							'options' => array(
-											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
+											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
 	
-											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
+											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
 											
-											'no-sidebar' 	=> array('title' => esc_html__('Full width', TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/full-width.png'),
+											'no-sidebar' 	=> array('title' => esc_html__('Full width', ANONY_TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/full-width.png'),
 										),
 							'default'  => 'left-sidebar',
-							'desc'  => esc_html__('This controls the direction of the main sidebar', TEXTDOM),
+							'desc'  => esc_html__('This controls the direction of the main sidebar', ANONY_TEXTDOM),
 						),
 						array(
 							'id'      => 'single_sidebar',
-							'title'   => esc_html__('Single post sidebar', TEXTDOM),
+							'title'   => esc_html__('Single post sidebar', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', TEXTDOM),
+							'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', ANONY_TEXTDOM),
 						),
 
 						
 					)
 );
 $sections['blog']= array(
-		'title' => esc_html__('Blog', TEXTDOM),
+		'title' => esc_html__('Blog', ANONY_TEXTDOM),
 		'icon' => 'n',
 		'fields' => array(
 						array(
 							'id'      => 'posts_grid',
-							'title'   => esc_html__('Posts grid', TEXTDOM),
+							'title'   => esc_html__('Posts grid', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array(
-											'standard'     => esc_html__('Standard', TEXTDOM),
-											'masonry'=> esc_html__('Masonry', TEXTDOM),
+											'standard'     => esc_html__('Standard', ANONY_TEXTDOM),
+											'masonry'=> esc_html__('Masonry', ANONY_TEXTDOM),
 											),
 							'default'  => 'masonry',
 							
@@ -227,25 +227,25 @@ $sections['blog']= array(
 );
 
 $anonyAdsLocs = array(
-					'header'  => esc_html__('Header', TEXTDOM),
-					'footer'  => esc_html__('Footer', TEXTDOM),
-					'sidebar' => esc_html__('Sidebar', TEXTDOM),
-					'post'    => esc_html__('Single post', TEXTDOM),
-					'page'    => esc_html__('page', TEXTDOM),
+					'header'  => esc_html__('Header', ANONY_TEXTDOM),
+					'footer'  => esc_html__('Footer', ANONY_TEXTDOM),
+					'sidebar' => esc_html__('Sidebar', ANONY_TEXTDOM),
+					'post'    => esc_html__('Single post', ANONY_TEXTDOM),
+					'page'    => esc_html__('page', ANONY_TEXTDOM),
 				);
 $sections['advertisements']= array(
-		'title' => esc_html__('Advertisements', TEXTDOM),
+		'title' => esc_html__('Advertisements', ANONY_TEXTDOM),
 		'icon' => 'E',
 		'fields' => array(
 						array(
 							'id'      => 'ad_block_one',
-							'title'   => esc_html__('AD block one', TEXTDOM),
+							'title'   => esc_html__('AD block one', ANONY_TEXTDOM),
 							'type'    => 'textarea',
 							'validate'=> 'html',	
 						),
 						array(
 							'id'      => 'ad_block_one_location',
-							'title'   => esc_html__('AD block one location', TEXTDOM),
+							'title'   => esc_html__('AD block one location', ANONY_TEXTDOM),
 							'type'    => 'checkbox',
 							'validate'=> 'multiple_options',
 							'options' => $anonyAdsLocs,
@@ -253,13 +253,13 @@ $sections['advertisements']= array(
 						),
 						array(
 							'id'      => 'ad_block_two',
-							'title'   => esc_html__('AD block two', TEXTDOM),
+							'title'   => esc_html__('AD block two', ANONY_TEXTDOM),
 							'type'    => 'textarea',
 							'validate'=> 'html',	
 						),
 						array(
 							'id'      => 'ad_block_two_location',
-							'title'   => esc_html__('AD block two location', TEXTDOM),
+							'title'   => esc_html__('AD block two location', ANONY_TEXTDOM),
 							'type'    => 'checkbox',
 							'validate'=> 'multiple_options',
 							'options' => $anonyAdsLocs,
@@ -267,13 +267,13 @@ $sections['advertisements']= array(
 						),
 						array(
 							'id'      => 'ad_block_three',
-							'title'   => esc_html__('AD block three', TEXTDOM),
+							'title'   => esc_html__('AD block three', ANONY_TEXTDOM),
 							'type'    => 'textarea',
 							'validate'=> 'html',	
 						),
 						array(
 							'id'      => 'ad_block_three_location',
-							'title'   => esc_html__('AD block three location', TEXTDOM),
+							'title'   => esc_html__('AD block three location', ANONY_TEXTDOM),
 							'type'    => 'checkbox',
 							'validate'=> 'multiple_options',
 							'options' => $anonyAdsLocs,
@@ -307,12 +307,12 @@ $defaultEnFonts = array(
 					);
 
 $sections['arabic-fonts']= array(
-		'title'  => esc_html__('Arabic fonts', TEXTDOM),
+		'title'  => esc_html__('Arabic fonts', ANONY_TEXTDOM),
 		'icon'   => 'W',
 		'fields' => array(
 						array(
 							'id'      => 'anony_headings_ar_font',
-							'title'   => esc_html__('Arabic font for headings', TEXTDOM),
+							'title'   => esc_html__('Arabic font for headings', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
@@ -320,7 +320,7 @@ $sections['arabic-fonts']= array(
 						),
 						array(
 							'id'      => 'anony_links_ar_font',
-							'title'   => esc_html__('Arabic font for links', TEXTDOM),
+							'title'   => esc_html__('Arabic font for links', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
@@ -328,7 +328,7 @@ $sections['arabic-fonts']= array(
 						),
 						array(
 							'id'      => 'anony_paragraph_ar_font',
-							'title'   => esc_html__('Arabic font for paragraph', TEXTDOM),
+							'title'   => esc_html__('Arabic font for paragraph', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
@@ -339,13 +339,13 @@ $sections['arabic-fonts']= array(
 );
 
 $sections['english-fonts']= array(
-		'title'  => esc_html__('English fonts', TEXTDOM),
+		'title'  => esc_html__('English fonts', ANONY_TEXTDOM),
 		'icon'   => 'W',
 		'fields' => array(
 
 						array(
 							'id'      => 'anony_headings_en_font',
-							'title'   => esc_html__('English font for headings', TEXTDOM),
+							'title'   => esc_html__('English font for headings', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge( $defaultEnFonts, $enFonts),
@@ -354,7 +354,7 @@ $sections['english-fonts']= array(
 						
 						array(
 							'id'      => 'anony_links_en_font',
-							'title'   => esc_html__('English font for links', TEXTDOM),
+							'title'   => esc_html__('English font for links', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge( $defaultEnFonts, $enFonts),
@@ -362,7 +362,7 @@ $sections['english-fonts']= array(
 						),
 						array(
 							'id'      => 'anony_paragraph_en_font',
-							'title'   => esc_html__('English font for paragraph', TEXTDOM),
+							'title'   => esc_html__('English font for paragraph', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge( $defaultEnFonts, $enFonts),
@@ -372,68 +372,68 @@ $sections['english-fonts']= array(
 					)
 );
 $sections['socials']= array(
-		'title'  => esc_html__('Social Media', TEXTDOM),
+		'title'  => esc_html__('Social Media', ANONY_TEXTDOM),
 		'icon'   => 'B',
 		'fields' => array(
 						array(
 							'id'      => 'facebook',
-							'title'   => esc_html__('Facebook account link', TEXTDOM),
+							'title'   => esc_html__('Facebook account link', ANONY_TEXTDOM),
 							'type'    => 'text',	
 							'validate'=> 'url',
 							'default' => '#',
 						),
 						array(
 							'id'      => 'twitter',
-							'title'   => esc_html__('Twitter account link', TEXTDOM),
+							'title'   => esc_html__('Twitter account link', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',	
 							'default' => '#',	
 						),
 						array(
 							'id'      => 'linkedin',
-							'title'   => esc_html__('Linkedin account link', TEXTDOM),
+							'title'   => esc_html__('Linkedin account link', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',	
 							'default' => '#',
 						),
 						array(
 							'id'      => 'instagram',
-							'title'   => esc_html__('Instagram account link', TEXTDOM),
+							'title'   => esc_html__('Instagram account link', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',		
 							'default' => '#',		
 						),
 						array(
 							'id'      => 'tumblr',
-							'title'   => esc_html__('Tumbler account link', TEXTDOM),
+							'title'   => esc_html__('Tumbler account link', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',		
 							'default' => '#',		
 						),
 						array(
 							'id'      => 'youtube',
-							'title'   => esc_html__('Youtube channel', TEXTDOM),
+							'title'   => esc_html__('Youtube channel', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',		
 							'default' => '#',
 						),
 						array(
 							'id'      => 'rss',
-							'title'   => esc_html__('RSS feed', TEXTDOM),
+							'title'   => esc_html__('RSS feed', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'url',		
 							'default' => get_bloginfo('rss_url'),
 						),
 						array(
 							'id'      => 'email',
-							'title'   => esc_html__('Email address', TEXTDOM),
+							'title'   => esc_html__('Email address', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'email',		
 							'default' => get_bloginfo('admin_email'),		
 						),
 						array(
 							'id'      => 'phone',
-							'title'   => esc_html__('Phone number', TEXTDOM),
+							'title'   => esc_html__('Phone number', ANONY_TEXTDOM),
 							'type'    => 'text',		
 							'validate'=> 'no_html',		
 							'default' => '#',		
@@ -444,108 +444,108 @@ $sections['socials']= array(
 
 
 $sections['miscellanous']= array(
-		'title' => esc_html__('Miscellanous', TEXTDOM),
+		'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
 		'icon' => 'x',
 		'fields' => array(
 						array(
 							'id'      => 'admin_bar',
-							'title'   => esc_html__('Hide admin bar', TEXTDOM),
+							'title'   => esc_html__('Hide admin bar', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    =>esc_html__('Shows admin bar only for admins', TEXTDOM)
+							'desc'    =>esc_html__('Shows admin bar only for admins', ANONY_TEXTDOM)
 						),	
 						array(
 							'id'      => 'not_admin_restricted',
-							'title'   => esc_html__('Restrict access to admin', TEXTDOM),
+							'title'   => esc_html__('Restrict access to admin', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    =>esc_html__('Restricts non-admins from accessing the dashboard', TEXTDOM)
+							'desc'    =>esc_html__('Restricts non-admins from accessing the dashboard', ANONY_TEXTDOM)
 						),
 						array(
 							'id'      => 'change_login_title',
-							'title'   => esc_html__('Change login header title', TEXTDOM),
+							'title'   => esc_html__('Change login header title', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    =>esc_html__('Changes the default header title in WordPress login page to be your site title', TEXTDOM)
+							'desc'    =>esc_html__('Changes the default header title in WordPress login page to be your site title', ANONY_TEXTDOM)
 						),
 						array(
 							'id'      => 'query_string',
-							'title'   => esc_html__('Remove query string', TEXTDOM),
+							'title'   => esc_html__('Remove query string', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    =>esc_html__('Removes query string from styles/scripts and help speed up your website', TEXTDOM)
+							'desc'    =>esc_html__('Removes query string from styles/scripts and help speed up your website', ANONY_TEXTDOM)
 						),
 						
 						array(
 							'id'      => 'keep_query_string',
-							'title'   => esc_html__('Keep query string', TEXTDOM),
+							'title'   => esc_html__('Keep query string', ANONY_TEXTDOM),
 							'type'    => 'text',
 							'validate'=> 'no_html',
-							'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', TEXTDOM)
+							'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', ANONY_TEXTDOM)
 						),
 						array(
 							'id'      => 'cats_in_nav',
-							'title'   => esc_html__('Add categories to Navigation', TEXTDOM),
+							'title'   => esc_html__('Add categories to Navigation', ANONY_TEXTDOM),
 							'type'    => 'switch',
 							'validate'=> 'no_html',
-							'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', TEXTDOM)
+							'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', ANONY_TEXTDOM)
 						),
 						array(
 							'id'      => 'color_gradient',
-							'title'   => esc_html__('Color Gradient', TEXTDOM),
+							'title'   => esc_html__('Color Gradient', ANONY_TEXTDOM),
 							'type'    => 'color_gradient',
 							'validate'=> 'hex_color',
 						),	
 						array(
 							'id'      => 'font_select',
-							'title'   => esc_html__('Select font', TEXTDOM),
+							'title'   => esc_html__('Select font', ANONY_TEXTDOM),
 							'type'    => 'font_select',
 							'validate'=> 'multiple_options',
 							'options' => anony_fonts( 'all' ),
 						),		
 						array(
 							'id'      => 'multi_text',
-							'title'   => esc_html__('Multi text', TEXTDOM),
+							'title'   => esc_html__('Multi text', ANONY_TEXTDOM),
 							'type'    => 'multi_text',
 							'validate'=> 'no_html',
 						),		
 						array(
 							'id'      => 'pages_select',
-							'title'   => esc_html__('Page select', TEXTDOM),
+							'title'   => esc_html__('Page select', ANONY_TEXTDOM),
 							'type'    => 'pages_select',
 							'validate'=> 'multiple_options',
 							'options' => anony_pages_basic_data(),
 						),		
 						array(
 							'id'      => 'sliderbar',
-							'title'   => esc_html__('sliderbar', TEXTDOM),
+							'title'   => esc_html__('sliderbar', ANONY_TEXTDOM),
 							'type'    => 'sliderbar',
 							'validate'=> 'no_html',
 						),			
 				
 						array(
 							'id'      => 'upload',
-							'title'   => esc_html__('upload', TEXTDOM),
+							'title'   => esc_html__('upload', ANONY_TEXTDOM),
 							'type'    => 'upload',
 							'validate'=> 'url',
 						),				
 						array(
 							'id'      => 'date',
-							'title'   => esc_html__('Date', TEXTDOM),
+							'title'   => esc_html__('Date', ANONY_TEXTDOM),
 							'type'    => 'date_time',
 							'get'     => 'date',
 							'validate'=> 'no_html',
 						),				
 						array(
 							'id'      => 'time',
-							'title'   => esc_html__('Time', TEXTDOM),
+							'title'   => esc_html__('Time', ANONY_TEXTDOM),
 							'type'    => 'date_time',
 							'get'     => 'time',
 							'validate'=> 'no_html',
 						),					
 						array(
 							'id'      => 'date_time',
-							'title'   => esc_html__('Date and time', TEXTDOM),
+							'title'   => esc_html__('Date and time', ANONY_TEXTDOM),
 							'type'    => 'date_time',
 							'validate'=> 'no_html',
 						),

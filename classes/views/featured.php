@@ -57,7 +57,7 @@ class ANONY_views__Featured extends ANONY__Generate_Posts_View{
 
 									  <h2 class="anony-slide-title"><a href="<?php echo $link ?>"><?php echo get_the_title($pID) ;?></a></h2>
 
-									  <a class="anony-featured-button" href="<?php echo $link?>"><?php esc_html_e('Read more', TEXTDOM)?></a>
+									  <a class="anony-featured-button" href="<?php echo $link?>"><?php esc_html_e('Read more', ANONY_TEXTDOM)?></a>
 
 								  </div>
 								</div>
@@ -78,7 +78,7 @@ class ANONY_views__Featured extends ANONY__Generate_Posts_View{
 
 						<?php }else{?>
 
-							<a href="#"><?php esc_html_e('Featured Posts', TEXTDOM); ?></a>
+							<a href="#"><?php esc_html_e('Featured Posts', ANONY_TEXTDOM); ?></a>
 
 						<?php } ?>
 
@@ -94,7 +94,7 @@ class ANONY_views__Featured extends ANONY__Generate_Posts_View{
 						 
 			<p><i class="fa fa-frown-o fa-4x"></i></p>
 			
-			<?php wp_kses(_e('<p>Sorry! but we can\'t find any post with available thumbnail to show in slider</p>', TEXTDOM), array('p'=>array())) ?>
+			<?php wp_kses(_e('<p>Sorry! but we can\'t find any post with available thumbnail to show in slider</p>', ANONY_TEXTDOM), array('p'=>array())) ?>
 						 
 		 <?php }?>
 		

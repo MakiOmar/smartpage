@@ -69,13 +69,13 @@ class ANONY_optf__Upload extends ANONY__Theme_Settings{
 		$html .= sprintf(
 					' <a href="javascript:void(0);" data-choose="Choose a File" data-update="Select File" class="anony-opts-upload"%1$s><span></span>%2$s</a>', 
 					$upload, 
-					esc_html__('Browse', TEXTDOM)
+					esc_html__('Browse', ANONY_TEXTDOM)
 				);
 
 		$html .= sprintf(
 					' <a href="javascript:void(0);" class="anony-opts-upload-remove"%1$s>%2$s</a>', 
 					$remove, 
-					esc_html__('Remove Upload', TEXTDOM)
+					esc_html__('Remove Upload', ANONY_TEXTDOM)
 				);
 		
 		$html .= (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
