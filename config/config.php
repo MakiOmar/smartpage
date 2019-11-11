@@ -117,6 +117,12 @@ define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/fields/'))
 define( 'ANONY_INPUT_FIELDS', wp_normalize_path (ANONY_THEME_DIR . '/input-fields/'));
 
 /**
+ * Holds a path to Custom fields classes folder
+ * @const
+ */
+define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (ANONY_THEME_URI . '/input-fields/'));
+
+/**
  * Holds a path to views classes folder
  * @const
  */

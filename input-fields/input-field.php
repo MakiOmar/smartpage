@@ -12,7 +12,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		public $mixed_types = ['text','number','email', 'password','url'];
 
 		/**
-		 * @var string Field class name
+		 * @var string Field php class name
 		 */
 		public $field_class;
 
@@ -47,6 +47,16 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		public $value;
 
 		/**
+		 * @var mixed Default field value
+		 */
+		public $default;
+
+		/**
+		 * @var string HTML class attibute value
+		 */
+		public $class_attr;
+
+		/**
 		 * Inpud field constructor That decides field context
 		 * @param array    $field    An array of field's data
 		 * @param string   $context  The context of where the field is used
@@ -54,41 +64,69 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		 */
 		function __construct($field, $context = 'option', $post_id = null)
 		{
-			$this->options = ANONY__Options_Model::get_instance();
+			$this->options = anony_opts_();
 
-			$this->field = $field;
+			$this->field   = $field;
 
 			$this->post_id = $post_id;
 
 			$this->context = $context;
 
+			$this->default = isset($this->field['default']) ? $this->field['default'] : '';
+
+			$this->class_attr  = ( isset($this->field['class']) ) ? $this->field['class'] : 'anony-input-field';
+
 			$this->set_field_data();
 
 			$this->select_field();
 
-			$this->field_init();
+			$this->enqueue_scripts();
 		}
 
+		/**
+		 * Set field data depending on the context
+		 */
 		public function set_field_data(){
 			switch ($this->context) {
 				case 'option':
-					$this->input_name = ANONY_OPTIONS.'['.$this->field['id'].']';
-
-					$fieldID      = $this->field['id'];
-					
-					$fieldDefault = isset($this->field['default']) ? $this->field['default'] : '';
-
-					$this->value = (isset($this->options->$fieldID))? $this->options->$fieldID : $fieldDefault;
-
+						$this->opt_field_data();
 					break;
 
 				case 'meta':
-					$this->input_name = $this->field['id'];
+						$this->meta_field_data();
 					break;
 				
 				default:
 					$this->input_name = $this->field['id'];
 					break;
+			}
+		}
+
+		/**
+		 * Set options field data
+		 */
+		public function opt_field_data(){
+			$this->input_name = ANONY_OPTIONS.'['.$this->field['id'].']';
+
+			$fieldID      = $this->field['id'];
+
+			$this->value = (isset($this->options->$fieldID))? $this->options->$fieldID : $this->default;
+		}
+
+		/**
+		 * Set metabox field data
+		 */
+		public function meta_field_data(){
+			$this->input_name = $this->field['id'];
+
+			if(isset($this->field['multiple']) && $this->field['multiple'])
+			{
+				$meta = get_post_meta( $this->post_id, $this->field['id']);
+				$this->value = (!empty($meta)) ? $meta : $this->default;
+			}else
+			{
+				$meta = get_post_meta( $this->post_id, $this->field['id'], true);
+				$this->value = ($meta  != '') ? $meta : $this->default;	
 			}
 		}
 
@@ -121,16 +159,31 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 
 			if(!is_null($this->field_class) && class_exists($this->field_class))
 			{
-				$field_class = $this->field_class;
 				
-				$field = new $field_class($this->field, $this);
-				
-				$field->render();
-				
-				
-				
-				//
+				if(class_exists($this->field_class)){
 
+					$field_class = $this->field_class;
+
+					$field = new $field_class($this);
+
+					if($this->context == 'meta'){
+						wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
+					}
+					$field->render();
+				}
+
+			}
+		}
+
+
+		function enqueue_scripts(){
+			wp_register_style( 'anony-inputs', ANONY_INPUT_FIELDS_URI.'inputs-fields.css', array('farbtastic'), time(), 'all');	
+
+			wp_enqueue_style( 'anony-inputs' );
+
+			if(is_rtl()){
+				wp_register_style( 'anony-inputs-rtl', ANONY_INPUT_FIELDS_URI.'inputs-fields-rtl.css', array('anony-inputs'), time(), 'all');
+				wp_enqueue_style( 'anony-inputs-rtl' );
 			}
 		}
 		

@@ -309,11 +309,14 @@ if (!class_exists('ANONY__Theme_Settings')) {
 						'select',
 					];
 				if(in_array($field['type'], $array)){
+					
 					$render_field = new ANONY__Input_Field($field);
 
 					$render_field->field_init();
 				}else{
 					$field_class = 'ANONY_optf__'.ucfirst($field['type']);
+
+
 
 					//Static class name for inputs that have same HTML markup
 					if(in_array($field['type'], $mixed_types)) $field_class = 'ANONY_optf__Mixed';
