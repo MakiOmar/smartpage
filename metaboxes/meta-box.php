@@ -129,6 +129,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 						'font_select',
 						'info',
 						'text',
+						'textarea',
 						'multi_text',
 						'checkbox',
 						'radio',
