@@ -54,7 +54,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		 */
 		function __construct($field, $context = 'option', $post_id = null)
 		{
-			$this->options = opt_init_();
+			$this->options = ANONY__Options_Model::get_instance();
 
 			$this->field = $field;
 
@@ -122,10 +122,11 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 			if(!is_null($this->field_class) && class_exists($this->field_class))
 			{
 				$field_class = $this->field_class;
-				if(class_exists($field_class)){
-					$field = new $field_class($this->field, $this);
-					$field->render();
-				}
+				
+				$field = new $field_class($this->field, $this);
+				
+				$field->render();
+				
 				
 				
 				//
