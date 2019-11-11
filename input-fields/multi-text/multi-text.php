@@ -18,7 +18,9 @@ class ANONY__Multi_text{
 
 		$this->parent = $parent;
 		
-		$this->parent->value = esc_attr($this->parent->value );
+		$this->parent->value = array_map('esc_html', $this->parent->value) ;
+
+		nvd($this->parent->value);
 
 		$this->enqueue();
 	}
@@ -31,7 +33,7 @@ class ANONY__Multi_text{
 	 */
 	function render(){
 
-		$buttonText  = (isset($this->parent->field['button-text'])) ? ' placeholder="'.$this->parent->field['button-text'].'"' : esc_html__( 'Add', TEXTDOM );
+		$buttonText  = (isset($this->parent->field['button-text'])) ? ' placeholder="'.$this->parent->field['button-text'].'"' : esc_html__( 'Add', ANONY_TEXTDOM );
 
 		$placeholder = (isset($this->parent->field['placeholder'])) ? 'placeholder="'.$this->parent->field['placeholder'].'"' : '';
 
@@ -43,7 +45,6 @@ class ANONY__Multi_text{
 		if(isset($this->parent->field['note'])){
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
-
 		if($this->parent->context == 'meta'){
 			$html .= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 

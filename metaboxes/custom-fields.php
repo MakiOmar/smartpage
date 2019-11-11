@@ -30,7 +30,7 @@ add_action('admin_init', function(){
 									'id'       => 'anony__test_post_text',
 									'title'    => esc_html__( 'Test post text', ANONY_TEXTDOM ),
 									'type'     => 'text',
-									'validate' => 'number',
+									'validate' => 'no_html',
 								),
 		
 								array(

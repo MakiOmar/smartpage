@@ -4,28 +4,18 @@
  *
  */
 
-class ANONY_cf__Radio extends ANONY__Meta_Box{
-	/**
-	 * @var int Current post ID
-	 */
-	public $post_id;
-	
-	/**
-	 * @var array Current field data
-	 */
-	public $field;
-	
-	//Consructor
-	public function __construct($post_id, $field){
-		
-		parent::__construct();
-		
-		//Set field object properties
-		$this->post_id = $post_id;
-		
-		$this->field   = $field;
+class ANONY__Radio{
 
+	public $parent;
+	/**
+	 * Checkbox field Constructor.
+	 * @param object $parent Field parent object
+	 */
+	public function __construct( $parent = NULL ){
 
+		if (!is_object($parent)) return;
+
+		$this->parent = $parent;
 	}
 	
 	/**
@@ -33,34 +23,33 @@ class ANONY_cf__Radio extends ANONY__Meta_Box{
 	 */
 	public function render(){
 		
-		wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 		
-		$value = get_post_meta( $this->post_id, $this->field['id'], true ) != '' ? esc_attr (get_post_meta( $this->post_id, $this->field['id'], true ) ) : $this->field['default'];
+		$value = $this->parent->value;
 		
-		$class  = isset( $this->field['class'] ) && ! is_null( $this->field['class'] ) ? $this->field['class'] : 'anony-meta-field';
+		$class  = isset( $this->parent->field['class'] ) && ! is_null( $this->parent->field['class'] ) ? $this->parent->field['class'] : 'anony-meta-field';
 		
-		$disabled  = isset( $this->field['disabled'] ) && ( $this->field['disabled'] == true ) ? " disabled" : "";
+		$disabled  = isset( $this->parent->field['disabled'] ) && ( $this->parent->field['disabled'] == true ) ? " disabled" : "";
 		
 		$html	= sprintf( 
 					'<fieldset class="anony-row" id="anony_fieldset_%1$s">', 
-					$this->field['id'] 
+					$this->parent->field['id'] 
 				);
-        $html .= '<label class="anony-label">'.$this->field['title'].'</label>';
+        $html .= '<label class="anony-label">'.$this->parent->field['title'].'</label>';
 		
 		$html .= '<div class="anony-metabox-col">';
 		
-        foreach ( $this->field['options'] as $key => $label ) {
+        foreach ( $this->parent->field['options'] as $key => $label ) {
 			
             $html .= sprintf( 
 						'<label for="%1$s[%2$s]">', 
-						$this->field['id'], 
+						$this->parent->field['id'],
 						$key 
 					);
 
             $html .= sprintf( 
 						'<input type="radio" class="radio %1$s" id="%2$s[%3$s]" name="%2$s" value="%3$s" %4$s %5$s />', 
 						$class, 
-						$this->field['id'], 
+						$this->parent->field['id'], 
 						$key, 
 						checked($value, $key, false), 
 						$disabled 

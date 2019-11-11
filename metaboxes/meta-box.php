@@ -130,6 +130,8 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 						'info',
 						'text',
 						'multi_text',
+						'checkbox',
+						'radio',
 					];
 				if(in_array($field['type'], $array)){
 					$render_field = new ANONY__Input_Field($field, 'meta', $post->ID);
@@ -185,7 +187,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 					
 					//Something like a checkbox is not set if unchecked
 					if(!isset($_POST[$field_id])) {
-
+						//nvd($_POST[$field_id]);die();
 						delete_post_meta( $post_ID, $field_id );
 						continue;
 					}
@@ -194,7 +196,6 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 
 					if (get_post_meta($post_ID , $field_id, true) === $_POST[$field_id]) continue;
 					
-
 					$args = array(
 						'field'            => $field,
 						'new_value'     => $_POST[$field_id],
@@ -208,7 +209,7 @@ if( ! class_exists( 'ANONY__Meta_Box' )){
 
 						continue;
 					}
-					
+
 					update_post_meta( $post_ID, $field_id, $this->validate->value );
 
 				}

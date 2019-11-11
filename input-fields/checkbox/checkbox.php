@@ -54,10 +54,9 @@ class ANONY__Checkbox
 		$html .= '<div class="anony-metabox-col">';
 
 		if(isset($this->parent->field['options']) && is_array($this->parent->field['options'])){
-
 			foreach($this->parent->field['options'] as $opt => $title){
 
-				$checked = (is_array($this->parent->value) && in_array($opt, $this->parent->value)) ? ' checked="checked"' : '';
+				$checked = (is_array($this->parent->value[0]) && in_array($opt, $this->parent->value[0])) ? ' checked="checked"' : '';
 
 				$html   .= sprintf(
 							'<label class="anony-inputs-row">%1$s', 
