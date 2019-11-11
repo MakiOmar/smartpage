@@ -13,7 +13,7 @@
  *-----------------------------------------------------------*/
 //Load Text Domain
 add_action('after_setup_theme', function(){
-	load_theme_ANONY_TEXTDOMain(ANONY_TEXTDOM, ANONY_LANG_DIR);
+	load_theme_textdomain(ANONY_TEXTDOM, ANONY_LANG_DIR);
 });
 
 //Theme Scripts
