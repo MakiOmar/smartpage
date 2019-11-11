@@ -187,7 +187,7 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		}//function
 		
 		/**
-		 * Call validation method if the validation is single. e.g. url|file_type: pdf,docx.
+		 * Call validation method if the validation is multiple. e.g. url|file_type: pdf,docx.
 		 * 
 		 * @param  string $validation Validation string.
 		 * @return void
@@ -265,15 +265,31 @@ if(!class_exists('ANONY__Validate_Inputs')){
 		 * Remove html within input
 		 */
 		public function valid_no_html(){
-			
+
 			$sanitization = $this->sanitization;
+			
+			if(is_array($this->value)){
 
-			if($sanitization($this->value) != $this->value){
+				foreach ($this->value as $value) {
+					
+					if($sanitization($value) != $value){
+						nvd($sanitization($value));
+						$this->valid = false;
 
-				$this->valid = false;
+						return $this->set_error_code('remove-html');
+					}
+				}
+				die();
+			}else{
 
-				return $this->set_error_code('remove-html');
+				if($sanitization($this->value) != $this->value){
+
+					$this->valid = false;
+
+					return $this->set_error_code('remove-html');
+				}
 			}
+			
 
 			$this->sanitize();
 
