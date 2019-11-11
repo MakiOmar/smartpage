@@ -112,7 +112,7 @@ function abstracted_is_checked($chkname,$value)
     }
 
 //For testing
-function neat_var_dump($r){
+function nvd($r){
 
         echo '<pre dir="ltr">';
             var_dump($r);
@@ -122,7 +122,7 @@ function neat_var_dump($r){
     
 }
 
-function neat_print_r($array){
+function npr($array){
 	echo '<pre dir="ltr">';
 	print_r($array);
 	echo '</pre>';
