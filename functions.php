@@ -8,8 +8,6 @@ require_once(wp_normalize_path(ANONY_LIBS_DIR . 'helper/wordpress-helpers.php'))
 
 require_once(wp_normalize_path('options/options.php'));
 
-require_once(wp_normalize_path('metaboxes/custom-fields.php'));
-
 //Functions files
 $anonylibs = [
 	'posts'     		  =>'',
