@@ -1,5 +1,28 @@
 <?php
 /**
+ * Gets post terms from child up to first parent
+ * 
+ * @param  int  $id   Term id
+ * @param  type $tax  Term taxonomy
+ * @return string     Dash separated terms IDs 
+ */
+function anony_term_parents( $id, $tax ) {
+	$terms  = '';
+	$parent = get_term( $id, $tax );
+
+	if ( is_wp_error( $parent ) )
+		{return '';}
+
+	$terms .= $parent->term_id ;
+
+	if ( $parent->parent && ( $parent->parent != $parent->term_id ) ) {
+
+		$terms .= '-'.anony_term_parents( $parent->parent, $tax );
+
+	}
+	return $terms;
+}
+/**
  * Gets post id by it;s title
  * @param string $title Post's title
  * @return int Post's id
