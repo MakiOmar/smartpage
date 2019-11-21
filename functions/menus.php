@@ -125,8 +125,8 @@ function anony_breadcrumbs() {
 			$breadcrumbs[] = '<li><a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a> <span>/</span></li>';
 			$parent_id  = $page->post_parent;
 		}
-		$breadcrumbs = array_reverse($anony-breadcrumbs);
-		foreach ($anony-breadcrumbs as $crumb) echo $crumb;
+		$breadcrumbs = array_reverse($breadcrumbs);
+		foreach ($breadcrumbs as $crumb) echo $crumb;
 
 		echo '<li><a href="' . anony_get_curr_url() . '">'. get_the_title() .'</a></li>';
 
