@@ -81,6 +81,10 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 [id*='anony_fieldset'] input[type="checkbox"]{
     min-height: auto;
 }
+
+.anony-input-field{
+	min-width: 120px;
+}
 /* -------------- .multi-text -------------- */
 [id*='anony_fieldset']  input.multi-text-add { margin-right:10px;}
 [id*='anony_fieldset']  .multi-text-btn { float:left;}
@@ -169,7 +173,6 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 [id*='anony_fieldset'] {
 	background-color: #fff;
 	padding: 20px;
-	margin: 20px;
 }
 [id*='anony_fieldset']  > h1{
 	text-align: center;
