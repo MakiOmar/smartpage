@@ -129,28 +129,65 @@ add_filter( 'post_thumbnail_html', function( $html) {
 //Chenge excerpt length
 add_filter( 'excerpt_length', function() { return 15; }, 999 );
 
-// Register custom posts
-add_action( 'init', function() {
+/**
+ * Get post type for a taxonomy  
+ *
+ * @param string $tax The taxonomy to get post types for
+ * @return array An array of post types names
+ */
+function anony_taxonomy_posts($tax){
+	switch($tax){
+		case 'authority':
+			return array('transmission_line', 'reservoir');
+		break;
+	
+		default:
+			array();
+		break;
+	}
+}
+
+/**
+ * Get post type taxonomies
+ *
+ * @param string $post_type The post type to get taxonomies for
+ * @return array An array of taxonomies names
+ */
+function anony_post_taxonomies($post_type){
+	switch($post_type){
+		case 'transmission_line':
+			return array('authority');
+		break;
+		
+		case 'reservoir':
+			return array('authority');
+		break;
+	
+		default:
+			array();
+			break;
+	}
+}
+
+/**
+ * Register post types
+ */
+function anony_reg_post_types(){
 	$custom_posts = array(
-			'Download'=>array(
-					esc_html__('Download',ANONY_TEXTDOM)   , esc_html__('Downloads',ANONY_TEXTDOM)),
-			'Portfolio'=>array(
-					esc_html__('Portfolio',ANONY_TEXTDOM)  , esc_html__('Portfolios',ANONY_TEXTDOM)),
-			'Testimonial'=>array(
-					esc_html__('Testimonial',ANONY_TEXTDOM), esc_html__('Testimonials',ANONY_TEXTDOM)),
-			'Project'=>array(
-					esc_html__('Project',ANONY_TEXTDOM), esc_html__('Projects',ANONY_TEXTDOM)),
-			'Bid'=>array(
-					esc_html__('Bid',ANONY_TEXTDOM), esc_html__('Bids',ANONY_TEXTDOM)),
-			'News'=>array(
-					esc_html__('New',ANONY_TEXTDOM)        , esc_html__('News',ANONY_TEXTDOM)),
+			'transmission_line'=>array(
+					esc_html__('Transmission line',ANONY_TEXTDOM)   , esc_html__('Transmission lines',ANONY_TEXTDOM)
+				),
+				
+			'reservoir'=>array(
+					esc_html__('Reservoir',ANONY_TEXTDOM)   , esc_html__('Reservoirs',ANONY_TEXTDOM)
+				),
 			);
 	foreach($custom_posts as $custom_post=> $translatable){
 		$t_s = $translatable[0];
 		$t_p = $translatable[1];
 			
 		$labels = array(
-			'name'                  => sprintf(esc_html_x( '%s', 'General Name'    , ANONY_TEXTDOM),$t_p ),
+			'name'                  => sprintf(esc_html_x( '%s', 'General Name'    , ANONY_TEXTDOM ),$t_p ),
 			'singular_name'         => sprintf(esc_html_x( '%s', 'Singular Name'   , ANONY_TEXTDOM ),$t_p),
 			'menu_name'             => sprintf(esc_html__( '%s'                    , ANONY_TEXTDOM ),$t_p),
 			'name_admin_bar'        => sprintf(esc_html__( '%s'                    , ANONY_TEXTDOM ),$t_p),
@@ -184,8 +221,8 @@ add_action( 'init', function() {
 			'label'                 => sprintf(esc_html__( '%s', ANONY_TEXTDOM ),$t_p),
 			'description'           => sprintf(esc_html__( 'Here you can add your %s', ANONY_TEXTDOM ),lcfirst($t_p)),
 			'labels'                => $labels,
-			'supports'              => ($custom_post == 'News') ? array( 'editor') : array( 'title', 'editor','thumbnail', 'comments'),
-			'taxonomies'            => array( lcfirst($custom_post).'_category' ),
+			'supports'              => array( 'title','editor','excerpt','custom-fields','comments','revisions','thumbnail','author','page-attributes','post-formats'),
+			'taxonomies'            => anony_post_taxonomies(lcfirst($custom_post)),
 			'hierarchical'          => false,
 			'public'                => true,
 			'show_ui'               => true,
@@ -197,56 +234,61 @@ add_action( 'init', function() {
 			'has_archive'           => true,
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
-			'capability_type'       => 'page',
-			'rewrite' => array('slug' => 'anony_'.lcfirst($custom_post)),
+			'capability_type'       => 'post',
+			'rewrite' => array('slug' => lcfirst($custom_post), 'with_front' => true),
 		);
 		
-		if($custom_post == 'Bid'){
-			$args ['supports'][] = 'page-attributes';
-		}
-		
-		register_post_type( 'anony_'.lcfirst($custom_post), $args );
+		register_post_type( lcfirst($custom_post), $args );
 	}
-}, 0 );
+}
 
-//Register Taxonomies
-add_action( 'init', function(){
-	$anony_custom_taxs = array(
-			'Download'=>array(
-					esc_html__('Download',ANONY_TEXTDOM), esc_html__('Downloads',ANONY_TEXTDOM)),
-			'Portfolio'=>array(
-					esc_html__('Portfolio',ANONY_TEXTDOM), esc_html__('Portfolios',ANONY_TEXTDOM)),
-			'Testimonial'=>array(
-					esc_html__('Testimonial',ANONY_TEXTDOM), esc_html__('Testimonials',ANONY_TEXTDOM)),
-			);;
-	foreach($anony_custom_taxs as $anony_custom_tax => $translatable ){
+
+/**
+ * Register taxonomies
+ */
+function anony_reg_taxonomies(){
+	$arabtrip_custom_taxs = array(
+			'authority'=>array(
+					esc_html__('authority',ANONY_TEXTDOM), esc_html__('authorities',ANONY_TEXTDOM)),
+			
+			);
+	foreach($arabtrip_custom_taxs as $arabtrip_custom_tax => $translatable ){
 		$t_s = $translatable[0];
 		$t_p = $translatable[1];
+
 		register_taxonomy(
-			lcfirst($anony_custom_tax).'_category',
-			array("anony_".lcfirst($anony_custom_tax)),
+			$arabtrip_custom_tax,
+			anony_taxonomy_posts($arabtrip_custom_tax),
 			array(
 				 "hierarchical" => true,
-				 "label" => sprintf(esc_html__('%s categories',ANONY_TEXTDOM),$t_p),
-				 "singular_label" => sprintf(esc_html__('%s category',ANONY_TEXTDOM),$t_s),
+				 "label" => $t_p,
+				 "singular_label" => $t_s,
 				  "labels"=>array(
-							 "all_items"=>sprintf(esc_html__('All %s categories',ANONY_TEXTDOM),$t_s),
-							 "edit_item"=>sprintf(esc_html__('Edit %s category',ANONY_TEXTDOM),$t_s),
-							 "view_item"=>sprintf(esc_html__('View %s category',ANONY_TEXTDOM),$t_s),
-							 "update_item"=>sprintf(esc_html__('update %s category',ANONY_TEXTDOM),$t_s),
-							 "add_new_item"=>sprintf(esc_html__('Add new %s category',ANONY_TEXTDOM),$t_s),
-							 "new_item_name"=>sprintf(esc_html__('new %s category',ANONY_TEXTDOM),$t_s),
-							 "parent_item"=>sprintf(esc_html__('Parent %s category',ANONY_TEXTDOM),$t_s),
-							 "parent_item_colon"=>sprintf(esc_html__('Parent %s category:',ANONY_TEXTDOM),$t_s),
-							 "search_items"=>sprintf(esc_html__('search %s categories',ANONY_TEXTDOM),$t_s),
-							 "not_found"=>sprintf(esc_html__('No %s category found',ANONY_TEXTDOM),$t_s),
+							 "all_items"=>sprintf(esc_html__('All %s',ANONY_TEXTDOM),$t_s),
+							 "edit_item"=>sprintf(esc_html__('Edit %s',ANONY_TEXTDOM),$t_s),
+							 "view_item"=>sprintf(esc_html__('View %s',ANONY_TEXTDOM),$t_s),
+							 "update_item"=>sprintf(esc_html__('update %s',ANONY_TEXTDOM),$t_s),
+							 "add_new_item"=>sprintf(esc_html__('Add new %s',ANONY_TEXTDOM),$t_s),
+							 "new_item_name"=>sprintf(esc_html__('new %s',ANONY_TEXTDOM),$t_s),
+							 "parent_item"=>sprintf(esc_html__('Parent %s',ANONY_TEXTDOM),$t_s),
+							 "parent_item_colon"=>sprintf(esc_html__('Parent %s:',ANONY_TEXTDOM),$t_s),
+							 "search_items"=>sprintf(esc_html__('search %s',ANONY_TEXTDOM),$t_s),
+							 "not_found"=>sprintf(esc_html__('No %s found',ANONY_TEXTDOM),$t_s),
 							  ),
 			"show_admin_column" => true,
 			)
 		);
-	
 	}
-}, 0 );
+}
+
+
+add_action( 'init', function(){
+	//Register Post Types
+	anony_reg_post_types();
+	
+	//Register Taxonomies
+	anony_reg_taxonomies();
+}, 10 );
 
 // Remove issues with prefetching adding extra views
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
@@ -400,15 +442,17 @@ function anony_latest_comments(){
  */
 function anony_download_ajax() {
 			
-			if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
-					$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
-					if(empty($download_counter)){
-						add_post_meta($_POST['download_id'], 'download_times',1);
-					}else{
-						$download_counter +=  1;
-						update_post_meta($_POST['download_id'], 'download_times',$download_counter);
-					}
-				wp_die();
-				}
+	if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
+			$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
+			if(empty($download_counter)){
+				add_post_meta($_POST['download_id'], 'download_times',1);
+			}else{
+				$download_counter +=  1;
+				update_post_meta($_POST['download_id'], 'download_times',$download_counter);
+			}
+		wp_die();
 		}
+}
+
+require(ANONY_LIBS_DIR.'custom-fields.php');
 ?>
