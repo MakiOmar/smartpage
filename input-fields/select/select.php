@@ -47,6 +47,14 @@ class ANONY__Select{
 		if(isset($this->parent->field['note'])){
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
+		
+		if($this->parent->context == 'meta'){
+			$html .= sprintf( 
+						'<label class="anony-label" for="%1$s">%2$s</label>', 
+						$this->parent->field['id'], 
+						$this->parent->field['title']
+					);
+		}
 
 		$html   .= sprintf( 
 					'<select class="%1$s" name="%2$s" id="'.$this->parent->field['id'].'" %3$s %4$s %5$s>', 
