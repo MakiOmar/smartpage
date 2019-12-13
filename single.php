@@ -40,10 +40,12 @@ $anonyOptions = anony_opts_();
 				<?php echo anony_comments_number(); ?>
 			</div>
 			
-			<?php if(is_array(get_the_category()) && !empty(get_the_category())) {?>
+			<?php 
+			$categories = get_the_category();
+			if(is_array($categories) && !empty($categories)) {?>
 			<div class="category">
 				<i class="fa fa-folder-open"></i>
-				<a class="single-meta-text" href="<?php echo get_category_link(get_the_category()[0]->cat_ID);?>"><?php echo get_the_category()[0]->name ;?></a>
+				<a class="single-meta-text" href="<?php echo get_category_link($categories[0]->cat_ID);?>"><?php echo $categories[0]->name ;?></a>
 			</div>
 			
 			<?php } ?>
