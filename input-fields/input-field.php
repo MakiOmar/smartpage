@@ -160,17 +160,15 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 			if(!is_null($this->field_class) && class_exists($this->field_class))
 			{
 				
-				if(class_exists($this->field_class)){
+				$field_class = $this->field_class;
 
-					$field_class = $this->field_class;
+				$field = new $field_class($this);
 
-					$field = new $field_class($this);
-
-					if($this->context == 'meta'){
-						wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
-					}
-					$field->render();
+				if($this->context == 'meta'){
+					wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce' );
 				}
+				$field->render();
+				
 
 			}
 		}
@@ -185,6 +183,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 				wp_register_style( 'anony-inputs-rtl', ANONY_INPUT_FIELDS_URI.'inputs-fields-rtl.css', array('anony-inputs'), time(), 'all');
 				wp_enqueue_style( 'anony-inputs-rtl' );
 			}
+
 		}
 		
 	}
