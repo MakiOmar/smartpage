@@ -10,6 +10,12 @@
 /*-------------------------------------------------------------
  * Posts hooks
  *-----------------------------------------------------------*/
+
+/**
+ * We should flush rewrite rules, so as not to get 404 for custom post types
+ */
+add_action( 'after_switch_theme', 'flush_rewrite_rules' );
+
 //Add tinymce to the comment form
 add_filter( 'comment_form_defaults', function( $args ) {
 	ob_start();
