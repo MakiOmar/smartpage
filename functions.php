@@ -10,6 +10,7 @@ require_once(wp_normalize_path('options/options.php'));
 
 //Functions files
 $anonylibs = [
+	'theme-helpers'       =>'',
 	'posts'     		  =>'',
 	'theme'     		  =>'',
 	'menus'     		  =>'',
