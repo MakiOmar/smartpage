@@ -1,5 +1,5 @@
 <?php 
-	anaony_get_correct_sidebar();
+	anony_get_correct_sidebar();
 
 	if(has_action('post_ad')){
 		do_action('post_ad');
@@ -8,7 +8,7 @@
 <div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
 
 	<?php anony_breadcrumbs()?>
-	<div id="anony-map"></div>
+	<div id="anony_map"></div>
 	<?php 
 		if ( have_posts() ) {
 			while (have_posts() ) { 
@@ -26,4 +26,4 @@
 	?>
 </div>
 
-<?php anaony_get_correct_sidebar();?>
+<?php anony_get_correct_sidebar();?>
