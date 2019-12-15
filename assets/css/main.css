@@ -857,6 +857,7 @@ img {
 		position: relative;
 		margin: auto;
 		overflow: hidden;
+		max-height: 480px;
 	}
 	.anony-post-title-image img{
 		width: 100%;
