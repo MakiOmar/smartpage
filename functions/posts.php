@@ -52,7 +52,7 @@ add_filter( 'comment_form_defaults', function( $args ) {
 add_action('wp_footer', function(){
 		if(is_single()){?>
 				<script type="text/javascript">
-					if(tinymce !== 'undefined'){
+					if(typeof tinymce !== 'undefined'){
 						tinymce.init({
 							selector: '#anony-comment',
 						});
