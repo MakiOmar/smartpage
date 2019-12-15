@@ -1,16 +1,7 @@
 <?php
 
-$anonyOptions = anony_opts_();
+	anony_get_correct_sidebar();
 
-if($anonyOptions->sidebar == 'left-sidebar'){
-	get_sidebar();
-}elseif($anonyOptions->single_sidebar == '1'){
-	get_sidebar('single');
-}
-
-?>
-
-<?php 
 	if(has_action('post_ad')){
 		do_action('post_ad');
 	}
@@ -63,12 +54,4 @@ if($anonyOptions->sidebar == 'left-sidebar'){
 		  <?php }}
 		comments_template( '', true ); ?>
 </div>
-<?php
-
-if($anonyOptions->sidebar == 'right-sidebar'){
-	get_sidebar();
-}elseif($anonyOptions->single_sidebar == '1'){
-	get_sidebar('single');
-}
-
-?>
+<?php anony_get_correct_sidebar();?>
