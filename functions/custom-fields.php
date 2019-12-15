@@ -11,7 +11,7 @@
 //id should be equal to title without the anony__ and underscores
 
 if(class_exists('ANONY__Meta_Box')){
-	add_action('admin_init', function(){
+	add_action('init', function(){
 		$transmission_line = array(
 			/*Any meta box ID should start with anony-meta- to have correct style*/
 			'id'            => 'anony-tranasmission-line-details',//Meta box ID
@@ -101,6 +101,7 @@ if(class_exists('ANONY__Meta_Box')){
 														'dependancies' => ['jquery', 'google-maps-api']
 														],
 	        									    ),
+										'also_on_front_scripts' => true
 									),
 									array(
 										'id'       => 'anony__entry_lat',
