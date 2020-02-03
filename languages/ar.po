@@ -1,20 +1,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anonymous\n"
-"POT-Creation-Date: 2018-10-22 10:27+0300\n"
-"PO-Revision-Date: 2019-08-04 08:40+0300\n"
+"POT-Creation-Date: 2019-12-15 13:41+0300\n"
+"PO-Revision-Date: 2020-02-03 11:44+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -32,6 +32,194 @@ msgstr "دخول"
 msgid "Category posts"
 msgstr "موضوعات القسم"
 
+#: classes/cats-walk.php:55
+#, php-format
+msgid "Feed for all posts filed under %s"
+msgstr ""
+
+#: classes/cats-widget.php:6
+msgid "Displays an organized dropdown list of your categories"
+msgstr "عرض قائمة منسدلة لقائمة التصنيفات"
+
+#: classes/cats-widget.php:7
+#, fuzzy
+#| msgid "%s categories"
+msgid "Anonymous categories"
+msgstr "تصنيفات ال%s"
+
+#: classes/cats-widget.php:15 classes/posts-widget.php:17
+#: classes/related-posts-widget.php:15 options/widgets/sidebar_ad.php:32
+msgid "Title:"
+msgstr "عنوان:"
+
+#: classes/cats-widget.php:17 classes/cats-widget.php:27
+#, fuzzy
+#| msgid "%s categories"
+msgid "Categories"
+msgstr "تصنيفات ال%s"
+
+#: classes/posts-widget.php:5
+msgid "Displays posts by post type"
+msgstr "عرض المقالات حسب نوع المقال"
+
+#: classes/posts-widget.php:6
+msgid "Anonymous posts"
+msgstr ""
+
+#: classes/posts-widget.php:13 classes/posts-widget.php:83
+msgid "You should select a post type"
+msgstr "يجب عليك اختيار نوع المقال"
+
+#: classes/posts-widget.php:19
+msgid "Top places"
+msgstr ""
+
+#: classes/posts-widget.php:25
+msgid "Post Type:"
+msgstr "نوع المقال:"
+
+#: classes/posts-widget.php:58
+msgid "Popular destinations"
+msgstr ""
+
+#: classes/related-posts-widget.php:6
+msgid "Displays list of posts within the same category"
+msgstr "عرض قائمة بالمقالات في نفس التصنيف"
+
+#: classes/related-posts-widget.php:7
+msgid "Anonymous related posts"
+msgstr ""
+
+#: classes/related-posts-widget.php:17 classes/related-posts-widget.php:29
+#, fuzzy
+#| msgid "Category posts"
+msgid "Related posts"
+msgstr "موضوعات القسم"
+
+#: classes/related-posts-widget.php:75
+msgid "No more posts in this category"
+msgstr "لايوجد مزيد من المقالات في هذا التصنيف"
+
+#: classes/user.php:131
+msgid "You didn't choose your password"
+msgstr "لم تقم بتحديد كلمة المرور"
+
+#: classes/user.php:237
+msgid "User"
+msgstr "المستخدم"
+
+#: classes/user.php:289
+#, php-format
+msgid "Your login credintals for %s"
+msgstr "معلومات دخولك للحساب %s"
+
+#: classes/user.php:294
+#, php-format
+msgid "Thank you %1$s for registering to our blog %2$s"
+msgstr "شكراً لك %1$s لتسجيلك في موقع %2$s"
+
+#: classes/user.php:299
+msgid "You login information is:"
+msgstr ""
+
+#: classes/user.php:302
+#, php-format
+msgid "Username: %s"
+msgstr ""
+
+#: classes/user.php:307
+#, php-format
+msgid "Password: %s"
+msgstr ""
+
+#: classes/user.php:311
+msgid "To log into the admin area please us the following address "
+msgstr ""
+
+#: classes/validate-inputs.php:465
+#, php-format
+msgid ""
+"<strong>%s:</strong> Sorry!! Please select another file, the selected file "
+"type is not supported"
+msgstr ""
+
+#: classes/validate-inputs.php:477
+#, php-format
+msgid "<strong>%s:</strong> Please enter a valid number (e.g. 1,2,-5)"
+msgstr ""
+
+#: classes/validate-inputs.php:489
+#, php-format
+msgid "<strong>%s:</strong> You must provide a valid URL"
+msgstr ""
+
+#: classes/validate-inputs.php:501
+#, php-format
+msgid "<strong>%s:</strong> You must enter a valid email address."
+msgstr ""
+
+#: classes/validate-inputs.php:513
+#, php-format
+msgid "<strong>%s:</strong> HTML is not allowed"
+msgstr ""
+
+#: classes/validate-inputs.php:525
+#, php-format
+msgid "<strong>%s:</strong> You must enter an absolute integer"
+msgstr ""
+
+#: classes/validate-inputs.php:537
+#, php-format
+msgid "<strong>%s:</strong> You must enter a valid hex color"
+msgstr ""
+
+#: classes/validate-inputs.php:549
+#, php-format
+msgid "<strong>%s:</strong> Unvalid option/s"
+msgstr ""
+
+#: classes/validate-inputs.php:559
+msgid ""
+"<strong>Sorry!! Something wrong:</strong> Please make sure all your inputs "
+"are correct"
+msgstr ""
+
+#: classes/views/downloads.php:24
+msgid "Suggested downloads"
+msgstr "تنزيلات مقترحة"
+
+#: classes/views/downloads.php:59
+msgid "Downloads"
+msgstr "تنزيلات"
+
+#: classes/views/featured.php:60 classes/views/masonry.php:80
+#: classes/views/standard.php:80 templates/blog-post.php:45
+msgid "Read more"
+msgstr "إقرأ المزيد"
+
+#: classes/views/featured.php:81
+msgid "Featured Posts"
+msgstr "المقالات المميزة"
+
+#: classes/views/featured.php:97
+msgid ""
+"<p>Sorry! but we can't find any post with available thumbnail to show in "
+"slider</p>"
+msgstr ""
+
+#: classes/views/masonry.php:25 classes/views/standard.php:26
+msgid "Recent Posts"
+msgstr "أحدث الموضوعات"
+
+#: classes/views/masonry.php:72 classes/views/standard.php:72
+#: templates/blog-post.php:35
+msgid "By"
+msgstr "بواسطة"
+
+#: classes/views/news.php:22
+msgid "Simple Info"
+msgstr "معلومة بسيطة"
+
 #: comments.php:9
 #, php-format
 msgctxt "comments title"
@@ -44,424 +232,1032 @@ msgstr[3] "%1$s تعليقات"
 msgstr[4] "%1$s تعليقات"
 msgstr[5] "%1$s تعليقات"
 
-#: comments.php:21 functions/theme_functions.php:138
-msgid "Comments-off"
+#: comments.php:21
+msgid "Comments off"
 msgstr "التعليقات مغلقة"
 
-#: footer.php:2
-#, php-format
-msgid "All rights reserved for %s 2018"
-msgstr "جميع الحقوق محفوظة لـ%s 2018"
-
-#: functions.php:28
-msgid "Commented"
-msgstr "علق"
-
-#: functions.php:29
-msgid "View Post"
-msgstr "مشاهدة الموضوع"
-
-#: functions.php:32
-msgid "No comments yet"
-msgstr "بدون تعليقات حتى الآن"
-
-#: functions/menus_functions.php:6
-msgid "Shows on the main navigation"
-msgstr "تظهر في القائمة الرئيسية"
-
-#: functions/menus_functions.php:7
-msgid "Shows on the footer"
-msgstr "تظهر في ذيل الصفحة"
-
-#: functions/menus_functions.php:8
-msgid "Shows on the top header"
-msgstr "تظهر في أعلى رأس الصفحة"
-
-#: functions/menus_functions.php:146
-msgid "<i class=\"fa fa-home\"></i>"
+#: front-page.php:18
+msgid "You didn't choose a slider, Please select one from theme options page"
 msgstr ""
 
-#: functions/menus_functions.php:157
+#: functions/ajax/ajax-comments.php:33
+msgid "Comment Submission Failure"
+msgstr ""
+
+#: functions/ajax/ajax-comments.php:81
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: functions/ajax/ajax-comments.php:85
+#: functions/helper/wordpress-helpers.php:252
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s على %2$s"
+
+#: functions/ajax/ajax-comments.php:88
+#: functions/helper/wordpress-helpers.php:263
+msgid "Edit"
+msgstr "تحرير"
+
+#: functions/ajax/ajax-comments.php:93
+#: functions/helper/wordpress-helpers.php:258
+msgid "Your comment is awaiting moderation."
+msgstr "تعليقك قيد المراجعة."
+
+#: functions/ajax/ajax-comments.php:100
+#, php-format
+msgid "A Max number of %s threads has been reached"
+msgstr ""
+
+#: functions/custom-fields.php:18
+msgid "Tranasmission line Details"
+msgstr "بيانات الخط الناقل"
+
+#: functions/custom-fields.php:26
+msgid "Line title"
+msgstr "اسم الخط"
+
+#: functions/custom-fields.php:32
+msgid "Line Capcity (m<sup>3</sup>/day)"
+msgstr "سعة الخط (م<sup>3</sup>/اليوم)"
+
+#: functions/custom-fields.php:38
+msgid "Line construction year"
+msgstr "تاريخ إنشاء الخط"
+
+#: functions/custom-fields.php:44
+msgid "Line length (km)"
+msgstr "طول الخط (كم)"
+
+#: functions/custom-fields.php:50
+msgid "Line diameter (mm)"
+msgstr "قطر الخط (ملم)"
+
+#: functions/custom-fields.php:56
+msgid "Line matrial"
+msgstr "نوع معدن الخط"
+
+#: functions/custom-fields.php:60
+msgid "Select line material"
+msgstr "حدد نوع معدن الخط"
+
+#: functions/custom-fields.php:80
+msgid "Reservoir Details"
+msgstr "بيانات الخزان"
+
+#: functions/custom-fields.php:89 functions/custom-fields.php:168
+msgid "Location on the map"
+msgstr "الموقع على الخريطة"
+
+#: functions/custom-fields.php:108 functions/custom-fields.php:187
+#: template-parts/single-post/dam.php:27
+#: template-parts/single-post/reservoir.php:27
+msgid "Latitude"
+msgstr "خط العرض"
+
+#: functions/custom-fields.php:114 functions/custom-fields.php:193
+#: template-parts/single-post/dam.php:28
+#: template-parts/single-post/reservoir.php:28
+msgid "Longitude"
+msgstr "خط الطول"
+
+#: functions/custom-fields.php:120 functions/custom-fields.php:199
+#: template-parts/single-post/dam.php:29
+#: template-parts/single-post/reservoir.php:29
+msgid "City"
+msgstr "المدينة"
+
+#: functions/custom-fields.php:126 template-parts/single-post/reservoir.php:26
+msgid "Capacity (m<sup>3</sup>/day)"
+msgstr "السعة (م<sup>3</sup>/اليوم)"
+
+#: functions/custom-fields.php:132 functions/custom-fields.php:211
+#: template-parts/single-post/dam.php:30
+#: template-parts/single-post/reservoir.php:30
+msgid "Construction year"
+msgstr "تاريخ الإنشاء"
+
+#: functions/custom-fields.php:138 functions/custom-fields.php:217
+#: template-parts/single-post/dam.php:25
+#: template-parts/single-post/reservoir.php:25
+msgid "Type"
+msgstr "النوع"
+
+#: functions/custom-fields.php:142
+msgid "Select reservoir type"
+msgstr "حدد نوع الخزان"
+
+#: functions/custom-fields.php:143 functions/custom-fields.php:222
+msgid "Concrete"
+msgstr ""
+
+#: functions/custom-fields.php:144 functions/custom-fields.php:223
+msgid "Steel"
+msgstr ""
+
+#: functions/custom-fields.php:145 functions/custom-fields.php:224
+msgid "Masonary"
+msgstr ""
+
+#: functions/custom-fields.php:159
+msgid "Dam Details"
+msgstr ""
+
+#: functions/custom-fields.php:205 template-parts/single-post/dam.php:26
+msgid "Capacity (Million m<sup>3</sup>)"
+msgstr "السعة (مليون م<sup>3</sup>)"
+
+#: functions/custom-fields.php:221
+#, fuzzy
+#| msgid "Select reservoir type"
+msgid "Select Dam type"
+msgstr "حدد نوع الخزان"
+
+#: functions/custom-fields.php:225
+msgid "Rock Fill Dam"
+msgstr ""
+
+#: functions/custom-fields.php:226
+msgid "Earthen"
+msgstr ""
+
+#: functions/helper/wordpress-helpers.php:231
+msgid "Pingback:"
+msgstr "بينج باك:"
+
+#: functions/helper/wordpress-helpers.php:231
+msgid "(Edit)"
+msgstr "(تحرير)"
+
+#: functions/helper/wordpress-helpers.php:246
+msgid "Post author"
+msgstr "كاتب المقال"
+
+#: functions/helper/wordpress-helpers.php:267
+msgid "Reply"
+msgstr "رد"
+
+#: functions/menus.php:69
 msgid "Home"
 msgstr "الرئيسية"
 
-#: functions/posts_functions.php:8 functions/posts_functions.php:76
-#: functions/posts_functions.php:124 single-smpg_download.php:49
-msgid "Download"
-msgstr "تنزيل"
+#: functions/menus.php:160
+#, fuzzy
+#| msgid "Shows on the main navigation"
+msgid "Main menu. Shows on the main navigation"
+msgstr "تظهر في القائمة الرئيسية"
 
-#: functions/posts_functions.php:8 functions/posts_functions.php:76
-#: templates/temp-download.php:12
-msgid "Downloads"
-msgstr "تنزيلات"
+#: functions/menus.php:161
+#, fuzzy
+#| msgid "Shows on the footer"
+msgid "Footer menu. Shows on the footer"
+msgstr "تظهر في ذيل الصفحة"
 
-#: functions/posts_functions.php:10 functions/posts_functions.php:78
-msgid "Portfolio"
-msgstr "حقيبة"
+#: functions/menus.php:162
+#, fuzzy
+#| msgid "Shows on the top header"
+msgid "Languages menu. Shows on the top header"
+msgstr "تظهر في أعلى رأس الصفحة"
 
-#: functions/posts_functions.php:10 functions/posts_functions.php:78
-msgid "Portfolios"
-msgstr "حقائب"
+#: functions/menus.php:163
+#, fuzzy
+#| msgid "Shows on the top header"
+msgid "Users menu. Shows on the top header"
+msgstr "تظهر في أعلى رأس الصفحة"
 
-#: functions/posts_functions.php:12 functions/posts_functions.php:80
-msgid "Testimonial"
-msgstr "شهادة"
+#: functions/menus.php:248
+msgid "<i class=\"fa fa-home\"></i>"
+msgstr ""
 
-#: functions/posts_functions.php:12 functions/posts_functions.php:80
-msgid "Testimonials"
-msgstr "شهادات"
+#: functions/posts.php:188
+msgid "Transmission line"
+msgstr "خط ناقل"
 
-#: functions/posts_functions.php:14
-msgid "New"
-msgstr "جديد"
+#: functions/posts.php:188
+msgid "Transmission lines"
+msgstr "خطوط ناقلة"
 
-#: functions/posts_functions.php:14
-msgid "News"
-msgstr "أخبار"
+#: functions/posts.php:192
+msgid "Reservoir"
+msgstr "خزان"
 
-#: functions/posts_functions.php:19
+#: functions/posts.php:192
+msgid "Reservoirs"
+msgstr "خزانات"
+
+#: functions/posts.php:195
+msgid "Dam"
+msgstr ""
+
+#: functions/posts.php:195
+msgid "Dams"
+msgstr ""
+
+#: functions/posts.php:203
 #, php-format
 msgctxt "General Name"
 msgid "%s"
 msgstr ""
 
-#: functions/posts_functions.php:20
+#: functions/posts.php:204
 #, php-format
 msgctxt "Singular Name"
 msgid "%s"
 msgstr ""
 
-#: functions/posts_functions.php:21 functions/posts_functions.php:22
-#: functions/posts_functions.php:48
+#: functions/posts.php:205 functions/posts.php:206 functions/posts.php:234
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: functions/posts_functions.php:23
+#: functions/posts.php:207
 #, php-format
 msgid "%s Archives"
 msgstr "%s أرشيف"
 
-#: functions/posts_functions.php:24
+#: functions/posts.php:208
 #, php-format
 msgid "%s Attributes"
 msgstr "%s سمات"
 
-#: functions/posts_functions.php:25
+#: functions/posts.php:209 functions/posts.php:287
 #, php-format
 msgid "Parent %s:"
 msgstr "%s الأب:"
 
-#: functions/posts_functions.php:26
+#: functions/posts.php:210 functions/posts.php:280
 #, php-format
 msgid "All %s"
 msgstr "كل ال%s"
 
-#: functions/posts_functions.php:27
+#: functions/posts.php:211
 #, php-format
 msgid "Add New %s"
-msgstr "أضف %s"
+msgstr "أضف %s جديد"
 
-#: functions/posts_functions.php:28
+#: functions/posts.php:212
 msgid "Add New"
 msgstr "أضف جديداً"
 
-#: functions/posts_functions.php:29
+#: functions/posts.php:213
 #, php-format
 msgid "New %s"
 msgstr "%s جديد"
 
-#: functions/posts_functions.php:30
+#: functions/posts.php:214 functions/posts.php:281
 #, php-format
 msgid "Edit %s"
 msgstr "تحرير %s"
 
-#: functions/posts_functions.php:31
+#: functions/posts.php:215
 #, php-format
 msgid "Update %s"
 msgstr "تحديث %s"
 
-#: functions/posts_functions.php:32 functions/posts_functions.php:33
+#: functions/posts.php:216 functions/posts.php:217 functions/posts.php:282
 #, php-format
 msgid "View %s"
 msgstr "مشاهدة %s"
 
-#: functions/posts_functions.php:34
+#: functions/posts.php:218
 #, php-format
 msgid "Search %s"
 msgstr "بحث في %s"
 
-#: functions/posts_functions.php:35
+#: functions/posts.php:219
 msgid "Not found"
 msgstr "غير موجود"
 
-#: functions/posts_functions.php:36
+#: functions/posts.php:220
 msgid "Not found in Trash"
 msgstr "غير موجود في المحذوفات"
 
-#: functions/posts_functions.php:37
+#: functions/posts.php:221
 msgid "Featured Image"
 msgstr "الصورة المميزة"
 
-#: functions/posts_functions.php:38
+#: functions/posts.php:222
 msgid "Set featured image"
 msgstr "اختر صورة مميزة"
 
-#: functions/posts_functions.php:39
+#: functions/posts.php:223
 msgid "Remove featured image"
 msgstr "حذف الصوره المميزه"
 
-#: functions/posts_functions.php:40
+#: functions/posts.php:224
 msgid "Use as featured image"
 msgstr "استخدم كصورة مميزة"
 
-#: functions/posts_functions.php:41
+#: functions/posts.php:225
 #, php-format
 msgid "Insert into %s"
 msgstr "إدراج في %s"
 
-#: functions/posts_functions.php:42
+#: functions/posts.php:226
 #, php-format
 msgid "Uploaded to this %s"
 msgstr "رفع لهذا %s"
 
-#: functions/posts_functions.php:43
+#: functions/posts.php:227
 #, php-format
 msgid "%s list"
 msgstr "قائمة %s"
 
-#: functions/posts_functions.php:44
+#: functions/posts.php:228
 #, php-format
 msgid "%s list navigation"
 msgstr "تصفح قائمة %s"
 
-#: functions/posts_functions.php:45
+#: functions/posts.php:229
 #, php-format
 msgid "Filter %s list"
 msgstr "تصفية قائمة %s"
 
-#: functions/posts_functions.php:49
+#: functions/posts.php:235
 #, php-format
 msgid "Here you can add your %s"
 msgstr "يمكنك إضافة %s من هنا"
 
-#: functions/posts_functions.php:89 functions/posts_functions.php:90
-#, php-format
-msgid "%s categories"
-msgstr "تصنيفات ال%s"
-
-#: functions/posts_functions.php:92
-#, php-format
-msgid "All %s categories"
-msgstr "جميع تصنيفات ال%s"
-
-#: functions/posts_functions.php:93
-#, php-format
-msgid "Edit %s category"
-msgstr "تحرير تصنيف  ال%s"
-
-#: functions/posts_functions.php:94
-#, php-format
-msgid "view %s category"
-msgstr "عرض تصنيف ال%s"
-
-#: functions/posts_functions.php:95
-#, php-format
-msgid "update %s category"
-msgstr "تحديث تصنيف ال%s"
-
-#: functions/posts_functions.php:96
-#, php-format
-msgid "Add new %s category"
-msgstr "أضف تصنيفاً جديداً إلى %s"
-
-#: functions/posts_functions.php:97
-#, php-format
-msgid "new %s category"
-msgstr "تصنيفاً جديداً  لل%s"
-
-#: functions/posts_functions.php:98
-#, php-format
-msgid "Parent %s category"
-msgstr "التصنيف الأب لل%s"
-
-#: functions/posts_functions.php:99
-#, php-format
-msgid "Parent %s category:"
-msgstr "التصنيف الأب لل%s:"
-
-#: functions/posts_functions.php:100
-#, php-format
-msgid "search %s categories"
-msgstr "إبحث في تصنيفات ال%s"
-
-#: functions/posts_functions.php:101
-#, php-format
-msgid "No %s category found"
-msgstr "لايوجد تصنيف %s"
-
-#: functions/posts_functions.php:110
-msgid "Add your download"
-msgstr "إضافة تنزيلاً جديداً"
-
-#: functions/posts_functions.php:116
-msgid "Select your file"
-msgstr "قم باختيار ملف"
-
-#: functions/posts_functions.php:124
-msgid "Current file:"
-msgstr "الملف الحالي:"
-
-#: functions/posts_functions.php:126
-msgid "No selected file "
-msgstr "لم يتم اختيار ملف "
-
-#: functions/posts_functions.php:165
-msgid "Sorry!! Please make sure your file type is one of the following"
-msgstr "عذراً!! فضلاً تأكد من أن نوعية الملف واحدة من الآتي"
-
-#: functions/posts_functions.php:260
-msgid "Pingback:"
-msgstr "بينج باك:"
-
-#: functions/posts_functions.php:260
-msgid "(Edit)"
-msgstr "(تحرير)"
-
-#: functions/posts_functions.php:275
-msgid "Post author"
+#: functions/posts.php:265
+#, fuzzy
+#| msgid "Post author"
+msgid "authority"
 msgstr "كاتب المقال"
 
-#. translators: 1: date, 2: time
-#: functions/posts_functions.php:281
+#: functions/posts.php:265
+msgid "authorities"
+msgstr "إدارات"
+
+#: functions/posts.php:283
 #, php-format
-msgid "%1$s at %2$s"
-msgstr "%1$s على %2$s"
+msgid "update %s"
+msgstr "تحديث %s"
 
-#: functions/posts_functions.php:287
-msgid "Your comment is awaiting moderation."
-msgstr "تعليقك قيد المراجعة."
+#: functions/posts.php:284
+#, php-format
+msgid "Add new %s"
+msgstr "أضف %s جديد"
 
-#: functions/posts_functions.php:292
-msgid "Edit"
-msgstr "تحرير"
+#: functions/posts.php:285
+#, php-format
+msgid "new %s"
+msgstr "%s جديد"
 
-#: functions/posts_functions.php:296
-msgid "Reply"
-msgstr "رد"
+#: functions/posts.php:286
+#, php-format
+msgid "Parent %s"
+msgstr "%s الأب:"
 
-#: functions/posts_functions.php:309
+#: functions/posts.php:288
+#, php-format
+msgid "search %s"
+msgstr "بحث في %s"
+
+#: functions/posts.php:289
+#, fuzzy, php-format
+#| msgid "Not found"
+msgid "No %s found"
+msgstr "غير موجود"
+
+#: functions/posts.php:325
 msgid "General Downloads"
 msgstr "تنزيلات عامة"
 
-#: functions/theme_functions.php:133 templates/temp-recent-posts.php:15
+#: functions/posts.php:432
+msgid "Commented"
+msgstr "علق"
+
+#: functions/posts.php:437
+msgid "View Post"
+msgstr "مشاهدة الموضوع"
+
+#: functions/posts.php:445
+msgid "No comments yet"
+msgstr "بدون تعليقات حتى الآن"
+
+#: functions/theme.php:54
+msgid "Please enter a valid name"
+msgstr ""
+
+#: functions/theme.php:55
+msgid "Please enter a valid email"
+msgstr ""
+
+#: functions/theme.php:56
+msgid "Please use a valid website address"
+msgstr ""
+
+#: functions/theme.php:57
+msgid "Comment must be at least 20 characters"
+msgstr ""
+
+#: functions/theme.php:176 templates/recent-posts.php:15
 msgid "comments"
 msgstr "تعليقات"
 
-#: functions/theme_functions.php:135
+#: functions/theme.php:178
 msgid "comment"
 msgstr "تعليق"
 
-#: functions/walkers/categories_custom_walker.php:55
-#, php-format
-msgid "Feed for all posts filed under %s"
+#: functions/theme.php:181
+msgid "Comments-off"
+msgstr "التعليقات مغلقة"
+
+#: input-fields/color-gradient-farbtastic/color-gradient-farbtastic.php:72
+#: input-fields/color-gradient/color-gradient.php:51
+#: options/fields/color_gradient/color_gradient.php:78
+msgid "From"
 msgstr ""
 
-#: functions/widgets/categories-list.php:5
-msgid "Displays an organized dropdown list of your categories"
-msgstr "عرض قائمة منسدلة لقائمة التصنيفات"
+#: input-fields/color-gradient-farbtastic/color-gradient-farbtastic.php:99
+#: input-fields/color-gradient/color-gradient.php:66
+#: options/fields/color_gradient/color_gradient.php:105
+msgid "To"
+msgstr ""
 
-#: functions/widgets/categories-list.php:6
-msgid "Smart Page categories"
+#: input-fields/font-select/font-select.php:35
+#: options/fields/font_select/font_select.php:47
+msgid "Default Webfont"
+msgstr ""
+
+#: input-fields/font-select/font-select.php:36
+#: options/fields/font_select/font_select.php:48
+msgid "System"
+msgstr ""
+
+#: input-fields/font-select/font-select.php:37
+#: options/fields/font_select/font_select.php:49
+msgid "Popular Google Fonts"
+msgstr ""
+
+#: input-fields/font-select/font-select.php:38
+#: options/fields/font_select/font_select.php:50
+msgid "Google Fonts"
+msgstr ""
+
+#: input-fields/multi-text/multi-text.php:36
+#: options/fields/multi_text/multi_text.php:43
+msgid "Add"
+msgstr "أضف"
+
+#: input-fields/select/select.php:99 options/fields/select/select.php:54
+msgid "No options"
+msgstr ""
+
+#: options/fields/pages_select/pages_select.php:53
+msgid "-- select --"
+msgstr ""
+
+#: options/fields/tabs/tabs.php:62 options/fields/tabs/tabs.php:79
+msgid "Title"
+msgstr ""
+
+#: options/fields/tabs/tabs.php:64 options/fields/tabs/tabs.php:81
+msgid "Content"
+msgstr ""
+
+#: options/fields/upload/upload.php:72
+msgid "Browse"
+msgstr ""
+
+#: options/fields/upload/upload.php:78
+msgid "Remove Upload"
+msgstr ""
+
+#: options/options.php:20
+msgid "Getting started"
+msgstr ""
+
+#: options/options.php:25 options/options.php:70
+msgid "Slider"
+msgstr ""
+
+#: options/options.php:29
+msgid "Layout"
+msgstr ""
+
+#: options/options.php:35
+msgid "Colors"
+msgstr ""
+
+#: options/options.php:41
+msgid "Fonts"
+msgstr ""
+
+#: options/options.php:53
+msgid "Socials"
+msgstr ""
+
+#: options/options.php:59 options/options.php:447
+msgid "Miscellanous"
+msgstr ""
+
+#: options/options.php:75
+msgid "Revolution slider"
+msgstr ""
+
+#: options/options.php:82
+msgid "Featured Posts slider content"
+msgstr ""
+
+#: options/options.php:87
+msgid "Featured category"
+msgstr "التصنيف المميز"
+
+#: options/options.php:92
+msgid "Featured posts"
+msgstr "المقالات المميزة"
+
+#: options/options.php:100
+msgid "Select featured taxonomy"
+msgstr "اختر التاكسونومي المميز"
+
+#: options/options.php:109
+#, fuzzy
+#| msgid "Select your file"
+msgid "Select a slider"
+msgstr "قم باختيار ملف"
+
+#: options/options.php:113
+#, php-format
+msgid "Add slider from <a href=\"%s\">here</a>"
+msgstr ""
+
+#: options/options.php:120
+msgid "Select featured category"
+msgstr "اختر التصنيف المميز"
+
+#: options/options.php:125
+msgid "No category selected, you have to select one"
+msgstr ""
+
+#: options/options.php:128
+msgid "This options only applies to the front-page.php"
+msgstr ""
+
+#: options/options.php:132 options/options.php:159
+msgid "General"
+msgstr ""
+
+#: options/options.php:137
+msgid "Copyright"
+msgstr ""
+
+#: options/options.php:140
+#, fuzzy, php-format
+#| msgid "All rights reserved for %s 2018"
+msgid "All rights are reserved to Anonymous %s"
+msgstr "جميع الحقوق محفوظة لـ%s 2018"
+
+#: options/options.php:146
+msgid "Menu Colors"
+msgstr ""
+
+#: options/options.php:151
+msgid "Main menu"
+msgstr ""
+
+#: options/options.php:164
+msgid "Color skin"
+msgstr ""
+
+#: options/options.php:168
+msgid "Blue"
+msgstr ""
+
+#: options/options.php:169
+msgid "Firebrick"
+msgstr ""
+
+#: options/options.php:170
+#, fuzzy
+#| msgid "Rated"
+msgid "Red"
+msgstr "قيم"
+
+#: options/options.php:171
+msgid "Custom"
+msgstr ""
+
+#: options/options.php:174
+msgid ""
+"Other color options like (Menu colors, Headings colors) works only if color "
+"skin is custom"
+msgstr ""
+
+#: options/options.php:180
+msgid "Sidebars"
+msgstr ""
+
+#: options/options.php:185 options/options.php:232
+msgid "Sidebar"
+msgstr ""
+
+#: options/options.php:189
+msgid "Left Sidebar"
+msgstr ""
+
+#: options/options.php:191
+msgid "Right Sidebar"
+msgstr ""
+
+#: options/options.php:193
+msgid "Full width"
+msgstr ""
+
+#: options/options.php:196
+msgid "This controls the direction of the main sidebar"
+msgstr ""
+
+#: options/options.php:200
+msgid "Single post sidebar"
+msgstr ""
+
+#: options/options.php:210
+msgid "Blog"
+msgstr ""
+
+#: options/options.php:215
+msgid "Posts grid"
+msgstr ""
+
+#: options/options.php:219
+msgid "Standard"
+msgstr ""
+
+#: options/options.php:220
+msgid "Masonry"
+msgstr ""
+
+#: options/options.php:230
+msgid "Header"
+msgstr ""
+
+#: options/options.php:231
+msgid "Footer"
+msgstr ""
+
+#: options/options.php:233
+msgid "Single post"
+msgstr ""
+
+#: options/options.php:234
+msgid "page"
+msgstr ""
+
+#: options/options.php:237
+msgid "Advertisements"
+msgstr ""
+
+#: options/options.php:242
+msgid "AD block one"
+msgstr ""
+
+#: options/options.php:248
+msgid "AD block one location"
+msgstr ""
+
+#: options/options.php:256
+msgid "AD block two"
+msgstr ""
+
+#: options/options.php:262
+msgid "AD block two location"
+msgstr ""
+
+#: options/options.php:270
+msgid "AD block three"
+msgstr ""
+
+#: options/options.php:276
+msgid "AD block three location"
+msgstr ""
+
+#: options/options.php:310
+msgid "Arabic fonts"
+msgstr ""
+
+#: options/options.php:315
+msgid "Arabic font for headings"
+msgstr ""
+
+#: options/options.php:323
+msgid "Arabic font for links"
+msgstr ""
+
+#: options/options.php:331
+msgid "Arabic font for paragraph"
+msgstr ""
+
+#: options/options.php:342
+msgid "English fonts"
+msgstr ""
+
+#: options/options.php:348
+msgid "English font for headings"
+msgstr ""
+
+#: options/options.php:357
+msgid "English font for links"
+msgstr ""
+
+#: options/options.php:365
+msgid "English font for paragraph"
+msgstr ""
+
+#: options/options.php:375
+msgid "Social Media"
+msgstr ""
+
+#: options/options.php:380
+msgid "Facebook account link"
+msgstr ""
+
+#: options/options.php:387
+msgid "Twitter account link"
+msgstr ""
+
+#: options/options.php:394
+msgid "Linkedin account link"
+msgstr ""
+
+#: options/options.php:401
+msgid "Instagram account link"
+msgstr ""
+
+#: options/options.php:408
+msgid "Tumbler account link"
+msgstr ""
+
+#: options/options.php:415
+msgid "Youtube channel"
+msgstr ""
+
+#: options/options.php:422
+msgid "RSS feed"
+msgstr ""
+
+#: options/options.php:429
+msgid "Email address"
+msgstr ""
+
+#: options/options.php:436
+msgid "Phone number"
+msgstr ""
+
+#: options/options.php:452
+msgid "Hide admin bar"
+msgstr ""
+
+#: options/options.php:455
+msgid "Shows admin bar only for admins"
+msgstr ""
+
+#: options/options.php:459
+msgid "Restrict access to admin"
+msgstr ""
+
+#: options/options.php:462
+msgid "Restricts non-admins from accessing the dashboard"
+msgstr ""
+
+#: options/options.php:466
+msgid "Change login header title"
+msgstr ""
+
+#: options/options.php:469
+msgid ""
+"Changes the default header title in WordPress login page to be your site "
+"title"
+msgstr ""
+
+#: options/options.php:473
+#, fuzzy
+#| msgid "Remove featured image"
+msgid "Remove query string"
+msgstr "حذف الصوره المميزه"
+
+#: options/options.php:476
+msgid "Removes query string from styles/scripts and help speed up your website"
+msgstr ""
+
+#: options/options.php:481
+msgid "Keep query string"
+msgstr ""
+
+#: options/options.php:484
+msgid ""
+"Add comma separated handles of scripts/styles you want to keep query string"
+msgstr ""
+
+#: options/options.php:488
+#, fuzzy
+#| msgid "%s list navigation"
+msgid "Add categories to Navigation"
+msgstr "تصفح قائمة %s"
+
+#: options/options.php:491
+msgid ""
+"Adds categories menu to the main navigation menu (Show only if on mobile "
+"device)"
+msgstr ""
+
+#: options/options.php:495
+msgid "Color Gradient"
+msgstr ""
+
+#: options/options.php:501
+msgid "Select font"
+msgstr ""
+
+#: options/options.php:508
+msgid "Multi text"
+msgstr ""
+
+#: options/options.php:514
+msgid "Page select"
+msgstr ""
+
+#: options/options.php:521
+msgid "sliderbar"
+msgstr ""
+
+#: options/options.php:528
+msgid "upload"
+msgstr ""
+
+#: options/options.php:534
+msgid "Date"
+msgstr ""
+
+#: options/options.php:541
+msgid "Time"
+msgstr ""
+
+#: options/options.php:548
+msgid "Date and time"
+msgstr ""
+
+#: options/theme_settings.php:116 options/theme_settings.php:118
+msgid "Anonymous Theme Options"
+msgstr ""
+
+#: options/theme_settings.php:408
+msgid "Options are saved except those with the following errors"
+msgstr ""
+
+#: options/theme_settings.php:428
+msgid "Options saved"
+msgstr ""
+
+#: options/widgets/sidebar_ad.php:19
+msgid "Displays the sidebar AD from theme options"
+msgstr ""
+
+#: options/widgets/sidebar_ad.php:20
+msgid "Sidebar ADs"
+msgstr ""
+
+#: options/widgets/sidebar_ad.php:34 options/widgets/sidebar_ad.php:57
+msgid "ADs"
+msgstr ""
+
+#: options/widgets/sidebar_ad.php:39
+msgid "AD:"
 msgstr ""
 
 #: searchform.php:2 searchform.php:3
 msgid "Search"
 msgstr "بحث"
 
-#: sidebar-secondary.php:4
+#: sidebar-secondary.php:11
 msgid "Popular"
 msgstr "الأكثر شعبية"
 
-#: sidebar-secondary.php:5
+#: sidebar-secondary.php:12
 msgid "Recent comments"
 msgstr "التعليقات الأحدث"
 
-#: sidebar.php:7
+#: sidebar-single.php:20 sidebar.php:17
 #, php-format
 msgid "<strong>Please add some widgets.</strong><a href=\"%s\"> Add Here</a>"
 msgstr "<strong>فضلاً أضف بعض الودجات</strong><a href=\"%s\"> أضف هنا</a>"
 
-#: template-homepage.php:17
-msgid "Simple Info"
-msgstr "معلومة بسيطة"
+#: single-anony_download.php:87
+#: template-parts/single-post/anony_download.php:83
+msgid "Download"
+msgstr "تنزيل"
 
-#: template-homepage.php:41
-msgid "Suggested downloads"
-msgstr "تنزيلات مقترحة"
+#: template-parts/single-post/dam.php:24
+msgid "Dam name"
+msgstr "إسم السد"
 
-#: templates/temp-blog-post.php:28
+#: template-parts/single-post/reservoir.php:24
+msgid "Reservoir name"
+msgstr "اسم الخزان"
+
+#: templates/featured.php:31
+msgid ""
+"Please make sure you select a category and its corresponding taxonomy from "
+"theme options->slider"
+msgstr ""
+
+#: templates/post-layout/post-with-thumb.php:26
 msgid "Shares"
 msgstr "مشاركات"
 
-#: templates/temp-blog-post.php:55
-msgid "By"
-msgstr "بواسطة"
-
-#: templates/temp-blog-post.php:58 templates/temp-featured.php:22
-msgid "Read more"
-msgstr "إقرأ المزيد"
-
-#: templates/temp-category-posts.php:6
-msgid "Recent Posts"
-msgstr "أحدث الموضوعات"
-
-#: templates/temp-popular.php:30
-msgid "No popular posts till now"
-msgstr "ليس هناك موضوعات شعبية حتى الآن"
-
-#: templates/temp-rate.php:31
+#: templates/rate.php:36
 msgid "Rated"
 msgstr "قيم"
 
-#: templates/temp-rate.php:31
+#: templates/rate.php:36
 msgid "out of"
 msgstr "من"
 
-#: templates/temp-rate.php:31
+#: templates/rate.php:36
 msgid "Review(s)"
 msgstr "تقيم"
 
-#: templates/temp-recent-posts.php:15
+#: templates/recent-posts.php:15
 msgid "No comments"
 msgstr "بدون تعليقات"
 
-#: templates/temp-recent-posts.php:15
+#: templates/recent-posts.php:15
 msgid "One comment"
 msgstr "تعليق واحد"
 
-#: templates/temp-recent-posts.php:21
+#: templates/recent-posts.php:21
 msgid "No published posts"
 msgstr "لا يوجد موضوعات"
 
-#. Theme Name of the plugin/theme
-msgid "Smart Page"
-msgstr ""
+#~ msgid "Portfolio"
+#~ msgstr "حقيبة"
 
-#. Theme URI of the plugin/theme
-#. Author URI of the plugin/theme
-msgid "https://prosentra.com"
-msgstr ""
+#~ msgid "Portfolios"
+#~ msgstr "حقائب"
 
-#. Description of the plugin/theme
-msgid ""
-"A professional wordpress smart theme suitable for Professional Blogs and "
-"Magazines."
-msgstr "قالب ووردبريس احترافي ،متجاوب ،مناسب لجميع المدونات والمجلات."
+#~ msgid "Testimonial"
+#~ msgstr "شهادة"
 
-#. Author of the plugin/theme
-msgid "Mohamed Omar"
-msgstr ""
+#~ msgid "Testimonials"
+#~ msgstr "شهادات"
+
+#~ msgid "New"
+#~ msgstr "جديد"
+
+#~ msgid "News"
+#~ msgstr "أخبار"
+
+#~ msgid "All %s categories"
+#~ msgstr "جميع تصنيفات ال%s"
+
+#~ msgid "Edit %s category"
+#~ msgstr "تحرير تصنيف  ال%s"
+
+#~ msgid "view %s category"
+#~ msgstr "عرض تصنيف ال%s"
+
+#~ msgid "update %s category"
+#~ msgstr "تحديث تصنيف ال%s"
+
+#~ msgid "Add new %s category"
+#~ msgstr "أضف تصنيفاً جديداً إلى %s"
+
+#~ msgid "new %s category"
+#~ msgstr "تصنيفاً جديداً  لل%s"
+
+#~ msgid "Parent %s category"
+#~ msgstr "التصنيف الأب لل%s"
+
+#~ msgid "Parent %s category:"
+#~ msgstr "التصنيف الأب لل%s:"
+
+#~ msgid "search %s categories"
+#~ msgstr "إبحث في تصنيفات ال%s"
+
+#~ msgid "No %s category found"
+#~ msgstr "لايوجد تصنيف %s"
+
+#~ msgid "Add your download"
+#~ msgstr "إضافة تنزيلاً جديداً"
+
+#~ msgid "Current file:"
+#~ msgstr "الملف الحالي:"
+
+#~ msgid "No selected file "
+#~ msgstr "لم يتم اختيار ملف "
+
+#~ msgid "Sorry!! Please make sure your file type is one of the following"
+#~ msgstr "عذراً!! فضلاً تأكد من أن نوعية الملف واحدة من الآتي"
+
+#~ msgid "No popular posts till now"
+#~ msgstr "ليس هناك موضوعات شعبية حتى الآن"
+
+#~ msgid ""
+#~ "A professional wordpress smart theme suitable for Professional Blogs and "
+#~ "Magazines."
+#~ msgstr "قالب ووردبريس احترافي ،متجاوب ،مناسب لجميع المدونات والمجلات."
 
 #~ msgctxt "Download General Name"
 #~ msgid "Downloads"
