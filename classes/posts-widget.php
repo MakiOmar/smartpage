@@ -25,7 +25,10 @@ public function __construct(){
 				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', ANONY_TEXTDOM ); ?></label>
 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ANONY_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
-
+					<?php 
+						$selected =selected( $instance['post_type'], 'current', false );
+					?>
+					<option value="current" <?php echo $selected ;?>><?php esc_html_e( 'Current post type', ANONY_TEXTDOM ) ?></option>
 					<?php 
 						foreach(get_post_types(['public'   => true, '_builtin' => false]) as $post_type){
 							$selected =selected( $instance['post_type'], $post_type, false )
@@ -45,17 +48,18 @@ public function __construct(){
 			extract($parms);
 				
 			extract($instance);
-
+			$post_type = ($instance['post_type'] == 'current') ? get_post_type() : $instance['post_type'];
 			$args = array(
-			    'post_type'      => $instance['post_type'],
-			    'hide_empty'     => false,
-			    'posts_per_page' => 10,
+			    'post_type'      => $post_type,
+			    'posts_per_page' => -1,
 			);
 			$query = new WP_Query($args);
 
 			if ($query->have_posts()) {
+
+				$post_type_object = get_post_type_object($post_type);
 				
-				if(empty($title)) $title = esc_html__('Popular destinations', ANONY_TEXTDOM);
+				if($instance['post_type'] == 'current') $title = $post_type_object->label;
 				
 				$output = '';
 
@@ -69,7 +73,7 @@ public function __construct(){
 				while ($query->have_posts()) {
 					$query->the_post();
 
-					$output .= sprintf('<li class="artr_post_item"><a class="artr_post_link" href="%1$s">%2$s</a></li>',get_the_ID() , get_the_title());
+					$output .= sprintf('<li class="artr_post_item"><a class="artr_post_link" href="%1$s">%2$s</a></li>',esc_url(get_the_permalink(get_the_ID())) , get_the_title());
 				}
 
 				wp_reset_postdata();		
