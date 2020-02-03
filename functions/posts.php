@@ -142,15 +142,13 @@ add_filter( 'excerpt_length', function() { return 15; }, 999 );
  * @return array An array of post types names
  */
 function anony_taxonomy_posts($tax){
-	switch($tax){
-		case 'authority':
-			return array('transmission_line', 'reservoir');
-		break;
-	
-		default:
-			array();
-		break;
+	$tax_posts = apply_filters( 'anony_taxonomy_posts', [] );
+
+	if(!empty($tax_posts) && array_key_exists($tax, $tax_posts)){
+		return $tax_posts[$tax];
 	}
+
+	return [];
 }
 
 /**
@@ -160,35 +158,28 @@ function anony_taxonomy_posts($tax){
  * @return array An array of taxonomies names
  */
 function anony_post_taxonomies($post_type){
-	switch($post_type){
-		case 'transmission_line':
-			return array('authority');
-		break;
-		
-		case 'reservoir':
-			return array('authority');
-		break;
-	
-		default:
-			array();
-			break;
+
+	$post_taxonomies = apply_filters( 'anony_post_taxonomies', [] );
+
+	if(!empty($post_taxonomies) && array_key_exists($post_type, $post_taxonomies))
+	{
+		return $post_taxonomies[$post_type];
 	}
+
+	return [];
 }
 
 /**
  * Register post types
  */
 function anony_reg_post_types(){
-	$custom_posts = array(
-			'transmission_line'=>array(
-					esc_html__('Transmission line',ANONY_TEXTDOM)   , esc_html__('Transmission lines',ANONY_TEXTDOM)
-				),
-				
-			'reservoir'=>array(
-					esc_html__('Reservoir',ANONY_TEXTDOM)   , esc_html__('Reservoirs',ANONY_TEXTDOM)
-				),
-			);
+
+	$custom_posts = apply_filters( 'anony_post_types', [] );
+	
+	if(empty($custom_posts)) return;
+
 	foreach($custom_posts as $custom_post=> $translatable){
+
 		$t_s = $translatable[0];
 		$t_p = $translatable[1];
 			
@@ -227,9 +218,15 @@ function anony_reg_post_types(){
 			'label'                 => sprintf(esc_html__( '%s', ANONY_TEXTDOM ),$t_p),
 			'description'           => sprintf(esc_html__( 'Here you can add your %s', ANONY_TEXTDOM ),lcfirst($t_p)),
 			'labels'                => $labels,
-			'supports'              => array( 'title','editor','excerpt','custom-fields','comments','revisions','thumbnail','author','page-attributes','post-formats'),
+			'supports'              => apply_filters
+											( 
+													"anony_{$custom_post}_supports",
+
+													['title','editor','excerpt','custom-fields','comments','revisions','thumbnail','author','page-attributes','post-formats'
+													] 
+											),
 			'taxonomies'            => anony_post_taxonomies(lcfirst($custom_post)),
-			'hierarchical'          => false,
+			'hierarchical'          => true,
 			'public'                => true,
 			'show_ui'               => true,
 			'show_in_menu'          => true,
@@ -241,7 +238,11 @@ function anony_reg_post_types(){
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
 			'capability_type'       => 'post',
-			'rewrite' => array('slug' => lcfirst($custom_post), 'with_front' => true),
+			'rewrite' => array(
+							'slug'         => lcfirst($custom_post),
+							'with_front'   => true,
+							'hierarchical' => true
+						),
 		);
 		
 		register_post_type( lcfirst($custom_post), $args );
@@ -253,36 +254,36 @@ function anony_reg_post_types(){
  * Register taxonomies
  */
 function anony_reg_taxonomies(){
-	$arabtrip_custom_taxs = array(
-			'authority'=>array(
-					esc_html__('authority',ANONY_TEXTDOM), esc_html__('authorities',ANONY_TEXTDOM)),
-			
-			);
-	foreach($arabtrip_custom_taxs as $arabtrip_custom_tax => $translatable ){
+	$anony_custom_taxs = apply_filters( 'anony_taxonomies', [] );
+
+	if(empty($anony_custom_taxs)) return;
+
+	foreach($anony_custom_taxs as $anony_custom_tax => $translatable ){
 		$t_s = $translatable[0];
 		$t_p = $translatable[1];
 
 		register_taxonomy(
-			$arabtrip_custom_tax,
-			anony_taxonomy_posts($arabtrip_custom_tax),
-			array(
-				 "hierarchical" => true,
-				 "label" => $t_p,
-				 "singular_label" => $t_s,
-				  "labels"=>array(
-							 "all_items"=>sprintf(esc_html__('All %s',ANONY_TEXTDOM),$t_s),
-							 "edit_item"=>sprintf(esc_html__('Edit %s',ANONY_TEXTDOM),$t_s),
-							 "view_item"=>sprintf(esc_html__('View %s',ANONY_TEXTDOM),$t_s),
-							 "update_item"=>sprintf(esc_html__('update %s',ANONY_TEXTDOM),$t_s),
-							 "add_new_item"=>sprintf(esc_html__('Add new %s',ANONY_TEXTDOM),$t_s),
-							 "new_item_name"=>sprintf(esc_html__('new %s',ANONY_TEXTDOM),$t_s),
-							 "parent_item"=>sprintf(esc_html__('Parent %s',ANONY_TEXTDOM),$t_s),
-							 "parent_item_colon"=>sprintf(esc_html__('Parent %s:',ANONY_TEXTDOM),$t_s),
-							 "search_items"=>sprintf(esc_html__('search %s',ANONY_TEXTDOM),$t_s),
-							 "not_found"=>sprintf(esc_html__('No %s found',ANONY_TEXTDOM),$t_s),
-							  ),
-			"show_admin_column" => true,
-			)
+			$anony_custom_tax,
+			anony_taxonomy_posts($anony_custom_tax),
+			[
+				"hierarchical" => true,
+				"label" => $t_p,
+				"singular_label" => $t_s,
+				"labels"=>
+						[
+							"all_items"=>sprintf(esc_html__('All %s',ANONY_TEXTDOM),$t_p),
+							"edit_item"=>sprintf(esc_html__('Edit %s',ANONY_TEXTDOM),$t_s),
+							"view_item"=>sprintf(esc_html__('View %s',ANONY_TEXTDOM),$t_s),
+							"update_item"=>sprintf(esc_html__('update %s',ANONY_TEXTDOM),$t_s),
+							"add_new_item"=>sprintf(esc_html__('Add new %s',ANONY_TEXTDOM),$t_s),
+							"new_item_name"=>sprintf(esc_html__('new %s',ANONY_TEXTDOM),$t_s),
+							"parent_item"=>sprintf(esc_html__('Parent %s',ANONY_TEXTDOM),$t_s),
+							"parent_item_colon"=>sprintf(esc_html__('Parent %s:',ANONY_TEXTDOM),$t_s),
+							"search_items"=>sprintf(esc_html__('search %s',ANONY_TEXTDOM),$t_p),
+							"not_found"=>sprintf(esc_html__('No %s found',ANONY_TEXTDOM),$t_p),
+						],
+				"show_admin_column" => true,
+			]
 		);
 	}
 }
