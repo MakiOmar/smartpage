@@ -46,11 +46,25 @@ define('ANONY_THEME_DIR'     , wp_normalize_path( get_template_directory() ));
  */
 define('ANONY_LIBS_URI'      , get_template_directory_uri(). '/functions');
 
+
 /**
  * Holds functions folder DIR
  * @const
  */
-define('ANONY_LIBS_DIR'      , ANONY_THEME_DIR. '/functions/');
+define('ANONY_LIBS_DIR'      , wp_normalize_path(ANONY_THEME_DIR. '/functions/'));
+
+
+/**
+ * Holds core hooks folder URI
+ * @const
+ */
+define('ANONY_CORE_HOOKS_URI'      , get_template_directory_uri(). '/core-hooks');
+
+/**
+ * Holds functions folder DIR
+ * @const
+ */
+define('ANONY_CORE_HOOKS_DIR'      , wp_normalize_path(ANONY_THEME_DIR. '/core-hooks/'));
 
 /**
  * Holds main classes folder URI
