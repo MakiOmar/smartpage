@@ -1,7 +1,4 @@
 @charset "UTF-8";
-@-ms-viewport{
-  width: device-width;
-}
 
 @font-face {
     font-family: 'ralewaybold';
@@ -140,6 +137,23 @@ img {
     margin: auto;
     display: inline-block;
     max-width: 100%;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+th{
+	font-size: 20px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 .anony-form-submit{
 	margin-top: 15px;
