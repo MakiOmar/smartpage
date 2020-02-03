@@ -8,6 +8,15 @@ require_once(wp_normalize_path(ANONY_LIBS_DIR . 'helper/wordpress-helpers.php'))
 
 require_once(wp_normalize_path('options/options.php'));
 
+//Core hooks files
+$anonylibs = [
+	'posts'       =>'',
+];
+
+foreach($anonylibs as $anonylib=>$path){
+	require_once( ANONY_CORE_HOOKS_DIR . $path . $anonylib.'.php');
+}
+
 //Functions files
 $anonylibs = [
 	'theme-helpers'       =>'',
