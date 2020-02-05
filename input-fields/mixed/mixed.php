@@ -47,6 +47,8 @@ class ANONY__Mixed{
 	 * @return void
 	 */
 	public function render(){
+
+		$placeholder = (isset($this->parent->field['placeholder'])) ? 'placeholder="'.$this->parent->field['placeholder'].'"' : '';
 		
 		$html = sprintf( 
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
@@ -57,7 +59,7 @@ class ANONY__Mixed{
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
 
-		if($this->parent->context == 'meta'){
+		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
 			$html .= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
 						$this->parent->field['id'], 
@@ -69,12 +71,13 @@ class ANONY__Mixed{
 			$step = 'step="0.01"';
 		}
 		$html  .= sprintf(
-					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s" %5$s/>', 
+					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s" %5$s %6$s/>', 
 					$this->parent->field['type'],
 					$this->parent->input_name, 
 					$this->parent->value, 
 					$this->parent->class_attr,
-					isset($step) ? ' '.$step : ''
+					isset($step) ? ' '.$step : '',
+					$placeholder
 				 );
 		
 		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc']))?' <div class="description '.$this->parent->class_attr.'">'.$this->parent->field['desc'].'</div>':'';

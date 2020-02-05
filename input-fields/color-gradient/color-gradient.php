@@ -32,7 +32,7 @@ class ANONY__Color_gradient{
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
 					$this->parent->field['id'] 
 					);
-		if($this->parent->context == 'meta'){
+		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
 			$html	.= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
 						$this->parent->field['id'], 

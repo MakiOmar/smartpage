@@ -48,7 +48,7 @@ class ANONY__Select{
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
 		
-		if($this->parent->context == 'meta'){
+		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
 			$html .= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
 						$this->parent->field['id'], 
@@ -66,7 +66,7 @@ class ANONY__Select{
 				);
 
 			if( is_array( $this->parent->field['options'] ) && !empty($this->parent->field['options']) ){
-
+				$html .= sprintf('<option value="">%1$s</option>', esc_html__( 'Select', ANONY_TEXTDOM ));
 				
 				if( empty($multiple) ) :
 
@@ -83,7 +83,7 @@ class ANONY__Select{
 			        foreach ( $this->parent->field['options'] as $key => $label ) {
 						
 			        	$selected = is_array($this->parent->value) && in_array( $key, $this->parent->value ) && $key != '' ? ' selected' : '';
-						
+
 			            $html .= sprintf( 
 									'<option value="%1$s"%2$s>%3$s</option>', 
 									$key, 
