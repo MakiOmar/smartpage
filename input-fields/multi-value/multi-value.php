@@ -38,9 +38,9 @@ class ANONY__Multi_value{
 					$this->parent->field['id'] 
 				);
 
-		echo '2';
 		
-		/*if(isset($this->parent->field['note'])){
+		
+		if(isset($this->parent->field['note'])){
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
 		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
@@ -51,13 +51,19 @@ class ANONY__Multi_value{
 					);
 		}
 		
-		$html .= '<div class="anony-inputs-row anony-normal-flex">';
+		$html .= '<div class="anony-inputs-row anony-multi-value-flex">';
 
 		foreach ($this->parent->field['fields'] as $nested_field) {
 			$render_field = new ANONY__Input_Field($nested_field, 'meta', $this->parent->post_id);
-			//$render_field->field_init();
+			ob_start();
 
-			
+			$render_field->field_init();
+
+			$var = ob_get_contents();
+
+			ob_end_clean();
+
+			$html .= $var;
 		}
 
 		$html .= sprintf(
@@ -65,11 +71,11 @@ class ANONY__Multi_value{
 					$this->parent->field['id'], 
 					$this->parent->input_name, 
 					$buttonText
-				);*/
+				);
 
 		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description multi-text-desc">'.$this->parent->field['desc'].'</div>' : '';
 
-		$html .= '</fieldset>';	
+		$html .= '<div></fieldset>';	
 
 		echo $html;
 	}
