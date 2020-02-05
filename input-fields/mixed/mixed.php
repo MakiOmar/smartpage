@@ -65,12 +65,16 @@ class ANONY__Mixed{
 					);
 		}
 		
+		if($this->parent->field['type'] == 'number' && isset($this->parent->field['step'])){
+			$step = 'step="0.01"';
+		}
 		$html  .= sprintf(
-					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s"/>', 
+					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s" %5$s/>', 
 					$this->parent->field['type'],
 					$this->parent->input_name, 
 					$this->parent->value, 
-					$this->parent->class_attr
+					$this->parent->class_attr,
+					isset($step) ? ' '.$step : ''
 				 );
 		
 		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc']))?' <div class="description '.$this->parent->class_attr.'">'.$this->parent->field['desc'].'</div>':'';
