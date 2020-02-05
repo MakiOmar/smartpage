@@ -730,7 +730,7 @@ if(!function_exists('anony_active_language')){
  * @return mixed                An array of posts objects
  */
 if(!function_exists('anony_wpml_posts_query')){
-	function anony_wpml_posts_query($post_type){
+	function anony_wpml_posts_query($post_type = 'post'){
 		$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
 
 		if ( anony_is_active_plugin( $wpml_plugin) || function_exists('icl_get_languages') ) {
@@ -751,14 +751,14 @@ if(!function_exists('anony_wpml_posts_query')){
 	}
 }
 /**
- * Get posts IDs and titles
+ * Get posts IDs and titles if wpml is active
  * @param type $post_type 
  * @return array Returns an array of post posts IDs and titles. empty array if no results
  */
 if(!function_exists('anony_wpml_posts_data_simple')){
-	function anony_wpml_posts_data_simple($post_type){
+	function anony_wpml_posts_data_simple($post_type = 'post'){
 		
-		$results = fama_wpml_posts_query($post_type);
+		$results = anony_wpml_posts_query($post_type);
 		
 		$postIDs = [];
 		
@@ -769,5 +769,42 @@ if(!function_exists('anony_wpml_posts_data_simple')){
 		}
 		
 		return $postIDs;
+	}
+}
+
+if(!function_exists('anony_posts_data_simple')){
+	/**
+	 * Get posts IDs and titles
+	 * @param string $post_type 
+	 * @return array Returns an array of published post posts IDs and titles. empty array if no results
+	 */
+	function anony_posts_data_simple($post_type = 'post'){
+		$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
+
+		if ( anony_is_active_plugin( $wpml_plugin) && function_exists('icl_get_languages') ) {
+
+			return anony_wpml_posts_data_simple($post_type);
+		}
+
+		global $wpdb;
+		
+		$postIDs = [];
+
+		$query = $wpdb->prepare("SELECT ID , post_title FROM $wpdb->posts WHERE post_type = '%s' AND post_status = 'publish'", $post_type);
+
+		$results = $wpdb->get_results($query);
+		
+		if(!empty($results) && !is_null($results)){
+			foreach($results as $result){
+				foreach($result as $id){
+					$postIDs[] = $id;
+				}
+			}
+		}
+
+		anony_debug($results);
+		
+		return $postIDs;
+	
 	}
 }
