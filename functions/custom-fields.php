@@ -151,7 +151,6 @@ if(class_exists('ANONY__Meta_Box')){
 		//Custom fields object
 		$reservoirMetaboxe = new ANONY__Meta_Box($reservoirs);
 	/*--------------------------------------------------------------------------------*/
-	/*--------------------------------------------------------------------------*/	
 		
 		$dams = array(
 			/*Any meta box ID should start with anony-meta- to have correct style*/
@@ -231,5 +230,74 @@ if(class_exists('ANONY__Meta_Box')){
 
 		//Custom fields object
 		$damsMetaboxe = new ANONY__Meta_Box($dams);
+		/*--------------------------------------------------------------------------*/
+
+		$contracts = array(
+			/*Any meta box ID should start with anony-meta- to have correct style*/
+			'id'            => 'anony-contract-details',//Meta box ID
+			'title'         => esc_html__( 'Contract Details', ANONY_TEXTDOM ),
+			'context'       => 'normal',
+			'priority'      =>  'high', // high|low
+	        'hook_priority' =>  '10', // Default 10
+			'post_type'     => array('contract'),
+			'fields'        => array(
+									array(
+										'id'       => 'anony__contract_start',
+										'class'    => 'anony__contract_start',
+										'title'    => esc_html__( 'Contract start date', ANONY_TEXTDOM ),
+										'type'     => 'date_time',
+										'get'      => 'date',
+										'date-format' => 'dd/mm/yy',
+										'validate' => 'date',
+
+									),
+
+									array(
+										'id'       => 'anony__contract_end',
+										'class'    => 'anony__contract_end',
+										'title'    => esc_html__( 'Contract end date', ANONY_TEXTDOM ),
+										'type'     => 'date_time',
+										'get'      => 'date',
+										'date-format' => 'dd/mm/yy',
+										'validate' => 'date',
+									),
+
+									array(
+										'id'       => 'anony__contract_period',
+										'class'    => 'anony__contract_period',
+										'title'    => esc_html__( 'Contract period', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'validate' => 'no_html',
+									),
+
+									array(
+										'id'       => 'anony__contract_value',
+										'class'    => 'anony__contract_value',
+										'title'    => esc_html__( 'Contract value', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'step'     => '0.01',
+										'validate' => 'no_html',
+									),
+
+									array(
+										'id'       => 'anony__contract_connected_supply_term',
+										'class'    => 'anony__contract_connected_supply_term',
+										'title'    => esc_html__( 'Contract connected supply term', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'validate' => 'no_html',
+									),
+
+									array(
+										'id'       => 'anony__contract_ref_number',
+										'class'    => 'anony__contract_ref_number',
+										'title'    => esc_html__( 'Contract reference number', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'validate' => 'no_html',
+									),
+								)
+		);
+
+		//Custom fields object
+		$contractsMetaboxe = new ANONY__Meta_Box($contracts);
 	});
 }
