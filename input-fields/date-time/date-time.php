@@ -22,6 +22,7 @@ class ANONY__Date_time{
 
 		$this->parent = $parent;
 
+		$this->parent->value = esc_attr($this->parent->value );
 
 		$this->date_format    = isset($this->parent->field['date-format']) ? $this->parent->field['date-format'] : 'dd-mm-yy';
 
@@ -50,11 +51,23 @@ class ANONY__Date_time{
 
 		$placeholder = isset($this->parent->field['placeholder']) ? ' placeholder="'.$this->parent->field['placeholder'].'"' : ' placeholder="'.$this->parent->field['title'].'"';
 
+		$html = sprintf( 
+					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
+					$this->parent->field['id'] 
+				);
+
 		if(isset($field['note'])){
 			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
-		
-		$html =  sprintf(
+
+		if($this->parent->context == 'meta'){
+			$html .= sprintf( 
+						'<label class="anony-label" for="%1$s">%2$s</label>', 
+						$this->parent->field['id'], 
+						$this->parent->field['title']
+					);
+		}
+		$html .=  sprintf(
 					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
 					$this->parent->input_name, 
 					$this->parent->field['id'], 
@@ -64,6 +77,8 @@ class ANONY__Date_time{
 				);
 		
 		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description '.$this->parent->class_attr.'">'.$this->parent->field['desc'].'</div>':'';
+
+		$html .= '</fieldset>';
 
 		echo $html;
 		
@@ -83,7 +98,8 @@ class ANONY__Date_time{
 		wp_enqueue_script('jquery-ui-timepicker-addon',ANONY_INPUT_FIELDS_URI.'date-time/jquery-ui-timepicker-addon.js',array('jquery', 'jquery-ui-datepicker', 'jquery-ui-core'));
 
 		//Styles
-		wp_enqueue_style('jquery-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/' . $wp_scripts->registered['jquery-ui-core']->ver . '/themes/smoothness/jquery-ui.css');
+		wp_enqueue_style('jquery-ui-css', ANONY_INPUT_FIELDS_URI.'date-time/jquery-ui.css');
+		wp_enqueue_style('jquery-ui-timepicker-addon',ANONY_INPUT_FIELDS_URI.'date-time/jquery-ui-timepicker-addon.css',array('jquery-ui-css'));
     }
 
     /**
