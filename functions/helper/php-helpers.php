@@ -176,7 +176,7 @@ if(!function_exists('abstracted_object_to_array')){
  *  @param   boolean  $strict    Whether to use strict search or not
  *  @return  boolean             Whether the value was found or not
  */
- if(!function_exists('search_for_value')){
+if(!function_exists('search_for_value')){
 	function search_for_value( $needle, $haystack, $strict=true ) {
 		$haystack = abstracted_object_to_array( $haystack );
 
