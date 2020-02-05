@@ -796,9 +796,8 @@ if(!function_exists('anony_posts_data_simple')){
 		
 		if(!empty($results) && !is_null($results)){
 			foreach($results as $result){
-				foreach($result as $id){
-					$postIDs[] = $id;
-				}
+				
+					$postIDs[$result->ID] = $result->post_title;
 			}
 		}
 
