@@ -242,6 +242,14 @@ if(class_exists('ANONY__Meta_Box')){
 			'post_type'     => array('contract'),
 			'fields'        => array(
 									array(
+										'id'       => 'anony__contracted_company',
+										'class'    => 'anony__contracted_company',
+										'title'    => esc_html__( 'Contracted company', ANONY_TEXTDOM ),
+										'type'     => 'select',
+										'options'  => anony_posts_data_simple('company'),
+									),
+
+									array(
 										'id'       => 'anony__contract_start',
 										'class'    => 'anony__contract_start',
 										'title'    => esc_html__( 'Contract start date', ANONY_TEXTDOM ),
@@ -292,8 +300,47 @@ if(class_exists('ANONY__Meta_Box')){
 										'class'    => 'anony__contract_ref_number',
 										'title'    => esc_html__( 'Contract reference number', ANONY_TEXTDOM ),
 										'type'     => 'number',
-										'validate' => 'no_html',
+										'validate' => 'number',
 									),
+
+									array(
+										'id'       => 'anony__quantities_reduction',
+										'class'    => 'anony__quantities_reduction',
+										'title'    => esc_html__( 'Quantities reduction', ANONY_TEXTDOM ),
+										'type'     => 'multi_value',
+										'button-text' => esc_html__( 'Add new reduction', ANONY_TEXTDOM ),
+										'fields'   =>
+											[
+												[
+													'type'        => 'number',
+													'validate'    => 'number',
+													'name'        => 'reduction_value',
+													'id'          => 'reduction_value',
+													'class'       => 'anony-multi-value',
+													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
+												],
+
+												[
+													'type'        => 'date_time',
+													'validate'    => 'date',
+													'get'         => 'date',
+													'name'        => 'reduction_date',
+													'id'          => 'reduction_date',
+													'class'       => 'anony-multi-value',
+													'placeholder' => esc_html__( 'Reduction date', ANONY_TEXTDOM ),
+												],
+
+												[
+													'type'        => 'textarea',
+													'validate'    => 'no_html',
+													'name'        => 'reduction_details',
+													'id'          => 'reduction_details',
+													'class'       => 'anony-multi-value',
+													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
+												],
+											],
+									),
+
 								)
 		);
 
