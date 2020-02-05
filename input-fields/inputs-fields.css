@@ -466,3 +466,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	background: #941e1e;
     border-color: #941e1e;
 }
+
+.anony-multi-value-flex fieldset{
+    border: none;
+}
