@@ -41,7 +41,7 @@ class ANONY__Multi_value{
 		
 		
 		if(isset($this->parent->field['note'])){
-			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
+			$html .= '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
 		}
 		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
 			$html .= sprintf( 
