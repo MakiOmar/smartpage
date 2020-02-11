@@ -68,15 +68,23 @@ class ANONY__Mixed{
 		}
 		
 		if($this->parent->field['type'] == 'number' && isset($this->parent->field['step'])){
-			$step = 'step="0.01"';
+
+			$step = !empty($this->parent->field['step']) ? $this->parent->field['step']: 'step="0.01"';
+		}
+
+		$lang = 'lang="en-EN"';
+
+		if($this->parent->field['type'] == 'number' && isset($this->parent->field['lang'])){
+			$lang = $this->parent->field['lang'];
 		}
 		$html  .= sprintf(
-					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s" %5$s %6$s/>', 
+					'<input type="%1$s" name="%2$s" value="%3$s" class="%4$s" %5$s %6$s %7$s/>', 
 					$this->parent->field['type'],
 					$this->parent->input_name, 
 					$this->parent->value, 
 					$this->parent->class_attr,
 					isset($step) ? ' '.$step : '',
+					isset($lang) ? ' '.$lang : '',
 					$placeholder
 				 );
 		
