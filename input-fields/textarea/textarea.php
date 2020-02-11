@@ -56,7 +56,7 @@ class ANONY__Textarea{
 		$html  .= sprintf( 
 						'<textarea class="anony-%1$s" rows="'.$rows.'" cols="'.$cols.'" id="%2$s" name="%2$s" %3$s %4$s %5$s>%6$s</textarea>', 
 						$class,
-						$this->parent->field['id'], 
+						$this->parent->input_name, 
 						$readonly,
 						$disabled,
 						$placeholder,
