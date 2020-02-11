@@ -106,7 +106,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		 * Set options field data
 		 */
 		public function opt_field_data(){
-			$this->input_name = ANONY_OPTIONS.'['.$this->field['id'].']';
+			$this->input_name = isset($this->field['name'])  ? ANONY_OPTIONS.'['.$this->field['name'].']' : ANONY_OPTIONS.'['.$this->field['id'].']';
 
 			$fieldID      = $this->field['id'];
 
@@ -117,17 +117,22 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		 * Set metabox field data
 		 */
 		public function meta_field_data(){
-			$this->input_name = $this->field['id'];
+			$this->input_name = isset($this->field['nested-to'])  ? $this->field['nested-to'].'['.$this->field['id'].']' : $this->field['id'];
 
-			if(isset($this->field['multiple']) && $this->field['multiple'])
-			{
-				$meta = get_post_meta( $this->post_id, $this->field['id']);
-				$this->value = (!empty($meta)) ? $meta : $this->default;
-			}else
-			{
-				$meta = get_post_meta( $this->post_id, $this->field['id'], true);
-				$this->value = ($meta  != '') ? $meta : $this->default;	
+			$single = (isset($this->field['multiple']) && $this->field['multiple']) ? false : true;
+			
+			if(isset($this->field['nested-to'])){
+				$nested_to_meta = get_post_meta( $this->post_id, $this->field['nested-to'], $single);
+				
+				$meta = $nested_to_meta ? $nested_to_meta[$this->field['id']] : '';
+				
+
+			}else{
+
+				$meta = get_post_meta( $this->post_id, $this->field['id'], $single);
 			}
+
+			$this->value = ($meta  != '') ? $meta : $this->default;	
 		}
 
 		/**
