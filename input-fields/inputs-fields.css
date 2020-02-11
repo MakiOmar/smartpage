@@ -161,6 +161,11 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	display: flex;
 	align-items: center;
 }
+
+.anony-multi-value-flex{
+    flex-direction: column!important;
+    align-items: flex-start;
+}
 [id*='anony_fieldset'] input[type= "checkbox"]{
 	margin: 0 5px;
 	border-radius: 2px !important;
