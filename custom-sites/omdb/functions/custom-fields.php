@@ -262,6 +262,7 @@ if(class_exists('ANONY__Meta_Box')){
 										'type'     => 'date_time',
 										'get'      => 'date',
 										'date-format' => 'dd/mm/yy',
+										'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
 										'validate' => 'date',
 
 									),
@@ -272,6 +273,7 @@ if(class_exists('ANONY__Meta_Box')){
 										'type'     => 'date_time',
 										'get'      => 'date',
 										'date-format' => 'dd/mm/yy',
+										'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
 										'validate' => 'date',
 									),
 
@@ -310,6 +312,8 @@ if(class_exists('ANONY__Meta_Box')){
 										'id'       => 'anony__contract_end_after_extension',
 										'title'    => esc_html__( 'Contract end date after extension', ANONY_TEXTDOM ),
 										'type'     => 'date_time',
+										'date-format' => 'dd/mm/yy',
+										'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
 										'get'      => 'date',
 										'validate' => 'date',
 									),
@@ -338,7 +342,7 @@ if(class_exists('ANONY__Meta_Box')){
 												[
 													'type'        => 'number',
 													'validate'    => 'number',
-													'name'        => 'reduction_value',
+													'nested-to'   => 'anony__quantities_reduction',
 													'id'          => 'reduction_value',
 													'class'       => 'anony-multi-value',
 													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
@@ -348,7 +352,9 @@ if(class_exists('ANONY__Meta_Box')){
 													'type'        => 'date_time',
 													'validate'    => 'date',
 													'get'         => 'date',
-													'name'        => 'reduction_date',
+													'date-format' => 'dd-mm-yy',
+													'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
+													'nested-to'   => 'anony__quantities_reduction',
 													'id'          => 'reduction_date',
 													'class'       => 'anony-multi-value',
 													'placeholder' => esc_html__( 'Reduction date', ANONY_TEXTDOM ),
@@ -357,7 +363,7 @@ if(class_exists('ANONY__Meta_Box')){
 												[
 													'type'        => 'textarea',
 													'validate'    => 'no_html',
-													'name'        => 'reduction_details',
+													'nested-to'   => 'anony__quantities_reduction',
 													'id'          => 'reduction_details',
 													'class'       => 'anony-multi-value',
 													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
