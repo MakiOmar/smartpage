@@ -53,6 +53,12 @@ class ANONY__Multi_value{
 		
 		$html .= '<div class="anony-inputs-row anony-multi-value-flex">';
 
+		$html .= sprintf(
+					'<input type="hidden" name="%1$s" id="%2$s" value=""/>',
+					$this->parent->input_name,
+					$this->parent->field['id']
+				);
+
 		foreach ($this->parent->field['fields'] as $nested_field) {
 			$render_field = new ANONY__Input_Field($nested_field, 'meta', $this->parent->post_id);
 			ob_start();
