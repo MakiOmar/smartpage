@@ -69,7 +69,7 @@ if (!class_exists('ANONY__VC_Fonts')) {
 
             $param = WPBMap::getParam( 'vc_icon', 'type' );
             
-            $param['value'][ __( 'Flat icon', 'js_composer' ) ] = $this->font_library;
+            $param['value'][ $this->fonts_lib_meta['heading'] ] = $this->font_library;
 
             vc_update_shortcode_param( 'vc_icon', $param );
         }
