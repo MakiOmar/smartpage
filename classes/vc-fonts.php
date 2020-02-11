@@ -24,7 +24,7 @@ if (!class_exists('ANONY__VC_Fonts')) {
         public function __construct($library_data){
 			
 			//check if visual composer is active
-			if(!fama_is_active_plugin('js_composer/js_composer.php')) return;
+			if(!anony_is_active_plugin('js_composer/js_composer.php')) return;
 			
             if (!is_array($library_data)) return;
 
@@ -35,6 +35,8 @@ if (!class_exists('ANONY__VC_Fonts')) {
             $this->fonts_list   = $library_data['fonts_list'];
 
             $this->fonts_lib_meta   = $library_data['fonts_lib_meta'];
+
+            if(!isset($this->fonts_lib_meta['heading'])) $this->fonts_lib_meta['heading'] = esc_html__( 'Custom font', ANONY_TEXTDOM );
 
             // In the 'Icon library' dropdown for an icon content type, add a new family of icons.
             add_filter( 'init', array($this, 'add_vc_icon_library'), 40 );
