@@ -460,6 +460,4 @@ function anony_download_ajax() {
 		wp_die();
 		}
 }
-
-require(ANONY_LIBS_DIR.'custom-fields.php');
 ?>
