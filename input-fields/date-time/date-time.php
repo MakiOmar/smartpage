@@ -55,11 +55,6 @@ class ANONY__Date_time{
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
 					$this->parent->field['id'] 
 				);
-
-		if(isset($field['note'])){
-			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
-		}
-
 		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
 			$html .= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
@@ -67,6 +62,14 @@ class ANONY__Date_time{
 						$this->parent->field['title']
 					);
 		}
+
+		$html .= '<div class="anony-flex-column">';
+		
+		if(isset($field['note'])){
+			echo '<p class=anony-warning>'.$this->parent->field['note'].'<p>';
+		}
+
+		
 		$html .=  sprintf(
 					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
 					$this->parent->input_name, 
@@ -78,7 +81,7 @@ class ANONY__Date_time{
 		
 		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description '.$this->parent->class_attr.'">'.$this->parent->field['desc'].'</div>':'';
 
-		$html .= '</fieldset>';
+		$html .= '<div></fieldset>';
 
 		echo $html;
 		
