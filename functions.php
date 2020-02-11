@@ -41,4 +41,9 @@ add_action('wp_footer', function(){
 	//neat_print_r(get_option(ANONY_OPTIONS));
 });
 
+/*--------------------------------------omdb----------------------------*/
 
+define('OMDB_DIR', ANONY_THEME_DIR. '/custom-sites/omdb');
+
+
+require_once(OMDB_DIR.'/functions.php');
