@@ -17,8 +17,8 @@ class ANONY__Multi_text{
 		if (!is_object($parent)) return;
 
 		$this->parent = $parent;
-		
-		$this->parent->value = array_map('esc_html', $this->parent->value) ;
+
+		$this->parent->value = is_array( $this->parent->value) ? array_map('esc_html', $this->parent->value) :  $this->parent->value ;
 
 		$this->enqueue();
 	}
