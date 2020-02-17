@@ -7,6 +7,7 @@ define('OMDB_LIBS_DIR', OMDB_DIR. '/functions/');
 $anonylibs = [
 	'scripts'       =>'',
 	'custom-fields' =>'',
+	'hooks' =>'',
 ];
 
 foreach($anonylibs as $anonylib=>$path){
