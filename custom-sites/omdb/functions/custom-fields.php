@@ -21,12 +21,12 @@ if(class_exists('ANONY__Meta_Box')){
 	        'hook_priority' =>  '10', // Default 10
 			'post_type'     => array('transmission_line'),
 			'fields'        => array(
-									array(
+									/*array(
 										'id'       => 'anony__line_title',
 										'title'    => esc_html__( 'Line title', ANONY_TEXTDOM ),
 										'type'     => 'text',
 										'validate' => 'no_html',
-									),
+									),*/
 									array(
 										'id'       => 'anony__line_capcity',
 										'title'    => __( 'Line Capcity (m<sup>3</sup>/day)', ANONY_TEXTDOM ),
@@ -242,6 +242,13 @@ if(class_exists('ANONY__Meta_Box')){
 			'post_type'     => array('contract'),
 			'fields'        => array(
 									array(
+										'id'       => 'anony__multi_text',
+										'title'    => esc_html__( 'Multi text', ANONY_TEXTDOM ),
+										'type'     => 'multi_text',
+										'validate' => 'no_html',
+									),
+
+									array(
 										'id'       => 'anony__contracted_company',
 										'title'    => esc_html__( 'Contracted company', ANONY_TEXTDOM ),
 										'type'     => 'select',
@@ -257,12 +264,26 @@ if(class_exists('ANONY__Meta_Box')){
 									),
 
 									array(
+										'id'       => 'anony__contract_connected_supply_term',
+										'title'    => esc_html__( 'Contract connected supply term', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'validate' => 'no_html',
+									),
+
+									array(
+										'id'       => 'anony__contract_ref_number',
+										'title'    => esc_html__( 'Contract reference number', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'validate' => 'number',
+									),
+
+									array(
 										'id'       => 'anony__contract_start',
 										'title'    => esc_html__( 'Contract start date', ANONY_TEXTDOM ),
 										'type'     => 'date_time',
 										'get'      => 'date',
-										'date-format' => 'dd/mm/yy',
-										'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
+										'date-format' => 'dd-mm-yy',
+										'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
 										'validate' => 'date',
 
 									),
@@ -272,8 +293,8 @@ if(class_exists('ANONY__Meta_Box')){
 										'title'    => esc_html__( 'Contract end date', ANONY_TEXTDOM ),
 										'type'     => 'date_time',
 										'get'      => 'date',
-										'date-format' => 'dd/mm/yy',
-										'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
+										'date-format' => 'dd-mm-yy',
+										'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
 										'validate' => 'date',
 									),
 
@@ -284,14 +305,68 @@ if(class_exists('ANONY__Meta_Box')){
 										'validate' => 'no_html',
 									),
 
+
 									array(
 										'id'       => 'anony__contract_value',
 										'title'    => esc_html__( 'Contract value', ANONY_TEXTDOM ),
 										'type'     => 'number',
 										'step'     => '0.01',
-										'validate' => 'no_html',
+										'validate' => 'number',
+									),
+
+									array(
+										'id'       => 'anony__contract_value_after_reduction',
+										'title'    => esc_html__( 'Contract value after reduction', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'step'     => '0.01',
+										'validate' => 'number',
+									),
+
+
+									array(
+										'id'       => 'anony__quantities_reduction',
+										'title'    => esc_html__( 'Quantities reduction', ANONY_TEXTDOM ),
+										'type'     => 'multi_value',
+										'button-text' => esc_html__( 'Add new reduction', ANONY_TEXTDOM ),
+										'fields'   =>
+											[
+												[
+													'type'        => 'number',
+													'validate'    => 'number',
+													'nested-to'   => 'anony__quantities_reduction',
+													'id'          => 'reduction_value',
+													'class'       => 'anony-multi-value reduction_value',
+													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
+												],
+
+												[
+													'type'        => 'date_time',
+													'validate'    => 'date',
+													'get'         => 'date',
+													'date-format' => 'dd-mm-yy',
+													'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
+													'nested-to'   => 'anony__quantities_reduction',
+													'id'          => 'reduction_date',
+													'class'       => 'anony-multi-value',
+													'placeholder' => esc_html__( 'Reduction date', ANONY_TEXTDOM ),
+												],
+
+												[
+													'type'        => 'textarea',
+													'validate'    => 'no_html',
+													'nested-to'   => 'anony__quantities_reduction',
+													'id'          => 'reduction_details',
+													'class'       => 'anony-multi-value',
+													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
+												],
+											],
 									),
 									
+									array(
+										'id'       => 'anony__contract_total_reduction',
+										'type'     => 'hidden',
+									),
+
 									array(
 										'id'       => 'anony__contract_extended',
 										'title'    => esc_html__( 'Contract extension', ANONY_TEXTDOM ),
@@ -312,63 +387,10 @@ if(class_exists('ANONY__Meta_Box')){
 										'id'       => 'anony__contract_end_after_extension',
 										'title'    => esc_html__( 'Contract end date after extension', ANONY_TEXTDOM ),
 										'type'     => 'date_time',
-										'date-format' => 'dd/mm/yy',
-										'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
+										'date-format' => 'dd-mm-yy',
+										'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
 										'get'      => 'date',
 										'validate' => 'date',
-									),
-
-									array(
-										'id'       => 'anony__contract_connected_supply_term',
-										'title'    => esc_html__( 'Contract connected supply term', ANONY_TEXTDOM ),
-										'type'     => 'number',
-										'validate' => 'no_html',
-									),
-
-									array(
-										'id'       => 'anony__contract_ref_number',
-										'title'    => esc_html__( 'Contract reference number', ANONY_TEXTDOM ),
-										'type'     => 'number',
-										'validate' => 'number',
-									),
-
-									array(
-										'id'       => 'anony__quantities_reduction',
-										'title'    => esc_html__( 'Quantities reduction', ANONY_TEXTDOM ),
-										'type'     => 'multi_value',
-										'button-text' => esc_html__( 'Add new reduction', ANONY_TEXTDOM ),
-										'fields'   =>
-											[
-												[
-													'type'        => 'number',
-													'validate'    => 'number',
-													'nested-to'   => 'anony__quantities_reduction',
-													'id'          => 'reduction_value',
-													'class'       => 'anony-multi-value',
-													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
-												],
-
-												[
-													'type'        => 'date_time',
-													'validate'    => 'date',
-													'get'         => 'date',
-													'date-format' => 'dd-mm-yy',
-													'desc' => esc_html__( 'Date format should be dd/mm/yy',ANONY_TEXTDOM ),
-													'nested-to'   => 'anony__quantities_reduction',
-													'id'          => 'reduction_date',
-													'class'       => 'anony-multi-value',
-													'placeholder' => esc_html__( 'Reduction date', ANONY_TEXTDOM ),
-												],
-
-												[
-													'type'        => 'textarea',
-													'validate'    => 'no_html',
-													'nested-to'   => 'anony__quantities_reduction',
-													'id'          => 'reduction_details',
-													'class'       => 'anony-multi-value',
-													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
-												],
-											],
 									),
 
 								)
