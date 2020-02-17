@@ -703,6 +703,31 @@ if(!function_exists('anony_is_active_wpml')){
 		return false;
 	}
 }
+
+
+/**
+ * Get the AJAX url.
+ * **Description: ** Gets the AJAX url and add wpml required query strings for ajax, if WPML plugin is active
+ * @return string AJAX URL.
+ */
+function anony_get_ajax_url(){
+	$ajax_url = admin_url( 'admin-ajax.php' );
+
+	if(anony_is_active_wpml()){
+
+		$wpml_active_lang = apply_filters('wpml_current_language',NULL);
+
+		if($wpml_active_lang){
+
+			$ajax_url = add_query_arg('wp_lang',$wpml_active_lang, $ajax_url);
+			
+
+		}
+
+	}
+	
+	return $ajax_url;
+}
 /**
  *  Active language html class
  *
