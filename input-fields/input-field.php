@@ -9,7 +9,7 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		/**
 		 * @var array An array of inputs that have same HTML markup
 		 */
-		public $mixed_types = ['text','number','email', 'password','url'];
+		public $mixed_types = ['text','number','email', 'password','url', 'hidden'];
 
 		/**
 		 * @var string Field php class name
@@ -64,7 +64,9 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 		 */
 		function __construct($field, $context = 'option', $post_id = null)
 		{
-			$this->options = anony_opts_();
+			global $anonyOptions;
+			
+			$this->options = $anonyOptions;
 
 			$this->field   = $field;
 

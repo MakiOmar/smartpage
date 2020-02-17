@@ -1,5 +1,5 @@
 <?php
-	$anonyOptions = anony_opts_();
+	global $anonyOptions;
 	anony_get_correct_sidebar();
 
 	if(has_action('post_ad')){

@@ -75,6 +75,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		 * @param array $widgets array of widgets to be registered
 		 */
 		public function __construct($menu = array(), $sections = array(), $widgets = array()){
+			global $anonyOptions;
 			
 			$this->menu = $menu;
 
@@ -85,7 +86,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 			$this->OptionGroup = $this->args['opt_name'].'_group';
 			
 			//Obtions object
-			$this->options = anony_opts_();
+			$this->options = $anonyOptions;
 			
 			//Options page sections
 			$this->sections = $sections;

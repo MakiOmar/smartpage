@@ -1,5 +1,5 @@
 <?php
-$anonyOptions = anony_opts_();
+global $anonyOptions;
 
 $socials_follow = array(
 				'facebook' => $anonyOptions->facebook,

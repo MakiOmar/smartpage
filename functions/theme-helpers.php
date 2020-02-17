@@ -5,7 +5,7 @@
  * @return void
  */
 function anony_get_correct_sidebar(){
-	$anonyOptions = anony_opts_();
+	global $anonyOptions;
 
 	if($anonyOptions->sidebar == 'left-sidebar'){
 		get_sidebar();

@@ -30,17 +30,10 @@ function anony_fonts( $type = false ){
 }
 
 
-/**
- * Simple function to instantiate the options object
- * @return object options object
- */
-
-function anony_opts_(){
-	return ANONY__Options_Model::get_instance();
-}
-
 //controls add query strings to scripts/styles
 function anony_control_query_strings($src, $handle){
+	if(is_admin()) return $src;
+
 	global $anonyOptions;
 	
 	//Keep query string for these items
@@ -61,9 +54,10 @@ function anony_control_query_strings($src, $handle){
 /*----------------------------------------------------------------------------------
 *Options hooks
 *---------------------------------------------------------------------------------*/
-$anonyOptions = anony_opts_();
+add_action('wp_head', function(){
 
-add_action('wp_head', function() use($anonyOptions){?>
+	global $anonyOptions;
+?>
 	<style type="text/css">
 		<?php
 			if(is_rtl()){?>
@@ -95,7 +89,9 @@ add_action('wp_head', function() use($anonyOptions){?>
 <?php });
 
 //Show admin bar for only admins
-add_action('after_setup_theme', function() use($anonyOptions){
+add_action('after_setup_theme', function(){
+	global $anonyOptions;
+
 	if ($anonyOptions->admin_bar != '0' && !current_user_can('administrator') && !is_admin()) {
 		
 		show_admin_bar(false);
@@ -104,8 +100,9 @@ add_action('after_setup_theme', function() use($anonyOptions){
 });
 
 //restrict admin access
-add_action( 'init', function() use($anonyOptions){
-	
+add_action( 'init', function(){
+	global $anonyOptions;
+
 	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anonyOptions->not_admin_restricted != '0' ) {
 		
 		wp_redirect( home_url() );
@@ -116,7 +113,8 @@ add_action( 'init', function() use($anonyOptions){
 });
 
 // custom login logo tooltip
-add_filter('login_headertext', function() use($anonyOptions){
+add_filter('login_headertext', function(){
+	global $anonyOptions;
 	if($anonyOptions->change_login_title != '0'){
 		
 		return get_bloginfo();
@@ -137,7 +135,8 @@ add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
  * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
  */
 
-add_action('init', function() use($anonyOptions){
+add_action('init', function(){
+	global $anonyOptions;
 	
 	$anonyADs = array('one', 'two', 'three');
 

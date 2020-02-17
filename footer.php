@@ -1,4 +1,4 @@
-<?php $anonyOptions = anony_opts_();?>
+<?php global $anonyOptions;?>
 
 <footer class="anony-grid-col-md-12 anony-grid-col">
 	<?php 
