@@ -1,7 +1,7 @@
 <?php
 //Theme Scripts
 add_action('admin_enqueue_scripts',function() {
-	$anonyOptions = anony_opts_();
+	
 	$scripts = ['x-omdb-admin'];
 
 	foreach ($scripts as $script) {
