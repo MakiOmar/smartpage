@@ -10,7 +10,7 @@
 require_once('opts.php');
 
 if(get_option(ANONY_OPTIONS)){
-	$anonyOptions = anony_opts_();
+	$anonyOptions = ANONY__Options_Model::get_instance();
 }
 
 // Navigation elements
