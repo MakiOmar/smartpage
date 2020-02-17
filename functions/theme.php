@@ -18,7 +18,7 @@ add_action('after_setup_theme', function(){
 
 //Theme Scripts
 add_action('wp_enqueue_scripts',function() {
-		$anonyOptions = anony_opts_();
+		global $anonyOptions;
 
 		$styles = array('main','font-awesome','responsive','prettyPhoto');
 		foreach($styles as $style){
@@ -181,51 +181,5 @@ function anony_comments_number() {
 		$comments = '<span class="meta-text single-meta-text">'.esc_html__('Comments-off',ANONY_TEXTDOM).'</span>';
 	}
 	return $comments;
-}
-
-/**
- * Checks if wpml plugin is activated.
- *
- * @return bool.
- */
-function anony_is_wpml_active(){
-	$pluginList = get_option( 'active_plugins' );
-	
-	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
-	
-	if ( in_array( $wpml_plugin , $pluginList ) ) {
-		
-		return true;
-		
-	}elseif(function_exists('icl_object_id')){
-		
-		return true;
-		
-	}
-	return false;
-}
-
-/**
- * Get the AJAX url.
- * **Description: ** Gets the AJAX url and add wpml required query strings for ajax, if WPML plugin is active
- * @return string AJAX URL.
- */
-function anony_get_ajax_url(){
-	$ajax_url = admin_url( 'admin-ajax.php' );
-
-	if(anony_is_wpml_active()){
-
-		$wpml_active_lang = apply_filters('wpml_current_language',NULL);
-
-		if($wpml_active_lang){
-
-			$ajax_url = add_query_arg('wp_lang',$wpml_active_lang, $ajax_url);
-			
-
-		}
-
-	}
-	
-	return $ajax_url;
 }
 ?>
