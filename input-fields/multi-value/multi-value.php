@@ -52,6 +52,10 @@ class ANONY__Multi_value{
 		}
 		
 		$html .= '<div class="anony-inputs-row anony-multi-value-flex">';
+		$html .= sprintf(
+					'<input type="hidden" name="%1$s_counter" id="%1$s" value="1"/>',
+					$this->parent->field['id']
+				);
 
 		$html .= sprintf(
 					'<input type="hidden" name="%1$s" id="%2$s" value=""/>',
@@ -73,7 +77,7 @@ class ANONY__Multi_value{
 		}
 
 		$html .= sprintf(
-					'<a href="javascript:void(0);" class="multi-text-btn btn-blue" rel-id="%1$s-ul" rel-name="%2$s[]">%3$s</a>', 
+					'<a href="javascript:void(0);" class="multi-value-btn btn-blue" rel-id="%1$s-ul" rel-name="%2$s[]">%3$s</a>', 
 					$this->parent->field['id'], 
 					$this->parent->input_name, 
 					$buttonText
@@ -92,13 +96,13 @@ class ANONY__Multi_value{
 	 */
 	public function enqueue(){
 		
-		/*wp_enqueue_script(
-			'anony-opts-field-multi-text-js', 
-			ANONY_INPUT_FIELDS_URI.'multi-text/field_multi_text.js',
+		wp_enqueue_script(
+			'anony-opts-field-multi-value-js', 
+			ANONY_INPUT_FIELDS_URI.'multi-value/field_multi_value.js',
 			array('jquery'),
 			time(),
 			true
-		);*/
+		);
 		
 	}
 	
