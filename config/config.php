@@ -11,6 +11,12 @@
  * Define main constants
  *-------------------------------------------------------------*/
 /**
+ * Holds class/functions prefix
+ * @const
+ */
+define('ANONY_PREFIX'    , 'ANONY_');
+
+/**
  * Holds theme's name
  * @const
  */
@@ -146,7 +152,18 @@ define( 'ANONY_CONTENTS_VIEWS', wp_normalize_path (ANONY_CLASSES . '/views/'));
  * Holds a serialized array of all pathes to classes folders
  * @const
  */
-define('ANONY_THEME_AUTOLOADS' ,serialize(array(ANONY_CLASSES, ANONY_METABOXES, ANONY_CUSTOM_FIELDS, ANONY_CONTENTS_VIEWS, ANONY_INPUT_FIELDS)));
+define(
+	'ANONY_THEME_AUTOLOADS',
+	serialize(
+		[
+			ANONY_CLASSES,
+			ANONY_METABOXES,
+			ANONY_CUSTOM_FIELDS,
+			ANONY_CONTENTS_VIEWS,
+			ANONY_INPUT_FIELDS,
+		]
+	)
+);
 
 /*
 *Classes Auto loader
@@ -161,23 +178,25 @@ spl_autoload_register( 'anony_theme_autoloader' );
  * @return void
  */
 function anony_theme_autoloader( $class_name ) {
-	if ( false !== strpos( $class_name, '__' )) {
-		$class_name = preg_replace('/\w+__/', '', strtolower($class_name));
-
-		$class_name  = str_replace('_', '-', $class_name);
+	if ( false !== strpos( $class_name, ANONY_PREFIX )) {
+		$class_name = strtolower(preg_replace('/'.ANONY_PREFIX.'/', '', $class_name));
+		
+		$class_name = str_replace('_', '-', $class_name);
 
 		foreach(unserialize( ANONY_THEME_AUTOLOADS ) as $path){
+			
 			$class_file = wp_normalize_path($path) .$class_name . '.php';
+
 			if(file_exists($class_file)){
 				require_once($class_file);
 			}else{
 				$class_file = wp_normalize_path($path) .$class_name .'/' .$class_name . '.php';
-
 				if(file_exists($class_file)){
 					require_once($class_file);
 				}
 			}
 
+			
 			
 		}
 		
@@ -254,9 +273,11 @@ spl_autoload_register( 'anony_opts_autoloader' );
  */
 function anony_opts_autoloader( $class_name ) {
 	
-	if ( false !== strpos( $class_name, '__' )) {
+	if ( false !== strpos( $class_name, ANONY_PREFIX )) {
 		
-		$class_name = preg_replace('/\w+__/', '', strtolower($class_name));
+		$class_name = strtolower(preg_replace('/'.ANONY_PREFIX.'/', '', $class_name));
+		
+		$class_name = str_replace('_', '-', $class_name);
 		
 		foreach(unserialize( ANONY_OPTIONS_AUTOLOADS ) as $path){
 			
