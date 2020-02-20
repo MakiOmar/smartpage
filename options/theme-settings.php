@@ -7,8 +7,8 @@
  * @link http://makiomar.com
  */
 
-if (!class_exists('ANONY__Theme_Settings')) {
-	class ANONY__Theme_Settings{
+if (!class_exists('ANONY_Theme_Settings')) {
+	class ANONY_Theme_Settings{
 		
 		/**
 		 * @var array Array of input fields errors. array('field_id' => 'error')
@@ -41,7 +41,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 		public $widgets = array();
 
 		/**
-		 * @var object Holds an object from ANONY__Options_Model
+		 * @var object Holds an object from ANONY_Options_Model
 		 */
 		public $options;
 
@@ -311,7 +311,7 @@ if (!class_exists('ANONY__Theme_Settings')) {
 					];
 				if(in_array($field['type'], $array)){
 					
-					$render_field = new ANONY__Input_Field($field);
+					$render_field = new ANONY_Input_Field($field);
 
 					$render_field->field_init();
 				}else{

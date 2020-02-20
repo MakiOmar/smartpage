@@ -7,8 +7,8 @@
  * @link http://makiomar.com
  */
 
-if ( ! class_exists( 'ANONY__Sidebar_Ad' ) ) {
-class ANONY__Sidebar_Ad extends WP_Widget{
+if ( ! class_exists( 'ANONY_Sidebar_Ad' ) ) {
+class ANONY_Sidebar_Ad extends WP_Widget{
 	
 	/**
 	 * Constructor
