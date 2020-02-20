@@ -11,7 +11,7 @@
 /**
  * This field uses the Farbtastic color picker.
  */
-class ANONY__Color_Farbtastic{
+class ANONY_Color_farbtastic{
 	
 	/**
 	 * Color field Constructor.

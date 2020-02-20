@@ -13,9 +13,9 @@
 add_action('widgets_init', function (){
 	
 	$reg_widgets = array(
-		'ANONY__Cats_Widget',
-		'ANONY__Related_Posts_Widget',
-		'ANONY__Posts_Widget',
+		'ANONY_Cats_Widget',
+		'ANONY_Related_Posts_Widget',
+		'ANONY_Posts_Widget',
 	);
 	
 	foreach($reg_widgets as $reg_widget){

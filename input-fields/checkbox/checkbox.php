@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Checkbox
+class ANONY_Checkbox
 {
 	public $parent;
 	/**

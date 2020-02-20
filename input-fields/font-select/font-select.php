@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Font_select{	
+class ANONY_Font_select{	
 	
 	/**
 	 * Color field Constructor.

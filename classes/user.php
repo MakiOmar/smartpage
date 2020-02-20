@@ -7,9 +7,9 @@
  * @link http://makiomar.com
  */
 
-if(!class_exists('ANONY__User')){
+if(!class_exists('ANONY_User')){
 
-	class ANONY__User{
+	class ANONY_User{
 
 		/**
 		 * @var object An object of wpdb class

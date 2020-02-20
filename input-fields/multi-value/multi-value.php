@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Multi_value{	
+class ANONY_Multi_value{	
 	
 	/**
 	 * Color field Constructor.
@@ -64,7 +64,7 @@ class ANONY__Multi_value{
 				);
 
 		foreach ($this->parent->field['fields'] as $nested_field) {
-			$render_field = new ANONY__Input_Field($nested_field, 'meta', $this->parent->post_id);
+			$render_field = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id);
 			ob_start();
 
 			$render_field->field_init();

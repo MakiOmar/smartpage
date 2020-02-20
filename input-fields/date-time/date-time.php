@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Date_time{	
+class ANONY_Date_time{	
 	
 	/**
 	 * Field Constructor.

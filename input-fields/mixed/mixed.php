@@ -8,7 +8,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Mixed{	
+class ANONY_Mixed{	
 	
 	/**
 	 * Color field Constructor.

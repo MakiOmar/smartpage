@@ -6,7 +6,7 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-class ANONY__Color_gradient_farbtastic{	
+class ANONY_Color_gradient_farbtastic{	
 	
 	/**
 	 * Field Constructor.

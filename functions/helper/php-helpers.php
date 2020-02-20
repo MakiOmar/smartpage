@@ -6,7 +6,7 @@
  * @param int    $length 
  * @return string
  */
- if(!function_exists('anony_slice_text')){
+if(!function_exists('anony_slice_text')){
 	 function anony_slice_text($text, $length){
 
 		$words = str_word_count($text, 1);
@@ -18,27 +18,27 @@
  }
 
 
-/*
-* Remove script tags with REGEX.
-*
-* @param string $string String to be cleaned
-* @return string Cleaned string
-*/
+/**
+ * Remove script tags with REGEX.
+ *
+ * @param string $string String to be cleaned
+ * @return string Cleaned string
+ */
 if(!function_exists('anony_remove_script_tag_regex')){
 	function anony_remove_script_tag_regex($string){
 		return preg_replace('#<script(.*?)>(.*?)</script>#mis', '', $string);
 	}
 }
-/*
-* Remove specific tags with DOMDocument.
-*
-* **Description: ** Will remove all supplied tags and automatically remove DOCTYPE, body and html.
-*
-* @param string $html String to be cleaned
-* @param array|string $remove Tag or array of tags to be removed
-* @param boolean If <code>true</code> removes DOCTYPE, body and html automatically. default <code>true</code>
-* @return string Cleaned string
-*/
+/**
+ * Remove specific tags with DOMDocument.
+ *
+ * **Description: ** Will remove all supplied tags and automatically remove DOCTYPE, body and html.
+ *
+ * @param string $html String to be cleaned
+ * @param array|string $remove Tag or array of tags to be removed
+ * @param boolean If <code>true</code> removes DOCTYPE, body and html automatically. default <code>true</code>
+ * @return string Cleaned string
+ */
 if(!function_exists('anony_remove_tags_dom')){
 	function anony_remove_tags_dom($html, $remove, $cleanest = true){
 		$dom = new DOMDocument();
@@ -68,11 +68,11 @@ if(!function_exists('anony_remove_tags_dom')){
 		return $html;
 	}
 }
-/*
-*Generate Path
-*@param array  An array of folders tree
-*@return string Requied path
-*/
+/**
+ * Generate Path
+ * @param array  An array of folders tree
+ * @return string Requied path
+ */
 if(!function_exists('abstracted_generate_path')){
 	function abstracted_generate_path($dir_tree){
 		$path = '';
@@ -88,9 +88,9 @@ if(!function_exists('abstracted_generate_path')){
 		return $path;
 	}
 }
-/*
-*Check if link exists
-*/
+/**
+ * Check if link exists
+ */
 if(!function_exists('abstracted_is_link_exist')){
 	function abstracted_is_link_exist($url){
 		$file_headers = @get_headers($url);
@@ -102,11 +102,11 @@ if(!function_exists('abstracted_is_link_exist')){
 	}
 }
 
-/*
-*Check if checkbox is checked in a form
-*/
+/**
+ * Check if checkbox is checked in a form
+ */
 if(!function_exists('abstracted_is_checked')){
-function abstracted_is_checked($chkname,$value)
+	function abstracted_is_checked($chkname,$value)
     {
         if(!empty($_POST[$chkname]))
         {
@@ -134,6 +134,7 @@ if(!function_exists('nvd')){
 		
 	}
 }
+
 if(!function_exists('npr')){
 	function npr($array){
 		echo '<pre dir="ltr">';
@@ -142,7 +143,7 @@ if(!function_exists('npr')){
 	}
 }
 
-/*
+/**
  *  Check if an array is a multidimensional array.
  *
  *  @param   array   $arr  The array to check
@@ -309,9 +310,9 @@ if(!function_exists('hfx_calculate_transient')){
 
 }
 
-/*
-*Checks if a url exists
-*/
+/**
+ * Checks if a url exists
+ */
 if(!function_exists('is_url_exist')){
 	function is_url_exist($url){
 		$ch = curl_init($url);    

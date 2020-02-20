@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Multi_text{	
+class ANONY_Multi_text{	
 	
 	/**
 	 * Color field Constructor.

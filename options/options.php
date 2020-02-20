@@ -10,7 +10,7 @@
 require_once('opts.php');
 
 if(get_option(ANONY_OPTIONS)){
-	$anonyOptions = ANONY__Options_Model::get_instance();
+	$anonyOptions = ANONY_Options_Model::get_instance();
 }
 
 // Navigation elements
@@ -552,6 +552,6 @@ $sections['miscellanous']= array(
 					)
 );
 
-$widgets = array('ANONY__Sidebar_Ad');
+$widgets = array('ANONY_Sidebar_Ad');
 
-$Anony_Options = new ANONY__Theme_Settings( $options_nav, $sections, $widgets );
+$Anony_Options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );

@@ -6,7 +6,7 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-class ANONY__Info{	
+class ANONY_Info{	
 	
 	/**
 	 * Color field Constructor.

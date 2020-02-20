@@ -8,7 +8,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Div{	
+class ANONY_Div{	
 	
 	/**
 	 * Color field Constructor.

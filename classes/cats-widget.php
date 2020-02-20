@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'ANONY__Cats_Widget' ) ) {
-	class ANONY__Cats_Widget extends WP_Widget{
+if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
+	class ANONY_Cats_Widget extends WP_Widget{
 		public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays an organized dropdown list of your categories',ANONY_TEXTDOM),
 				'name' => esc_html__('Anonymous categories',ANONY_TEXTDOM)
 			);
-			parent::__construct('ANONY__Cats_Widget','',$parms);
+			parent::__construct('ANONY_Cats_Widget','',$parms);
 		}
 		public function form($instance){
 			extract($instance);?>
@@ -36,7 +36,7 @@ if ( ! class_exists( 'ANONY__Cats_Widget' ) ) {
 					'hide_empty' => 0,
 					'title_li' => '',
 					'order'=> 'DESC',
-					'walker' => new ANONY__Cats_Walk()
+					'walker' => new ANONY_Cats_Walk()
 				   );
 			
 					wp_list_categories($args);

@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY_optf__Select extends ANONY__Theme_Settings{	
+class ANONY_optf__Select extends ANONY_Theme_Settings{	
 	
 	/**
 	 * Color field Constructor.

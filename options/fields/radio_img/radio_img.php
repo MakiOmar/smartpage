@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY_optf__Radio_img extends ANONY__Theme_Settings{	
+class ANONY_optf__Radio_img extends ANONY_Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

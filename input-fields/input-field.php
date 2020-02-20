@@ -1,10 +1,10 @@
 <?php
 
-if( ! class_exists( 'ANONY__Input_Field' )){
+if( ! class_exists( 'ANONY_Input_Field' )){
 	/**
 	 * A class that renders input fields according to context
 	 */
-	class ANONY__Input_Field
+	class ANONY_Input_Field
 	{
 		/**
 		 * @var array An array of inputs that have same HTML markup
@@ -148,10 +148,11 @@ if( ! class_exists( 'ANONY__Input_Field' )){
 				//Static class name for inputs that have same HTML markup
 				if(in_array($this->field['type'], $this->mixed_types))
 				{
-					$this->field_class = 'ANONY__Mixed';
+					$this->field_class = ANONY_PREFIX.'Mixed';
 				}else
 				{
-					$this->field_class = 'ANONY__'.ucfirst($this->field['type']);
+					$this->field_class = ANONY_PREFIX.ucfirst($this->field['type']);
+
 				}
 				
 			}

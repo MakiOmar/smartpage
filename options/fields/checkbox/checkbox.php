@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY_optf__Checkbox extends ANONY__Theme_Settings{	
+class ANONY_optf__Checkbox extends ANONY_Theme_Settings{	
 	
 	/**
 	 * Checkbox field Constructor.

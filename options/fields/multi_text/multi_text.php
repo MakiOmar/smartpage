@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY_optf__Multi_text extends ANONY__Theme_Settings{	
+class ANONY_optf__Multi_text extends ANONY_Theme_Settings{	
 	
 	/**
 	 * Field Constructor.

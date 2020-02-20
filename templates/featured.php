@@ -36,7 +36,7 @@ if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_ca
 }	
 
 
-$fc= new ANONY__Generate_Posts_View(
+$fc= new ANONY_Generate_Posts_View(
 					$args,
 					'featured',
 					true

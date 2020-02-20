@@ -4,7 +4,7 @@
  *
  * This color input depends on wp-color-picker
  */
-class ANONY__Color_gradient{
+class ANONY_Color_gradient{
 	
 	//Consructor
 	public function __construct($parent = NULL ){

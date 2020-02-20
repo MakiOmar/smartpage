@@ -6,7 +6,7 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-class ANONY_optf__Sliderbar extends ANONY__Theme_Settings{	
+class ANONY_optf__Sliderbar extends ANONY_Theme_Settings{	
 	
 	
 	/**

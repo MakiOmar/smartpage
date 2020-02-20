@@ -1,5 +1,5 @@
-<?php if ( ! class_exists( 'ANONY__Cats_Walk' ) ) {
-	class ANONY__Cats_Walk extends Walker_Category {
+<?php if ( ! class_exists( 'ANONY_Cats_Walk' ) ) {
+	class ANONY_Cats_Walk extends Walker_Category {
 		public $tree_type = 'category';
 				/**
 				 * Start Level.

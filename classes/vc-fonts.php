@@ -1,6 +1,6 @@
 <?php
-if (!class_exists('ANONY__VC_Fonts')) {
-    class ANONY__VC_Fonts{
+if (!class_exists('ANONY_VC_Fonts')) {
+    class ANONY_VC_Fonts{
         /**
          * @var string
          */
@@ -161,5 +161,5 @@ $vc_font_lib = [
 ];
 
 
-$vc_fonts = new ANONY__VC_Fonts ( $vc_font_lib);
+$vc_fonts = new ANONY_VC_Fonts ( $vc_font_lib);
 */

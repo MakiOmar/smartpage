@@ -11,7 +11,7 @@
 /**
  * This field uses the WP color picker.
  */
-class ANONY__Color{
+class ANONY_Color{
 	
 	/**
 	 * Color field Constructor.

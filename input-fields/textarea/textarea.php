@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-class ANONY__Textarea{
+class ANONY_Textarea{
 	/**
 	 * Color field Constructor.
 	 * @param object $parent Field parent object

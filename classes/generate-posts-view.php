@@ -1,5 +1,5 @@
 <?php
-class ANONY__Generate_Posts_View{
+class ANONY_Generate_Posts_View{
 
 	/*
 	*@var  string  $postsTemplate  the posts template 

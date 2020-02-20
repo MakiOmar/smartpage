@@ -1,11 +1,11 @@
 <?php
-class ANONY__Posts_Widget extends WP_Widget {
+class ANONY_Posts_Widget extends WP_Widget {
 public function __construct(){
 			$parms = array(
 				'description' => esc_html__('Displays posts by post type',ANONY_TEXTDOM),
 				'name' => esc_html__('Anonymous posts',ANONY_TEXTDOM)
 			);
-			parent::__construct('ANONY__Posts_Widget','',$parms);
+			parent::__construct('ANONY_Posts_Widget','',$parms);
 		}
 		public function form($instance){
 			extract($instance);
