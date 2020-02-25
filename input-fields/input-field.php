@@ -178,6 +178,8 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 				$field->render();
 				
 
+			}else{
+				printf(esc_html__('%s class doesn\'t exist'),$this->field_class);
 			}
 		}
 
