@@ -27,6 +27,7 @@ $anonylibs = [
 	'media'     		  =>'',
 	'widgets'     		  =>'',
 	'db'        		  =>'',
+	'mail'        		  =>'',
 	'ajax-comments'       =>'ajax' . ANONY_DIRS,
 	'tinymce-editor-btns' =>'mce' . ANONY_DIRS,
 ];
