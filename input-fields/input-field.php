@@ -172,9 +172,6 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 
 				$field = new $field_class($this);
 
-				if($this->context == 'meta'){
-					wp_nonce_field( $this->field['id'].'_action', $this->field['id'].'_nonce', false );
-				}
 				$field->render();
 				
 
