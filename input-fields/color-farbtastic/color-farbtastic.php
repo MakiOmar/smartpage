@@ -79,7 +79,7 @@ class ANONY_Color_farbtastic{
 
 		$html .= '</fieldset>';
 
-		echo $html;
+		return $html;
 	}
 	
 	/**

@@ -52,7 +52,7 @@ class ANONY_Div{
 		
 		$html .= '</fieldset>';
 
-		echo $html;
+		return $html;
 		
 	}
 	

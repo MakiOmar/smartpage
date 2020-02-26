@@ -125,7 +125,7 @@ class ANONY_Color_gradient_farbtastic{
 		
 		$html .= '</div>';
 
-		echo $html;
+		return $html;
 		
 	}//function
 	

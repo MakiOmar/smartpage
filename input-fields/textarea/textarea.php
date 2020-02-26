@@ -65,7 +65,7 @@ class ANONY_Textarea{
 		
 		$html	.= '</fieldset>';
 		
-		echo $html;
+		return $html;
 
 	}
 } 

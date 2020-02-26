@@ -85,7 +85,7 @@ class ANONY_Checkbox
 
 		$html	.= '</fieldset>';
 
-		echo $html;
+		return $html;
 	}
 
 

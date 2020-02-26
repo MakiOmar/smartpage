@@ -109,7 +109,7 @@ class ANONY_Multi_text{
 
 		$html .= '</fieldset>';	
 
-		echo $html;
+		return $html;
 	}
 	
 	

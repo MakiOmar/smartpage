@@ -64,7 +64,7 @@ class ANONY_Color{
 		
 		$html	.= '</fieldset>';
 
-		echo $html;
+		return $html;
 	}
 	
 	/**

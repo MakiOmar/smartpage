@@ -93,7 +93,7 @@ class ANONY_Mixed{
 
 		$html .= '</fieldset>';
 
-		echo $html;
+		return $html;
 		
 	}
 	

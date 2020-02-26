@@ -83,7 +83,7 @@ class ANONY_Date_time{
 
 		$html .= '<div></fieldset>';
 
-		echo $html;
+		return $html;
 		
 	}
 

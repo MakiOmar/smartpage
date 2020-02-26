@@ -79,7 +79,7 @@ class ANONY_Color_gradient{
 		
 		$html	.= '</fieldset>';
 
-        echo $html;
+        return $html;
 		
 	}
 	

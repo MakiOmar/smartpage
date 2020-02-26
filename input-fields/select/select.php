@@ -106,7 +106,7 @@ class ANONY_Select{
 
 		$html .= '</fieldset>';
 		
-		echo  $html;
+		return $html;
 	}
 	
 }

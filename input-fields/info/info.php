@@ -27,7 +27,7 @@ class ANONY_Info{
 	 */
 	public function render( $meta = false ){
 		if( key_exists('desc', $this->parent->field) ){
-			echo '<p class="description" style="margin-left:-220px;">'.$this->parent->field['desc'].'</p>';
+			return '<p class="description" style="margin-left:-220px;">'.$this->parent->field['desc'].'</p>';
 		}
 	}
 	

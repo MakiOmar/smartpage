@@ -65,7 +65,7 @@ class ANONY_Font_select{
 		
 		$html .= '</fieldset>';
 
-		echo $html;
+		return $html;
 	}
 	
 }

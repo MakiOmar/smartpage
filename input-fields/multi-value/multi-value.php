@@ -65,15 +65,8 @@ class ANONY_Multi_value{
 
 		foreach ($this->parent->field['fields'] as $nested_field) {
 			$render_field = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id);
-			ob_start();
 
-			$render_field->field_init();
-
-			$var = ob_get_contents();
-
-			ob_end_clean();
-
-			$html .= $var;
+			$html .= $render_field->field_init();
 		}
 
 		$html .= sprintf(
@@ -87,7 +80,7 @@ class ANONY_Multi_value{
 
 		$html .= '<div></fieldset>';	
 
-		echo $html;
+		return $html;
 	}
 	
 	
