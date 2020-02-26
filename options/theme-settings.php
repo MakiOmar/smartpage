@@ -313,7 +313,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					
 					$render_field = new ANONY_Input_Field($field);
 
-					$render_field->field_init();
+					echo $render_field->field_init();
 				}else{
 					$field_class = 'ANONY_optf__'.ucfirst($field['type']);
 
