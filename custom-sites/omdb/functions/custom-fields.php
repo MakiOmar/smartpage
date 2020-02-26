@@ -8,11 +8,11 @@
  */
 
 //Array of metaboxes to register
-//id should be equal to title without the anony__ and underscores
+//id should be equal to title without the anony_ and underscores
 
-if(class_exists('ANONY__Meta_Box')){
-	add_action('init', function(){
-		$transmission_line = array(
+add_filter('anony_metaboxes', function($metaboxes){
+	$metaboxes[] = 
+		[
 			/*Any meta box ID should start with anony-meta- to have correct style*/
 			'id'            => 'anony-tranasmission-line-details',//Meta box ID
 			'title'         => esc_html__( 'Tranasmission line Details', ANONY_TEXTDOM ),
@@ -66,15 +66,12 @@ if(class_exists('ANONY__Meta_Box')){
 											'pvc'      => 'PVC',
 											'upvc'     => 'UPVC',
 										],
-									),
+									)
 								)
-		);
+		];
 
-		//Custom fields object
-		$transmission_lineMetaboxes = new ANONY__Meta_Box($transmission_line);
-	/*--------------------------------------------------------------------------*/	
-		
-		$reservoirs = array(
+	$metaboxes[] =
+		[
 			/*Any meta box ID should start with anony-meta- to have correct style*/
 			'id'            => 'anony-reservoir-details',//Meta box ID
 			'title'         => esc_html__( 'Reservoir Details', ANONY_TEXTDOM ),
@@ -146,13 +143,11 @@ if(class_exists('ANONY__Meta_Box')){
 										],
 									),
 								)
-		);
-
-		//Custom fields object
-		$reservoirMetaboxe = new ANONY__Meta_Box($reservoirs);
-	/*--------------------------------------------------------------------------------*/
 		
-		$dams = array(
+		];
+
+	$metaboxes[] =
+		[
 			/*Any meta box ID should start with anony-meta- to have correct style*/
 			'id'            => 'anony-dam-details',//Meta box ID
 			'title'         => esc_html__( 'Dam Details', ANONY_TEXTDOM ),
@@ -226,13 +221,10 @@ if(class_exists('ANONY__Meta_Box')){
 										],
 									),
 								)
-		);
+		];
 
-		//Custom fields object
-		$damsMetaboxe = new ANONY__Meta_Box($dams);
-	/*--------------------------------------------------------------------------------*/
-
-		$contracts = array(
+	$metaboxes[] = 
+		[
 			/*Any meta box ID should start with anony-meta- to have correct style*/
 			'id'            => 'anony-contract-details',//Meta box ID
 			'title'         => esc_html__( 'Contract Details', ANONY_TEXTDOM ),
@@ -394,9 +386,7 @@ if(class_exists('ANONY__Meta_Box')){
 									),
 
 								)
-		);
+		];
 
-		//Custom fields object
-		$contractsMetaboxe = new ANONY__Meta_Box($contracts);
-	});
-}
+	return $metaboxes;
+});
