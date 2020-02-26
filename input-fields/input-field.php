@@ -172,7 +172,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 
 				$field = new $field_class($this);
 
-				$field->render();
+				return $field->render();
 				
 
 			}else{
