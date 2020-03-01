@@ -49,6 +49,29 @@ class ANONY_Mixed{
 	public function render(){
 
 		$placeholder = (isset($this->parent->field['placeholder'])) ? 'placeholder="'.$this->parent->field['placeholder'].'"' : '';
+
+		if($this->parent->field['type'] == 'number'){
+
+			$step = ( isset($this->parent->field['step']) && !empty($this->parent->field['step']) ) ? $this->parent->field['step']: 'step="0.01"';
+
+			$lang = 'lang="en-EN"';
+
+			$lang = ( isset($this->parent->field['lang']) && !empty($this->parent->field['lang']) ) ? $this->parent->field['lang'] : $lang;
+		}
+
+		if ($this->parent->as_template) {
+			$html  = sprintf(
+					'<input  type="%1$s" name="%2$s" class="%3$s" %4$s %5$s %6$s/>', 
+					$this->parent->field['type'],
+					$this->parent->input_name, 
+					$this->parent->class_attr,
+					isset($step) ? ' '.$step : '',
+					isset($lang) ? ' '.$lang : '',
+					$placeholder
+				 );
+
+			return $html;
+		}
 		
 		$html = sprintf( 
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s"%2$s>', 
@@ -68,14 +91,7 @@ class ANONY_Mixed{
 					);
 		}
 		
-		if($this->parent->field['type'] == 'number'){
-
-			$step = ( isset($this->parent->field['step']) && !empty($this->parent->field['step']) ) ? $this->parent->field['step']: 'step="0.01"';
-
-			$lang = 'lang="en-EN"';
-
-			$lang = ( isset($this->parent->field['lang']) && !empty($this->parent->field['lang']) ) ? $this->parent->field['lang'] : $lang;
-		}
+		
 
 		$html  .= sprintf(
 					'<input id="%1$s" type="%2$s" name="%3$s" value="%4$s" class="%5$s" %6$s %7$s %8$s/>', 

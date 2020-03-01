@@ -39,7 +39,18 @@ class ANONY_Textarea{
 		
 		$rows  = isset( $this->parent->field['rows'] ) ? $this->parent->field['rows'] : 5;		
 		
-		
+		if ($this->parent->as_template) {
+			$html  = sprintf( 
+						'<textarea class="%1$s" rows="'.$rows.'" cols="'.$cols.'" name="%2$s" %3$s %4$s %5$s></textarea>', 
+						$class,
+						$this->parent->input_name, 
+						$readonly,
+						$disabled,
+						$placeholder
+					);
+
+			return $html;
+		}
 		
 		$html	= sprintf( 
 						'<fieldset class="anony-row" id="fieldset_%1$s">', 
@@ -54,7 +65,7 @@ class ANONY_Textarea{
 		}
 
 		$html  .= sprintf( 
-						'<textarea class="anony-%1$s" rows="'.$rows.'" cols="'.$cols.'" id="%2$s" name="%2$s" %3$s %4$s %5$s>%6$s</textarea>', 
+						'<textarea class="%1$s" rows="'.$rows.'" cols="'.$cols.'" id="%2$s" name="%2$s" %3$s %4$s %5$s>%6$s</textarea>', 
 						$class,
 						$this->parent->input_name, 
 						$readonly,
