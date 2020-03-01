@@ -57,24 +57,31 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		public $class_attr;
 
 		/**
+		 * @var bool Wheather field will be used as template or real input
+		 */
+		public $as_template;
+
+		/**
 		 * Inpud field constructor That decides field context
 		 * @param array    $field    An array of field's data
 		 * @param string   $context  The context of where the field is used
 		 * @param int|null $post_id  Should be an integer if the context is meta box
 		 */
-		function __construct($field, $context = 'option', $post_id = null)
+		function __construct($field, $context = 'option', $post_id = null, $as_template = false)
 		{
 			global $anonyOptions;
+
+			$this->as_template = $as_template;
 			
-			$this->options = $anonyOptions;
+			$this->options     = $anonyOptions;
 
-			$this->field   = $field;
+			$this->field       = $field;
 
-			$this->post_id = $post_id;
+			$this->post_id     = $post_id;
 
-			$this->context = $context;
+			$this->context     = $context;
 
-			$this->default = isset($this->field['default']) ? $this->field['default'] : '';
+			$this->default     = isset($this->field['default']) ? $this->field['default'] : '';
 
 			$this->class_attr  = ( isset($this->field['class']) ) ? $this->field['class'] : 'anony-input-field';
 
@@ -119,7 +126,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		 * Set metabox field data
 		 */
 		public function meta_field_data(){
-			$this->input_name = isset($this->field['nested-to'])  ? $this->field['nested-to'].'['.$this->field['id'].']' : $this->field['id'];
+			$this->input_name = isset($this->field['nested-to'])  ? $this->field['nested-to'].'[0]'.'['.$this->field['id'].']' : $this->field['id'];
 
 			$single = (isset($this->field['multiple']) && $this->field['multiple']) ? false : true;
 			
