@@ -31,7 +31,7 @@ add_action( 'admin_enqueue_scripts', function() {
 			
 		}
 
-		$scripts = array('anony-admin');
+		$scripts = array('anony-admin', 'jquery.helpme');
 	
 			foreach($scripts as $script){
 				
