@@ -112,3 +112,71 @@ add_filter( 'anony_taxonomy_posts', function($anony_tax_posts){
 add_filter( 'anony_project_supports', function($support){
 	return ['title'];
 });
+
+
+/**
+ * change publish meta box location
+ */
+add_action( 'do_meta_boxes', function() {
+
+	$metaboxes = [
+		'submitdiv' => [
+			'title'           => esc_html__( 'Publish' ),
+			'screen'          => ['contract'],
+			'current_context' => 'side',
+			'new_context'     => 'normal',
+			'preiority'       => 'low',
+		],
+
+		'formatdiv' => [
+			'title'           => esc_html__( 'Post format' ),
+			'screen'          => ['contract'],
+			'current_context' => 'side',
+			'new_context'     => 'normal',
+			'preiority'       => 'low',
+		],
+
+		'authoritydiv' => [
+			'title'           => esc_html__( 'Authority' ),
+			'screen'          => ['contract'],
+			'current_context' => 'side',
+			'new_context'     => 'normal',
+			'preiority'       => 'low',
+		],
+
+		'project_fielddiv' => [
+			'title'           => esc_html__( 'Project field' ),
+			'screen'          => ['contract'],
+			'current_context' => 'side',
+			'new_context'     => 'normal',
+			'preiority'       => 'low',
+		],
+
+		'pageparentdiv' => [
+			'title'           => esc_html__( 'Page attributes' ),
+			'screen'          => ['contract'],
+			'current_context' => 'side',
+			'new_context'     => 'normal',
+			'preiority'       => 'low',
+		],
+	];
+
+	foreach ($metaboxes as $id => $metabox) {
+		remove_meta_box( $id, $metabox['screen'], $metabox['current_context'] );
+
+    	add_meta_box( 
+    		$id,
+    		$metabox['title'],
+    		'post_submit_meta_box',
+    		$metabox['screen'],
+    		$metabox['new_context'],
+    		$metabox['preiority']
+    	);
+	}
+    
+    remove_meta_box('postcustom', ['contract'], 'normal' );
+    remove_meta_box('commentstatusdiv', ['contract'], 'normal' );
+    remove_meta_box('commentsdiv', ['contract'], 'normal' );
+
+
+} );
