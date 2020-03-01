@@ -51,10 +51,24 @@ class ANONY_Date_time{
 
 		$placeholder = isset($this->parent->field['placeholder']) ? ' placeholder="'.$this->parent->field['placeholder'].'"' : ' placeholder="'.$this->parent->field['title'].'"';
 
+		if ($this->parent->as_template) {
+			$html =  sprintf(
+					'<input type="text" name="%1$s" class="anony-%2$s %3$s"%4$s/>',
+					$this->parent->input_name,
+					$this->parent->field['id'],
+					$this->parent->class_attr, 
+					$placeholder
+				);
+
+			return $html;
+		}
+
 		$html = sprintf( 
 					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
 					$this->parent->field['id'] 
 				);
+
+
 		if($this->parent->context == 'meta' && isset($this->parent->field['title'])){
 			$html .= sprintf( 
 						'<label class="anony-label" for="%1$s">%2$s</label>', 
@@ -71,7 +85,7 @@ class ANONY_Date_time{
 
 		
 		$html .=  sprintf(
-					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="%4$s"%5$s/>',
+					'<input type="text" name="%1$s" id="anony-%2$s" value="%3$s" class="anony-%2$s %4$s"%5$s/>',
 					$this->parent->input_name, 
 					$this->parent->field['id'], 
 					$this->parent->value, 
@@ -108,24 +122,44 @@ class ANONY_Date_time{
     /**
      * Add date/time picker footer scripts
      */
-    public function footer_scripts(){
-    	global $hook_suffix;?>
-			<script type="text/javascript">
-				jQuery(document).ready(function($){
-					//$this->get?>picker will be translated as timepicker , datepicker or datetimepicker
-				    $(<?php echo '"#anony-'.$this->parent->field['id'].'"' ?>).<?php echo $this->get?>picker({
-				    	<?php 
-				    		//Options for datetime picker
-				    		foreach ($this->picker_options as $key => $value) {
-				    			echo $key . ':' . '"' . $value . '",';
-				    		}
+    public function footer_scripts(){?>
 
-				    	 ;?>
-				        
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				var fieldClass = <?php echo '".anony-'.$this->parent->field['id'].'"' ?>;
+
+				<?php if(isset($this->parent->field['nested-to'])){?>
+					var nestedTo   = <?php echo '".'.$this->parent->field['nested-to'].'-wrapper"' ?>;
+				<?php } ?>
+
+				$.fn.<?php echo $this->parent->field['id'] ?> = function(){
+					//$this->get?>picker will be translated as timepicker , datepicker or datetimepicker
+				    $(fieldClass).each(function(){
+				    	var currentDate = $(this);
+				    	currentDate.<?php echo $this->get?>picker({
+					    	<?php 
+					    		//Options for datetime picker
+					    		foreach ($this->picker_options as $key => $value) {
+					    			echo $key . ':' . '"' . $value . '",';
+					    		}
+
+					    	 ;?>
+					        
+					    });
 				    });
-				});
-			</script>
-			<?php
+				};
+				
+				$.fn.<?php echo $this->parent->field['id'] ?>();
+
+				//$.fn.AnonyObserve is defined here (assets/js/jquery.helpme.js)
+				if (typeof nestedTo !== 'undefined') {
+				    $.fn.AnonyObserve(nestedTo, function(){
+				    	$.fn.<?php echo $this->parent->field['id'] ?>();
+					});
+				}
+			});
+		</script>
+		<?php
     }
 	
 }
