@@ -51,10 +51,9 @@ class ANONY_Multi_value{
 					);
 		}
 		
-		$html .= '<div class="anony-inputs-row anony-multi-value-flex">';
 		$html .= sprintf(
-					'<input type="hidden" name="%1$s_counter" id="%1$s" value="1"/>',
-					$this->parent->field['id']
+					'<div id="%1$s-wrapper" class="anony-inputs-row %1$s-wrapper anony-multi-value-flex">',
+					 $this->parent->input_name
 				);
 
 		$html .= sprintf(
@@ -65,22 +64,45 @@ class ANONY_Multi_value{
 
 		foreach ($this->parent->field['fields'] as $nested_field) {
 			$render_field = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id);
+			$html    .= $render_field->field_init();
 
-			$html .= $render_field->field_init();
 		}
 
+		
+		$default = sprintf('<script id = "%s-default" type="text/template">', $this->parent->field['id']);
+
+		$default .= sprintf(
+					'<div class="anony-inputs-row %1$s-template anony-multi-value-flex">',
+					 $this->parent->input_name
+				);
+
+		foreach ($this->parent->field['fields'] as $nested_field) {
+
+			//render default template. Passed true as fourth parameter to ANONY_Input_Field
+			$render_default = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id, true);
+			$default .= $render_default->field_init();
+		}
+
+		$default .= '</div></script>';
+
+
+
+		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description multi-text-desc">'.$this->parent->field['desc'].'</div>' : '';
+
+		$html .= sprintf('<input type="hidden" id="%s-counter" value="0"/>', $this->parent->field['id']);
+
+		$html .= '</div>';
+
 		$html .= sprintf(
-					'<a href="javascript:void(0);" class="multi-value-btn btn-blue" rel-id="%1$s-ul" rel-name="%2$s[]">%3$s</a>', 
+					'<a href="javascript:void(0);" class="multi-value-btn btn-blue" rel-id="%1$s" rel-name="%2$s[]" rel-class="%2$s-wrapper">%3$s</a>', 
 					$this->parent->field['id'], 
 					$this->parent->input_name, 
 					$buttonText
 				);
 
-		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description multi-text-desc">'.$this->parent->field['desc'].'</div>' : '';
+		$html .= '</fieldset>';
 
-		$html .= '<div></fieldset>';	
-
-		return $html;
+		return $html. $default;
 	}
 	
 	
