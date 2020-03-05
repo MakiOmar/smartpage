@@ -47,7 +47,7 @@ jQuery(document).ready(function($){
 
 		$('.' + inputClass).each(function(){
 
-			sum = Number($(this).val());
+			sum += Number($(this).val());
 		});
 
 		var total = $( "input[name="+targetInputName+"]" );
@@ -94,6 +94,7 @@ jQuery(document).ready(function($){
 	/*---------Set contract value and extension value after reduction-------------*/
 	
 	$('.reduction_value, input[name=anony__contract_value]').on('keyup', function(){
+
 		$.fn.calcReduction();
 
 		$.fn.calcExtensionValue();
