@@ -1,6 +1,7 @@
 <?php
-//Theme Scripts
-add_action('admin_enqueue_scripts',function() {
+//custom site scripts: omdb
+$scripts_hook = is_admin() ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts';
+add_action($scripts_hook,function() {
 	
 	$scripts = ['x-omdb-admin'];
 
