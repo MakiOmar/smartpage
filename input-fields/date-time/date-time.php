@@ -52,13 +52,19 @@ class ANONY_Date_time{
 		$placeholder = isset($this->parent->field['placeholder']) ? ' placeholder="'.$this->parent->field['placeholder'].'"' : ' placeholder="'.$this->parent->field['title'].'"';
 
 		if ($this->parent->as_template) {
-			$html =  sprintf(
+			$html  = sprintf( 
+					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
+					$this->parent->field['id'] 
+				);
+			$html .=  sprintf(
 					'<input type="text" name="%1$s" class="anony-%2$s %3$s"%4$s/>',
 					$this->parent->input_name,
 					$this->parent->field['id'],
 					$this->parent->class_attr, 
 					$placeholder
 				);
+
+			$html .= '</fieldset>';
 
 			return $html;
 		}
@@ -129,7 +135,9 @@ class ANONY_Date_time{
 				var fieldClass = <?php echo '".anony-'.$this->parent->field['id'].'"' ?>;
 
 				<?php if(isset($this->parent->field['nested-to'])){?>
-					var nestedTo   = <?php echo '".'.$this->parent->field['nested-to'].'-wrapper"' ?>;
+					var nestedToId = <?php echo '".'.$this->parent->field['nested-to'].'"' ?>;
+					var nestedTo   = nestedToId + '-wrapper';
+					console.log(nestedTo + '-add');
 				<?php } ?>
 
 				$.fn.<?php echo $this->parent->field['id'] ?> = function(){
@@ -152,8 +160,16 @@ class ANONY_Date_time{
 				$.fn.<?php echo $this->parent->field['id'] ?>();
 
 				//$.fn.AnonyObserve is defined here (assets/js/jquery.helpme.js)
-				if (typeof nestedTo !== 'undefined') {
+				if (typeof nestedTo !== 'undefined' || typeof nestedToId !== 'undefined') {
 				    $.fn.AnonyObserve(nestedTo, function(){
+				    	$.fn.<?php echo $this->parent->field['id'] ?>();
+					});
+				}
+
+				if (typeof nestedToId !== 'undefined') {
+
+				    $.fn.AnonyObserve(nestedToId + '-add', function(){
+
 				    	$.fn.<?php echo $this->parent->field['id'] ?>();
 					});
 				}
