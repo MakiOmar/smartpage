@@ -51,10 +51,6 @@ class ANONY_Multi_value{
 					);
 		}
 		
-		$html .= sprintf(
-					'<div id="%1$s-wrapper" class="anony-inputs-row %1$s-wrapper anony-multi-value-flex">',
-					 $this->parent->input_name
-				);
 
 		$html .= sprintf(
 					'<input type="hidden" name="%1$s" id="%2$s" value=""/>',
@@ -62,10 +58,30 @@ class ANONY_Multi_value{
 					$this->parent->field['id']
 				);
 
-		foreach ($this->parent->field['fields'] as $nested_field) {
-			$render_field = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id);
-			$html    .= $render_field->field_init();
+		if (is_array($this->parent->value) && !empty($this->parent->value)) {
 
+			foreach ( $this->parent->value as $index => $multi_vals) {
+
+				$html .= "<div class='anony-multi-value-flex'>";
+				
+				foreach ($multi_vals as $field_id => $field_value) {
+
+					foreach ($this->parent->field['fields'] as $nested_field) {
+
+						if ($nested_field['id'] == $field_id) {
+							$render_field = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id, false, $field_value, $index);
+
+							nvd($render_field->field_value);
+
+							$html    .= $render_field->field_init();
+
+						}
+						
+					}
+				}
+
+				$html .= "</div>";
+			}
 		}
 
 		
@@ -92,6 +108,8 @@ class ANONY_Multi_value{
 		$html .= sprintf('<input type="hidden" id="%s-counter" value="0"/>', $this->parent->field['id']);
 
 		$html .= '</div>';
+
+		$html .= sprintf('<div id="%s-add"></div>', $this->parent->field['id']);
 
 		$html .= sprintf(
 					'<a href="javascript:void(0);" class="multi-value-btn btn-blue" rel-id="%1$s" rel-name="%2$s[]" rel-class="%2$s-wrapper">%3$s</a>', 
