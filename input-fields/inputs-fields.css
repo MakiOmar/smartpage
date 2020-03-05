@@ -160,8 +160,14 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 }
 
 .anony-multi-value-flex{
-    flex-direction: column!important;
-    align-items: flex-start;
+    align-items: baseline;
+    justify-content: space-between!important;
+}
+.anony-multi-value-flex{
+    display: flex;
+}
+.anony-multi-value-wrapper{
+    display: block;
 }
 [id*='anony_fieldset'] input[type= "checkbox"]{
 	margin: 0 5px;
