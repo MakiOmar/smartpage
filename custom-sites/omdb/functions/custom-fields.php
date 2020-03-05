@@ -233,12 +233,6 @@ add_filter('anony_metaboxes', function($metaboxes){
 	        'hook_priority' =>  '10', // Default 10
 			'post_type'     => array('contract'),
 			'fields'        => array(
-									array(
-										'id'       => 'anony__multi_text',
-										'title'    => esc_html__( 'Multi text', ANONY_TEXTDOM ),
-										'type'     => 'multi_text',
-										'validate' => 'no_html',
-									),
 
 									array(
 										'id'       => 'anony__contracted_company',
@@ -349,7 +343,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 													'nested-to'   => 'anony__quantities_reduction',
 													'id'          => 'reduction_details',
 													'class'       => 'anony-multi-value',
-													'placeholder' => esc_html__( 'Reduction value', ANONY_TEXTDOM ),
+													'placeholder' => esc_html__( 'Details', ANONY_TEXTDOM ),
 												],
 											],
 									),
