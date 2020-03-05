@@ -98,7 +98,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 														'dependancies' => ['jquery', 'google-maps-api']
 														],
 	        									    ),
-										'also_on_front_scripts' => true
+										'show_on_front' => true
 									),
 									array(
 										'id'       => 'anony__entry_lat',
@@ -174,7 +174,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 														'dependancies' => ['jquery', 'google-maps-api']
 														],
 	        									    ),
-										'also_on_front_scripts' => true
+										'show_on_front' => true
 									),
 									array(
 										'id'       => 'anony__entry_lat',
@@ -271,6 +271,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'date-format' => 'dd-mm-yy',
 										'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
 										'validate' => 'date',
+										'show_on_front' => true
 
 									),
 
@@ -282,6 +283,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'date-format' => 'dd-mm-yy',
 										'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
 										'validate' => 'date',
+										'show_on_front' => true
 									),
 
 									array(
@@ -335,6 +337,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 													'id'          => 'reduction_date',
 													'class'       => 'anony-multi-value',
 													'placeholder' => esc_html__( 'Reduction date', ANONY_TEXTDOM ),
+													'show_on_front' => true
 												],
 
 												[
@@ -365,7 +368,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'id'       => 'anony__contract_extension_value',
 										'title'    => esc_html__( 'Contract extension\'s value', ANONY_TEXTDOM ),
 										'type'     => 'number',
-										'step'     => 'number',
+										'step'     => '0.1',
 										'validate' => 'number',
 									),
 
@@ -377,6 +380,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'desc' => esc_html__( 'Date format should be Day-Month-Year',ANONY_TEXTDOM ),
 										'get'      => 'date',
 										'validate' => 'date',
+										'show_on_front' => true
 									),
 
 								)
