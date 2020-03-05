@@ -60,6 +60,16 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		 * @var bool Wheather field will be used as template or real input
 		 */
 		public $as_template;
+		
+		/**
+		 * @var mixed input field value
+		 */
+		public $field_value;
+
+		/**
+		 * @var int index of multi value fields in multi value array 
+		 */
+		public $index;
 
 		/**
 		 * Inpud field constructor That decides field context
@@ -67,11 +77,15 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		 * @param string   $context  The context of where the field is used
 		 * @param int|null $post_id  Should be an integer if the context is meta box
 		 */
-		function __construct($field, $context = 'option', $post_id = null, $as_template = false)
+		function __construct($field, $context = 'option', $post_id = null, $as_template = false, $field_value = null, $index = null)
 		{
 			global $anonyOptions;
 
 			$this->as_template = $as_template;
+
+			$this->field_value = $field_value;
+
+			$this->index       = $index;
 			
 			$this->options     = $anonyOptions;
 
@@ -126,22 +140,27 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		 * Set metabox field data
 		 */
 		public function meta_field_data(){
-			$this->input_name = isset($this->field['nested-to'])  ? $this->field['nested-to'].'[0]'.'['.$this->field['id'].']' : $this->field['id'];
+			$index = (isset($this->field['nested-to']) && !is_null($this->index) && $this->index  != '' ) ? $this->index : 0;
+			$this->input_name = isset($this->field['nested-to'])  ? $this->field['nested-to'].'['.$index.']'.'['.$this->field['id'].']' : $this->field['id'];
 
 			$single = (isset($this->field['multiple']) && $this->field['multiple']) ? false : true;
 			
-			if(isset($this->field['nested-to'])){
-				$nested_to_meta = get_post_meta( $this->post_id, $this->field['nested-to'], $single);
-				
-				$meta = $nested_to_meta ? $nested_to_meta[$this->field['id']] : '';
-				
+			//This should be field value to be passed to input field object.
+			//Now within the multi value input field
+			if(isset($this->field['nested-to']) && !is_null($this->field_value)){
+
+				$meta = $this->field_value;
 
 			}else{
 
 				$meta = get_post_meta( $this->post_id, $this->field['id'], $single);
 			}
 
-			$this->value = ($meta  != '') ? $meta : $this->default;	
+			$this->value = ($meta  != '') ? $meta : $this->default;
+			if ($this->field['id'] == 'anony__quantities_reduction') {
+				//nvd($this->value);
+			}
+			
 		}
 
 		/**
