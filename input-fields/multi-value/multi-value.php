@@ -57,9 +57,10 @@ class ANONY_Multi_value{
 					$this->parent->input_name,
 					$this->parent->field['id']
 				);
+		$counter = 0;
 
 		if (is_array($this->parent->value) && !empty($this->parent->value)) {
-
+			$counter = count($this->parent->value);
 			foreach ( $this->parent->value as $index => $multi_vals) {
 
 				$html .= "<div class='anony-multi-value-flex'>";
@@ -71,8 +72,6 @@ class ANONY_Multi_value{
 						if ($nested_field['id'] == $field_id) {
 							$render_field = new ANONY_Input_Field($nested_field, 'meta', $this->parent->post_id, false, $field_value, $index);
 
-							nvd($render_field->field_value);
-
 							$html    .= $render_field->field_init();
 
 						}
@@ -82,13 +81,24 @@ class ANONY_Multi_value{
 
 				$html .= "</div>";
 			}
+
+			$html .= sprintf('<div id="%1$s-add" class="%1$s-add"></div>', $this->parent->field['id']);
+
+			$html .= sprintf(
+					'<a href="javascript:void(0);" class="multi-value-btn btn-blue" rel-id="%1$s" rel-name="%2$s[]" rel-class="%2$s-wrapper">%3$s</a>', 
+					$this->parent->field['id'], 
+					$this->parent->input_name, 
+					$buttonText
+				);
+
+			$html .= '</fieldset>';
 		}
 
 		
 		$default = sprintf('<script id = "%s-default" type="text/template">', $this->parent->field['id']);
 
 		$default .= sprintf(
-					'<div class="anony-inputs-row %1$s-template anony-multi-value-flex">',
+					'<div class="%1$s-template anony-multi-value-flex">',
 					 $this->parent->input_name
 				);
 
@@ -105,20 +115,10 @@ class ANONY_Multi_value{
 
 		$html .= (isset($this->parent->field['desc']) && !empty($this->parent->field['desc'])) ? ' <div class="description multi-text-desc">'.$this->parent->field['desc'].'</div>' : '';
 
-		$html .= sprintf('<input type="hidden" id="%s-counter" value="0"/>', $this->parent->field['id']);
+
+		$html .= sprintf('<input type="hidden" id="%1$s-counter" value="%2$s"/>', $this->parent->field['id'], $counter);
 
 		$html .= '</div>';
-
-		$html .= sprintf('<div id="%s-add"></div>', $this->parent->field['id']);
-
-		$html .= sprintf(
-					'<a href="javascript:void(0);" class="multi-value-btn btn-blue" rel-id="%1$s" rel-name="%2$s[]" rel-class="%2$s-wrapper">%3$s</a>', 
-					$this->parent->field['id'], 
-					$this->parent->input_name, 
-					$buttonText
-				);
-
-		$html .= '</fieldset>';
 
 		return $html. $default;
 	}
