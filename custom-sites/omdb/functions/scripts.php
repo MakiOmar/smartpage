@@ -10,3 +10,14 @@ add_action('admin_enqueue_scripts',function() {
 		wp_enqueue_script($script);
 	}
 });
+
+add_action( 'admin_head', function(){
+	$screen = get_current_screen();
+	if($screen->base == 'post' && $screen->post_type == 'contract'){?>
+		<style type="text/css">
+			#poststuff #post-body.columns-2{
+				margin-left: 0;
+			}
+		</style>
+	<?php }
+} );
