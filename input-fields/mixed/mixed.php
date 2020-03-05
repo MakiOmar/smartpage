@@ -60,8 +60,13 @@ class ANONY_Mixed{
 		}
 
 		if ($this->parent->as_template) {
-			$html  = sprintf(
-					'<input  type="%1$s" name="%2$s" class="%3$s" %4$s %5$s %6$s/>', 
+			$html = sprintf( 
+					'<fieldset class="anony-row anony-row-inline"%2$s>', 
+					$this->parent->field['id'],
+					$this->parent->field['type'] == 'hidden' ? ' style="display:none"' : ''
+				);
+			$html .= sprintf(
+					'<input  type="%1$s" name="%2$s" class="%3$s anony-row" %4$s %5$s %6$s/>', 
 					$this->parent->field['type'],
 					$this->parent->input_name, 
 					$this->parent->class_attr,
@@ -69,7 +74,8 @@ class ANONY_Mixed{
 					isset($lang) ? ' '.$lang : '',
 					$placeholder
 				 );
-
+			$html	.= '</fieldset>';
+			
 			return $html;
 		}
 		

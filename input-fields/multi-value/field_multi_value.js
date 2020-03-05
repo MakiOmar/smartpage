@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 		    return b + '[' + targetCounter + ']';
 		});
 
-		$('.'+targetClass).append(x);
+		$('#' + targetId + '-add').append(x);
 		
 	});
 });
