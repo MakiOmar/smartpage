@@ -39,6 +39,10 @@ class ANONY_Date_time{
 
 		add_action('admin_print_footer_scripts', array(&$this, 'footer_scripts'));
 
+		if(isset($this->parent->field['show_on_front']) && $this->parent->field['show_on_front'] == true){
+			add_action('wp_print_footer_scripts', array(&$this, 'footer_scripts'));
+		}
+
 		$this->enqueue();
 	}
 	
@@ -137,7 +141,6 @@ class ANONY_Date_time{
 				<?php if(isset($this->parent->field['nested-to'])){?>
 					var nestedToId = <?php echo '".'.$this->parent->field['nested-to'].'"' ?>;
 					var nestedTo   = nestedToId + '-wrapper';
-					console.log(nestedTo + '-add');
 				<?php } ?>
 
 				$.fn.<?php echo $this->parent->field['id'] ?> = function(){
@@ -160,7 +163,7 @@ class ANONY_Date_time{
 				$.fn.<?php echo $this->parent->field['id'] ?>();
 
 				//$.fn.AnonyObserve is defined here (assets/js/jquery.helpme.js)
-				if (typeof nestedTo !== 'undefined' || typeof nestedToId !== 'undefined') {
+				if (typeof nestedTo !== 'undefined') {
 				    $.fn.AnonyObserve(nestedTo, function(){
 				    	$.fn.<?php echo $this->parent->field['id'] ?>();
 					});
