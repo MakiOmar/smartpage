@@ -52,7 +52,7 @@ class ANONY_Mixed{
 
 		if($this->parent->field['type'] == 'number'){
 
-			$step = ( isset($this->parent->field['step']) && !empty($this->parent->field['step']) ) ? $this->parent->field['step']: 'step="0.01"';
+			$step = ( isset($this->parent->field['step']) && !empty($this->parent->field['step']) ) ? 'step="'.$this->parent->field['step'].'"' : '';
 
 			$lang = 'lang="en-EN"';
 
