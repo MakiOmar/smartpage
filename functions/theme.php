@@ -40,7 +40,7 @@ add_action('wp_enqueue_scripts',function() {
 			}
 		}
 
-		$scripts = array('jquery.mousewheel','jquery.easing.1.3','jquery.contentcarousel','jquery.prettyPhoto','custom');
+		$scripts = array('jquery.mousewheel','jquery.easing.1.3','jquery.contentcarousel','jquery.prettyPhoto','custom', 'jquery.helpme');
 			foreach($scripts as $script){
 				wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
 				wp_enqueue_script($script);
