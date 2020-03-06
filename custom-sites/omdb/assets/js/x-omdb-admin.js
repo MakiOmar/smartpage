@@ -1,6 +1,3 @@
-function addDays(date, days) {
-  
-}
 
 /**
  * Converts date of fromat 
@@ -38,7 +35,7 @@ function jsDateIncreasedBy(date, days = 0){
 
 jQuery(document).ready(function($){
 	'use strict';
-
+	
 	/**
 	 * Function to store the sum of inputs of class inputClass into input traget of name targetInputName
 	 */
@@ -93,7 +90,8 @@ jQuery(document).ready(function($){
 	
 	/*---------Set contract value and extension value after reduction-------------*/
 	
-	$('.reduction_value, input[name=anony__contract_value]').on('keyup', function(){
+	//When user enters inputs by writing directly Or clicking step up/down arrows
+	$('.reduction_value, input[name=anony__contract_value]').on('keyup change', function(){
 
 		$.fn.calcReduction();
 
