@@ -104,8 +104,9 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
     border: 2px solid #ebecec;
     text-decoration: none;
     background: #fff;
-    padding: 0 17px;
+    padding: 10px;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 /* -------------- jQuery UI -------------- */
@@ -480,4 +481,9 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 }
 .anony-multi-value-flex fieldset{
     border: none;
+}
+
+.anony-flex-column{
+    display: flex;
+    flex-direction: column;
 }

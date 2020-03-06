@@ -75,9 +75,13 @@ function anony_input_fields_autoloader( $class_name ) {
 add_action( 'wp_head', function(){?>
 		<style type="text/css">
 			[id*="fieldset_anony"] {
-				display: flex;
+				display: inline-flex;
 				flex-direction: column;
 				border: 0;
+			}
+
+			.anony-multi-value-flex {
+				align-items: flex-start!important;
 			}
 		</style>
 	<?php }
