@@ -106,6 +106,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 			$this->enqueue_scripts();
 		}
 
+
 		/**
 		 * Set field data depending on the context
 		 */

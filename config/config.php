@@ -130,17 +130,7 @@ define( 'ANONY_METABOXES', wp_normalize_path (ANONY_THEME_DIR . '/metaboxes/'));
  */
 define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/fields/'));
 
-/**
- * Holds a path to Custom fields classes folder
- * @const
- */
-define( 'ANONY_INPUT_FIELDS', wp_normalize_path (ANONY_THEME_DIR . '/input-fields/'));
-
-/**
- * Holds a path to Custom fields classes folder
- * @const
- */
-define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (ANONY_THEME_URI . '/input-fields/'));
+require_once(ANONY_THEME_DIR . '/input-fields/index.php');
 
 /**
  * Holds a path to views classes folder
@@ -160,7 +150,6 @@ define(
 			ANONY_METABOXES,
 			ANONY_CUSTOM_FIELDS,
 			ANONY_CONTENTS_VIEWS,
-			ANONY_INPUT_FIELDS,
 		]
 	)
 );
