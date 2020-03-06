@@ -49,24 +49,24 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
     font-style: normal;
 }
 
-[id*='anony_fieldset'] input[type="color"], 
-[id*='anony_fieldset'] input[type="date"], 
-[id*='anony_fieldset'] input[type="datetime-local"], 
-[id*='anony_fieldset'] input[type="datetime"], 
-[id*='anony_fieldset'] input[type="email"], 
-[id*='anony_fieldset'] input[type="month"], 
-[id*='anony_fieldset'] input[type="number"], 
-[id*='anony_fieldset'] input[type="password"], 
-[id*='anony_fieldset'] input[type="radio"],
-[id*='anony_fieldset'] input[type="checkbox"], 
-[id*='anony_fieldset'] input[type="search"], 
-[id*='anony_fieldset'] input[type="tel"], 
-[id*='anony_fieldset'] input[type="text"], 
-[id*='anony_fieldset'] input[type="time"], 
-[id*='anony_fieldset'] input[type="url"], 
-[id*='anony_fieldset'] input[type="week"], 
-[id*='anony_fieldset'] select, 
-[id*='anony_fieldset'] textarea{
+[id*='fieldset_anony'] input[type="color"], 
+[id*='fieldset_anony'] input[type="date"], 
+[id*='fieldset_anony'] input[type="datetime-local"], 
+[id*='fieldset_anony'] input[type="datetime"], 
+[id*='fieldset_anony'] input[type="email"], 
+[id*='fieldset_anony'] input[type="month"], 
+[id*='fieldset_anony'] input[type="number"], 
+[id*='fieldset_anony'] input[type="password"], 
+[id*='fieldset_anony'] input[type="radio"],
+[id*='fieldset_anony'] input[type="checkbox"], 
+[id*='fieldset_anony'] input[type="search"], 
+[id*='fieldset_anony'] input[type="tel"], 
+[id*='fieldset_anony'] input[type="text"], 
+[id*='fieldset_anony'] input[type="time"], 
+[id*='fieldset_anony'] input[type="url"], 
+[id*='fieldset_anony'] input[type="week"], 
+[id*='fieldset_anony'] select, 
+[id*='fieldset_anony'] textarea{
 	border: navajowhite;
 	box-shadow: inset 0 1px 5px rgba(0,0,0,.2);
 	background-color: #fff;
@@ -77,8 +77,8 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	padding: 5px;
     min-height: 35px;
 }
-[id*='anony_fieldset'] input[type="radio"],
-[id*='anony_fieldset'] input[type="checkbox"]{
+[id*='fieldset_anony'] input[type="radio"],
+[id*='fieldset_anony'] input[type="checkbox"]{
     min-height: auto;
 }
 
@@ -86,17 +86,17 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	min-width: 120px;
 }
 /* -------------- .multi-text -------------- */
-[id*='anony_fieldset']  input.multi-text-add { margin-right:10px;}
-[id*='anony_fieldset']  .multi-text-btn { float:left;}
-[id*='anony_fieldset']  .multi-text-desc { float:left;}
-[id*='anony_fieldset']  .multi-text-ul { margin:auto;}
-[id*='anony_fieldset']  .multi-text-ul li { display:block; width: 338px; height:37px; color:#fff; position:relative; margin:8px 0 5px 0; background: #b73a4c;}
-[id*='anony_fieldset']  .multi-text-ul li.multi-text-default { display:none;}
-[id*='anony_fieldset']  .multi-text-ul li a.multi-text-remove { display:block; position:absolute; top:0; right:0; width: 37px; height:37px; overflow: hidden; text-indent: -9999px; color:#34495e; background: #d1354b;  }
-[id*='anony_fieldset']  .multi-text-ul li a.multi-text-remove em { width: 37px; height:37px; display: block; overflow: hidden; background:url(imgs/icons/ico-delete.png) no-repeat center center;}
-[id*='anony_fieldset']  .multi-text-ul li a:hover.multi-text-remove { background: #FB5656;}
-[id*='anony_fieldset']  .multi-text-ul li span { color:#fff; font-weight:bold; line-height:37px; padding:0 17px; font-size:14px; margin:0;}
-[id*='anony_fieldset']  a.btn-blue{
+[id*='fieldset_anony']  input.multi-text-add { margin-right:10px;}
+[id*='fieldset_anony']  .multi-text-btn { float:left;}
+[id*='fieldset_anony']  .multi-text-desc { float:left;}
+[id*='fieldset_anony']  .multi-text-ul { margin:auto;}
+[id*='fieldset_anony']  .multi-text-ul li { display:block; width: 338px; height:37px; color:#fff; position:relative; margin:8px 0 5px 0; background: #b73a4c;}
+[id*='fieldset_anony']  .multi-text-ul li.multi-text-default { display:none;}
+[id*='fieldset_anony']  .multi-text-ul li a.multi-text-remove { display:block; position:absolute; top:0; right:0; width: 37px; height:37px; overflow: hidden; text-indent: -9999px; color:#34495e; background: #d1354b;  }
+[id*='fieldset_anony']  .multi-text-ul li a.multi-text-remove em { width: 37px; height:37px; display: block; overflow: hidden; background:url(imgs/icons/ico-delete.png) no-repeat center center;}
+[id*='fieldset_anony']  .multi-text-ul li a:hover.multi-text-remove { background: #FB5656;}
+[id*='fieldset_anony']  .multi-text-ul li span { color:#fff; font-weight:bold; line-height:37px; padding:0 17px; font-size:14px; margin:0;}
+[id*='fieldset_anony']  a.btn-blue{
     font-size: 13px;
     height: 34px;
     line-height: 34px;
@@ -122,8 +122,8 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 .ui-slider-horizontal .ui-slider-range-min { left: 0; border-radius:6px;}
 .ui-slider-horizontal .ui-slider-range-max { right: 0; }
 
-[id*='anony_fieldset']  .form-table input.sliderbar_input { width:44px;}  
-[id*='anony_fieldset']  tr td span.sliderbar_desc { float:left; width:163px;}
+[id*='fieldset_anony']  .form-table input.sliderbar_input { width:44px;}  
+[id*='fieldset_anony']  tr td span.sliderbar_desc { float:left; width:163px;}
 
 .anony-input-lable,.anony-btn-close, .anony-remove-tab{
     display: block!important;
@@ -133,7 +133,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 .multi-text-btn:focus,.anony-btn-close:focus, .anony-remove-tab:focus{
     color:#b73a4c;
 }
-[id*='anony_fieldset']  .form-table input.small-text{
+[id*='fieldset_anony']  .form-table input.small-text{
     min-width: 150px;
 }
 .anony-label{
@@ -169,7 +169,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 .anony-multi-value-wrapper{
     display: block;
 }
-[id*='anony_fieldset'] input[type= "checkbox"]{
+[id*='fieldset_anony'] input[type= "checkbox"]{
 	margin: 0 5px;
 	border-radius: 2px !important;
 }
@@ -182,7 +182,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	background-color: #fff;
 	padding: 20px;
 }
-[id*='anony_fieldset']  > h1{
+[id*='fieldset_anony']  > h1{
 	text-align: center;
 	font-family: "EXO";
 }

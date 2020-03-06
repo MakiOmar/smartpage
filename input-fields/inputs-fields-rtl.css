@@ -20,11 +20,11 @@
 #options-nav {
     box-shadow: -10px 5px 6px #dbd1d1;
 }
-[id*='anony_fieldset']  > h1{
+[id*='fieldset_anony']  > h1{
 	
 }
 
-[id*='anony_fieldset'] .multi-text-ul li a.multi-text-remove{
+[id*='fieldset_anony'] .multi-text-ul li a.multi-text-remove{
 	right: auto;
 	left: 0;
 }
