@@ -74,7 +74,7 @@ function anony_input_fields_autoloader( $class_name ) {
 
 add_action( 'wp_head', function(){?>
 		<style type="text/css">
-			[id*="anony_fieldset"] {
+			[id*="fieldset_anony"] {
 				display: flex;
 				flex-direction: column;
 				border: 0;

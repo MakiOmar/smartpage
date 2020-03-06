@@ -178,7 +178,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	background-color: #f8f8f8;
 	text-align: center;
 }
-[id*='anony_fieldset'] {
+[id*='fieldset_anony'] {
 	background-color: #fff;
 	padding: 20px;
 }

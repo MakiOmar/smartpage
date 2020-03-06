@@ -34,7 +34,7 @@ class ANONY_Multi_value{
 		$buttonText  = (isset($this->parent->field['button-text'])) ? ' '.$this->parent->field['button-text'] : esc_html__( 'Add', ANONY_TEXTDOM );
 
 		$html = sprintf( 
-					'<fieldset class="anony-row anony-row-inline anony-multi-value-wrapper" id="anony_fieldset_%1$s">', 
+					'<fieldset class="anony-row anony-row-inline anony-multi-value-wrapper" id="fieldset_%1$s">', 
 					$this->parent->field['id'] 
 				);
 

@@ -63,7 +63,10 @@ class ANONY_Color_gradient_farbtastic{
 		
 		$html  = '<div class="farb-popup-wrapper" id="'.$this->parent->field['id'].'">';		
 
-		$html .= '<fieldset>';
+		$html	.= sprintf( 
+						'<fieldset class="anony-row anony-row-inline" id="fieldset_%1$s">', 
+						$this->parent->field['id'] 
+					);
 
 		//from field
 		$html .= sprintf(

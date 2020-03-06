@@ -36,7 +36,7 @@ class ANONY_Multi_text{
 		$placeholder = (isset($this->parent->field['placeholder'])) ? 'placeholder="'.$this->parent->field['placeholder'].'"' : '';
 
 		$html = sprintf( 
-					'<fieldset class="anony-row anony-row-inline" id="anony_fieldset_%1$s">', 
+					'<fieldset class="anony-row anony-row-inline" id="fieldset_%1$s">', 
 					$this->parent->field['id'] 
 				);
 		
