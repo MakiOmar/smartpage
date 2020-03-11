@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 				'anony-section/:section': function(section) {
 					"use strict";
 					var target = $('a[href="#anony-section/' + section + '"]'),
-						content = $('#anony-' + section + '-section-group');
+						content = $('#anony_' + section + '_section');
 					$('.anony-nav-link').parent().removeClass('active');
 					$('.anony-section-group').removeClass('anony-show-section');
 					target.parent().addClass('active');
@@ -48,4 +48,8 @@ jQuery(document).ready(function($){
 		$('.'+ this.className +'_').hide();
 		$('.' + this.value ).toggle();
 	});
+	if($('.anony-show-section').length == 0){
+		$('.anony-section-group:first').addClass('anony-show-section');
+	}
+	
 });

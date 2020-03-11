@@ -76,10 +76,12 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	border-radius: 10px;
 	padding: 5px;
     min-height: 35px;
+    min-width: 200px;
 }
 [id*='fieldset_anony'] input[type="radio"],
 [id*='fieldset_anony'] input[type="checkbox"]{
     min-height: auto;
+    min-width: auto;
 }
 
 .anony-input-field{
@@ -152,9 +154,6 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
     font-size: 1.4em;
     text-transform: none;
 }
-.active{
-	background:#871928;
-}
 .anony-inputs-row{
 	display: flex;
 	align-items: center;
@@ -174,11 +173,7 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	margin: 0 5px;
 	border-radius: 2px !important;
 }
-#anony-logo{
-	padding: 27px 10px;
-	background-color: #f8f8f8;
-	text-align: center;
-}
+
 [id*='fieldset_anony'] {
 	background-color: #fff;
 	padding: 20px;

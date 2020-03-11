@@ -114,7 +114,7 @@ div{
 	margin:0;
 	padding:0;
 }
-input[type = "search"],input[type = "text"],input[type = "email"],input[type = "password"],input[type = "url"]{
+input[type = "search"],input[type = "tel"],input[type = "text"],input[type = "email"],input[type = "password"],input[type = "url"], textarea{
 	outline: none;
 	padding: 10px;
 	margin: 5px;
@@ -258,6 +258,11 @@ tr:nth-child(even) {
 	#anony-logo h1{
 		display: inline-block;
 	}
+
+	#custom-logo-link{
+		display: block;
+		text-align: center;
+	}
 	#anony-follow-contact {
 		position: relative;
 		display: flex;
@@ -272,7 +277,7 @@ tr:nth-child(even) {
 	}
 	#anony-follow,#anony-languages_menu_con{
 			display: inline-flex;
-			vertical-align: middle;
+			justify-content: center;
 	}
 	#anony-follow li a:hover{
 		font-size: 18px!important;
@@ -304,7 +309,7 @@ tr:nth-child(even) {
 		position: relative;
 		text-align: center;
 		color: #ffffff;
-		font-size: 12px;
+		font-size: 20px;
 		padding: 3px;
 		width: 80%;
 		height: 100%;
@@ -1588,7 +1593,6 @@ tr:nth-child(even) {
 		top: 0;
 		background-color: rgba(0,0,0,0.9);
 		z-index: 1000000;
-		display: none;
 	}
 	#anony-hidden-search-form #anony-searchform{
 		width: 90%;
@@ -1817,6 +1821,18 @@ tr:nth-child(even) {
 .show-loading{
 	display:block!important;
 }
+
+/*-----------contact form 7----------*/
+.wpcf7-form{
+	width:80%;
+	margin: auto;
+}
+
+.wpcf7-form p{
+	display: flex;
+	justify-content: center;
+}
+/*-----------contact form 7----------*/
 
 @media screen and (min-width: 768px){
 	#anony-main_menu_con li a:hover {

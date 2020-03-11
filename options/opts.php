@@ -34,7 +34,7 @@ function anony_fonts( $type = false ){
 function anony_control_query_strings($src, $handle){
 	if(is_admin()) return $src;
 
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	
 	//Keep query string for these items
 	$neglected = array();
@@ -56,7 +56,8 @@ function anony_control_query_strings($src, $handle){
 *---------------------------------------------------------------------------------*/
 add_action('wp_head', function(){
 
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
+
 ?>
 	<style type="text/css">
 		<?php
@@ -66,7 +67,7 @@ add_action('wp_head', function(){
 				}
 
 				a{
-					font-family: "<?php echo $anonyOptions->anony_paragraph_ar_font ?>"
+					font-family: "<?php echo $anonyOptions->anony_links_ar_font ?>"
 				}
 				p{
 					font-family: "<?php echo $anonyOptions->anony_paragraph_ar_font ?>"
@@ -90,7 +91,7 @@ add_action('wp_head', function(){
 
 //Show admin bar for only admins
 add_action('after_setup_theme', function(){
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
 
 	if ($anonyOptions->admin_bar != '0' && !current_user_can('administrator') && !is_admin()) {
 		
@@ -100,8 +101,8 @@ add_action('after_setup_theme', function(){
 });
 
 //restrict admin access
-add_action( 'init', function(){
-	global $anonyOptions;
+/*add_action( 'init', function(){
+	$anonyOptions = ANONY_Options_Model::get_instance();
 
 	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anonyOptions->not_admin_restricted != '0' ) {
 		
@@ -110,11 +111,11 @@ add_action( 'init', function(){
 		exit;
 		
 	} 
-});
+});*/
 
 // custom login logo tooltip
 add_filter('login_headertext', function(){
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	if($anonyOptions->change_login_title != '0'){
 		
 		return get_bloginfo();
@@ -136,7 +137,7 @@ add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
  */
 
 add_action('init', function(){
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	
 	$anonyADs = array('one', 'two', 'three');
 

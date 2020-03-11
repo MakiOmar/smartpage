@@ -222,12 +222,12 @@ function anony_reg_post_types(){
 											( 
 													"anony_{$custom_post}_supports",
 
-													['title','editor','excerpt','custom-fields','comments','revisions','thumbnail','author','page-attributes','post-formats'
+													['title','editor','excerpt','custom-fields','comments','revisions','thumbnail','author','post-formats'
 													] 
 											),
 			'taxonomies'            => anony_post_taxonomies(lcfirst($custom_post)),
-			'hierarchical'          => true,
 			'public'                => true,
+			'hierarchical'          => apply_filters( "anony_{$custom_post}_hierarchical", false),
 			'show_ui'               => true,
 			'show_in_menu'          => true,
 			'menu_position'         => 5,
@@ -240,8 +240,7 @@ function anony_reg_post_types(){
 			'capability_type'       => 'post',
 			'rewrite' => array(
 							'slug'         => lcfirst($custom_post),
-							'with_front'   => true,
-							'hierarchical' => true
+							'with_front'   => false,
 						),
 		);
 		

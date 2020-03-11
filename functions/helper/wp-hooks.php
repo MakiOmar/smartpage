@@ -1,4 +1,35 @@
 <?php
+
+add_action( 'init', function() {
+	$post_parents = apply_filters( 'anony_cross_parent_rewrite', [] );
+
+	if(empty($post_parents) || !is_array($post_parents)) return;
+	foreach ($post_parents as $post_type => $parent_post_type) {
+		add_rewrite_tag('%'.$post_type.'%', '([^/]+)', $post_type . '=');
+		add_permastruct($post_type, '/'.$post_type.'/%'.$parent_post_type.'%/%'.$post_type.'%', false);
+		add_rewrite_rule('^'.$post_type.'/([^/]+)/([^/]+)/?','index.php?'.$parent_post_type.'=$matches[2]','top');
+	}
+});
+
+
+add_filter('post_type_link', function ($permalink, $post, $leavename) {
+	$post_parents = apply_filters( 'anony_cross_parent_permalink', [] );
+	if(empty($post_parents) || !is_array($post_parents)) return;
+
+	$post_id = $post->ID;
+	if(!in_array($post->post_type , array_keys($post_parents)) || empty($permalink) || in_array($post->post_status, array('draft', 'pending', 'auto-draft')))
+	 	return $permalink;
+	foreach ($post_parents as $post_type => $parent_post_type) {
+		if($post_type == $post->post_type){
+			$parent = $post->post_parent;
+			$parent_post = get_post( $parent );
+
+			$permalink = str_replace('%'.$parent_post_type.'%', $parent_post->post_name, $permalink);
+		}
+	}
+
+	return $permalink;
+}, 10, 3);
 /**
  * Force https connection.
  *

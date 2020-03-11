@@ -6,7 +6,7 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-global $anonyOptions;
+$anonyOptions = ANONY_Options_Model::get_instance();
 /*-------------------------------------------------------------
  * Menus functions
  *-----------------------------------------------------------*/
@@ -24,16 +24,18 @@ global $anonyOptions;
  */
 function anony_navigation($location_slug, $container = 'nav'){
 	if ($location_slug == 'anony-main-menu'){
-		$walker = new ANONY_Nav_Menu_Walk;
+		$walker       = new ANONY_Nav_Menu_Walk;
+		$menu_id      = 'anony-main_menu_con';
+		$container_id = 'anony-main_nav_con';
 	}
 	if ( has_nav_menu( $location_slug ) ) {
 		$location_array = explode('-',$location_slug);
 			$args = array (
 					'theme_location'=>$location_slug,
-					'depth'=>0,
-					'menu_id' =>'anony-'.$location_array[0].'_menu_con',
-					'container' =>$container,
-					'container_id' =>'anony-'.$location_array[0].'_nav_con',
+					'depth'         =>0,
+					'menu_id'       => isset($menu_id) ? $menu_id : '',
+					'container'     => $container,
+					'container_id'  => isset($container_id) ? $container_id : '',
 					'echo' => false,
 					);
 			if(isset($walker)){
@@ -144,7 +146,7 @@ function anony_breadcrumbs() {
 //Add Close button to main navigation menu
 add_filter("wp_nav_menu_items",function($item , $args){
 	
-	if($args->theme_location == 'main-menu'){
+	if($args->theme_location == 'anony-main-menu'){
 		$item .= '<li id="menu-close"><a href="#"><i class="fa fa-2x fa-window-close" aria-hidden="true"></i></a></li>';
 		return $item;
 	}else{
@@ -202,7 +204,7 @@ if($anonyOptions->cats_in_nav != '0'){
 
 //Add search form to main menu
 add_filter("wp_nav_menu_items",function($item , $args){
-	if($args->theme_location == 'main-menu' && !is_front_page() && !is_page()){
+	if($args->theme_location == 'anony-main-menu' && (!is_front_page() || !is_page())){
 		$item.='<li class="anony-search-form-toggle active"><a href="#"><i class="fa fa-search"></i></a></li>';
 		return $item;
 	}else{

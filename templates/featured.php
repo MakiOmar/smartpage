@@ -7,7 +7,7 @@
  * @link http://makiomar.com
  */
 
-global $anonyOptions;
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 $messege = '';
 

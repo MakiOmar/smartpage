@@ -18,7 +18,7 @@ add_action('after_setup_theme', function(){
 
 //Theme Scripts
 add_action('wp_enqueue_scripts',function() {
-		global $anonyOptions;
+		$anonyOptions = ANONY_Options_Model::get_instance();
 
 		$styles = array('main','font-awesome','responsive','prettyPhoto');
 		foreach($styles as $style){
@@ -138,7 +138,7 @@ function anony_get_curr_url() {
  */
 function anony_get_custom_logo($color='main') {	
 	if ( has_custom_logo() ) {
-		$logo ='<id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">'.get_custom_logo().'</div>';	
+		$logo ='<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">'.get_custom_logo().'</div>';	
 	}else{
 
 		$logo= '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3"><h1>';

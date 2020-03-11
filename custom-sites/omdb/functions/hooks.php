@@ -5,6 +5,12 @@
  */
 add_filter('anony_post_types', function($custom_post_types){
 	$custom_posts = [
+					'production_report'=>
+						[
+							esc_html__('Production report',ANONY_TEXTDOM), 
+							esc_html__('Production reports',ANONY_TEXTDOM)
+						],
+						
 					'transmission_line'=>
 						[
 							esc_html__('Transmission line',ANONY_TEXTDOM), 
@@ -65,6 +71,11 @@ add_filter('anony_taxonomies', function($anony_custom_taxs){
 				[
 					esc_html__('Project field',ANONY_TEXTDOM), esc_html__('Project fields',ANONY_TEXTDOM)
 				],
+
+			'project_type'=>
+				[
+					esc_html__('Project Type',ANONY_TEXTDOM), esc_html__('Project types',ANONY_TEXTDOM)
+				],
 		];
 
 	return array_merge($anony_custom_taxs, $custom_taxs);
@@ -84,6 +95,7 @@ add_filter('anony_post_taxonomies', function($anony_post_taxonomies){
 					'company'          =>['company_field'],
 					'project'          =>['project_field', 'authority'],
 					'contract'         =>['project_field', 'authority'],
+					'production_report'=>['project_field','project_type', 'authority'],
 
 				];
 
@@ -97,9 +109,10 @@ add_filter('anony_post_taxonomies', function($anony_post_taxonomies){
 add_filter( 'anony_taxonomy_posts', function($anony_tax_posts){
 
 	$tax_posts = [
-		'authority'       => ['transmission_line', 'reservoir', 'dam', 'project', 'contract'],
+		'authority'       => ['transmission_line', 'reservoir', 'dam', 'project', 'contract', 'production_report'],
 		'company_field'   => ['company'],
-		'project_field'   => ['project', 'contract'],
+		'project_field'   => ['project', 'contract', 'production_report'],
+		'project_type'    => ['production_report'],
 	];
 
 	return array_merge($anony_tax_posts, $tax_posts);
@@ -161,18 +174,23 @@ add_action( 'do_meta_boxes', function() {
 		],
 	];
 
-	foreach ($metaboxes as $id => $metabox) {
+	/*foreach ($metaboxes as $id => $metabox) {
 		remove_meta_box( $id, $metabox['screen'], $metabox['current_context'] );
 
-    	add_meta_box( 
-    		$id,
-    		$metabox['title'],
-    		'post_submit_meta_box',
-    		$metabox['screen'],
-    		$metabox['new_context'],
-    		$metabox['preiority']
-    	);
+		if (in_array(get_current_screen()->id, $metabox['screen']) ) {
+			add_meta_box( 
+	    		$id,
+	    		$metabox['title'],
+	    		'post_submit_meta_box',
+	    		$metabox['screen'],
+	    		$metabox['new_context'],
+	    		$metabox['preiority']
+	    	);
+		}
+
+    	
 	}
+	*/
     
     remove_meta_box('postcustom', ['contract'], 'normal' );
     remove_meta_box('commentstatusdiv', ['contract'], 'normal' );
@@ -180,3 +198,30 @@ add_action( 'do_meta_boxes', function() {
 
 
 } );
+
+add_filter('account_info_form', function($html){
+
+	$post_parent_id = omdb_get_user_project_id();
+
+	if($post_parent_id){
+
+		$html .= anony_fontawesome_button_link(
+					esc_url(get_the_permalink( 2 )),
+					'fa fa-comment fa-4x', 
+					esc_html__( 'Daily production report', ANONY_TEXTDOM )
+				);
+	}
+
+	return $html;
+
+});
+
+function omdb_cross_parents($cross_parents) {
+	
+	return array_merge( unserialize(ANONY_CROSS_PARENTS), $cross_parents );
+
+}
+
+add_filter( 'anony_cross_parent_rewrite', 'omdb_cross_parents');
+
+add_filter( 'anony_cross_parent_permalink', 'omdb_cross_parents' );

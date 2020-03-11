@@ -17,7 +17,7 @@ add_action( 'admin_head', function(){
 	if($screen->base == 'post' && $screen->post_type == 'contract'){?>
 		<style type="text/css">
 			#poststuff #post-body.columns-2{
-				margin-left: 0;
+				/*margin-left: 0;*/
 			}
 		</style>
 	<?php }

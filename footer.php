@@ -1,4 +1,4 @@
-<?php global $anonyOptions;?>
+<?php $anonyOptions = ANONY_Options_Model::get_instance();?>
 
 <footer class="anony-grid-col-md-12 anony-grid-col">
 	<?php 

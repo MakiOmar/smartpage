@@ -1,5 +1,5 @@
 <?php
-global $anonyOptions;
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 $socials_follow = array(
 				'facebook' => $anonyOptions->facebook,

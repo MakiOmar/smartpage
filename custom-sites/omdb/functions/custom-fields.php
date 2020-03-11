@@ -385,6 +385,56 @@ add_filter('anony_metaboxes', function($metaboxes){
 
 								)
 		];
+			
+
+	$metaboxes[] = 
+		[
+			/*Any meta box ID should start with anony-meta- to have correct style*/
+			'id'            => 'anony-production-details',//Meta box ID
+			'title'         => esc_html__( 'Production details', ANONY_TEXTDOM ),
+			'context'       => 'normal',
+			'priority'      =>  'high', // high|low
+	        'hook_priority' =>  '10', // Default 10
+			'post_type'     => array('production_report'),
+			'fields'        => array(
+									array(
+										'id'       => 'parent_id',
+										'title'    => esc_html__( 'Reprot for project', ANONY_TEXTDOM ),
+										'type'     => 'select',
+										'options'  => anony_posts_data_simple('contract'),
+									),
+
+									array(
+										'id'       => 'anony__purification_plant',
+										'title'    => esc_html__( 'purification plant production', ANONY_TEXTDOM ),
+										'type'     => 'number',
+										'validate' => 'number',
+										'show_on_front' => true
+									),
+
+								)
+
+		];
+
 
 	return $metaboxes;
 });
+
+$aqiq_metaboxes = [
+		/*Any meta box ID should start with anony-meta- to have correct style*/
+		'id'            => 'anony-this-post-metaboxes',//Meta box ID
+		'title'         => esc_html__( 'This post meta boxes', ANONY_TEXTDOM ),
+		'context'       => 'normal',
+		'priority'      =>  'high', // high|low
+        'hook_priority' =>  '10', // Default 10
+		'post_type'     => array('contract'),
+		'fields'        => array(
+
+								array(
+									'id'       => 'anony__this_post_metaboxes',
+									'title'    => esc_html__( 'Meta boxes', ANONY_TEXTDOM ),
+									'type'     => 'textarea',
+									'validate' => 'no_html',
+								),
+							)
+	];

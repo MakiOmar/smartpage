@@ -68,14 +68,22 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		public static $called = 0;
 
 		/**
+		 * @var array Holds options page argument
+		 */
+		public $options_page;
+
+		/**
 		 * Class Constructor. Defines the args for the theme options class
 		 *
 		 * @param array $menu array of options page's menu items
 		 * @param array $sections array of options page's sections
 		 * @param array $widgets array of widgets to be registered
 		 */
-		public function __construct($menu = array(), $sections = array(), $widgets = array()){
-			global $anonyOptions;
+		public function __construct($menu = array(), $sections = array(), $widgets = array(), $options_page = null){
+
+			$anonyOptions = ANONY_Options_Model::get_instance();
+
+			$this->options_page = $options_page;
 			
 			$this->menu = $menu;
 
@@ -109,7 +117,6 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 * @return array An array of page's defaults e.g. [menu_title, page_title, page_slug, etc]
 		 */
 		public function opt_page_defaults(){
-			$defaults = array();
 			
 			$defaults['opt_name'] = ANONY_OPTIONS;
 			
@@ -122,6 +129,13 @@ if (!class_exists('ANONY_Theme_Settings')) {
 			$defaults['page_type'] = 'menu';
 			$defaults['page_parent'] = '';
 			$defaults['page_position'] = 100;
+
+			if(!is_null($this->options_page) && is_array($this->options_page) && !empty($this->options_page)){
+
+				if(!isset($this->options_page['page_slug']) || $this->options_page['page_slug'] == $defaults['page_slug']) return $defaults;
+
+				return wp_parse_args( $this->options_page, $defaults );
+			}
 
 			return $defaults;
 		}
@@ -237,9 +251,9 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					$section['title'],
 					array(&$this,'section_cb'),
 					//Make sure to add the same in add_settings_field
-					'anony_'.$secKey.'_section_group'
+					$this->args['page_slug']
 				);
-				
+
 				if(isset($section['fields'])){
 
 					foreach($section['fields'] as $fieldKey => $field){
@@ -259,7 +273,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 								$fieldTitle,
 								array(&$this,'field_input'),
 								//You should pass the page passed to add_settings_section
-								'anony_'.$secKey.'_section_group',
+								$this->args['page_slug'],
 								'anony_'.$secKey.'_section',
 								$field
 							);
@@ -289,6 +303,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 */
 		public function field_input($field){
 
+
 			if(isset($field['callback']) && function_exists($field['callback'])){
 
 			}
@@ -305,19 +320,23 @@ if (!class_exists('ANONY_Theme_Settings')) {
 						'date_time',
 						'font_select',
 						'info',
+						'checkbox',
+						'switch',
+						'radio',
 						'text',
+						'textarea',
 						'multi_text',
 						'select',
 					];
 				if(in_array($field['type'], $array)){
+
+					$field['option_name'] = $this->args['opt_name'];
 					
 					$render_field = new ANONY_Input_Field($field);
 
 					echo $render_field->field_init();
 				}else{
 					$field_class = 'ANONY_optf__'.ucfirst($field['type']);
-
-
 
 					//Static class name for inputs that have same HTML markup
 					if(in_array($field['type'], $mixed_types)) $field_class = 'ANONY_optf__Mixed';
@@ -442,6 +461,10 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 */
 		public function options_page_html(){
 
+			$screen = get_current_screen();
+
+			if($screen->id != 'appearance_page_'.$this->args['opt_name']) return;
+
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
 
@@ -451,7 +474,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 				<form action="options.php" method="post" enctype="multipart/form-data" autocomplete="off">
 
 				<?php
-				// output security fields for the registered setting "Anony_Options"
+				// output security fields for the registered setting
 				settings_fields( $this->OptionGroup );
 			
 				echo '<div id="options-wrap"><div id="anony-options-nav"><div id="anony-logo"><img src="'.ANONY_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
@@ -475,18 +498,14 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					
 
 					echo '</ul></div><div id="options-sections">';
-					// output setting sections and their fields
-					// (sections are registered for "Anony_Options", each field is registered to a specific section)
+					/**
+					 * output setting sections and their fields
+					 */ 
+					anony_do_settings_sections($this->args['page_slug']);
 
-					foreach($this->sections as $secKey => $section){ $groupID = 'anony_'.$secKey.'_section_group';?>
+					submit_button( 'Save Settings' );
 
-								<div id="<?php echo str_replace('_','-',$groupID) ?>" class="anony-section-group<?php echo (($secKey == 'general') ? ' anony-show-section' : '') ?>">
-									<?php do_settings_sections( $groupID );?>
-								</div>
-
-					<?php }
-				submit_button( 'Save Settings' );
-				echo "</div></div>";
+					echo "</div></div>";
 
 				?>
 

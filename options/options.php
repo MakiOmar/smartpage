@@ -66,6 +66,20 @@ $sections = array();
 
 $sliders = anony_get_rev_sliders();
 
+$sections['general']= array(
+		'title' => esc_html__('General', ANONY_TEXTDOM),
+		'icon'  => 'x',
+		'fields' => array(
+						array(
+							'id'      => 'copyright',
+							'title'   => esc_html__('Copyright', ANONY_TEXTDOM),
+							'type'    => 'text',
+							'validate'=> 'no_html',
+							'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
+						),						
+					)
+);
+
 $sections['slider']= array(
 		'title' => esc_html__('Slider', ANONY_TEXTDOM),
 		'icon' => 'P',
@@ -76,6 +90,16 @@ $sections['slider']= array(
 							'type'    => 'switch',
 							'validate'=> 'no_html',
 							'desc'    => esc_html('If checked, it will show revolution slider on Homepage', ANONY_TEXTDOM),
+						),
+
+						array(
+							'id'      => 'rev_slider',
+							'title'   => esc_html__('Select a slider', ANONY_TEXTDOM),
+							'type'    => 'select',
+							'validate'=> 'multiple_options',
+							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
+							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
+							'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
 						),
 						array(
 							'id'      => 'slider_content',
@@ -104,15 +128,6 @@ $sections['slider']= array(
 							'default' => 'category',
 							'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && $anonyOptions->slider == 'featured-cat' ? ' show-in-table' : '')
 						),
-						array(
-							'id'      => 'rev_slider',
-							'title'   => esc_html__('Select a slider', ANONY_TEXTDOM),
-							'type'    => 'select',
-							'validate'=> 'multiple_options',
-							'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
-							'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), get_admin_url( $blog_id, '?page=revslider' )) : '',
-							'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
-						),
 	
 	
 						array(
@@ -127,20 +142,6 @@ $sections['slider']= array(
 					),
 			'note'     => esc_html__('This options only applies to the front-page.php', ANONY_TEXTDOM), 
 	);
-
-$sections['general']= array(
-		'title' => esc_html__('General', ANONY_TEXTDOM),
-		'icon' => 'x',
-		'fields' => array(
-						array(
-							'id'      => 'copyright',
-							'title'   => esc_html__('Copyright', ANONY_TEXTDOM),
-							'type'    => 'text',
-							'validate'=> 'no_html',
-							'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
-						),						
-					)
-);
 
 $sections['menu-colors']= array(
 		'title' => esc_html__('Menu Colors', ANONY_TEXTDOM),
@@ -293,6 +294,7 @@ $defaultArFonts = array(
 						'ae_alarabiyaregular'      => 'Alarabiya regular',
 						'ae_alhorregular'          => 'Alhor regular',
 						'ae_almohanadregular'      => 'Almohanad regular',
+						'dubairegular'             => 'Dubai regular',
 
 					);
 

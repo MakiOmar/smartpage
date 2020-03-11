@@ -1,5 +1,5 @@
 <?php 
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	anony_get_correct_sidebar();
 
 	if(has_action('post_ad')){
@@ -39,13 +39,6 @@
 									get_post_meta( $post_id, 'anony__res_city', true ),
 									get_post_meta( $post_id, 'anony__res_const_year', true ),
 								];
-
-								/*if(is_rtl()){
-									nvd($THs);
-									$THs = array_reverse($THs);
-									nvd($THs);
-									$TDs = array_reverse($TDs);
-								}*/
 							;?>
 							<table>
 							  <tr>

@@ -3,7 +3,7 @@ get_header();
 ?>
   <div class="anony-grid">
 	<?php
-	global $anonyOptions;
+	$anonyOptions = ANONY_Options_Model::get_instance();
 
 	if(isset($anonyOptions->slider )){
 		

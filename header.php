@@ -45,7 +45,7 @@ ob_start('ob_gzhandler');
 									echo '<div class="anony-grid-col-md-3 anony-grid-col-sm-3">';
 
 									 //User control plugin's menu
-									 echo anony_user_main('user-control');
+									 //echo anony_user_main('anony-user-control');
 
 									echo '</div>';	
 								 }
@@ -53,7 +53,9 @@ ob_start('ob_gzhandler');
 							?>
 
 						</div>
-						<?php echo anony_navigation('main-menu') ?>
+						<?php 
+
+						echo anony_navigation('anony-main-menu') ?>
 					</header>
 			</div>
 		</div>

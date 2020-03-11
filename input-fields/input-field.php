@@ -79,7 +79,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		 */
 		function __construct($field, $context = 'option', $post_id = null, $as_template = false, $field_value = null, $index = null)
 		{
-			global $anonyOptions;
+			
 
 			$this->as_template = $as_template;
 
@@ -87,7 +87,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 
 			$this->index       = $index;
 			
-			$this->options     = $anonyOptions;
+			$this->options     = get_option( $field['option_name'], []);
 
 			$this->field       = $field;
 
@@ -130,11 +130,11 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 		 * Set options field data
 		 */
 		public function opt_field_data(){
-			$this->input_name = isset($this->field['name'])  ? ANONY_OPTIONS.'['.$this->field['name'].']' : ANONY_OPTIONS.'['.$this->field['id'].']';
+			$this->input_name = isset($this->field['name'])  ? $this->field['option_name'].'['.$this->field['name'].']' : $this->field['option_name'].'['.$this->field['id'].']';
 
 			$fieldID      = $this->field['id'];
 
-			$this->value = (isset($this->options->$fieldID))? $this->options->$fieldID : $this->default;
+			$this->value = (isset($this->options[$fieldID]))? $this->options[$fieldID] : $this->default;
 		}
 
 		/**
@@ -148,7 +148,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 			
 			//This should be field value to be passed to input field object.
 			//Now within the multi value input field
-			if(isset($this->field['nested-to']) && !is_null($this->field_value)){
+			if(!is_null($this->field_value)){
 
 				$meta = $this->field_value;
 
@@ -158,9 +158,6 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 			}
 
 			$this->value = ($meta  != '') ? $meta : $this->default;
-			if ($this->field['id'] == 'anony__quantities_reduction') {
-				//nvd($this->value);
-			}
 			
 		}
 

@@ -121,6 +121,11 @@
 	font-size: 12px;
 	height: 6em;
 	}
+
+	#anony-follow-contact{
+		flex-direction: column;
+		justify-content: center;
+	}
 }
 @media screen and (min-width:321px) and (max-width:480px){
 	.anony-grid-col-slg-1 { width: 8.333%; }
