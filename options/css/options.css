@@ -465,3 +465,12 @@ url('../../functions/options/fonts/raleway-thin-webfont.svg#ralewaythin') format
 	background: #941e1e;
     border-color: #941e1e;
 }
+
+.custom-logo-link{
+    display: block;
+}
+
+.custom-logo-link img{
+    display: block;
+    width:100%;
+}

@@ -476,8 +476,13 @@ if (!class_exists('ANONY_Theme_Settings')) {
 				<?php
 				// output security fields for the registered setting
 				settings_fields( $this->OptionGroup );
+				if ( has_custom_logo() ) {
+					$option_logo = get_custom_logo();
+				}else{
+					$option_logo = '<img src="'.ANONY_OPTIONS_URI.'/imgs/logo-orange.png"/>';
+				}
 			
-				echo '<div id="options-wrap"><div id="anony-options-nav"><div id="anony-logo"><img src="'.ANONY_OPTIONS_URI.'/imgs/logo-orange.png"/></div><ul>';
+				echo '<div id="options-wrap"><div id="anony-options-nav"><div id="anony-logo">'.$option_logo.'</div><ul>';
 			
 					foreach($this->menu as $nav => $details){
 						if(isset($details['sections'])){
