@@ -518,7 +518,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 * Page scripts registration.
 		 */		
 		public function page_scripts(){
-			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){
+			if(get_current_screen()->id == "appearance_page_".$this->args['opt_name']){
 			
 				wp_register_style( 'anony-options-css', ANONY_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
 
@@ -602,13 +602,13 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 * Adds styles related to some options in admin
 		 */
 		public function admin_styles(){ 
-			if(get_current_screen()->id == "appearance_page_".ANONY_OPTIONS){?>
+			if(get_current_screen()->id == "appearance_page_".$this->args['opt_name']){?>
 				<style type="text/css">
-					#setting-error-<?php echo ANONY_OPTIONS ?>{
+					#setting-error-<?php echo $this->args['opt_name'] ?>{
 						background-color: #d1354b;
 						color: #fff;
 					}
-					#setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss, #setting-error-<?php echo ANONY_OPTIONS ?> .notice-dismiss:before{
+					#setting-error-<?php echo $this->args['opt_name'] ?> .notice-dismiss, #setting-error-<?php echo $this->args['opt_name'] ?> .notice-dismiss:before{
 						color: #fff;
 					}
 				</style>

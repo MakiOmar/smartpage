@@ -21,7 +21,7 @@ $options_nav = array(
 );
 
 
-$sections['general']= array(
+$omdbsections['general']= array(
 		'title' => esc_html__('General', ANONY_TEXTDOM),
 		'icon' => 'x',
 		'fields' => array(
@@ -46,4 +46,4 @@ $omdbOptionsPage['page_parent'] = '';
 $omdbOptionsPage['page_position'] = 100;
 
 
-$Omdb_Options = new ANONY_Theme_Settings( $options_nav, $sections, [], $omdbOptionsPage);
+$Omdb_Options = new ANONY_Theme_Settings( $options_nav, $omdbsections, [], $omdbOptionsPage);
