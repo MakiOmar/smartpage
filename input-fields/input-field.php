@@ -87,7 +87,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 
 			$this->index       = $index;
 			
-			$this->options     = ANONY_Options_Model::get_instance( $field['option_name']);
+			$this->options     = isset($field['option_name']) ? ANONY_Options_Model::get_instance( $field['option_name']) : '';
 
 			$this->field       = $field;
 
