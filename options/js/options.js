@@ -74,6 +74,8 @@ jQuery(document).ready(function($){
 		showFirstSection: function(){
 			if($('.anony-show-section').length == 0){
 				$('.anony-section-group:first').addClass('anony-show-section');
+				$('.anony-nav-link:first').closest('.anony-dropdown').show();
+				$('.anony-nav-link:first').parent().addClass('active');
 			}
 		},
 	});
