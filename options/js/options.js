@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
 				"use strict";
 					e.preventDefault();
 
-					var targetID = e.target.id.split('-')[0];
+					var targetID = $(e.currentTarget).attr("role");
 
 					$('.anony-dropdown').hide();
 					if($('#' + targetID + '-dropdown')){
