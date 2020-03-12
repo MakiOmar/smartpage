@@ -21,6 +21,7 @@ class ANONY_Radio{
 		if (!is_object($parent)) return;
 
 		$this->parent = $parent;
+		$this->enqueue();
 	}
 
 	/**
@@ -61,7 +62,7 @@ class ANONY_Radio{
 							);
 				
 						$html .= sprintf(
-									'<input %1$s type="radio" id="%2$s_%3$s" name="%4$s" %5$s value="%6$s" %7$s onclick="jQuery:anony_radio_select(\'%2$s_%3$s\', \'%2$s\');"/>',
+									'<input %1$s type="radio" id="%2$s_%3$s" name="%4$s" %5$s value="%6$s" %7$s onclick="anony_radio_select(\'%2$s_%3$s\', \'%2$s\');"/>',
 									 $radioClass, 
 									 $this->parent->field['id'], 
 									 $search, 
