@@ -16,18 +16,18 @@ $options_nav = array(
 	// General --------------------------------------------
 	'projects-settings' => array(
 		'title' => esc_html__('Projects settings', ANONY_TEXTDOM),
-		'sections' => array('aqiq_project', 'arada_project'),
+		'sections' => array('janabeen_project', 'arada_project', 'aqiq_project'),
 	),
 );
 
 
-$omdbsections['aqiq_project']= array(
-		'title' => esc_html__('Aqiq Project', ANONY_TEXTDOM),
+$omdbsections['janabeen_project']= array(
+		'title' => esc_html__('Janabeen Project', ANONY_TEXTDOM),
 		'icon' => 'x',
 		'fields' => array(
 						array(
-							'id'      => 'aqiq_project_contract',
-							'title'   => esc_html__('Aqiq Project contract', ANONY_TEXTDOM),
+							'id'      => 'janabeen_project_contract',
+							'title'   => esc_html__('Janabeen Project contract', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'options' => anony_posts_data_simple('contract'),
 							'validate'=> 'multiple_options',
@@ -43,6 +43,21 @@ $omdbsections['arada_project']= array(
 						array(
 							'id'      => 'arada_project_contract',
 							'title'   => esc_html__('Arada project contract', ANONY_TEXTDOM),
+							'type'    => 'select',
+							'options' => anony_posts_data_simple('contract'),
+							'validate'=> 'multiple_options',
+							
+						),						
+					)
+);
+
+$omdbsections['aqiq_project']= array(
+		'title' => esc_html__('Aqiq Project', ANONY_TEXTDOM),
+		'icon' => 'x',
+		'fields' => array(
+						array(
+							'id'      => 'aqiq_project_contract',
+							'title'   => esc_html__('Aqiq project contract', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'options' => anony_posts_data_simple('contract'),
 							'validate'=> 'multiple_options',
