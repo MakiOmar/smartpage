@@ -162,6 +162,13 @@ if (!class_exists('ANONY_Theme_Settings')) {
 			//Show admin notices
 			add_action('admin_notices', array(&$this, 'admin_notices'));
 
+			//Runs after the option with name "option_name" has been updated.
+			add_action('update_option_'.$this->args['opt_name'], array($this, 'after_option_update'), 10, 2);
+
+		}
+
+		function after_option_update( $old_value, $value ){
+			
 		}
 		
 		/**
@@ -508,7 +515,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					 */ 
 					anony_do_settings_sections($this->args['page_slug']);
 
-					submit_button( 'Save Settings' );
+					submit_button( 'Save Settings', 'primary', 'submit', true, [ 'role' => 'anony-options']  );
 
 					echo "</div></div>";
 
