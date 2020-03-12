@@ -87,7 +87,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 
 			$this->index       = $index;
 			
-			$this->options     = get_option( $field['option_name'], []);
+			$this->options     = ANONY_Options_Model::get_instance( $field['option_name']);
 
 			$this->field       = $field;
 
@@ -134,7 +134,7 @@ if( ! class_exists( 'ANONY_Input_Field' )){
 
 			$fieldID      = $this->field['id'];
 
-			$this->value = (isset($this->options[$fieldID]))? $this->options[$fieldID] : $this->default;
+			$this->value = (isset($this->options->$fieldID))? $this->options->$fieldID : $this->default;
 		}
 
 		/**
