@@ -14,23 +14,39 @@ if(get_option(ANONY_OPTIONS)){
 // Navigation elements
 $options_nav = array(
 	// General --------------------------------------------
-	'general' => array(
-		'title' => esc_html__('Getting started', ANONY_TEXTDOM),
-		'sections' => array('general'),
+	'projects-settings' => array(
+		'title' => esc_html__('Projects settings', ANONY_TEXTDOM),
+		'sections' => array('aqiq_project', 'arada_project'),
 	),
 );
 
 
-$omdbsections['general']= array(
-		'title' => esc_html__('General', ANONY_TEXTDOM),
+$omdbsections['aqiq_project']= array(
+		'title' => esc_html__('Aqiq Project', ANONY_TEXTDOM),
 		'icon' => 'x',
 		'fields' => array(
 						array(
-							'id'      => 'omdb',
-							'title'   => esc_html__('omdb', ANONY_TEXTDOM),
-							'type'    => 'text',
-							'validate'=> 'no_html',
-							'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
+							'id'      => 'aqiq_project_contract',
+							'title'   => esc_html__('Aqiq Project contract', ANONY_TEXTDOM),
+							'type'    => 'select',
+							'options' => anony_posts_data_simple('contract'),
+							'validate'=> 'multiple_options',
+							
+						),						
+					)
+);
+
+$omdbsections['arada_project']= array(
+		'title' => esc_html__('Arada Project', ANONY_TEXTDOM),
+		'icon' => 'x',
+		'fields' => array(
+						array(
+							'id'      => 'arada_project_contract',
+							'title'   => esc_html__('Arada project contract', ANONY_TEXTDOM),
+							'type'    => 'select',
+							'options' => anony_posts_data_simple('contract'),
+							'validate'=> 'multiple_options',
+							
 						),						
 					)
 );
