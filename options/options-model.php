@@ -28,11 +28,23 @@ if (!class_exists('ANONY_Options_Model')) {
         protected $options_arr = array();
          // array contains the option_value of the option_name
         
+        /**
+         * This will not instantiate new object if option_name is not changed
+         */
         static $instance = null;
+
+        /**
+         * This will help instantiate new object if option_name is changed
+         */ 
+        static $object_changed_to = null;
         
-        public static function get_instance() {
-            if (self::$instance == null) {
-                self::$instance = new ANONY_Options_Model(ANONY_OPTIONS);
+        public static function get_instance($option_name = ANONY_OPTIONS) {
+            if (self::$instance == null ) {
+                
+                self::$instance = new ANONY_Options_Model();
+            }elseif (self::$instance != null && self::$object_changed_to !== $option_name) {
+                self::$object_changed_to = $option_name;
+                self::$instance = new ANONY_Options_Model($option_name);
             }
             return self::$instance;
         }
@@ -42,7 +54,8 @@ if (!class_exists('ANONY_Options_Model')) {
          * @param string $option_name
          */
         public function __construct($option_name = ANONY_OPTIONS.' ') {
-            $this->option_group = trim($option_name);
+            $this->option_group      = trim($option_name);
+            self::$object_changed_to = trim($option_name);
             
             // get the current value of this option
             $existed = get_option($this->option_group);
