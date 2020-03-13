@@ -66,15 +66,41 @@ $omdbsections['aqiq_project']= array(
 					)
 );
 
-$omdbOptionsPage['opt_name'] = 'Omdb_Options';
-			
+$omdbOptionsPage['opt_name'] = 'Omdb_Options';		
 $omdbOptionsPage['menu_title'] = esc_html__('OMDB options', ANONY_TEXTDOM);
 $omdbOptionsPage['page_title'] = esc_html__('OMDB options', ANONY_TEXTDOM);
-$omdbOptionsPage['page_slug'] = 'Omdb_Options';
+$omdbOptionsPage['menu_slug'] = 'Omdb_Options';
 $omdbOptionsPage['page_cap'] = 'manage_options';
-$omdbOptionsPage['page_type'] = 'menu';
-$omdbOptionsPage['page_parent'] = '';
 $omdbOptionsPage['page_position'] = 100;
+$omdbOptionsPage['page_type'] = 'menu';
+
 
 
 $Omdb_Options = new ANONY_Theme_Settings( $options_nav, $omdbsections, [], $omdbOptionsPage);
+
+
+
+// Navigation elements
+$options_nav = array(
+	// General --------------------------------------------
+	'test-projects-settings' => array(
+		'title' => esc_html__('Test Projects settings', ANONY_TEXTDOM),
+		'sections' => array('test_janabeen_project'),
+	),
+);
+
+
+$omdbSubSections['test_janabeen_project']= array(
+		'title' => esc_html__('Test Janabeen Project', ANONY_TEXTDOM),
+		'icon' => 'x',
+		'fields' => array(
+						array(
+							'id'      => 'tset_janabeen_project_contract',
+							'title'   => esc_html__('Test Janabeen Project contract', ANONY_TEXTDOM),
+							'type'    => 'select',
+							'options' => anony_posts_data_simple('contract'),
+							'validate'=> 'multiple_options',
+							
+						),						
+					)
+);
