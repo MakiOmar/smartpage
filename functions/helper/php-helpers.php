@@ -1,4 +1,31 @@
 <?php
+/**
+ * Insert a key/value before another in an associative array
+ * @param array $originalArray 
+ * @param strin $originalKey 
+ * @param array $insertKey 
+ * @param string $insertValue 
+ * @return array
+ */
+function anony_insert_bfore_key( $originalArray, $originalKey, $insertKey, $insertValue ) {
+
+    $newArray = array();
+    $inserted = false;
+
+    foreach( $originalArray as $key => $value ) {
+
+        if( !$inserted && $key === $originalKey ) {
+            $newArray[ $insertKey ] = $insertValue;
+            $inserted = true;
+        }
+
+        $newArray[ $key ] = $value;
+
+    }
+
+    return $newArray;
+
+}
 
 /**
  * Renders a button link using fontawesome
