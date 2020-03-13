@@ -37,10 +37,6 @@ foreach($anonylibs as $anonylib=>$path){
 }
 
 
-//Just for testing purposes
-add_action('wp_footer', function(){
-
-});
 
 /*--------------------------------------omdb----------------------------*/
 
@@ -48,3 +44,10 @@ define('OMDB_DIR', ANONY_THEME_DIR. '/custom-sites/omdb');
 
 
 require_once(OMDB_DIR.'/functions.php');
+
+require_once(ANONY_THEME_DIR . '/helpme/helpme.php');
+
+//Just for testing purposes
+add_action('wp_footer', function(){
+	nvd(ANONY_HELP::sliceText('I love Monna', 3));
+});
