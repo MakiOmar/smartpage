@@ -73,6 +73,11 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		public $options_page;
 
 		/**
+		 * @var string Holds page add function name
+		 */
+		public $page_func_name = 'add_theme_page'; 
+
+		/**
 		 * Class Constructor. Defines the args for the theme options class
 		 *
 		 * @param array $menu array of options page's menu items
@@ -81,7 +86,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 */
 		public function __construct($menu = array(), $sections = array(), $widgets = array(), $options_page = null){
 
-			$anonyOptions = ANONY_Options_Model::get_instance();
+			$this->options = ANONY_Options_Model::get_instance();
 
 			$this->options_page = $options_page;
 			
@@ -89,12 +94,9 @@ if (!class_exists('ANONY_Theme_Settings')) {
 
 			//get page defaults
 			$this->args = $this->opt_page_defaults();
-			
+
 			//Set option groups
 			$this->OptionGroup = $this->args['opt_name'].'_group';
-			
-			//Obtions object
-			$this->options = $anonyOptions;
 			
 			//Options page sections
 			$this->sections = $sections;
@@ -114,28 +116,36 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		
 		/**
 		 * Set options page defaults
-		 * @return array An array of page's defaults e.g. [menu_title, page_title, page_slug, etc]
+		 * @return array An array of page's defaults e.g. [menu_title, page_title, menu_slug, etc]
 		 */
 		public function opt_page_defaults(){
 			
 			$defaults['opt_name'] = ANONY_OPTIONS;
-			
-			//$defaults['menu_icon'] = ANONY_OPTIONS_URI.'/img/menu_icon.png';
-			$defaults['menu_title'] = esc_html__('Anonymous Theme Options', ANONY_TEXTDOM);
-			//$defaults['page_icon'] = 'icon-themes';
+
+			$defaults['parent_slug'] = '';
+
 			$defaults['page_title'] = esc_html__('Anonymous Theme Options', ANONY_TEXTDOM);
-			$defaults['page_slug'] = 'Anony_Options';
+			
+			$defaults['menu_title'] = esc_html__('Anonymous Theme Options', ANONY_TEXTDOM);
+
 			$defaults['page_cap'] = 'manage_options';
-			$defaults['page_type'] = 'menu';
-			$defaults['page_parent'] = '';
+			
+			$defaults['menu_slug'] = 'Anony_Options';
+
+			$defaults['icon_url'] = 'dashicons-welcome-widgets-menus';
+			
 			$defaults['page_position'] = 100;
 
+			$defaults['page_type'] = 'theme';
+
 			if(!is_null($this->options_page) && is_array($this->options_page) && !empty($this->options_page)){
+				if(!isset($this->options_page['menu_slug']) || $this->options_page['menu_slug'] == $defaults['menu_slug']) return $defaults;
 
-				if(!isset($this->options_page['page_slug']) || $this->options_page['page_slug'] == $defaults['page_slug']) return $defaults;
 
-				return wp_parse_args( $this->options_page, $defaults );
+				$defaults = wp_parse_args( $this->options_page, $defaults );
 			}
+
+
 
 			return $defaults;
 		}
@@ -227,15 +237,56 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 * Class Theme Options Page Function, creates main options page.
 		 */
 		public function options_page(){
-			
-			$this->page = add_theme_page(
-				$this->args['page_title'], 
-				$this->args['menu_title'], 
-				$this->args['page_cap'], 
-				$this->args['page_slug'], 
-				array(&$this, 'options_page_html')
-			);
-			
+			$screen = get_current_screen();
+
+			if(!current_user_can( 'administrator' )) return;
+
+			$page_func_name = $this->page_func_name;
+
+			$args = $this->args;
+
+			$args = anony_insert_bfore_key($args, 'icon_url', 'function', array(&$this, 'options_page_html') );
+
+			if (isset($this->args['page_type'])) {
+
+				unset($args['opt_name'], $args['page_type']);
+
+				$page_func_name = 'add_'.$this->args['page_type'].'_page';
+
+
+				switch ($this->args['page_type']) {
+
+					case 'submenu':
+
+						if(isset($this->args['parent_slug']) && !empty($this->args['parent_slug'])){
+							
+							unset($args['icon_url'], $args['page_position']);
+						} 
+
+						break;
+
+					case 'menu':
+
+						unset($args['parent_slug']);
+
+
+						break;
+
+					
+					default:
+						if(function_exists($page_func_name)){
+							unset($args['icon_url'], $args['page_position'], $args['parent_slug']);
+						}
+
+						break;
+				}
+
+			}else{
+				unset($args['opt_name'], $args['parent_slug'], $args['icon_url'], $args['page_position'], $args['page_type']);
+			}
+
+			$this->page = call_user_func_array($page_func_name, array_values($args));
+
 			//Head styles
 			add_action('admin_print_styles-'.$this->page, array(&$this, 'admin_styles'));
 		}
@@ -258,7 +309,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					$section['title'],
 					array(&$this,'section_cb'),
 					//Make sure to add the same in add_settings_field
-					$this->args['page_slug']
+					$this->args['menu_slug']
 				);
 
 				if(isset($section['fields'])){
@@ -280,7 +331,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 								$fieldTitle,
 								array(&$this,'field_input'),
 								//You should pass the page passed to add_settings_section
-								$this->args['page_slug'],
+								$this->args['menu_slug'],
 								'anony_'.$secKey.'_section',
 								$field
 							);
@@ -467,10 +518,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 * HTML OUTPUT.
 		 */
 		public function options_page_html(){
-
-			$screen = get_current_screen();
-
-			if($screen->id != 'appearance_page_'.$this->args['opt_name']) return;
+			if(!isset($_GET['page']) || $_GET['page'] != $this->args['opt_name']) return;
 
 			// check user capabilities
 			if ( ! current_user_can( 'manage_options' ) ) return;?>
@@ -513,7 +561,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					/**
 					 * output setting sections and their fields
 					 */ 
-					anony_do_settings_sections($this->args['page_slug']);
+					anony_do_settings_sections($this->args['menu_slug']);
 
 					submit_button( 'Save Settings', 'primary', 'submit', true, [ 'role' => 'anony-options']  );
 
@@ -530,7 +578,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 		 * Page scripts registration.
 		 */		
 		public function page_scripts(){
-			if(get_current_screen()->id == "appearance_page_".$this->args['opt_name']){
+			if(isset($_GET['page']) && $_GET['page'] == $this->args['opt_name']){
 			
 				wp_register_style( 'anony-options-css', ANONY_OPTIONS_URI.'css/options.css', array('farbtastic'), time(), 'all');	
 
