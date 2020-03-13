@@ -245,7 +245,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 
 			$args = $this->args;
 
-			$args = anony_insert_bfore_key($args, 'icon_url', 'function', array(&$this, 'options_page_html') );
+			$args = anony_insert_before_key($args, 'icon_url', 'function', array(&$this, 'options_page_html') );
 
 			if (isset($this->args['page_type'])) {
 

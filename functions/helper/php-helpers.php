@@ -7,7 +7,7 @@
  * @param string $insertValue 
  * @return array
  */
-function anony_insert_bfore_key( $originalArray, $originalKey, $insertKey, $insertValue ) {
+function anony_insert_before_key( $originalArray, $originalKey, $insertKey, $insertValue ) {
 
     $newArray = array();
     $inserted = false;
