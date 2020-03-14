@@ -13,7 +13,7 @@ function anony_user_metabox($user){
 				<select name="managed_project" id="managed_project" autocomplete = "off">
 					<option value=""><?php esc_html_e( 'Select project', ANONY_TEXTDOM ) ?></option>
 					<?php
-						$projects_list = anony_posts_basic_data(['post_type' => 'contract']);
+						$projects_list = ANONY_POST_HELP::getPostsIdsTitles(['post_type' => 'contract']);
 						foreach ($projects_list as $project_id => $project_title) {?>
 							<option value="<?php echo esc_attr( $project_id ) ?>"<?php selected($manage_project_id ,$project_id) ?>><?php echo  esc_html( $project_title ) ?></option>
 						<?php }

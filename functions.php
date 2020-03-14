@@ -2,9 +2,7 @@
 
 require_once(wp_normalize_path(get_template_directory() . '/config/config.php'));
 
-require_once(wp_normalize_path(ANONY_LIBS_DIR . 'helper/php-helpers.php'));
-
-require_once(wp_normalize_path(ANONY_LIBS_DIR . 'helper/wordpress-helpers.php'));
+require_once(ANONY_THEME_DIR . '/helpme/helpme.php');
 
 require_once(wp_normalize_path('options/options.php'));
 
@@ -45,9 +43,9 @@ define('OMDB_DIR', ANONY_THEME_DIR. '/custom-sites/omdb');
 
 require_once(OMDB_DIR.'/functions.php');
 
-require_once(ANONY_THEME_DIR . '/helpme/helpme.php');
+
 
 //Just for testing purposes
 add_action('wp_footer', function(){
-	nvd(ANONY_HELP::sliceText('I love Monna', 3));
+	
 });

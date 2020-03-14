@@ -64,7 +64,7 @@ $options_nav = array(
 //Sectoins
 $sections = array();
 
-$sliders = anony_get_rev_sliders();
+$sliders = ANONY_WPMISC_HELP::getRevSliders();
 
 $sections['general']= array(
 		'title' => esc_html__('General', ANONY_TEXTDOM),
@@ -135,7 +135,7 @@ $sections['slider']= array(
 							'title'   => esc_html__('Select featured category', ANONY_TEXTDOM),
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
-							'options' => isset($anonyOptions)  ?anony_terms_query($anonyOptions->featured_tax, 'id=>name') : array(),
+							'options' => isset($anonyOptions)  ? ANONY_TERM_HELP::wpTermQuery($anonyOptions->featured_tax, 'id=>name') : array(),
 							'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : ''),
 							'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', ANONY_TEXTDOM) : '')
 						),
@@ -516,7 +516,7 @@ $sections['miscellanous']= array(
 							'title'   => esc_html__('Page select', ANONY_TEXTDOM),
 							'type'    => 'pages_select',
 							'validate'=> 'multiple_options',
-							'options' => anony_pages_basic_data(),
+							'options' => ANONY_POST_HELP::getPagesIdsTitles(),
 						),		
 						array(
 							'id'      => 'sliderbar',

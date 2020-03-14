@@ -1,4 +1,19 @@
 <?php
+/**
+* Link all post thumbnails to the post permalink and remove width and height atrr from img
+*
+* @param  string $html          Post thumbnail HTML.
+* @param  int    $post_id       Post ID.
+* @param  int    $post_image_id Post image ID.
+* @return string                Filtered post image HTML.
+*/
+add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_image_id ) {
+
+	$html = '<a href="' . esc_url(get_permalink( $post_id )) . '" title="' . esc_attr( get_the_title( $post_id ) ) . '">' . $html . '</a>';
+	
+	return preg_replace('/(width|height)="\d+"\s/', "", $html);
+}, 10, 3 ); 
+
 
 add_action( 'init', function() {
 	$post_parents = apply_filters( 'anony_cross_parent_rewrite', [] );

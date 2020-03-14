@@ -21,7 +21,7 @@
 				
 
 			}elseif($anonyOptions->slider == 'featured-post'){
-				$args['post__not_in'] =  anony_posts_ids_by_meta('anony__set_as_featured', 'on');
+				$args['post__not_in'] =  ANONY_POST_HELP::queryIdsByMeta('anony__set_as_featured', 'on');
 
 			}
 			

@@ -66,7 +66,7 @@ if ( ! class_exists( 'ANONY_HELP' ) ) {
 			}
 			
 			if((is_array($remove) && in_array('script',$remove)) || $remove == 'script'){
-				$html = anony_remove_script_tag_regex($html);
+				$html = self::removeScriptTagRegx($html);
 			}
 			
 			return $html;
@@ -77,7 +77,7 @@ if ( ! class_exists( 'ANONY_HELP' ) ) {
 		 */
 		static function isChecked($chkname,$value)
 		{
-		    if(!empty($_POST[$chkname]))
+		    if(isset($_POST[$chkname]) && !empty($_POST[$chkname]))
 		    {
 		        foreach($_POST[$chkname] as $chkval)
 		        {

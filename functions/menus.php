@@ -224,7 +224,7 @@ add_filter("wp_nav_menu_items",function($item , $args){
 					$curr_lang = $l;
 				}
 				$item .='<li class="anony-lang">';
-				$item .= '<a class="'.anony_active_language($l['language_code']).'" href="'.$l['url'].'">';
+				$item .= '<a class="'.ANONY_WPML_HELP::ActiveLangClass($l['language_code']).'" href="'.$l['url'].'">';
 				$item .= icl_disp_language(strtoupper($l['language_code']));
 				$item .='</a>';
 				$item .='</li>';

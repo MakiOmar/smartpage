@@ -9,6 +9,37 @@
 
 if ( ! class_exists( 'ANONY_ARRAY_HELP' ) ) {
 	class ANONY_ARRAY_HELP extends ANONY_HELP{
+		/**
+		 * Gets an associative array as key/value pairs from any object properties.
+		 * 
+	 	 * Useful where a select input field has dynamic options.
+		 * @param object $objects_array The array of objects to loop through
+		 * @param string $key           The property that should be used as a key
+		 * @param string $value         The property that should be used as a value
+		 * @return array                An array of properties as key/value pairs    
+		 */
+
+		static function ObjToAssoc($objects_array, $key, $value, $assoc = true){
+
+			$arr = [];
+
+			foreach ($objects_array as $object) {
+				if($assoc && !empty($key)){
+					$arr[$object->$key] = $object->$value;
+				}else{
+					$arr[] = $object->$value;
+				}
+				
+			}
+
+			return $arr;
+		}
+
+		/**
+		 * Same as print_r but usefull for rtl pages
+		 * @param type $array 
+		 * @return type
+		 */
 		static function neatPrintR($array){
 			echo '<pre dir="ltr">';
 				print_r($array);

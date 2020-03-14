@@ -245,7 +245,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 
 			$args = $this->args;
 
-			$args = anony_insert_before_key($args, 'icon_url', 'function', array(&$this, 'options_page_html') );
+			$args = ANONY_ARRAY_HELP::insertBeforeKey($args, 'icon_url', 'function', array(&$this, 'options_page_html') );
 
 			if (isset($this->args['page_type'])) {
 
@@ -561,7 +561,7 @@ if (!class_exists('ANONY_Theme_Settings')) {
 					/**
 					 * output setting sections and their fields
 					 */ 
-					anony_do_settings_sections($this->args['menu_slug']);
+					ANONY_OPTS_HELP::DoSettingsSections($this->args['menu_slug']);
 
 					submit_button( 'Save Settings', 'primary', 'submit', true, [ 'role' => 'anony-options']  );
 

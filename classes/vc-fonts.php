@@ -24,7 +24,7 @@ if (!class_exists('ANONY_VC_Fonts')) {
         public function __construct($library_data){
 			
 			//check if visual composer is active
-			if(!anony_is_active_plugin('js_composer/js_composer.php')) return;
+			if(!ANONY_WPPLUGIN_HELP::isActive('js_composer/js_composer.php')) return;
 			
             if (!is_array($library_data)) return;
 

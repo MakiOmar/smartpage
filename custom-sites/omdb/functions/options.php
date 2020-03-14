@@ -29,7 +29,7 @@ $omdbsections['janabeen_project']= array(
 							'id'      => 'janabeen_project_contract',
 							'title'   => esc_html__('Janabeen Project contract', ANONY_TEXTDOM),
 							'type'    => 'select',
-							'options' => anony_posts_data_simple('contract'),
+							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 							'validate'=> 'multiple_options',
 							
 						),						
@@ -44,7 +44,7 @@ $omdbsections['arada_project']= array(
 							'id'      => 'arada_project_contract',
 							'title'   => esc_html__('Arada project contract', ANONY_TEXTDOM),
 							'type'    => 'select',
-							'options' => anony_posts_data_simple('contract'),
+							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 							'validate'=> 'multiple_options',
 							
 						),						
@@ -59,7 +59,7 @@ $omdbsections['aqiq_project']= array(
 							'id'      => 'aqiq_project_contract',
 							'title'   => esc_html__('Aqiq project contract', ANONY_TEXTDOM),
 							'type'    => 'select',
-							'options' => anony_posts_data_simple('contract'),
+							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 							'validate'=> 'multiple_options',
 							
 						),						
@@ -98,7 +98,7 @@ $omdbSubSections['test_janabeen_project']= array(
 							'id'      => 'tset_janabeen_project_contract',
 							'title'   => esc_html__('Test Janabeen Project contract', ANONY_TEXTDOM),
 							'type'    => 'select',
-							'options' => anony_posts_data_simple('contract'),
+							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 							'validate'=> 'multiple_options',
 							
 						),						

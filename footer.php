@@ -21,7 +21,7 @@
 
 </div>
 
-<input type="hidden" id="anony_ajax_url" value="<?php echo anony_get_ajax_url(); ?>" />
+<input type="hidden" id="anony_ajax_url" value="<?php echo ANONY_WPML_HELP::getAjaxUrl(); ?>" />
 <div id="anony-loading">
     <div id="anony-page-loading-wrapper"><div id="anony-page-loading-bg"></div></div>
 </div>

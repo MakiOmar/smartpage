@@ -238,7 +238,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'id'       => 'anony__contracted_company',
 										'title'    => esc_html__( 'Contracted company', ANONY_TEXTDOM ),
 										'type'     => 'select',
-										'options'  => anony_posts_data_simple('company'),
+										'options'  => ANONY_POST_HELP::queryPostTypeSimple('company'),
 										'validate' => 'multiple_options',
 									),
 
@@ -401,7 +401,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'id'       => 'parent_id',
 										'title'    => esc_html__( 'Reprot for project', ANONY_TEXTDOM ),
 										'type'     => 'select',
-										'options'  => anony_posts_data_simple('contract'),
+										'options'  => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 									),
 
 									array(

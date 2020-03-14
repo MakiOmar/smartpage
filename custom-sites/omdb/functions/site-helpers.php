@@ -19,3 +19,19 @@ function omdb_get_user_project_id($user_id = null){
 	return false;
 			
 }
+
+
+/**
+ * Renders a button link using fontawesome
+ * @param type $icon 
+ * @param type $title 
+ * @return type
+ */
+function anony_fontawesome_button_link($url, $icon, $title){
+	$render = '<a href="'.$url.'" class="anony-ibl" style="text-align:center;text-align: center;display: flex;min-height: 150px;max-height: 250px;width: 280px;flex-direction: column;justify-content: space-around;-webkit-box-shadow: 2px 2px 15px -6px #4b4949;-moz-box-shadow: 2px 2px 15px -6px #4b4949;box-shadow: 2px 2px 15px -6px #4b4949;border-radius: 20px;">
+		<i class="'.$icon.'"></i><br>
+		<span class="anony-ibl">'.$title.'</span>
+	</a>';
+
+	return $render;
+}

@@ -7,7 +7,7 @@ get_header();
 
 	if(isset($anonyOptions->slider )){
 		
-		if(anony_is_active_plugin('revslider/revslider.php') && $anonyOptions->home_slider == '1'){
+		if(ANONY_WPPLUGIN_HELP::isActive('revslider/revslider.php') && $anonyOptions->home_slider == '1'){
 			
 			if(isset($anonyOptions->rev_slider) && $anonyOptions->rev_slider != '0'){
 				

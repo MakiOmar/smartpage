@@ -48,7 +48,7 @@ add_action('wp_enqueue_scripts',function() {
 
 		// Localize the script with new data
 		$anony_loca = array(
-			'ajaxURL'         => anony_get_ajax_url(),
+			'ajaxURL'         => ANONY_WPML_HELP::getAjaxUrl(),
 			'textDir'         => (is_rtl() ? 'rtl' : 'ltr'),
 			'themeLang'       => get_bloginfo('language'),
 			'anonyFormAuthor'  => esc_html__("Please enter a valid name", ANONY_TEXTDOM),

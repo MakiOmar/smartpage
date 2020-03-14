@@ -56,7 +56,7 @@ class ANONY_optf__Font_select extends ANONY_Theme_Settings{
 
 		$html  =  '<select name="'. $name .'" '.$class.'rows="6" >';	
 		
-		$html .= anony_render_opts_groups( $fonts, $opts_groups, $this->value );
+		$html .= ANONY_POST_HELP::renderHtmlOptsGroups( $fonts, $opts_groups, $this->value );
 
 		$html .= '</select>';
 		
