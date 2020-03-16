@@ -44,11 +44,31 @@
     font-style: normal;
 
 }
-@font-face{font-family:'ae_alarabiyaregular';src:url(../../fonts/ARBfonts/ae_alarabiya-webfont.eot);src:url(../../fonts/ARBfonts/ae_alarabiya-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_alarabiya-webfont.svg#ae_alarabiyaregular) format("svg");font-weight:400;font-style:normal}
+@font-face{font-family:'ae_alarabiyaregular';
+src:url('../../fonts/ARBfonts/ae_alarabiya-webfont.eot');
+src:url('../../fonts/ARBfonts/ae_alarabiya-webfont.eot?#iefix') format("embedded-opentype"),
+    url('../../fonts/ARBfonts/ae_alarabiya-webfont.woff2') format("woff2"),
+    url('../../fonts/ARBfonts/ae_alarabiya-webfont.woff') format("woff"),
+    url('../../fonts/ARBfonts/ae_alarabiya-webfont.ttf') format("truetype"),
+    url('../../fonts/ARBfonts/ae_alarabiya-webfont.svg#ae_alarabiyaregular') format("svg");
+    font-weight:400;
+    font-style:normal}
 
-@font-face{font-family:'ae_alhorregular';src:url(../../fonts/ARBfonts/ae_alhor-webfont.eot);src:url(../../fonts/ARBfonts/ae_alhor-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_alhor-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_alhor-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_alhor-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_alhor-webfont.svg#ae_alhorregular) format("svg");font-weight:400;font-style:normal}
+@font-face{font-family:'ae_alhorregular';
+src:url('../../fonts/ARBfonts/ae_alhor-webfont.eot');
+src:url('../../fonts/ARBfonts/ae_alhor-webfont.eot?#iefix') format("embedded-opentype"),
+url('../../fonts/ARBfonts/ae_alhor-webfont.woff2') format("woff2"),
+url('../../fonts/ARBfonts/ae_alhor-webfont.woff') format("woff"),
+url('../../fonts/ARBfonts/ae_alhor-webfont.ttf') format("truetype"),
+url('../../fonts/ARBfonts/ae_alhor-webfont.svg#ae_alhorregular') format("svg");font-weight:400;font-style:normal}
 
-@font-face{font-family:'ae_almohanadregular';src:url(../../fonts/ARBfonts/ae_almohanad-webfont.eot);src:url(../../fonts/ARBfonts/ae_almohanad-webfont.eot?#iefix) format("embedded-opentype"),url(../../fonts/ARBfonts/ae_almohanad-webfont.woff2) format("woff2"),url(../../fonts/ARBfonts/ae_almohanad-webfont.woff) format("woff"),url(../../fonts/ARBfonts/ae_almohanad-webfont.ttf) format("truetype"),url(../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular) format("svg");font-weight:400;font-style:normal}
+@font-face{font-family:'ae_almohanadregular';
+src:url('../../fonts/ARBfonts/ae_almohanad-webfont.eot');
+src:url('../../fonts/ARBfonts/ae_almohanad-webfont.eot?#iefix') format("embedded-opentype"),
+url('../../fonts/ARBfonts/ae_almohanad-webfont.woff2') format("woff2"),
+url('../../fonts/ARBfonts/ae_almohanad-webfont.woff') format("woff"),
+url('../../fonts/ARBfonts/ae_almohanad-webfont.ttf') format("truetype"),
+url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format("svg");font-weight:400;font-style:normal}
 
 @font-face {
     font-family: 'smartmanartregular';
