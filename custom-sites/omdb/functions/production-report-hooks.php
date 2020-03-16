@@ -26,8 +26,8 @@ add_filter( 'anony_production_details_shortcode_hiddens', function($hiddens, $at
 		$post_parent_id = intval($post_parent);
 
 		$hiddens .= '<input type="hidden" id="parent_id" name="parent_id" value="'.esc_attr( $post_parent_id ).'">' ;
-
-		$hiddens .= '<input type="hidden" id="post_title" name="post_title" value="'.__( 'Daily production report '.current_time('Y-m-d', 1) ).'">' ;
+		$title = get_the_title( $post_parent_id ).' '.current_time('Y-m-d', 1) ;
+		$hiddens .= '<input type="hidden" id="post_title" name="post_title" value="'.$title.'">' ;
 
 	}
 
