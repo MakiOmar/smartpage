@@ -295,6 +295,7 @@ $defaultArFonts = array(
 						'ae_alhorregular'          => 'Alhor regular',
 						'ae_almohanadregular'      => 'Almohanad regular',
 						'dubairegular'             => 'Dubai regular',
+						'ae_albattarregular'             => 'Ae Albattar regular',
 
 					);
 
