@@ -9,7 +9,7 @@ anony_set_post_views($tbp_post_id);?>
   
 	  <div class="anony-post-info">
 	  
-	   <?php if( has_post_thumbnail() && ANONY_HELP::curlUrlExists(get_the_post_thumbnail_url($tbp_post_id))){
+	   <?php if( has_post_thumbnail() && ANONY_LINK_HELP::curlUrlExists(get_the_post_thumbnail_url($tbp_post_id))){
 	
 			get_template_part('templates/post-layout/post','with-thumb') ;
 	
