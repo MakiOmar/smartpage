@@ -1,4 +1,5 @@
-<?php $anonyOptions = ANONY_Options_Model::get_instance();?>
+<?php 
+$anonyOptions = anonyOpt();?>
 
 <footer class="anony-grid-col-md-12 anony-grid-col">
 	<?php 
@@ -7,7 +8,7 @@
 		}
 	?>
 	
-	<p><?php echo esc_html($anonyOptions->copyright) ?></p>
+	<p><?php echo esc_html(anonyGetOpt($anonyOptions, 'copyright')) ?></p>
 	
 </footer>
 

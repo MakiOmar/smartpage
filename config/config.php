@@ -118,19 +118,6 @@ define('ANONY_BLOG_URL'      , esc_url(get_bloginfo('url') ));
  */
 define( 'ANONY_CLASSES', wp_normalize_path (ANONY_THEME_DIR . '/classes/'));
 
-/**
- * Holds a path to metaboxes class folder
- * @const
- */
-define( 'ANONY_METABOXES', wp_normalize_path (ANONY_THEME_DIR . '/metaboxes/'));
-
-/**
- * Holds a path to Custom fields classes folder
- * @const
- */
-define( 'ANONY_CUSTOM_FIELDS', wp_normalize_path (ANONY_METABOXES . '/fields/'));
-
-require_once(ANONY_THEME_DIR . '/input-fields/index.php');
 
 /**
  * Holds a path to views classes folder
@@ -147,8 +134,6 @@ define(
 	serialize(
 		[
 			ANONY_CLASSES,
-			ANONY_METABOXES,
-			ANONY_CUSTOM_FIELDS,
 			ANONY_CONTENTS_VIEWS,
 		]
 	)
@@ -157,16 +142,7 @@ define(
 /*
 *Classes Auto loader
 */
-spl_autoload_register( 'anony_theme_autoloader' );
-
-/**
- * Theme classes autoloading.
- * **Description: ** Any class should be writtn in the structure of CLASS_{class_name} or ANONY_cf__{class_name}<br/>
- * **Note: ** Class or CF is optional prefixes, but any prefix should be followed by double underscore, so can get class file name. For example: a class name of XYZ__Class_name is located in file class_name.php.
- * @param  string $class_name
- * @return void
- */
-function anony_theme_autoloader( $class_name ) {
+spl_autoload_register( function ( $class_name ) {
 	if ( false !== strpos( $class_name, ANONY_PREFIX )) {
 		$class_name = strtolower(preg_replace('/'.ANONY_PREFIX.'/', '', $class_name));
 		
@@ -193,3 +169,4 @@ function anony_theme_autoloader( $class_name ) {
 	}
 }
 
+ );

@@ -1,12 +1,13 @@
 <?php 
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+$anonyOptions = anonyOpt();
 	anony_get_correct_sidebar();
 
 	if(has_action('post_ad')){
 		do_action('post_ad');
 	}
 ?>
-<div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
+<div class="anony-grid-col <?php echo (anonyGetOpt($anonyOptions, 'single_sidebar') == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
 
 	<?php anony_breadcrumbs()?>
 	<div id="anony_map"></div>

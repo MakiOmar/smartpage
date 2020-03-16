@@ -420,6 +420,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 });
 
 add_action( 'init', function(){
+	if (!class_exists('ANONY_Options_Model')) return;
 	$omdb_options = ANONY_Options_Model::get_instance('Omdb_Options');
 
 	$arada_metaboxes = [

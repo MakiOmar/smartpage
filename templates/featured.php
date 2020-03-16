@@ -7,7 +7,8 @@
  * @link http://makiomar.com
  */
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+
+$anonyOptions = anonyOpt();
 
 $messege = '';
 
@@ -17,12 +18,12 @@ $args = array(
 		);
 
 		
-if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_cat != '0'){
+if(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-cat' && anonyGetOpt($anonyOptions, 'featured_cat') != '0'){
 	
 	$FreaturedCat = get_term_by( 
 						'id', 
-						$anonyOptions->featured_cat,
-						$anonyOptions->featured_tax
+						anonyGetOpt($anonyOptions, 'featured_cat'),
+						anonyGetOpt($anonyOptions, 'featured_tax')
 					);
 
 	if($FreaturedCat){
@@ -31,7 +32,7 @@ if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_ca
 		$messege = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
 	}
 
-}elseif($anonyOptions->slider_content == 'featured-post'){
+}elseif(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-post'){
 	$args['meta_key'] = 'anony__set_as_featured';
 }	
 

@@ -1,15 +1,16 @@
 <?php
-$anonyOptions = ANONY_Options_Model::get_instance();
+
+$anonyOptions = anonyOpt();
 
 $socials_follow = array(
-				'facebook' => $anonyOptions->facebook,
-				'twitter' => $anonyOptions->twitter,
-				'youtube' => $anonyOptions->youtube,
-				'pinterest' => $anonyOptions->pinterest,
-				'linkedin' => $anonyOptions->linkedin,
-				'instagram' => $anonyOptions->instagram,
-				'tumblr' => $anonyOptions->tumblr,
-				'rss' => $anonyOptions->rss,
+				'facebook' => anonyGetOpt($anonyOptions, 'facebook'),
+				'twitter' => anonyGetOpt($anonyOptions, 'twitter'),
+				'youtube' => anonyGetOpt($anonyOptions, 'youtube'),
+				'pinterest' => anonyGetOpt($anonyOptions, 'pinterest'),
+				'linkedin' => anonyGetOpt($anonyOptions, 'linkedin'),
+				'instagram' => anonyGetOpt($anonyOptions, 'instagram'),
+				'tumblr' => anonyGetOpt($anonyOptions, 'tumblr'),
+				'rss' => anonyGetOpt($anonyOptions, 'rss'),
 				);
 ?>
 <div id="anony-top-header-wrapper">
@@ -37,9 +38,9 @@ $socials_follow = array(
 				
 			} 
 		?>
-		<li><a href="tel:<?php echo $anonyOptions->phone ?>" class="phone-call"><i class="fa fa-phone"></i></a></li>
+		<li><a href="tel:<?php echo anonyGetOpt($anonyOptions, 'phone') ?>" class="phone-call"><i class="fa fa-phone"></i></a></li>
 		
-		<li><a href="mailto:<?php echo $anonyOptions->email ?>" class="email-me"><i class="fa fa-envelope"></i></a></li>
+		<li><a href="mailto:<?php echo anonyGetOpt($anonyOptions, 'email') ?>" class="email-me"><i class="fa fa-envelope"></i></a></li>
 		
 	  </ul>
 

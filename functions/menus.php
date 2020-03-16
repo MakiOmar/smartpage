@@ -6,7 +6,8 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-$anonyOptions = ANONY_Options_Model::get_instance();
+
+$anonyOptions = anonyOpt();
 /*-------------------------------------------------------------
  * Menus functions
  *-----------------------------------------------------------*/
@@ -181,7 +182,7 @@ add_filter('nav_menu_css_class' , function($classes, $item) {
 } , 10 , 2);
 
 //Add Adds categories menu to the main navigation menu,(Show only if on mobile device).
-if($anonyOptions->cats_in_nav != '0'){
+if(anonyGetOpt($anonyOptions, 'cats_in_nav') != '0'){
 	add_filter("wp_nav_menu_items",function($item , $args){
 		if($args->theme_location == 'main-menu'){
 			$item.='<li><ul id="anony-cat-list" class="anony-cat-list">';

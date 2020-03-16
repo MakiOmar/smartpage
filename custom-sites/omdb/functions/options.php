@@ -6,7 +6,7 @@
  * @author Makiomar
  * @link http://makiomar.com
  */
-
+if (!class_exists('ANONY_Options_Model')) return;
 if(get_option(ANONY_OPTIONS)){
 	$omdbOptions = ANONY_Options_Model::get_instance();
 }

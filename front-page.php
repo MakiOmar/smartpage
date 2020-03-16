@@ -3,15 +3,16 @@ get_header();
 ?>
   <div class="anony-grid">
 	<?php
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+$anonyOptions = anonyOpt();
 
-	if(isset($anonyOptions->slider )){
+	if(anonyGetOpt($anonyOptions, 'slider') ){
 		
-		if(ANONY_WPPLUGIN_HELP::isActive('revslider/revslider.php') && $anonyOptions->home_slider == '1'){
+		if(ANONY_WPPLUGIN_HELP::isActive('revslider/revslider.php') && anonyGetOpt($anonyOptions, 'home_slider') == '1'){
 			
-			if(isset($anonyOptions->rev_slider) && $anonyOptions->rev_slider != '0'){
+			if(anonyGetOpt($anonyOptions, 'rev_slider') && anonyGetOpt($anonyOptions, 'rev_slider') != '0'){
 				
-				putRevSlider($anonyOptions->rev_slider);
+				putRevSlider(anonyGetOpt($anonyOptions, 'rev_slider'));
 				
 			}else{
 				
@@ -41,7 +42,7 @@ get_header();
 				
 				get_template_part('templates/downloads') ;
 
-				get_template_part('templates/category-posts-'.$anonyOptions->posts_grid) ;
+				get_template_part('templates/category-posts-'.anonyGetOpt($anonyOptions, 'posts_grid')) ;
 			
 				//get_template_part('templates/video') ;
 			

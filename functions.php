@@ -2,9 +2,6 @@
 
 require_once(wp_normalize_path(get_template_directory() . '/config/config.php'));
 
-require_once(ANONY_THEME_DIR . '/helpme/helpme.php');
-
-require_once(wp_normalize_path('options/options.php'));
 
 //Core hooks files
 $anonylibs = [
@@ -18,6 +15,7 @@ foreach($anonylibs as $anonylib=>$path){
 //Functions files
 $anonylibs = [
 	'theme-helpers'       =>'',
+	'theme-options'       =>'',
 	'posts'     		  =>'',
 	'theme'     		  =>'',
 	'menus'     		  =>'',
@@ -26,8 +24,8 @@ $anonylibs = [
 	'widgets'     		  =>'',
 	'db'        		  =>'',
 	'mail'        		  =>'',
-	'ajax-comments'       =>'ajax' . ANONY_DIRS,
-	'tinymce-editor-btns' =>'mce' . ANONY_DIRS,
+	'ajax-comments'       =>'ajax' . DIRECTORY_SEPARATOR,
+	'tinymce-editor-btns' =>'mce' . DIRECTORY_SEPARATOR,
 ];
 
 foreach($anonylibs as $anonylib=>$path){

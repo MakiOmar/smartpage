@@ -1,34 +1,34 @@
 <?php
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+$anonyOptions = anonyOpt();
 	
 	$args = array('post_type' => 'post', 'posts_per_page' => 5);
 
-	if(isset($anonyOptions->slider ) ){
+	$sliderOpt = anonyGetOpt($anonyOptions, 'slider');
 		
-		if($anonyOptions->slider != 'rev-slider'){
+	if($sliderOpt != 'rev-slider'){
+		
+		if($sliderOpt == 'featured-cat' && anonyGetOpt($anonyOptions, 'featured_cat') != '0'){
 			
-			if($anonyOptions->slider == 'featured-cat' && $anonyOptions->featured_cat != '0'){
-				
-				$FreaturedCat = get_term_by( 
-								'id', 
-								$anonyOptions->featured_cat,
-								$anonyOptions->featured_tax
-							);
-				
-				if($FreaturedCat){
-					$args['category__not_in'] = $FreaturedCat->term_id;
-				}
-				
-
-			}elseif($anonyOptions->slider == 'featured-post'){
-				$args['post__not_in'] =  ANONY_POST_HELP::queryIdsByMeta('anony__set_as_featured', 'on');
-
+			$FreaturedCat = get_term_by( 
+							'id', 
+							anonyGetOpt($anonyOptions, 'featured_cat'),
+							anonyGetOpt($anonyOptions, 'featured_tax')
+						);
+			
+			if($FreaturedCat){
+				$args['category__not_in'] = $FreaturedCat->term_id;
 			}
 			
+
+		}elseif($sliderOpt == 'featured-post'){
+			$args['post__not_in'] =  ANONY_POST_HELP::queryIdsByMeta('anony__set_as_featured', 'on');
+
 		}
 		
-		
 	}
+	
+		
 $cpm= new ANONY_Generate_Posts_View(
 					$args,
 					'masonry',
