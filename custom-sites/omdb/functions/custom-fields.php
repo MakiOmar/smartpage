@@ -433,6 +433,14 @@ add_action( 'init', function(){
 		'fields'        => array(
 
 								array(
+									'id'       => 'parent_id',
+									'title'    => esc_html__( 'Peport of project', ANONY_TEXTDOM ),
+									'type'     => 'select',
+									'options'     => ANONY_POST_HELP::queryPostTypeSimple('contract'),
+									'validate' => 'multiple_options',
+								),
+
+								array(
 									'id'       => 'anony__arada_wells',
 									'title'    => esc_html__( 'Arada wells production', ANONY_TEXTDOM ),
 									'type'     => 'number',
@@ -459,6 +467,13 @@ add_action( 'init', function(){
         'hook_priority' =>  '10', // Default 10
 		'post_type'     => array('production_report'),
 		'fields'        => array(
+								array(
+									'id'       => 'parent_id',
+									'title'    => esc_html__( 'Peport of project', ANONY_TEXTDOM ),
+									'type'     => 'select',
+									'options'     => ANONY_POST_HELP::queryPostTypeSimple('contract'),
+									'validate' => 'multiple_options',
+								),
 
 								array(
 									'id'       => 'anony__aqiq_wells',
