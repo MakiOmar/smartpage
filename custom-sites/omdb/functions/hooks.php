@@ -207,7 +207,7 @@ add_filter('account_info_form', function($html){
 
 		$html .= anony_fontawesome_button_link(
 					esc_url(get_the_permalink( 2 )),
-					'fa fa-comment fa-4x', 
+					'fa fa-file fa-4x', 
 					esc_html__( 'Daily production report', ANONY_TEXTDOM )
 				);
 	}
