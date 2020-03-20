@@ -558,6 +558,13 @@ $sections['miscellanous']= array(
 							'type'    => 'date_time',
 							'validate'=> 'no_html',
 						),
+
+						array(
+							'id'      => 'tabs',
+							'title'   => esc_html__('tabs', ANONY_TEXTDOM),
+							'type'    => 'tabs',
+							'validate'=> 'tabs',
+						),
 					)
 );
 
