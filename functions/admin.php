@@ -13,7 +13,7 @@
 /*
  * Enqueue admin side styles/scripts.
  *
- * Looping through custom arrays of styles/scripts, with care of using filemtime
+ * Looping through custom arrays of styles/scripts, and consider using filemtime
  * to override caching.
  */
 add_action( 'admin_enqueue_scripts', function() {
@@ -31,7 +31,7 @@ add_action( 'admin_enqueue_scripts', function() {
 			
 		}
 
-		$scripts = array('anony-admin', 'jquery.helpme');
+		$scripts = array('anony-admin');
 	
 			foreach($scripts as $script){
 				
