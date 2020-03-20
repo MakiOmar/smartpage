@@ -7,6 +7,7 @@
  * @link http://makiomar.com
  */
 
+
 //Array of metaboxes to register
 //id should be equal to title without the anony_ and underscores
 
@@ -21,12 +22,12 @@ add_filter('anony_metaboxes', function($metaboxes){
 	        'hook_priority' =>  '10', // Default 10
 			'post_type'     => array('transmission_line'),
 			'fields'        => array(
-									/*array(
-										'id'       => 'anony__line_title',
+									array(
+										'id'       => 'anony__testtabs',
 										'title'    => esc_html__( 'Line title', ANONY_TEXTDOM ),
-										'type'     => 'text',
-										'validate' => 'no_html',
-									),*/
+										'type'     => 'tabs',
+										//'validate' => 'url',
+									),
 									array(
 										'id'       => 'anony__line_capcity',
 										'title'    => __( 'Line Capcity (m<sup>3</sup>/day)', ANONY_TEXTDOM ),
@@ -315,6 +316,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'id'       => 'anony__quantities_reduction',
 										'title'    => esc_html__( 'Quantities reduction', ANONY_TEXTDOM ),
 										'type'     => 'multi_value',
+										'validate' => 'multi_value',
 										'button-text' => esc_html__( 'Add new reduction', ANONY_TEXTDOM ),
 										'fields'   =>
 											[
