@@ -9,6 +9,9 @@ add_filter( 'shortcode_atts_anony_production_details', function($atts) {
 
 });
 
+/**
+ * Will add required hidden fields to insert report page. Page using shortcode
+ */
 add_filter( 'anony_production_details_shortcode_hiddens', function($hiddens, $atts) {
 
 	$current_user = wp_get_current_user();
@@ -38,7 +41,11 @@ add_filter( 'anony_production_details_shortcode_hiddens', function($hiddens, $at
 },10, 2);
 
 
+/**
+ * Runs on a page where metabox shortcode exists
+ */
 add_action( 'anony_production_details_before_form', function(){
+	global $post;
 
 	$logged_in = is_user_logged_in();
 
@@ -46,11 +53,9 @@ add_action( 'anony_production_details_before_form', function(){
 
 	if ($logged_in) {
 
-		$user_id   = get_current_user_id();
+		$parent_id = omdb_get_user_project_id();
 
-		$user_meta = get_user_meta($user_id, 'managed_project', true);
-
-		if(empty($user_meta)) $url = add_query_arg( 'error', 'not_verified', get_home_url() );
+		if(!$parent_id) $url = add_query_arg( 'error', 'not_verified', get_home_url() );
 	}
 	
 	if (isset($url)) {
@@ -59,3 +64,47 @@ add_action( 'anony_production_details_before_form', function(){
 	}
 
 } );
+
+
+/**
+ * Runs before production report is inserted inserted into database
+ */
+add_action( 'anony_production_details_before_insert', function(){
+	if (!empty($_POST)) {
+		$post_parent_id = intval($_POST['parent_id']);
+		if (isset($_POST['parent_id']) && is_integer($post_parent_id) ) {
+			$parent_id = omdb_get_user_project_id();
+
+			if ($parent_id !== $post_parent_id) {
+				$url = add_query_arg( 'error', 'insert-failed', get_home_url() );
+			}
+		}else{
+			$url = add_query_arg( 'error', 'insert-failed', get_home_url() );
+		}
+
+	}
+
+	if (isset($url)) {
+		wp_redirect( $url );
+		exit;
+	}
+	
+});
+
+/**
+ * Runs on a single post page. production_details
+ */
+add_action('anony_production_details_show_on_front', function(){
+	if (!is_single( )) return;
+	global $post;
+	$parent_id = omdb_get_user_project_id();
+
+	$parent_id_meta = get_post_meta( $post->ID, 'parent_id', true );
+
+	if(!$parent_id || intval($parent_id_meta) != $parent_id ){
+		$url = add_query_arg( 'error', 'not_verified', get_home_url() );
+		wp_redirect( $url );
+		exit;
+
+	}
+});
