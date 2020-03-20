@@ -199,14 +199,37 @@ add_action( 'do_meta_boxes', function() {
 
 } );
 
+/**
+ * Filter account_info_form.
+ * 
+ * Filter account_info_form is defined in plugin user control
+ * @param string   'account_info_form' 
+ * @param callback 
+ * @return string
+ */
 add_filter('account_info_form', function($html){
 
+	/**
+	 * Some users are connected to projects with project id. 
+	 * We check if there is a connected project and fetch the project id, if there is one 
+	 */
 	$post_parent_id = omdb_get_user_project_id();
 
+	//If we could fetch id
 	if($post_parent_id){
 
+		/**
+		 * Since this account page will have some links, so the user can add/edit posts
+		 * We should add a nonce to add/edit URLs for security.
+		 */ 
+		$nonce = wp_create_nonce( 'anonyinsert' ); //Start creating a nonce for custom action 'anonyinsert'
+
+		//Generate a nonced insert url
+		$url = esc_url(get_the_permalink( 2 ).'?action=insert&_wpnonce='.$nonce);
+
+		//Start render
 		$html .= anony_fontawesome_button_link(
-					esc_url(get_the_permalink( 2 )),
+					$url,
 					'fa fa-file fa-4x', 
 					esc_html__( 'Daily production report', ANONY_TEXTDOM )
 				);
@@ -218,7 +241,7 @@ add_filter('account_info_form', function($html){
 
 function omdb_cross_parents($cross_parents) {
 	
-	return array_merge( unserialize(ANONY_CROSS_PARENTS), $cross_parents );
+	return array_merge( ['production_report' => 'contract'], $cross_parents );
 
 }
 
