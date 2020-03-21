@@ -5,18 +5,21 @@
  * @package Anonymous theme
  * @author Makiomar
  * @link http://makiomar.com
- */
-if (!class_exists('ANONY_Options_Model')) return;
-if(get_option(ANONY_OPTIONS)){
-	$omdbOptions = ANONY_Options_Model::get_instance();
+ */	
+if(get_option('Omdb_Options')){
+	$omdbOptions = ANONY_Options_Model::get_instance('Omdb_Options');
 }
 
 // Navigation elements
 $options_nav = array(
-	// General --------------------------------------------
 	'projects-settings' => array(
 		'title' => esc_html__('Projects settings', ANONY_TEXTDOM),
 		'sections' => array('janabeen_project', 'arada_project', 'aqiq_project'),
+	),
+
+	'misc-settings' => array(
+		'title' => esc_html__('Miscellaneous settings', ANONY_TEXTDOM),
+		'sections' => array('site_options'),
 	),
 );
 
@@ -66,41 +69,30 @@ $omdbsections['aqiq_project']= array(
 					)
 );
 
+$omdbsections['site_options']= array(
+		'title' => esc_html__('Site options', ANONY_TEXTDOM),
+		'icon' => 'x',
+		'fields' => array(
+						array(
+							'id'      => 'insert_report_page',
+							'title'   => esc_html__('Insert report page', ANONY_TEXTDOM),
+							'type'    => 'select',
+							'options' => ANONY_POST_HELP::queryPostTypeSimple('page'),
+							'validate'=> 'multiple_options',
+							
+						),						
+					)
+);
+
 $omdbOptionsPage['opt_name'] = 'Omdb_Options';		
 $omdbOptionsPage['menu_title'] = esc_html__('OMDB options', ANONY_TEXTDOM);
 $omdbOptionsPage['page_title'] = esc_html__('OMDB options', ANONY_TEXTDOM);
 $omdbOptionsPage['menu_slug'] = 'Omdb_Options';
 $omdbOptionsPage['page_cap'] = 'manage_options';
+$omdbOptionsPage['icon_url'] = 'dashicons-admin-settings';
 $omdbOptionsPage['page_position'] = 100;
 $omdbOptionsPage['page_type'] = 'menu';
 
 
 
 $Omdb_Options = new ANONY_Theme_Settings( $options_nav, $omdbsections, [], $omdbOptionsPage);
-
-
-
-// Navigation elements
-$options_nav = array(
-	// General --------------------------------------------
-	'test-projects-settings' => array(
-		'title' => esc_html__('Test Projects settings', ANONY_TEXTDOM),
-		'sections' => array('test_janabeen_project'),
-	),
-);
-
-
-$omdbSubSections['test_janabeen_project']= array(
-		'title' => esc_html__('Test Janabeen Project', ANONY_TEXTDOM),
-		'icon' => 'x',
-		'fields' => array(
-						array(
-							'id'      => 'tset_janabeen_project_contract',
-							'title'   => esc_html__('Test Janabeen Project contract', ANONY_TEXTDOM),
-							'type'    => 'select',
-							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
-							'validate'=> 'multiple_options',
-							
-						),						
-					)
-);
