@@ -22,6 +22,8 @@ add_filter( 'anony_production_details_shortcode_hiddens', function($hiddens, $at
 
 	$hiddens .= '<input type="hidden" id="user_ID" name="user_ID" value="'.$current_user->ID.'">';
 
+	$hiddens .= '<input type="hidden" id="action" name="action" value="insert">';
+
 
 	$post_parent = get_user_meta($current_user->ID, 'managed_project', true);
 
