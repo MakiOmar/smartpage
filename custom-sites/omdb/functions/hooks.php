@@ -208,7 +208,7 @@ add_action( 'do_meta_boxes', function() {
  * @return string
  */
 add_filter('account_info_form', function($html){
-
+	global $omdbOptions;
 	/**
 	 * Some users are connected to projects with project id. 
 	 * We check if there is a connected project and fetch the project id, if there is one 
@@ -224,8 +224,18 @@ add_filter('account_info_form', function($html){
 		 */ 
 		$nonce = wp_create_nonce( 'anonyinsert' ); //Start creating a nonce for custom action 'anonyinsert'
 
-		//Generate a nonced insert url
-		$url = esc_url(get_the_permalink( 2 ).'?action=insert&_wpnonce='.$nonce);
+		$url = '#';
+
+		if (isset($omdbOptions->insert_report_page) && $omdbOptions->insert_report_page != '') {
+
+			$insert_report_page = intval($omdbOptions->insert_report_page);
+
+			if(get_the_permalink( $insert_report_page )){
+				//Generate a nonced insert url
+				$url = esc_url(get_the_permalink( $insert_report_page ).'?action=insert&_wpnonce='.$nonce);
+			}
+		}
+		
 
 		//Start render
 		$html .= anony_fontawesome_button_link(
