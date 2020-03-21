@@ -15,7 +15,8 @@ if (!function_exists('anonyGetOpt')) {
 	/**
 	 * Get option value from an options group 
 	 * @param object $optObject Object of ANONY_Options_Model
-	 * @param string $optName   Option 
+	 * @param string $optName   Option name
+	 * @param mixed  $notSet    what to return if not set
 	 * @return type
 	 */
 	function anonyGetOpt($optObject, $optName , $notSet = ''){
