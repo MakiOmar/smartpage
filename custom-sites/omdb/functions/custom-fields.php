@@ -406,14 +406,6 @@ add_filter('anony_metaboxes', function($metaboxes){
 										'options'  => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 									),
 
-									array(
-										'id'       => 'anony__purification_plant',
-										'title'    => esc_html__( 'purification plant production', ANONY_TEXTDOM ),
-										'type'     => 'number',
-										'validate' => 'number',
-										'show_on_front' => true
-									),
-
 								)
 
 		];
@@ -422,7 +414,6 @@ add_filter('anony_metaboxes', function($metaboxes){
 });
 
 add_action( 'init', function(){
-	if (!class_exists('ANONY_Options_Model')) return;
 	$omdb_options = ANONY_Options_Model::get_instance('Omdb_Options');
 
 	$arada_metaboxes = [
@@ -435,13 +426,6 @@ add_action( 'init', function(){
 		'post_type'     => array('production_report'),
 		'fields'        => array(
 
-								array(
-									'id'       => 'parent_id',
-									'title'    => esc_html__( 'Peport of project', ANONY_TEXTDOM ),
-									'type'     => 'select',
-									'options'     => ANONY_POST_HELP::queryPostTypeSimple('contract'),
-									'validate' => 'multiple_options',
-								),
 
 								array(
 									'id'       => 'anony__arada_wells',
@@ -470,13 +454,6 @@ add_action( 'init', function(){
         'hook_priority' =>  '10', // Default 10
 		'post_type'     => array('production_report'),
 		'fields'        => array(
-								array(
-									'id'       => 'parent_id',
-									'title'    => esc_html__( 'Peport of project', ANONY_TEXTDOM ),
-									'type'     => 'select',
-									'options'     => ANONY_POST_HELP::queryPostTypeSimple('contract'),
-									'validate' => 'multiple_options',
-								),
 
 								array(
 									'id'       => 'anony__aqiq_wells',
@@ -500,12 +477,26 @@ add_action( 'init', function(){
 
 add_filter( 'anony_post_specific_metaboxes', function($post_metaboxes, $post){
 	$parent_id = get_post_meta( $post->ID, 'parent_id', true );
-	$post_metaboxes = get_post_meta( intval($parent_id), 'anony_this_project_metaboxes', true );
+	if(!empty($parent_id)){
+		$metaboxes =  get_post_meta( intval($parent_id), 'anony_this_project_metaboxes', true );
+		if (!empty($metaboxes) && is_array($metaboxes)) {
+			$post_metaboxes = $metaboxes;
+
+			$post_metaboxes['fields'][] = array(
+									'id'       => 'anony__test',
+									'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
+									'type'     => 'text',
+									'validate' => 'no_html',
+									'show_on_front' => true,
+								);
+		}
+	}
+	
 	return $post_metaboxes;
 }, 10, 2);
 
 add_filter( 'anony_mb_frontend_fields', function($fields){
-	if (!is_admin()) {
+	//if (!is_admin()) {
 
 		$parent_id = omdb_get_user_project_id();
 
@@ -515,8 +506,16 @@ add_filter( 'anony_mb_frontend_fields', function($fields){
 			if (!empty($project_metaboxes)) {
 				$fields = $project_metaboxes['fields'];
 
+				$fields[] = array(
+									'id'       => 'anony__test',
+									'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
+									'type'     => 'text',
+									'validate' => 'no_html',
+									'show_on_front' => true,
+								);
+
 			}
 		}
-	}
+	//}
 	return $fields;
 } );
