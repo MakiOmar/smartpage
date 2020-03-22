@@ -425,8 +425,10 @@ jQuery(document).ready(function($){
 					});
 	});
 	
-	//carousel slider
-	$('#anony-ca-container').contentcarousel();
+	if($('#anony-ca-container').length != 0){
+		//carousel slider
+		$('#anony-ca-container').contentcarousel();
+	}
 	
 	//Home featured slider
 	$('.anony-view').eq(0).addClass('animate');
