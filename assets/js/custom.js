@@ -572,113 +572,112 @@ jQuery(document).ready(function($){
 	
 	$('.anony-view').hover(enterSlide,leaveSlide);
 	
-// Rating
-//The following will automatically display the post rate on page load
-$('[id^="rated-"]').each(function(){
-	var fullId = $(this).attr('id');
-	var splitID = fullId.split('-');
-	var theID = splitID[1];
-	var therate = parseInt($(this).text());
-	for (var star = 1; star <= therate; star++) {
-		$('.btn-'+theID+'-'+star).addClass('reviews');
-	}
-});
-var rateParent,parentID,thePostID,itemClass;
-$(function(){
-  $('.rate-btn').hover(function(){
-	    //Get currenly hovered post ID
-		rateParent = $(this).parent().attr('id');
-		parentID = rateParent.split('-');
-		thePostID = parseInt( parentID[1] );
-	   
-	   	//make sure to remove all .reviews from current post ratings 
-	    itemClass = "btn-"+thePostID+'-';
-		$('[class*="'+itemClass+'"]').removeClass('reviews');
-	   
-	   	//Now on hover it will show what rating your are about to give
-	    $(this).addClass('reviews');
-		$(this).prevAll().addClass('reviews');
-	   $('.fa-star').removeClass('reviews');
-	   
-     },function(){
-		//Get the database rate stored in #rated-'+thePostID
-		var therate = $('#rated-'+thePostID).text();
-
-		//make sure to remove all .reviews from current post ratings
-		$('[class*="'+itemClass+'"]').removeClass('reviews');
-
-
-		var getcurrentRate;
-		if($('#clicked-'+thePostID).text()===''){
-			getcurrentRate = therate;
-		}else{
-			getcurrentRate = $('#clicked-'+thePostID).text();
+	// Rating
+	//The following will automatically display the post rate on page load
+	$('[id^="rated-"]').each(function(){
+		var fullId = $(this).attr('id');
+		var splitID = fullId.split('-');
+		var theID = splitID[1];
+		var therate = parseInt($(this).text());
+		for (var star = 1; star <= therate; star++) {
+			$('.btn-'+theID+'-'+star).addClass('reviews');
 		}
-	   
-		for (var j = 1; j <= getcurrentRate; j++) {
-			$('.btn-'+thePostID+'-'+j).addClass('reviews');
-		}
-   });                    
-	$('.rate-btn').click(function(){
-		//Get clicked post ID
-		var rateParent = $(this).parent().attr('id');
-		var parentID = rateParent.split('-');
-		var postId=  parentID[1];
-		
-		//Remove all .reviews if the are
-		var itemClass = "btn-"+postId+'-';
-		if($('[class*="'+itemClass+'"]').hasClass('reviews')){
-		 $('[class*="'+itemClass+'"]').removeClass('reviews');
-		}
-		
-		
-		//remove all .clicked-postID on each click (you might click twice on different ratings )
-		$('[class*="'+itemClass+'"]').removeClass('clicked-'+postId);
-		
-		//Store current clicked rating 
-		var currClicked = $(this);
-		
-		console.log(currClicked);
-		
-		//Start adding clicked-postId and reviews classes to currently clicked rating and it's precceding ratings
-		currClicked.addClass('clicked-'+postId+' reviews');
-		currClicked.prevAll().each(function(){
-			//If not rating icon
-			if(!$(this).is('#rate-ico')){
-				$(this).addClass('clicked-'+postId+' reviews');
-			}   
-		});
+	});
+	var rateParent,parentID,thePostID,itemClass;
+	$(function(){
+		$('.rate-btn').hover(function(){
+		    //Get currenly hovered post ID
+			rateParent = $(this).parent().attr('id');
+			parentID = rateParent.split('-');
+			thePostID = parseInt( parentID[1] );
+		   
+		   	//make sure to remove all .reviews from current post ratings 
+		    itemClass = "btn-"+thePostID+'-';
+			$('[class*="'+itemClass+'"]').removeClass('reviews');
+		   
+		   	//Now on hover it will show what rating your are about to give
+		    $(this).addClass('reviews');
+			$(this).prevAll().addClass('reviews');
+		   $('.fa-star').removeClass('reviews');
+		   
+		 },function(){
+			//Get the database rate stored in #rated-'+thePostID
+			var therate = $('#rated-'+thePostID).text();
 
-		//Store click rate to remember on hover out
-		var clickRrate = $('.clicked-'+postId).length;
-		$('#clicked-'+postId).text(clickRrate);
+			//make sure to remove all .reviews from current post ratings
+			$('[class*="'+itemClass+'"]').removeClass('reviews');
 
-		//Display the clicked rate
-		$('.rated-'+postId).text(' '+clickRrate+' ');
-		
-		//If new user rates increase rating times
-		if($('#user-ip'+postId).val() === 'new_rate'){
-		   var revTimes = parseInt($('.times-'+postId).text());
-		   revTimes +=1;
-		   $('.times-'+postId).text(revTimes);
-		}
-		
-		//Send the new rating to database
-		$.ajax({
-		   type : "POST",
-		   data: {
-			  //'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db
-			  action: 'rate_post',
-			  act:'rate',
-			  post_id : postId,
-			  rate :clickRrate
-		   },
-		  url : SmpgAjaxUrl,
-		  success:function(response){
-			  //resp is define within the wp_ajax_{action} hooked function
-			  //console.log(response.resp);
-		  }
+
+			var getcurrentRate;
+			if($('#clicked-'+thePostID).text()===''){
+				getcurrentRate = therate;
+			}else{
+				getcurrentRate = $('#clicked-'+thePostID).text();
+			}
+		   
+			for (var j = 1; j <= getcurrentRate; j++) {
+				$('.btn-'+thePostID+'-'+j).addClass('reviews');
+			}
+		});                    
+		$('.rate-btn').click(function(){
+			//Get clicked post ID
+			var rateParent = $(this).parent().attr('id');
+			var parentID = rateParent.split('-');
+			var postId=  parentID[1];
+			
+			//Remove all .reviews if the are
+			var itemClass = "btn-"+postId+'-';
+			if($('[class*="'+itemClass+'"]').hasClass('reviews')){
+			 $('[class*="'+itemClass+'"]').removeClass('reviews');
+			}
+			
+			
+			//remove all .clicked-postID on each click (you might click twice on different ratings )
+			$('[class*="'+itemClass+'"]').removeClass('clicked-'+postId);
+			
+			//Store current clicked rating 
+			var currClicked = $(this);
+						
+			//Start adding clicked-postId and reviews classes to currently clicked rating and it's precceding ratings
+			currClicked.addClass('clicked-'+postId+' reviews');
+
+			currClicked.prevAll().each(function(){
+				//If not rating icon
+				if(!$(this).is('#rate-ico')){
+					$(this).addClass('clicked-'+postId+' reviews');
+				}   
+			});
+
+			//Store click rate to remember on hover out
+			var clickRrate = $('.clicked-'+postId).length;
+			$('#clicked-'+postId).text(clickRrate);
+
+			//Display the clicked rate
+			$('.rated-'+postId).text(' '+clickRrate+' ');
+			
+			//If new user rates increase rating times
+			if($('#user-ip'+postId).val() === 'new_rate'){
+			   var revTimes = parseInt($('.times-'+postId).text());
+			   revTimes +=1;
+			   $('.times-'+postId).text(revTimes);
+			}
+			
+			//Send the new rating to database
+			$.ajax({
+			   type : "POST",
+			   data: {
+				  //'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db
+				  action: 'rate_post',
+				  act:'rate',
+				  post_id : postId,
+				  rate :clickRrate
+			   },
+			  url : SmpgAjaxUrl,
+			  success:function(response){
+				  //resp is define within the wp_ajax_{action} hooked function
+				  //console.log(response.resp);
+			  }
+			});
 		});
 	});
-});
 });
