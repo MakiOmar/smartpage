@@ -206,6 +206,7 @@ tr:nth-child(even) {
 /***Header****/
 	header {
 		margin-top: 0;
+		margin-bottom: 15px;
 		max-height: 100%;
 		-webkit-box-shadow: 0 8px 10px -6px #4b4949;
 		   -moz-box-shadow: 0 8px 10px -6px #4b4949;
@@ -411,7 +412,7 @@ tr:nth-child(even) {
 	.anony-breadcrumbs:before{
 		content: '';
 		display: block;
-		background: url('../../images/line-pattern.png') repeat-x;
+		/*background: url('../../images/line-pattern.png') repeat-x;*/
 		opacity: 0.2;
 		position: absolute;
 		top: 0;
