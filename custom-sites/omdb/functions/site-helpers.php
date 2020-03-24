@@ -20,6 +20,26 @@ function omdb_get_user_project_id($user_id = null){
 			
 }
 
+/**
+ * Get metaboxes specific to a project
+ * @param  int $project_id 
+ * @return mixed
+ */
+function omdb_get_project_metaboxes($project_id){
+	$metaboxes =  get_post_meta( intval($project_id), 'anony_this_project_metaboxes', true );
+	if (!empty($metaboxes) && is_array($metaboxes)) {
+
+		$metaboxes['fields'][] = array(
+								'id'       => 'anony__test',
+								'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
+								'type'     => 'text',
+								'validate' => 'no_html',
+								'show_on_front' => true,
+							);
+	}
+	return $metaboxes;
+}
+
 
 /**
  * Renders a button link using fontawesome
