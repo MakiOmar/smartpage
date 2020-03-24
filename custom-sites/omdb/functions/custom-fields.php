@@ -388,7 +388,6 @@ add_filter('anony_metaboxes', function($metaboxes){
 								)
 		];
 			
-
 	$metaboxes[] = 
 		[
 			
@@ -478,44 +477,48 @@ add_action( 'init', function(){
 add_filter( 'anony_post_specific_metaboxes', function($post_metaboxes, $post){
 	$parent_id = get_post_meta( $post->ID, 'parent_id', true );
 	if(!empty($parent_id)){
-		$metaboxes =  get_post_meta( intval($parent_id), 'anony_this_project_metaboxes', true );
-		if (!empty($metaboxes) && is_array($metaboxes)) {
-			$post_metaboxes = $metaboxes;
-
-			$post_metaboxes['fields'][] = array(
-									'id'       => 'anony__test',
-									'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
-									'type'     => 'text',
-									'validate' => 'no_html',
-									'show_on_front' => true,
-								);
-		}
+		$metaboxes = omdb_get_project_metaboxes($parent_id);
+		if(!empty($metaboxes)) $post_metaboxes = $metaboxes;
 	}
 	
 	return $post_metaboxes;
 }, 10, 2);
 
-add_filter( 'anony_mb_frontend_fields', function($fields){
-	//if (!is_admin()) {
+add_filter( 'anony_shortcode_specific_metaboxes', function($post_metaboxes){
+	$parent_id = omdb_get_user_project_id();
+	if ($parent_id) {
+		$metaboxes = omdb_get_project_metaboxes($parent_id);
+		if(!empty($metaboxes)) $post_metaboxes = $metaboxes;
+	}
 
-		$parent_id = omdb_get_user_project_id();
+	return $post_metaboxes;
+}, 10);
 
-		if ($parent_id) {
-			$project_metaboxes = get_post_meta( $parent_id , 'anony_this_project_metaboxes', true );
 
-			if (!empty($project_metaboxes)) {
-				$fields = $project_metaboxes['fields'];
+/**
+ * Will add required hidden fields to insert report page. Page using shortcode
+ */
+add_filter( 'anony_mb_shortcode_hiddens', function($hiddens, $atts, $shortcode_tag) {
+	global $post;
 
-				$fields[] = array(
-									'id'       => 'anony__test',
-									'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
-									'type'     => 'text',
-									'validate' => 'no_html',
-									'show_on_front' => true,
-								);
+	if(!ANONY_POST_HELP::isPageHasShortcode($post, $shortcode_tag)) return ;
 
-			}
-		}
-	//}
-	return $fields;
-} );
+	$current_user = wp_get_current_user();
+
+	$post_parent = get_user_meta($current_user->ID, 'managed_project', true);
+
+	if(!empty($post_parent)){
+		$post_parent_id = intval($post_parent);
+
+		$hiddens .= '<input type="hidden" id="parent_id" name="parent_id" value="'.esc_attr( $post_parent_id ).'">' ;
+		
+		$title = get_the_title( $post_parent_id ).' '.current_time('Y-m-d', 1) ;
+		$hiddens .= '<input type="hidden" id="post_title" name="post_title" value="'.$title.'">' ;
+
+	}
+
+	
+
+	return $hiddens;
+
+},10, 3);

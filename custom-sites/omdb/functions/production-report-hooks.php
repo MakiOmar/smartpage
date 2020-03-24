@@ -9,38 +9,6 @@ add_filter( 'shortcode_atts_anony_production_details', function($atts) {
 
 });
 
-/**
- * Will add required hidden fields to insert report page. Page using shortcode
- */
-add_filter( 'anony_production_details_shortcode_hiddens', function($hiddens, $atts) {
-
-	$current_user = wp_get_current_user();
-
-	if(isset($atts['post_type'])){
-		$hiddens .= '<input type="hidden" id="post_type" name="postType" value="'.$atts['post_type'].'">';
-	}
-
-	$hiddens .= '<input type="hidden" id="user_ID" name="user_ID" value="'.$current_user->ID.'">';
-
-	$hiddens .= '<input type="hidden" id="action" name="action" value="insert">';
-
-
-	$post_parent = get_user_meta($current_user->ID, 'managed_project', true);
-
-	if(!empty($post_parent)){
-		$post_parent_id = intval($post_parent);
-
-		$hiddens .= '<input type="hidden" id="parent_id" name="parent_id" value="'.esc_attr( $post_parent_id ).'">' ;
-		$title = get_the_title( $post_parent_id ).' '.current_time('Y-m-d', 1) ;
-		$hiddens .= '<input type="hidden" id="post_title" name="post_title" value="'.$title.'">' ;
-
-	}
-
-	
-
-	return $hiddens;
-
-},10, 2);
 
 
 /**
@@ -99,14 +67,43 @@ add_action( 'anony_production_details_before_insert', function(){
 add_action('anony_production_details_show_on_front', function(){
 	if (!is_single( )) return;
 	global $post;
+
 	$parent_id = omdb_get_user_project_id();
 
 	$parent_id_meta = get_post_meta( $post->ID, 'parent_id', true );
 
-	if(!$parent_id || intval($parent_id_meta) != $parent_id ){
+	if((!$parent_id || intval($parent_id_meta) != $parent_id) && !current_user_can( 'administrator' ) ){
 		$url = add_query_arg( 'error', 'not_verified', get_home_url() );
 		wp_redirect( $url );
 		exit;
 
 	}
 });
+
+/*add_filter( 'anony_production_details_frontend_fields', function($fields){
+	//if (!is_admin()) {
+		$parent_id = omdb_get_user_project_id();
+
+		
+
+		$children = get_children(['post_parent'=> $parent_id, 'post_type' => 'production_report']);
+
+		if ($parent_id) {
+			$project_metaboxes = get_post_meta( $parent_id , 'anony_this_project_metaboxes', true );
+
+			if (!empty($project_metaboxes)) {
+				$fields = $project_metaboxes['fields'];
+
+				$fields[] = array(
+									'id'       => 'anony__test',
+									'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
+									'type'     => 'text',
+									'validate' => 'no_html',
+									'show_on_front' => true,
+								);
+
+			}
+		}
+	//}
+	return $fields;
+} );*/
