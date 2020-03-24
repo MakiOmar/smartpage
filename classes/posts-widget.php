@@ -26,7 +26,8 @@ public function __construct(){
 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ANONY_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 					<?php 
-						$selected =selected( $instance['post_type'], 'current', false );
+					$post_type = isset($instance['post_type']) ? $instance['post_type'] : '';
+						$selected =selected( $post_type , 'current', false );
 					?>
 					<option value="current" <?php echo $selected ;?>><?php esc_html_e( 'Current post type', ANONY_TEXTDOM ) ?></option>
 					<?php 
@@ -48,7 +49,13 @@ public function __construct(){
 			extract($parms);
 				
 			extract($instance);
-			$post_type = ($instance['post_type'] == 'current') ? get_post_type() : $instance['post_type'];
+
+			if($instance['post_type'] == 'current' && !is_single()){
+				$post_type = 'post';
+			}else{
+				$post_type = ($instance['post_type'] == 'current') ? get_post_type() : $instance['post_type'];
+			}
+
 			$args = array(
 			    'post_type'      => $post_type,
 			    'posts_per_page' => -1,
