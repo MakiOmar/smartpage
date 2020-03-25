@@ -27,17 +27,26 @@ function omdb_get_user_project_id($user_id = null){
  */
 function omdb_get_project_metaboxes($project_id){
 	$metaboxes =  get_post_meta( intval($project_id), 'anony_this_project_metaboxes', true );
-	if (!empty($metaboxes) && is_array($metaboxes)) {
-
-		$metaboxes['fields'][] = array(
-								'id'       => 'anony__test',
-								'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
-								'type'     => 'text',
-								'validate' => 'no_html',
-								'show_on_front' => true,
-							);
-	}
 	return $metaboxes;
+	
+}
+
+/**
+ * Will add meta key that holds post specific metaboxes
+ * 
+ * We need post id to add a meta, so there is an option that holds the id of project.
+ * @param  string $option_name The option name that holds the id of which we need to add meta key.
+ */
+function omdb_add_project_metabox($option_name, $metabox){
+	$omdb_options = ANONY_Options_Model::get_instance('Omdb_Options');
+	if(isset($omdb_options->$option_name) && !empty($omdb_options->$option_name)){
+		$project_metaboxes = get_post_meta( intval($omdb_options->$option_name) , 'anony_this_project_metaboxes', true );
+		if (empty($project_metaboxes)) {
+			add_post_meta( intval($omdb_options->$option_name) , 'anony_this_project_metaboxes', $metabox );
+		}
+
+	}
+
 }
 
 
