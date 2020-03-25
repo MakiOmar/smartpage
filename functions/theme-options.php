@@ -301,7 +301,8 @@ $defaultArFonts = array(
 						'ae_alhorregular'          => 'Alhor regular',
 						'ae_almohanadregular'      => 'Almohanad regular',
 						'dubairegular'             => 'Dubai regular',
-						'ae_albattarregular'             => 'Ae Albattar regular',
+						'ae_albattarregular'       => 'Ae Albattar regular',
+						'smartmanartregular'       => 'Smart man art regular',
 
 					);
 
@@ -325,7 +326,7 @@ $sections['arabic-fonts']= array(
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
-							'default' => 'ae_almohanadregular',
+							'default' => 'smartmanartregular',
 						),
 						array(
 							'id'      => 'anony_links_ar_font',
@@ -333,7 +334,7 @@ $sections['arabic-fonts']= array(
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
-							'default' => 'ae_almohanadregular',
+							'default' => 'smartmanartregular',
 						),
 						array(
 							'id'      => 'anony_paragraph_ar_font',
@@ -341,7 +342,7 @@ $sections['arabic-fonts']= array(
 							'type'    => 'select',
 							'validate'=> 'multiple_options',
 							'options' => array_merge($defaultArFonts , $arFonts),
-							'default' => 'ae_almohanadregular',
+							'default' => 'smartmanartregular',
 						),
 						
 					)
@@ -578,62 +579,7 @@ $Anony_Options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
 add_action('wp_head', function(){
 
 	
-$anonyOptions = anonyOpt();
-
-?>
-	<style type="text/css">
-		<?php
-			if(is_rtl()){
-
-				$headingFont = anonyGetOpt($anonyOptions, 'anony_headings_ar_font');
-				if (!empty($headingFont)) {?>
-					h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-						font-family: "<?php echo $headingFont ?>"
-					}
-				<?php }
-
-				$links_font = anonyGetOpt($anonyOptions, 'anony_links_ar_font');
-				if (!empty($links_font)) {?>
-
-					a{
-						font-family: "<?php echo $headingFont ?>"
-					}
-				<?php } 
-				
-				$paragraphFont = anonyGetOpt($anonyOptions, 'anony_paragraph_ar_font');
-				if (!empty($paragraphFont)) {?>
-					p{
-						font-family: "<?php echo $paragraphFont ?>"
-					}
-				<?php } ?>
-
-				
-			<?php }else{
-				$headingFont = anonyGetOpt($anonyOptions, 'anony_headings_en_font');
-				if (!empty($headingFont)) {?>
-					h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-						font-family: "<?php echo $headingFont ?>"
-					}
-				<?php }
-
-				$links_font = anonyGetOpt($anonyOptions, 'anony_links_en_font');
-				if (!empty($links_font)) {?>
-
-					a{
-						font-family: "<?php echo $headingFont ?>"
-					}
-				<?php } 
-				
-				$paragraphFont = anonyGetOpt($anonyOptions, 'anony_paragraph_en_font');
-				if (!empty($paragraphFont)) {?>
-					p{
-						font-family: "<?php echo $paragraphFont ?>"
-					}
-				<?php }
-			 }?>
-
-	</style>
-<?php });
+ });
 
 //Show admin bar for only admins
 add_action('after_setup_theme', function(){

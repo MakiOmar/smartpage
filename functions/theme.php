@@ -7,7 +7,6 @@
  * @link http://makiomar.com
  */
 
-
 /*-------------------------------------------------------------
  * Theme hooks
  *-----------------------------------------------------------*/
@@ -15,6 +14,13 @@
 add_action('after_setup_theme', function(){
 	load_theme_textdomain(ANONY_TEXTDOM, ANONY_LANG_DIR);
 });
+
+add_action('wp_ajax_anoe_dynamic_css', 'anoe_dynamic_css');
+add_action('wp_ajax_nopriv_anoe_dynamic_css', 'anoe_dynamic_css');
+function anoe_dynamic_css() {
+	require( ANONY_THEME_DIR . '/assets/css/dynamic.php' );
+	exit;
+}
 
 //Theme Scripts
 add_action('wp_enqueue_scripts',function() {
@@ -29,9 +35,20 @@ $anonyOptions = anonyOpt();
 			wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/rtl.css'))));
 		}
 
+		$dynamic_deps = ['main'];
+		
 		if(anonyGetOpt($anonyOptions, 'color_skin') !== 'custom' && !empty(anonyGetOpt($anonyOptions, 'color_skin'))){
-			wp_enqueue_style( anonyGetOpt($anonyOptions, 'color_skin').'-skin' , get_theme_file_uri('/assets/css/skins/'.anonyGetOpt($anonyOptions, 'color_skin').'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.anonyGetOpt($anonyOptions, 'color_skin').'.css'))));
+
+			$skin = anonyGetOpt($anonyOptions, 'color_skin');
+
+			$dynamic_deps = [$skin.'-skin'];
+
+			wp_enqueue_style( $skin.'-skin' , get_theme_file_uri('/assets/css/skins/'.$skin.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$skin.'.css'))));
 		}
+
+		wp_enqueue_style( 'anonyengine-dynamics', admin_url('admin-ajax.php').'?action=anoe_dynamic_css', $dynamic_deps);
+
+		//wp_enqueue_style( 'anonyengine-dynamics', ANONY_THEME_DIR . '/assets/css/dynamic.php', $dynamic_deps );
 
 		if(is_single()){
 			$scripts = array('jquery.validate.min', 'ajax_comment');
