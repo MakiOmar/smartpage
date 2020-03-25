@@ -413,64 +413,9 @@ add_filter('anony_metaboxes', function($metaboxes){
 });
 
 add_action( 'init', function(){
-	$omdb_options = ANONY_Options_Model::get_instance('Omdb_Options');
 
-	$arada_metaboxes = [
-		
-		'id'            => 'arada-production-distripution',//Meta box ID
-		'title'         => esc_html__( 'arada post meta boxes', ANONY_TEXTDOM ),
-		'context'       => 'normal',
-		'priority'      =>  'high', // high|low
-        'hook_priority' =>  '10', // Default 10
-		'post_type'     => array('production_report'),
-		'fields'        => array(
-
-
-								array(
-									'id'       => 'anony__arada_wells',
-									'title'    => esc_html__( 'Arada wells production', ANONY_TEXTDOM ),
-									'type'     => 'number',
-									'validate' => 'numder',
-									'show_on_front' => true,
-								),
-							)
-	];
-
-	if(isset($omdb_options->arada_project_contract) && !empty($omdb_options->arada_project_contract)){
-		$project_metaboxes = get_post_meta( intval($omdb_options->arada_project_contract) , 'anony_this_project_metaboxes', true );
-		if (empty($project_metaboxes)) {
-			add_post_meta( intval($omdb_options->arada_project_contract) , 'anony_this_project_metaboxes', $arada_metaboxes );
-		}
-
-	}
-
-	$aqiq_metaboxes = [
-		
-		'id'            => 'aqiq-production-distripution',//Meta box ID
-		'title'         => esc_html__( 'aqiq post meta boxes', ANONY_TEXTDOM ),
-		'context'       => 'normal',
-		'priority'      =>  'high', // high|low
-        'hook_priority' =>  '10', // Default 10
-		'post_type'     => array('production_report'),
-		'fields'        => array(
-
-								array(
-									'id'       => 'anony__aqiq_wells',
-									'title'    => esc_html__( 'aqiq wells production', ANONY_TEXTDOM ),
-									'type'     => 'number',
-									'validate' => 'numder',
-									'show_on_front' => true,
-								),
-							)
-	];
-
-	if(isset($omdb_options->aqiq_project_contract) && !empty($omdb_options->aqiq_project_contract)){
-		$project_metaboxes = get_post_meta( intval($omdb_options->aqiq_project_contract) , 'anony_this_project_metaboxes', true );
-		if (empty($project_metaboxes)) {
-			add_post_meta( intval($omdb_options->aqiq_project_contract) , 'anony_this_project_metaboxes', $aqiq_metaboxes );
-		}
-
-	}
+	include 'aqiq-metabox.php';
+	include 'arada-metabox.php';
 
 });
 
@@ -486,8 +431,10 @@ add_filter( 'anony_post_specific_metaboxes', function($post_metaboxes, $post){
 
 add_filter( 'anony_shortcode_specific_metaboxes', function($post_metaboxes){
 	$parent_id = omdb_get_user_project_id();
+
 	if ($parent_id) {
 		$metaboxes = omdb_get_project_metaboxes($parent_id);
+
 		if(!empty($metaboxes)) $post_metaboxes = $metaboxes;
 	}
 
