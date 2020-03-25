@@ -79,31 +79,3 @@ add_action('anony_production_details_show_on_front', function(){
 
 	}
 });
-
-/*add_filter( 'anony_production_details_frontend_fields', function($fields){
-	//if (!is_admin()) {
-		$parent_id = omdb_get_user_project_id();
-
-		
-
-		$children = get_children(['post_parent'=> $parent_id, 'post_type' => 'production_report']);
-
-		if ($parent_id) {
-			$project_metaboxes = get_post_meta( $parent_id , 'anony_this_project_metaboxes', true );
-
-			if (!empty($project_metaboxes)) {
-				$fields = $project_metaboxes['fields'];
-
-				$fields[] = array(
-									'id'       => 'anony__test',
-									'title'    => esc_html__( 'aqiq test', ANONY_TEXTDOM ),
-									'type'     => 'text',
-									'validate' => 'no_html',
-									'show_on_front' => true,
-								);
-
-			}
-		}
-	//}
-	return $fields;
-} );*/
