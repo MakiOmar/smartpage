@@ -306,7 +306,6 @@ tr:nth-child(even) {
 	#anony-main_menu_con li {
 		position: relative;
 		display:block;
-		align-items: center;
 		border: none;
 		border-bottom:1px solid #ffffff;
 	}

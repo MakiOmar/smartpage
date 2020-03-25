@@ -228,6 +228,7 @@
 	#anony-main_menu_con li {
 		display: inline-block;
 		border: none;
+		vertical-align: middle;
 	}
 	#anony-main_menu_con li a {
 		padding: 0 20px;
