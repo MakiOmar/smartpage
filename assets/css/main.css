@@ -1699,7 +1699,8 @@ tr:nth-child(even) {
 	border: none;
 }
 .button {
-	display: block;
+	display: inline-block;
+	min-width: 80px;
 	padding: 5px;
 	line-height: 25px;
 	color: #ffffff;
