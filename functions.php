@@ -23,7 +23,6 @@ $anonylibs = [
 	'media'     		  =>'',
 	'widgets'     		  =>'',
 	'db'        		  =>'',
-	'mail'        		  =>'',
 	'ajax-comments'       =>'ajax' . DIRECTORY_SEPARATOR,
 	'tinymce-editor-btns' =>'mce' . DIRECTORY_SEPARATOR,
 ];
@@ -45,5 +44,5 @@ require_once(OMDB_DIR.'/functions.php');
 
 //Just for testing purposes
 add_action('wp_footer', function(){
-	
+
 });
