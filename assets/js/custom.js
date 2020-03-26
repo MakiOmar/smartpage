@@ -173,14 +173,12 @@ jQuery(document).ready(function($){
 			$('#anony-hidden-search-form > .anony-search-form-toggle').html('<i class="fa fa-search" aria-hidden="true"></i></a></li>');
 		
 			$('#anony-hidden-search-form > .anony-search-form-toggle').css({"display":"none","position":"relative"});
-			$('body').css({"overflow":"auto"});
 		
 	},function(){
 		
 			$('#anony-hidden-search-form > .anony-search-form-toggle').html('<i class="fa fa-2x fa-window-close" aria-hidden="true"></i>');
 		
 			$('#anony-hidden-search-form > .anony-search-form-toggle').css({"display":"block","position":"absolute"});
-			$('body').css({"overflow":"hidden"});
 		
 		},''
 	);
