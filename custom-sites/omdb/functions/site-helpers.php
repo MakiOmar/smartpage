@@ -26,7 +26,9 @@ function omdb_get_user_project_id($user_id = null){
  * @return mixed
  */
 function omdb_get_project_metaboxes($project_id){
+
 	$metaboxes =  get_post_meta( intval($project_id), 'anony_this_project_metaboxes', true );
+
 	return $metaboxes;
 	
 }
@@ -38,14 +40,27 @@ function omdb_get_project_metaboxes($project_id){
  * @param  string $option_name The option name that holds the id of which we need to add meta key.
  */
 function omdb_add_project_metabox($option_name, $metabox){
-	$omdb_options = ANONY_Options_Model::get_instance('Omdb_Options');
-	if(isset($omdb_options->$option_name) && !empty($omdb_options->$option_name)){
-		$project_metaboxes = get_post_meta( intval($omdb_options->$option_name) , 'anony_this_project_metaboxes', true );
-		if (empty($project_metaboxes)) {
-			add_post_meta( intval($omdb_options->$option_name) , 'anony_this_project_metaboxes', $metabox );
-		}
 
-	}
+	$omdb_options = ANONY_Options_Model::get_instance('Omdb_Options');
+
+	if(!isset($omdb_options->$option_name) || !empty($omdb_options->$option_name)) return;
+
+	$contract_id = intval($omdb_options->$option_name);
+
+	$project_metaboxes = get_post_meta(  
+							$contract_id ,
+							'anony_this_project_metaboxes',
+							true
+						);
+
+	if (!empty($project_metaboxes)) return;
+
+	add_post_meta(
+		$contract_id,
+		'anony_this_project_metaboxes',
+		$metabox
+	);
+
 
 }
 
