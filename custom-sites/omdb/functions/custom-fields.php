@@ -432,13 +432,14 @@ add_filter( 'anony_post_specific_metaboxes', function($post_metaboxes, $post){
 add_filter( 'anony_shortcode_specific_metaboxes', function($post_metaboxes){
 	$parent_id = omdb_get_user_project_id();
 
-	if ($parent_id) {
-		$metaboxes = omdb_get_project_metaboxes($parent_id);
+	if (!$parent_id) return $post_metaboxes;
+	
+	$metaboxes = omdb_get_project_metaboxes($parent_id);
 
-		if(!empty($metaboxes)) $post_metaboxes = $metaboxes;
-	}
+	if(!empty($metaboxes)) return $metaboxes;
+	
 
-	return $post_metaboxes;
+	
 }, 10);
 
 
