@@ -1,50 +1,83 @@
-<?php get_header();?>
-  <div class="anony-grid">
-  	<div class="anony-grid-col anony-grid-row">
-        <div class="anony-grid-col-sm-9-5 anony-grid-col">
-        <?php
-			$this_category = get_category($cat);
-			$cats=get_categories(array('hide_empty' => '0', 'parent'=>$this_category ->cat_ID,'order'=> 'ASC','depth'=> '1'));
-		if(!empty($cats)){	?>
-			<div class="anony-container">
-			<h3 class="anony-cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('sub categories',ANONY_TEXTDOM).' ---'?></h3>
-				<div id="anony-ca-container" class="anony-ca-container">
-					<div class="anony-ca-wrapper">
-						<?php foreach ($cats as $cat) {?>
-						<div class="anony-ca-item anony-ca-item-<?php echo $cat->cat_ID ?> anony-grid-col-md-4 anony-grid-col-av-6">
-							<div class="anony-ca-item-main">
-								<div class="anony-ca-icon"><i class="fa fa-folder-open fa-4x"></i></div>
-								<h3 class="anony-ca-item-title"><?php echo $cat->cat_name ;?></h3>
-								<?php if(!empty($cat->category_description)){?>
-								<h4>
-									<span class="anony-ca-quote"><?php if(!is_rtl()){ echo '&ldquo;';}else{echo '&rdquo;';}?></span>
-									<span><?php echo wp_trim_words( $cat->category_description, 10);?></span>
-								</h4>
-								<?php }?>
-									<a href="<?php echo get_category_link($cat->term_id);?>" class="anony-cat-more"><?php esc_html_e('Enter',ANONY_TEXTDOM)?></a>
-							</div>
-						</div>
-						<?php }?>
-       				</div>
-				</div>
-			</div>
-        <?php }
-			$args = array(
-				'category__in' => array($this_category ->cat_ID),
-				'tax_query' => array(
-									array(
-										'include_children ' => false,
-									),
+<?php
+$cat_id = $cat;
+$cat_obj = get_category($cat);
+$data = [
+	'cat_id' => $cat_id,
+	'cat_obj' => $cat_obj,
+	'cat_name' => ucfirst($cat_obj->cat_name),
+	'page_title' => esc_html__('sub categories',ANONY_TEXTDOM),
+	'sub_categories' => get_categories(
+							[
+								'hide_empty' => '0',
+								'parent'=>$cat_obj->cat_ID,
+								'order'=> 'ASC','depth'=> '1'
+							]
+						),
+];
+
+if (!empty($data['sub_categories'])) {
+	foreach ($data['sub_categories'] as $sub_cat){
+
+		$temp['sc_id'] = $sub_cat->cat_id;
+		$temp['sc_name'] = $sub_cat->cat_name;
+		$temp['sc_desc'] = wp_trim_words( $sub_cat->category_description, 10);
+		$temp['sc_quote'] = !is_rtl() ? '&ldquo;' : '&rdquo;';
+		$temp['sc_link'] = get_category_link($sub_cat->term_id);
+		$temp['sc_link_text'] = esc_html__('Enter',ANONY_TEXTDOM);
+
+		$data['sc_view_data'][] = $temp;
+	}
+}
+
+
+$args = array(
+			'category__in' => array($cat_obj ->cat_ID),
+			'tax_query' => array(
+								array(
+									'include_children ' => false,
 								),
-			);
-			$query = new WP_Query( $args );
-			if ( have_posts() ) {?>
-				<h3 class="anony-cat-section-title"><?php echo '--- '.ucfirst($this_category->cat_name).' / '.__('Category posts',ANONY_TEXTDOM).' ---'?></h3>
-			<?php while (have_posts() ) { the_post();
-					get_template_part('templates/blog-post') ;
-			} }?>
-        </div>
-       <?php get_sidebar();?>
-	</div>
-  </div>
- <?php get_footer();?>
+							),
+		);
+$query = new WP_Query( $args );
+
+$data['loop']['have_posts'] = false;
+
+if ( have_posts() ) {
+	$data['loop']['have_posts'] = true;
+	$temp = [];
+	while (have_posts() ) {
+		the_post();
+
+		$temp['id']        = get_the_ID();
+		$temp['title']     = esc_html(get_the_title());
+		$temp['title_attr']        = the_title_attribute( ['echo' => false] );
+		$temp['content']   = get_the_content();
+		$temp['excerpt']   = esc_html(get_the_excerpt());
+		$temp['comments_number']   = anony_comments_number();
+		$temp['has_category']      = has_category();
+		$temp['thumb']     = has_post_thumbnail() ? true : false;
+		$temp['thumb_exists']      = ANONY_LINK_HELP::curlUrlExists(get_the_post_thumbnail_url(get_the_ID()));
+		$temp['thumb_img'] = get_the_post_thumbnail($post, 'full');
+		$temp['date']      = get_the_date();
+		$temp['permalink'] = esc_url(get_the_permalink());
+		$temp['gravatar']  = get_avatar(get_the_author_meta('ID'),32);
+		$temp['author']    = sprintf(esc_html__( 'By %s', ANONY_TEXTDOM ), get_the_author());
+
+		if(has_category()){
+			$_1st_category = get_the_category()[0];
+			$temp['_1st_category_id']   = $_1st_category->cat_ID;
+			$temp['_1st_category_name'] = esc_html($_1st_category->name);
+			$temp['_1st_category_url']  = esc_url(get_category_link($_1st_category->cat_ID));
+		}
+	}
+
+	$data['page_title'] = esc_html__('Category posts',ANONY_TEXTDOM);
+	$data['read_more']  = esc_html__('Read more',ANONY_TEXTDOM);
+
+	$data['loop']['posts'][] = $temp;
+}
+
+extract($data);
+extract($loop);
+
+include STYLESHEETPATH . '/templates/category.view.php';
