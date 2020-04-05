@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
 
 	var CommentSubmit =$('#anony-commentform').find('#submit'),
 		
-	SmpgAjaxUrl = SmpgLoca.ajaxURL;
+	SmpgAjaxUrl = anonyLoca.ajaxURL;
 	var commentsCount;
 	//comment_parent name shouldn't be changed. (WordPress defaults)
 	var replyTo = $('#comment_parent').val();
@@ -44,10 +44,10 @@ jQuery(document).ready(function($){
 					
 				},
 				messages: {
-					author  : SmpgLoca.anonyFormAuthor ,
-					email   : SmpgLoca.anonyFormEmail ,
-					url     : SmpgLoca.anonyFormUrl ,
-					comment : SmpgLoca.anonyFormComment ,
+					author  : anonyLoca.anonyFormAuthor ,
+					email   : anonyLoca.anonyFormEmail ,
+					url     : anonyLoca.anonyFormUrl ,
+					comment : anonyLoca.anonyFormComment ,
 				},
 				errorPlacement: function(error, element) {
 						error.insertAfter( "label[for='" + element.attr( "id" ) + "']" );	
