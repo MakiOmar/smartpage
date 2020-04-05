@@ -1,5 +1,7 @@
 <?php
 add_action( 'init', function(){
+	if ( $GLOBALS['pagenow'] === 'wp-login.php' ) return;
+	
 	if (!defined('ANOENGINE') && !is_admin()) {
 		wp_die( 'Please activate/install AnonyEngine plugin, for User AnonyEngine theme can work properly... <a href="'.esc_url(admin_url()).'">Go to admin</a>' );
 		/*wp_redirect( admin_url(  ) );
