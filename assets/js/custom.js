@@ -17,7 +17,7 @@ clean(document);
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
-	var SmpgAjaxUrl = SmpgLoca.ajaxURL;
+	var SmpgAjaxUrl = anonyLoca.ajaxURL;
 	//Hide Top section if no content
 	function isEmpty( el ){
 		
