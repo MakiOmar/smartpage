@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 class ANONY_views__Standard extends ANONY_Generate_Posts_View{
 	
 	public $IfNot = '';
@@ -33,7 +36,7 @@ class ANONY_views__Standard extends ANONY_Generate_Posts_View{
 		<?php }else{?>
 			<div>
 		<?php }?>
-				<div id="anony-blog-posts">
+				<div id="anony-blog-post">
 				
 				<?php
 					while($this->child->post->have_posts()){
