@@ -397,19 +397,19 @@ msgstr ""
 msgid "Suggested downloads"
 msgstr ""
 
-#: templates/temp-blog-post.php:28
+#: templates/temp-blog-post.view.php:28
 msgid "Shares"
 msgstr ""
 
-#: templates/temp-blog-post.php:55
+#: templates/temp-blog-post.view.php:55
 msgid "By"
 msgstr ""
 
-#: templates/temp-blog-post.php:58 templates/temp-featured.php:22
+#: templates/temp-blog-post.view.php:58 templates/temp-featured.php:22
 msgid "Read more"
 msgstr ""
 
-#: templates/temp-category-posts.php:6
+#: templates/temp-category-posts-section.php:6
 msgid "Recent Posts"
 msgstr ""
 
