@@ -1,4 +1,14 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
+function omdb_get_registered_metaboxes(){
+	$arr = ANONY_POST_HELP::queryPostTypeSimple('contract');
+	//return $arr;
+	return ANONY_ARRAY_HELP::isSequentiallyIndexed( $arr );
+	
+}
 /**
  * Get project connected that a user connected to
  * @param  mixed|null $user_id 
@@ -22,12 +32,12 @@ function omdb_get_user_project_id($user_id = null){
 
 /**
  * Get metaboxes specific to a project
- * @param  int $project_id 
+ * @param  int $contract_id 
  * @return mixed
  */
-function omdb_get_project_metaboxes($project_id){
+function omdb_get_contract_metaboxes($contract_id){
 
-	$metaboxes =  get_post_meta( intval($project_id), 'anony_this_project_metaboxes', true );
+	$metaboxes =  get_post_meta( intval($contract_id), 'anony_this_project_metaboxes', true );
 
 	return $metaboxes;
 	
@@ -64,6 +74,32 @@ function omdb_add_project_metabox($option_name, $metabox){
 
 }
 
+/**
+ * Update contract meta fields
+ * @param int         $contract_id Contarct ID
+ * @param array       $new_field   Field's data array
+ * @param string|null $parent_id   If field is nested to another field
+ */
+function omdb_update_project_metabox($contract_id, $new_field, $parent_id = null){
+	$metabox = omdb_get_contract_metaboxes($contract_id);
+
+	$temp = $metabox;
+	if (empty($metabox)) return;
+
+	if (is_null($parent_id)) {
+		$metabox['fields'][] = $new_field;
+	}else {
+		foreach ($metabox['fields'] as $index => $parent) {
+			if ($parent['id'] === $parent_id ) {
+				$metabox['fields'][$index]['fields'][] = $new_field; 
+			}
+		}
+	}
+	
+	if ($temp === $metabox ) return;
+
+	update_post_meta( $contract_id, 'anony_this_project_metaboxes', $metabox );
+}
 
 /**
  * Renders a button link using fontawesome
