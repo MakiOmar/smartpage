@@ -1,4 +1,10 @@
-<?php get_header( );?>
+<?php 
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
+get_header( );?>
 
 <div class="anony-grid">
 	<div class="anony-grid-col anony-grid-row">
@@ -68,7 +74,7 @@
 			foreach ($posts as $post_data ) :
 				extract($post_data);
 
-				include wp_normalize_path( STYLESHEETPATH. '/templates/blog-post.php' );
+				include (locate_template( 'templates/blog-post.view.php', false, false ));
 
 			endforeach;
 		endif;

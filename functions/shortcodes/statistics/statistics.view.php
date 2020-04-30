@@ -1,3 +1,8 @@
+<?php
+	if ( ! defined( 'ABSPATH' ) ) {
+	    exit; // Exit if accessed directly
+	}
+?>
 <div id="<?= $id ?>" class="anony-counter-wrapper">
 	<div class="anony-counter-icon"><i class="fa fa-<?= $icon ?> fa-4x"></i></div>
 	
