@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 $cat_id = $cat;
 $cat_obj = get_category($cat);
 $data = [
@@ -80,4 +84,4 @@ if ( have_posts() ) {
 extract($data);
 extract($loop);
 
-include STYLESHEETPATH . '/templates/category.view.php';
+include(locate_template( 'templates/category.view.php', false, false ));

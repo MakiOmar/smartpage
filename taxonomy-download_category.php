@@ -1,4 +1,8 @@
-<?php get_header();?>
+<?php 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+get_header();?>
   <div class="anony-grid">
   	<div class="anony-grid-col anony-grid-row">
         <div class="anony-grid-col-sm-9-5 anony-grid-col">

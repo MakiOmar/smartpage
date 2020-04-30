@@ -1,4 +1,8 @@
-<?php if ( ! class_exists( 'ANONY_Cats_Walk' ) ) {
+<?php 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+if ( ! class_exists( 'ANONY_Cats_Walk' ) ) {
 	class ANONY_Cats_Walk extends Walker_Category {
 		public $tree_type = 'category';
 				/**

@@ -1,5 +1,7 @@
 <?php
-	
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 $anonyOptions = anonyOpt();
 	anony_get_correct_sidebar();
 
@@ -55,4 +57,3 @@ $anonyOptions = anonyOpt();
 		  <?php }}
 		comments_template( '', true ); ?>
 </div>
-<?php anony_get_correct_sidebar();?>

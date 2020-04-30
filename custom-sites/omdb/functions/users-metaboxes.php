@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 add_action('show_user_profile', 'anony_user_metabox');
 add_action('edit_user_profile', 'anony_user_metabox');
 

@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 
 /*--------------------singles hooks-----------*/
 add_filter( 'shortcode_atts_anony_production_details', function($atts) {

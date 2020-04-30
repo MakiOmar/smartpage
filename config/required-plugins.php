@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 add_action( 'init', function(){
 	if ( $GLOBALS['pagenow'] === 'wp-login.php' ) return;
 	

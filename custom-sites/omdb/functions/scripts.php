@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 //custom site scripts: omdb
 $scripts_hook = is_admin() ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts';
 add_action($scripts_hook,function() {

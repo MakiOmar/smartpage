@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 
 define('OMDB_URI', ANONY_THEME_URI. '/custom-sites/omdb');
 define('OMDB_LIBS_DIR', OMDB_DIR. '/functions/');

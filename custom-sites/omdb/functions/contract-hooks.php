@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 add_filter('anony_contract_hierarchical', function($hierarchical){
 	return true;
 });

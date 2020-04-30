@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 class ANONY_views__Popular extends ANONY_Generate_Posts_View{
 	
 	public $IfNot = '';

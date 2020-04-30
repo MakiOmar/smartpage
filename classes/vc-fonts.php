@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 if (!class_exists('ANONY_VC_Fonts')) {
     class ANONY_VC_Fonts{
         /**

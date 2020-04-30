@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 add_shortcode('anony_statistics', function($atts){
 	$counters = [];
 

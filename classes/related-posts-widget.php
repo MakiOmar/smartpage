@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 if ( ! class_exists( 'ANONY_Related_Posts_Widget' ) ) {
 	class ANONY_Related_Posts_Widget extends WP_Widget{
 		public function __construct(){

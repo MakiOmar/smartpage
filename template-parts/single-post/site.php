@@ -1,4 +1,7 @@
-<?php 
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+} 
 	
 $anonyOptions = anonyOpt();
 	anony_get_correct_sidebar();

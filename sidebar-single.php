@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 /*
 *Sidebar only shows on a Single post
 *Can be controlled for theme options > layout > sidebar -> single post sidebar
