@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 /**
  * OMDB options fields and navigation
  *
@@ -50,7 +53,7 @@ $omdbsections['arada_project']= array(
 							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 							'validate'=> 'multiple_options',
 							
-						),						
+						)						
 					)
 );
 
@@ -65,7 +68,24 @@ $omdbsections['aqiq_project']= array(
 							'options' => ANONY_POST_HELP::queryPostTypeSimple('contract'),
 							'validate'=> 'multiple_options',
 							
-						),						
+						),
+
+						array(
+							'id'       => 'debug',
+							'title'    => esc_html__('Debug', ANONY_TEXTDOM),
+							'type'     => 'opt_debug',
+							'callback' => 'omdb_get_registered_metaboxes',
+							
+						),
+
+						array(
+							'id'       => 'metabox_1',
+							'title'    => esc_html__('Metabox one', ANONY_TEXTDOM),
+							'type'     => 'select2',
+							'options'  => ANONY_POST_HELP::getPostMetaKeys( intval($omdbOptions->aqiq_project_contract) ),
+							'validate' => 'multi_options'
+							
+						),							
 					)
 );
 
