@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 /*
 *This is the sidebar in the featured section
 */
@@ -13,7 +15,7 @@
 		</ul>
 		<?php 
 		   get_template_part('templates/popular') ;
-		   get_template_part('templates/comments') ;
+		   get_template_part('templates/latest-comments') ;
 		 ?>	
 	  </div>
 </div>
