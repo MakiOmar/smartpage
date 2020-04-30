@@ -1,117 +1,54 @@
-<?php 
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 /*
 *Download custom post type anony_download
 */
 
-get_header();
+$download_meta = get_post_meta( get_the_ID(), 'smpg_download', true );
 
-$dPost_Id = get_the_ID();
+$download_times = 0;
 
-$curr_download_meta = get_post_meta( $dPost_Id, 'anony_download_attachment', true );
-
-$download_times = get_post_meta($dPost_Id,'download_times',true);
-
-if(empty($download_times)){
-	$download_times = 0;
+if(!$download_meta && $download_meta){
+	$download_url = $download_meta['smpg_download_attachment'];
+	$download_times = (empty($download_meta['download_times']) || !isset($download_meta['download_times'])) ? 0 : $download_meta['download_times'];
 }
+
+$data = [
+	'have_post' => false,
+];
+if ( have_posts() ) {
+	$data['have_post'] = true;
+
+	while (have_posts() ) {
+		the_post();
+
+		$data['id']        = get_the_ID();
+		$data['title']     = get_the_title();
+		$data['content']   = get_the_content();
+		$data['thumb']     = has_post_thumbnail() ? true : false;
+		$data['thumb_img'] = get_the_post_thumbnail(array('230','300'));
+		$data['date']      = explode(' ',get_the_date());
+		$data['permalink'] = esc_url(get_the_permalink());
+		$data['terms']     = get_the_terms(get_the_ID(),'download_category');
+		$data['download_text'] = esc_html__('Download',ANONY_TEXTDOM);
+
+		ob_start();
+
+		get_template_part('controllers/rate');
+
+		$data['rating'] = ob_get_clean();
+
+		ob_start();
+
+		comments_template( '', true );
+
+		$data['comments_template'] = ob_get_clean();
+
+	}
+}
+
+extract($data);
+include(locate_template( 'template-parts/single-post/anony_download.php', false, false ));
 ?>
-  <div class="anony-grid">
-  	<div class="anony-grid-row anony-grid-col">
-      
-       <?php get_sidebar();?>
-       
-        <div class="anony-grid-col-sm-9">
-      		 <div class="anony-grid-col anony-blog-section">
-				<div class="anony-posts-section">
-       		 		<div class="anony-grid-col anony-post-contents">
-                      <?php
-						if ( have_posts() ) {
-							
-					   		while (have_posts() ) {
-							the_post();?>
-                       	
-                        	<div class="anony-hover-toggle anony-download-meta anony-post-info anony-grid-col-lg-3">
-                        	
-							  <?php if ( has_post_thumbnail() ) {?>
-							  
-								  <div class="download-image-wrapper">
-									<?php the_post_thumbnail(array('230','300'));?>
-								  </div>
-								  
-							  <?php }?>
-                            </div>
-                            
-                            <div class="anony-grid-col-lg-9">
-								<div class="single-download-title">
-									<div class="title-date-wrapper">
-									
-										<?php $date = explode(' ',get_the_date()) ;?>
-										<div class="date">
-											<div class="date-wrapper">
-												<h1 class="day"><?php echo $date[0] ?></h1>
-												<span><?php echo $date[1].' '.$date[2] ?></span>
-											</div>
-										</div>
-
-										
-										<div class="download-title">
-										
-											<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-											
-											<div class="anony-post_meta">
-												<div class="category">
-												
-													<i class="fa fa-folder-open"></i>
-
-													<?php the_terms($dPost_Id,'download_category') ;?>
-
-												</div>
-												
-												
-												<div class="download-counts">
-												
-													<i class="fa fa-download"></i>
-													<span id="download-<?php echo $dPost_Id?>"><?php echo $download_times ;?></span>
-													
-												</div>
-
- 												<?php get_template_part('templates/rate') ?>
-
-											</div>
-											
-											
-											<div class="single-download">
-											
-												<a title="download-<?php echo $dPost_Id?>" target="_blank" class="anony-download" href="<?php echo $curr_download_meta ?>">
-													<i class="fa fa-download"></i>
-													<span><?php esc_html_e('Download',ANONY_TEXTDOM) ?></span>
-												</a>
-												
-											</div>
-											
-										</div>
-										
-									</div>
-									
-								</div>
-							  
-								  <?php the_content() ?>
-							  </div>
-                          <?php 
-								}
-							}
-						?>
-               		</div>
-               		
-				</div>
-      		 
-       		 </div>
-       		 
-       		 <?php comments_template( '', true ); ?>
-       		 
-        </div>
-       
-	</div>
-	
-  </div>
- <?php get_footer();?>
