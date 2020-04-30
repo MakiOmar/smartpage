@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 require_once(wp_normalize_path(get_template_directory() . '/config/config.php'));
 
 
@@ -23,22 +25,30 @@ $anonylibs = [
 	'media'     		  =>'',
 	'widgets'     		  =>'',
 	'db'        		  =>'',
-	'ajax-comments'       =>'ajax' . DIRECTORY_SEPARATOR,
-	'tinymce-editor-btns' =>'mce' . DIRECTORY_SEPARATOR,
+	'statistics'          =>'shortcodes/statistics/',
+	'ajax-comments'       =>'ajax/',
+	'tinymce-editor-btns' =>'mce/' ,
 ];
 
 foreach($anonylibs as $anonylib=>$path){
-	require_once( ANONY_LIBS_DIR . $path . $anonylib.'.php');
+	require_once( wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib.'.php') );
 }
 
 
 
 /*--------------------------------------omdb----------------------------*/
 
-define('OMDB_DIR', ANONY_THEME_DIR. '/custom-sites/omdb');
+//define('OMDB_DIR', ANONY_THEME_DIR. '/custom-sites/omdb');
 
 
-require_once(OMDB_DIR.'/functions.php');
+//require_once(OMDB_DIR.'/functions.php');
+
+/*--------------------------------------smartpage----------------------*/
+
+define('SMPG_DIR', ANONY_THEME_DIR. '/custom-sites/smartpage');
+
+
+require_once(SMPG_DIR .'/functions.php');
 
 
 
