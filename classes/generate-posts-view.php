@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 class ANONY_Generate_Posts_View{
 
 	/*
@@ -37,8 +40,8 @@ class ANONY_Generate_Posts_View{
 	public $IfNot = '';
 	
 	/*
-	*@var  integer $IfNot  stores the else part
-	*/
+	 * @var integer $excerptLength  Stores excerpt length
+	 */
 	public $excerptLength = 15;
 	
 	
@@ -59,7 +62,7 @@ class ANONY_Generate_Posts_View{
 	*@param  bool    $reset     if the loop need to be reset
 	*/
 
-	public function __construct($args, $template = 'blog-post', $reset = false){
+	public function __construct($args, $template = 'blog-post.view', $reset = false){
 
 		$this->resetLoop = $reset;
 
