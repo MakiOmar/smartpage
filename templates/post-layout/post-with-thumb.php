@@ -1,32 +1,47 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+?>
 <div class="anony-post-image-wrapper">
 	<div class="anony-toggle-excerpt"><i class="fa fa-arrow-up"></i></div>
 	
 	<div class="text">
-		<h3 class="anony-thumb-post-title"><a href="<?php echo esc_url(get_the_permalink()) ;?>"><?php echo get_the_title() ?></a></h3>
-		<p><?php echo esc_html(get_the_excerpt()); ?></p>
+		<h3 class="anony-thumb-post-title">
+			<a href="<?= $permalink ?>"><?= $title ?></a>
+		</h3>
+		<p><?= $excerpt ?></p>
 	</div>
 	
 	<div class="anony-post_meta anony-inside-thumb">
 	  <div class="date">
 		<i class="fa fa-calendar meta-text"></i>
-		<span class="meta-text"><?php echo get_the_date(); ?></span>
+		<span class="meta-text"><?= $date ?></span>
 		</div>
 		<div class="anony-comments">
-			<i class="fa fa-comments-o meta-text"></i>
-			<?php echo anony_comments_number(); ?>
+			<i class="fa fa-comments-o meta-text"></i> <?= $comments_number ?>
 		</div>
 	</div>
 	  
-	  <?php if(has_category()){?>
+	<?php if($has_category) :?>
+
+		<h4>
+			<a href="<?= $_1st_category_url ?>"><?= $_1st_category_name?></a>
+		</h4>
+		
+	<?php endif ?>
+
+	<div class="anony-shares-count">
+		<i class="fa fa-share-alt"></i>
+		<span>1000 <?php esc_html_e('Shares',ANONY_TEXTDOM) ?></span>
+	</div>
 	  
-	  	<h4><a href="<?php echo esc_url(get_category_link(get_the_category()[0]->cat_ID));?>"><?php echo esc_html(get_the_category()[0]->name) ;?></a></h4>
-	  	
-	  <?php } ?>
-	  <div class="anony-shares-count">
-	  	<i class="fa fa-share-alt"></i><span>1000 <?php esc_html_e('Shares',ANONY_TEXTDOM) ?></span>
-	  </div>
-	  
-	   <div class="anony-post-title-cover"><?php echo '<a href="' . esc_url( get_the_permalink() ) . '" title="' . esc_attr( get_the_title() ) . '">.</a>';?></div>
-	   
-		<?php echo get_the_post_thumbnail($post, 'full') ?>
+	<div class="anony-post-title-cover">
+		<a href="<?= $permalink ?>" title="<?= $title_attr ?>">.</a>	
+   	</div>
+   	
+   	<div class="anony-thumb">
+   		<?= $thumb_img ?>
+   	</div>
+	
 </div>
