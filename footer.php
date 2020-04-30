@@ -1,38 +1,18 @@
 <?php 
-$anonyOptions = anonyOpt();?>
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 
-<footer class="anony-grid-col-md-12 anony-grid-col">
-	<?php 
-		if(has_action('footer_ad')){
-			do_action('footer_ad');
-		}
-	?>
-	
-	<p><?php echo esc_html(anonyGetOpt($anonyOptions, 'copyright')) ?></p>
-	
-</footer>
+$anonyOptions = anonyOpt();
 
-<div id="anony-page-scroll-wrapper">
+$copyright = esc_html(anonyGetOpt($anonyOptions, 'copyright'));
 
-	<div id="anony-page-scroll-bg"></div>
-	
-	<a href="#" id="anony-page-scroll"><i class="fa fa-angle-down fa-3x"></i></a>
-	
-</div>
+$ajaxUrl = ANONY_WPML_HELP::getAjaxUrl();
 
-</div>
+ob_start();
+	wp_footer();
+	$footer = ob_get_contents();
+ob_end_clean();
 
-<input type="hidden" id="anony_ajax_url" value="<?php echo ANONY_WPML_HELP::getAjaxUrl(); ?>" />
-<div id="anony-loading">
-    <div id="anony-page-loading-wrapper"><div id="anony-page-loading-bg"></div></div>
-</div>
-<?php wp_footer();?>
-
-</body>
-
-</html>
-
-<?php
-// end output buffering and send our HTML to the browser as a whole
-ob_end_flush();
+include(locate_template( 'templates/footer.view.php', false, false ));
 ?>
