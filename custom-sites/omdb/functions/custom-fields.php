@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 /**
  * Meta boxes registration
  *
@@ -422,7 +425,7 @@ add_action( 'init', function(){
 add_filter( 'anony_post_specific_metaboxes', function($post_metaboxes, $post){
 	$parent_id = get_post_meta( $post->ID, 'parent_id', true );
 	if(!empty($parent_id)){
-		$metaboxes = omdb_get_project_metaboxes($parent_id);
+		$metaboxes = omdb_get_contract_metaboxes($parent_id);
 		if(!empty($metaboxes)) $post_metaboxes = $metaboxes;
 	}
 	
@@ -435,7 +438,7 @@ add_filter( 'anony_shortcode_specific_metaboxes', function($post_metaboxes){
 
 	if (!$parent_id) return $post_metaboxes;
 
-	$post_metaboxes = omdb_get_project_metaboxes($parent_id);
+	$post_metaboxes = omdb_get_contract_metaboxes($parent_id);
 
 	if(!empty($post_metaboxes)) return $post_metaboxes;
 	
