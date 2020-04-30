@@ -193,7 +193,7 @@ msgid "Downloads"
 msgstr "تنزيلات"
 
 #: classes/views/featured.php:60 classes/views/masonry.php:80
-#: classes/views/standard.php:80 templates/blog-post.php:45
+#: classes/views/standard.php:80 templates/blog-post.view.php:45
 msgid "Read more"
 msgstr "إقرأ المزيد"
 
@@ -212,7 +212,7 @@ msgid "Recent Posts"
 msgstr "أحدث الموضوعات"
 
 #: classes/views/masonry.php:72 classes/views/standard.php:72
-#: templates/blog-post.php:35
+#: templates/blog-post.view.php:35
 msgid "By"
 msgstr "بواسطة"
 
