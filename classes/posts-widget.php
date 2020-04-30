@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 class ANONY_Posts_Widget extends WP_Widget {
 public function __construct(){
 			$parms = array(
@@ -26,15 +29,15 @@ public function __construct(){
 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ANONY_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 					<?php 
-					$post_type = isset($instance['post_type']) ? $instance['post_type'] : '';
+					$postType = isset($instance['post_type']) ? $instance['post_type'] : 'post';
 						$selected =selected( $post_type , 'current', false );
 					?>
 					<option value="current" <?php echo $selected ;?>><?php esc_html_e( 'Current post type', ANONY_TEXTDOM ) ?></option>
 					<?php 
-						foreach(get_post_types(['public'   => true, '_builtin' => false]) as $post_type){
-							$selected =selected( $instance['post_type'], $post_type, false )
+						foreach(get_post_types(['public'   => true, '_builtin' => false]) as $type){
+							$selected =selected( $postType, $type, false )
 							?>
-			                <option value="<?php echo $post_type ?>" <?php echo $selected ;?>><?php echo $post_type ?></option>
+			                <option value="<?php echo $post_type ?>" <?php echo $selected ;?>><?php echo $type ?></option>
 			            <?php }
 
 					?>
