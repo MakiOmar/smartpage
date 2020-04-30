@@ -1,5 +1,5 @@
 /*Main colors*/
-.active,.button, .anony-active-tab,.anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,.anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
+.page-numbers li,.active,.button, .anony-active-tab,.anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,.anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 !important;
 }
 .anony-section,#anony-slider-wrapper {
@@ -22,7 +22,7 @@ body{
 	/*background: url(../../../images/body-bg-1.jpg) no-repeat fixed;
 	background-size: cover;*/
 }
-#cancel-comment-reply-link {
+#cancel-comment-reply-link, {
 		color: #ef1450;
 	}
 .anony-breadcrumbs li, .anony-breadcrumbs a {
@@ -40,7 +40,12 @@ body{
 	background-color: #e09352;
 	border-left: 6px solid #230005;
 }
-
+.page-numbers{
+	color: #fff;
+}
+li .current::after{
+	background-color: #b10030;
+}
 
 @media screen and (min-width: 768px){
 	#anony-main_menu_con li a:hover {

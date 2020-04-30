@@ -257,7 +257,7 @@ display: flex;
 }
 .toggle-category{
 	right: auto;
-	left: 5px;
+	left: 0;
 }
 
 /***Body***/
