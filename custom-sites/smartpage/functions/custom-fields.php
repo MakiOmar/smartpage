@@ -20,7 +20,7 @@ add_filter('anony_metaboxes', function($metaboxes){
 			'context'       => 'normal',
 			'priority'      =>  'high', // high|low
 	        'hook_priority' =>  '10', // Default 10
-			'post_type'     => array('download'),
+			'post_type'     => array('anony_download'),
 			'fields'        => 
 				[
 					[
