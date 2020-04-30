@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_filter('anony_post_types', function($custom_post_types){
 	$custom_posts = [
-					'download'=>
+					'anony_download'=>
 						[
 							esc_html__('Download',ANONY_TEXTDOM), 
 							esc_html__('Download',ANONY_TEXTDOM)
@@ -44,7 +44,7 @@ add_filter('anony_taxonomies', function($anony_custom_taxs){
 
 	$custom_taxs = 
 		[
-			'download_type'=>
+			'anony_download_type'=>
 				[
 					esc_html__('Download type',ANONY_TEXTDOM), esc_html__('Download type',ANONY_TEXTDOM)
 				],
@@ -61,7 +61,7 @@ add_filter('anony_taxonomies', function($anony_custom_taxs){
  */
 add_filter('anony_post_taxonomies', function($anony_post_taxonomies){
 
-	$post_taxs = [ 'download' =>['download_type'] ];
+	$post_taxs = [ 'anony_download' =>['anony_download_type'] ];
 
 	return array_merge($anony_post_taxonomies, $post_taxs);
 });
@@ -72,7 +72,7 @@ add_filter('anony_post_taxonomies', function($anony_post_taxonomies){
  */
 add_filter( 'anony_taxonomy_posts', function($anony_tax_posts){
 
-	$tax_posts = [ 'download_type' => ['download'] ];
+	$tax_posts = [ 'anony_download_type' => ['anony_download'] ];
 
 	return array_merge($anony_tax_posts, $tax_posts);
 });
