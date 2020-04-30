@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 /**
  * Theme Functions
  *
@@ -60,13 +63,18 @@ $anonyOptions = anonyOpt();
 
 		$scripts = array('jquery.prettyPhoto','custom');
 
-		if(is_home() || is_front_page()){
-			$scripts = array_merge($scripts, array('jquery.mousewheel','jquery.easing.1.3','jquery.contentcarousel'));
+		if(is_home() || is_front_page() || is_archive()){
+			$scripts = array_merge($scripts, array('jquery.contentcarousel'));
 		}
-			foreach($scripts as $script){
-				wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
-				wp_enqueue_script($script);
-			}
+
+		if(is_home() || is_front_page()){
+			$scripts = array_merge($scripts, array('jquery.mousewheel','jquery.easing.1.3'));
+		}
+		
+		foreach($scripts as $script){
+			wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
+			wp_enqueue_script($script);
+		}
 
 		// Localize the script with new data
 		$anony_loca = array(
@@ -78,7 +86,7 @@ $anonyOptions = anonyOpt();
 			'anonyFormUrl'     => esc_html__("Please use a valid website address", ANONY_TEXTDOM),
 			'anonyFormComment' => esc_html__("Comment must be at least 20 characters", ANONY_TEXTDOM),
 		);
-		wp_localize_script( 'custom', 'SmpgLoca', $anony_loca );
+		wp_localize_script( 'custom', 'anonyLoca', $anony_loca );
 	});
 
 //Add theme support
