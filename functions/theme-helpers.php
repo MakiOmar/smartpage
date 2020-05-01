@@ -9,7 +9,7 @@ if (!function_exists('anonyOpt')) {
 	 * @param  string $optName Options name in DB
 	 * @return object
 	 */
-	function anonyOpt($optGroup = 'Anony_options'){
+	function anonyOpt($optGroup = 'Anony_Options'){
 		if (class_exists('ANONY_Options_Model')) return ANONY_Options_Model::get_instance($optGroup);
 		return new stdClass();
 	}
@@ -43,6 +43,10 @@ function anony_get_correct_sidebar(){
 	}
 }
 
+/**
+ * Collects common post data
+ * @return array
+ */
 function anony_common_post_data(){
 	$anonyOptions = anonyOpt();
 	$grid = anonyGetOpt($anonyOptions, 'posts_grid');
@@ -54,15 +58,17 @@ function anony_common_post_data(){
 	$temp['excerpt']   = esc_html(get_the_excerpt());
 	$temp['comments_number']   = anony_comments_number();
 	$temp['has_category']      = has_category();
-	$temp['thumb']     = has_post_thumbnail() ? true : false;
+	$temp['thumb']     = has_post_thumbnail();
 	$temp['thumb_exists']      = ANONY_LINK_HELP::curlUrlExists(get_the_post_thumbnail_url(get_the_ID()));
-	$temp['thumb_img'] = get_the_post_thumbnail(get_the_ID(), 'full');
+	$temp['thumb_img']     = get_the_post_thumbnail(get_the_ID(), 'full');
+	$temp['thumbnail_img'] = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 	$temp['date']      = get_the_date();
 	$temp['permalink'] = esc_url(get_the_permalink());
 	$temp['gravatar']  = get_avatar(get_the_author_meta('ID'),32);
 	$temp['author']    = sprintf(esc_html__( 'By %s', ANONY_TEXTDOM ), get_the_author());
 	$temp['read_more']         = esc_html__('Read more',ANONY_TEXTDOM);
 	$temp['grid']      = $grid;
+	$temp['views']     = anony_get_post_views(get_the_ID());
 
 	if(has_category()){
 		$_1st_category = get_the_category()[0];
