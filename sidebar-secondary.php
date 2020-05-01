@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		  <li class="anony-grid-col-6 comments"><?php esc_html_e('Recent comments',ANONY_TEXTDOM)?></li>
 		</ul>
 		<?php 
-		   get_template_part('templates/popular') ;
+		   get_template_part('controllers/popular') ;
 		   get_template_part('templates/latest-comments') ;
 		 ?>	
 	  </div>
