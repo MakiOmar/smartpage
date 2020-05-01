@@ -130,7 +130,7 @@ $sections['slider']= array(
 							'validate'=> 'multiple_options',
 							'options' => get_taxonomies(),
 							'default' => 'category',
-							'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && anonyGetOpt($anonyOptions, 'slider') == 'featured-cat' ? ' show-in-table' : '')
+							'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && anonyGetOpt($anonyOptions, 'slider_content') == 'featured-cat' ? ' show-in-table' : '')
 						),
 	
 	
