@@ -2,15 +2,22 @@
 
 <div class="anony-grid">
 
-	<?php if($slider){ echo $slider; }else{?>
+	<?php if($slider) : ?> 
+	
+		<?= $slider ?>
+	
+	<?php endif ?>
+	
+	<?php if(!$slider && $homeSlider == '1') : ?>
 
-		<p class="anony-warning"><?= $chooseSlider ?></p>			
+		<p class="anony-warning"><?= $chooseSlider ?></p>		
 
-	<?php }?>
+	<?php endif ?>
 
   	<div class="anony-grid-row anony-grid-col">
         <div class="anony-grid-col-sm-9-5">
 			<div class="anony-content-wrapper">
+				
                <?php get_sidebar('secondary');?>
                
 				<div id="anony-section-top" class="anony-grid-col-md-8 anony-grid-col">
