@@ -14,11 +14,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $anonyOptions = anonyOpt();
 
-$messege = '';
+$message = '';
 
 $args = array(
 			'posts_per_page' => 5,
 			'orderby'        => 'rand',
+			'meta_query' => [
+						        [
+						         'key' => '_thumbnail_id',
+						         'compare' => 'EXISTS'
+						        ],
+						    ]
 		);
 
 		
@@ -33,7 +39,7 @@ if(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-cat' && anonyGetOpt
 	if($FreaturedCat){
 		$args['cat'] = $FreaturedCat->term_id;
 	}else{
-		$messege = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
+		$message = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
 	}
 
 }elseif(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-post'){
@@ -41,15 +47,55 @@ if(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-cat' && anonyGetOpt
 }	
 
 
-$fc= new ANONY_Generate_Posts_View(
-					$args,
-					'featured',
-					true
-				);
-$fc->msg = $messege;
+$query = new WP_Query($args);
 
-$fc->postsView();
+$data = [];
 
+if ($query->have_posts()) {
+	
+	while($query->have_posts()) {
+		$query->the_post();
+		if (has_post_thumbnail() && get_the_post_thumbnail_url()){
+			
+			$temp = anony_common_post_data();	
+			
+			if ($temp['thumb_exists']) {
+				$data[] = $temp;
+			}
+			
+		}
+		
+	}
+	
+	wp_reset_postdata();
+}
 
+if(empty($data)){
+	$message = esc_html__('Sorry! but we can\'t find any post with available thumbnail to show in slider', ANONY_TEXTDOM);
+}
 
+$count = count($data);
+
+$slider_nav = [];
+
+foreach($data as $p) : 
+	
+	extract($p);
+	
+	$slider_nav_temp['permalink'] = $permalink;
+	$slider_nav_temp['title']     = $title;
+	$slider_nav_temp['class']     = array_search($id, $data) == 0 ?  'anony-active-slide ': '';
+	$slider_nav_temp['thumbnail_img']     = $thumbnail_img;
+	
+	$slider_nav[] = $slider_nav_temp;
+	
+endforeach;
+
+$title_link = isset($args['cat']) ? get_category_link($args['cat']) : '#';
+
+$title_text = isset($args['cat']) ? get_cat_name( $args['cat']) : esc_html__('Featured Posts', ANONY_TEXTDOM);
+
+include(locate_template( 'templates/featured.view.php', false, false ));
+	
 ?>
+	
