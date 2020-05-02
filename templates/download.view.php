@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 							<div class="anony-hover-toggle anony-post-image-wrapper" style="background-color: transparent">
 
-								<span id="download-<?= $id?>-count" class="anony-download-counter"><?= $download_times ?><br><?= $downloads_text ?></span>
+								<div id="download-<?= $id?>-count" class="anony-download-counter"><span><?= $download_times ?></span><br><?= $downloads_text ?></div>
 
 								<div class="anony-box-shadow anony-download-thumb">
 									<?php if( $thumb && $thumb_exists ) : ?>
@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<div class="download">
 
-							<a title="download-<?= $id?>" target="_blank" class="anony-download" href="<?= $file_url ?>"><i class="fa fa-download"></i></a>
+							<a title="download-<?= $id?>" target="_blank" class="anony-download" href="<?= $file_url ?>" rel-id="<?= $id?>" download><i class="fa fa-download"></i></a>
 						</div>
 
 					</div>
