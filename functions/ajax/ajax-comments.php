@@ -116,5 +116,5 @@ function anony_submit_ajax_comment(){
 
 	wp_send_json($return);
 
-	wp_die();
+	die();
 }
