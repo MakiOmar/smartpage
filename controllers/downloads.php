@@ -27,7 +27,7 @@ if ($query->have_posts()) {
 			
 			$file_url = $get_url ?  esc_url( $get_url )  : flase;
 			
-			if($file)
+			if($file_url)
 				$temp['file_url'] = $file_url;
 			
 			
@@ -47,7 +47,7 @@ if ($query->have_posts()) {
 
 if (empty($data)) return;
 
-$sec_class = (is_front_page() || ishome()) ? ' section-front-page' : '';
+$sec_class = (is_front_page() || is_home()) ? ' section-front-page' : '';
 $sec_title = esc_html__('Suggested downloads',ANONY_TEXTDOM);
 $downloads_text = esc_html__('Downloads',ANONY_TEXTDOM);
 $default_thumb = get_theme_file_uri() . '/images/temporary-book-bg.jpg';
