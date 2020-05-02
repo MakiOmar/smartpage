@@ -18,22 +18,22 @@ if ($query->have_posts()) {
 		
 		$curr_download_meta = get_post_meta( get_the_ID(), 'anony_download', true );
 		
+		$download_times = 0;
+		
 		if($curr_download_meta && $curr_download_meta != ''){
 			$curr_download = $curr_download_meta['anony_download']['anony_download_attachment'];
 			
-			$file_url = wp_get_attachment_url( intval($curr_download) ) ?  esc_url( wp_get_attachment_url( intval($curr_download) ) )  : flase;
-			if($file){
+			$get_url = wp_get_attachment_url( intval($curr_download) );
+			
+			$file_url = $get_url ?  esc_url( $get_url )  : flase;
+			
+			if($file)
 				$temp['file_url'] = $file_url;
-			}
+			
+			
+			if(isset($curr_download_meta['anony_download']['download_times']) && !empty($curr_download_meta['anony_download']['download_times']))
+				$download_times = $curr_download_meta['anony_download']['download_times'];		
 			 
-		}
-		
-		$download_times = get_post_meta($id,'download_times',true);
-
-		if(!$download_times || empty($download_times)){
-
-			$download_times = 0;
-
 		}
 		
 		$temp['download_times'] = $download_times;
@@ -51,6 +51,8 @@ $sec_class = (is_front_page() || ishome()) ? ' section-front-page' : '';
 $sec_title = esc_html__('Suggested downloads',ANONY_TEXTDOM);
 $downloads_text = esc_html__('Downloads',ANONY_TEXTDOM);
 $default_thumb = get_theme_file_uri() . '/images/temporary-book-bg.jpg';
+
+wp_enqueue_script('anony-download');
 
 include(locate_template( 'templates/download.view.php', false, false ));
 ?>
