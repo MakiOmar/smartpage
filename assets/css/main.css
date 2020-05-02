@@ -81,6 +81,12 @@ body{
 	clear: both;
 }
 
+.anony-box-shadow{
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(179,179,179,0.5);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(179,179,179,0.5);
+	box-shadow: 0px 0px 8px 3px rgba(179,179,179,0.5);
+}
+
 a,h1,h2,h3,h4,h5,h6 {
 	color: #fc2a2a;
 	
@@ -802,6 +808,7 @@ tr:nth-child(even) {
 	.anony-post-image-wrapper,.anony-post_meta{
 			display: flex;
 			align-items: center;
+			justify-content: center;
 	}
 	.text h3, .text p{
 		text-align: left;
@@ -1069,10 +1076,11 @@ tr:nth-child(even) {
 	/***Downloads***/
 	.download-wrapper{
 		max-width: 200px;
+		box-sizing: border-box;
+		margin: 5px;
 	}
 
 	.anony-download-meta{
-		padding-right: 5px;
 	}
 	#download .anony-post-contents h4{
 		background:none!important;
@@ -1098,6 +1106,11 @@ tr:nth-child(even) {
 	}
 	.anony-download-meta .anony-post-image-wrapper{
 		margin: 3px;
+	}
+	.anony-download-thumb{
+		width: 100%;
+		border-radius: 5px;
+		overflow: hidden;
 	}
 	.single-download{
 		border-radius: 15px;
