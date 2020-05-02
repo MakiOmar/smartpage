@@ -277,46 +277,8 @@ jQuery(document).ready(function($){
 			}
 			});
 		}
-						 
 	
 	
-	
-	//update download_times meta with AJAX
-	$(".anony-download").click(function() {	
-		var anchor_Title = $(this).attr('title');
-		var acnchor_Title_array = anchor_Title.split('-');
-		var download_ID = acnchor_Title_array[1];
-		var count_span = $('#'+anchor_Title+'-count');
-		var count_str = count_span.html();
-		console.log(count_span);
-		var count = count_str.split("<br>")[0];
-		
-		count++;
-		var newSpanHtml;
-		if(count_str.split("<br>")[0] !== count_str){
-			newSpanHtml = count+'<br>'+count_str.split("<br>")[1];
-		}else{
-			newSpanHtml = count;
-		}
-		
-		count_span.html(newSpanHtml);
-		var dataString = 'action=download&download_id='+download_ID;
-		$.ajax({
-			type:'POST',
-			data:dataString,
-			url:'/prosentra/wp-admin/admin-ajax.php',
-			success:function() {
-				
-				}
-    	});
-	});
-	$(".anony-download").hover(function() {
-		var s = $(this).parent().siblings('div').find('.anony-hover-toggle span');
-		s.css({"opacity" :"1"/*,"height":"25%"*/});
-	},function(){
-		var s = $(this).parent().siblings('div').find('.anony-hover-toggle span');
-		s.css({"opacity" :"0"/*,"height":"0"*/});
-	});
 	$('.anony-toggle-excerpt').each(function(){
 		$(this).css({"bottom":$(this).next('.text').find('h3').outerHeight()});
 	});
