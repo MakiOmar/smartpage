@@ -60,20 +60,26 @@ $anonyOptions = anonyOpt();
 				wp_enqueue_script($script);
 			}
 		}
+		
 
 		$scripts = array('jquery.prettyPhoto','custom');
 
-		if(is_home() || is_front_page() || is_archive()){
+		if(is_archive()){
 			$scripts = array_merge($scripts, array('jquery.contentcarousel'));
 		}
 
 		if(is_home() || is_front_page()){
-			$scripts = array_merge($scripts, array('jquery.mousewheel','jquery.easing.1.3'));
+			$scripts = array_merge($scripts, array('jquery.contentcarousel','jquery.mousewheel','jquery.easing.1.3', 'home'));
 		}
+
 		
 		foreach($scripts as $script){
 			wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
 			wp_enqueue_script($script);
+		}
+		
+		if(is_home() || is_front_page()){
+			$scripts = array_merge($scripts,array('home'));
 		}
 
 		// Localize the script with new data
