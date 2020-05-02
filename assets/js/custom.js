@@ -18,7 +18,7 @@ clean(document);
 jQuery(document).ready(function($){
 	"use strict";
 	var SmpgAjaxUrl = anonyLoca.ajaxURL;
-	//Hide Top section if no content
+
 	function isEmpty( el ){
 		
       return !$.trim(el.html());
@@ -279,27 +279,7 @@ jQuery(document).ready(function($){
 		}
 						 
 	
-	//show only first tab content
-	$(".anony-tab_content").hide();
-	$(".anony-tab_content:first").show();
-
-	/* if in tab mode */
-	$("ul.tabs li").click(function() {
-	  $(".anony-tab_content").hide();
-	  var clickedTab = $(this).attr("class");
-		var classes = clickedTab.split(" ");
-		var i;
-		for (i = 0; i < classes.length; i++) { 
-			if(classes[i] === "comments" || classes[i] === "anony-popular"){
-				var activeTab = classes[i];
-				$('#'+activeTab).fadeIn();
-			}
-		}		
-
-	  $("ul.tabs li").removeClass("anony-active-tab");
-	  $(this).addClass("anony-active-tab");
-
-	});
+	
 	
 	//update download_times meta with AJAX
 	$(".anony-download").click(function() {	
