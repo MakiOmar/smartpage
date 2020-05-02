@@ -33,5 +33,7 @@ if ($query->have_posts()) {
 }
 if (empty($data)) return;
 
+wp_enqueue_script('anony-tabs');
+
 include(locate_template( 'templates/popular.view.php', false, false ));
 ?>
