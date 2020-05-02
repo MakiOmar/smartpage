@@ -26,6 +26,7 @@ $data = [
 ];
 
 extract($data);
-
+wp_enqueue_script( 'jquery.validate.min' );
+wp_enqueue_script( 'anony-ajax_comment' );
 include(locate_template( 'templates/comments-single.view.php', false, false ));
 ?>
