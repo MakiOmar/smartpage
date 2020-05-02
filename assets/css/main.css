@@ -1289,6 +1289,9 @@ tr:nth-child(even) {
 	.anony-posts-list-thumb{
 		width:20%;
 	}
+	.anony-tab_content{
+		display: none;
+	}
 	.anony-tab_content div h3{
 		font-size: 14px;
 		display: inline-block;
