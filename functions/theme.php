@@ -18,82 +18,6 @@ add_action('after_setup_theme', function(){
 	load_theme_textdomain(ANONY_TEXTDOM, ANONY_LANG_DIR);
 });
 
-add_action('wp_ajax_anoe_dynamic_css', 'anoe_dynamic_css');
-add_action('wp_ajax_nopriv_anoe_dynamic_css', 'anoe_dynamic_css');
-function anoe_dynamic_css() {
-	require( ANONY_THEME_DIR . '/assets/css/dynamic.php' );
-	exit;
-}
-
-//Theme Scripts
-add_action('wp_enqueue_scripts',function() {
-		
-$anonyOptions = anonyOpt();
-
-		$styles = array('main','font-awesome','responsive','prettyPhoto');
-		foreach($styles as $style){
-			wp_enqueue_style( $style , get_theme_file_uri('/assets/css/'.$style.'.css') , false, filemtime(wp_normalize_path(get_theme_file_path('/assets/css/'.$style.'.css'))) );
-		}
-		if(is_rtl()){
-			wp_enqueue_style( 'rtl' , get_theme_file_uri('/assets/css/rtl.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/rtl.css'))));
-		}
-
-		$dynamic_deps = ['main'];
-		
-		if(anonyGetOpt($anonyOptions, 'color_skin') !== 'custom' && !empty(anonyGetOpt($anonyOptions, 'color_skin'))){
-
-			$skin = anonyGetOpt($anonyOptions, 'color_skin');
-
-			$dynamic_deps = [$skin.'-skin'];
-
-			wp_enqueue_style( $skin.'-skin' , get_theme_file_uri('/assets/css/skins/'.$skin.'.css') ,array('main'), filemtime(wp_normalize_path(get_theme_file_path('/assets/css/skins/'.$skin.'.css'))));
-		}
-
-		wp_enqueue_style( 'anonyengine-dynamics', admin_url('admin-ajax.php').'?action=anoe_dynamic_css', $dynamic_deps);
-
-		//wp_enqueue_style( 'anonyengine-dynamics', ANONY_THEME_DIR . '/assets/css/dynamic.php', $dynamic_deps );
-
-		if(is_single()){
-			$scripts = array('jquery.validate.min', 'ajax_comment');
-			foreach($scripts as $script){
-				wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
-				wp_enqueue_script($script);
-			}
-		}
-		
-
-		$scripts = array('jquery.prettyPhoto','custom');
-
-		if(is_archive()){
-			$scripts = array_merge($scripts, array('jquery.contentcarousel'));
-		}
-
-		if(is_home() || is_front_page()){
-			$scripts = array_merge($scripts, array('jquery.contentcarousel','jquery.mousewheel','jquery.easing.1.3', 'home'));
-		}
-
-		
-		foreach($scripts as $script){
-			wp_register_script( $script , get_theme_file_uri('/assets/js/'.$script.'.js') ,array('jquery'),filemtime(wp_normalize_path(get_theme_file_path('/assets/js/'.$script.'.js'))),true);
-			wp_enqueue_script($script);
-		}
-		
-		if(is_home() || is_front_page()){
-			$scripts = array_merge($scripts,array('home'));
-		}
-
-		// Localize the script with new data
-		$anony_loca = array(
-			'ajaxURL'         => ANONY_WPML_HELP::getAjaxUrl(),
-			'textDir'         => (is_rtl() ? 'rtl' : 'ltr'),
-			'themeLang'       => get_bloginfo('language'),
-			'anonyFormAuthor'  => esc_html__("Please enter a valid name", ANONY_TEXTDOM),
-			'anonyFormEmail'   => esc_html__("Please enter a valid email", ANONY_TEXTDOM),
-			'anonyFormUrl'     => esc_html__("Please use a valid website address", ANONY_TEXTDOM),
-			'anonyFormComment' => esc_html__("Comment must be at least 20 characters", ANONY_TEXTDOM),
-		);
-		wp_localize_script( 'custom', 'anonyLoca', $anony_loca );
-	});
 
 //Add theme support
 add_action( 'after_setup_theme', function() {
@@ -190,7 +114,7 @@ function anony_get_custom_logo($color='main') {
 /**
  * Remove type attribute from styles/scripts.
  *
- * **Description: ** It is recommended to remove type attribute from styles/scripts that ahs a link|src attribute.
+ * **Description: ** It is recommended to remove type attribute from styles/scripts that has a link|src attribute.
  * @param $tag string style|script tag
  * @param $handle string style|script handle defined with wp_register_style|wp_register_script
  * @return string styles/scripts tags with no type attribute.
@@ -208,11 +132,16 @@ function anony_comments_number() {
 	$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
 	
 	if ( comments_open() ) {
+		
+		$comment_text = esc_html__('comment',ANONY_TEXTDOM);
+		
 		if ( $num_comments != 1 ) {
-			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.esc_html__('comments',ANONY_TEXTDOM).'&nbsp;</span>';
-		} else {
-			$comments = '<a class="meta-text" href="' . get_comments_link() .'"> 1 </a><span class="meta-text single-meta-text">&nbsp;'.esc_html__('comment',ANONY_TEXTDOM).'&nbsp;</span>';
+			
+			$comment_text = esc_html__('comments',ANONY_TEXTDOM);
+			
 		}
+		
+		$comments = '<a class="meta-text" href="' . esc_url(get_comments_link()) .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.$comment_text.'&nbsp;</span>';
 	} else {
 		$comments = '<span class="meta-text single-meta-text">'.esc_html__('Comments-off',ANONY_TEXTDOM).'</span>';
 	}

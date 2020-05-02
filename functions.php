@@ -19,6 +19,7 @@ $anonylibs = [
 	'theme-helpers'       =>'',
 	'theme-options'       =>'',
 	'posts'     		  =>'',
+	'scripts'     		  =>'',
 	'theme'     		  =>'',
 	'menus'     		  =>'',
 	'admin'     		  =>'',
