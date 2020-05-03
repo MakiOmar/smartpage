@@ -95,44 +95,16 @@ jQuery(document).ready(function($){
 	};
 	animateMe('#anony-dun-text','#dun_text_wrapper','.dun_text',60000);
 	
-	// This is then function used to detect if the element is scrolled into view
-	function elementScrolled(elem){
-
-		var docViewTop = $(window).scrollTop();
-
-		var docViewBottom = docViewTop + $(window).height();
-
-		var elemTop = elem.offset().top;
-
-		return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
-
-	}
-	
-	function slideToTop(element){
-		$(element).each(function(){
-
-			if(elementScrolled($(this))) {
-
-			  if(!$(this).hasClass('anony-section-animate')){
-
-				  $(this).addClass('anony-section-animate');
-
-			  }
-			}
-		});
-	}
-	
-	if($('.anony-section').length > 0){
-		//Slide to top if scrolled down
-		$(window).scroll(function(){
-			
-			slideToTop('.anony-section');
-			
-		  
-		});
+	//Slide frontpage sections to top if scrolled down
+	$(window).scroll(function(){
 		
-		slideToTop('.anony-section');
-	}
+		$.fn.slideToTop('.anony-section', 'anony-section-animate');
+		
+	  
+	});
+	
+	$.fn.slideToTop('.anony-section', 'anony-section-animate');
+
 	
 	//toggle content
 	function anonyTogglecontent(toggle,toggledClass,toggled,ifCase,elseCase,callBack){
