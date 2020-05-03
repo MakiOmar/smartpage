@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="anony-post-image-wrapper">
 	<div class="anony-toggle-excerpt"><i class="fa fa-arrow-up"></i></div>
 	
-	<div class="text">
+	<div class="anony-text">
 		<h3 class="anony-thumb-post-title">
 			<a href="<?= $permalink ?>"><?= $title ?></a>
 		</h3>

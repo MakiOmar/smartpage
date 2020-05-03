@@ -167,7 +167,7 @@ tr:nth-child(even) {
 .anony-form-submit{
 	margin-top: 15px;
 }
-.anony-toggle-excerpt,#anony-top-header-wrapper,#anony-languages_menu_con,.text,.text p,#anony-hidden-search-form,.anony-post-contents,.anony-download-counter,#anony-main_nav_con,#anony-menu-toggle,.anony-single-sidebar,.anony-contact span,.anony-section{
+.anony-toggle-excerpt,#anony-top-header-wrapper,#anony-languages_menu_con,.anony-text,.anony-text p,#anony-hidden-search-form,.anony-post-contents,.anony-download-counter,#anony-main_nav_con,#anony-menu-toggle,.anony-single-sidebar,.anony-contact span,.anony-section{
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
@@ -810,26 +810,26 @@ tr:nth-child(even) {
 			align-items: center;
 			justify-content: center;
 	}
-	.text h3, .text p{
+	.anony-text h3, .anony-text p{
 		text-align: left;
 	}
-	.text h3 a,.text p{
+	.anony-text h3 a,.anony-text p{
 		color: #FFFFFF!important;
 	}
-	.text h3{
+	.anony-text h3{
 		padding: 5px 10px 5px 10px;
 		display: inline-block;
 	}
 	.anony-post-info h3{
 		display: inline-block;
 	}
-	.text p{
+	.anony-text p{
 		padding: 0 10px 0 10px;
 		visibility: hidden;
 		opacity: 0;
 		height: 0;
 	}
-	.text{
+	.anony-text{
 		position: absolute;
 		z-index: 30;
 		left: 0;

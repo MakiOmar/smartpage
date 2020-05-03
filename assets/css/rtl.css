@@ -264,7 +264,7 @@ display: flex;
 		right: auto;
 		left: 10px;
 	}
-	.text h3, .text p{
+	.anony-text h3, .anony-text p{
 		text-align: right;
 	}
 .anony-post_meta div{
