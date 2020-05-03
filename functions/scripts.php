@@ -84,7 +84,7 @@ function anony_scripts(){
 		wp_register_script( 
 			$handle , 
 			ANONY_THEME_URI . '/assets/js/'.$script.'.js' ,
-			['jquery'],
+			['jquery', 'jquery.helpme'],
 			filemtime(
 				wp_normalize_path(ANONY_THEME_DIR . '/assets/js/'.$script.'.js' )
 			), 
