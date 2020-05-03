@@ -220,7 +220,7 @@ add_filter("wp_nav_menu_items",function($item , $args){
 add_filter("wp_nav_menu_items",function($item , $args){
 	$pluginList = get_option( 'active_plugins' );
 	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
-	if ( in_array( $wpml_plugin , $pluginList ) && $args->theme_location == 'languages-menu' ) {
+	if ( in_array( $wpml_plugin , $pluginList ) && $args->theme_location == 'anony-languages-menu' ) {
 		$languages = icl_get_languages('skip_missing=0');
 		if(!empty($languages)){
 			foreach($languages as $l){
