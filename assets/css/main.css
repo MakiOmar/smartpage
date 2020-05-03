@@ -319,9 +319,10 @@ tr:nth-child(even) {
 		border-bottom:1px solid #ffffff;
 	}
 	#anony-main_menu_con li a {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		position: relative;
-		text-align: center;
 		color: #ffffff;
 		font-size: 20px;
 		padding: 3px;
