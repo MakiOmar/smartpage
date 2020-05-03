@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 $anonyOptions = anonyOpt();
 	
-$args = array('post_type' => 'post', 'posts_per_page' => 5);
+$args = array('post_type' => 'post', 'posts_per_page' => 4);
 
 $sliderOpt   = anonyGetOpt($anonyOptions, 'slider');
 $featuredCat = anonyGetOpt($anonyOptions, 'featured_cat');
