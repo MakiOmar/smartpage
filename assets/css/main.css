@@ -808,7 +808,6 @@ tr:nth-child(even) {
 	.anony-post-image-wrapper,.anony-post_meta{
 			display: flex;
 			align-items: center;
-			justify-content: center;
 	}
 	.anony-text h3, .anony-text p{
 		text-align: left;
