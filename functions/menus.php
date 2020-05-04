@@ -152,17 +152,6 @@ function anony_breadcrumbs() {
 /*-------------------------------------------------------------
  * Menus hooks
  *-----------------------------------------------------------*/
-//Add Close button to main navigation menu
-add_filter("wp_nav_menu_items",function($item , $args){
-	
-	if($args->theme_location == 'anony-main-menu'){
-		$item .= '<li id="menu-close"><a href="#"><i class="fa fa-2x fa-window-close" aria-hidden="true"></i></a></li>';
-		return $item;
-	}else{
-		return $item;
-	}
-	
-},10 , 2);
 
 //Register theme menus
 add_action( 'after_setup_theme', function() {
@@ -188,28 +177,6 @@ add_filter('nav_menu_css_class' , function($classes, $item) {
     }
     return $classes;
 } , 10 , 2);
-
-//Add Adds categories menu to the main navigation menu,(Show only if on mobile device).
-if(anonyGetOpt($anonyOptions, 'cats_in_nav') != '0'){
-	add_filter("wp_nav_menu_items",function($item , $args){
-		if($args->theme_location == 'main-menu'){
-			$item.='<li><ul id="anony-cat-list" class="anony-cat-list">';
-				$args = array(
-						'hide_empty' => 0,
-						'title_li' => '',
-						'order'=> 'DESC',
-						'echo' => false,
-						'walker' => new ANONY_Cats_Walk()
-					   );
-			$item.= wp_list_categories($args);
-			$item.='</ul></li>';
-			return $item;
-
-		}else{
-			return $item;
-		}
-	},10 , 2);
-}
 
 //Add search form to main menu
 add_filter("wp_nav_menu_items",function($item , $args){
