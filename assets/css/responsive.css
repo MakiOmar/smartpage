@@ -79,10 +79,14 @@
 	.anony-grid-col-max-480-11 { width: 91.666%; }
 	.anony-grid-col-max-480-12 { width: 100%; }
 	/***Header***/
-	.anony-show-lang-menu{
-		width:100%!important;
-		background-color:#ffffff!important;
+	
+	#anony-languages-menu-con{
+		width:50%!important;
 		position: absolute;
+		top: 10px;
+		right:5px;
+		justify-content: flex-end;
+		
 	}
 	/***End header***/
 	/***Body***/
@@ -125,6 +129,7 @@
 	#anony-follow-contact{
 		flex-direction: column;
 		justify-content: center;
+		padding: 10px;
 	}
 }
 @media screen and (min-width:321px) and (max-width:480px){
@@ -206,6 +211,7 @@
 		right: 0;
 		display: block;
 	}
+
 	#anony-logo {
 	margin: auto;
 	}
@@ -229,6 +235,9 @@
 		display: inline-block;
 		border: none;
 		vertical-align: middle;
+	}
+	#anony-main-menu-con li:hover {
+		height: 100%
 	}
 	#anony-main-menu-con li a {
 		padding: 0 20px;

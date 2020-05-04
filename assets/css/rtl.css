@@ -159,6 +159,10 @@ body{
 	right: auto;
 	left: 0;
 }
+.anony-main-menu-toggle{
+    right: auto;
+    left: 15px;
+}
 /***End header**/
 
 /***body***/
@@ -285,6 +289,10 @@ display: flex;
 	margin-left: 0;
 	margin-right: 35px;
 }
+#menu-close{
+        right: auto;
+        left: 5px;
+    }
 	/***End blog post**/
 /***End body***/
 
@@ -297,4 +305,12 @@ display: flex;
 		right: 0;
 	}
 	/***End header*/
+}
+
+@media screen and (min-width: 480px){
+    #anony-languages-menu-con{
+        right: auto;
+        left:5px;
+        
+    }
 }
