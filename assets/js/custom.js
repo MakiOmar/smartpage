@@ -18,12 +18,6 @@ clean(document);
 jQuery(document).ready(function($){
 	"use strict";
 	var SmpgAjaxUrl = anonyLoca.ajaxURL;
-
-	function isEmpty( el ){
-		
-      return !$.trim(el.html());
-		
-	}
 	
 	var slidesWidth = 0;
 	
@@ -104,57 +98,39 @@ jQuery(document).ready(function($){
 	});
 	
 	$.fn.slideToTop('.anony-section', 'anony-section-animate');
-
 	
-	//toggle content
-	function anonyTogglecontent(toggle,toggledClass,toggled,ifCase,elseCase,callBack){
-		
-		$(toggle).click(function(event){
-			
-			event.preventDefault();
-			
-			if($(toggled).hasClass(toggledClass)){
-				
-				$(toggled).removeClass(toggledClass);
-				
-				if(ifCase) {ifCase();}
-				
-			}else{
-				
-				$(toggled).addClass(toggledClass);
-				
-				if(elseCase) {elseCase();}
-				
-			}
-			
-				if(callBack) {callBack();}
-			
-		});
-	}
-	
-	//Toggle language menu
-	anonyTogglecontent("#anony-lang-toggle","anony-show-lang-menu","#anony-languages-menu-con",'','',function(){
-		
+	/**------------------------------------------------------------------
+	 *                      Toggles
+	 *-------------------------------------------------------------------*/
+	$("#anony-lang-toggle").on('click', function(e){
+		e.preventDefault();
 		$(".anony-lang").toggle();
+	});
+	
+	$(".anony-search-form-toggle").on('click', function(e){
+		e.preventDefault();
+		var target = $("#anony-hidden-search-form");
+		var icon = target.find('.anony-search-form-toggle > .fa');
+		if (!target.hasClass('anony-show-search-form')){
+			target.addClass('anony-show-search-form');
+
+			icon.removeClass('fa-search');
+			icon.addClass('fa-window-close');
+			icon.addClass('fa-2x');
+		}else{
+			target.removeClass('anony-show-search-form');
+			setTimeout(function(){
+				icon.removeClass('fa-window-close');
+				icon.removeClass('fa-2x');
+				icon.addClass('fa-search');
+			}, 1000);
+			
+		}
 		
 	});
 	
-	//toggle search form
-	anonyTogglecontent(".anony-search-form-toggle","anony-show-search-form","#anony-hidden-search-form",function(){
-		
-			$('#anony-hidden-search-form > .anony-search-form-toggle').html('<i class="fa fa-search" aria-hidden="true"></i></a></li>');
-		
-			$('#anony-hidden-search-form > .anony-search-form-toggle').css({"display":"none","position":"relative"});
-		
-	},function(){
-		
-			$('#anony-hidden-search-form > .anony-search-form-toggle').html('<i class="fa fa-2x fa-window-close" aria-hidden="true"></i>');
-		
-			$('#anony-hidden-search-form > .anony-search-form-toggle').css({"display":"block","position":"absolute"});
-		
-		},''
-	);
-	
+	/*--------------------------------------------------------------------*/
+
 	//scroll page on click
 	$(window).scroll(function() {
 		
@@ -196,16 +172,14 @@ jQuery(document).ready(function($){
 	},function(){
 			$('.current-menu-item').addClass('active');
 	});
-	
-	//toggle nav menu on small screens
-	/*anonyTogglecontent("#anony-menu-toggle",'anony-show-main-nav',"#anony-main_nav_con",'',function(){
-		
-			}		
-	});*/
+
+
 	$('#menu-close').click(function(){
 		$('#anony-main_nav_con').removeClass('anony-show-main-nav');
+		$(this).css('display', "none");
 	});
 	$('#anony-menu-toggle').click(function(){
+		$('#menu-close').css('display', "block");
 		$('#anony-main_nav_con').addClass('anony-show-main-nav');
 		$('.current-menu-item').removeClass('active');
 		if($('.current-menu-item a').html()==='<i class="fa fa-home fa-2x"></i>' && $('.current-menu-item a').hasClass('menu-item-home')){
