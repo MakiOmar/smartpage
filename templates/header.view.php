@@ -13,20 +13,16 @@
 </head>
 
 <body <?= $bodyClass?>>
-<div id="anony-hidden-search-form">
-	
-	<a class="anony-search-form-toggle" href="#" title="Scroll page">
-		<i class="fa fa-search"></i>
-	</a>
+
 	
 	<?php get_search_form() ?>
-</div>
 
-<div id="anony-grid-wrapper">
 
-	<div class="anony-grid">
+	<div id="anony-grid-wrapper">
 
-		<div class="anony-grid-col-">
+		<div class="anony-grid">
+
+			<div class="anony-grid-col-">
 
 				<header>
 
@@ -62,5 +58,5 @@
 					<?= $nav ?>
 
 				</header>
+			</div>
 		</div>
-	</div>
