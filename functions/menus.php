@@ -27,19 +27,24 @@ $anonyOptions = anonyOpt();
  * @return string Menu list
  */
 function anony_navigation($location_slug, $container = 'nav'){
+	$container_id = 'anony-main_nav_con';
+	
 	if ($location_slug == 'anony-main-menu'){
 		$walker       = new ANONY_Nav_Menu_Walk;
-		$menu_id      = 'anony-main_menu_con';
 		$container_id = 'anony-main_nav_con';
 	}
+	
+	$menu_id = $location_slug . '-con';
+	
+	
 	if ( has_nav_menu( $location_slug ) ) {
 		$location_array = explode('-',$location_slug);
 			$args = array (
-					'theme_location'=>$location_slug,
-					'depth'         =>0,
-					'menu_id'       => isset($menu_id) ? $menu_id : '',
+					'theme_location'=> $location_slug,
+					'depth'         => 0,
+					'menu_id'       => $menu_id,
 					'container'     => $container,
-					'container_id'  => isset($container_id) ? $container_id : '',
+					'container_id'  => $container_id,
 					'echo' => false,
 					);
 			if(isset($walker)){
@@ -55,7 +60,7 @@ function anony_navigation($location_slug, $container = 'nav'){
 				'echo' => false,
 				'include' => array($page_for_posts),
 			);
-			$menu = '<nav id="anony-main_nav_con"><ul id="anony-main_menu_con">'.wp_list_pages($args).'</ul></nav>';
+			$menu = '<nav id="anony-main_nav_con"><ul id="anony-main-menu-con">'.wp_list_pages($args).'</ul></nav>';
 			return $menu;
 		}
 	 }
@@ -228,7 +233,7 @@ add_filter("wp_nav_menu_items",function($item , $args){
 					$curr_lang = $l;
 				}
 				$item .='<li class="anony-lang">';
-				$item .= '<a class="'.ANONY_WPML_HELP::ActiveLangClass($l['language_code']).'" href="'.$l['url'].'">';
+				$item .= '<a class="lang-item '.ANONY_WPML_HELP::ActiveLangClass($l['language_code']).'" href="'.$l['url'].'">';
 				$item .= icl_disp_language(strtoupper($l['language_code']));
 				$item .='</a>';
 				$item .='</li>';

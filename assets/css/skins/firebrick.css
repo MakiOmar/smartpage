@@ -48,7 +48,7 @@ li .current::after{
 }
 
 @media screen and (min-width: 768px){
-	#anony-main_menu_con li a:hover {
+	#anony-main-menu-con li a:hover {
 		background-color: #b10030;
 		font-size: 16px;
 	}

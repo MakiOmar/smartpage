@@ -220,23 +220,23 @@
 		visibility: visible;
 		opacity: 1;
 	}
-	#anony-main_menu_con{
+	#anony-main-menu-con{
 		position: relative;
 		height: inherit;
 		margin: auto;
 	}
-	#anony-main_menu_con li {
+	#anony-main-menu-con li {
 		display: inline-block;
 		border: none;
 		vertical-align: middle;
 	}
-	#anony-main_menu_con li a {
+	#anony-main-menu-con li a {
 		padding: 0 20px;
 		line-height: 60px;
 		width: 100%;
 		border-right: 1px solid rgba(97, 27, 46, 0.5);
 	}
-	#anony-main_menu_con li ul li ul{
+	#anony-main-menu-con li ul li ul{
 	position: absolute;
 	left: 100%;
 	top: 0;
@@ -249,7 +249,7 @@
 	border-left:none!important;
 	border-right: none!important;
 	}
-	#anony-main_menu_con li:hover > .anony-sub-menu{
+	#anony-main-menu-con li:hover > .anony-sub-menu{
 	display: block;
 	}
 	

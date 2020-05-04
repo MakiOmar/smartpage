@@ -7,10 +7,10 @@ html,body{
 		background: none;
 		background-color:transparent;
 	}
-	#anony-main_menu_con li a{
+	#anony-main-menu-con li a{
 		color: #ff3600;
 	}
-	.active a,#anony-main_menu_con li a:hover{
+	.active a,#anony-main-menu-con li a:hover{
 		color: #ffffff!important;
 	}
 	.sticky ul li a{
@@ -35,7 +35,7 @@ html,body{
 }
 /***End sidebar***/
 @media screen and (min-width:768px){
-	#anony-main_menu_con li a{
+	#anony-main-menu-con li a{
 		border-right-color: transparent;
 		text-shadow: none;
 	}

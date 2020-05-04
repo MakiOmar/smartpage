@@ -133,7 +133,7 @@ jQuery(document).ready(function($){
 	}
 	
 	//Toggle language menu
-	anonyTogglecontent("#anony-lang-toggle","anony-show-lang-menu","#anony-languages_menu_con",'','',function(){
+	anonyTogglecontent("#anony-lang-toggle","anony-show-lang-menu","#anony-languages-menu-con",'','',function(){
 		
 		$(".anony-lang").toggle();
 		
@@ -185,12 +185,12 @@ jQuery(document).ready(function($){
 	*if no other items has the same class
 	*/
 	if($('.active').length === 0){
-		$("#anony-main_menu_con li").first().addClass('active');
+		$("#anony-main-menu-con li").first().addClass('active');
 	}
 	
 	//Alter active class on hover
-	$("#anony-main_menu_con li").hover(function(){
-		if($("#anony-main_menu_con li").hasClass('active')){
+	$("#anony-main-menu-con li").hover(function(){
+		if($("#anony-main-menu-con li").hasClass('active')){
 			$(".current-menu-item").removeClass('active');
 		}
 	},function(){
@@ -332,7 +332,7 @@ jQuery(document).ready(function($){
 	  });
 	}
 	anony_menu_toggle('.toggle-category', '.anony-dropdown','anony-cat-list','.anony-sub-menu');
-	anony_menu_toggle('.anony-main-menu-toggle', '.anony-sub-menu','anony-main_menu_con','.anony-dropdown');
+	anony_menu_toggle('.anony-main-menu-toggle', '.anony-sub-menu','anony-main-menu-con','.anony-dropdown');
 
 	//Close all dropdowns when click on any place in the document
 	$(document).click( function(){
