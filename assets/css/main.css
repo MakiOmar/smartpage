@@ -713,6 +713,16 @@ tr:nth-child(even) {
 	/*end slider*/
 
 	/***Blog post***/
+	.anony-hidden-paragraph{
+		visibility: hidden;
+		opacity :0;
+		height :0
+	}
+	.anony-visible-paragraph{
+		visibility: visible;
+		opacity :1;
+		height :70%
+	}
 	#anony-masonry{
 		-moz-column-count: 1;
 		-webkit-column-count: 1;
@@ -830,9 +840,6 @@ tr:nth-child(even) {
 	}
 	.anony-text p{
 		padding: 0 10px 0 10px;
-		visibility: hidden;
-		opacity: 0;
-		height: 0;
 	}
 	.anony-text{
 		position: absolute;
@@ -1717,6 +1724,7 @@ tr:nth-child(even) {
 		right: 10px;
 		text-align: center;
 		z-index: 41;
+		cursor: pointer;
 	}
 	#anony-menu-toggle {
 			display: inline-block;

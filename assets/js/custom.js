@@ -114,38 +114,37 @@ jQuery(document).ready(function($){
 		if (!target.hasClass('anony-show-search-form')){
 			target.addClass('anony-show-search-form');
 
-			icon.removeClass('fa-search');
-			icon.addClass('fa-window-close');
-			icon.addClass('fa-2x');
+			icon.removeClass('fa-search').addClass('fa-window-close fa-2x');
+
 		}else{
 			target.removeClass('anony-show-search-form');
 			setTimeout(function(){
-				icon.removeClass('fa-window-close');
-				icon.removeClass('fa-2x');
-				icon.addClass('fa-search');
+				icon.removeClass('fa-window-close fa-2x').addClass('fa-search');
 			}, 1000);
 			
 		}
 		
 	});
 	
+	/**--------------------------------------------------------------------
+	 *                     Page scroll
 	/*--------------------------------------------------------------------*/
 
-	//scroll page on click
 	$(window).scroll(function() {
 		
-		if ($(window).scrollTop() > 100){
-			
-			$("#anony-page-scroll").html('<i class="fa fa-angle-up fa-3x">');
-			
-		}else{
-			
-			$("#anony-page-scroll").html('<i class="fa fa-angle-down fa-3x">');
-			
+		var target = $("#anony-page-scroll").find('.fa');
+		
+		if ($(window).scrollTop() > 100){	
+			target.removeClass('fa-angle-down');
+			target.addClass('fa-angle-up');				
+		}else{	
+			target.removeClass('fa-angle-up');
+			target.addClass('fa-angle-down');	
 		}
 	});
-	$('#anony-page-scroll').on('click',function(event){
-			event.preventDefault();
+	
+	$('#anony-page-scroll').on('click',function(e){
+		e.preventDefault();
 		if ($(window).scrollTop() === 0){
 			$('html, body').animate({
 				scrollTop: $("footer").offset().top
@@ -156,10 +155,15 @@ jQuery(document).ready(function($){
 			}, 2000);
 		}
 	});
-	/*
-	*Only add class (active) to first item
-	*if no other items has the same class
-	*/
+	
+	/**--------------------------------------------------------------------
+	 *                     Navigation
+	/*--------------------------------------------------------------------*/
+	
+	/**
+	 * Only add class (active) to first item
+	 * if no other items has the same class
+	 */
 	if($('.active').length === 0){
 		$("#anony-main-menu-con li").first().addClass('active');
 	}
@@ -188,10 +192,7 @@ jQuery(document).ready(function($){
 	});
 	
 	
-	if ($(window).width() >= 768) { 
-		//apply prettyPhoto at specific width
-		$("a[class^='prettyPhoto']").prettyPhoto();
-
+	if ($(window).width() >= 768) {
 		//On page loaded active home
 		var activeLi = 0;
 		$('.menu-item').each(function(){
@@ -199,8 +200,8 @@ jQuery(document).ready(function($){
 				activeLi += 1;
 			}
 			if($('.menu-item-home').hasClass('active') === false && activeLi === 0){
-			$('.menu-item-home').addClass('active');
-		}
+				$('.menu-item-home').addClass('active');
+			}
 		});
 		
 		//Alter active class on navigation
@@ -221,41 +222,65 @@ jQuery(document).ready(function($){
 				$('header').css('height' , 'auto');
 				$('#anony-main_nav_con').removeClass('sticky');
 			}
-			});
-		}
+		});
+	}
 	
+	/**--------------------------------------------------------------------
+	 *                     General
+	/*--------------------------------------------------------------------*/
+	if ($(window).width() >= 768) { 
+		//apply prettyPhoto at specific width
+		$("a[class^='prettyPhoto']").prettyPhoto();
+		
+	}
 	
+	/**--------------------------------------------------------------------
+	 *                     Blog post
+	/*--------------------------------------------------------------------*/
 	$('.anony-toggle-excerpt').each(function(){
 		$(this).css({"bottom":$(this).next('.anony-text').find('h3').outerHeight()});
 	});
 	
 	//text default height
 	$(".anony-text").each(function(){
-		$(this).css({"height":$(this).find('h3').outerHeight()});
+		$(this).css({"height":  $("#"+ $(this).attr('id') + '-title').outerHeight() });
 	});
 	
 	$('.anony-toggle-excerpt').click(function(){
-		if($(this).next('.anony-text').css("height") === $(this).next('.anony-text').find('h3').outerHeight()+'px'){
-			$(this).next('.anony-text').css({"height":"100%"});
-			$(this).next('.anony-text').find('p').css({"visibility":"visible","opacity":"1","height":"70%"});
-			$(this).css({"bottom":"0px"});
-			$(this).find('i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
+		var clicked = $(this);
+		var targetId = clicked.attr('rel-id');
+		var targetHeading = $("#"+ targetId + '-title');
+		var textHeight = targetHeading.outerHeight();
+		var icon = clicked.find('.fa');
+		
+		if($('#' + targetId ).find('p').hasClass("anony-hidden-paragraph")){
+			
+			$('#' + targetId ).css({"height":"100%"});
+			$('#' + targetId ).find('p').removeClass('anony-hidden-paragraph').addClass('anony-visible-paragraph');
+			clicked.css({"bottom":"0px"});
+			icon.removeClass('fa-arrow-up').addClass('fa-arrow-down');
 		}else{
-			$(this).next('.anony-text').css({"height":$(this).next('.anony-text').find('h3').outerHeight()});
-			$(this).next('.anony-text').find('p').css({"visibility":"hidden","opacity":"0","height":"0"});
-			$(this).css({"bottom":$(this).next('.anony-text').find('h3').outerHeight()});
-			$(this).find('i').removeClass('fa-arrow-down').addClass('fa-arrow-up');
+			$('#' + targetId ).css({"height": textHeight + 'px'});
+			$('#' + targetId ).find('p').removeClass('anony-visible-paragraph').addClass('anony-hidden-paragraph');
+			clicked.css({"bottom": textHeight });
+			icon.removeClass('fa-arrow-down').addClass('fa-arrow-up');
 		}
 	});
+
+
+	if ($('.anony-toggle-excerpt').css('display') === 'none') {
+		$(".anony-text").hover(function() {
+			$(this).css({"height":"100%"});
+			$(this).find('p').removeClass('anony-hidden-paragraph').addClass('anony-visible-paragraph');
+		},function() {
+			$(this).css({"height":$(this).find('h3').css('height')});
+			$(this).find('p').removeClass('anony-visible-paragraph').addClass('anony-hidden-paragraph');
+		});
+	}
 	
-	$(".anony-text").hover(function() {
-		$(this).css({"height":"100%"});
-		$(this).find('p').css({"visibility":"visible","opacity":"100","height":"70%",});
-	},function() {
-		$(this).css({"height":$(this).find('h3').css('height')});
-		$(this).find('p').css({"visibility":"hidden","opacity":"0","height":"0"});
-	});
-	
+	/**--------------------------------------------------------------------
+	 *                     Single post
+	/*--------------------------------------------------------------------*/
 	//Single post sidebar
 	$(".anony-toggle-sidebar").click(function() {		
 		if($(".anony-single-sidebar").hasClass('anony-single-sidebar-visible')){
@@ -265,7 +290,7 @@ jQuery(document).ready(function($){
 		}
 	});
 	
-	//ctegories list
+	//categories list
 	function anony_menu_toggle(toggle, toggled_item,menu,close){
 		$(toggle).click(function(event) {
 		$(close).hide();

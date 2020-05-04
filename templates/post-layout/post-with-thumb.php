@@ -4,13 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="anony-post-image-wrapper">
-	<div class="anony-toggle-excerpt"><i class="fa fa-arrow-up"></i></div>
+	<div class="anony-toggle-excerpt" rel-id="anony-text-<?= $id ?>"><i class="fa fa-arrow-up"></i></div>
 	
-	<div class="anony-text">
-		<h3 class="anony-thumb-post-title">
+	<div class="anony-text" id="anony-text-<?= $id ?>">
+		<h3 class="anony-thumb-post-title" id="anony-text-<?= $id ?>-title">
 			<a href="<?= $permalink ?>"><?= $title ?></a>
 		</h3>
-		<p><?= $excerpt ?></p>
+		<p class="anony-hidden-paragraph"><?= $excerpt ?></p>
 	</div>
 	
 	<div class="anony-post_meta anony-inside-thumb">
