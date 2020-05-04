@@ -328,7 +328,7 @@
 	}
 	
 	.active{
-		height: 68px;
+		height: 68px!important;
 		top: -4px;
 	}
 	

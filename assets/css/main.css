@@ -318,6 +318,9 @@ tr:nth-child(even) {
 		border: none;
 		border-bottom:1px solid #ffffff;
 	}
+	#anony-main-menu-con li:hover {
+		height: 100%
+	}
 	#anony-main-menu-con li a {
 		display: inline-flex;
 		align-items: center;
