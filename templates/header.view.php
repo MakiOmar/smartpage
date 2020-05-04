@@ -56,6 +56,9 @@
 					</div>
 					<!-- Navigation menu -->
 					<?= $nav ?>
+					
+					<!-- Mobile Navigation menu toggle -->
+					<div id="menu-close"><a href="#"><i class="fa fa-2x fa-window-close" aria-hidden="true"></i></a></div>
 
 				</header>
 			</div>
