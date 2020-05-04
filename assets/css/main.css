@@ -350,6 +350,10 @@ tr:nth-child(even) {
 		color:#8a9394;
 		line-height: 30px;
 		padding: 0 4px;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 	#anony-lang-toggle{
 		display: inline-flex;
