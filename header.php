@@ -15,7 +15,7 @@ $nav         = anony_navigation('anony-main-menu');
  * It contains user menu slug, defined by the plugin
  */
 if(defined('ANONY_MENU') && wp_get_nav_menu_object( ANONY_MENU )){
-	$user_nav = wp_nav_menu(['menu' => ANONY_MENU , 'fallback_cb' => false]);
+	$user_nav = wp_nav_menu(['menu' => ANONY_MENU , 'fallback_cb' => false, 'echo' => false]);
 }else{
 	$user_nav = anony_navigation('anony-user-menu');
 }
