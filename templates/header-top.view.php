@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="anony-top-header-wrapper">
 	<nav id="anony-follow-contact">
 
-		 <?= $nav ?>
+		 <?= $user_nav ?>
 
 	  <ul id="anony-follow">
 		<?php foreach($socials_follow as $data): extract($data)?>
@@ -28,6 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 	  </ul>
 
-	  <= $languages_menu ?>
+	  <?= $languages_menu ?>
 	</nav>
 </div>

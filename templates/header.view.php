@@ -30,7 +30,7 @@
 
 				<header>
 
-					<?php get_template_part('templates/top-header') ;?>
+					<?php include(locate_template('templates/header-top.view.php', false, false)) ;?>
 					
 					<div id="anony-sub-top-wrapper">
 					
@@ -54,18 +54,8 @@
 
 							</div>
 
-						<?php  endif;
+						<?php  endif;?>
 
-						if(function_exists('anony_user_main')) :?>
-								 
-							<div class="anony-grid-col-md-3 anony-grid-col-sm-3">
-
-							 <!--User control plugin's menu
-							 echo anony_user_main('anony-user-control');-->
-
-							</div>
-
-						<?php endif ?>
 
 					</div>
 					<!-- Navigation menu -->
