@@ -349,50 +349,7 @@ jQuery(document).ready(function($){
 			$.fn.closeToggled();
 		}
 	});
-	
-	//categories list
-	function anony_menu_toggle(toggle, toggled_item,menu,close){
-		$(toggle).click(function(e) {
-			$(close).hide();
-			e.stopPropagation();
-			var span_this = $(this);
-			var $j  = span_this.find("i");
-			if ($j.hasClass("fa-plus")) {
-				//To close all dropdowns first
-				if(span_this.parents('ul').attr('id') === menu){
-					$(toggled_item).hide();
-						$('i').each(function(){
-							if($(this).hasClass("fa-minus")){
-								$(this).removeClass("fa-minus").addClass("fa-plus");
-							}
 
-						});			
-				}
-				
-				//To control the sub-level dropdowns
-				var ul_parents = span_this.parents('ul');
-				ul_parents.each(function(k,v){
-					if (k === 0 && !v.id ){
-						var prv_dropdowns = $(this).parents('ul').prevObject.find(toggled_item);
-						prv_dropdowns.each(function(){
-							$(this).hide();
-							$(this).parent('li').find('i').removeClass("fa-minus").addClass("fa-plus");
-						});
-					}
-				});
-
-				$j.removeClass("fa-plus").addClass("fa-minus");
-				span_this.next(toggled_item).show();
-
-			} else {
-				$j.removeClass("fa-minus").addClass("fa-plus");
-				span_this.next(toggled_item).hide();
-			}
-
-	  });
-	}
-	//anony_menu_toggle('.toggle-category', '.anony-dropdown','anony-cat-list','.anony-sub-menu');
-	anony_menu_toggle('.anony-main-menu-toggle', '.anony-sub-menu','anony-main-menu-con','.anony-dropdown');
 
 	
 	
