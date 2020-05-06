@@ -5,12 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action('wp_ajax_anoe_dynamic_css', 'anoe_dynamic_css');
 add_action('wp_ajax_nopriv_anoe_dynamic_css', 'anoe_dynamic_css');
+
 function anoe_dynamic_css() {
 	require( ANONY_THEME_DIR . '/assets/css/dynamic.php' );
 	exit;
 }
 
-function anony_styels(){
+function anony_styles(){
 	
 	$anonyOptions = anonyOpt();
 	
@@ -137,7 +138,7 @@ function anony_scripts(){
 //Theme Scripts
 add_action('wp_enqueue_scripts',function() {
 		
-	anony_styels();
+	anony_styles();
 	anony_scripts();
 
 });
