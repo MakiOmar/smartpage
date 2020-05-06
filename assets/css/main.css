@@ -56,7 +56,6 @@ body{
 	font-size: 16px;
 	color: #444444;
 	box-sizing: border-box;
-	overflow-x: hidden;
 }
 .anony-grid-col-1 { width: 8.333%; }
 .anony-grid-col-2 { width: 16.666%; }
