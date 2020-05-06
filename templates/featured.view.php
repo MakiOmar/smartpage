@@ -29,13 +29,13 @@
 							</div>
 					<?php  endforeach ?>
 				</div>
-
+			<div class="anony-featured-posts-title-bg">
 			<h3 class="anony-featured-posts-title">
 	
 				<a href="<?= $title_link ?>"><?= $title_text ?></a>
 
 			</h3>
-
+			</div>
 			<div id="anony-slides-list" class="">
 				
 				<?php foreach($slider_nav as $item) : extract($item) ?>
