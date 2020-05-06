@@ -45,12 +45,11 @@
 }
 html{ overflow-y: scroll;}
 html, body {
-    height:100%;
 	box-sizing: border-box;
+	min-height: 100vh;
 	}
 body{
 	/*background: url(../../images/pattern-2.png) repeat fixed;*/
-	min-height: 100%;
 	font-family: "Georgia","Times New Roman",serif;
 	font-style: italic;
 	font-size: 16px;
@@ -412,14 +411,19 @@ tr:nth-child(even) {
 		visibility: hidden;
 
 	}
+
 	.anony-show{
 		opacity: 1;
 		height: 100%;
 		visibility: visible;
 	}
 	.anony-dropdown li{
+		display: none;
 		background-color: #626161!important;
-		}
+	}
+	.anony-show li{
+		display: block;
+	}
 	.anony-breadcrumbs li,.anony-breadcrumbs a{
 		color: #d6d4d4;
 		display: inline-flex;
