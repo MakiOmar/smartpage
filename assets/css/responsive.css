@@ -455,6 +455,9 @@
 			display: inline-flex;
 			flex-direction: column;
 		}
+		.widgeted:first-child{
+			padding-top:0; 
+		}
 		/***End Blog post***/
 
 	/***End body***/
