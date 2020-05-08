@@ -4,13 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="anony-section<?= $sec_class  ?>">
-	<div>
+	<div class="anony-skew-bg">
 		<h4 class="anony-section_title clearfix"><?= $sec_title ?></h4>
 	</div>
 	
 	<div class="anony-posts-wrapper">
 
-		<div id="download">
+		<div id="anony-download">
 
 			<?php foreach ($data as $p) : extract($p);?>
 

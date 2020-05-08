@@ -29,7 +29,7 @@
 							</div>
 					<?php  endforeach ?>
 				</div>
-			<div class="anony-featured-posts-title-bg">
+			<div class="anony-skew-bg">
 			<h3 class="anony-featured-posts-title">
 	
 				<a href="<?= $title_link ?>"><?= $title_text ?></a>

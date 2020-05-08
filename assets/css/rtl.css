@@ -179,7 +179,7 @@ body{
 		margin-right: 0px;
 		margin-left: 5px;
 	}
-.anony-featured-posts-title-bg::after, .anony-featured-posts-title-bg::before {
+.anony-skew-bg::after, .anony-skew-bg::before {
 
         transform-origin: bottom left;
         -ms-transform: skew(30deg, 0deg);
@@ -248,7 +248,7 @@ display: flex;
 	padding-right: 10px;
 	padding-left: 0;
 }
-.anony-featured-posts-title-bg,.anony-post-image-wrapper h4{
+.anony-skew-bg,.anony-post-image-wrapper h4{
 	left: auto;
 	right: 0;
 }

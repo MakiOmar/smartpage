@@ -1107,7 +1107,10 @@ tr:nth-child(even) {
 
 	.anony-download-meta{
 	}
-	#download .anony-post-contents h4{
+	#anony-download{
+		margin-top: 50px;
+	}
+	#anony-download .anony-post-contents h4{
 		background:none!important;
 		color: #107AE9;
 		position: relative;
@@ -1517,7 +1520,7 @@ tr:nth-child(even) {
 		position: relative;
 		left:20px;
 	}
-	.anony-featured-posts-title-bg{
+	.anony-skew-bg{
 		position: absolute;
 		z-index: 100;
 		top: 0;
@@ -1532,7 +1535,7 @@ tr:nth-child(even) {
 		text-align: center;
 	}
 
-	.anony-featured-posts-title-bg::after {
+	.anony-skew-bg::after {
 		content: " ";
 		position: absolute;
 		display: block;
@@ -1548,7 +1551,7 @@ tr:nth-child(even) {
 		transform: skew(-30deg, 0deg);
 	}
 	
-	.anony-featured-posts-title-bg::before {
+	.anony-skew-bg::before {
 		content: " ";
 		position: absolute;
 		display: block;
@@ -1585,12 +1588,21 @@ tr:nth-child(even) {
 		background-color: #fc2a2a;
 		display: inline-block;
 		padding: 5px;
-		color: #ffffff!important;
+		color: #ffffff;
+		min-width: 150px;
+		text-align: center;
 	}
 	.anony-section-animate{
 		visibility: visible;
 		opacity: 1;
 		top: 0px;
+	}
+	#anony-blog-post, #anony-masonry{
+		margin-top: 50px;
+	}
+	
+	#anony-masonry #anony-blog-post{
+		margin-top: auto;
 	}
 	.clearfix{
 		overflow: auto;

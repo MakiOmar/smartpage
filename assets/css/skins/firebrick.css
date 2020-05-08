@@ -1,5 +1,5 @@
 /*Main colors*/
-.anony-featured-posts-title-bg::after,.page-numbers li,.active,.button, .anony-active-tab,.anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,.anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
+.anony-skew-bg::after,.page-numbers li,.active,.button, .anony-active-tab,.anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,.anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 !important;
 }
 .anony-section,#anony-slider-wrapper {
