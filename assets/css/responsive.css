@@ -195,6 +195,9 @@
 	#follow li a{
 		font-size: 18px;
 	}
+	#anony-main-menu-con .toggle-category{
+		display: none;
+	}
 	#anony-sub-top-wrapper .anony-search-form-toggle{
 		display: none;
 	}
@@ -213,9 +216,9 @@
 	}
 
 	#anony-logo {
-	margin: auto;
+		margin: auto;
 	}
-	#anony-main_nav_con   {
+	#anony-main_nav_con{
 		position: relative;
 		display: block;
 		height: 60px;
@@ -226,7 +229,11 @@
 		visibility: visible;
 		opacity: 1;
 	}
+	.active, #anony-main_nav_con{
+		border-radius: 10px;
+	}
 	#anony-main-menu-con{
+		display: flex;
 		position: relative;
 		height: inherit;
 		margin: auto;
@@ -234,7 +241,6 @@
 	#anony-main-menu-con li {
 		display: inline-block;
 		border: none;
-		vertical-align: middle;
 	}
 	#anony-main-menu-con li:hover {
 		height: 100%
@@ -253,13 +259,15 @@
 	.anony-sub-menu li a,.anony-sub-menu li a:hover{
 	font-weight: normal;
 	font-size: 14px !important;
-	line-height: 40px!important;
 	height:auto !important;
 	border-left:none!important;
 	border-right: none!important;
 	}
 	#anony-main-menu-con li:hover > .anony-sub-menu{
-	display: block;
+		position: absolute;
+		height: 100%;
+		opacity: 1;
+		visibility: visible;
 	}
 	
 	#anony-toggles-wrapper{
@@ -269,9 +277,10 @@
 	visibility: hidden;
 	opacity: 0;
 	}
-	.sticky{
-	width: 100%!important;
-}
+	#anony-main_nav_con.sticky{
+		width: 100%!important;
+		border-radius: 0;
+	}
 
 	/***end header***/
 	/***Body***/
@@ -317,10 +326,10 @@
 	}
 	
 	.anony-sub-menu{
-		position: absolute;
+		position: absolute!important;
 		left: 0;
 		width: 200px;
-		z-index: 10;
+		z-index: 1000;
 	}
 	.anony-single-sidebar{
 		padding: 3px;
@@ -337,8 +346,14 @@
 	}
 	
 	.active{
-		height: 68px!important;
+		height: 68px;
 		top: -4px;
+	}
+	
+	.sticky #anony-main-menu-con .menu-item.active, #anony-main_nav_con.sticky .active{
+		border-radius: 0;
+		height: 100%;
+		top: auto;
 	}
 	
 	#anony-contacts{

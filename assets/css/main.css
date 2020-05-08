@@ -92,6 +92,7 @@ a,h1,h2,h3,h4,h5,h6 {
 }
 a{
 	 text-decoration: none;
+	 cursor: pointer;
 }
 p{
 font-weight:bold;
@@ -310,8 +311,6 @@ tr:nth-child(even) {
 		-ms-transition: all .7s ease-in-out;
 		-o-transition: all .7s ease-in-out;
 		transition: all .7s ease-in-out;
-		box-shadow: 1px 1px 10px 5px #797979;
-		-webkit-box-shadow: 1px 1px 10px 5px #797979;
 	}
 	#anony-main-menu-con li {
 		position: relative;
@@ -331,6 +330,10 @@ tr:nth-child(even) {
 		height: 100%;
 		line-height: 25px;
 		text-shadow: 0 1px 1px #333131;
+	}
+	
+	#anony-main-menu-con .anony-sub-menu li a{
+		color: #444;
 	}
 	.anony-show-main-nav li a{
 		justify-content: flex-start!important;
@@ -370,14 +373,11 @@ tr:nth-child(even) {
 		display: none;
 		width: auto;
 	}
-	.anony-sub-menu{
-		display: none;
-	}
-	.anony-sub-menu li{
+	#anony-main-menu-con .anony-sub-menu li{
 		background-color: #5F5D5D;
 		display: block!important;
 		border-right: none;
-		border-bottom: 1px solid #808080!important;
+		border-bottom: 1px solid #808080;
 	}
 	.anony-nav-links{
 			text-align: center;
@@ -405,7 +405,6 @@ tr:nth-child(even) {
 		position: relative!important;
 		padding: 0;
 		width: 100%;
-		border-top: 1px solid #FFFFFF;
 		height: 0;
 		opacity: 0;
 		visibility: hidden;
@@ -414,12 +413,10 @@ tr:nth-child(even) {
 
 	.anony-show{
 		opacity: 1;
-		height: 100%;
 		visibility: visible;
 	}
 	.anony-dropdown li{
-		display: none;
-		background-color: #626161!important;
+		background-color: #fff;
 	}
 	.anony-show li{
 		display: block;
@@ -1226,6 +1223,7 @@ tr:nth-child(even) {
 		width: 100%;
 		border-radius: 5px;
 		padding: 0 8px;
+		overflow: hidden;
 	}
 	#anony-cat-list li,#anony-cat-list li ul li {
 		position: relative;
@@ -1233,10 +1231,9 @@ tr:nth-child(even) {
 	}
 	#anony-cat-list li a{
 		display: inline-block!important;
-		line-height: 25px;
 		vertical-align: middle;
 		font-size: 14px;
-		padding: 5px 10px;
+		padding: 10px;
 	}
 	#anony-cat-list .has-children{
 		background-color: #fbfbfb!important;
@@ -1304,6 +1301,7 @@ tr:nth-child(even) {
 	.widgeted #anony-cat-list li, .widgeted #anony-cat-list li ul li{
 		background: none;
 		background-color:transparent;
+		padding: 0;
 	}
 	.widgeted #anony-cat-list li a,.widgeted .toggle-category{
 		color: #444444;
@@ -1549,9 +1547,9 @@ tr:nth-child(even) {
 		z-index: -1;
 		background: #fc2a2a;
 		transform-origin: bottom left;
-		-ms-transform: skew(-20deg, 0deg);
-		-webkit-transform: skew(-20deg, 0deg);
-		transform: skew(-20deg, 0deg);
+		-ms-transform: skew(-30deg, 0deg);
+		-webkit-transform: skew(-30deg, 0deg);
+		transform: skew(-30deg, 0deg);
 	}
 	
 	.anony-featured-posts-title-bg::before {
@@ -1827,7 +1825,7 @@ tr:nth-child(even) {
 		margin: auto;
 		z-index: 2;
 	}
-.anony-search-form-toggle{
+.anony-search-form-toggle, #anony-main-menu-con li .anony-search-form-toggle{
 		display: none;
 		border: none;
 	}
@@ -1855,6 +1853,7 @@ tr:nth-child(even) {
 	font-weight: bold;
 	border: none;
 }
+
 .button {
 	display: inline-block;
 	min-width: 80px;

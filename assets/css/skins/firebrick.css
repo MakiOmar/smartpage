@@ -22,6 +22,10 @@ body{
 	/*background: url(../../../images/body-bg-1.jpg) no-repeat fixed;
 	background-size: cover;*/
 }
+#anony-main-menu-con .anony-sub-menu li a {
+    color: #230005;
+    text-shadow: none;
+}
 #cancel-comment-reply-link, .fa-bars {
 		color: #ef1450;
 	}
@@ -40,8 +44,12 @@ body{
 	background-color: #e09352;
 	border-left: 6px solid #230005;
 }
-.page-numbers{
+.page-numbers, #anony-main-menu-con .anony-sub-menu li a{
 	color: #fff;
+}
+#anony-main-menu-con .anony-sub-menu li{
+	border-bottom: 1px solid #230005;
+	background-color: #b10030;
 }
 li .current::after{
 	background-color: #b10030;
