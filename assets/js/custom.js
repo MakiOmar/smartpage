@@ -307,10 +307,55 @@ jQuery(document).ready(function($){
 		});
 	};
 	
+	$.fn.calculateDropdownHeight = function(object){
+		var height = 0
+		
+		var liNo = object.children('li').length;
+		
+		var i = 0; 
+		object.children('li').each(function(){
+			if ($(this).children('.anony-show').length == 0) {
+				if(i == 1){
+					height += parseInt($(this).outerHeight());
+				}
+				i++;
+			}
+		});
+		return height * liNo;
+	};
+	
+	$.fn.setDropdownHeights = function(type, targetObj){
+		$('.anony-show').each(function(){ 
+			var anonyShow = $(this);
+			var height = $.fn.calculateDropdownHeight(anonyShow);
+			
+			var totalDropdownHeight = 0;
+			anonyShow.find('.anony-show').each(function(){
+				$(this).children('li').each(function(){
+					totalDropdownHeight += parseInt($(this).outerHeight());
+					
+				});
+				
+			});
+			var targetHeight = targetObj.outerHeight();	
+				
+			if(totalDropdownHeight != 0){
+
+				anonyShow.height( (totalDropdownHeight +  height) - targetHeight);
+				
+			}
+			
+		});
+	};
+	
 	$(document).on('click','.toggle-category', function(){
 		var clicked = $(this);
+		var parent = clicked.parent();
+		var parentHeight = parent.outerHeight();
 		var targetID = clicked.attr('rel-id');
 		var icon     = clicked.find('.fa');
+		
+		//console.log(parentHeight);
 	
 		//Close other opened menus
 		var ul_parents = clicked.parents('ul');
@@ -322,24 +367,78 @@ jQuery(document).ready(function($){
 				
 				prv_dropdowns.each(function(){
 					if($(this).attr('id') !== targetID){
+						if (currentParent.hasClass('anony-dropdown')) {
+							currentParent.height(currentParent.height() - $(this).outerHeight());
+						}
+						
 						$(this).removeClass('anony-show');
+						$(this).css('height', 0);
 						$(this).parent('li').find('i').removeClass("fa-minus").addClass("fa-plus");
 					}
 					
+					/*currentParent.parents('.anony-dropdown').each(function(k,v){
+						if(k === 0){
+							$(this).height(currentParent.outerHeight() + $(this).outerHeight());
+						}
+					});*/
 				});
+			
+				
 			}
 			
 		});
 		
 		if(!$('#' + targetID).hasClass('anony-show') ){
+			var dropdownHeight = 0;
 			$('#' + targetID).addClass('anony-show');
 			icon.removeClass('fa-plus').addClass('fa-minus');
+			$('#' + targetID).children('li').each(function(){
+				dropdownHeight = parseInt(dropdownHeight) + parseInt($(this).outerHeight());
+			});
+			
+			$('#' + targetID).height(dropdownHeight);
+			
+			
+			$.fn.setDropdownHeights('show', $('#' + targetID));
+			
 		}else{
+		
+			var targetHeight= $('#' + targetID).outerHeight();
+			
 			$('#' + targetID).removeClass('anony-show');
+			
 			icon.removeClass('fa-minus').addClass('fa-plus');
+			
+			//for parent dropdown
+			var parentDropdown = $('#' + targetID).closest('.anony-show');
+			
+			if (parentDropdown.length != 0) {
+				
+				parentDropdown.height(parentDropdown.outerHeight() - targetHeight);
+			}			
+			
+			//For sub sub dropdowns
+			$('#' + targetID).find('.anony-dropdown').each(function(){ 
+				
+				$(this).css('height', 0);
+				$(this).removeClass('anony-show');
+					
+			});
+			
+			//for the target itself
+			$('#' + targetID).css('height', 0);
+						
+			var ul_parents = clicked.parents('.anony-dropdown');
+			
+			ul_parents.each(function(k,v){
+				
+				var currentParent = $(this);
+						
+				currentParent.height(currentParent.height() - targetHeight);
+			});
+			
+			
 		}
-		
-		
 	});
 	
 	//Close all dropdowns when click on any place in the document
