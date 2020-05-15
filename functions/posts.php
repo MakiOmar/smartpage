@@ -302,7 +302,7 @@ add_action( 'init', function(){
 // Remove issues with prefetching adding extra views
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
-//define post types to search within
+//define post types to search for
 add_filter('pre_get_posts',function($query) {
  
     if ($query->is_search && !is_admin() ) {
