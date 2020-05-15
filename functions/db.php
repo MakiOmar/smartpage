@@ -119,5 +119,3 @@ function anony_implement_rate_ajax() {
 	}
 }
 add_action('wp_ajax_rate_post', 'anony_implement_rate_ajax');
-
-add_action('wp_ajax_nopriv_rate_post', 'anony_implement_rate_ajax');//for users that are not logged in.
