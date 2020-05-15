@@ -579,6 +579,16 @@ $Anony_Options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
 /*----------------------------------------------------------------------------------
 *Options hooks
 *---------------------------------------------------------------------------------*/
+
+/**
+ * Anonymous multilingual options
+ * @return array of option group names
+ */
+add_filter( 'anony_wpml_multilingual_options', function($options){
+	$options[] = ANONY_OPTIONS;	
+	return $options;
+} );
+
 add_action('wp_head', function(){
 
 	
