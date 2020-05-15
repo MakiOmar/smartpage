@@ -14,11 +14,25 @@ $nav         = anony_navigation('anony-main-menu');
  * The ANONY_MENU constant is defined in User control plugin.
  * It contains user menu slug, defined by the plugin
  */
-if(defined('ANONY_MENU') && wp_get_nav_menu_object( ANONY_MENU )){
-	$user_nav = wp_nav_menu(['menu' => ANONY_MENU , 'fallback_cb' => false, 'echo' => false]);
+
+$user_nav = '';
+
+if(defined('ANONY_MENU')){
+	$uc_menu = get_term_by('slug', ANONY_MENU ,'nav_menu');
+	$uc_menu_translation  = ANONY_TERM_HELP::getTermBy($uc_menu->term_id, 'nav_menu');
+	
+	if($uc_menu && !is_null($uc_menu_translation)){
+		$user_nav = wp_nav_menu(['menu' => $uc_menu_translation->slug , 'fallback_cb' => false, 'echo' => false]);
+	}
 }else{
-	$user_nav = anony_navigation('anony-user-menu');
+	$uc_menu = get_term_by('slug', 'anony-user-menu' ,'nav_menu');
+	$uc_menu_translation  = ANONY_TERM_HELP::getTermBy($uc_menu->term_id, 'nav_menu');
+
+	if($uc_menu && !is_null($uc_menu_translation)){
+		$user_nav = anony_navigation('anony-user-menu');
+	}
 }
+
 
 $languages_menu = anony_navigation('anony-languages-menu','');
 
