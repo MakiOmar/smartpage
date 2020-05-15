@@ -27,7 +27,7 @@ $anonyOptions = anonyOpt();
  * @return string Menu list
  */
 function anony_navigation($location_slug, $container = 'nav'){
-	$container_id = 'anony-main_nav_con';
+	$container_id = $location_slug;
 	
 	if ($location_slug == 'anony-main-menu'){
 		$walker       = new ANONY_Nav_Menu_Walk;
@@ -74,14 +74,15 @@ function anony_navigation($location_slug, $container = 'nav'){
  * @return void
  */
 function anony_breadcrumbs() {
-	global $post;
+	global $post, $wp;
+	$pageLink = home_url($wp->request);
 	$homeLink = home_url();
 	echo '<ul class="anony-breadcrumbs">';
 	echo '<li class="home"><i class="fa fa-home"></i> <a href="'. $homeLink .'">'. esc_html__('Home',ANONY_TEXTDOM) .'</a> <span>/</span></li>';
 
 	// Blog Category
 	if ( is_category() ) {
-		//echo '<li><a href="'. anony_get_curr_url() .'">'. single_cat_title('', false) . '</a></li>';
+		//echo '<li><a href="'. $pageLink .'">'. single_cat_title('', false) . '</a></li>';
 				wp_reset_query();
 				$incurr_category = get_category(get_query_var('cat'));
 				$incurr_category_id = $incurr_category ->cat_ID;
@@ -93,16 +94,16 @@ function anony_breadcrumbs() {
 	} elseif ( is_day() ) {
 		echo '<li><a href="'. get_year_link(get_the_time('Y')) . '">'. get_the_time('Y') .'</a> <span>/</span></li>';
 		echo '<li><a href="'. get_month_link(get_the_time('Y'),get_the_time('m')) .'">'. get_the_time('F') .'</a> <span>/</span></li>';
-		echo '<li><a href="'. anony_get_curr_url() .'">'. get_the_time('d') .'</a></li>';
+		echo '<li><a href="'. $pageLink .'">'. get_the_time('d') .'</a></li>';
 
 	// Blog Month
 	} elseif ( is_month() ) {
 		echo '<li><a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> <span>/</span></li>';
-		echo '<li><a href="'. anony_get_curr_url() .'">'. get_the_time('F') .'</a></li>';
+		echo '<li><a href="'. $pageLink .'">'. get_the_time('F') .'</a></li>';
 
 	// Blog Year
 	} elseif ( is_year() ) {
-		echo '<li><a href="'. anony_get_curr_url() .'">'. get_the_time('Y') .'</a></li>';
+		echo '<li><a href="'. $pageLink .'">'. get_the_time('Y') .'</a></li>';
 
 	// Single Post
 	} elseif ( is_single() && !is_attachment() ) {
@@ -119,7 +120,7 @@ function anony_breadcrumbs() {
 			echo '<li>';
 				echo get_category_parents($cat, TRUE, ' <span>/</span>');
 			echo '</li>';
-			echo '<li><a href="' . anony_get_curr_url() . '">'. wp_title( '',false ) .'</a></li>';
+			echo '<li><a href="' . $pageLink . '">'. wp_title( '',false ) .'</a></li>';
 		}
 
 	// Taxonomy
@@ -139,11 +140,11 @@ function anony_breadcrumbs() {
 		$breadcrumbs = array_reverse($breadcrumbs);
 		foreach ($breadcrumbs as $crumb) echo $crumb;
 
-		echo '<li><a href="' . anony_get_curr_url() . '">'. get_the_title() .'</a></li>';
+		echo '<li><a href="' . $pageLink . '">'. get_the_title() .'</a></li>';
 
 	// Default
 	} elseif(get_the_title()!= 'Home'){
-		echo '<li><a href="' . anony_get_curr_url() . '">'. get_the_title() .'</a></li>';
+		echo '<li><a href="' . $pageLink . '">'. get_the_title() .'</a></li>';
 	}
 
 	echo '</ul>';
