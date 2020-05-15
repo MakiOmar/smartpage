@@ -1,5 +1,5 @@
 <div id="anony-slider-wrapper">
-	<?php if($message !== '') : var_dump($message) ?>
+	<?php if($message !== '') : ?>
 		
 		<p><i class="fa fa-frown-o fa-4x"></i></p>
 		<p class="anony-warning"><?= $message ?></p>
