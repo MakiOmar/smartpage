@@ -815,6 +815,8 @@ tr:nth-child(even) {
 	.anony-posts-list-wrapper{
 		border-bottom: 1px solid #e6e2e2;
 		padding: 9px 0 9px 0;
+		display: flex;
+		align-items: center;
 	}
 	.anony-posts-list-wrapper:last-child,.anony-recent-comment-wrapper:last-child{
 		border-bottom: none;
@@ -1337,6 +1339,11 @@ tr:nth-child(even) {
 	.anony-posts-list-thumb{
 		width:20%;
 	}
+	.anony-posts-list-thumb a{
+		display: flex;
+		padding: 3px;
+		background-color: #e1dfdf;
+	}
 	.anony-tab_content{
 		display: none;
 	}
@@ -1781,6 +1788,7 @@ tr:nth-child(even) {
 		padding: 10px;
 		position: absolute;
 		top: 0;
+		right: 0;
 		justify-content: center;
 	}
 .anony-toggle-excerpt{

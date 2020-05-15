@@ -26,7 +26,7 @@ body{
     color: #230005;
     text-shadow: none;
 }
-#cancel-comment-reply-link, .fa-bars {
+#cancel-comment-reply-link, .fa-bars,#anony-cat-list .toggle-category .fa {
 		color: #ef1450;
 	}
 .anony-breadcrumbs li, .anony-breadcrumbs a {

@@ -373,9 +373,6 @@
 		display: table-cell;
 		vertical-align: middle;
 	}
-	.hidden{
-		display: inline-table;
-	}
 	.hidden-child {
 	display: table-cell;
 	text-align: end;
