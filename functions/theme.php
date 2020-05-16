@@ -10,25 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link http://makiomar.com
  */
 
-/*-------------------------------------------------------------
- * Theme hooks
- *-----------------------------------------------------------*/
-//Load Text Domain
-add_action('after_setup_theme', function(){
-	load_theme_textdomain(ANONY_TEXTDOM, ANONY_LANG_DIR);
-});
-
-
-//Add theme support
 add_action( 'after_setup_theme', function() {
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'custom-logo' );
-	add_theme_support( 'custom-header' );
-	add_theme_support( 'custom-background');
-	add_theme_support( 'post-thumbnails', array( 'post','anony_download' ) );
-	add_theme_support( 'customize-selective-refresh-widgets' );
-	add_theme_support( 'post-formats', array( 'gallery', 'quote', 'video', 'aside', 'image', 'link' ) );
-	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+	//Add theme support
+	anony_add_theme_support();
+	
+	//Load Text Domain
+	load_theme_textdomain(ANONY_TEXTDOM, ANONY_LANG_DIR);
+	
+	//hide admin bar for non admins
+	anony_hide_admin_bar();
+	
 }, 20 );
 
 //Register Sidebars
@@ -60,4 +51,41 @@ add_filter('style_loader_tag', 'anony_remove_type_attr', 10, 2);
 
 //Remove type attribute from scripts.
 add_filter('script_loader_tag', 'anony_remove_type_attr', 10, 2);
+
+
+/**
+ * Anonymous multilingual options
+ * @return array of option group names
+ */
+add_filter( 'anony_wpml_multilingual_options', function($options){
+	$options[] = ANONY_OPTIONS;	
+	return $options;
+} );
+
+
+// custom login logo tooltip
+add_filter('login_headertext', function(){
+	
+	$anonyOptions = anonyOpt();
+	
+	if(anonyGetOpt($anonyOptions, 'change_login_title') != '0'){
+		
+		return get_bloginfo();
+	}
+});
+
+add_action('init', function(){
+	
+	anony_restrict_admin_access();
+	
+	anony_display_ads();
+});
+
+//controls add query strings to scripts
+//add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
+
+//controls add query strings to styles
+//add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
+
+
 ?>

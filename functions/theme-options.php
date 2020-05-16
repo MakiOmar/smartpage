@@ -12,10 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if (!class_exists('ANONY_Options_Model')) return;
 
-if(get_option(ANONY_OPTIONS) ){
-	
-$anonyOptions = anonyOpt();
-}
+if(get_option(ANONY_OPTIONS) ) $anonyOptions = anonyOpt();
+
 
 // Navigation elements
 $options_nav = array(
@@ -575,97 +573,3 @@ $sections['miscellanous']= array(
 $widgets = array('ANONY_Sidebar_Ad');
 
 $Anony_Options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
-
-/*----------------------------------------------------------------------------------
-*Options hooks
-*---------------------------------------------------------------------------------*/
-
-/**
- * Anonymous multilingual options
- * @return array of option group names
- */
-add_filter( 'anony_wpml_multilingual_options', function($options){
-	$options[] = ANONY_OPTIONS;	
-	return $options;
-} );
-
-add_action('wp_head', function(){
-
-	
- });
-
-//Show admin bar for only admins
-add_action('after_setup_theme', function(){
-	
-$anonyOptions = anonyOpt();
-
-	if (anonyGetOpt($anonyOptions, 'admin_bar') != '0' && !current_user_can('administrator') && !is_admin()) {
-		
-		show_admin_bar(false);
-
-	}
-});
-
-//restrict admin access
-/*add_action( 'init', function(){
-	
-$anonyOptions = anonyOpt();
-
-	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && anonyGetOpt($anonyOptions, 'not_admin_restricted') != '0' ) {
-		
-		wp_redirect( home_url() );
-		
-		exit;
-		
-	} 
-});*/
-
-// custom login logo tooltip
-add_filter('login_headertext', function(){
-	
-$anonyOptions = anonyOpt();
-	if(anonyGetOpt($anonyOptions, 'change_login_title') != '0'){
-		
-		return get_bloginfo();
-	}
-});
-
-//controls add query strings to scripts
-//add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
-
-//controls add query strings to styles
-//add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
-
-
-/**
- * Show ads hooked to custom hook.
- *
- * Hook name will be {location}_ad.<br>
- * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
- */
-
-add_action('init', function(){
-	
-$anonyOptions = anonyOpt();
-	
-	$anonyADs = array('one', 'two', 'three');
-
-	foreach($anonyADs as $adBlock){
-		
-		 $block = 'ad_block_'.$adBlock;
-		 $blockLoc = $block.'_location';
-		
-		if(isset($anonyOptions->$blockLoc) && !empty($anonyOptions->$blockLoc)){
-			
-			foreach($anonyOptions->$blockLoc as $loc){
-				
-				 add_action($loc.'_ad', function() use($anonyOptions, $block){
-					 echo $anonyOptions->$block;
-				 });
-				
-			 }
-			
-		}
-		 
-	 }
-});
