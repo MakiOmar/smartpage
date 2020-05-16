@@ -44,6 +44,68 @@ function anony_get_correct_sidebar(){
 }
 
 /**
+ * Generates logo markup.
+ *
+ * **Description: ** If logo is set from customizer it will display it.
+ * otherwise it will display a default theme logo.<br/>
+ * **Note: ** can be overriden by hookin on anony_get_custom_logo.
+ *
+ * @param string $color The color of theme's default logo,
+ * Will have no effect once a logo is set from customizer.
+ * @return string Theme's logo with a link to the homepage
+ */
+function anony_get_custom_logo($color='main') {	
+	if ( has_custom_logo() ) {
+		$logo ='<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">'.get_custom_logo().'</div>';	
+	}else{
+
+		$logo= '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3"><h1>';
+		$logo .='<a href="'.ANONY_BLOG_URL.'" title="'.ANONY_BLOG_TITLE.'">';
+		$logo .='<img alt="'.ANONY_BLOG_TITLE.'" '; 
+		$logo .= 'src="'.ANONY_THEME_URI.'/images/logo-'.$color.'.png"/>';
+		$logo .='</a></h1></div>';
+	}
+	return apply_filters('anony_get_custom_logo', $logo);
+
+}
+/**
+ * Remove type attribute from styles/scripts.
+ *
+ * **Description: ** It is recommended to remove type attribute from styles/scripts that has a link|src attribute.
+ * @param $tag string style|script tag
+ * @param $handle string style|script handle defined with wp_register_style|wp_register_script
+ * @return string styles/scripts tags with no type attribute.
+ */
+function anony_remove_type_attr($tag, $handle) {
+    return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
+}
+
+/**
+ * Generates comments number markup.
+ *
+ * @return string HTML of comments number.
+ */
+function anony_comments_number() {
+	$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
+	
+	if ( comments_open() ) {
+		
+		$comment_text = esc_html__('comment',ANONY_TEXTDOM);
+		
+		if ( $num_comments != 1 ) {
+			
+			$comment_text = esc_html__('comments',ANONY_TEXTDOM);
+			
+		}
+		
+		$comments = '<a class="meta-text" href="' . esc_url(get_comments_link()) .'"> '. $num_comments.'</a><span class="meta-text single-meta-text">&nbsp;'.$comment_text.'&nbsp;</span>';
+	} else {
+		$comments = '<span class="meta-text single-meta-text">'.esc_html__('Comments-off',ANONY_TEXTDOM).'</span>';
+	}
+	return $comments;
+}
+
+/**
  * Collects common post data
  * @return array
  */
