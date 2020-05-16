@@ -20,20 +20,20 @@ if ( $recent->have_posts() ) {
 		$temp['meta']      = 
 				[
 					'calender' => esc_html(get_the_date('Y-m-d')),
-					'eye'      => anony_get_post_views(get_the_ID()),
+					'eye'      => esc_html(anony_get_post_views(get_the_ID())),
 					'comment'  => comments_number( 
 										esc_html__('No comments',ANONY_TEXTDOM),
 										esc_html__('One comment',ANONY_TEXTDOM),
-										'%'.__('comments',ANONY_TEXTDOM) 
+										'%'.esc_html__('comments',ANONY_TEXTDOM) 
 									),
 				];
 		$data[] = $temp;
-
-		$temp =[];
 	}
 
 	wp_reset_postdata();
 }
+
+if(empty($data)) return;
 
 include(locate_template( 'templates/recent-posts.view.php', false, false ));
 ?>
