@@ -63,7 +63,7 @@ get_header( );?>
  
 		<?php endif;
 
-		if ( $have_posts ) :?>
+		if ( $posts ) :?>
 			<h3 class="anony-cat-section-title">
 				<?= '--- '.$cat_name.' / '.$page_title.' ---'?>
 			</h3>
@@ -77,8 +77,8 @@ get_header( );?>
 				include (locate_template( 'templates/blog-post.view.php', false, false ));
 
 			endforeach;
-		endif;
-	?>
+		endif;?>
+		
 	    </div>
 
 	   <?php get_sidebar();?>
