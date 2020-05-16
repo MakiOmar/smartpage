@@ -631,10 +631,10 @@ $anonyOptions = anonyOpt();
 });
 
 //controls add query strings to scripts
-add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
+//add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
 
 //controls add query strings to styles
-add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
+//add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
 
 
 /**
