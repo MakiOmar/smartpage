@@ -191,11 +191,11 @@ $sections['sidebars']= array(
 							'type'    => 'radio_img',
 							'validate'=> 'multiple_options',
 							'options' => array(
-											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/left-sidebar.png'),
+											is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/left-sidebar.png'),
 	
-											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/right-sidebar.png'),
+											is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/right-sidebar.png'),
 											
-											'no-sidebar' 	=> array('title' => esc_html__('Full width', ANONY_TEXTDOM), 'img' => ANONY_OPTIONS_URI.'imgs/icons/full-width.png'),
+											'no-sidebar' 	=> array('title' => esc_html__('Full width', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/full-width.png'),
 										),
 							'default'  => 'left-sidebar',
 							'desc'  => esc_html__('This controls the direction of the main sidebar', ANONY_TEXTDOM),
