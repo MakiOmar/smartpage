@@ -9,9 +9,8 @@ if (!function_exists('anonyOpt')) {
 	 * @param  string $optName Options name in DB
 	 * @return object
 	 */
-	function anonyOpt($optGroup = 'Anony_Options'){
-		if (class_exists('ANONY_Options_Model')) return ANONY_Options_Model::get_instance($optGroup);
-		return new stdClass();
+	function anonyOpt($optGroup = 'Anony_options'){
+		return ANONY_Options_Model::get_instance($optGroup);
 	}
 }
 
@@ -46,7 +45,7 @@ if (!function_exists('anony_restrict_admin_access')) {
 			
 			exit;
 			
-		} 
+		}
 	}
 
 }
@@ -80,6 +79,7 @@ if (!function_exists('anony_hide_admin_bar')) {
 			show_admin_bar(false);
 
 		}
+		
 	}
 }
 
@@ -94,6 +94,7 @@ if (!function_exists('anony_display_ads')) {
 	 * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
 	 */
 	function anony_display_ads(){
+		/*
 		
 		$anonyOptions = anonyOpt();
 	
@@ -117,6 +118,8 @@ if (!function_exists('anony_display_ads')) {
 			}
 			 
 		}
+		
+		*/
 	}
 
 }
@@ -128,6 +131,7 @@ if (!function_exists('anony_display_ads')) {
  * @return void
  */
 function anony_get_correct_sidebar(){
+	
 	$anonyOptions = anonyOpt();
 
 	if(anonyGetOpt($anonyOptions, 'sidebar') == 'left-sidebar'){
@@ -135,6 +139,7 @@ function anony_get_correct_sidebar(){
 	}elseif(anonyGetOpt($anonyOptions, 'single_sidebar') == '1'){
 		get_sidebar('single');
 	}
+	
 }
 
 /**
@@ -204,6 +209,7 @@ function anony_comments_number() {
  * @return array
  */
 function anony_common_post_data(){
+	
 	$anonyOptions = anonyOpt();
 	$grid = anonyGetOpt($anonyOptions, 'posts_grid');
 	
@@ -234,4 +240,5 @@ function anony_common_post_data(){
 	}
 	
 	return $temp;
+	
 }
