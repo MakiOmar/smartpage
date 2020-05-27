@@ -70,11 +70,12 @@ add_action('init', function(){
 	anony_display_ads();
 }, 200);
 
+
 //controls add query strings to scripts/styles
 function anony_control_query_strings($src, $handle){
 	if(is_admin()) return $src;
 
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	$anonyOptions = anonyOpt();
 	
 	//Keep query string for these items
 	$neglected = array();
