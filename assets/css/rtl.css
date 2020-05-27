@@ -154,7 +154,7 @@ body{
 	font-family:'hsn_shahd_boldbold';
 }
 */
-/***Header***/
+
 .anony-search-form-toggle{
 	right: auto;
 	left: 0;
@@ -164,9 +164,6 @@ body{
     left: 15px;
 }
 
-/***End header**/
-
-/***body***/
 .anony-warning {
 	border-left: none;
 	border-right: 6px solid #1E1E1E;
@@ -186,9 +183,16 @@ body{
         -webkit-transform: skew(30deg, 0deg);
         transform: skew(30deg, 0deg);
 }
-/***End body***/
 
-/***Footer***/
+.anony-table-of-content{
+    float: right;
+    margin-right:0; 
+    border-right: 0;
+    margin-left: 10px;
+    
+    border-left: 1px solid;
+}
+
 #anony-page-scroll-wrapper{
 	right: auto;
 	left: 20px;

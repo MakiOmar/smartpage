@@ -2,6 +2,9 @@
 .anony-skew-bg::after,.page-numbers li,.active,.button, .anony-active-tab,.anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,.anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 !important;
 }
+.anony-post-info .anony-nothumb-post .anony-thumb-post-title{
+	border-bottom: 2px solid #ef1450;
+}
 .anony-section,#anony-slider-wrapper {
     border-top-color: #ef1450;
 }
