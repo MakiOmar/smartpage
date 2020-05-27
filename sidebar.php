@@ -22,6 +22,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 				esc_url($url)
 			);
 		}
-		get_template_part('templates/newsletters') ;
 	?>
 </div>

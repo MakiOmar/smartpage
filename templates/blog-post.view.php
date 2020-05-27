@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	<div class="anony-post-contents anony-blog-post anony-grid-col">
   
-	  	<div class="anony-post-info">
+	  	<div class="anony-post-info white-bg">
 	  
 		    <?php if( $thumb && $thumb_exists ){
 		

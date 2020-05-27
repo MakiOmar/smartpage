@@ -24,7 +24,7 @@
 
 			<div class="anony-grid-col-">
 
-				<header>
+				<header class="white-bg">
 
 					<?php include(locate_template('templates/header-top.view.php', false, false)) ;?>
 					

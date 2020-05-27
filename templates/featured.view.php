@@ -1,4 +1,4 @@
-<div id="anony-slider-wrapper">
+<div id="anony-slider-wrapper" class="white-bg">
 	<?php if($message !== '') : ?>
 		
 		<p><i class="fa fa-frown-o fa-4x"></i></p>

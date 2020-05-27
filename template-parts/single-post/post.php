@@ -11,15 +11,13 @@ $anonyOptions = anonyOpt();
 ?>
 <div class="anony-grid-col <?php echo (anonyGetOpt($anonyOptions, 'single_sidebar') == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
 
-<?php anony_breadcrumbs()?>
-
 <div class="anony-post-title-image">
 	<div class="anony-post-title-cover"></div>
 	<?php if(has_post_thumbnail()) the_post_thumbnail('full') ?>
 	<h1 class="anony-single_post_title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h1>
 </div>
 
- <div class="anony-post_meta meta">
+ <div class="anony-post_meta meta white-bg">
 	<div class="date">
 		<i class="fa fa-calendar"></i>
 		<span class="single-meta-text"><?php echo get_the_date() ?></span>
@@ -48,7 +46,7 @@ $anonyOptions = anonyOpt();
 			while (have_posts() ) { the_post();?>
 			<div class="anony-grid-col anony-post-contents anony-single_post">
 			  <div class="anony-post-info">
-				  <div class="anony-single-text">
+				  <div class="anony-single-text white-bg">
 					<?php the_content();?>
 					</div>
 				</div>
