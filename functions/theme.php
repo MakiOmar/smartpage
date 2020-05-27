@@ -52,17 +52,6 @@ add_filter('style_loader_tag', 'anony_remove_type_attr', 10, 2);
 //Remove type attribute from scripts.
 add_filter('script_loader_tag', 'anony_remove_type_attr', 10, 2);
 
-
-/**
- * Anonymous multilingual options
- * @return array of option group names
- */
-add_filter( 'anony_wpml_multilingual_options', function($options){
-	$options[] = ANONY_OPTIONS;	
-	return $options;
-} );
-
-
 // custom login logo tooltip
 add_filter('login_headertext', function(){
 	
@@ -79,13 +68,33 @@ add_action('init', function(){
 	anony_restrict_admin_access();
 	
 	anony_display_ads();
-});
+}, 200);
+
+//controls add query strings to scripts/styles
+function anony_control_query_strings($src, $handle){
+	if(is_admin()) return $src;
+
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	//Keep query string for these items
+	$neglected = array();
+	
+	if(!empty($anonyOptions->keep_query_string)){
+		$neglected = explode(',',$anonyOptions->keep_query_string);
+	}
+	
+	if($anonyOptions->query_string != '0' && !in_array( $handle, $neglected )){
+		$src = remove_query_arg('ver', $src);
+	}
+	return $src;
+	
+}
+
 
 //controls add query strings to scripts
-//add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
+add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
 
 //controls add query strings to styles
-//add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
-
+add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
 
 ?>
