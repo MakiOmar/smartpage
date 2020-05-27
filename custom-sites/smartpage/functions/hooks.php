@@ -11,7 +11,7 @@ add_filter('anony_post_types', function($custom_post_types){
 					'anony_download'=>
 						[
 							esc_html__('Download',ANONY_TEXTDOM), 
-							esc_html__('Download',ANONY_TEXTDOM)
+							esc_html__('Downloads',ANONY_TEXTDOM)
 						],
 						
 					'portfolio'=>
