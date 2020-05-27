@@ -1,7 +1,7 @@
 <?php
 header( "Content-type: text/css; charset: UTF-8" );
 
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 if(is_rtl()){
 
