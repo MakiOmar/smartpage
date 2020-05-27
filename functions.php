@@ -4,15 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 require_once(wp_normalize_path(get_template_directory() . '/config/config.php'));
 
-
-//Core hooks files
-$anonylibs = [
-	'posts'       =>'',
-];
-
-foreach($anonylibs as $anonylib=>$path){
-	require_once( ANONY_CORE_HOOKS_DIR . $path . $anonylib.'.php');
-}
+if (!defined('ANOENGINE')) return;
 
 //Functions files
 $anonylibs = [
@@ -55,5 +47,5 @@ require_once(SMPG_DIR .'/functions.php');
 
 //Just for testing purposes
 add_action('wp_footer', function(){
-
+	
 });
