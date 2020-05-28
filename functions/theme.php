@@ -9,6 +9,120 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author Makiomar
  * @link http://makiomar.com
  */
+//controls add query strings to scripts/styles
+function anony_control_query_strings($src, $handle){
+	if(is_admin()) return $src;
+
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	//Keep query string for these items
+	$neglected = array();
+	
+	if(!empty($anonyOptions->keep_query_string)){
+		$neglected = explode(',',$anonyOptions->keep_query_string);
+	}
+	
+	if($anonyOptions->query_string != '0' && !in_array( $handle, $neglected )){
+		$src = remove_query_arg('ver', $src);
+	}
+	return $src;
+	
+}
+
+if (!function_exists('anony_hide_admin_bar')) {
+	/**
+	 * Hide admin bar
+	 */
+	function anony_hide_admin_bar(){
+
+		$anonyOptions = ANONY_Options_Model::get_instance();
+
+		if ($anonyOptions->admin_bar != '0' && !current_user_can('administrator') && !is_admin()) {
+			
+			show_admin_bar(false);
+
+		}
+		
+	}
+}
+
+if (!function_exists('anony_display_ads')) {
+	
+	/**
+	 * Display theme options' ADs
+	 * 
+	 * Show ads hooked to custom hook.
+	 *
+	 * Hook name will be {location}_ad.<br>
+	 * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
+	 */
+	function anony_display_ads(){
+		
+		$anonyOptions = ANONY_Options_Model::get_instance();
+	
+		$anonyADs = array('one', 'two', 'three');
+
+		foreach($anonyADs as $adBlock){
+			
+			 $block = 'ad_block_'.$adBlock;
+			 $blockLoc = $block.'_location';
+			
+			if(isset($anonyOptions->$blockLoc) && !empty($anonyOptions->$blockLoc)){
+				
+				foreach($anonyOptions->$blockLoc as $loc){
+					
+					add_action($loc.'_ad', function() use($anonyOptions, $block){
+						echo $anonyOptions->$block;
+					});
+					
+				}
+				
+			}
+			 
+		}
+		
+	}
+
+}
+
+if (!function_exists('anony_restrict_admin_access')) {
+	
+	/**
+	 * Restrict admin access for non admins
+	 */
+	function anony_restrict_admin_access(){
+		//restrict admin access
+		if(!is_user_logged_in()) return;
+		
+		$anonyOptions = ANONY_Options_Model::get_instance();
+
+		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anonyOptions->not_admin_restricted != '0' ) {
+			
+			wp_redirect( home_url() );
+			
+			exit;
+			
+		}
+	}
+
+}
+
+if (!function_exists('anony_add_theme_support')) {
+	/**
+	 * Add theme support
+	 */
+	function anony_add_theme_support(){
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'custom-logo' );
+		add_theme_support( 'custom-header' );
+		add_theme_support( 'custom-background');
+		add_theme_support( 'post-thumbnails', array( 'post','anony_download' ) );
+		add_theme_support( 'customize-selective-refresh-widgets' );
+		add_theme_support( 'post-formats', array( 'gallery', 'quote', 'video', 'aside', 'image', 'link' ) );
+		add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+	}
+}
+
 
 add_action( 'after_setup_theme', function() {
 	//Add theme support
@@ -69,27 +183,6 @@ add_action('init', function(){
 	
 	anony_display_ads();
 }, 200);
-
-
-//controls add query strings to scripts/styles
-function anony_control_query_strings($src, $handle){
-	if(is_admin()) return $src;
-
-	$anonyOptions = ANONY_Options_Model::get_instance();
-	
-	//Keep query string for these items
-	$neglected = array();
-	
-	if(!empty($anonyOptions->keep_query_string)){
-		$neglected = explode(',',$anonyOptions->keep_query_string);
-	}
-	
-	if($anonyOptions->query_string != '0' && !in_array( $handle, $neglected )){
-		$src = remove_query_arg('ver', $src);
-	}
-	return $src;
-	
-}
 
 
 //controls add query strings to scripts
