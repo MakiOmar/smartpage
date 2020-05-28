@@ -9,7 +9,7 @@ $anonyOptions = ANONY_Options_Model::get_instance();
 		do_action('post_ad');
 	}
 ?>
-<div class="anony-grid-col <?php echo (anonyGetOpt($anonyOptions, 'single_sidebar') == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
+<div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
 
 <div class="anony-post-title-image">
 	<div class="anony-post-title-cover"></div>

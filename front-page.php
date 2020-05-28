@@ -2,13 +2,13 @@
 
 $anonyOptions = ANONY_Options_Model::get_instance();
 
-$grid = anonyGetOpt($anonyOptions, 'posts_grid');
+$grid = $anonyOptions->posts_grid;
 
 $slider = false;
 
-$revSlider = anonyGetOpt($anonyOptions, 'rev_slider');
+$revSlider = $anonyOptions->rev_slider;
 
-$homeSlider = anonyGetOpt($anonyOptions, 'home_slider');
+$homeSlider = $anonyOptions->home_slider;
 
 $chooseSlider = esc_html__("You didn't choose a slider, Please select one from theme options page");
 

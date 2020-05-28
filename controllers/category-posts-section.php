@@ -8,9 +8,9 @@ $anonyOptions = ANONY_Options_Model::get_instance();
 	
 $args = array('post_type' => 'post', 'posts_per_page' => 4);
 
-$sliderOpt   = anonyGetOpt($anonyOptions, 'slider');
-$featuredCat = anonyGetOpt($anonyOptions, 'featured_cat');
-$featuredTax = anonyGetOpt($anonyOptions, 'featured_tax');
+$sliderOpt   = $anonyOptions->slider;
+$featuredCat = $anonyOptions->featured_cat;
+$featuredTax = $anonyOptions->featured_tax;
 	
 if($sliderOpt != 'rev-slider'){
 	

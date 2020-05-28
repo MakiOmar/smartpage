@@ -3,20 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-if (!function_exists('anonyGetOpt')) {
-	/**
-	 * Get option value from an options group 
-	 * @param object $optObject Object of ANONY_Options_Model
-	 * @param string $optName   Option name
-	 * @param mixed  $notSet    what to return if not set
-	 * @return type
-	 */
-	function anonyGetOpt($optObject, $optName , $notSet = ''){
-		if(isset($optObject->$optName)) return $optObject->$optName;
-		return $notSet;
-	}
-}
-
 if (!function_exists('anony_restrict_admin_access')) {
 	
 	/**
@@ -28,7 +14,7 @@ if (!function_exists('anony_restrict_admin_access')) {
 		
 		$anonyOptions = ANONY_Options_Model::get_instance();
 
-		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && anonyGetOpt($anonyOptions, 'not_admin_restricted') != '0' ) {
+		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anonyOptions->not_admin_restricted != '0' ) {
 			
 			wp_redirect( home_url() );
 			
@@ -63,7 +49,7 @@ if (!function_exists('anony_hide_admin_bar')) {
 
 		$anonyOptions = ANONY_Options_Model::get_instance();
 
-		if (anonyGetOpt($anonyOptions, 'admin_bar') != '0' && !current_user_can('administrator') && !is_admin()) {
+		if ($anonyOptions->admin_bar != '0' && !current_user_can('administrator') && !is_admin()) {
 			
 			show_admin_bar(false);
 
@@ -121,9 +107,9 @@ function anony_get_correct_sidebar(){
 	
 	$anonyOptions = ANONY_Options_Model::get_instance();
 
-	if(anonyGetOpt($anonyOptions, 'sidebar') == 'left-sidebar'){
+	if($anonyOptions->sidebar == 'left-sidebar'){
 		get_sidebar();
-	}elseif(anonyGetOpt($anonyOptions, 'single_sidebar') == '1'){
+	}elseif($anonyOptions->single_sidebar == '1'){
 		get_sidebar('single');
 	}
 	
@@ -198,7 +184,7 @@ function anony_comments_number() {
 function anony_common_post_data(){
 	
 	$anonyOptions = ANONY_Options_Model::get_instance();
-	$grid = anonyGetOpt($anonyOptions, 'posts_grid');
+	$grid = $anonyOptions->posts_grid;
 	
 	$temp['id']        = get_the_ID();
 	$temp['title']     = esc_html(get_the_title());

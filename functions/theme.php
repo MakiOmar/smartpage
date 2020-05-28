@@ -57,7 +57,7 @@ add_filter('login_headertext', function(){
 	
 	$anonyOptions = ANONY_Options_Model::get_instance();
 	
-	if(anonyGetOpt($anonyOptions, 'change_login_title') != '0'){
+	if($anonyOptions->change_login_title != '0'){
 		
 		return get_bloginfo();
 	}

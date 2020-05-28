@@ -28,12 +28,12 @@ $args = array(
 		);
 
 		
-if(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-cat' && anonyGetOpt($anonyOptions, 'featured_cat') != '0'){
+if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_cat != '0'){
 	
 	$FreaturedCat = get_term_by( 
 						'id', 
-						anonyGetOpt($anonyOptions, 'featured_cat'),
-						anonyGetOpt($anonyOptions, 'featured_tax')
+						$anonyOptions->featured_cat,
+						$anonyOptions->featured_tax
 					);
 
 	if($FreaturedCat){
@@ -42,7 +42,7 @@ if(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-cat' && anonyGetOpt
 		$message = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
 	}
 
-}elseif(anonyGetOpt($anonyOptions, 'slider_content') == 'featured-post'){
+}elseif($anonyOptions->slider_content == 'featured-post'){
 	$args['meta_key'] = 'anony__set_as_featured';
 }	
 

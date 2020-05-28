@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $anonyOptions = ANONY_Options_Model::get_instance();
 
-$copyright = esc_html(anonyGetOpt($anonyOptions, 'copyright'));
+$copyright = esc_html($anonyOptions->copyright);
 
 $ajaxUrl = ANONY_WPML_HELP::getAjaxUrl();
 

@@ -48,9 +48,9 @@ function anony_styles(){
 
 	$dynamic_deps = ['anony-main'];
 	
-	if(anonyGetOpt($anonyOptions, 'color_skin') !== 'custom' && !empty(anonyGetOpt($anonyOptions, 'color_skin'))){
+	if($anonyOptions->color_skin !== 'custom' && !empty($anonyOptions->color_skin)){
 
-		$skin = anonyGetOpt($anonyOptions, 'color_skin');
+		$skin = $anonyOptions->color_skin;
 
 		$dynamic_deps = [$skin.'-skin'];
 
