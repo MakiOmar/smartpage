@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			
 				<div class="anony-author-avatar">
 				
-					<?= $gravatar ?>
+					<img src="<?= $gravatar ?>"/>
 					
 				</div>
 				
