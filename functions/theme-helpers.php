@@ -94,7 +94,6 @@ if (!function_exists('anony_display_ads')) {
 	 * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
 	 */
 	function anony_display_ads(){
-		/*
 		
 		$anonyOptions = anonyOpt();
 	
@@ -119,7 +118,6 @@ if (!function_exists('anony_display_ads')) {
 			 
 		}
 		
-		*/
 	}
 
 }
