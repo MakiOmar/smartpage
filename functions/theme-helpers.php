@@ -102,7 +102,7 @@ function anony_common_post_data(){
 	$temp['thumbnail_img'] = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 	$temp['date']      = get_the_date();
 	$temp['permalink'] = esc_url(get_the_permalink());
-	$temp['gravatar']  = ANONY_THEME_URI.'/images/user.png';
+	$temp['gravatar']  = get_avatar(get_the_author_meta('ID'),32);
 	$temp['author']    = sprintf(esc_html__( 'By %s', ANONY_TEXTDOM ), get_the_author());
 	$temp['read_more']         = esc_html__('Read more',ANONY_TEXTDOM);
 	$temp['grid']      = $grid;
