@@ -227,7 +227,7 @@
 		visibility: visible;
 		opacity: 1;
 	}
-	.active, #anony-main_nav_con{
+	.active,.active a, #anony-main_nav_con{
 		border-radius: 10px;
 	}
 	#anony-main-menu-con{
