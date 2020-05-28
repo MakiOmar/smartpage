@@ -19,53 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_action( 'after_switch_theme', 'flush_rewrite_rules' );
 
-//Add tinymce to the comment form
-add_filter( 'comment_form_defaults', function( $args ) {
-	ob_start();
-	
-	wp_editor( '', 'comment', array(
-		
-		//'media_buttons' => true, // show insert/upload button(s) to users with permission
-		
-		'textarea_rows' => '10', // re-size text area
-		
-		'dfw' => true, // replace the default full screen with DFW (WordPress 3.4+)
-		
-		'tinymce' => array(
-		
-        	'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,bullist,numlist,code,blockquote,link,unlink,outdent,indent,|,undo,redo,fullscreen',
-		
-  	  	),
-		
-		'quicktags' => array(
-		
- 	       'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,close'
-		
-	    )
-		
-	) );
-	
-	$args['comment_field'] = ob_get_clean();
-	
-	return $args;
-	
-} );
-
-//Initialize tinymce
-add_action('wp_footer', function(){
-		if(is_single()){?>
-				<script type="text/javascript">
-					if(typeof tinymce !== 'undefined'){
-						tinymce.init({
-							selector: '#anony-comment',
-						});
-					}
-
-				</script>
-		<?php }
-
- },999);
-
 //Filter reply link
 add_filter('comment_reply_link', function($link, $args, $comment, $post){
 	if(wp_doing_ajax()){
