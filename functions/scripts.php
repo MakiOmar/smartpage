@@ -101,11 +101,7 @@ function anony_scripts(){
 	$scripts = array();
 
 	if(is_archive()){
-		$scripts = array_merge($scripts, array('jquery.contentcarousel', 'jquery.easing.1.3'));
-	}
-
-	if(is_home() || is_front_page()){
-		$scripts = array_merge($scripts, array('jquery.mousewheel'));
+		$scripts = array_merge($scripts, array('jquery.mousewheel', 'jquery.contentcarousel', 'jquery.easing.1.3'));
 	}
 
 	
