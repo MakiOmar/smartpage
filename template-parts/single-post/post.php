@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 	anony_get_correct_sidebar();
 
 	if(has_action('post_ad')){

@@ -1,6 +1,6 @@
 <?php 
 
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 $grid = anonyGetOpt($anonyOptions, 'posts_grid');
 

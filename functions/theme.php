@@ -55,7 +55,7 @@ add_filter('script_loader_tag', 'anony_remove_type_attr', 10, 2);
 // custom login logo tooltip
 add_filter('login_headertext', function(){
 	
-	$anonyOptions = anonyOpt();
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	
 	if(anonyGetOpt($anonyOptions, 'change_login_title') != '0'){
 		
@@ -75,7 +75,7 @@ add_action('init', function(){
 function anony_control_query_strings($src, $handle){
 	if(is_admin()) return $src;
 
-	$anonyOptions = anonyOpt();
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	
 	//Keep query string for these items
 	$neglected = array();

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 	
 $args = array('post_type' => 'post', 'posts_per_page' => 4);
 

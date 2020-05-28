@@ -36,7 +36,7 @@ if(defined('ANONY_MENU')){
 
 $languages_menu = anony_navigation('anony-languages-menu','');
 
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 $socials_follow = 
 	[

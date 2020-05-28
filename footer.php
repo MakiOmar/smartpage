@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 $copyright = esc_html(anonyGetOpt($anonyOptions, 'copyright'));
 

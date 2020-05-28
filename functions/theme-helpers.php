@@ -3,17 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-if (!function_exists('anonyOpt')) {
-	/**
-	 * instantiate options object
-	 * @param  string $optName Options name in DB
-	 * @return object
-	 */
-	function anonyOpt($optGroup = 'Anony_options'){
-		return ANONY_Options_Model::get_instance($optGroup);
-	}
-}
-
 if (!function_exists('anonyGetOpt')) {
 	/**
 	 * Get option value from an options group 
@@ -37,7 +26,7 @@ if (!function_exists('anony_restrict_admin_access')) {
 		//restrict admin access
 		if(!is_user_logged_in()) return;
 		
-		$anonyOptions = anonyOpt();
+		$anonyOptions = ANONY_Options_Model::get_instance();
 
 		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && anonyGetOpt($anonyOptions, 'not_admin_restricted') != '0' ) {
 			
@@ -72,7 +61,7 @@ if (!function_exists('anony_hide_admin_bar')) {
 	 */
 	function anony_hide_admin_bar(){
 
-		$anonyOptions = anonyOpt();
+		$anonyOptions = ANONY_Options_Model::get_instance();
 
 		if (anonyGetOpt($anonyOptions, 'admin_bar') != '0' && !current_user_can('administrator') && !is_admin()) {
 			
@@ -95,7 +84,7 @@ if (!function_exists('anony_display_ads')) {
 	 */
 	function anony_display_ads(){
 		
-		$anonyOptions = anonyOpt();
+		$anonyOptions = ANONY_Options_Model::get_instance();
 	
 		$anonyADs = array('one', 'two', 'three');
 
@@ -130,7 +119,7 @@ if (!function_exists('anony_display_ads')) {
  */
 function anony_get_correct_sidebar(){
 	
-	$anonyOptions = anonyOpt();
+	$anonyOptions = ANONY_Options_Model::get_instance();
 
 	if(anonyGetOpt($anonyOptions, 'sidebar') == 'left-sidebar'){
 		get_sidebar();
@@ -208,7 +197,7 @@ function anony_comments_number() {
  */
 function anony_common_post_data(){
 	
-	$anonyOptions = anonyOpt();
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	$grid = anonyGetOpt($anonyOptions, 'posts_grid');
 	
 	$temp['id']        = get_the_ID();

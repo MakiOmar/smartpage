@@ -17,7 +17,7 @@ add_filter('anony_wpml_multilingual_options', function($options){
 });
 
 add_action( 'init', function(){
-	if(get_option(ANONY_OPTIONS) ) $anonyOptions = anonyOpt();
+	if(get_option(ANONY_OPTIONS) ) $anonyOptions = ANONY_Options_Model::get_instance();
 
 
 	// Navigation elements

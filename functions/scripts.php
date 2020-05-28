@@ -13,7 +13,7 @@ function anoe_dynamic_css() {
 
 function anony_styles(){
 	
-	$anonyOptions = anonyOpt();
+	$anonyOptions = ANONY_Options_Model::get_instance();
 	
 	$styles = array('main','responsive');
 		

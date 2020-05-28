@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 
-$anonyOptions = anonyOpt();
+$anonyOptions = ANONY_Options_Model::get_instance();
 
 $message = '';
 
