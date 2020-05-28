@@ -27,6 +27,10 @@ add_action( 'init', function(){
 			'title' => esc_html__('Getting started', ANONY_TEXTDOM),
 			'sections' => array('general', 'advertisements'),
 		),
+		// Performance --------------------------------------------
+		'Performance' => array(
+			'title' => esc_html__('Performance', ANONY_TEXTDOM),
+		),
 		// Slider --------------------------------------------
 		'slider' => array(
 			'title' => esc_html__('Slider', ANONY_TEXTDOM),
@@ -66,6 +70,7 @@ add_action( 'init', function(){
 			'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
 			//'sections' => array('socials'),
 		),
+		
 	);
 
 	//Sectoins
@@ -84,6 +89,68 @@ add_action( 'init', function(){
 								'validate'=> 'no_html',
 								'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
 							),						
+						)
+	);
+	
+	$sections['Performance']= array(
+			'title' => esc_html__('Performance', ANONY_TEXTDOM),
+			'icon'  => 'x',
+			'fields' => array(
+							array(
+								'id'      => 'query_string',
+								'title'   => esc_html__('Remove query string', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Removes query string from styles/scripts and help speed up your website', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'keep_query_string',
+								'title'   => esc_html__('Keep query string', ANONY_TEXTDOM),
+								'type'    => 'text',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', ANONY_TEXTDOM)
+							),	
+							
+							array(
+								'id'      => 'gravatar',
+								'title'   => esc_html__('Disable gravatar.com', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Stops getting gravatar from gravatar.com', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'disable_embeds',
+								'title'   => esc_html__('Disable WP embeds', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Disables WP embeds completely', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'enable_singular_embeds',
+								'title'   => esc_html__('Enable WP embeds on singular', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Enables WP embeds on singular pages (e.g. post/page). Will override (disable WP embeds) option', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'disable_emojis',
+								'title'   => esc_html__('Disable WP emojis', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Disables WP emojis completely', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'enable_singular_emojis',
+								'title'   => esc_html__('Enable WP emojis on singular', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Enables WP emojis on singular pages (e.g. post/page). Will override (disable WP emojis) option', ANONY_TEXTDOM)
+							)				
 						)
 	);
 
@@ -483,21 +550,6 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('Changes the default header title in WordPress login page to be your site title', ANONY_TEXTDOM)
-							),
-							array(
-								'id'      => 'query_string',
-								'title'   => esc_html__('Remove query string', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Removes query string from styles/scripts and help speed up your website', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'keep_query_string',
-								'title'   => esc_html__('Keep query string', ANONY_TEXTDOM),
-								'type'    => 'text',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', ANONY_TEXTDOM)
 							),
 							array(
 								'id'      => 'cats_in_nav',
