@@ -6,8 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 $langAtts    = get_language_attributes();
 $contentType = get_bloginfo( 'html_type' );
 $charSet     = get_bloginfo( 'charset' );
+$blogname    = get_bloginfo();
 $bodyClass   = 'class="' . join( ' ', get_body_class() ) . '"';
 $logo        = anony_get_custom_logo('orange');
+$logo_url    = anony_get_custom_logo_url('orange');
 $nav         = anony_navigation('anony-main-menu');
 
 /** 

@@ -17,6 +17,13 @@ clean(document);
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
+
+	setTimeout(function(){
+		$('body').css({'overflow': 'scroll', 'background-color': '#fff'});
+		$('#anony-preloader').hide();
+		
+	}, 2000);
+	
 	var SmpgAjaxUrl = anonyLoca.ajaxURL;
 	
 	var slidesWidth = 0;
