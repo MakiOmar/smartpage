@@ -43,6 +43,23 @@ function anony_get_custom_logo($color='main') {
 	return apply_filters('anony_get_custom_logo', $logo);
 
 }
+
+/**
+ * get custom logo url.
+ */
+function anony_get_custom_logo_url($color='main') {	
+	if ( has_custom_logo() ) {
+		$custom_logo_id = get_theme_mod( 'custom_logo' );
+		
+		$logo = wp_get_attachment_image_url( $custom_logo_id, 'full' );	
+	}else{
+		$logo = ANONY_THEME_URI.'/images/logo-'.$color.'.png';
+	}
+	
+	
+	return apply_filters('anony_get_custom_logo_url', $logo);
+
+}
 /**
  * Remove type attribute from styles/scripts.
  *
