@@ -8,6 +8,7 @@
          url('../../fonts/ARBfonts/droidkufi-regular-webfont.svg#droid_arabic_kufiregular') format('svg');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 
 }
 
@@ -20,6 +21,7 @@
          url('../../fonts/ARBfonts/droidkufi-bold-webfont.svg#droid_arabic_kufibold') format('svg');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 
 }
 @font-face {
@@ -31,6 +33,7 @@
          url('../../fonts/ARBfonts/thuluth-decorated2-webfont.svg#decotypethuluthiiregular') format('svg');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 
 }
 @font-face {
@@ -42,6 +45,7 @@
          url('../../fonts/ARBfonts/shahd-bold-webfont.svg#hsn_shahd_boldbold') format('svg');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 
 }
 @font-face{font-family:'ae_alarabiyaregular';
@@ -52,7 +56,10 @@ src:url('../../fonts/ARBfonts/ae_alarabiya-webfont.eot?#iefix') format("embedded
     url('../../fonts/ARBfonts/ae_alarabiya-webfont.ttf') format("truetype"),
     url('../../fonts/ARBfonts/ae_alarabiya-webfont.svg#ae_alarabiyaregular') format("svg");
     font-weight:400;
-    font-style:normal}
+    font-style:normal;
+    font-display: swap;
+}
+    
 
 @font-face{font-family:'ae_alhorregular';
 src:url('../../fonts/ARBfonts/ae_alhor-webfont.eot');
@@ -60,7 +67,7 @@ src:url('../../fonts/ARBfonts/ae_alhor-webfont.eot?#iefix') format("embedded-ope
 url('../../fonts/ARBfonts/ae_alhor-webfont.woff2') format("woff2"),
 url('../../fonts/ARBfonts/ae_alhor-webfont.woff') format("woff"),
 url('../../fonts/ARBfonts/ae_alhor-webfont.ttf') format("truetype"),
-url('../../fonts/ARBfonts/ae_alhor-webfont.svg#ae_alhorregular') format("svg");font-weight:400;font-style:normal}
+url('../../fonts/ARBfonts/ae_alhor-webfont.svg#ae_alhorregular') format("svg");font-weight:400;font-style:normal;font-display: swap;}
 
 @font-face{font-family:'ae_almohanadregular';
 src:url('../../fonts/ARBfonts/ae_almohanad-webfont.eot');
@@ -68,7 +75,7 @@ src:url('../../fonts/ARBfonts/ae_almohanad-webfont.eot?#iefix') format("embedded
 url('../../fonts/ARBfonts/ae_almohanad-webfont.woff2') format("woff2"),
 url('../../fonts/ARBfonts/ae_almohanad-webfont.woff') format("woff"),
 url('../../fonts/ARBfonts/ae_almohanad-webfont.ttf') format("truetype"),
-url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format("svg");font-weight:400;font-style:normal}
+url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format("svg");font-weight:400;font-style:normal;font-display: swap;}
 
 @font-face {
     font-family: 'smartmanartregular';
@@ -79,6 +86,7 @@ url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format(
          url('../../fonts/ARBfonts/smartman-webfont.svg#smartmanartregular') format('svg');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 
 }
 @font-face {
@@ -89,7 +97,7 @@ url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format(
          url('../../fonts/ARBfonts/kawkabmono-regular-webfont.svg#kawkab_monoregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
+    font-display: swap;
 }
 
 @font-face {
@@ -101,7 +109,7 @@ url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format(
          url('../../fonts/ARBfonts/neckar-webfont.svg#anegaarregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
+    font-display: swap;
 }
 @font-face {
     font-family: 'zahraarabic-regularregular';
@@ -112,7 +120,7 @@ url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format(
          url('../../fonts/ARBfonts/zahra-webfont.svg#zahraarabic-regularregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
+    font-display: swap;
 }
 @font-face {
     font-family: 'harmattan-regularregular';
@@ -123,7 +131,7 @@ url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format(
          url('../../fonts/ARBfonts/harmattan-webfont.svg#harmattan-regularregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
+    font-display: swap;
 }
 
 
@@ -138,7 +146,7 @@ url('../../fonts/ARBfonts/ae_almohanad-webfont.svg#ae_almohanadregular') format(
          url('../../fonts/ARBfonts/dubai-dubi.svg#dubairegular') format('svg');
     font-weight: normal;
     font-style: normal;
-
+    font-display: swap;
 }
 html{
     direction: rtl;
