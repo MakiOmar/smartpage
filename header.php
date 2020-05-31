@@ -21,10 +21,13 @@ $user_nav = '';
 
 if(defined('ANONY_MENU')){
 	$uc_menu = get_term_by('slug', ANONY_MENU ,'nav_menu');
-	$uc_menu_translation  = ANONY_TERM_HELP::getTermBy($uc_menu->term_id, 'nav_menu');
 	
-	if($uc_menu && !is_null($uc_menu_translation)){
-		$user_nav = wp_nav_menu(['menu' => $uc_menu_translation->slug , 'fallback_cb' => false, 'echo' => false]);
+	if($uc_menu){
+		$uc_menu_translation  = ANONY_TERM_HELP::getTermBy($uc_menu->term_id, 'nav_menu');
+		
+		if(!is_null($uc_menu_translation)){
+			$user_nav = wp_nav_menu(['menu' => $uc_menu_translation->slug , 'fallback_cb' => false, 'echo' => false]);
+		}
 	}
 }else{
 	$uc_menu = get_term_by('slug', 'anony-user-menu' ,'nav_menu');
