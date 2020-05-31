@@ -104,10 +104,18 @@ if (!function_exists('anony_add_theme_support')) {
 	}
 }
 
+function anony_thumbs_sizes() {
+    add_image_size( 'category-post-thumb', 495); // 300 pixels wide (and unlimited height)
+    add_image_size( 'popular-post-thumb', 60, 60 , true); // 60*60 pixels and crop
+}
 
 add_action( 'after_setup_theme', function() {
+	
 	//Add theme support
 	anony_add_theme_support();
+	
+	//set post thumbnail sizes
+	anony_thumbs_sizes();
 	
 	//Load Text Domain
 	load_theme_textdomain(ANONY_TEXTDOM, ANONY_LANG_DIR);
