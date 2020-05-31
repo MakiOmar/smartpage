@@ -28,11 +28,14 @@ if(defined('ANONY_MENU')){
 	}
 }else{
 	$uc_menu = get_term_by('slug', 'anony-user-menu' ,'nav_menu');
-	$uc_menu_translation  = ANONY_TERM_HELP::getTermBy($uc_menu->term_id, 'nav_menu');
+	
+	if($uc_menu){
+		$uc_menu_translation  = ANONY_TERM_HELP::getTermBy($uc_menu->term_id, 'nav_menu');
 
-	if($uc_menu && !is_null($uc_menu_translation)){
-		$user_nav = anony_navigation('anony-user-menu');
-	}
+		if( !is_null($uc_menu_translation)){
+			$user_nav = anony_navigation('anony-user-menu');
+		}
+	}	
 }
 
 
