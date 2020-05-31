@@ -150,6 +150,14 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('Enables WP emojis on singular pages (e.g. post/page). Will override (disable WP emojis) option', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'disable_gutenburg_scripts',
+								'title'   => esc_html__('Disable Gutenburg editor scripts', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('If your using classic editor, enable this to remove unwanted Gutenburg\'s editor scripts', ANONY_TEXTDOM)
 							)				
 						)
 	);
