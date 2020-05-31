@@ -18,13 +18,13 @@ $message = '';
 
 $args = array(
 			'posts_per_page' => 5,
-			'orderby'        => 'rand',
-			'meta_query' => [
-						        [
-						         'key' => '_thumbnail_id',
-						         'compare' => 'EXISTS'
-						        ],
-						    ]
+			'order'          => 'ASC',
+			'meta_query'     => [
+							        [
+							         'key' => '_thumbnail_id',
+							         'compare' => 'EXISTS'
+							        ],
+							    ]
 		);
 
 		
