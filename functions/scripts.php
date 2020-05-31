@@ -17,7 +17,7 @@ function anony_styles(){
 	
 	$styles = array('main','responsive');
 		
-	$styles_libs = ['font-awesome', 'prettyPhoto'];
+	$styles_libs = ['font-awesome.min', 'prettyPhoto'];
 	
 	$styles = array_merge($styles, $styles_libs);
 	
@@ -138,3 +138,52 @@ add_action('wp_enqueue_scripts',function() {
 	anony_scripts();
 
 });
+
+
+add_action( 'wp_head', function(){?>
+	
+	<!-- Head styles -->
+	<style type="text/css">
+		@font-face{
+			font-family:'FontAwesome';
+			src:url('<?= ANONY_THEME_URI ?>/fonts/fontawesome-webfont.eot?v=4.7.0');
+			src:url('<?= ANONY_THEME_URI ?>/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+			    url('<?= ANONY_THEME_URI ?>/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+			    url('<?= ANONY_THEME_URI ?>/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+			    url('<?= ANONY_THEME_URI ?>/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+			    url('<?= ANONY_THEME_URI ?>/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+			    font-weight:normal;
+			    font-style:normal;
+			    font-display: fallback; /* Fix Ensure text remains visible during webfont load */
+			}
+			
+		body{
+			overflow: hidden;
+			background-color: rgba(208,208,208,1.00)!important
+		}
+	   #anony-preloader{
+			position: absolute;
+		   width: 100%;
+		   height: 100vh;
+		   background: #fff;
+		   z-index: 9999;
+		   background-color: rgb(249, 249, 249)
+		}
+		.anony-loader-img{
+			position: absolute;
+			right: 0;
+			left: 0;
+			margin: auto;
+			top: 35%;
+			animation: 1.8s infinite heartbeat;
+		}
+		@keyframes heartbeat {
+		  0% { transform: scale(1); }
+		  25% { transform: scale(1.05); }
+		  50% { transform: scale(1); }
+		  75% { transform: scale(1.05); }
+		  100% { transform: scale(1); }
+		}
+	</style>
+	
+<?php } );
