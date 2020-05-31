@@ -182,7 +182,7 @@ add_action( 'init', function(){
 								'title'   => esc_html__('Woocommerce shop only scripts/styles', ANONY_TEXTDOM),
 								'type'    => 'switch',
 								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Only allow woocommerce scripts/styles on shop related pages', ANONY_TEXTDOM)
+								'desc'    =>esc_html__('Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', ANONY_TEXTDOM)
 							)				
 						)
 	);
