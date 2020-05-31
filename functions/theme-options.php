@@ -166,6 +166,15 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('If your website loads slowly because of AJAX css, enable this', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'cf7_scripts',
+								'title'   => esc_html__('Contact form 7 scripts/styles', ANONY_TEXTDOM),
+								'type'    => 'select',
+								'options' => ANONY_POST_HELP::getPagesIdsTitles(),
+								'validate'=> 'multiple_options',
+								'desc'    =>esc_html__('Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', ANONY_TEXTDOM)
 							)				
 						)
 	);

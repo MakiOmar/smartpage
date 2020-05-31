@@ -313,3 +313,27 @@ add_action( 'template_redirect', function () {
 	anony_disable_wp_emojis();
 	
 }, 9999 );
+
+/**
+ * Only loads contact form 7 scripts/styles if needed
+ */
+function anony_load_cf7_scripts($return){
+	if(!is_page()) return '__return_false';
+	
+	global $post;
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if(!$anonyOptions->cf7_scripts || $anonyOptions->cf7_scripts == '' || intval($anonyOptions->cf7_scripts) !== $post->ID ) return $return;
+	
+	setup_postdata($post);
+	
+	$content = get_the_content();
+	
+	if (!has_shortcode(  $content, 'contact-form-7' )) return '__return_false';
+    
+    return $return;
+}
+
+add_filter( 'wpcf7_load_js', 'anony_load_cf7_scripts', 11 );
+add_filter( 'wpcf7_load_css', 'anony_load_cf7_scripts', 11 );
