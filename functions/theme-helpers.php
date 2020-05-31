@@ -115,7 +115,7 @@ function anony_common_post_data(){
 	$temp['has_category']      = has_category();
 	$temp['thumb']     = has_post_thumbnail();
 	$temp['thumb_exists']      = ANONY_LINK_HELP::curlUrlExists(get_the_post_thumbnail_url(get_the_ID()));
-	$temp['thumb_img']     = get_the_post_thumbnail(get_the_ID(), 'full');
+	$temp['thumb_img']     = get_the_post_thumbnail(get_the_ID(), 'category-post-thumb');
 	$temp['thumbnail_img'] = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 	$temp['date']      = get_the_date();
 	$temp['permalink'] = esc_url(get_the_permalink());
