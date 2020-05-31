@@ -50,7 +50,7 @@ if (empty($data)) return;
 $sec_class = (is_front_page() || is_home()) ? ' section-front-page' : '';
 $sec_title = esc_html__('Suggested downloads',ANONY_TEXTDOM);
 $downloads_text = esc_html__('Downloads',ANONY_TEXTDOM);
-$default_thumb = get_theme_file_uri() . '/images/temporary-book-bg.jpg';
+$default_thumb = get_theme_file_uri() . '/images/temporary-bg.jpg';
 
 wp_enqueue_script('anony-download');
 
