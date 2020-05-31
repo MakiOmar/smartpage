@@ -3,6 +3,26 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+//Dequeue style
+add_action( 'wp_print_styles',  function(){
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+    $dequeued_styles = [
+            'wpml-tm-admin-bar', 
+        ];
+        
+    if($anonyOptions->disable_gutenburg_scripts == '1'){
+    	$dequeued_styles = array_merge($dequeued_styles, ['wp-block-library', 'wp-block-library-theme', 'wc-block-style'] );
+    }
+
+    foreach($dequeued_styles as $style){
+        wp_dequeue_style( $style );
+        wp_deregister_style( $style );
+    }
+    
+}, 99);
+
+
 add_action('wp_ajax_anoe_dynamic_css', 'anoe_dynamic_css');
 add_action('wp_ajax_nopriv_anoe_dynamic_css', 'anoe_dynamic_css');
 
