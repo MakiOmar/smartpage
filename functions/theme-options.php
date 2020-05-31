@@ -175,6 +175,14 @@ add_action( 'init', function(){
 								'options' => ANONY_POST_HELP::getPagesIdsTitles(),
 								'validate'=> 'multiple_options',
 								'desc'    =>esc_html__('Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'wc_shop_only_scripts',
+								'title'   => esc_html__('Woocommerce shop only scripts/styles', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Only allow woocommerce scripts/styles on shop related pages', ANONY_TEXTDOM)
 							)				
 						)
 	);
