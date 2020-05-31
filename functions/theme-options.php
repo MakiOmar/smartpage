@@ -158,6 +158,14 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('If your using classic editor, enable this to remove unwanted Gutenburg\'s editor scripts', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'dynamic_css_ajax',
+								'title'   => esc_html__('Disable dynamic AJAX css', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('If your website loads slowly because of AJAX css, enable this', ANONY_TEXTDOM)
 							)				
 						)
 	);

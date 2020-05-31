@@ -83,8 +83,9 @@ function anony_styles(){
 			)
 		);
 	}
-
-	wp_enqueue_style( 'anonyengine-dynamics', admin_url('admin-ajax.php').'?action=anoe_dynamic_css', $dynamic_deps);
+	
+	if ($anonyOptions->dynamic_css_ajax != '1')
+		wp_enqueue_style( 'anonyengine-dynamics', admin_url('admin-ajax.php').'?action=anoe_dynamic_css', $dynamic_deps);
 }
 
 function anony_scripts(){
@@ -160,7 +161,8 @@ add_action('wp_enqueue_scripts',function() {
 });
 
 
-add_action( 'wp_head', function(){?>
+add_action( 'wp_head', function(){
+	$anonyOptions = ANONY_Options_Model::get_instance();?>
 	
 	<!-- Head styles -->
 	<style type="text/css">
@@ -204,6 +206,15 @@ add_action( 'wp_head', function(){?>
 		  75% { transform: scale(1.05); }
 		  100% { transform: scale(1); }
 		}
+		
+		<?php if ($anonyOptions->dynamic_css_ajax == '1') {
+			
+			ob_start();
+			
+			require( ANONY_THEME_DIR . '/assets/css/dynamic.php' );
+			
+			echo ob_get_clean();
+		} ?>
 	</style>
 	
 <?php } );
