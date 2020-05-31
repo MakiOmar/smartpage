@@ -9,36 +9,6 @@
 <meta http-equiv="Content-Type" content="<?= $contentType ?>" charset="<?= $charSet ?>"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge" >
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<style type="text/css">
-		body{
-			overflow: hidden;
-			background-color: rgba(208,208,208,1.00)!important
-		}
-	   #anony-preloader{
-			position: absolute;
-		   width: 100%;
-		   height: 100vh;
-		   background: #fff;
-		   z-index: 9999;
-		   background-color: rgb(249, 249, 249)
-		}
-		.anony-loader-img{
-			position: absolute;
-			right: 0;
-			left: 0;
-			margin: auto;
-			top: 35%;
-			animation: 1.8s infinite heartbeat;
-		}
-		@keyframes heartbeat {
-		  0% { transform: scale(1); }
-		  25% { transform: scale(1.05); }
-		  50% { transform: scale(1); }
-		  75% { transform: scale(1.05); }
-		  100% { transform: scale(1); }
-		}
-	</style>
-	
 <?php wp_head();?>
 </head>
 
