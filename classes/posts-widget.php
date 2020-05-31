@@ -30,14 +30,14 @@ public function __construct(){
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ANONY_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 					<?php 
 					$postType = isset($instance['post_type']) ? $instance['post_type'] : 'post';
-						$selected =selected( $post_type , 'current', false );
+						$selected =selected( $postType , 'current', false );
 					?>
 					<option value="current" <?php echo $selected ;?>><?php esc_html_e( 'Current post type', ANONY_TEXTDOM ) ?></option>
 					<?php 
 						foreach(get_post_types(['public'   => true, '_builtin' => false]) as $type){
 							$selected =selected( $postType, $type, false )
 							?>
-			                <option value="<?php echo $post_type ?>" <?php echo $selected ;?>><?php echo $type ?></option>
+			                <option value="<?php echo $postType ?>" <?php echo $selected ;?>><?php echo $type ?></option>
 			            <?php }
 
 					?>
