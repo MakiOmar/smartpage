@@ -101,10 +101,10 @@ function anony_taxonomy_posts($tax){
 	$tax_posts = apply_filters( 'anony_taxonomy_posts', [] );
 
 	if(!empty($tax_posts) && array_key_exists($tax, $tax_posts)){
-		return $tax_posts[$tax];
+		$tax_posts[$tax];
 	}
 
-	return [];
+	return $tax_posts;
 }
 
 /**
@@ -119,10 +119,10 @@ function anony_post_taxonomies($post_type){
 
 	if(!empty($post_taxonomies) && array_key_exists($post_type, $post_taxonomies))
 	{
-		return $post_taxonomies[$post_type];
+		$post_taxonomies[$post_type];
 	}
 
-	return [];
+	return $post_taxonomies;
 }
 
 /**
