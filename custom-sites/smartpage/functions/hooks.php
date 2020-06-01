@@ -61,7 +61,7 @@ add_filter('anony_taxonomies', function($anony_custom_taxs){
  */
 add_filter('anony_post_taxonomies', function($anony_post_taxonomies){
 
-	$post_taxs = [ 'anony_download' =>['anony_download_type'] ];
+	$post_taxs = [ 'anony_download' => ['anony_download_type'] ];
 
 	return array_merge($anony_post_taxonomies, $post_taxs);
 });
