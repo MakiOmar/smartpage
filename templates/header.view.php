@@ -18,8 +18,13 @@
 		<p><?= $blogname ?> <?= esc_html__('Loading...', ANONY_TEXTDOM) ?></p>
 		<img class="anony-loader-img" src="<?= $logo_url ?>" alt="<?= $blogname ?>"/>
 	</div>
-	<?php get_search_form() ?>
-
+	<div id="anony-hidden-search-form">
+	
+		<a class="anony-search-form-toggle" href="#" title="Scroll page">
+			<i class="fa fa-search"></i>
+		</a>
+		<?php get_search_form() ?>
+	</div>
 
 	<div id="anony-grid-wrapper">
 
