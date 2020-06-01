@@ -106,15 +106,6 @@ add_filter('pre_get_posts',function($query) {
 	return $query;
 });
 
-//Create term for custom post (anony_download) to be set as default
-add_action('init',function( ) {
-	if(!term_exists('general_downloads', 'download_category')){
-		$args = array('slug' => 'general_downloads');
-		return wp_insert_term( esc_html__('General Downloads',ANONY_TEXTDOM), 'download_category', $args  );
-	}
-	
-});
-
 //Set default term for custom post anony_download
 add_action( 'save_post_anony_download', function( $post_id, $post ) {
     if ( 'publish' === $post->post_status) {
