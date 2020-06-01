@@ -36,7 +36,7 @@ if ( have_posts() ) {
 
 		ob_start();
 
-		get_template_part('controllers/rate');
+		get_template_part('models/rate');
 
 		$data['rating'] = ob_get_clean();
 

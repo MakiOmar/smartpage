@@ -22,19 +22,19 @@
                
 				<div id="anony-section-top" class="anony-grid-col-md-8 anony-grid-col">
 
-					<?php get_template_part('controllers/news') ;?>
+					<?php get_template_part('models/news') ;?>
 					
-					<?php get_template_part('controllers/featured') ;?>
+					<?php get_template_part('models/featured') ;?>
 					
 				</div>   
             </div>
 			<?php 
 				
-				get_template_part('controllers/downloads') ;
+				get_template_part('models/downloads') ;
 
-				include(locate_template( 'controllers/category-posts-section.php', false, false ));
+				include(locate_template( 'models/category-posts-section.php', false, false ));
 			
-				//get_template_part('controllers/video') ;
+				//get_template_part('models/video') ;
 			
 			 ?>	
         </div>

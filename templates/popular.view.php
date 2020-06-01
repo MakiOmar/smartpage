@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="anony-metadata"><i class="fa fa-calendar"></i>&nbsp;<?= $date ?></div>
 					<div class="anony-metadata"><i class="fa fa-eye"></i>&nbsp;<?= $views ?></div>
 					
-					<?php get_template_part('controllers/rate') ?>
+					<?php get_template_part('models/rate') ?>
 					
 				</div>
 				
