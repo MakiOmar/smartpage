@@ -1587,7 +1587,7 @@ tr:nth-child(even) {
 		box-shadow: 1px 1px 10px #444;
 	}
 	.anony-featured-posts-title a,.f-post-title a{
-		color: #ffffff;
+		color: #fff;
 	}
 	.f-post-title {
 		display: inline-block;
@@ -1601,6 +1601,7 @@ tr:nth-child(even) {
 		opacity: 0;
 		position: relative;
 		top: 150px;
+		margin-bottom: 15px
 	}
 	.anony-section_title{
 		background-color: #fc2a2a;
