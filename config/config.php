@@ -110,7 +110,7 @@ define('ANONY_BLOG_TITLE'    , esc_html(get_bloginfo() ));
  * Holds blog's URL
  * @const
  */
-define('ANONY_BLOG_URL'      , esc_url(get_bloginfo('url') ));
+define('ANONY_BLOG_URL'      , esc_url(home_url()));
 
 /*----------------------------------------------------------------------
 * Theme Autoloading
