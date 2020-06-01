@@ -94,45 +94,6 @@ add_filter( 'excerpt_length', function() { return 15; }, 999 );
 // Remove issues with prefetching adding extra views
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
-//define post types to search for
-add_filter('pre_get_posts',function($query) {
- 
-    if ($query->is_search && !is_admin() ) {
-		
-        $query->set('post_type',array('post','page'));
-		
-    }
- 
-	return $query;
-});
-
-//Set default term for custom post anony_download
-add_action( 'save_post_anony_download', function( $post_id, $post ) {
-    if ( 'publish' === $post->post_status) {
-		
-        $defaults = array('download_category' => array( 'general_downloads'));
-		
-        $taxonomies = get_object_taxonomies( $post->post_type );
-
-        foreach ( (array) $taxonomies as $taxonomy ) {
-			
-            $terms = wp_get_post_terms( $post_id, $taxonomy );
-			
-            if ( empty( $terms ) && array_key_exists( $taxonomy, $defaults ) ) {
-				
-                wp_set_object_terms( $post_id, $defaults[$taxonomy], $taxonomy );
-				
-            }
-        }
-    }
-}, 100, 2 );
-
-//Ajax download for logged in users
-add_action('wp_ajax_download','anony_download_ajax');
-
-//Ajax download for users that are not logged in.
-add_action('wp_ajax_nopriv_download', 'anony_download_ajax');
-
 //Set post views count
 add_action('template_redirect', function(){
 	
@@ -233,24 +194,3 @@ function anony_latest_comments(){
 					
 				<?php };
 }
-
-
-/**
- * //Add or update downloads counter.
- *
- * @return void
- */
-function anony_download_ajax() {
-			
-	if(isset($_POST['download_id']) && !empty($_POST['download_id'])){
-			$download_counter = get_post_meta($_POST['download_id'], 'download_times',true);
-			if(empty($download_counter)){
-				add_post_meta($_POST['download_id'], 'download_times',1);
-			}else{
-				$download_counter +=  1;
-				update_post_meta($_POST['download_id'], 'download_times',$download_counter);
-			}
-		wp_die();
-		}
-}
-?>
