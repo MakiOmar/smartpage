@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 ?>
-<div class="anony-section<?= $sec_class  ?>">
+<div class="anony-section<?= $sec_class  ?> white-bg">
 	<div class="anony-skew-bg">
 		<h4 class="anony-section_title clearfix"><?= $sec_title ?></h4>
 	</div>
