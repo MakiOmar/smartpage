@@ -25,7 +25,7 @@ add_filter('anony_post_types', function($custom_post_types){
 							esc_html__('Testimonial',ANONY_TEXTDOM),
 							esc_html__('Testimonials',ANONY_TEXTDOM)
 						],
-					'news'=>
+					'anony_news'=>
 						[
 							esc_html__('New',ANONY_TEXTDOM),
 							esc_html__('News',ANONY_TEXTDOM)
@@ -82,6 +82,6 @@ add_filter( 'anony_taxonomy_posts', function($anony_tax_posts){
  * change project post type support
  * @return array
  */
-add_filter( 'anony_news_supports', function($support){
+add_filter( 'anony_anony_news_supports', function($support){
 	return ['editor'];
 });
