@@ -1,8 +1,12 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) { exit; /*Exit if accessed directly*/ }?>
+if ( ! defined( 'ABSPATH' ) ) { exit; /*Exit if accessed directly*/ }
 
-<form id="anony-searchform" class="anony-search-form anony-search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-	<input type="search" class="anony-search-input" name="s" id="s" value="<?php echo get_search_query(); ?>" placeholder="<?php esc_attr_e( 'Search', ANONY_TEXTDOM ); ?>" />
-	<button type="submit" class="anony-form_submit" name="submit" form="anony-searchform" value="<?php esc_attr_e( 'Search', ANONY_TEXTDOM ); ?>"><i class="fa fa-search"></i></button>
+$search_query = get_search_query();
+$search_text  = esc_attr__( 'Search', ANONY_TEXTDOM );
+?>
+
+<form id="anony-searchform" class="anony-search-form anony-search" action="<?= ANONY_BLOG_URL ?>" method="get">
+	<input type="search" class="anony-search-input" name="s" id="s" value="<?= $search_query ?>" placeholder="<?= $search_text ?>" />
+	<button type="submit" class="anony-form_submit" name="submit" form="anony-searchform" value="<?= $search_text ?>"><i class="fa fa-search"></i></button>
 </form>
 
