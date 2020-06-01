@@ -303,6 +303,14 @@ add_action('wp_ajax_download','anony_download_ajax');
 //Ajax download for users that are not logged in.
 add_action('wp_ajax_nopriv_download', 'anony_download_ajax');
 
+//Set post views count
+add_action('template_redirect', function(){
+	
+	global $post;
+	
+    if (is_single()) anony_set_post_views($post->ID);
+});
+
 /*-------------------------------------------------------------
  * Posts functions
  *-----------------------------------------------------------*/
