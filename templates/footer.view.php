@@ -21,7 +21,7 @@
     <div id="anony-page-loading-wrapper"><div id="anony-page-loading-bg"></div></div>
 </div>
 
-<?= $footer ?> 
+<?php wp_footer(); ?> 
 	
 <?php do_action( 'anony_after_page_footer' );?>
 
