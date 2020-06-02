@@ -2,5 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/prosentra/public_html/wp-content/themes/smartpage
-    - /bin/cp * $DEPLOYPATH
-    - /bin/cp ./* $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
