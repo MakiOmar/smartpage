@@ -399,3 +399,18 @@ add_action( 'wp_enqueue_scripts', function() {
 	
 }, 11);
 
+//Fix: Notice: ob_end_flush(): failed to send buffer of zlib output compression
+if(ini_get('zlib.output_compression') == '1'){
+	/**
+	 * Proper ob_end_flush() for all levels
+	 *
+	 * This replaces the WordPress `wp_ob_end_flush_all()` function
+	 * with a replacement that doesn't cause PHP notices.
+	 */
+	remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+	add_action( 'shutdown', function() {
+	   while ( @ob_end_flush() );
+	} );
+}
+
+
