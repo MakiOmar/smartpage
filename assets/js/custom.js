@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 	"use strict";
 
 	setTimeout(function(){
-		$('body').css({'overflow': 'scroll', 'background-color': '#fff'});
+		$('body').css({'overflow': 'scroll'/*, 'background-color': '#fff'*/});
 		$('#anony-preloader').hide();
 		
 	}, 2000);
