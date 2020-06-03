@@ -32,7 +32,7 @@ function anony_submit_ajax_comment(){
 		if ( ! empty( $data ) ) {
 
 			wp_die(
-				'<p>' . $comment->get_error_message() . '</p>',
+				'<p><?= $comment->get_error_message() ?></p>',
 				__( 'Comment Submission Failure' ),
 				array(
 					'response'  => $data,
@@ -76,36 +76,26 @@ function anony_submit_ajax_comment(){
 	 */
 	$GLOBALS['comment'] = $comment;
 	$GLOBALS['comment_depth'] = $comment_depth;
-
-	$comment_html = '<div ' . comment_class('', null, null, false ) . ' id="comment-' . $comment->comment_ID . '">			
-
-			<div class="anony-comment-author vcard">
-				' . get_avatar( $comment, 64 ) .
-				sprintf( __( '%s <span class="says">says:</span>' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link( $comment ) )).'
-			</div>
-
-			<div class="anony-comment-metadata">
-				<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . sprintf( esc_html__( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() ) . '</a> ';
-
-				if( $edit_link = get_edit_comment_link() )
-					$comment_html .= '<span class="edit-link"><a class="anony-comment-edit-link" href="' . $edit_link . '">'.esc_html__('Edit', ANONY_TEXTDOM).'</a></span>';
-
-			$comment_html .= '</div>';
-
-			if ( $comment->comment_approved == '0' )
-				$comment_html .= '<p class="anony-comment-awaiting-moderation">'.esc_html__('Your comment is awaiting moderation.', ANONY_TEXTDOM).'</p>';
-
-		$comment_html .= '<div class="anony-comment-content">' . apply_filters( 'comment_text', get_comment_text( $comment ), $comment ) . '</div>';
-
-		if($maxNOcomments > $comment_depth){
-			$comment_html .= '<div class="reply">'.get_comment_reply_link( array('depth' => $comment_depth,'max_depth'     => $maxNOcomments), $comment , '' ).'</div>';
-		}else{
-			$comment_html .= '<p class="limit-reach">'.sprintf(esc_html__('A Max number of %s threads has been reached'),$maxNOcomments).'<p>';
-		}
-
-		$comment_html .= '</div>';
-
-
+	
+	$comment_class = comment_class('', null, null, false );
+	$avatar        = get_avatar( $comment, 64 );
+	$author_link   = get_comment_author_link( $comment );
+	$comment_link  = esc_url( get_comment_link( $comment->comment_ID ) );
+	$when_text     = sprintf( esc_html__( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() );
+	$edit_link     = get_edit_comment_link();
+	$edit_text     = esc_html__('Edit', ANONY_TEXTDOM);
+	$comment_approved     = $comment->comment_approved;
+	$waiting_approve      = esc_html__('Your comment is awaiting moderation', ANONY_TEXTDOM);
+	$comment_text         = apply_filters( 'comment_text', get_comment_text( $comment ), $comment );
+	$reply_link           = get_comment_reply_link( array('depth' => $comment_depth,'max_depth'     => $maxNOcomments), $comment , '' );
+	$limit_reached_text   = sprintf(esc_html__( 'A Max number of %s threads has been reached'), $maxNOcomments );
+	$says           = esc_html__( 'says:' );
+	
+	ob_start();
+	
+	include(locate_template( 'templates/ajax-comment.view.php', false, false ));
+	
+	$comment_html = ob_get_clean();
 
 	$return = array(
 		'html'          => $comment_html,
