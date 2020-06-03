@@ -69,6 +69,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div>
 
-	<?php if($comments_open) comment_form() ?>
+	<?php if($comments_open) comments_template('', false) ?>
 	
 </div>
