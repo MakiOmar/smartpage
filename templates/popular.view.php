@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 		<div id="anony-popular-<?= $id ?>" class="anony-posts-list-wrapper">
 		
-			<?php if($thumb){?>
+			<?php if($thumb && $thumb_exists){?>
 			
 				<div class="anony-posts-list-thumb">
 					<?= $thumb_img  ?>	
