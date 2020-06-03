@@ -3,6 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+$anonyOptions = ANONY_Options_Model::get_instance();
+$grid = $anonyOptions->posts_grid;
+
 $cat_id = $cat;
 $cat_obj = get_category($cat);
 $data = [
