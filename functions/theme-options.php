@@ -68,7 +68,6 @@ add_action( 'init', function(){
 		// Miscellanous --------------------------------------------
 		'miscellanous' => array(
 			'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
-			//'sections' => array('socials'),
 		),
 		
 	);
@@ -591,72 +590,14 @@ add_action( 'init', function(){
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', ANONY_TEXTDOM)
 							),
+							
 							array(
-								'id'      => 'color_gradient',
-								'title'   => esc_html__('Color Gradient', ANONY_TEXTDOM),
-								'type'    => 'color_gradient',
-								'validate'=> 'hex_color',
-							),	
-							array(
-								'id'      => 'font_select',
-								'title'   => esc_html__('Select font', ANONY_TEXTDOM),
-								'type'    => 'font_select',
-								'validate'=> 'multiple_options',
-								'options' => anony_fonts( 'all' ),
-							),		
-							array(
-								'id'      => 'multi_text',
-								'title'   => esc_html__('Multi text', ANONY_TEXTDOM),
-								'type'    => 'multi_text',
+								'id'      => 'tinymce_comments',
+								'title'   => esc_html__('Enable tinymce for comment form', ANONY_TEXTDOM),
+								'type'    => 'switch',
 								'validate'=> 'no_html',
-							),		
-							array(
-								'id'      => 'pages_select',
-								'title'   => esc_html__('Page select', ANONY_TEXTDOM),
-								'type'    => 'pages_select',
-								'validate'=> 'multiple_options',
-								'options' => ANONY_POST_HELP::getPagesIdsTitles(),
-							),		
-							array(
-								'id'      => 'sliderbar',
-								'title'   => esc_html__('sliderbar', ANONY_TEXTDOM),
-								'type'    => 'sliderbar',
-								'validate'=> 'no_html',
-							),			
-					
-							array(
-								'id'      => 'upload',
-								'title'   => esc_html__('upload', ANONY_TEXTDOM),
-								'type'    => 'upload',
-								'validate'=> 'url',
-							),				
-							array(
-								'id'      => 'date',
-								'title'   => esc_html__('Date', ANONY_TEXTDOM),
-								'type'    => 'date_time',
-								'get'     => 'date',
-								'validate'=> 'no_html',
-							),				
-							array(
-								'id'      => 'time',
-								'title'   => esc_html__('Time', ANONY_TEXTDOM),
-								'type'    => 'date_time',
-								'get'     => 'time',
-								'validate'=> 'no_html',
-							),					
-							array(
-								'id'      => 'date_time',
-								'title'   => esc_html__('Date and time', ANONY_TEXTDOM),
-								'type'    => 'date_time',
-								'validate'=> 'no_html',
-							),
-
-							array(
-								'id'      => 'tabs',
-								'title'   => esc_html__('tabs', ANONY_TEXTDOM),
-								'type'    => 'tabs',
-								'validate'=> 'tabs',
-							),
+							)
+							
 						)
 	);
 
