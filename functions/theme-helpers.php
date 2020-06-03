@@ -107,26 +107,28 @@ function anony_common_post_data(){
 	$grid = $anonyOptions->posts_grid;
 	
 	$temp['id']        = get_the_ID();
+	$temp['permalink'] = esc_url(get_the_permalink());
 	$temp['title']     = esc_html(get_the_title());
 	$temp['title_attr']        = the_title_attribute( ['echo' => false] );
 	$temp['content']   = get_the_content();
 	$temp['excerpt']   = esc_html(get_the_excerpt());
-	$temp['comments_number']   = anony_comments_number();
-	$temp['has_category']      = has_category();
 	$temp['thumb']     = has_post_thumbnail();
 	$temp['thumb_exists']      = ANONY_LINK_HELP::curlUrlExists(get_the_post_thumbnail_url(get_the_ID()));
+	$temp['thumb_img_full']    = get_the_post_thumbnail(get_the_ID(), 'full');
 	$temp['thumb_img']     = get_the_post_thumbnail(get_the_ID(), 'category-post-thumb');
 	$temp['thumbnail_img'] = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 	$temp['date']      = get_the_date();
-	$temp['permalink'] = esc_url(get_the_permalink());
 	$temp['gravatar']  = get_avatar(get_the_author_meta('ID'),32);
 	$temp['author']    = sprintf(esc_html__( 'By %s', ANONY_TEXTDOM ), get_the_author());
 	$temp['read_more']         = esc_html__('Read more',ANONY_TEXTDOM);
 	$temp['grid']      = $grid;
 	$temp['views']     = anony_get_post_views(get_the_ID());
-
+	$temp['comments_open']     = comments_open();
+	$temp['comments_number']   = anony_comments_number();
+	$temp['has_category']      = has_category();
 	if(has_category()){
 		$_1st_category = get_the_category()[0];
+		$temp['categories']         = get_the_category();
 		$temp['_1st_category_id']   = $_1st_category->cat_ID;
 		$temp['_1st_category_name'] = esc_html($_1st_category->name);
 		$temp['_1st_category_url']  = esc_url(get_category_link($_1st_category->cat_ID));
