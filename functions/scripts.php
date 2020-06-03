@@ -69,6 +69,8 @@ function anony_styles(){
 }
 
 function anony_scripts(){
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
 	/**---------------------------------------------------------------------
 	 *                   Register scripts
 	 *---------------------------------------------------------------------*/
@@ -119,7 +121,7 @@ function anony_scripts(){
 		wp_enqueue_script($script);
 	}
 
-	// Localize the script with new data
+	// Localize the script with new data tinymce_comments
 	$anony_loca = array(
 		'ajaxURL'          => ANONY_WPML_HELP::getAjaxUrl(),
 		'textDir'          => (is_rtl() ? 'rtl' : 'ltr'),
@@ -128,6 +130,7 @@ function anony_scripts(){
 		'anonyFormEmail'   => esc_html__("Please enter a valid email", ANONY_TEXTDOM),
 		'anonyFormUrl'     => esc_html__("Please use a valid website address", ANONY_TEXTDOM),
 		'anonyFormComment' => esc_html__("Comment must be at least 20 characters", ANONY_TEXTDOM),
+		'anonyUseTinymce'  => $anonyOptions->tinymce_comments == '1' ? true : false,
 	);
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }
@@ -161,7 +164,7 @@ add_action( 'wp_head', function(){
 			
 		body{
 			overflow: hidden;
-			background-color: rgba(208,208,208,1.00)!important
+			background-color: rgba(225, 228, 230);
 		}
 	   #anony-preloader{
 			position: absolute;

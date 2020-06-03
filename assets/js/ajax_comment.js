@@ -65,10 +65,12 @@ jQuery(document).ready(function($){
 				}
 			});
 		if($('#anony-commentform').valid()){
-			var commentID = '',
-			    respond = $('#respond'), // comment form container
-		   		commentList = $('.anony-commentlist'),// comment list container
-				anonyComment = tinymce.get('comment').getContent();
+			var commentID    = '',
+			    respond      = $('#respond'), // comment form container
+		   		commentList  = $('.anony-commentlist'),// comment list container
+				anonyComment = (anonyLoca.anonyUseTinymce == '1') ? tinymce.get('comment').getContent() : $('#comment').val();
+				
+				
 				
 				//Don't do any thing if no comment
 				if(anonyComment === '') {return;}
@@ -98,7 +100,7 @@ jQuery(document).ready(function($){
 					success: function(response){
 						commentID        = response.comment_id;
 						commentsCount = response.comment_count;
-						console.log(commentList);
+						
 						if(commentList.length > 0){
 							
 							if( replyTo !== '0'){
@@ -126,7 +128,9 @@ jQuery(document).ready(function($){
 					
 					complete: function(){
 						
-						tinymce.get('comment').setContent('');
+						(anonyLoca.anonyUseTinymce == '1') ? tinymce.get('comment').setContent('') : $('#comment').val('');
+						
+						
 						if(commentID !== ''){
 							
 							$("html, body").animate({
