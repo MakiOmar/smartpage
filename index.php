@@ -2,6 +2,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
+$anonyOptions = ANONY_Options_Model::get_instance();
+
+$grid = $anonyOptions->posts_grid;
 
 $data = [];
 
@@ -25,5 +28,7 @@ if ( have_posts() ) {
 
 		) );
 }
+if (empty($data)) return;
+
 include(locate_template( 'templates/index.view.php', false, false ));
 ?>
