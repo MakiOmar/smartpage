@@ -67,17 +67,20 @@ get_header( );?>
 			<h3 class="anony-cat-section-title">
 				<?= '--- '.$cat_name.' / '.$page_title.' ---'?>
 			</h3>
+			<div id="anony-<?= $grid ?>">
 
-			<?php 
+				<div id="anony-blog-post">
 
+					<?php foreach ($posts as $post_data ) :
+						extract($post_data);
 
-			foreach ($posts as $post_data ) :
-				extract($post_data);
+						include (locate_template( 'templates/blog-post.view.php', false, false ));
 
-				include (locate_template( 'templates/blog-post.view.php', false, false ));
-
-			endforeach;
-		endif;?>
+					endforeach;?>
+				</div>
+			</div>
+			
+		<?php endif;?>
 		
 	    </div>
 
