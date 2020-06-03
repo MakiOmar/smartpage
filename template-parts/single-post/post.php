@@ -1,57 +1,74 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
-}
-$anonyOptions = ANONY_Options_Model::get_instance();
+}?>
+<div class="anony-grid-col <?= $wrapper_class ?>">
+	
+<?php if($thumb && $thumb_exists) : ?>
 
-anony_get_correct_sidebar();
+	<div class="anony-post-title-image">
+		
+		<div class="anony-post-title-cover"></div>
+		
+		<?= $thumb_img_full ?>
+		
+		<h1 class="anony-single_post_title"><a href="<?= $permalink ?>"><?= $title ?></a></h1>
+	</div>
 
-if(has_action('post_ad')) do_action('post_ad');
+<?php else: ?>
 
-?>
-<div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
-
-<div class="anony-post-title-image">
-	<div class="anony-post-title-cover"></div>
-	<?php if(has_post_thumbnail()) the_post_thumbnail('full') ?>
-	<h1 class="anony-single_post_title"><a href="<?php echo get_the_permalink() ;?>"><?php echo get_the_title() ?></a></h1>
-</div>
+	<h1 class="anony-single_post_title"><a href="<?= $permalink ?>"><?= $title ?></a></h1>	
+	
+<?php endif ?>
 
  <div class="anony-post_meta meta white-bg">
 	<div class="date">
 		<i class="fa fa-calendar"></i>
-		<span class="single-meta-text"><?php echo get_the_date() ?></span>
+		<span class="single-meta-text"><?= $date ?></span>
 	</div>
 	
 	<div class="anony-comments">
 		<i class="fa fa-comments-o"></i>
-		<?php echo anony_comments_number(); ?>
+		<?= $comments_number ?>
 	</div>
 	
 	<?php 
-	$categories = get_the_category();
-	if(is_array($categories) && !empty($categories)) {?>
+	
+	if($has_category) : ?>
 	<div class="category">
 		<i class="fa fa-folder-open"></i>
-		<a class="single-meta-text" href="<?php echo get_category_link($categories[0]->cat_ID);?>"><?php echo $categories[0]->name ;?></a>
+		
+		<?php foreach ($categories as $category) :
+		
+			$category = (array) $category;
+			
+			extract($category);
+			
+			$link = get_category_link($cat_ID);
+		?>
+			
+			<a class="single-meta-text" href="<?= $link?>"><?= $name ?></a>
+			
+		<?php endforeach ?>
+		
 	</div>
 	
-	<?php } ?>
+	<?php endif ?>
 	
-	<?php get_template_part('templates/rate') ?>
+	<?php get_template_part('models/rate') ?>
 	
   </div>
-		<?php 
-			if ( have_posts() ) {
-			while (have_posts() ) { the_post();?>
-			<div class="anony-grid-col anony-post-contents anony-single_post">
-			  <div class="anony-post-info">
-				  <div class="anony-single-text white-bg">
-					<?php the_content();?>
-					</div>
-				</div>
 
-			  </div>
-		  <?php }}
-		comments_template( '', true ); ?>
+	<div class="anony-grid-col anony-post-contents anony-single_post">
+		
+		<div class="anony-post-info">
+			
+		  <div class="anony-single-text white-bg"><?= $content ?></div>
+		  
+		</div>
+
+	</div>
+
+	<?php if($comments_open) comment_form() ?>
+	
 </div>
