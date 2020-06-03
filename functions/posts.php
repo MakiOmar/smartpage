@@ -82,6 +82,43 @@ add_filter('comment_class', function($classes, $class, $comment_id, $comment, $p
 	return $classes;
 },'',5);
 
+//Add tinymce to the comment form
+add_filter( 'comment_form_defaults', function( $args ) {
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if($anonyOptions->tinymce_comments != '1') return $args;
+	
+	ob_start();
+	
+	wp_editor( '', 'comment', array(
+		
+		//'media_buttons' => true, // show insert/upload button(s) to users with permission
+		
+		'textarea_rows' => '10', // re-size text area
+		
+		'dfw' => true, // replace the default full screen with DFW (WordPress 3.4+)
+		
+		'tinymce' => array(
+		
+        	'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,bullist,numlist,code,blockquote,link,unlink,outdent,indent,|,undo,redo,fullscreen',
+		
+  	  	),
+		
+		'quicktags' => array(
+		
+ 	       'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,close'
+		
+	    )
+		
+	) );
+	
+	$args['comment_field'] = ob_get_clean();
+	
+	return $args;
+	
+} );
+
 // remove width and height atrr from img
 add_filter( 'post_thumbnail_html', function( $html) {
 	
