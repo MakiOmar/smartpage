@@ -1018,11 +1018,24 @@ tr:nth-child(even) {
 		height: 250px;
 		padding: 15px;
 	}
+	
+	#anony-commentform{
+		padding: 15px;
+		border-radius: 15px;
+		margin: 10px;
+		box-shadow: 0px 0px 20px 1px #c1c1c1;
+	}
 	#anony-commentform .anony-comment-form-author input,
 	#anony-commentform .anony-comment-form-email input,
 	#anony-commentform .anony-comment-form-url input,
 	#anony-commentform .error{
 		display: block;
+	}
+	
+	#anony-commentform .comment-form-comment{
+		text-align: center;
+		display: flex;
+		flex-direction: column;
 	}
 
 	#anony-commentform .error{
