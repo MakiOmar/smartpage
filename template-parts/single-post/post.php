@@ -3,11 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 $anonyOptions = ANONY_Options_Model::get_instance();
-	anony_get_correct_sidebar();
 
-	if(has_action('post_ad')){
-		do_action('post_ad');
-	}
+anony_get_correct_sidebar();
+
+if(has_action('post_ad')) do_action('post_ad');
+
 ?>
 <div class="anony-grid-col <?php echo ($anonyOptions->single_sidebar == '1') ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5' ?>">
 
