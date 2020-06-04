@@ -141,7 +141,7 @@ function anony_scripts(){
 		'anonyFormUrl'     => esc_html__("Please use a valid website address", ANONY_TEXTDOM),
 		'anonyFormComment' => esc_html__("Comment must be at least 20 characters", ANONY_TEXTDOM),
 		'anonyUseTinymce'  => $anonyOptions->tinymce_comments == '1' ? true : false,
-		'anonyUsePrettyPhoto' => $anonyOptions->disable_prettyphoto == '1' ? false : true;
+		'anonyUsePrettyPhoto' => $anonyOptions->disable_prettyphoto == '1' ? false : true,
 	);
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }
