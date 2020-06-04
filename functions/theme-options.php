@@ -190,6 +190,14 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('This will prevent the jQuery Migrate script from being loaded on the front end while keeping the jQuery script itself intact. It\'s still being loaded in the admin to not break anything there.)', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'disable_prettyphoto',
+								'title'   => esc_html__('Disable prettyPhoto image light box', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('prettyPhoto disable may help improve performance', ANONY_TEXTDOM)
 							)				
 						)
 	);
