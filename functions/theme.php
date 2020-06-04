@@ -318,7 +318,8 @@ add_action( 'template_redirect', function () {
  * Only loads contact form 7 scripts/styles if needed
  */
 function anony_load_cf7_scripts($return){
-	if(!is_page()) return '__return_false';
+	
+	if(!is_page() || is_front_page() || is_home()) return '__return_false';
 	
 	global $post;
 	
@@ -350,10 +351,48 @@ add_action( 'wp_print_styles',  function(){
     if($anonyOptions->disable_gutenburg_scripts == '1'){
     	$dequeued_styles = array_merge($dequeued_styles, ['wp-block-library', 'wp-block-library-theme', 'wc-block-style'] );
     }
+    
+    if(is_page()){
+    	
+    	global $post;
+    	
+    	if (intval($anonyOptions->cf7_scripts) !== $post->ID) {
+    		$dequeued_styles = array_merge($dequeued_styles, ['contact-form-7'] );
+    	}
+    	
+    }else{
+    	$dequeued_styles = array_merge($dequeued_styles, ['contact-form-7'] );
+    }
 
     foreach($dequeued_styles as $style){
         wp_dequeue_style( $style );
         wp_deregister_style( $style );
+    }
+    
+}, 99);
+
+//Dequeue unwanted scripts
+add_action( 'wp_print_scripts',  function(){
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+    $dequeued_scripts = [];
+    
+    
+    if(is_page()){
+    	
+    	global $post;
+    	
+    	if (intval($anonyOptions->cf7_scripts) !== $post->ID) {
+    		$dequeued_scripts = array_merge($dequeued_scripts, ['contact-form-7', 'google-recaptcha'] );
+    	}
+    	
+    }else{
+    	$dequeued_scripts = array_merge($dequeued_scripts, ['contact-form-7', 'google-recaptcha'] );
+    }
+
+    foreach($dequeued_scripts as $script){
+        wp_dequeue_script( $script );
+        wp_deregister_script( $script );
     }
     
 }, 99);
@@ -408,9 +447,4 @@ if(ini_get('zlib.output_compression') == '1'){
 	 * with a replacement that doesn't cause PHP notices.
 	 */
 	remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
-	add_action( 'shutdown', function() {
-	   while ( @ob_end_flush() );
-	} );
 }
-
-
