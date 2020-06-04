@@ -162,7 +162,9 @@ body{
 	font-family:'hsn_shahd_boldbold';
 }
 */
-
+a.pp_close, a.pp_expand{
+    text-indent: 10000px;
+}
 .anony-search-form-toggle{
 	right: auto;
 	left: 0;
@@ -299,9 +301,7 @@ display: flex;
 	right: auto;
 	left: 0;
 }
-.anony-extra-metas{
-	
-}
+
 #reply-title small{
 	float: left;
 }

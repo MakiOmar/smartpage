@@ -977,8 +977,9 @@ tr:nth-child(even) {
 		word-wrap: break-word;
 	}
 	.anony-single-image-wrapper{
-	height: 280px!important;
-}
+		height: 280px!important;
+	}
+	
 	.anony-metadata {
 		position: relative;
 		display: inline-block;
