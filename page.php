@@ -3,32 +3,50 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 get_header();?>
-  <div class="anony-grid">
+<div class="anony-grid">
+  	
   	<div class="anony-grid-row anony-grid-col">
+  		
         <div class="anony-grid-col-sm-9-5">
+        	
         	<div class="anony-grid-col anony-posts-wrapper">
-        	<?php 
-				if(has_action('page_ad')){
-					do_action('page_ad');
-				}
-			?>
+        		
+        	<?php if(has_action('page_ad')) do_action('page_ad');?>
+        	
 				<div class="anony-grid-container">
-				<?php 
-					if ( have_posts() ) {
-					while (have_posts() ) { the_post();
-				?>
-					<div class="anony-grid-col anony-post-contents anony-single_post">
-						<div class="anony-post-info">
-							<div class="anony-single-text">
-								<?php the_content(); ?>
+					
+				<?php if ( have_posts() ) { 
+					
+					while (have_posts() ) { 
+						
+						the_post();?>
+					
+						<div class="anony-grid-col anony-post-contents anony-single_post">
+							
+							<div class="anony-post-info">
+								
+								<div class="anony-single-text">
+									<?php the_content(); ?>
+								</div>
+								
 							</div>
+							
 						</div>
-					</div>
-				  <?php }};?>
+					
+				  <?php }
+				  
+				};?>
+				
 				</div>
+				
 			</div>
+			
         </div>
+        
        <?php get_sidebar();?>
+       
 	</div>
-  </div>
- <?php get_footer();?>
+	
+</div>
+
+<?php get_footer();?>
