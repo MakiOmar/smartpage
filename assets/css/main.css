@@ -784,6 +784,9 @@ tr:nth-child(even) {
 		width: 100%;
 		color: #FFFFFF!important;
 	}
+	.anony-thumb{
+		width:100%;
+	}
 	.anony-thumb-post-title a{
 		display: inline-block;
 	width: auto;
