@@ -17,7 +17,10 @@ function anony_styles(){
 	
 	$styles = array('main','responsive');
 		
-	$styles_libs = ['font-awesome.min', 'prettyPhoto'];
+	$styles_libs = ['font-awesome.min'];
+	
+	//load prettyPhoto if needed
+	if($anonyOptions->disable_prettyphoto != '1') $styles_libs[] = 'prettyPhoto';
 	
 	$styles = array_merge($styles, $styles_libs);
 	
@@ -77,7 +80,14 @@ function anony_scripts(){
 	
 	$scripts = array('tabs','download', 'ajax_comment', 'custom');
 	
-	$libs_scripts = ['jquery.validate.min', 'jquery.prettyPhoto'];
+	$libs_scripts = [];
+	
+	if (is_single( )) {
+		$libs_scripts[] = 'jquery.validate.min';
+	}
+	
+	//load prettyPhoto if needed
+	if($anonyOptions->disable_prettyphoto != '1') $libs_scripts[] = 'jquery.prettyPhoto';
 	
 	$scripts = array_merge($scripts, $libs_scripts);
 	
@@ -131,6 +141,7 @@ function anony_scripts(){
 		'anonyFormUrl'     => esc_html__("Please use a valid website address", ANONY_TEXTDOM),
 		'anonyFormComment' => esc_html__("Comment must be at least 20 characters", ANONY_TEXTDOM),
 		'anonyUseTinymce'  => $anonyOptions->tinymce_comments == '1' ? true : false,
+		'anonyUsePrettyPhoto' => $anonyOptions->disable_prettyphoto == '1' ? false : true;
 	);
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }

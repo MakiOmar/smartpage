@@ -463,3 +463,14 @@ if(ini_get('zlib.output_compression') == '1'){
 	 */
 	remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 }
+
+add_filter('post_thumbnail_html', function($html, $post_id, $post_image_id, $size, $attr){
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if($anonyOptions->disable_prettyphoto == '1') return $html;
+	
+	    $html = '<a href="' . get_the_post_thumbnail_url($post_id, 'full') . '" rel="prettyPhoto" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . wp_get_attachment_image( $post_image_id, $size, false, $attr ) . '</a>';
+	
+	return $html;
+}, 10, 5);

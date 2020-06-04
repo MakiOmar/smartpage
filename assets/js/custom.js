@@ -235,9 +235,15 @@ jQuery(document).ready(function($){
 	/**--------------------------------------------------------------------
 	 *                     General
 	/*--------------------------------------------------------------------*/
-	if ($(window).width() >= 768) { 
-		//apply prettyPhoto at specific width
-		$("a[class^='prettyPhoto']").prettyPhoto();
+	if ($(window).width() >= 768) {
+		
+		if(anonyLoca.anonyUsePrettyPhoto == '1'){
+			/**
+			 * apply prettyPhoto at specific width.
+			 * http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/documentation
+			 */
+			$("a[rel^='prettyPhoto']").prettyPhoto({social_tools : false});
+		}
 		
 	}
 	
