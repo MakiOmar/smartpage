@@ -182,6 +182,14 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'disable_jq_migrate',
+								'title'   => esc_html__('Disable jquery migrate', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('This will prevent the jQuery Migrate script from being loaded on the front end while keeping the jQuery script itself intact. It\'s still being loaded in the admin to not break anything there.)', ANONY_TEXTDOM)
 							)				
 						)
 	);

@@ -398,6 +398,21 @@ add_action( 'wp_print_scripts',  function(){
 }, 99);
 
 
+//This will prevent the jQuery Migrate script from being loaded on the front end while keeping the jQuery script itself intact. It's still being loaded in the admin to not break anything there.
+add_action( 'wp_default_scripts', function( $scripts ) {
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if($anonyOptions->disable_jq_migrate != '1') return;
+	
+    if ( ! is_admin() && ! empty( $scripts->registered['jquery'] ) ) {
+        $scripts->registered['jquery']->deps = array_diff(
+            $scripts->registered['jquery']->deps,
+            [ 'jquery-migrate' ]
+        );
+    }
+} );
+
 /** Disable All WooCommerce  Styles and Scripts Except Shop Pages*/
 add_action( 'wp_enqueue_scripts', function() {
 	$anonyOptions = ANONY_Options_Model::get_instance();
