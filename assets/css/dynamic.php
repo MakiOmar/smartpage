@@ -1,7 +1,7 @@
 <?php
-if ($anonyOptions->dynamic_css_ajax != '1') header( "Content-type: text/css; charset: UTF-8" );
-
 $anonyOptions = ANONY_Options_Model::get_instance();
+
+if ($anonyOptions->dynamic_css_ajax != '1') header( "Content-type: text/css; charset: UTF-8" );
 
 if(is_rtl()){
 
