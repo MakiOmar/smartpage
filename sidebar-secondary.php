@@ -20,10 +20,9 @@ $recent_comments_title = esc_html__('Recent comments',ANONY_TEXTDOM);
 		  
 		</ul>
 		
-		<?php 
-		   get_template_part('models/popular') ;
-		   get_template_part('templates/latest-comments') ;
-		?>
+		<?php get_template_part('models/popular') ?>
+		
+		<?php get_template_part('templates/latest-comments') ?>
 		 	
 	</div>
 </div>
