@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This is the sidebar in the featured section
  */
 
-$popular_title = esc_html_e('Popular',ANONY_TEXTDOM);
+$popular_title = esc_html__('Popular',ANONY_TEXTDOM);
 $recent_comments_title = esc_html__('Recent comments',ANONY_TEXTDOM);
 ?>
 <div id="anony-secondary-sidebar" class="anony-grid-col-md-4 anony-grid-col">
