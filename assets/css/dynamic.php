@@ -15,7 +15,7 @@ if(is_rtl()){
 	$links_font = $anonyOptions->anony_links_ar_font;
 	if (!empty($links_font)) {?>
 
-		a, .page-numbers{
+		a, .page-numbers, span.meta-text{
 			font-family: "<?php echo $links_font ?>"
 		}
 	<?php } 
@@ -39,7 +39,7 @@ if(is_rtl()){
 	$links_font = $anonyOptions->anony_links_en_font;
 	if (!empty($links_font)) {?>
 
-		a,.page-numbers{
+		a,.page-numbers, span.meta-text{
 			font-family: "<?php echo $headingFont ?>"
 		}
 	<?php } 
