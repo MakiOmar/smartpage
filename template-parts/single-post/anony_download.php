@@ -15,7 +15,6 @@ get_header();?>
 				<div class="anony-posts-section">
 
 				 		<div class="anony-grid-col anony-post-contents">
-		              		<?php if ( $have_posts ) { ?>
 		               	
 		                	<div class="anony-hover-toggle anony-download-meta anony-post-info anony-grid-col-lg-3">
 		                	
@@ -102,10 +101,6 @@ get_header();?>
 							  
 								  <?= $content ?>
 							  </div>
-		                  <?php 
-								
-							}
-						?>
 		       		</div>
 		       		
 				</div>
