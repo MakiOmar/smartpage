@@ -78,7 +78,10 @@ get_header( );?>
 
 					endforeach;?>
 				</div>
+				
+				$pagination
 			</div>
+			
 			
 		<?php endif;?>
 		

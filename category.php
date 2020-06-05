@@ -58,6 +58,8 @@ if ( have_posts() ) {
 
 	$data['page_title'] = esc_html__('Category posts',ANONY_TEXTDOM);
 	$data['read_more']  = esc_html__('Read more',ANONY_TEXTDOM);
+	
+	$pagination = anony_pagination();
 }
 
 extract($data);

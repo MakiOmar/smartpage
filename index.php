@@ -16,17 +16,7 @@ if ( have_posts() ) {
 	}
 	
 
-	$prev_text = is_rtl() ? 'right' : 'left';
-	
-	$next_text = is_rtl() ? 'left'  : 'right';
-	
-	$pagination = get_the_posts_pagination( array(
-			'type' => 'list',
-			'prev_text' => '<i class="fa fa-arrow-'.$prev_text.'"></i>',
-			'next_text' => '<i class="fa fa-arrow-'.$next_text.'"></i>',
-			'screen_reader_text'=>' ',
-
-		) );
+	$pagination = anony_pagination();
 }
 if (empty($data)) return;
 
