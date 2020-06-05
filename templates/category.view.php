@@ -79,7 +79,7 @@ get_header( );?>
 					endforeach;?>
 				</div>
 				
-				$pagination
+				<?= $pagination ?>
 			</div>
 			
 			
