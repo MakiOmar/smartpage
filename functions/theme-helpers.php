@@ -137,3 +137,23 @@ function anony_common_post_data(){
 	return $temp;
 	
 }
+
+/**
+ * render posts pagination
+ * @return string Markup for pagination links.
+ */
+function anony_pagination(){
+	$prev_text = is_rtl() ? 'right' : 'left';
+	
+	$next_text = is_rtl() ? 'left'  : 'right';
+	
+	$pagination = get_the_posts_pagination( array(
+			'type' => 'list',
+			'prev_text' => '<i class="fa fa-arrow-'.$prev_text.'"></i>',
+			'next_text' => '<i class="fa fa-arrow-'.$next_text.'"></i>',
+			'screen_reader_text'=>' ',
+
+		) );
+	
+	return $pagination;
+}
