@@ -28,14 +28,6 @@ foreach($anonylibs as $anonylib=>$path){
 }
 
 
-
-/*--------------------------------------omdb----------------------------*/
-
-//define('OMDB_DIR', ANONY_THEME_DIR. '/custom-sites/omdb');
-
-
-//require_once(OMDB_DIR.'/functions.php');
-
 /*--------------------------------------smartpage----------------------*/
 
 define('SMPG_DIR', ANONY_THEME_DIR. '/custom-sites/smartpage');
