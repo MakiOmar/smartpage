@@ -16,10 +16,12 @@ get_header();?>
 								include(locate_template( 'templates/blog-post.view.php', false, false ));
                 
 					     endforeach;?>
-							
-  					<?= $pagination;?>
+               
   			    </div>
         	</div>
+          
+          <?= $pagination;?>
+          
         </div>
        <?php get_sidebar();?>
 	  </div>

@@ -63,7 +63,7 @@ get_header( );?>
  
 		<?php endif;
 
-		if ( $posts ) :?>
+		if ( $posts ) : ?>
 			<h3 class="anony-cat-section-title">
 				<?= '--- '.$cat_name.' / '.$page_title.' ---'?>
 			</h3>
@@ -79,9 +79,10 @@ get_header( );?>
 					endforeach;?>
 				</div>
 				
-				<?= $pagination ?>
+				
 			</div>
 			
+			<?= $pagination ?>
 			
 		<?php endif;?>
 		
