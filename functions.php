@@ -18,24 +18,16 @@ $anonylibs = [
 	'media'     		  =>'',
 	'widgets'     		  =>'',
 	'db'        		  =>'',
+	'custom-fields'       =>'',
 	'statistics'          =>'shortcodes/statistics/',
 	'ajax-comments'       =>'ajax/',
+	'ajax-download'       =>'ajax/',
 	'tinymce-editor-btns' =>'mce/' ,
 ];
 
 foreach($anonylibs as $anonylib=>$path){
 	require_once( wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib.'.php') );
 }
-
-
-/*--------------------------------------smartpage----------------------*/
-
-define('SMPG_DIR', ANONY_THEME_DIR. '/custom-sites/smartpage');
-
-
-require_once(SMPG_DIR .'/functions.php');
-
-
 
 //Just for testing purposes
 add_action('wp_footer', function(){
