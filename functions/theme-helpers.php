@@ -110,7 +110,7 @@ function anony_common_post_data(){
 	$temp['permalink'] = esc_url(get_the_permalink());
 	$temp['title']     = esc_html(get_the_title());
 	$temp['title_attr']        = the_title_attribute( ['echo' => false] );
-	$temp['content']   = get_the_content();
+	$temp['content']   = apply_filters('the_content',get_the_content());
 	$temp['excerpt']   = esc_html(get_the_excerpt());
 	$temp['thumb']     = has_post_thumbnail();
 	$temp['thumb_exists']      = ANONY_LINK_HELP::curlUrlExists(get_the_post_thumbnail_url(get_the_ID()));
