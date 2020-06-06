@@ -29,14 +29,24 @@ get_header(); ?>
 		<?php anony_breadcrumbs()?>
         
         <?php
-        	get_sidebar();
+            if (is_rtl()) {
+                get_sidebar();
+            }else{
+                get_sidebar('left');
+            }
+        	
         	
         	if(has_action('post_ad')) do_action('post_ad');
 
         	include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));
         	
+            if (is_rtl()) {
+                get_sidebar('left');
+            }else{
+                get_sidebar();
+            }
 
-            get_sidebar('left');
+            
 
         ?>
     </div>
