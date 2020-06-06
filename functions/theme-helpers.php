@@ -13,7 +13,7 @@ function anony_get_correct_sidebar(){
 	if($anonyOptions->sidebar == 'left-sidebar'){
 		get_sidebar();
 	}elseif($anonyOptions->single_sidebar == '1'){
-		get_sidebar('single');
+		get_sidebar('left');
 	}
 	
 }
