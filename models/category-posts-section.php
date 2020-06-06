@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 $anonyOptions = ANONY_Options_Model::get_instance();
 	
-$args = array('post_type' => 'post', 'posts_per_page' => 4, 'order' => 'ASC');
+$args = array('post_type' => 'post', 'posts_per_page' => 4, 'order' => 'DESC');
 
 $sliderOpt   = $anonyOptions->slider;
 $featuredCat = $anonyOptions->featured_cat;
