@@ -35,7 +35,9 @@ get_header(); ?>
 
         	include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));
         	
+
             get_sidebar('left');
+
         ?>
     </div>
 </div>
