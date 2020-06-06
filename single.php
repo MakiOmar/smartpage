@@ -29,13 +29,13 @@ get_header(); ?>
 		<?php anony_breadcrumbs()?>
         
         <?php
-        	anony_get_correct_sidebar();
+        	get_sidebar();
         	
         	if(has_action('post_ad')) do_action('post_ad');
 
         	include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));
         	
-            anony_get_correct_sidebar();
+            get_idebar('left');
         ?>
     </div>
 </div>
