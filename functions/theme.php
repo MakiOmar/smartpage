@@ -142,9 +142,9 @@ add_action('widgets_init',function(){
 		];
 	foreach($sidebars as $sidebar_id => $sidebar){
 	    $args = array(
-			'name'          =>  $sidebar,
+			'name'          => $sidebar,
 			'id'            => $sidebar_id,
-			'class'         =>$sidebar_id,
+			'class'         => $sidebar_id,
 			'before_widget' => '<div class="white-bg widgeted anony-grid-col-md-6 anony-grid-col-av-6 anony-grid-col-sm-12 anony-grid-col">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widgeted_title">',
