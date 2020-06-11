@@ -355,6 +355,7 @@ add_action( 'init', function(){
 						'sidebar' => esc_html__('Sidebar', ANONY_TEXTDOM),
 						'post'    => esc_html__('Single post', ANONY_TEXTDOM),
 						'page'    => esc_html__('page', ANONY_TEXTDOM),
+						'before_fotter' => esc_html__('Before footer', ANONY_TEXTDOM),
 					);
 	$sections['advertisements']= array(
 			'title' => esc_html__('Advertisements', ANONY_TEXTDOM),

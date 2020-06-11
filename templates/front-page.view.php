@@ -36,7 +36,8 @@
 			
 				//get_template_part('models/video') ;
 			
-			 ?>	
+			 ?>
+			 <?php do_action('before_footer_ad')?>
         </div>
        <?php get_sidebar();?>
 	</div>

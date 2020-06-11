@@ -23,4 +23,6 @@ $is_active_right = is_active_sidebar('right-sidebar');
 		<strong><?= $go_widget ?></strong><a href="<?= $widgets_url ?>"><?= $link_text ?></a>
 			
 	<?php endif ?>
+	
+	<?php do_action('sidebar_ad')?>
 </div>
