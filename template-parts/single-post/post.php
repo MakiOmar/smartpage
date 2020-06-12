@@ -21,9 +21,7 @@ get_header();
         ?>
 		
 		<div class="anony-grid-col <?= $wrapper_class ?>">
-			
-			<?php anony_breadcrumbs()?>
-			
+						
 			<?php if($thumb && $thumb_exists) : ?>
 
 				<div class="anony-post-title-image">
