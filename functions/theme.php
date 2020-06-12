@@ -104,6 +104,7 @@ if (!function_exists('anony_add_theme_support')) {
 	}
 }
 
+
 function anony_thumbs_sizes() {
     add_image_size( 'category-post-thumb', 495); // 300 pixels wide (and unlimited height)
     add_image_size( 'popular-post-thumb', 60, 60 , true); // 60*60 pixels and crop
@@ -183,25 +184,28 @@ add_action('wp_head', function(){
  *  Performance
  *-----------------------------------------------------------------------*/
 
-//controls add query strings to scripts/styles
-function anony_control_query_strings($src, $handle){
-	if(is_admin()) return $src;
+if (!function_exists('anony_control_query_strings')) {
+	//controls add query strings to scripts/styles
+	function anony_control_query_strings($src, $handle){
+		if(is_admin()) return $src;
 
-	$anonyOptions = ANONY_Options_Model::get_instance();
-	
-	//Keep query string for these items
-	$neglected = array();
-	
-	if(!empty($anonyOptions->keep_query_string)){
-		$neglected = explode(',',$anonyOptions->keep_query_string);
+		$anonyOptions = ANONY_Options_Model::get_instance();
+		
+		//Keep query string for these items
+		$neglected = array();
+		
+		if(!empty($anonyOptions->keep_query_string)){
+			$neglected = explode(',',$anonyOptions->keep_query_string);
+		}
+		
+		if($anonyOptions->query_string != '0' && !in_array( $handle, $neglected )){
+			$src = remove_query_arg('ver', $src);
+		}
+		return $src;
+		
 	}
-	
-	if($anonyOptions->query_string != '0' && !in_array( $handle, $neglected )){
-		$src = remove_query_arg('ver', $src);
-	}
-	return $src;
-	
 }
+
 
 //controls add query strings to scripts
 add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
@@ -220,99 +224,106 @@ add_filter( 'get_avatar', function($avatar){
 }, 200 );
 
 
-function anony_disable_wp_embeds(){
-	$anonyOptions = ANONY_Options_Model::get_instance();
+if (!function_exists('anony_disable_wp_embeds')) {
 	
-	$keep = true;
-	
-	if($anonyOptions->disable_embeds == '1' ) $keep = false;
-	
-	if($anonyOptions->enable_singular_embeds == '1' && is_single()) $keep = true;
+	function anony_disable_wp_embeds(){
+		$anonyOptions = ANONY_Options_Model::get_instance();
+		
+		$keep = true;
+		
+		if($anonyOptions->disable_embeds == '1' ) $keep = false;
+		
+		if($anonyOptions->enable_singular_embeds == '1' && is_single()) $keep = true;
 
-	if($keep) return;
-	
-	// Remove the REST API endpoint.
-	remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+		if($keep) return;
+		
+		// Remove the REST API endpoint.
+		remove_action( 'rest_api_init', 'wp_oembed_register_route' );
 
-	// Turn off oEmbed auto discovery.
-	add_filter( 'embed_oembed_discover', '__return_false' );
+		// Turn off oEmbed auto discovery.
+		add_filter( 'embed_oembed_discover', '__return_false' );
 
-	// Don't filter oEmbed results.
-	remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+		// Don't filter oEmbed results.
+		remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
 
-	// Remove oEmbed discovery links.
-	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+		// Remove oEmbed discovery links.
+		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 
-	// Remove oEmbed-specific JavaScript from the front-end and back-end.
-	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-	
-	add_filter( 'tiny_mce_plugins', function ($plugins) {
-		return array_diff($plugins, array('wpembed'));
-	});
+		// Remove oEmbed-specific JavaScript from the front-end and back-end.
+		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+		
+		add_filter( 'tiny_mce_plugins', function ($plugins) {
+			return array_diff($plugins, array('wpembed'));
+		});
 
-	// Remove all embeds rewrite rules.
-	add_filter( 'rewrite_rules_array', function($rules) {
-		foreach($rules as $rule => $rewrite) {
-		    if(false !== strpos($rewrite, 'embed=true')) {
-		        unset($rules[$rule]);
-		    }
-		}
-		return $rules;
-	} );
+		// Remove all embeds rewrite rules.
+		add_filter( 'rewrite_rules_array', function($rules) {
+			foreach($rules as $rule => $rewrite) {
+			    if(false !== strpos($rewrite, 'embed=true')) {
+			        unset($rules[$rule]);
+			    }
+			}
+			return $rules;
+		} );
 
-	// Remove filter of the oEmbed result before any HTTP requests are made.
-	remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result', 10 );
+		// Remove filter of the oEmbed result before any HTTP requests are made.
+		remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result', 10 );
+	}
 }
 
-function anony_disable_wp_emojis(){
-	$anonyOptions = ANONY_Options_Model::get_instance();
+if (!function_exists('anony_disable_wp_emojis')) {
 	
-	$keep = true;
-	
-	if($anonyOptions->disable_emojis == '1' ) $keep = false;
-	
-	if($anonyOptions->enable_singular_emojis == '1' && is_single()) $keep = true;
+	function anony_disable_wp_emojis(){
+		$anonyOptions = ANONY_Options_Model::get_instance();
+		
+		$keep = true;
+		
+		if($anonyOptions->disable_emojis == '1' ) $keep = false;
+		
+		if($anonyOptions->enable_singular_emojis == '1' && is_single()) $keep = true;
 
-	if($keep) return;
-	
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
-	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
-	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-	
-	/**
-	 * Filter function used to remove the tinymce emoji plugin.
-	 * 
-	 * @param  array $plugins 
-	 * @return array Difference betwen the two arrays
-	 */
-	add_filter( 'tiny_mce_plugins', function( $plugins ) {
+		if($keep) return;
+		
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
+		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
+		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+		
+		/**
+		 * Filter function used to remove the tinymce emoji plugin.
+		 * 
+		 * @param  array $plugins 
+		 * @return array Difference betwen the two arrays
+		 */
+		add_filter( 'tiny_mce_plugins', function( $plugins ) {
 
-		return ( is_array( $plugins ) ) ? array_diff( $plugins, array( 'wpemoji' ) ) : [];
-	} );
-	
-	
-	/**
-	 * Remove emoji CDN hostname from DNS prefetching hints.
-	 *
-	 * @param  array $urls URLs to print for resource hints.
-	 * @param  string $relation_type The relation type the URLs are printed for.
-	 * @return array Difference betwen the two arrays.
-	 */
-	add_filter( 'wp_resource_hints', function( $urls, $relation_type ) {
-		if ( 'dns-prefetch' == $relation_type ) {
-			/** This filter is documented in wp-includes/formatting.php */
-			$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+			return ( is_array( $plugins ) ) ? array_diff( $plugins, array( 'wpemoji' ) ) : [];
+		} );
+		
+		
+		/**
+		 * Remove emoji CDN hostname from DNS prefetching hints.
+		 *
+		 * @param  array $urls URLs to print for resource hints.
+		 * @param  string $relation_type The relation type the URLs are printed for.
+		 * @return array Difference betwen the two arrays.
+		 */
+		add_filter( 'wp_resource_hints', function( $urls, $relation_type ) {
+			if ( 'dns-prefetch' == $relation_type ) {
+				/** This filter is documented in wp-includes/formatting.php */
+				$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
 
-			$urls = array_diff( $urls, array( $emoji_svg_url ) );
-		}
+				$urls = array_diff( $urls, array( $emoji_svg_url ) );
+			}
 
-		return $urls;
-	}, 10, 2 );
+			return $urls;
+		}, 10, 2 );
+	}
 }
+
 //template_redirect runs before page/post is rendered
 add_action( 'template_redirect', function () {
 	
@@ -324,27 +335,30 @@ add_action( 'template_redirect', function () {
 	
 }, 9999 );
 
-/**
- * Only loads contact form 7 scripts/styles if needed
- */
-function anony_load_cf7_scripts($return){
-	
-	if(!is_page() || is_front_page() || is_home()) return '__return_false';
-	
-	global $post;
-	
-	$anonyOptions = ANONY_Options_Model::get_instance();
-	
-	if(!$anonyOptions->cf7_scripts || $anonyOptions->cf7_scripts == '' || intval($anonyOptions->cf7_scripts) !== $post->ID ) return $return;
-	
-	setup_postdata($post);
-	
-	$content = get_the_content();
-	
-	if (!has_shortcode(  $content, 'contact-form-7' )) return '__return_false';
-    
-    return $return;
+if (!function_exists('anony_disable_wp_embeds')) {
+	/**
+	 * Only loads contact form 7 scripts/styles if needed
+	 */
+	function anony_load_cf7_scripts($return){
+		
+		if(!is_page() || is_front_page() || is_home()) return '__return_false';
+		
+		global $post;
+		
+		$anonyOptions = ANONY_Options_Model::get_instance();
+		
+		if(!$anonyOptions->cf7_scripts || $anonyOptions->cf7_scripts == '' || intval($anonyOptions->cf7_scripts) !== $post->ID ) return $return;
+		
+		setup_postdata($post);
+		
+		$content = get_the_content();
+		
+		if (!has_shortcode(  $content, 'contact-form-7' )) return '__return_false';
+	    
+	    return $return;
+	}
 }
+
 
 add_filter( 'wpcf7_load_js', 'anony_load_cf7_scripts', 11 );
 add_filter( 'wpcf7_load_css', 'anony_load_cf7_scripts', 11 );
