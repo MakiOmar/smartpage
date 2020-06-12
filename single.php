@@ -17,6 +17,10 @@ if ( have_posts() ) {
 	}
 }
 
+$right_sidebar = is_rtl() ? 'right' : 'left' ;
+
+$left_sidebar  = is_rtl() ? 'left'  : 'right' ;
+
 if (empty($data)) return;
 
 extract($data);
@@ -29,24 +33,14 @@ get_header(); ?>
 		<?php anony_breadcrumbs()?>
         
         <?php
-            if (is_rtl()) {
-                get_sidebar();
-            }else{
-                get_sidebar('left');
-            }
-        	
-        	
+            
+            get_sidebar($right_sidebar);
+
         	if(has_action('post_ad')) do_action('post_ad');
 
-        	include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));
-        	
-            if (is_rtl()) {
-                get_sidebar('left');
-            }else{
-                get_sidebar();
-            }
-
+        	include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));     
             
+            get_sidebar($left_sidebar);
 
         ?>
     </div>
