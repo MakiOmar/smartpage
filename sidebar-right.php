@@ -8,10 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Can be controlled for theme options > layout > sidebar -> single post sidebar
  */
   
-$widgets_url    = esc_url(get_home_url().'/wp-admin/widgets.php');
-$go_widget      = esc_html__( 'Please add some widgets. ', ANONY_TEXTDOM );
-$link_text      = esc_html__( 'Add Here', ANONY_TEXTDOM );
+$widgets_url     = esc_url(get_home_url().'/wp-admin/widgets.php');
+$go_widget       = esc_html__( 'Please add some widgets. ', ANONY_TEXTDOM );
+$link_text       = esc_html__( 'Add Here', ANONY_TEXTDOM );
 $is_active_right = is_active_sidebar('right-sidebar');
+$sidebar_ad      = has_action( 'sidebar_ad' );
 ?>
 
 <span class="anony-toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
@@ -27,5 +28,14 @@ $is_active_right = is_active_sidebar('right-sidebar');
 			
 	<?php endif ?>
 	
-	<?php do_action('sidebar_ad')?>
+	<?php if( $sidebar_ad ) : ?>
+		
+		<div class="anony-ad">
+					
+			<?php do_action('sidebar_ad')?>
+			
+		</div>
+	
+	<?php endif ?>
+	
 </div>
