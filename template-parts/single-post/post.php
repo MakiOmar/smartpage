@@ -71,4 +71,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php if($comments_open) comments_template('', false) ?>
 	
+	<div class="anony-ad">
+				
+		<?php do_action('before_footer_ad')?>
+				
+	</div>
+	
 </div>
