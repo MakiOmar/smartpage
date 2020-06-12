@@ -1,14 +1,16 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $anonyOptions = ANONY_Options_Model::get_instance();
+
 $grid = $anonyOptions->posts_grid;
 
 $cat_id = $cat;
+
 $cat_obj = get_category($cat);
+
 $data = [
+	
 	'cat_id' => $cat_id,
 	'cat_obj' => $cat_obj,
 	'cat_name' => ucfirst($cat_obj->cat_name),
@@ -22,8 +24,9 @@ $data = [
 						),
 ];
 
-if (!empty($data['sub_categories'])) {
-	foreach ($data['sub_categories'] as $sub_cat){
+if (!empty($data['sub_categories'])) :
+	
+	foreach ($data['sub_categories'] as $sub_cat):
 
 		$temp['sc_id'] = $sub_cat->cat_id;
 		$temp['sc_name'] = $sub_cat->cat_name;
@@ -31,36 +34,44 @@ if (!empty($data['sub_categories'])) {
 		$temp['sc_quote'] = !is_rtl() ? '&ldquo;' : '&rdquo;';
 		$temp['sc_link'] = get_category_link($sub_cat->term_id);
 		$temp['sc_link_text'] = esc_html__('Enter',ANONY_TEXTDOM);
-
 		$data['sc_view_data'][] = $temp;
-	}
-}
+	
+	endforeach;
+	
+endif;
 
 
-$args = array(
-			'category__in' => array($cat_obj ->cat_ID),
-			'tax_query' => array(
-								array(
+$args = [
+			'category__in' => [$cat_obj ->cat_ID],
+			'tax_query' => [
+								[
 									'include_children ' => false,
-								),
-							),
-		);
+								],
+							],
+		];
+		
 $query = new WP_Query( $args );
 
 $data['posts'] = false;
 
-if ( have_posts() ) {
+if ( have_posts() ) :
 	
-	while (have_posts() ) { the_post();
+	while (have_posts() ) :
+		
+		the_post();
 		
 		$data['posts'][] = anony_common_post_data();
-	}
+		
+	endwhile;
 
-	$data['page_title'] = esc_html__('Category posts',ANONY_TEXTDOM);
-	$data['read_more']  = esc_html__('Read more',ANONY_TEXTDOM);
+	$data['page_title'] = esc_html__( 'Category posts', ANONY_TEXTDOM );
+	$data['read_more']  = esc_html__( 'Read more', ANONY_TEXTDOM );
 	
 	$pagination = anony_pagination();
-}
+	
+endif;
+
+if(!$data['posts']) return;
 
 extract($data);
 
