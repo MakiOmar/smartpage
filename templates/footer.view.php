@@ -1,5 +1,14 @@
 <footer class="anony-grid-col-md-12 anony-grid-col">
-	<?php do_action('footer_ad');?>
+	
+	<?php if( $footer_ad ) : ?>
+	
+		<div class="anony-ad">
+
+			<?php do_action('footer_ad');?>
+		
+		</div>
+	
+	<?php endif ?>
 	
 	<p><?= $copyright  ?></p>
 	
