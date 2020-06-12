@@ -37,7 +37,11 @@
 				//get_template_part('models/video') ;
 			
 			 ?>
-			 <?php do_action('before_footer_ad')?>
+			 <div class="anony-ad">
+				
+				<?php do_action('before_footer_ad')?>
+				
+			</div>
         </div>
        <?php get_sidebar();?>
 	</div>
