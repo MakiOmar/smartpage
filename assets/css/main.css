@@ -157,6 +157,10 @@ th{
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.anony-ad{
+    overflow:hidden;
+}
 .rated-text{
 	margin:5px; font-size:16px; text-align:center
 }
