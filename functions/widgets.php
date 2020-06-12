@@ -16,10 +16,10 @@ add_action('widgets_init',function(){
 	
 	$sidebars = 
 		[
+			'main-sidebar'      => esc_html__( 'Main Sidebar', ANONY_TEXTDOM ),
 			'right-sidebar'     => is_rtl() ? esc_html__( 'Right Sidebar', ANONY_TEXTDOM ) : esc_html__( 'Left Sidebar', ANONY_TEXTDOM ),
 			'left-sidebar'      => is_rtl() ? esc_html__( 'Left Sidebar', ANONY_TEXTDOM )  : esc_html__( 'Right Sidebar', ANONY_TEXTDOM ),
 			'secondary-sidebar' => esc_html__( 'Secondary Sidebar', ANONY_TEXTDOM ),
-			'main-sidebar'      => esc_html__( 'Main Sidebar', ANONY_TEXTDOM ),
 			'footer-widget-1'   => esc_html__( 'Footer Widget 1', ANONY_TEXTDOM ),
 			'footer-widget-2'   => esc_html__( 'Footer Widget 2', ANONY_TEXTDOM ),
 			'footer-widget-3'   => esc_html__( 'Footer Widget 3', ANONY_TEXTDOM ),
