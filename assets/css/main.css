@@ -252,6 +252,10 @@ tr:nth-child(even) {
 	#anony-toggles-wrapper a{
 		margin: 10px;
 	}
+	
+	#anony-ads{
+		height: 100px;
+	}
 	#anony-ads img{
 		vertical-align: bottom;
 		margin: auto;
