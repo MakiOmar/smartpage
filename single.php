@@ -25,24 +25,4 @@ if (empty($data)) return;
 
 extract($data);
 
-get_header(); ?>
-
-<div class="anony-grid">
-	
-	<div class="anony-grid-row anony-grid-col">
-		<?php anony_breadcrumbs()?>
-        
-        <?php
-            
-            get_sidebar($right_sidebar);
-
-        	if(has_action('post_ad')) do_action('post_ad');
-
-        	include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));     
-            
-            get_sidebar($left_sidebar);
-
-        ?>
-    </div>
-</div>
-<?php get_footer();?>
+include(locate_template( 'template-parts/single-post/'.get_post_type().'.php', false, false ));
