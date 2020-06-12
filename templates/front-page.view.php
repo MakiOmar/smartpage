@@ -37,7 +37,7 @@
 				//get_template_part('models/video') ;
 			
 			 ?>
-			 <div class="anony-ad">
+			<div class="anony-ad">
 				
 				<?php do_action('before_footer_ad')?>
 				
