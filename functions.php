@@ -13,6 +13,7 @@ $anonylibs = [
 	'posts'     		  =>'',
 	'scripts'     		  =>'',
 	'theme'     		  =>'',
+	'woocommerce'     	  =>'',
 	'performance'     	  =>'',
 	'menus'     		  =>'',
 	'admin'     		  =>'',
