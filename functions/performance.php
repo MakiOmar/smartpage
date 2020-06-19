@@ -152,7 +152,7 @@ add_action( 'template_redirect', function () {
 	
 }, 9999 );
 
-if (!function_exists('anony_disable_wp_embeds')) {
+if (!function_exists('anony_load_cf7_scripts')) {
 	/**
 	 * Only loads contact form 7 scripts/styles if needed
 	 */
