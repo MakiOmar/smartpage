@@ -46,6 +46,10 @@ add_action( 'admin_enqueue_scripts', function() {
 			);
 			wp_enqueue_script($script);
 			}
+			
+			$adminLoc = [ 'isRtl' => is_rtl()];
+			
+			wp_localize_script( 'anony-admin' , 'adminLoc', $adminLoc );
 	}  
 );
 
