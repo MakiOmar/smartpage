@@ -35,3 +35,26 @@ foreach($anonylibs as $anonylib=>$path){
 add_action('wp_footer', function(){
 	
 });
+
+
+add_action('init', function(){
+	
+	ANONY_WOO_HELP::createProductAttribute('Brand');
+
+	$termMetaBox = new ANONY_Term_Metabox(
+		[ 
+			'id'       => 'anony_brand',
+			'taxonomy' => 'pa_brand',
+			'context'  => 'term',
+			'fields'   => 
+				[
+					[
+						'id' => 'anony_brand_logo',
+						'title'    => esc_html__( 'Brand logo', ANOE_TEXTDOM ),
+						'type'     => 'gallery',
+					]
+				],
+		]
+	);
+	
+} );
