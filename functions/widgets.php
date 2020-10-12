@@ -13,12 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 //Register Sidebars
 add_action('widgets_init',function(){
 	
-	
+
 	$sidebars = 
 		[
 			'main-sidebar'      => esc_html__( 'Main Sidebar', ANONY_TEXTDOM ),
-			'right-sidebar'     => is_rtl() ? esc_html__( 'Right Sidebar', ANONY_TEXTDOM ) : esc_html__( 'Left Sidebar', ANONY_TEXTDOM ),
-			'left-sidebar'      => is_rtl() ? esc_html__( 'Left Sidebar', ANONY_TEXTDOM )  : esc_html__( 'Right Sidebar', ANONY_TEXTDOM ),
+			'right-sidebar'     => esc_html__( 'Right Sidebar', ANONY_TEXTDOM ),
+			'left-sidebar'      => esc_html__( 'Left Sidebar', ANONY_TEXTDOM ) ,
 			'secondary-sidebar' => esc_html__( 'Secondary Sidebar', ANONY_TEXTDOM ),
 			'footer-widget-1'   => esc_html__( 'Footer Widget 1', ANONY_TEXTDOM ),
 			'footer-widget-2'   => esc_html__( 'Footer Widget 2', ANONY_TEXTDOM ),
@@ -38,6 +38,25 @@ add_action('widgets_init',function(){
 	   register_sidebar( $args );
 	}
 });
+
+add_filter('dynamic_sidebar_params',function ($param){
+		
+	if(!is_rtl() && $param[0]['id'] == 'right-sidebar'){
+		
+		$param[0]['name'] = esc_html__( 'Left Sidebar', ANONY_TEXTDOM );
+		
+	}
+	
+	if(!is_rtl() && $param[0]['id'] == 'left-sidebar'){
+
+		$param[0]['name'] = esc_html__( 'Right Sidebar', ANONY_TEXTDOM );
+		
+	}
+	
+	//nvd($param);
+    return $param;
+}, 20);
+
 
 
 /**

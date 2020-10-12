@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Can be controlled for theme options > layout > sidebar -> single post sidebar
  */
   
-$widgets_url     = esc_url(get_home_url().'/wp-admin/widgets.php');
+$widgets_url    = esc_url(admin_url('widgets.php'));
 $go_widget       = esc_html__( 'Please add some widgets. ', ANONY_TEXTDOM );
 $link_text       = esc_html__( 'Add Here', ANONY_TEXTDOM );
 $is_active_right = is_active_sidebar('right-sidebar');

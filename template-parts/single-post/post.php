@@ -14,7 +14,7 @@ get_header();
 		
 		anony_breadcrumbs();
 		
-		get_sidebar($right_sidebar);
+		get_sidebar('right-sidebar');
 
         if(has_action('post_ad')) do_action('post_ad');
         
@@ -97,7 +97,7 @@ get_header();
 			
 		</div>
 		
-		<?php get_sidebar($left_sidebar); ?>
+		<?php get_sidebar('left-sidebar'); ?>
 		
 	</div>
 	
