@@ -11,6 +11,17 @@
     font-display: swap;
 
 }
+@font-face {
+    font-family: 'jf_flatregular';
+    src: url('../../fonts/ARBfonts/jf-flat-regular-webfont.eot');
+    src: url('../../fonts/ARBfonts/jf-flat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/ARBfonts/jf-flat-regular-webfont.woff2') format('woff2'),
+         url('../../fonts/ARBfonts/jf-flat-regular-webfont.woff') format('woff'),
+         url('../../fonts/ARBfonts/jf-flat-regular-webfont.svg#jf_flatregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 @font-face {
     font-family: 'droid_arabic_kufibold';
@@ -152,7 +163,7 @@ html{
     direction: rtl;
     unicode-bidi:embed;
 }
-body{
+body :not(i){
 	font-family:'dubairegular';
 	font-size: 14px;
 	font-style: normal;
