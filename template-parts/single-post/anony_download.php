@@ -15,17 +15,14 @@ get_header();?>
 				<div class="anony-posts-section">
 
 				 		<div class="anony-grid-col anony-post-contents">
+				 			<?php if ( $thumb ) {?>
 		               	
-		                	<div class="anony-hover-toggle anony-download-meta anony-post-info anony-grid-col-lg-3">
-		                	
-							  <?php if ( $thumb ) {?>
-							  
-								  <div class="download-image-wrapper">
-									<?= $thumb_img ?>
-								  </div>
-								  
-							  <?php }?>
-		                    </div>
+			                	<div class="anony-hover-toggle anony-download-meta anony-post-info anony-grid-col-lg-3">
+									<div class="download-image-wrapper">
+										<?= $thumb_img ?>
+									 </div>
+			                    </div>
+		                    <?php }?>
 		                    
 		                    <div class="anony-grid-col-lg-9">
 
@@ -61,17 +58,25 @@ get_header();?>
 												<div class="category">
 												
 													<i class="fa fa-folder-open"></i>
-
-													<?= $terms ?>
+													
+													<?php
+													
+														foreach ($terms as $term) {
+															extract($term);?>
+															<a href="<?= $url ?>"><?= $name ?></a>
+														<?php }
+													
+													?>
+													
 
 												</div>
 												
 												
-												<div class="download-counts">
+												<div id="download-<?= $id ?>-count" class="download-counts single-download-counts">
 												
 													<i class="fa fa-download"></i>
 
-													<span id="download-<?= $id ?>">
+													<span>
 														<?= $download_times ?>
 													</span>
 													
@@ -84,7 +89,7 @@ get_header();?>
 											
 											<div class="single-download">
 											
-												<a title="download-<?= $id ?>" target="_blank" class="anony-download" href="<?= $download_url ?>">
+												<a title="download-<?= $id ?>" class="anony-download" href="<?= $file_url ?>" rel-id="<?= $id ?>">
 
 													<i class="fa fa-download"></i>
 

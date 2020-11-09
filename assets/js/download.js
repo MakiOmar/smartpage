@@ -5,11 +5,11 @@ jQuery(document).ready(function($){
 	 *---------------------------------------------------------------------*/
 	$(".anony-download").hover(function() {
 		var hovered = $(this);
-		var hoveredTarget = $('#' + hovered.attr('title') + '-count');
+		var hoveredTarget = $('#' + hovered.attr('title') + '-count:not(.single-download-counts)');
 		hoveredTarget.css({"opacity" :"1"});
 	},function(){
 		var hovered = $(this);	
-		var hoveredTarget = $('#' + hovered.attr('title') + '-count');
+		var hoveredTarget = $('#' + hovered.attr('title') + '-count:not(.single-download-counts)');
 		hoveredTarget.css({"opacity" :"0"});
 	});
 	
@@ -29,8 +29,10 @@ jQuery(document).ready(function($){
 		$.ajax({
 			type:'POST',
 			data:dataString,
-			url:SmpgAjaxUrl,
-			success:function(resp) {}
+			url:anonyLoca.ajaxURL,
+			success:function(resp) {
+				console.log(resp);
+			}
     	});
 	});
 });

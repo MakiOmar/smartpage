@@ -20,19 +20,25 @@ function anony_download_times() {
 		//If empty this means something is wrong
 		if(empty($download_meta)) return;
 
-		if(!isset($download_meta['anony_download']['download_times']) || empty($download_meta['anony_download']['download_times'])){
+		if(!isset($download_meta['download_times']) || empty($download_meta['download_times'])){
 			
-			$download_meta['anony_download']['download_times'] = 1;
+			$download_meta['download_times'] = 1;
 			
 			$update = update_post_meta($post_id, 'anony_download', $download_meta);
 			
 		}else{
-			$download_meta['anony_download']['download_times'] = intval($download_meta['anony_download']['download_times']) + 1;
+			$download_meta['download_times'] = intval($download_meta['download_times']) + 1;
 			$update = update_post_meta($post_id, 'anony_download', $download_meta);
 		}
 		
 		
 	}
+	
+	$return = array(
+		't'          => $post_id,
+		);
+
+	wp_send_json($return);
 	die();
 		
 }

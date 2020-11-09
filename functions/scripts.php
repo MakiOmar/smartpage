@@ -107,6 +107,7 @@ function anony_scripts(){
 	}
 	
 	wp_enqueue_script( 'anony-custom' );
+	wp_enqueue_script('anony-download');
 	wp_enqueue_script( 'jquery.prettyPhoto' );
 	
 	/*----------------------------------------------------------------------*/

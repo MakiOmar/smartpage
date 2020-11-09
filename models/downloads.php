@@ -21,7 +21,7 @@ if ($query->have_posts()) {
 		$download_times = 0;
 		
 		if($curr_download_meta && $curr_download_meta != ''){
-			$curr_download = $curr_download_meta['anony_download']['anony_download_attachment'];
+			$curr_download = $curr_download_meta['anony_download_attachment'];
 			
 			$get_url = wp_get_attachment_url( intval($curr_download) );
 			
@@ -31,13 +31,29 @@ if ($query->have_posts()) {
 				$temp['file_url'] = $file_url;
 			
 			
-			if(isset($curr_download_meta['anony_download']['download_times']) && !empty($curr_download_meta['anony_download']['download_times']))
-				$download_times = $curr_download_meta['anony_download']['download_times'];		
+			if(isset($curr_download_meta['download_times']) && !empty($curr_download_meta['download_times']))
+				$download_times = $curr_download_meta['download_times'];		
 			 
 		}
 		
 		$temp['download_times'] = $download_times;
 		
+		
+		
+		$terms = get_the_terms(get_the_ID(),'anony_download_type');
+		
+		$temp['terms']     = [];
+		
+		if($terms && !is_wp_error( $terms )){
+			
+			foreach ($terms as $term) {
+				
+				$temp['terms'][] = [ 
+					'name' => esc_html($term->name), 
+					'url' => esc_url( get_term_link( $term->term_id, 'anony_download_type' ))
+				];
+			}
+		}
 		$data[] = $temp;
 		
 	}
