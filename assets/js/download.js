@@ -30,9 +30,7 @@ jQuery(document).ready(function($){
 			type:'POST',
 			data:dataString,
 			url:anonyLoca.ajaxURL,
-			success:function(resp) {
-				console.log(resp);
-			}
+			success:function(resp) {}
     	});
 	});
 });
