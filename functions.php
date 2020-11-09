@@ -10,6 +10,7 @@ if (!defined('ANOENGINE')) return;
 $anonylibs = [
 	'theme-helpers'       =>'',
 	'theme-options'       =>'',
+	'data-hooks'       =>'',
 	'posts'     		  =>'',
 	'scripts'     		  =>'',
 	'theme'     		  =>'',
