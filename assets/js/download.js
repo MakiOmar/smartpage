@@ -4,13 +4,12 @@ jQuery(document).ready(function($){
 	 *                   Show download times on hover
 	 *---------------------------------------------------------------------*/
 	$(".anony-download").hover(function() {
-		var hovered = $(this);
-		var hoveredTarget = $('#' + hovered.attr('title') + '-count:not(.single-download-counts)');
-		hoveredTarget.css({"opacity" :"1"});
+		
+		$('#' +$(this).attr('title') + '-count:not(.single-download-counts)').css({"opacity" :"1"});
+		
 	},function(){
-		var hovered = $(this);	
-		var hoveredTarget = $('#' + hovered.attr('title') + '-count:not(.single-download-counts)');
-		hoveredTarget.css({"opacity" :"0"});
+
+		$('#' + $(this).attr('title') + '-count:not(.single-download-counts)').css({"opacity" :"0"});
 	});
 	
 	/**---------------------------------------------------------------------
