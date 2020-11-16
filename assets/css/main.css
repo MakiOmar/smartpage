@@ -820,8 +820,7 @@ tr:nth-child(even) {
 	}
 	.anony-posts-list{
 		margin-left: 5px;
-		vertical-align: top;
-		width: 75%;
+		width: 80%;
 	}
 	.anony-post-image-wrapper img{
 		display: block;
@@ -895,9 +894,6 @@ tr:nth-child(even) {
 		text-shadow: 1px 1px #3c3a3a;
     	font-size: 16px;
 	}
-	.anony-single-text ul{
-		margin:20px;
-	}
 	.anony-same_cat_post{
 		padding: 5px;
 		border-bottom: 1px solid rgba(193,191,191,0.3);
@@ -957,21 +953,9 @@ tr:nth-child(even) {
 		border-right: 1px solid;
 		padding: 0 5px;
 	}
-	.anony-single-text{
-		border: 1px solid #ffffff;
-		padding: 15px;
-		border-radius: 10px;
-	}
+	.anony-single-text{padding: 15px}
 	.anony-single-text ul{
 	list-style-type:disc;
-	}
-	.anony-single-text p{
-		font-size:16px;
-		color: #484848;
-		line-height: 30px;
-		text-align:justify;
-		margin: 15px 0;
-		word-spacing: 1px;
 	}
 	.anony-single-text a, .anony-single-text ul li{
 		font-weight:bold;
@@ -1272,10 +1256,10 @@ tr:nth-child(even) {
 	#anony-cat-list .has-children ul{
 		background-color: #fff!important;
 	}
-	#anony-secondary-sidebar > div{
+	.anony-secondary-sidebar > div{
 		min-height: 445px
 	}
-	#anony-secondary-sidebar ul li{
+	.anony-secondary-sidebar ul li{
 		display: inline-block;
 		background-color: #7A7A7A;
 		padding: 5px;
@@ -1283,7 +1267,7 @@ tr:nth-child(even) {
 		color: #FFFFFF;
 		cursor: pointer;
 	}
-	#anony-secondary-sidebar ul li:last-child{
+	.anony-secondary-sidebar ul li:last-child{
 		margin: none;
 	}
 	#main-sidebar {
@@ -1291,7 +1275,7 @@ tr:nth-child(even) {
 		background-color: rgba(235,85,88,1.00);
 		display: inline-block;
 	}
-	#anony-secondary-sidebar ul li:nth-child(2){
+	.anony-secondary-sidebar ul li:nth-child(2){
 		background-color: rgba(35, 0, 5,1);	
 	}
 	#anony-popular div h3 a{
@@ -1312,7 +1296,7 @@ tr:nth-child(even) {
 	#anony-comments i {
 		color: #444444;
 	}
-	#anony-secondary-sidebar h2{
+	.anony-secondary-sidebar h2{
 		text-align: center;
 		color: #ffffff;
 		background-color: #222222;
