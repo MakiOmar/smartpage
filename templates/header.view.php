@@ -13,11 +13,14 @@
 </head>
 
 <body <?= $bodyClass?>>
-
-	<div id="anony-preloader">
-		<p><?= $blogname ?> <?= esc_html__('Loading...', ANONY_TEXTDOM) ?></p>
-		<img class="anony-loader-img" src="<?= $logo_url ?>" alt="<?= $blogname ?>"/>
-	</div>
+	
+	<?php if($preloader == '1'): ?>
+		<div id="anony-preloader">
+			<p><?= $blogname ?> <?= esc_html__('Loading...', ANONY_TEXTDOM) ?></p>
+			<img class="anony-loader-img" src="<?= $logo_url ?>" alt="<?= $blogname ?>"/>
+		</div>
+	<?php endif ?>
+	
 	<div id="anony-hidden-search-form">
 	
 		<a class="anony-search-form-toggle" href="#" title="Scroll page">
