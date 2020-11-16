@@ -10,7 +10,8 @@ if (!defined('ANOENGINE')) return;
 $anonylibs = [
 	'theme-helpers'       =>'',
 	'theme-options'       =>'',
-	'data-hooks'       =>'',
+	'data-hooks'          =>'',
+	'vc-includes'         =>'',
 	'posts'     		  =>'',
 	'scripts'     		  =>'',
 	'theme'     		  =>'',
@@ -31,6 +32,7 @@ $anonylibs = [
 foreach($anonylibs as $anonylib=>$path){
 	require_once( wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib.'.php') );
 }
+
 
 //Just for testing purposes
 add_action('wp_footer', function(){
