@@ -9,15 +9,15 @@
 <meta http-equiv="Content-Type" content="<?= $contentType ?>" charset="<?= $charSet ?>"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge" >
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<?php wp_head();?>
+<?php wp_head(); ?>
 </head>
 
 <body <?= $bodyClass?>>
 	
-	<?php if($preloader == '1'): ?>
+	<?php if($preloader == '1'):  ?>
 		<div id="anony-preloader">
 			<p><?= $blogname ?> <?= esc_html__('Loading...', ANONY_TEXTDOM) ?></p>
-			<img class="anony-loader-img" src="<?= $logo_url ?>" alt="<?= $blogname ?>"/>
+			<img class="anony-loader-img" src="<?= $preloader_img ?>" alt="<?= $blogname ?>"/>
 		</div>
 	<?php endif ?>
 	

@@ -3,15 +3,22 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+$anonyOptions = ANONY_Options_Model::get_instance();
+
 $langAtts    = get_language_attributes();
 $contentType = get_bloginfo( 'html_type' );
 $charSet     = get_bloginfo( 'charset' );
 $blogname    = get_bloginfo();
 $bodyClass   = 'class="' . join( ' ', get_body_class() ) . '"';
 $logo        = anony_get_custom_logo('orange');
-$logo_url    = anony_get_custom_logo_url('orange');
+$preloader_img    = anony_get_custom_logo_url('orange');
 $nav         = anony_navigation('anony-main-menu');
 
+if($anonyOptions->preloader_img && !empty($anonyOptions->preloader_img) && filter_var($anonyOptions->preloader_img, FILTER_VALIDATE_URL) !== FALSE){
+	$preloader_img = $anonyOptions->preloader_img;
+}
+
+$preloader = $anonyOptions->preloader;
 /** 
  * The ANONY_MENU constant is defined in User control plugin.
  * It contains user menu slug, defined by the plugin
@@ -43,10 +50,6 @@ if(defined('ANONY_MENU')){
 
 
 $languages_menu = anony_navigation('anony-languages-menu','');
-
-$anonyOptions = ANONY_Options_Model::get_instance();
-
-$preloader = $anonyOptions->preloader;
 
 $socials_follow = 
 	[
