@@ -15,7 +15,7 @@ $rating_db_version = '1.0';
 /**
  *Create rating table
  */
-add_action("after_switch_theme", function() {
+add_action("after_setup_theme", function() {
 	
     global $wpdb;
 	
