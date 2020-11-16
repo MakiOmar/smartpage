@@ -46,6 +46,8 @@ $languages_menu = anony_navigation('anony-languages-menu','');
 
 $anonyOptions = ANONY_Options_Model::get_instance();
 
+$preloader = $anonyOptions->preloader;
+
 $socials_follow = 
 	[
 		[
