@@ -87,6 +87,22 @@ add_action( 'init', function(){
 								'type'    => 'text',
 								'validate'=> 'no_html',
 								'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
+							),
+							
+							array(
+								'id'      => 'preloader',
+								'title'   => esc_html__('Enable preloader', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    => esc_html__('Enabel or disable page preloader', ANONY_TEXTDOM)
+							),
+							
+							array(
+								'id'      => 'preloader_img',
+								'title'   => esc_html__('Preloader image', ANONY_TEXTDOM),
+								'type'    => 'upload',
+								'validate'=> 'no_html',
+								'desc'    => esc_html__('Choose preloader image', ANONY_TEXTDOM)
 							),						
 						)
 	);
