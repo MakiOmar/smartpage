@@ -289,20 +289,23 @@ function anony_cat_posts_count($idcat) {
  */
 function anony_latest_comments(){
 	
-	$args = array('number'=>4,'author__not_in' => array(get_current_user_id()));
+	$args = array('number'=>4);
+	
+	if(is_user_logged_in()) $args['author__not_in'] = array(get_current_user_id());
+	
 	
 		$comments = get_comments($args);
 	
 		if(count($comments) > 0){
 			
-			foreach($comments as $comment) {?>	
+			foreach($comments as $comment) { ?>	
 			
 				<div  class="anony-recent-comment-wrapper">
 				
 					<h3><?php echo '<i class="fa fa-user"></i> '.$comment->comment_author.' '.__('Commented',ANONY_TEXTDOM) ?></h3>
 					
 					<p class='recent-comment'>
-					<?php echo substr($comment->comment_content,0 , 150).'... ' ?>
+					<?php echo mb_substr($comment->comment_content,0 , 150).'... ' ?>
 					
 					<a href="<?php echo get_the_permalink($comment->comment_post_ID)?>"><?php esc_html_e('View Post',ANONY_TEXTDOM) ?></a>
 					
@@ -310,9 +313,10 @@ function anony_latest_comments(){
 					
 				</div>
 				
-		<?php }}else{?>
+		<?php }
+	}else{?>
 				
-					<p><?php esc_html_e('No comments yet',ANONY_TEXTDOM);?></p>
-					
-				<?php };
+		<p><?php esc_html_e('No comments yet',ANONY_TEXTDOM);?></p>
+		
+	<?php };
 }
