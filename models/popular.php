@@ -31,7 +31,13 @@ if ($query->have_posts()) {
 	
 	wp_reset_postdata();
 }
-if (empty($data)) return;
+if (empty($data)){
+	
+	
+	esc_html_e( 'No popular posts', $domain = 'default' );
+	
+	return;
+}
 
 wp_enqueue_script('anony-tabs');
 
