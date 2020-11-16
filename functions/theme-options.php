@@ -84,8 +84,8 @@ add_action( 'init', function(){
 							array(
 								'id'      => 'copyright',
 								'title'   => esc_html__('Copyright', ANONY_TEXTDOM),
-								'type'    => 'text',
-								'validate'=> 'no_html',
+								'type'    => 'textarea',
+								'validate'=> 'html',
 								'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
 							),
 							
@@ -100,7 +100,7 @@ add_action( 'init', function(){
 							array(
 								'id'      => 'preloader_img',
 								'title'   => esc_html__('Preloader image', ANONY_TEXTDOM),
-								'type'    => 'upload',
+								'type'    => 'uploader',
 								'validate'=> 'no_html',
 								'desc'    => esc_html__('Choose preloader image', ANONY_TEXTDOM)
 							),						
