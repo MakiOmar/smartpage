@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 $popular_title = esc_html__('Popular',ANONY_TEXTDOM);
 $recent_comments_title = esc_html__('Recent comments',ANONY_TEXTDOM);
 ?>
-<div id="anony-secondary-sidebar" class="anony-grid-col-md-4 anony-grid-col">
+<div class="anony-secondary-sidebar anony-grid-col-md-4 anony-grid-col">
 	
-	<div class="anony-grid-col-12 white-bg">
+	<div class="white-bg">
 	  	
 		<ul class="tabs">
 			
