@@ -193,10 +193,6 @@ a.pp_close, a.pp_expand{
 	text-align: right;
 }
 
-.fa-star{
-		margin-right: 0px;
-		margin-left: 5px;
-	}
 .anony-skew-bg::after, .anony-skew-bg::before {
 
         transform-origin: bottom left;

@@ -5,7 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="anony-popular" class ="anony-tab_content">
 			
-	<?php foreach ($data as $p) : extract($p)?>
+	<?php foreach ($data as $p) : 
+		extract($p); 
+		$pID = $id 
+	?>
 		
 		<div id="anony-popular-<?= $id ?>" class="anony-posts-list-wrapper">
 		
@@ -25,8 +28,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					
 					<div class="anony-metadata"><i class="fa fa-calendar"></i>&nbsp;<?= $date ?></div>
 					<div class="anony-metadata"><i class="fa fa-eye"></i>&nbsp;<?= $views ?></div>
-					
-					<?php get_template_part('models/rate') ?>
+					  
+					<?php include(locate_template( 'models/rate.php', false, false )); ?>
 					
 				</div>
 				

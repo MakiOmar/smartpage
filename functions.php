@@ -21,11 +21,11 @@ $anonylibs = [
 	'admin'     		  =>'',
 	'media'     		  =>'',
 	'widgets'     		  =>'',
-	'db'        		  =>'',
 	'custom-fields'       =>'',
 	'statistics'          =>'shortcodes/statistics/',
 	'ajax-comments'       =>'ajax/',
 	'ajax-download'       =>'ajax/',
+	'ajax-rate'       =>'ajax/',
 	'tinymce-editor-btns' =>'mce/' ,
 ];
 

@@ -15,6 +15,8 @@ get_header();
 		anony_breadcrumbs();
 		
 		get_sidebar('right-sidebar');
+		
+		$pID = $id;
 
         if(has_action('post_ad')) do_action('post_ad');
         
@@ -73,7 +75,7 @@ get_header();
 				
 				<?php endif ?>
 				
-				<?php get_template_part('models/rate') ?>
+				<?php include(locate_template( 'models/rate.php', false, false )); ?>
 				
 			</div>
 

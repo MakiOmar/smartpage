@@ -4,8 +4,6 @@
 	}
 ?>
 <div id="rating-<?= $pID ?>" class="anony-metadata">
- 
-	<i id="rate-ico" class="fa fa-star"></i>
 
 	<?php for($r = 1; $r <= 5; $r++){?>
 
@@ -32,5 +30,3 @@
 </div>
 
 <input id="post-id-<?= $pID ?>" type="hidden" value="<?= $pID ?>"/>
-
-<input id="user-ip-<?= $pID ?>" type="hidden" value="<?= $rateStatus ?>"/>

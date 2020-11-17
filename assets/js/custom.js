@@ -695,19 +695,12 @@ jQuery(document).ready(function($){
 			//Display the clicked rate
 			$('.rated-'+postId).text(' '+clickRrate+' ');
 			
-			//If new user rates increase rating times
-			if($('#user-ip'+postId).val() === 'new_rate'){
-			   var revTimes = parseInt($('.times-'+postId).text());
-			   revTimes +=1;
-			   $('.times-'+postId).text(revTimes);
-			}
-			
 			//Send the new rating to database
 			$.ajax({
 			   type : "POST",
 			   data: {
 				  //'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db
-				  action: 'rate_post',
+				  action: 'rate_post_meta',
 				  act:'rate',
 				  post_id : postId,
 				  rate :clickRrate
