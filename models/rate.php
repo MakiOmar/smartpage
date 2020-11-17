@@ -20,6 +20,9 @@ $ratedCount  = substr($rateValue,0,3);
 $ratedText   = esc_html__('Rated',ANONY_TEXTDOM);
 $outOf       = esc_html__('out of',ANONY_TEXTDOM);
 $reviewsText = esc_html__('Review(s)',ANONY_TEXTDOM);
+
+
+$rate_class = is_user_logged_in() ? ' rate-btn' : '';
 //$rateStatus  = !in_array($_SERVER["REMOTE_ADDR"],$userIps) ? 'new_rate'  : 'current_rate';
 include(locate_template( 'templates/rate.view.php', false, false ));
 ?>

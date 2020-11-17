@@ -7,7 +7,7 @@
 
 	<?php for($r = 1; $r <= 5; $r++){?>
 
-		<i id="<?= $r ?>-<?= $pID ?>" class="fa fa-star-o btn-<?= $pID ?>-<?= $r ?> rate-btn"></i><?= (($r != 5) ? '&nbsp': '')?>
+		<i id="<?= $r ?>-<?= $pID ?>" class="fa fa-star-o btn-<?= $pID ?>-<?= $r ?> <?= $rate_class ?>"></i><?= (($r != 5) ? '&nbsp': '')?>
 
 	<?php }?>
 	

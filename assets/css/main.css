@@ -158,6 +158,10 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+.rate-btn{
+	cursor: pointer;
+}
+
 .anony-ad{
     overflow:hidden;
 }
