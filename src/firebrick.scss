@@ -1,0 +1,53 @@
+$main_color : #ef1450;
+$secondary_color : #230004 ;
+$third_color : #b10030;
+.firebrick{
+	.anony-skew-bg::after,.page-numbers li,.active,.button, .anony-active-tab,
+	.anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,
+	.anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
+		background-color: $main_color ;
+	}
+	.anony-post-info .anony-nothumb-post .anony-thumb-post-title, #anony-top-header-wrapper, #anony-page-loading-bg{
+		border-bottom-bottom: $main_color;
+	}
+	.anony-section,#anony-slider-wrapper {
+	    border-top-color: $main_color;
+	}
+
+	.single-download,.anony-toggle-sidebar, #anony-main_nav_con{
+		background-color: $secondary_color;
+	}
+	.fa-calendar,.fa-comments-o,.fa-folder-open,.fa-eye,.fa-download,a,h1,h2,h3,h4,h5,h6, .anony-breadcrumbs li, .anony-breadcrumbs a{
+		color: $third_color;
+	}
+
+	#anony-main-menu-con .anony-sub-menu li a {
+	    color: $secondary_color;
+	    text-shadow: none;
+	}
+	#cancel-comment-reply-link, .fa-bars,#anony-cat-list .toggle-category .fa {
+			color: $main_color;
+		}
+
+	.anony-warning {
+		background-color: #e09352;
+		border-left: 6px solid $secondary_color;
+	}
+	.page-numbers, #anony-main-menu-con .anony-sub-menu li a{
+		color: #fff;
+	}
+	#anony-main-menu-con .anony-sub-menu li{
+		border-bottom: 1px solid $secondary_color;
+		background-color: $third_color;
+	}
+	li .current::after{
+		background-color: $third_color;
+	}
+
+	@media screen and (min-width: 768px){
+		#anony-main-menu-con li a:hover {
+			background-color: $third_color;
+			font-size: 16px;
+		}
+	}
+}
