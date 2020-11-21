@@ -824,7 +824,6 @@ tr:nth-child(even) {
 	}
 	.anony-posts-list{
 		margin-left: 5px;
-		width: 80%;
 	}
 	.anony-post-image-wrapper img{
 		display: block;
@@ -1275,9 +1274,6 @@ tr:nth-child(even) {
 		background-color: rgba(235,85,88,1.00);
 		display: inline-block;
 	}
-	.anony-secondary-sidebar ul li:nth-child(2){
-		background-color: rgba(35, 0, 5,1);	
-	}
 	#anony-popular div h3 a{
 		display: inline-block;
 
@@ -1378,6 +1374,7 @@ tr:nth-child(even) {
 	}
 	.anony-recent-comment-wrapper{
 		border-bottom: 1px solid #a9a4a4;
+		padding: 10px
 	}
 
 	.widgeted ul li{
@@ -1438,6 +1435,21 @@ tr:nth-child(even) {
 		vertical-align: middle;
 		box-sizing: border-box;
 		white-space: nowrap;
+	}
+	.dun_text:after{
+		content: '';
+		height: 5px;
+		width: 5px;
+		border-radius: 50%;
+		background-color: #000;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 10px;
+		position: relative;
+		right: 5px;
+	}
+	.dun_text:last-child:after{
+		display: none;
 	}
 .anony-search-input{
 	width: 70%;
@@ -1599,10 +1611,7 @@ tr:nth-child(even) {
 	}
 	.anony-section{
 		border-top: 5px solid #fc2a2a;
-		visibility: hidden;
-		opacity: 0;
 		position: relative;
-		top: 150px;
 		margin-bottom: 15px
 	}
 	.anony-section_title{
@@ -1612,11 +1621,6 @@ tr:nth-child(even) {
 		color: #ffffff;
 		min-width: 150px;
 		text-align: center;
-	}
-	.anony-section-animate{
-		visibility: visible;
-		opacity: 1;
-		top: 0px;
 	}
 	#anony-blog-post, #anony-masonry{
 		margin-top: 50px;
