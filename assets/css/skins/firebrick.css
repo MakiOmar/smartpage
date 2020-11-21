@@ -14,7 +14,8 @@
 .firebrick .anony-button,
 .firebrick .anony-post-image-wrapper h4,
 .firebrick .f-post-title,
-.firebrick .reply {
+.firebrick .reply,
+.firebrick .dun_text:after {
   background-color: #ef1450;
 }
 
@@ -31,7 +32,8 @@
 
 .firebrick .single-download,
 .firebrick .anony-toggle-sidebar,
-.firebrick #anony-main_nav_con {
+.firebrick #anony-main_nav_con,
+.firebrick .anony-secondary-sidebar ul li:not(.anony-active-tab):nth-child(2) {
   background-color: #230004;
 }
 
@@ -69,7 +71,8 @@
 }
 
 .firebrick .page-numbers,
-.firebrick #anony-main-menu-con .anony-sub-menu li a {
+.firebrick #anony-main-menu-con .anony-sub-menu li a,
+.firebrick .widgeted_title {
   color: #fff;
 }
 
