@@ -97,17 +97,6 @@
 
 /***/ }),
 
-/***/ "./src/app.scss":
-/*!**********************!*\
-  !*** ./src/app.scss ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/firebrick.scss":
 /*!****************************!*\
   !*** ./src/firebrick.scss ***!
@@ -120,14 +109,13 @@
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************!*\
-  !*** multi ./src/app.js ./src/app.scss ./src/firebrick.scss ***!
-  \**************************************************************/
+/*!***********************************************!*\
+  !*** multi ./src/app.js ./src/firebrick.scss ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\app.js */"./src/app.js");
-__webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\app.scss */"./src/app.scss");
 module.exports = __webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\firebrick.scss */"./src/firebrick.scss");
 
 
