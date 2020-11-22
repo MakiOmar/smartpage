@@ -9,6 +9,7 @@
   line-height: 30px;
   color: #FFFFFF;
   cursor: pointer;
+  vertical-align: top;
 }
 
 .anony-popular-tabs li:last-child {
@@ -75,7 +76,7 @@
 }
 
 .anony-posts-list-thumb {
-  width: 20%;
+  width: 30%;
 }
 
 .anony-posts-list-thumb a {
