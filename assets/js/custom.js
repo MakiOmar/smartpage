@@ -26,16 +26,6 @@ jQuery(document).ready(function($){
 	
 	var SmpgAjaxUrl = anonyLoca.ajaxURL;
 	
-	//Slide frontpage sections to top if scrolled down
-	$(window).scroll(function(){
-		
-		$.fn.slideToTop('.anony-section', 'anony-section-animate');
-		
-	  
-	});
-	
-	$.fn.slideToTop('.anony-section', 'anony-section-animate');
-	
 	/**------------------------------------------------------------------
 	 *                      Toggles
 	 *-------------------------------------------------------------------*/
@@ -99,7 +89,7 @@ jQuery(document).ready(function($){
 	
 	/**
 	 * Only add class (active) to first item
-	 * if no other items has the same class
+	 * if no other items has .active class
 	 */
 	if($('.active').length === 0){
 		$("#anony-main-menu-con li").first().addClass('active');
