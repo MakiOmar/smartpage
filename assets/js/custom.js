@@ -554,11 +554,12 @@ jQuery(document).ready(function($){
 		   	//make sure to remove all .reviews from current post ratings 
 		    itemClass = "btn-"+thePostID+'-';
 			$('[class*="'+itemClass+'"]').removeClass('reviews');
+			$('[class*="'+itemClass+'"]').removeClass('fa-star').addClass('fa-star-o');
 		   
 		   	//Now on hover it will show what rating your are about to give
-		    $(this).addClass('reviews');
-			$(this).prevAll().addClass('reviews');
-		   $('.fa-star').removeClass('reviews');
+		    $(this).removeClass('fa-star-o').addClass('reviews fa-star');
+			$(this).prevAll().removeClass('fa-star-o').addClass('reviews fa-star');
+		   //$('.rate-btn').removeClass('reviews');
 		   
 		 },function(){
 			//Get the database rate stored in #rated-'+thePostID
@@ -566,6 +567,7 @@ jQuery(document).ready(function($){
 
 			//make sure to remove all .reviews from current post ratings
 			$('[class*="'+itemClass+'"]').removeClass('reviews');
+			$('[class*="'+itemClass+'"]').removeClass('fa-star').addClass('fa-star-o');
 
 
 			var getcurrentRate;
@@ -577,6 +579,7 @@ jQuery(document).ready(function($){
 		   
 			for (var j = 1; j <= getcurrentRate; j++) {
 				$('.btn-'+thePostID+'-'+j).addClass('reviews');
+				$('.btn-'+thePostID+'-'+j).removeClass('fa-star-o').addClass('fa-star');
 			}
 		});                    
 		$('.rate-btn').click(function(){
@@ -628,7 +631,7 @@ jQuery(document).ready(function($){
 			  url : SmpgAjaxUrl,
 			  success:function(response){
 				  //resp is define within the wp_ajax_{action} hooked function
-				  //console.log(response.resp);
+				  console.log(response.resp);
 			  }
 			});
 		});

@@ -963,7 +963,6 @@ tr:nth-child(even) {
 	}
 	.reviews{
 		color: rgba(241,189,8,1.00);
-		background: url(../../images/rate-star.png) repeat;
 	}
 	.meta{
 		padding: 10px;

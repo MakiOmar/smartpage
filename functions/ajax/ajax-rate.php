@@ -19,22 +19,22 @@ add_action('wp_ajax_rate_post_meta', function() {
 		
 		if(!$post_ratings || empty($post_ratings)){
 			
-			add_post_meta( $post_id, 'anony_post_rating', [$post_id => $therate] );
+			add_post_meta( $post_id, 'anony_post_rating', [$user_id => $therate] );
 		}else{
 			
 			$rated_ids = array_keys($post_ratings);
 			
 			if(in_array($post_id, $rated_ids)){
 				
-				if($post_ratings[$post_id] != $therate){
+				if($post_ratings[$user_id] != $therate){
 					
-					$post_ratings[$post_id] = $therate;
+					$post_ratings[$user_id] = $therate;
 					
 					update_post_meta( $post_id, 'anony_post_rating', $post_ratings );
 				}
 			}else{
 				
-				$post_ratings[$post_id] = $therate;
+				$post_ratings[$user_id] = $therate;
 				
 				update_post_meta( $post_id, 'anony_post_rating', $post_ratings );
 			}

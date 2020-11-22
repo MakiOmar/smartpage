@@ -5,9 +5,12 @@
 ?>
 <div id="rating-<?= $pID ?>" class="anony-metadata">
 
-	<?php for($r = 1; $r <= 5; $r++){?>
+	<?php for($r = 1; $r <= 5; $r++){
+		
+		$rate_star = ($r <= $ratedCount) ? 'fa-star' : 'fa-star-o' ;
+	?>
 
-		<i id="<?= $r ?>-<?= $pID ?>" class="fa fa-star-o btn-<?= $pID ?>-<?= $r ?> <?= $rate_class ?>"></i><?= (($r != 5) ? '&nbsp': '')?>
+		<i id="<?= $r ?>-<?= $pID ?>" class="fa <?= $rate_star ?> btn-<?= $pID ?>-<?= $r ?> <?= $rate_class ?>"></i><?= (($r != 5) ? '&nbsp': '')?>
 
 	<?php }?>
 	
