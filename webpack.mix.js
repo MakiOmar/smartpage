@@ -13,6 +13,7 @@ let mix = require('laravel-mix');
 
 mix.js('src/app.js', 'dist/')
 .sass('src/firebrick.scss', 'assets/css/skins/')
+.sass('src/elements/popular.scss', 'assets/css/elements/')
 ;
 
 // Full API

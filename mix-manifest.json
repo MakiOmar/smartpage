@@ -1,4 +1,5 @@
 {
     "/dist/app.js": "/dist/app.js",
-    "/assets/css/skins/firebrick.css": "/assets/css/skins/firebrick.css"
+    "/assets/css/skins/firebrick.css": "/assets/css/skins/firebrick.css",
+    "/assets/css/elements/popular.css": "/assets/css/elements/popular.css"
 }
