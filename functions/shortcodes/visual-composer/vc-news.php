@@ -18,7 +18,7 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
                 "name" => esc_html__("Anony news bar", ANONY_TEXTDOM),
                 "base" => "anony-news-bar",
                 "category" => esc_html__("Anony Shortcodes", ANONY_TEXTDOM),
-                "icon" => "icon-wpb-ui-custom_heading",
+                "icon" => ANONY_THEME_URI."/images/vc/news.png",
                 "params" => array(
                     array(
                         'group' => __('Shortcode Output', ANONY_TEXTDOM),
