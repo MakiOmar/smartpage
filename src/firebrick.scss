@@ -15,7 +15,7 @@ $third_color : #b10030;
 	    border-top-color: $main_color;
 	}
 
-	.single-download,.anony-toggle-sidebar, #anony-main_nav_con,.anony-secondary-sidebar ul li:not(.anony-active-tab):nth-child(2){
+	.single-download,.anony-toggle-sidebar, #anony-main_nav_con,.anony-popular-tabs li:not(.anony-active-tab):nth-child(2){
 		background-color: $secondary_color;
 	}
 	.fa-calendar,.fa-comments-o,.fa-folder-open,.fa-eye,.fa-download,a,h1,h2,h3,h4,h5,h6, .anony-breadcrumbs li, .anony-breadcrumbs a{

@@ -1258,7 +1258,10 @@ tr:nth-child(even) {
 	.anony-secondary-sidebar > div{
 		min-height: 445px
 	}
-	.anony-secondary-sidebar ul li{
+
+	.anony-popular-tabs li{
+		width: 49.7%;
+		text-align: center;
 		display: inline-block;
 		background-color: #7A7A7A;
 		padding: 5px;
@@ -1266,7 +1269,7 @@ tr:nth-child(even) {
 		color: #FFFFFF;
 		cursor: pointer;
 	}
-	.anony-secondary-sidebar ul li:last-child{
+	.anony-popular-tabs li:last-child{
 		margin: none;
 	}
 	#main-sidebar {
@@ -1338,10 +1341,7 @@ tr:nth-child(even) {
 		height: 100%;
 		opacity: 1;
 	}
-	.tabs li{
-		width: 49.7%;
-		text-align: center;
-	}
+	
 	.anony-popular{
 		margin-right: 0.6%;
 	}
