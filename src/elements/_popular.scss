@@ -1,0 +1,85 @@
+/* Popular section style */
+
+.anony-popular-tabs li{
+	width: 49.7%;
+	text-align: center;
+	display: inline-block;
+	background-color: #7A7A7A;
+	padding: 5px;
+	line-height: 30px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+.anony-popular-tabs li:last-child{
+	margin: none;
+}
+
+#anony-popular div h3 a{
+	display: inline-block;
+
+}
+#anony-popular,#anony-comments {
+	position: relative;
+}
+#anony-popular span{
+	position: absolute;
+	right: 5px;
+}
+#anony-comments h4{
+	display: inline-block;
+	margin-left: 5px;
+}
+#anony-comments i {
+	color: #444444;
+}
+
+.anony-popular{
+	margin-right: 0.6%;
+}
+
+.anony-tab_content{
+	display: none;
+}
+.anony-tab_content div h3{
+	font-size: 14px;
+	display: inline-block;
+	margin: 0;
+}
+.anony-posts-list-wrapper{
+	border-bottom: 1px solid #e6e2e2;
+	padding: 9px;
+	display: flex;
+	align-items: center;
+}
+.anony-posts-list-wrapper:last-child,.anony-recent-comment-wrapper:last-child{
+	border-bottom: none;
+}
+.anony-posts-list, .anony-posts-list-thumb{
+	display: inline-block;
+	margin-top: 3px;
+}
+.anony-posts-list{
+	margin-left: 5px;
+}
+
+.anony-posts-list-thumb{
+		width:20%;
+	}
+.anony-posts-list-thumb a{
+	display: flex;
+	padding: 3px;
+	background-color: #e1dfdf;
+}
+
+.recent-comment{
+	display: block;
+	padding: 5px;
+	text-align: justify;
+	font-size: 14px;
+}
+.anony-recent-comment-wrapper{
+	border-bottom: 1px solid #a9a4a4;
+	padding: 10px
+}
+
+/* End popular section style */
