@@ -10,6 +10,26 @@ $simple_info_title = esc_html__('Simple Info',ANONY_TEXTDOM);
 $search_form       = get_search_form(false);
 $dun_wrapper_class = is_rtl() ? ' class="is-rtl"' : '';
 
+if(!isset($news_bar_style)){
+	
+	$news_bar_style = '';
+}
+
+if(!isset($text_style)){
+	
+	$text_style = '';
+}
+
+$direction = is_rtl() ? 'right' : 'left';
+
+if(isset($text_motion_direction) && $text_motion_direction != ''){
+	
+	$direction  = $text_motion_direction;
+}
+
+if(!isset($motion_speed) || $motion_speed == ''){
+	$motion_speed = 3;
+}
 $data = [];
 
 if ($query->have_posts()) {

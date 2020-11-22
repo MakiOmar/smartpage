@@ -10,13 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div>
 
-<div id="anony-dun-text">
+<div id="anony-dun-text"<?= $news_bar_style ?>>
 	<div id="dun_text_wrapper"<?= $dun_wrapper_class ?>>
-	<marquee direction="right" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+	<marquee direction="<?= $direction ?>" scrollamount="<?= $motion_speed ?>" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
 		<?php
 		 foreach ($data as $p) { extract($p) ?>
 
-			<p id="anony-dun-text-<?= $id ?>" class="dun_text"><?= $content ?></p>
+			<p id="anony-dun-text-<?= $id ?>" class="dun_text"<?= $text_style ?>><?= $content ?></p>
 
 		<?php } ?>
 	</marquee>
