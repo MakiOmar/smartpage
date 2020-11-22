@@ -47,22 +47,13 @@
 	margin: 0;
 }
 .anony-posts-list-wrapper{
-	border-bottom: 1px solid #e6e2e2;
-	padding: 9px;
 	display: flex;
 	align-items: center;
 }
-.anony-posts-list-wrapper:last-child,.anony-recent-comment-wrapper:last-child{
-	border-bottom: none;
-}
-.anony-posts-list, .anony-posts-list-thumb{
+.anony-posts-list-thumb{
 	display: inline-block;
 	margin-top: 3px;
 }
-.anony-posts-list{
-	margin-left: 5px;
-}
-
 .anony-posts-list-thumb{
 		width:30%;
 	}
@@ -78,9 +69,22 @@
 	text-align: justify;
 	font-size: 14px;
 }
-.anony-recent-comment-wrapper{
-	border-bottom: 1px solid #a9a4a4;
+.anony-recent-comment-wrapper, .anony-posts-list-wrapper{
+	position: relative;
 	padding: 10px
+}
+
+.anony-recent-comment-wrapper:after, .anony-posts-list-wrapper::after{
+	content: '';
+	display: block;
+	width: 90%;
+	border-bottom: 1px solid #e6e2e2;
+	position: absolute;
+	bottom: 0;
+}
+
+.anony-posts-list-wrapper:last-child:after,.anony-recent-comment-wrapper:last-child:after{
+	border-bottom: none;
 }
 
 /* End popular section style */
