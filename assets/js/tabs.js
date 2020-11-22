@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
 	//show only first tab content
 	$(".anony-tab_content:first").show();
 	
-	$("ul.tabs li").click(function() {
+	$("ul.anony-popular-tabs li").click(function() {
 		
 		var clickedTab = $(this);
 		
@@ -17,7 +17,7 @@ jQuery(document).ready(function($){
 
 		$( '#' + relId ).fadeIn();
 
-		$("ul.tabs li").removeClass("anony-active-tab");
+		$("ul.anony-popular-tabs li").removeClass("anony-active-tab");
 		
 		clickedTab.addClass("anony-active-tab");
 
