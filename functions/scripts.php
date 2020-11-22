@@ -15,7 +15,7 @@ function anony_styles(){
 	
 	$anonyOptions = ANONY_Options_Model::get_instance();
 	
-	$styles = array('main','responsive');
+	$styles = array('main','responsive', 'theme-styels');
 		
 	$styles_libs = ['font-awesome.min'];
 	
