@@ -27,6 +27,7 @@ $anonylibs = [
 	'ajax-download'       =>'ajax/',
 	'ajax-rate'       =>'ajax/',
 	'tinymce-editor-btns' =>'mce/' ,
+	'switch' =>'vc-shortcode-types/' ,
 ];
 
 foreach($anonylibs as $anonylib=>$path){
