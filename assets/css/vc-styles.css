@@ -1,0 +1,49 @@
+/* VC switch styles */
+
+.anony-vc-type-block .vc-switch-set-item {
+  display: inline-flex;
+  margin-bottom: 0;
+  padding: 0 10px;
+  background-color: #E3E3E3;
+  color: #444;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 35px;
+  min-width: 65px;
+  box-sizing: border-box;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.anony-vc-type-block .vc-switch-set-item:last-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 4px;
+}
+
+.anony-vc-type-block .vc-switch-set-item.checked {
+  background-color: #A8D14D;
+  color: #FFF;
+}
+
+.rtl .anony-vc-type-block .vc-switch-set-item {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.rtl .anony-vc-type-block .vc-switch-set-item:last-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 4px;
+}
+
+/* End VC switch styles */
+
