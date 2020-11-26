@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 mix.js('src/app.js', 'dist/')
 .sass('src/firebrick.scss', 'assets/css/skins/')
 .sass('src/theme-styles.scss', 'assets/css/')
+.sass('src/vc-styles.scss', 'assets/css/')
 ;
 
 // Full API

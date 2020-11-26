@@ -119,16 +119,28 @@
 
 /***/ }),
 
+/***/ "./src/vc-styles.scss":
+/*!****************************!*\
+  !*** ./src/vc-styles.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************************!*\
-  !*** multi ./src/app.js ./src/firebrick.scss ./src/theme-styles.scss ***!
-  \***********************************************************************/
+/*!********************************************************************************************!*\
+  !*** multi ./src/app.js ./src/firebrick.scss ./src/theme-styles.scss ./src/vc-styles.scss ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\app.js */"./src/app.js");
 __webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\firebrick.scss */"./src/firebrick.scss");
-module.exports = __webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\theme-styles.scss */"./src/theme-styles.scss");
+__webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\theme-styles.scss */"./src/theme-styles.scss");
+module.exports = __webpack_require__(/*! C:\xampp-7.4\htdocs\anony\wp-content\themes\smartpage\src\vc-styles.scss */"./src/vc-styles.scss");
 
 
 /***/ })
