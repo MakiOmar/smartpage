@@ -48,6 +48,14 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
                         'edit_field_class' => 'vc_col-sm-6 vc_column',
                         'description' => __('Motion speed (a number of 3 is good, more than that will be fast)', ANONY_TEXTDOM),
                         ),
+                    array(
+                        'group' => __('Settings', ANONY_TEXTDOM),
+                        'type' => 'anony-switch',
+                        'heading' => __('test', ANONY_TEXTDOM),
+                        'param_name' => 'test_switch',
+                        'std' => 'on',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
                     
                     array(
                         "group" => esc_html__("Design Options", 'js_composer'),
