@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_action( 'admin_enqueue_scripts', function() {
 	
-	$styles = array('anony-admin');
+	$styles = array('anony-admin', 'vc-styles');
 	
 		foreach($styles as $style){
 			
