@@ -171,7 +171,7 @@ tr:nth-child(even) {
 .anony-form-submit{
 	margin-top: 15px;
 }
-.anony-dropdown,.anony-toggle-excerpt,#anony-top-header-wrapper,#anony-languages-menu-con,.anony-text,.anony-text p,#anony-hidden-search-form,.anony-post-contents,.anony-download-counter,#anony-main_nav_con,#anony-menu-toggle,.anony-single-sidebar,.anony-contact span,.anony-section{
+.anony-toggle-excerpt,#anony-top-header-wrapper,#anony-languages-menu-con,.anony-text,.anony-text p,#anony-hidden-search-form,.anony-post-contents,.anony-download-counter,#anony-main_nav_con,#anony-menu-toggle,.anony-single-sidebar,.anony-contact span,.anony-section{
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
@@ -412,22 +412,25 @@ tr:nth-child(even) {
 		position: relative!important;
 		padding: 0;
 		width: 100%;
-		height: 0;
+		max-height: 0;
+		overflow: hidden;
+		/*height: 0;
 		opacity: 0;
-		visibility: hidden;
+		visibility: hidden;*/
 
 	}
 
 	.anony-show{
-		opacity: 1;
-		visibility: visible;
+		max-height: 2000px
 	}
+	
+	/*.anony-show li{
+		display: block;
+	}*/
 	.anony-dropdown li{
 		background-color: #fff;
 	}
-	.anony-show li{
-		display: block;
-	}
+	
 	.anony-breadcrumbs li,.anony-breadcrumbs a{
 		color: #d6d4d4;
 		display: inline-flex;

@@ -1,4 +1,4 @@
-/* Popular section style */
+/*----Popular section style----*/
 
 .anony-popular-tabs li {
   width: 49.7%;
@@ -55,15 +55,12 @@
 
 .anony-posts-list-wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .anony-posts-list-thumb {
   display: inline-block;
-  margin-top: 3px;
-}
-
-.anony-posts-list-thumb {
+  margin: 3px 0 0 5px;
   width: 30%;
 }
 
@@ -102,4 +99,12 @@
 }
 
 /* End popular section style */
+
+/*-----Categories dropdown widget-----*/
+
+#anony-cat-list .anony-dropdown {
+  transition: all 0.4s ease-in-out;
+}
+
+/* End categories dropdown widget */
 

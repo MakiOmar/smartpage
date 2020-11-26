@@ -1,4 +1,4 @@
-/* Popular section style */
+/*----Popular section style----*/
 
 .anony-popular-tabs li{
 	width: 49.7%;
@@ -48,15 +48,14 @@
 }
 .anony-posts-list-wrapper{
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 .anony-posts-list-thumb{
 	display: inline-block;
-	margin-top: 3px;
+	margin: 3px 0 0 5px;
+	width:30%;
 }
-.anony-posts-list-thumb{
-		width:30%;
-	}
+
 .anony-posts-list-thumb a{
 	display: flex;
 	padding: 3px;
