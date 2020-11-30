@@ -8,6 +8,33 @@
 		-o-transition: all 0.4s ease-in-out;
 		transition: all 0.4s ease-in-out;
 	}
+	
+	li, li ul li {
+		position: relative;
+		background-color: #444444;
+	}
+	
+	li a{
+		display: inline-block!important;
+		vertical-align: middle;
+		font-size: 14px;
+		padding: 10px;
+	}
+	.has-children{
+		background-color: #fbfbfb!important;
+	}
+	.has-children ul{
+		background-color: #fff!important;
+	}
 }
+
+	#anony-cat-list {
+		position: relative;
+		width: 100%;
+		border-radius: 5px;
+		padding: 0 8px;
+		overflow: hidden;
+	}
+
 
 /* End categories dropdown widget */

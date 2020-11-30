@@ -1219,29 +1219,7 @@ tr:nth-child(even) {
 		margin-bottom: 10px;
 		border-radius: 10px;
 	}
-	#anony-cat-list {
-		position: relative;
-		width: 100%;
-		border-radius: 5px;
-		padding: 0 8px;
-		overflow: hidden;
-	}
-	#anony-cat-list li,#anony-cat-list li ul li {
-		position: relative;
-		background-color: #444444;
-	}
-	#anony-cat-list li a{
-		display: inline-block!important;
-		vertical-align: middle;
-		font-size: 14px;
-		padding: 10px;
-	}
-	#anony-cat-list .has-children{
-		background-color: #fbfbfb!important;
-	}
-	#anony-cat-list .has-children ul{
-		background-color: #fff!important;
-	}
+
 	.anony-secondary-sidebar > div{
 		min-height: 445px
 	}
