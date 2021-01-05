@@ -190,9 +190,9 @@ add_filter("wp_nav_menu_items",function($item , $args){
 
 //Adds WPML language switcher to languages-menu location
 add_filter("wp_nav_menu_items",function($item , $args){
-	$pluginList = get_option( 'active_plugins' );
-	$wpml_plugin = 'sitepress-multilingual-cms/sitepress.php';
-	if ( in_array( $wpml_plugin , $pluginList ) && $args->theme_location == 'anony-languages-menu' ) {
+	
+	if(class_exists('ANONY_WPML_HELP') || ANONY_WPML_HELP::isActive()) return $item;
+		
 		$languages = icl_get_languages('skip_missing=0');
 		if(!empty($languages)){
 			foreach($languages as $l){
@@ -208,10 +208,40 @@ add_filter("wp_nav_menu_items",function($item , $args){
 			$item .= '<li id="anony-lang-toggle"><img src="'.$curr_lang['country_flag_url'].'" width="32" height="20" alt="'.$l['language_code'].'"/></li>';
 		}
 		return $item;
-	}else{
-		return $item;
-	}
+
 },10 , 2);
+
+
+function anony_get_wpml_switcher($style = '1'){
+		
+	if(!class_exists('ANONY_WPML_HELP') || !ANONY_WPML_HELP::isActive()) return;
+	
+	
+	
+	$languages = icl_get_languages('skip_missing=0'); 
+	
+	if(!empty($languages)){
+		
+		foreach($languages as $l){
+			
+			if($l['language_code'] == ICL_LANGUAGE_CODE){
+				$curr_lang_flag = $l['country_flag_url'];
+			}
+			
+			$active_class = ANONY_WPML_HELP::ActiveLangClass($l['language_code']);
+			
+			$temp['lang_url'] = $l['url'];
+			$temp['lang_code'] = icl_disp_language(strtoupper($l['language_code']));
+			
+			$data[] = $temp; 
+		}
+		
+		include(locate_template( 'templates/wpml-lang-switcher-'.$style.'.php', false, false ));
+		
+	}
+	
+	
+}
 
 //Adds the active class to menu item of current active page
 add_filter('page_css_class' , function ($css_class, $page, $depth, $args, $current_page) {

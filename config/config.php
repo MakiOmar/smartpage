@@ -129,6 +129,20 @@ define( 'ANONY_CLASSES', wp_normalize_path (ANONY_THEME_DIR . '/classes/'));
  */
 define( 'ANONY_CONTENTS_VIEWS', wp_normalize_path (ANONY_CLASSES . '/views/'));
 
+
+/**
+ * Holds a path to elementor's extensions folder
+ * @const
+ */
+define( 'ANONY_ELEMENTOR_EXTENSION', wp_normalize_path (ANONY_THEME_DIR . '/elementor/'));
+
+
+/**
+ * Holds a path to elementor's documents folder
+ * @const
+ */
+define( 'ANONY_ELEMENTOR_DOCS', wp_normalize_path (ANONY_ELEMENTOR_EXTENSION . 'documents/'));
+
 /**
  * Holds a serialized array of all pathes to classes folders
  * @const
@@ -139,6 +153,8 @@ define(
 		[
 			ANONY_CLASSES,
 			ANONY_CONTENTS_VIEWS,
+			ANONY_ELEMENTOR_EXTENSION,
+			ANONY_ELEMENTOR_DOCS
 		]
 	)
 );
@@ -147,6 +163,10 @@ define(
 *Classes Auto loader
 */
 spl_autoload_register( function ( $class_name ) {
+	if (strpos( $class_name, "\\") !== false) {
+	    $parts = explode('\\', $class_name);
+	    $class_name = end($parts);
+	}
 	if ( false !== strpos( $class_name, ANONY_PREFIX )) {
 		$class_name = strtolower(preg_replace('/'.ANONY_PREFIX.'/', '', $class_name));
 		

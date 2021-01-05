@@ -34,6 +34,10 @@ foreach($anonylibs as $anonylib=>$path){
 	require_once( wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib.'.php') );
 }
 
+/**
+ * Elementor includes 
+ **/
+require_once( wp_normalize_path( ANONY_ELEMENTOR_EXTENSION . 'elementor-incl.php') );
 
 //Just for testing purposes
 add_action('wp_footer', function(){
