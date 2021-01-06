@@ -34,7 +34,7 @@ final class DocumentsManager{
         add_action('template_include', [$this, '_includeDocTemplate'], 11);
         
         add_action('get_header', [$this, '_maybeRenderSiteHeader'], 9);
-        
+        add_action('get_footer', [$this, '_maybeRenderSiteFooter'], 9);
         add_action('elementor/documents/register', [$this, '_registerCustomDocTypes']);
         add_action('elementor/documents/register_controls', [$this, '_addControls'], PHP_INT_MAX);
         add_action('elementor/editor/after_save', [$this, '_maybeSetDefaultHeaderFooter'], 10, 2);
@@ -67,6 +67,7 @@ final class DocumentsManager{
 
 
         $manager->register_document_type('site_header', Documents\ANONY_Site_Header::class);
+        $manager->register_document_type('site_footer', Documents\ANONY_Site_Footer::class);
     }
     /**
      * @internal Callback
@@ -129,7 +130,61 @@ final class DocumentsManager{
             ob_get_clean();
         }
     }
-        function _addControls($document)
+    
+        /**
+     * @internal Callback
+     */
+    function _maybeRenderSiteFooter($name)
+    {
+        $site_footer_id = false;
+        $page_id = $this->getCurrentPageId();
+        $footer_name = get_post_meta($page_id, 'anony_elementor_footer_template', true);
+
+        if (!$footer_name || 'inherit' === $footer_name) {
+            $footers = get_posts([
+                'fields' => 'ids',
+                'post_type' => 'elementor_library',
+                'post_status' => 'publish',
+                'meta_key' => self::GLOBAL_FOOTER_META_KEY,
+                'ignore_sticky_posts' => true,
+                'nopaging' => true,
+                'no_found_rows' => true,
+                'posts_per_page' => 1
+            ]);
+            $site_footer_id = !empty($footers[0]) ? $footers[0] : false;
+        } else {
+            $footer = get_page_by_path($footer_name, OBJECT, 'elementor_library');
+            if ($footer) {
+                $site_footer_id = $footer->ID;
+            }
+        }
+
+        if ($site_footer_id) {
+            if(has_filter('wpml_object_id')) {
+                $site_footer_id = apply_filters('wpml_object_id', $site_footer_id, 'elementor_library', TRUE);
+            }
+            require ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-header.php';
+            
+            $templates = [];
+            $name = (string) $name;
+            if ( '' !== $name ) {
+                $templates[] = "footer-{$name}.php";
+            }
+            $templates[] = 'footer.php';
+            // Avoid running wp_footer hooks again
+            remove_all_actions('wp_footer');
+            // Hide current theme footer in tmp buffer.
+            ob_start();
+            locate_template($templates, true);
+            ob_get_clean();
+        }
+    }
+    
+    /**
+     * @internal  Used as a callback
+     */
+    
+    function _addControls($document)
     {
         $post = $document->get_post();
         $type = get_post_meta($post->ID, '_elementor_template_type', true);
