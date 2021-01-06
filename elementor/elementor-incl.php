@@ -163,7 +163,7 @@ final class DocumentsManager{
             if(has_filter('wpml_object_id')) {
                 $site_footer_id = apply_filters('wpml_object_id', $site_footer_id, 'elementor_library', TRUE);
             }
-            require ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-header.php';
+            require ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-footer.php';
             
             $templates = [];
             $name = (string) $name;
@@ -221,7 +221,7 @@ final class DocumentsManager{
         $settings = get_post_meta($post_id, '_elementor_page_settings', true);
 
         if ('site_header' === $type) {
-            if ($settings['use_as_default'] && $post->post_name === $settings['use_as_default']) {
+            if (isset($settings['use_as_default']) && $post->post_name === $settings['use_as_default']) {
                 update_post_meta($post_id, self::GLOBAL_HEADER_META_KEY, $settings['use_as_default']);
                 $headers = get_posts([
                     'fields' => 'ids',
@@ -251,7 +251,7 @@ final class DocumentsManager{
                 delete_post_meta($post_id, self::GLOBAL_HEADER_META_KEY);
             }
         } elseif ('site_footer' === $type) {
-            if ($settings['use_as_default'] && $post->post_name === $settings['use_as_default']) {
+            if (isset($settings['use_as_default']) && $post->post_name === $settings['use_as_default']) {
                 update_post_meta($post_id, self::GLOBAL_FOOTER_META_KEY, $settings['use_as_default']);
                 $footers = get_posts([
                     'fields' => 'ids',

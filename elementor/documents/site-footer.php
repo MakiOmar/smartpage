@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 use Elementor\Controls_Manager;
 use Elementor\Core\Base\Document;
 use Elementor\Group_Control_Background;
-use Elementor\Plugin;
+use Elementor\Plugin as Elementor;
 use Elementor\Utils;
 use Elementor\Modules\Library\Documents\Library_Document;
 
