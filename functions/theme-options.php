@@ -10,11 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link http://makiomar.com
  */
 
-add_filter('anony_wpml_multilingual_options', function($options){
-	$options[] = ANONY_OPTIONS;
+/**
+ * Multilingual options
+ */
+add_action( 'after_setup_theme', function(){
+		
+	if (!ANONY_WPML_HELP::isActive()) return;
 	
-	return $options;
-});
+	do_action('wpml_multilingual_options', ANONY_OPTIONS);
+		
+	
+}, 1);
 
 add_action( 'init', function(){
 	if(get_option(ANONY_OPTIONS) ) $anonyOptions = ANONY_Options_Model::get_instance();
@@ -325,9 +331,9 @@ add_action( 'init', function(){
 								'type'    => 'radio_img',
 								'validate'=> 'multiple_options',
 								'options' => array(
-												is_rtl() ? 'right-sidebar' : 'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/left-sidebar.png'),
+												'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/left-sidebar.png'),
 		
-												is_rtl() ? 'left-sidebar' : 'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/right-sidebar.png'),
+												'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/right-sidebar.png'),
 												
 												'no-sidebar' 	=> array('title' => esc_html__('Full width', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/full-width.png'),
 											),
