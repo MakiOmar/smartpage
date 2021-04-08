@@ -106,5 +106,5 @@ $email = $anonyOptions->email;
 
 include(locate_template( 'templates/header.view.php', false, false ));
 
-anony_get_wpml_switcher();
+//anony_get_wpml_switcher();
 ?>
