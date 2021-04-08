@@ -1,0 +1,32 @@
+/* CSS Featured */
+	.anony-featured-col {
+		width: 33%;
+		height: inherit;
+	}
+	.anony-featured-text{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+	.anony-featured-excerpt {
+		background-color: rgba(65,64,64,0.75);
+		color: #ffffff;
+		width: 100%;
+		padding-left: 15px;
+		padding-top: 15px;
+	}
+	.anony-featured-excerpt p {
+		position: relative;
+		left:20px;
+	}
+	
+	.anony-featured-posts-title{
+		background-color: #fc2a2a;
+		padding: 5px;
+		width: 150px;
+		text-align: center;
+		height: 100%;
+	}
+
+/* End slider css*/
+
