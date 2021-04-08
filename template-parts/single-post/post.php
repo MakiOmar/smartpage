@@ -14,7 +14,7 @@ get_header();
 		
 		anony_breadcrumbs();
 		
-		get_sidebar('right-sidebar');
+		get_sidebar('right');
 		
 		$pID = $id;
 
@@ -99,7 +99,7 @@ get_header();
 			
 		</div>
 		
-		<?php get_sidebar('left-sidebar'); ?>
+		<?php get_sidebar('left'); ?>
 		
 	</div>
 	
