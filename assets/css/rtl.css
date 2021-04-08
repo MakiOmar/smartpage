@@ -211,6 +211,10 @@ a.pp_close, a.pp_expand{
         transform: skew(30deg, 0deg);
 }
 
+.single-post p, .single-post li{
+	line-height: 35px
+}
+
 .anony-table-of-content{
     float: right;
     margin-right:0; 

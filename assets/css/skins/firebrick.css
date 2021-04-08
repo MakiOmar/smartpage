@@ -72,7 +72,13 @@
 
 .firebrick .page-numbers,
 .firebrick #anony-main-menu-con .anony-sub-menu li a,
-.firebrick .widgeted_title {
+.firebrick .widgeted_title,
+.firebrick .anony-slide-title a,
+.firebrick .anony-featured-button,
+.firebrick .anony-featured-posts-title a,
+.firebrick .anony-section_title,
+.firebrick .anony-button,
+.firebrick .anony-single_post_title a {
   color: #fff;
 }
 
