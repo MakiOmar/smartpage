@@ -78,13 +78,13 @@ $count = count($data);
 
 $slider_nav = [];
 
-foreach($data as $p) : 
+foreach($data as $index => $p) : 
 	
 	extract($p);
 	
 	$slider_nav_temp['permalink'] = $permalink;
 	$slider_nav_temp['title']     = $title;
-	$slider_nav_temp['class']     = array_search($id, $data) == 0 ?  'anony-active-slide ': '';
+	$slider_nav_temp['class']     = $index == 0 ?  'anony-active-slide ': '';
 	$slider_nav_temp['thumbnail_img']     = $thumbnail_img;
 	
 	$slider_nav[] = $slider_nav_temp;

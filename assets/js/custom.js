@@ -326,7 +326,7 @@ jQuery(document).ready(function($){
 
 	
 	
-	if($('#anony-ca-container').length != 0){
+	if($('#anony-ca-container').length !== 0){
 		//carousel slider
 		$('#anony-ca-container').contentcarousel();
 	}
@@ -416,7 +416,7 @@ jQuery(document).ready(function($){
 		}
 		
 	}
-	imageSlider(500);
+	//imageSlider(500);
 	
 	$('.anony-slide-item').on({
 	  click: function(e) {
