@@ -97,6 +97,8 @@ $title_link = isset($args['cat']) ? get_category_link($args['cat']) : '#';
 $title_text = isset($args['cat']) ? get_cat_name( $args['cat']) : esc_html__('Featured Posts', ANONY_TEXTDOM);
 
 include(locate_template( 'templates/featured.view.php', false, false ));
+
+wp_enqueue_script( 'anony-featured-slider' );
 	
 ?>
 	
