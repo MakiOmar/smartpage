@@ -11,9 +11,9 @@
 		<div id="anony-featured">
 		
 			<div id="anony-active-slide">
-				<?php foreach($data as $p) : extract($p) ?>
+				<?php foreach($data as $index => $p) : extract($p);  ?>
 
-						<div class="anony-view">
+						<div id="anony-item-<?= $id ?>" class="anony-view">
 
 							  <?= $thumb_img?>
 
@@ -40,7 +40,7 @@
 				
 				<?php foreach($slider_nav as $item) : extract($item) ?>
 					
-					<a href="<?= $permalink ?>" class="<?= $class ?>anony-slide-item anony-grid-col-<?= $count ?>">
+					<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item anony-grid-col-<?= $count ?>">
 
 						<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
 

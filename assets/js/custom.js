@@ -241,14 +241,14 @@ jQuery(document).ready(function($){
 	};
 	
 	$.fn.calculateDropdownHeight = function(object){
-		var height = 0
+		var height = 0;
 		
 		var liNo = object.children('li').length;
 		
 		var i = 0; 
 		object.children('li').each(function(){
-			if ($(this).children('.anony-show').length == 0) {
-				if(i == 1){
+			if ($(this).children('.anony-show').length === 0) {
+				if(i === 1){
 					height += parseInt($(this).outerHeight());
 				}
 				i++;
@@ -331,6 +331,73 @@ jQuery(document).ready(function($){
 		$('#anony-ca-container').contentcarousel();
 	}
 	
+	function resetImageSlider(){
+		var activeNavSlide = $('.anony-active-slide');
+		var activeSlide = activeNavSlide.data('id');
+
+		$('.anony-view').animate(
+			{
+				"opacity": "0",
+				"z-index": "0",
+			}
+		);
+
+		$('#' + activeSlide ).animate(
+			{
+				"opacity": "1",
+				"z-index": "10",
+			}
+		);
+
+		imageSlider(1500);
+	}
+	function imageSlider(t){
+		var activeNavSlide = $('.anony-active-slide');
+		var activeSlide = activeNavSlide.data('id');
+		
+		setTimeout(function(){
+			$('#' + activeSlide).animate(
+				{
+					"opacity": "0",
+				},
+			
+				{
+					duration: t,
+					
+					complete: function(){
+						activeNavSlide.removeClass('anony-active-slide');
+						
+						if(activeNavSlide.next().length !== 0){
+							activeNavSlide.next().addClass('anony-active-slide');
+						}else{
+							$('.anony-slide-item').first().addClass('anony-active-slide');
+						}
+						resetImageSlider();
+					}
+				}
+		);
+		}, 5000);
+		
+		
+	}
+	
+	imageSlider(1500);
+	
+	$('.anony-slide-item').on({
+	  click: function(e) {
+		  
+		e.preventDefault();
+		
+		var currActive = $('.anony-active-slide');
+		var clicked = $(this);
+		  
+		currActive.removeClass('anony-active-slide');
+		clicked.addClass('anony-active-slide');
+		resetImageSlider();
+	  }
+	});
+	
+/*	
 	//Home featured slider
 	$('.anony-view').eq(0).addClass('animate');
 	
@@ -416,7 +483,7 @@ jQuery(document).ready(function($){
 		}
 		
 	}
-	//imageSlider(500);
+	imageSlider(500);
 	
 	$('.anony-slide-item').on({
 	  click: function(e) {
@@ -472,7 +539,7 @@ jQuery(document).ready(function($){
 	}
 	
 	$('.anony-view').hover(enterSlide,leaveSlide);
-	
+	*/
 	// Rating
 	//The following will automatically display the post rate on page load
 	$('[id^="rated-"]').each(function(){

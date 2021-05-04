@@ -46,20 +46,23 @@
 	#anony-featured {
 		position: relative;
 	}
-
+	
 	.anony-view {
 		position: absolute;
 		height: 315px;
 		width: 100%;
+		opacity: 0;
+		z-index: 0;
+	}
+	.anony-view:first-child{
+		opacity: 1;
+		z-index: 10;
 	}
 	.anony-view img {
 		margin: auto;
 		display: block;
 		width: 100%;
 		height: 100%;
-	}
-	.animate{
-		z-index: 10;
 	}
 /* End slider css*/
 
