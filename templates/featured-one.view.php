@@ -22,9 +22,11 @@
 								  <h2 class="anony-slide-title">
 								  	<a href="<?= $permalink ?>"><?= $title ?></a>
 								  </h2>
-
-								  <a class="anony-featured-button" href="<?= $permalink ?>"><?= $read_more ?></a>
-
+								  <?php if($show_read_more) : ?>
+								  
+								  	<a class="anony-featured-button" href="<?= $permalink ?>"><?= $read_more ?></a>
+								  
+								  <?php endif; ?>
 							  </div>
 							</div>
 					<?php  endforeach ?>
@@ -40,7 +42,7 @@
 				
 				<?php foreach($slider_nav as $item) : extract($item) ?>
 					
-					<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item anony-grid-col-<?= $count ?>">
+					<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item">
 
 						<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
 
