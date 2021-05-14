@@ -65,7 +65,7 @@
 }
 
 .anony-posts-list-thumb a {
-  display: flex;
+  display: inline-flex;
   padding: 3px;
   background-color: #e1dfdf;
 }
@@ -102,6 +102,11 @@
 
 /* CSS slider */
 
+#anony-active-slide,
+.anony-view {
+  height: 355px;
+}
+
 .anony-slide-title a {
   height: 100px;
   display: flex;
@@ -122,7 +127,7 @@
 #anony-slides-list {
   margin-top: 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 }
 
@@ -142,7 +147,8 @@
 }
 
 .anony-slide-item {
-  max-height: 120px;
+  height: 80px;
+  width: 80px;
   display: inline-block;
   position: relative;
 }
@@ -158,7 +164,6 @@
 
 .anony-view {
   position: absolute;
-  height: 315px;
   width: 100%;
   opacity: 0;
   z-index: 0;
