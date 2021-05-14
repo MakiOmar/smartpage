@@ -8,7 +8,7 @@
 	
 	<?php if($data !== []) : ?>	
 		
-		<div id="anony-featured">
+		<div id="anony-featured" data-slider='<?php echo json_encode($slider_data) ?>'>
 		
 			<div id="anony-active-slide">
 				<?php foreach($data as $index => $p) : extract($p);  ?>
@@ -38,20 +38,22 @@
 
 			</h3>
 			</div>
-			<div id="anony-slides-list" class="">
-				
-				<?php foreach($slider_nav as $item) : extract($item) ?>
-					
-					<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item">
+			
+			<?php if($show_thumbs) : ?>
+				<div id="anony-slides-list" class="">
 
-						<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
+					<?php foreach($slider_nav as $item) : extract($item) ?>
 
-					</a>
-					
-				<?php endforeach ?>
-				
-			</div>
+						<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item">
 
+							<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
+
+						</a>
+
+					<?php endforeach ?>
+
+				</div>
+			<?php endif ?>
 		</div>
 	
 	<?php endif ?>

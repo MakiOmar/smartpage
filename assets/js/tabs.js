@@ -7,8 +7,6 @@ jQuery(document).ready(function($){
 	//show only first tab content
 	$(".anony-tab_content:first").show();
 	
-	console.log($(".anony-tab_content:first"));
-	
 	$("ul.anony-popular-tabs li").click(function() {
 		
 		var clickedTab = $(this);

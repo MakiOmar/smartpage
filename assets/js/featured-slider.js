@@ -4,6 +4,8 @@ jQuery(document).ready(function($){
 	
 	var imageSliderTime;
 	
+	var sliderSettings = $('#anony-featured').data('slider');
+	
 	function resetImageSlider(){
 			var activeNavSlide = $('.anony-active-slide');
 			var activeSlide = activeNavSlide.data('id');
@@ -22,7 +24,7 @@ jQuery(document).ready(function($){
 				}
 			);
 
-			imageSlider(1500);
+			imageSlider(sliderSettings.animation);
 		}
 	function imageSlider(t){
 		
@@ -53,12 +55,12 @@ jQuery(document).ready(function($){
 					}
 				}
 		);
-		}, 5000);
+		}, sliderSettings.transition);
 
 
 	}
 	
-	imageSlider(1500);
+	imageSlider(sliderSettings.animation);
 	
 	$('.anony-slide-item').on({
 		click: function(e) {
@@ -81,7 +83,7 @@ jQuery(document).ready(function($){
 
 		mouseleave : function(){
 			$(this).removeClass('anony-pause-slider');
-			imageSlider(1500);
+			imageSlider(sliderSettings.animation);
 		}
 	});
 });

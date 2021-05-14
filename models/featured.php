@@ -18,6 +18,8 @@ $slider_settings = [
 	
 	'style' => 'one',
 	'show_read_more' => false,
+	'show_thumbs' => true,
+	'slider_data' => [ 'transition' => 5000, 'animation' => 1500 ],
 ];
 
 $message = '';
@@ -82,27 +84,33 @@ if(empty($data)){
 
 $count = count($data);
 
-$slider_nav = [];
+extract($slider_settings);
 
-foreach($data as $index => $p) : 
+if($show_thumbs){
 	
-	extract($p);
+	$slider_nav = [];
 	
-	$slider_nav_temp['permalink'] = $permalink;
-	$slider_nav_temp['id'] = $id;
-	$slider_nav_temp['title']     = $title;
-	$slider_nav_temp['class']     = $index == 0 ?  'anony-active-slide ': '';
-	$slider_nav_temp['thumbnail_img']     = $thumbnail_img;
+	foreach($data as $index => $p) : 
 	
-	$slider_nav[] = $slider_nav_temp;
-	
-endforeach;
+		extract($p);
+
+		$slider_nav_temp['permalink'] = $permalink;
+		$slider_nav_temp['id'] = $id;
+		$slider_nav_temp['title']     = $title;
+		$slider_nav_temp['class']     = $index == 0 ?  'anony-active-slide ': '';
+		$slider_nav_temp['thumbnail_img']     = $thumbnail_img;
+
+		$slider_nav[] = $slider_nav_temp;
+
+	endforeach;
+}
+
 
 $title_link = isset($args['cat']) ? get_category_link($args['cat']) : '#';
 
 $title_text = isset($args['cat']) ? get_cat_name( $args['cat']) : esc_html__('Featured Posts', ANONY_TEXTDOM);
 
-extract($slider_settings);
+
 
 include(locate_template( 'templates/featured-'.$style.'.view.php', false, false ));
 
