@@ -78,7 +78,14 @@ function anony_scripts(){
 	 *                   Register scripts
 	 *---------------------------------------------------------------------*/
 	
-	$scripts = array('tabs','download', 'ajax_comment', 'custom', 'featured-slider');
+	$scripts = array(
+		'tabs',
+		'download', 
+		'ajax_comment', 
+		'custom', 
+		'featured-slider',
+		'cats-menu',
+	);
 	
 	$libs_scripts = [];
 	
