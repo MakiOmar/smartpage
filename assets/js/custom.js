@@ -24,7 +24,7 @@ jQuery(document).ready(function($){
 		
 	}, 2000);
 	
-	var SmpgAjaxUrl = anonyLoca.ajaxURL;
+	var anonyAjaxUrl = anonyLoca.ajaxURL;
 	
 	/**------------------------------------------------------------------
 	 *                      Toggles
@@ -324,7 +324,7 @@ jQuery(document).ready(function($){
 				  post_id : postId,
 				  rate :clickRrate
 			   },
-			  url : SmpgAjaxUrl,
+			  url : anonyAjaxUrl,
 			  success:function(response){
 				  //resp is define within the wp_ajax_{action} hooked function
 				  console.log(response.resp);
