@@ -6,31 +6,39 @@ jQuery(document).ready(function($){
 	
 	var sliderSettings = $('#anony-featured').data('slider');
 	
+	function startAnimation(){
+		
+		var activeNavSlide = $('.anony-active-slide');
+		var activeSlide = activeNavSlide.data('id');
+
+		$('.anony-view').animate(
+			{
+				"opacity": "0",
+				"z-index": "0",
+			}
+		);
+		
+		$('#' + activeSlide ).animate(
+			{
+				"opacity": "1",
+				"z-index": "10",
+			},
+			{
+				duration: sliderSettings.animation,
+			}
+		);
+	}
+	
 	function resetImageSlider(){
-			var activeNavSlide = $('.anony-active-slide');
-			var activeSlide = activeNavSlide.data('id');
+		
+		startAnimation();
+		
+		imageSlider(sliderSettings.animation);
 
-			$('.anony-view').animate(
-				{
-					"opacity": "0",
-					"z-index": "0",
-				}
-			);
-
-			$('#' + activeSlide ).animate(
-				{
-					"opacity": "1",
-					"z-index": "10",
-				}
-			);
-
-			imageSlider(sliderSettings.animation);
-		}
+			
+	}
 	function imageSlider(t){
 		
-		if($('.anony-pause-slider').length !== 0) {
-			return;
-		}
 		var activeNavSlide = $('.anony-active-slide');
 		var activeSlide = activeNavSlide.data('id');
 
@@ -41,9 +49,10 @@ jQuery(document).ready(function($){
 				},
 
 				{
-					duration: t,
-
-					complete: function(){
+					start : function(){
+						if($('.anony-pause-slider').length !== 0) {
+							return;
+						}
 						activeNavSlide.removeClass('anony-active-slide');
 
 						if(activeNavSlide.next().length !== 0){
@@ -51,8 +60,10 @@ jQuery(document).ready(function($){
 						}else{
 							$('.anony-slide-item').first().addClass('anony-active-slide');
 						}
+						
 						resetImageSlider();
-					}
+					},
+					duration: t,
 				}
 		);
 		}, sliderSettings.transition);
@@ -60,18 +71,22 @@ jQuery(document).ready(function($){
 
 	}
 	
-	imageSlider(sliderSettings.animation);
 	
 	$('.anony-slide-item').on({
 		click: function(e) {
 			e.preventDefault();
+			
+			$('.anony-pause-slider').each(function(){
+				$(this).removeClass('anony-pause-slider');
+			});
+			$('.anony-active-slide').each(function(){
+				$(this).removeClass('anony-active-slide');
+			});
 
-			var currActive = $('.anony-active-slide');
-			var clicked = $(this);
-
-			currActive.removeClass('anony-active-slide');
-			clicked.addClass('anony-active-slide');
-			resetImageSlider();
+			$(this).addClass('anony-active-slide');
+			
+			startAnimation();
+			
 		 }
 	});
 	
@@ -86,4 +101,7 @@ jQuery(document).ready(function($){
 			imageSlider(sliderSettings.animation);
 		}
 	});
+	
+	//Slider init
+	imageSlider(sliderSettings.animation);
 });
