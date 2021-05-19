@@ -18,7 +18,8 @@ $slider_settings = [
 	
 	'style' => 'one',
 	'show_read_more' => false,
-	'show_thumbs' => true,
+	'show_pagination' => true,
+	'pagination_type' => 'dots', //Accepts (thumbnails or dots)
 	'slider_data' => [ 'transition' => 5000, 'animation' => 1500 ],
 ];
 
@@ -86,7 +87,7 @@ $count = count($data);
 
 extract($slider_settings);
 
-if($show_thumbs){
+if($show_pagination){
 	
 	$slider_nav = [];
 	

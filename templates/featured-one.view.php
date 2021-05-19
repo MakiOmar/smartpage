@@ -39,17 +39,21 @@
 			</h3>
 			</div>
 			
-			<?php if($show_thumbs) : ?>
-				<div id="anony-slides-list" class="">
+			<?php if($show_pagination) : ?>
+				<div id="anony-slides-list">
 
 					<?php foreach($slider_nav as $item) : extract($item) ?>
+						
+						<?php if($pagination_type == 'thumbnails') : ?>
 
-						<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item">
+							<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item">
 
-							<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
+								<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
 
-						</a>
-
+							</a>
+						<?php else : ?>
+							<div data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item anony-pagination-dot"></div>
+						<?php endif ?>
 					<?php endforeach ?>
 
 				</div>

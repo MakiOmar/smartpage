@@ -112,15 +112,16 @@ if ( ! class_exists( 'ANONY_Cats_Walk' ) ) {
 
 				$output .=  ' class="' . $css_classes . '"';
 				$output .= ">$link\n";
-				//nvd($category);
-				if($this->has_children){
-				$output .= '<span class="toggle-category" rel-id="anony-cat-dropdown-'.$category->term_id.'"><i class="fa fa-plus" aria-hidden="true"></i></span>';
-			 }
+				
 			} elseif ( isset( $args['separator'] ) ) {
 				$output .= "\t$link" . $args['separator'] . "\n";
 			} else {
 				$output .= "\t$link<br />\n";
 			}
+			
+			if($this->has_children){
+					$output .= '<span class="toggle-category" rel-id="anony-cat-dropdown-'.$category->term_id.'"><i class="fa fa-plus" aria-hidden="true"></i></span>';
+			 }
 
 		}
 
