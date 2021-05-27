@@ -14,15 +14,15 @@ function clean(node){
 }
 clean(document);
 
+
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
-
-	setTimeout(function(){
-		$('body').css({'overflow': 'auto'/*, 'background-color': '#fff'*/});
-		$('#anony-preloader').hide();
-		
-	}, 2000);
+	
+	$( window ).on('load',function() {
+	  $('#anony-preloader').hide();
+	  $('body').css({'overflow': 'scroll'});
+	});
 	
 	var anonyAjaxUrl = anonyLoca.ajaxURL;
 	
