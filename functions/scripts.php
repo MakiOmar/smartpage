@@ -19,6 +19,8 @@ function anony_styles(){
 		
 	$styles_libs = ['font-awesome.min'];
 	
+	$media = ($anonyOptions->defer_stylesheets !== '1') ? 'all' : 'print';
+	
 	//load prettyPhoto if needed
 	if($anonyOptions->disable_prettyphoto != '1') $styles_libs[] = 'prettyPhoto';
 	
@@ -34,7 +36,8 @@ function anony_styles(){
 			false,
 			filemtime(
 				wp_normalize_path(ANONY_THEME_DIR . '/assets/css/'.$style.'.css' )
-			) 
+			),
+			$media
 		);
 	}
 	
@@ -45,7 +48,8 @@ function anony_styles(){
 			array('anony-main'), 
 			filemtime(
 				wp_normalize_path(ANONY_THEME_DIR . '/assets/css/rtl.css')
-			)
+			),
+			$media
 		);
 	}
 
@@ -63,12 +67,13 @@ function anony_styles(){
 			array('anony-main'), 
 			filemtime(
 				wp_normalize_path(ANONY_THEME_DIR . '/assets/css/skins/'.$skin.'.css')
-			)
+			),
+			$media
 		);
 	}
 	
 	if ($anonyOptions->dynamic_css_ajax != '1')
-		wp_enqueue_style( 'anonyengine-dynamics', admin_url('admin-ajax.php').'?action=anoe_dynamic_css', $dynamic_deps);
+		wp_enqueue_style( 'anonyengine-dynamics', admin_url('admin-ajax.php').'?action=anoe_dynamic_css', $dynamic_deps, false, $media);
 }
 
 function anony_scripts(){
@@ -86,6 +91,15 @@ function anony_scripts(){
 		'featured-slider',
 		'cats-menu',
 	);
+	
+	add_filter( 'script_loader_tag', function($tag, $handle, $src) use($scripts){
+		$noprefix_handle = str_replace('anony-', '', $handle);
+		if(in_array($noprefix_handle, $scripts)){
+			return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
+		}
+		
+		return $tag;
+	}, 10, 3 );
 	
 	$libs_scripts = [];
 	
@@ -180,18 +194,16 @@ add_action( 'wp_head', function(){
 			    font-style:normal;
 			    font-display: fallback; /* Fix Ensure text remains visible during webfont load */
 			}
-			
 		body{
-			overflow: hidden;
-			background-color: rgba(225, 228, 230);
+			background-color: #ecf0f0
 		}
-	   #anony-preloader{
-			position: absolute;
-		   width: 100%;
-		   height: 100vh;
-		   background: #fff;
-		   z-index: 9999;
-		   background-color: rgb(249, 249, 249)
+		#anony-preloader{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			z-index: 9999;
+			background-color: rgb(249, 249, 249)
 		}
 		.anony-loader-img{
 			position: absolute;
@@ -208,7 +220,6 @@ add_action( 'wp_head', function(){
 		  75% { transform: scale(1.05); }
 		  100% { transform: scale(1); }
 		}
-		
 		<?php if ($anonyOptions->dynamic_css_ajax == '1') {
 			
 			ob_start();

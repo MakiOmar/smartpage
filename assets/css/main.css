@@ -43,7 +43,6 @@
     font-weight: 100;
     font-style: normal;
 }
-html{ overflow-y: scroll;}
 html, body {
 	box-sizing: border-box;
 	min-height: 100vh;
@@ -423,10 +422,7 @@ tr:nth-child(even) {
 	.anony-show{
 		max-height: 2000px
 	}
-	
-	/*.anony-show li{
-		display: block;
-	}*/
+
 	.anony-dropdown li{
 		background-color: #fff;
 	}
@@ -468,8 +464,7 @@ tr:nth-child(even) {
 	
 	/*slider*/
 	/*Home featured*/
-	
-	
+		
 	.white-bg{
 		background-color: #ffffff;
 	}

@@ -134,6 +134,14 @@ add_action( 'init', function(){
 							),	
 							
 							array(
+								'id'      => 'defer_stylesheets',
+								'title'   => esc_html__('Defer stylesheets loading', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights', ANONY_TEXTDOM)
+							),	
+							
+							array(
 								'id'      => 'gravatar',
 								'title'   => esc_html__('Disable gravatar.com', ANONY_TEXTDOM),
 								'type'    => 'switch',

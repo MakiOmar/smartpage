@@ -23,6 +23,20 @@ if (!function_exists('anony_control_query_strings')) {
 	}
 }
 
+add_filter('style_loader_tag', function($tag){
+	if(is_admin()) return $tag;
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if($anonyOptions->defer_stylesheets !== '1') return $tag;
+	
+    $tag = preg_replace("/media='print'/", "media='print' onload=\"this.media='all'\"", $tag);
+
+    return $tag;
+});
+
+
+
 
 //controls add query strings to scripts
 add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
@@ -36,7 +50,7 @@ add_filter( 'get_avatar', function($avatar){
 	
 	if(!$anonyOptions->gravatar || $anonyOptions->gravatar != '1') return $avatar;
 	
-	$avatar = '<img src="'.ANONY_THEME_URI.'/images/user.png"/>';
+	$avatar = '<img src="'.ANONY_THEME_URI.'/images/user.png" width="48" height="48"/>';
     return $avatar;
 }, 200 );
 
