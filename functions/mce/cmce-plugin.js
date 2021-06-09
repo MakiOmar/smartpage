@@ -1,6 +1,6 @@
 (function() {
 	"use strict";
-
+if(tinymce !== undefined){
 	tinymce.PluginManager.add('cbtnmce', function(editor, url) {
 		editor.addButton('cbtnmce', {
 			text : false,
@@ -28,5 +28,7 @@
 
 		
 	});
+}
+	
 	
 })();
