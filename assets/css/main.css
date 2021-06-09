@@ -123,9 +123,17 @@ input[type = "search"],input[type = "tel"],input[type = "text"],input[type = "em
 	border: none;
 	color:#222222;
 	border-radius: 6px;
-	-webkit-box-shadow: 3px 3px 15px 2px #ccc inset;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-	-moz-box-shadow:    3px 3px 15px 2px #ccc inset;  /* Firefox 3.5 - 3.6 */
-	box-shadow:         3px 3px 15px 2px #ccc inset;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+	border: 1px solid #d7d7d7;
+}
+input[type='submit']{
+	background-color: #fc2a2a;
+	color: #ffffff;
+	padding: 5px;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px;
+	min-width: 100px;
+	cursor: pointer;
 }
 input:focus{
 	color: #222222;
@@ -1559,19 +1567,7 @@ tr:nth-child(even) {
 		color: #ffffff;
 		border-radius: 50%;
 	}
-	#anony-hidden-search-form{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: fixed;
-		height: 100%;
-		width: 100%;
-		visibility: hidden;
-		opacity: 0;
-		top: 0;
-		background-color: rgba(0,0,0,0.9);
-		z-index: 1000000;
-	}
+	
 	#anony-hidden-search-form #anony-searchform{
 		width: 90%;
 		display: flex;
