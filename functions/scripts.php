@@ -197,6 +197,19 @@ add_action( 'wp_head', function(){
 		body{
 			background-color: #ecf0f0
 		}
+		#anony-hidden-search-form{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: fixed;
+			height: 100%;
+			width: 100%;
+			visibility: hidden;
+			opacity: 0;
+			top: 0;
+			background-color: rgba(0,0,0,0.9);
+			z-index: 1000000;
+		}
 		#anony-preloader{
 			position: fixed;
 			width: 100%;
