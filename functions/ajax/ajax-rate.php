@@ -46,6 +46,6 @@ add_action('wp_ajax_rate_post_meta', function() {
 
 		wp_send_json($return);
 
-		wp_die();
+		die();
 	}
 });
