@@ -30,11 +30,10 @@ add_filter('style_loader_tag', function($tag){
 	
 	if($anonyOptions->defer_stylesheets !== '1') return $tag;
 	
-    $tag = preg_replace("/media='print'/", "media='print' onload=\"this.media='all'\"", $tag);
+    $tag = preg_replace("/media='\w+'/", "media='print' onload=\"this.media='all'\"", $tag);
 
     return $tag;
 });
-
 
 
 
