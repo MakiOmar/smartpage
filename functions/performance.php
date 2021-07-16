@@ -190,8 +190,8 @@ if (!function_exists('anony_load_cf7_scripts')) {
 }
 
 
-add_filter( 'wpcf7_load_js', 'anony_load_cf7_scripts', 11 );
-add_filter( 'wpcf7_load_css', 'anony_load_cf7_scripts', 11 );
+add_filter( 'wpcf7_load_js', 'anony_load_cf7_scripts', 200 );
+add_filter( 'wpcf7_load_css', 'anony_load_cf7_scripts', 200 );
 
 
 //Dequeue unwanted style
