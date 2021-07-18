@@ -29,15 +29,17 @@ function anony_get_correct_sidebar(){
  * Will have no effect once a logo is set from customizer.
  * @return string Theme's logo with a link to the homepage
  */
-function anony_get_custom_logo($color='main') {	
+function anony_get_custom_logo($color='main') {
+	$logo_url = ANONY_THEME_URI.'/images/logo-'.$color.'.png';
+	
 	if ( has_custom_logo() ) {
 		$logo ='<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">'.get_custom_logo().'</div>';	
 	}else{
 
 		$logo= '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3"><h1>';
-		$logo .='<a href="'.ANONY_BLOG_URL.'" title="'.ANONY_BLOG_TITLE.'">';
+		$logo .='<a href="'.ANONY_BLOG_URL.'" title="'.ANONY_BLOG_TITLE.'" data-logourl="'.$logo_url.'">';
 		$logo .='<img alt="'.ANONY_BLOG_TITLE.'" '; 
-		$logo .= 'src="'.ANONY_THEME_URI.'/images/logo-'.$color.'.png"/>';
+		$logo .= 'src="'.$logo_url.'"/>';
 		$logo .='</a></h1></div>';
 	}
 	return apply_filters('anony_get_custom_logo', $logo);
