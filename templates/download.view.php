@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
+wp_enqueue_script('anony-download');
 ?>
 <div class="anony-section<?= $sec_class  ?> white-bg">
 	<div class="anony-skew-bg">
