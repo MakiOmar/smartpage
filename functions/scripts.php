@@ -91,24 +91,26 @@ function anony_scripts(){
 		'featured-slider',
 		'cats-menu',
 	);
+	//load prettyPhoto if needed
+	if($anonyOptions->defer_scripts == '1'){
+		add_filter( 'script_loader_tag', function($tag, $handle, $src) use($scripts){
+			$noprefix_handle = str_replace('anony-', '', $handle);
+			if(in_array($noprefix_handle, $scripts)){
+				return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
+			}
+
+			return $tag;
+		}, 10, 3 );		
+	}
+
 	
-	add_filter( 'script_loader_tag', function($tag, $handle, $src) use($scripts){
-		$noprefix_handle = str_replace('anony-', '', $handle);
-		if(in_array($noprefix_handle, $scripts)){
-			return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
-		}
-		
-		return $tag;
-	}, 10, 3 );
-	
-	$libs_scripts = [];
+	$libs_scripts[] = 'jquery.prettyPhoto';
 	
 	if (is_single( )) {
 		$libs_scripts[] = 'jquery.validate.min';
 	}
 	
-	//load prettyPhoto if needed
-	if($anonyOptions->disable_prettyphoto != '1') $libs_scripts[] = 'jquery.prettyPhoto';
+	 
 	
 	$scripts = array_merge($scripts, $libs_scripts);
 	
@@ -128,8 +130,9 @@ function anony_scripts(){
 	}
 	
 	wp_enqueue_script( 'anony-custom' );
-	wp_enqueue_script('anony-download');
-	wp_enqueue_script( 'jquery.prettyPhoto' );
+	
+	//load prettyPhoto if needed
+	if($anonyOptions->disable_prettyphoto != '1') wp_enqueue_script( 'jquery.prettyPhoto' );
 	
 	/*----------------------------------------------------------------------*/
 
