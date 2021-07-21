@@ -139,6 +139,14 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights. Be careful when using with minification plugins, it may cause style issues', ANONY_TEXTDOM)
+							),
+		
+							array(
+								'id'      => 'defer_scripts',
+								'title'   => esc_html__('Defer scripts loading', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights.', ANONY_TEXTDOM)
 							),	
 							
 							array(
