@@ -1,6 +1,6 @@
 /*----Popular section style----*/
 
-.anony-popular-tabs li {
+.anony-popular-tabs span {
   width: 49.7%;
   text-align: center;
   display: inline-block;
@@ -12,7 +12,7 @@
   vertical-align: top;
 }
 
-.anony-popular-tabs li:last-child {
+.anony-popular-tabs span:last-child {
   margin: none;
 }
 
@@ -45,6 +45,10 @@
 
 .anony-tab_content {
   display: none;
+}
+
+#anony-popular {
+  display: block;
 }
 
 .anony-tab_content div h3 {

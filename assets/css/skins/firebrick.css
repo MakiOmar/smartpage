@@ -33,7 +33,7 @@
 .firebrick .single-download,
 .firebrick .anony-toggle-sidebar,
 .firebrick #anony-main_nav_con,
-.firebrick .anony-popular-tabs li:not(.anony-active-tab):nth-child(2) {
+.firebrick .anony-popular-tabs span:not(.anony-active-tab):nth-child(2) {
   background-color: #230004;
 }
 

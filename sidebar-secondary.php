@@ -13,12 +13,12 @@ $recent_comments_title = esc_html__('Recent comments',ANONY_TEXTDOM);
 	
 	<div class="white-bg">
 	  	
-		<ul class="anony-popular-tabs">
+		<div class="anony-popular-tabs">
 			
-		  <li class="anony-active-tab anony-grid-col-6 anony-popular" rel-id="anony-popular"><?= $popular_title ?></li>
-		  <li class="anony-grid-col-6 comments" rel-id="anony-comments"><?= $recent_comments_title ?></li>
+		  <span class="anony-active-tab anony-grid-col-6 anony-popular" rel-id="anony-popular"><?= $popular_title ?></span>
+		  <span class="anony-grid-col-6 comments" rel-id="anony-comments"><?= $recent_comments_title ?></span>
 		  
-		</ul>
+		</div>
 		
 		<?php get_template_part('models/popular') ?>
 		

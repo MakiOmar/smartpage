@@ -4,10 +4,7 @@ jQuery(document).ready(function($){
 	 *                   Secondary sidebar tabs
 	 *---------------------------------------------------------------------*/
 	
-	//show only first tab content
-	$(".anony-tab_content:first").show();
-	
-	$("ul.anony-popular-tabs li").click(function() {
+	$("div.anony-popular-tabs span").click(function() {
 		
 		var clickedTab = $(this);
 		
@@ -17,7 +14,7 @@ jQuery(document).ready(function($){
 
 		$( '#' + relId ).fadeIn();
 
-		$("ul.anony-popular-tabs li").removeClass("anony-active-tab");
+		$("div.anony-popular-tabs span").removeClass("anony-active-tab");
 		
 		clickedTab.addClass("anony-active-tab");
 
