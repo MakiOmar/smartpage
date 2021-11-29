@@ -118,6 +118,12 @@ add_action( 'init', function(){
 			'icon'  => 'x',
 			'fields' => array(
 							array(
+								'id'      => 'compress_html',
+								'title'   => esc_html__('Compress HTML', ANONY_TEXTDOM),
+								'type'    => 'switch',
+								'validate'=> 'no_html'
+							),
+							array(
 								'id'      => 'query_string',
 								'title'   => esc_html__('Remove query string', ANONY_TEXTDOM),
 								'type'    => 'switch',

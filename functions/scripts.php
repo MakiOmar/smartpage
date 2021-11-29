@@ -19,7 +19,7 @@ function anony_styles(){
 		
 	$styles_libs = ['font-awesome.min'];
 	
-	$media = ($anonyOptions->defer_stylesheets !== '1') ? 'all' : 'print';
+	$media = ($anonyOptions->defer_stylesheets !== '1') ? 'all' : 'all';
 	
 	//load prettyPhoto if needed
 	if($anonyOptions->disable_prettyphoto != '1') $styles_libs[] = 'prettyPhoto';

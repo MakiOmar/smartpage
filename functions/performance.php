@@ -2,6 +2,10 @@
 if ( ! defined( 'ABSPATH' ) )  exit; 
 function wp_html_compression_finish($html)
 {
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if($anonyOptions->compress_html != 1) return $html;
+	
     return new ANONY_Wp_Html_Compression($html);
 }
 
@@ -9,7 +13,7 @@ function wp_html_compression_start()
 {
     ob_start('wp_html_compression_finish');
 }
-//add_action('get_header', 'wp_html_compression_start');
+add_action('get_header', 'wp_html_compression_start');
 
 if (!function_exists('anony_control_query_strings')) {
 	//controls add query strings to scripts/styles
