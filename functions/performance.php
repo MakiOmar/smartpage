@@ -1,5 +1,15 @@
 <?php
 if ( ! defined( 'ABSPATH' ) )  exit; 
+function wp_html_compression_finish($html)
+{
+    return new ANONY_Wp_Html_Compression($html);
+}
+
+function wp_html_compression_start()
+{
+    ob_start('wp_html_compression_finish');
+}
+//add_action('get_header', 'wp_html_compression_start');
 
 if (!function_exists('anony_control_query_strings')) {
 	//controls add query strings to scripts/styles
@@ -23,25 +33,50 @@ if (!function_exists('anony_control_query_strings')) {
 	}
 }
 
-add_filter('style_loader_tag', function($tag){
-	if(is_admin()) return $tag;
-	
-	$anonyOptions = ANONY_Options_Model::get_instance();
-	
-	if($anonyOptions->defer_stylesheets !== '1') return $tag;
-	
-    $tag = preg_replace("/media='\w+'/", "media='print' onload=\"this.media='all'\"", $tag);
-
-    return $tag;
-});
-
-
 
 //controls add query strings to scripts
 add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
 
 //controls add query strings to styles
 add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
+
+
+add_filter('style_loader_tag', function($tag, $handle, $href, $media){
+
+	if(is_admin()) return $tag;
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if($anonyOptions->defer_stylesheets !== '1') return $tag;
+	
+	if(!in_array($handle, ["anony-main", "anony-theme-styles"]) ){
+		$tag = <<<EOT
+			<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" 
+			id='$handle' href='$href' type='text/css' media='all' />
+			EOT;
+	}
+    
+
+    return $tag;
+}, 10, 4);
+/* styles full defer
+add_filter('style_loader_tag', function($tag){
+	if(is_admin()) return $tag;
+	if(current_user_can('administrator')){
+		preg_match("/media='\w+'/", $tag, $m);
+	}
+
+    $tag = preg_replace("/media='\w+'/", "media='print' onload=\"this.media='all'\"", $tag);
+
+    return $tag;
+});
+*/
+add_filter( 'script_loader_tag', function ( $url ) {
+    if ( is_admin() ) return $url; //don't break WP Admin
+    if ( FALSE === strpos( $url, '.js' ) ) return $url;
+    if ( strpos( $url, 'jquery.js' ) ) return $url;
+    return str_replace( ' src', ' defer src', $url );
+}, 10 );
 
 //Use custom avatar instead of Gravatar.com
 add_filter( 'get_avatar', function($avatar){
@@ -324,7 +359,9 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_image_id, $siz
 	
 	if($anonyOptions->disable_prettyphoto == '1') return $html;
 	
-	    $html = '<a href="' . get_the_post_thumbnail_url($post_id, 'full') . '" rel="prettyPhoto" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . wp_get_attachment_image( $post_image_id, $size, false, $attr ) . '</a>';
+	$html = '<a href="' . get_the_post_thumbnail_url($post_id, 'full') . '" rel="prettyPhoto" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . wp_get_attachment_image( $post_image_id, $size, false, $attr ) . '</a>';
 	
 	return $html;
+	
 }, 10, 5);
+
