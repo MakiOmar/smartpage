@@ -91,28 +91,15 @@ function anony_scripts(){
 		'featured-slider',
 		'cats-menu',
 	);
+
 	//load prettyPhoto if needed
-	if($anonyOptions->defer_scripts == '1'){
-		add_filter( 'script_loader_tag', function($tag, $handle, $src) use($scripts){
-			$noprefix_handle = str_replace('anony-', '', $handle);
-			if(in_array($noprefix_handle, $scripts)){
-				return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
-			}
-
-			return $tag;
-		}, 10, 3 );		
-	}
-
-	
 	$libs_scripts[] = 'jquery.prettyPhoto';
 	
 	if (is_single( )) {
 		$libs_scripts[] = 'jquery.validate.min';
 	}
 	
-	 
-	
-	$scripts = array_merge($scripts, $libs_scripts);
+	$scripts = array_merge($libs_scripts, $scripts);
 	
 	foreach($scripts as $script){
 		
@@ -128,11 +115,10 @@ function anony_scripts(){
 			true 
 		);
 	}
-	
-	wp_enqueue_script( 'anony-custom' );
-	
 	//load prettyPhoto if needed
 	if($anonyOptions->disable_prettyphoto != '1') wp_enqueue_script( 'jquery.prettyPhoto' );
+	
+	wp_enqueue_script( 'anony-custom' );
 	
 	/*----------------------------------------------------------------------*/
 
@@ -215,11 +201,25 @@ add_action( 'wp_head', function(){
 		}
 		#anony-preloader{
 			position: fixed;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			width: 100%;
 			height: 100%;
 			background: #fff;
 			z-index: 9999;
 			background-color: rgb(249, 249, 249)
+		}
+		#anony-loading {
+			position: fixed;
+			display: none;
+			justify-content: center;
+			width: 100%;
+			height: 100vh;
+			top: 0;
+			z-index: 10000;
+			align-items: center;
+			background: rgb(93, 93, 92, 0.5);
 		}
 		.anony-loader-img{
 			position: absolute;
