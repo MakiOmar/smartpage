@@ -48,7 +48,7 @@
 
 							<a href="<?= $permalink ?>" data-id="anony-item-<?= $id ?>" class="<?= $class ?>anony-slide-item">
 
-								<img src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
+								<img class="anony-slid-thumb" src="<?= $thumbnail_img ?>" alt="<?= $title_attr ?>"/>
 
 							</a>
 						<?php else : ?>
