@@ -2,6 +2,36 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
+
+/**
+ * @param $args array Loop args
+ * @param $title string Section title
+ */
+function anony_category_posts_section($args, $title = ''){
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+
+	$grid = $anonyOptions->posts_grid;
+	
+	$query = new WP_Query($args);
+
+	$data = [];
+
+	if ($query->have_posts()) {
+		
+		while($query->have_posts()) {
+			$query->the_post();
+
+			$data[] = anony_common_post_data();
+		}
+
+		wp_reset_postdata();
+	}
+	if(empty($data)) return;
+
+	include(locate_template( 'templates/category-posts-section.view.php', false, false ));
+
+}
 /**
  * Desides which sidebar to load according to page direction
  * @return void

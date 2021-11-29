@@ -11,6 +11,8 @@ $args = array('post_type' => 'post', 'posts_per_page' => 4, 'order' => 'DESC');
 $sliderOpt   = $anonyOptions->slider;
 $featuredCat = $anonyOptions->featured_cat;
 $featuredTax = $anonyOptions->featured_tax;
+
+$featured_args = $args;
 	
 if($sliderOpt != 'rev-slider'){
 	
@@ -23,34 +25,65 @@ if($sliderOpt != 'rev-slider'){
 					);
 		
 		if($cat_){
-			$args['category__not_in'] = $cat_->term_id;
+			$featured_args['category__not_in'] = $cat_->term_id;
 		}
 		
 
 	}elseif($sliderOpt == 'featured-post'){
-		$args['post__not_in'] =  ANONY_POST_HELP::queryIdsByMeta('anony__set_as_featured', 'on');
+		$featured_args['post__not_in'] =  ANONY_POST_HELP::queryIdsByMeta('anony__set_as_featured', 'on');
 
 	}
 	
 }
+
+$sections = [
+	esc_html__('Recent Posts',ANONY_TEXTDOM) => $featured_args,
+	get_term( 58 )->name => array_merge(
+		$featured_args, 
+		[
+			'tax_query' => [
+				[
+				 'taxonomy' => 'category', //the slug of the taxonomy you want to get
+				 'terms' => [58]
+				]
+			]
+				
+		]
+	),
 	
-	$query = new WP_Query($args);
+	get_term( 27 )->name => array_merge(
+		$featured_args, 
+		[
+			'tax_query' => [
+				[
+				 'taxonomy' => 'category', //the slug of the taxonomy you want to get
+				 'terms' => [27]
+				]
+			]
+				
+		]
+	),
+	
+	get_term( 60 )->name => array_merge(
+		$featured_args, 
+		[
+			'tax_query' => [
+				[
+				 'taxonomy' => 'category', //the slug of the taxonomy you want to get
+				 'terms' => [60]
+				]
+			]
+				
+		]
+	),
+	
+];
 
-	$title = esc_html__('Recent Posts',ANONY_TEXTDOM);
+foreach($sections as $title => $section_args){
+	anony_category_posts_section($section_args, $title );
+}
 
-	$data = [];
 
-	if ($query->have_posts()) {
-		
-		while($query->have_posts()) {
-			$query->the_post();
 
-			$data[] = anony_common_post_data();
-		}
 
-		wp_reset_postdata();
-	}
-	if(empty($data)) return;
-
-	include(locate_template( 'templates/category-posts-section.view.php', false, false ));
 ?>				
