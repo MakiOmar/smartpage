@@ -240,10 +240,6 @@
 
 /*-----Categories dropdown widget-----*/
 
-#anony-cat-list .anony-dropdown {
-  transition: all 0.4s ease-in-out;
-}
-
 #anony-cat-list li,
 #anony-cat-list li ul li {
   position: relative;
