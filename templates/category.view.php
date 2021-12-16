@@ -84,7 +84,11 @@ get_header( );?>
 			
 			<?= $pagination ?>
 			
-		<?php endif;?>
+		<?php 
+			else: echo ANONY_NODATA;
+
+			endif;
+		?>
 		
 	    </div>
 
