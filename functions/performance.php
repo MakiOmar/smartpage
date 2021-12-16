@@ -44,25 +44,6 @@ add_filter( 'script_loader_src', 'anony_control_query_strings', 15, 2 );
 //controls add query strings to styles
 add_filter( 'style_loader_src', 'anony_control_query_strings', 15, 2);
 
-
-/*add_filter('style_loader_tag', function($tag, $handle, $href, $media){
-
-	if(is_admin()) return $tag;
-	
-	$anonyOptions = ANONY_Options_Model::get_instance();
-	
-	if($anonyOptions->defer_stylesheets !== '1') return $tag;
-	
-	//if(!in_array($handle, ["anony-main", "anony-theme-styles"]) ){
-		$tag = <<<EOT
-			<link rel='preload' as='style' onload="this.onload=all;this.rel='stylesheet'" 
-			id='$handle' href='$href' type='text/css' media='print' />
-			EOT;
-	//}
-    
-
-    return $tag;
-}, 10, 4);*/
 //styles full defer
 add_filter('style_loader_tag', function($tag){
 	
