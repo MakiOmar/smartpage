@@ -57,14 +57,15 @@ add_filter('style_loader_tag', function($tag){
     return $tag;
 });
 
-add_filter( 'script_loader_tag', function ( $url ) {
+//Scripts defer
+add_filter( 'script_loader_tag', function ( $tag, $handle, $src ) {
 	$anonyOptions = ANONY_Options_Model::get_instance();
-    if ( is_admin() || $anonyOptions->defer_scripts !== '1' ) return $url; //don't break WP Admin
+    if ( is_admin() || $anonyOptions->defer_scripts !== '1' ) return $tag; //don't break WP Admin
 	
-    if ( FALSE === strpos( $url, '.js' ) ) return $url;
-    if ( strpos( $url, 'jquery.js' ) ) return $url;
-    return str_replace( ' src', ' defer src', $url );
-}, 10 );
+    if ( FALSE === strpos( $src, '.js' ) ) return $tag;
+    if (  $handle == 'jquery-core'  ) return $tag;
+    return str_replace( ' src', ' defer src', $tag );
+}, 10, 3 );
 
 //Use custom avatar instead of Gravatar.com
 add_filter( 'get_avatar', function($avatar){
