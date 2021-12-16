@@ -100,7 +100,7 @@ function anony_scripts(){
 	}
 	
 	$scripts = array_merge($libs_scripts, $scripts);
-	
+		
 	foreach($scripts as $script){
 		
 		$handle = in_array($script, $libs_scripts) ? $script : 'anony-' . $script;
@@ -199,6 +199,12 @@ add_action( 'wp_head', function(){
 			background-color: rgba(0,0,0,0.9);
 			z-index: 1000000;
 		}
+		.anony-loader-img
+		{
+			min-height: 50px;
+			min-width: 200px;
+			margin-bottom: 20px;
+		}
 		#anony-preloader{
 			position: fixed;
 			display: flex;
@@ -209,6 +215,10 @@ add_action( 'wp_head', function(){
 			background: #fff;
 			z-index: 9999;
 			background-color: rgb(249, 249, 249)
+		}
+		#anony-preloader p{
+			position: absolute;
+			top:55%
 		}
 		#anony-loading {
 			position: fixed;
