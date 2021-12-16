@@ -15,6 +15,12 @@ require_once('required-plugins.php');
  * Define main constants
  *-------------------------------------------------------------*/
 /**
+ * Just no data text
+ * @const
+ */
+define('ANONY_NODATA'    , esc_html__('No data found'));
+
+/**
  * Holds class/functions prefix
  * @const
  */
