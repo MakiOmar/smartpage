@@ -77,7 +77,9 @@ add_filter('style_loader_tag', function($tag){
 });
 
 add_filter( 'script_loader_tag', function ( $url ) {
-    if ( is_admin() ) return $url; //don't break WP Admin
+	$anonyOptions = ANONY_Options_Model::get_instance();
+    if ( is_admin() || $anonyOptions->defer_scripts !== '1' ) return $url; //don't break WP Admin
+	
     if ( FALSE === strpos( $url, '.js' ) ) return $url;
     if ( strpos( $url, 'jquery.js' ) ) return $url;
     return str_replace( ' src', ' defer src', $url );
