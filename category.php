@@ -71,8 +71,6 @@ if ( have_posts() ) :
 	
 endif;
 
-if(!$data['posts']) return;
-
-extract($data);
+if($data['posts']) extract($data);
 
 include(locate_template( 'templates/category.view.php', false, false ));
