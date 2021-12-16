@@ -63,7 +63,11 @@ add_filter( 'script_loader_tag', function ( $tag, $handle, $src ) {
     if ( is_admin() || $anonyOptions->defer_scripts !== '1' ) return $tag; //don't break WP Admin
 	
     if ( FALSE === strpos( $src, '.js' ) ) return $tag;
-    if (  $handle == 'jquery-core'  ) return $tag;
+    if ( strpos( $src, 'wp-includes/js' ) ) return $tag;
+	$not_deferred = [
+		'syntaxhighlighter-core',
+	];
+    if (  in_array($handle, $not_deferred)   ) return $tag;
     return str_replace( ' src', ' defer src', $tag );
 }, 10, 3 );
 
