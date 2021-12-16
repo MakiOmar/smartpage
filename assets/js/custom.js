@@ -14,10 +14,11 @@ function clean(node){
 }
 clean(document);
 
-jQuery( window ).on('load',function() {
-	"use strict";
-	jQuery('#anony-preloader').hide();
-});
+window.onload = function() {
+  "use strict";
+  var loader = document.getElementById('anony-preloader');
+  loader.style.display = 'none';
+};
 
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
