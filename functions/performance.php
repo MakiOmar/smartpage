@@ -1,5 +1,10 @@
 <?php
-if ( ! defined( 'ABSPATH' ) )  exit; 
+if ( ! defined( 'ABSPATH' ) )  exit;
+/**
+ * Callback for ob_start
+ * @param string $html
+ * @return string
+ */
 function wp_html_compression_finish($html)
 {
 	$anonyOptions = ANONY_Options_Model::get_instance();
@@ -9,11 +14,12 @@ function wp_html_compression_finish($html)
     return new ANONY_Wp_Html_Compression($html);
 }
 
-function wp_html_compression_start()
-{
+
+add_action('get_header', function (){
+	//From PHP reference: ob_start(callable $callback = null, int $chunk_size = 0, int $flags = PHP_OUTPUT_HANDLER_STDFLAGS): bool
+	// When callback is called, it will receive the contents of the output buffer as its parameter and is expected to return a new output buffer as a result, which will be sent to the browser.
     ob_start('wp_html_compression_finish');
-}
-add_action('get_header', 'wp_html_compression_start');
+});
 
 if (!function_exists('anony_control_query_strings')) {
 	//controls add query strings to scripts/styles
@@ -63,9 +69,15 @@ add_filter( 'script_loader_tag', function ( $tag, $handle, $src ) {
     if ( is_admin() || $anonyOptions->defer_scripts !== '1' ) return $tag; //don't break WP Admin
 	
     if ( FALSE === strpos( $src, '.js' ) ) return $tag;
-    if ( strpos( $src, 'wp-includes/js' ) ) return $tag;
+    //if ( strpos( $src, 'wp-includes/js' ) ) return $tag; //Exclude all from w-includes
+	
+	//Try not defer all
 	$not_deferred = [
 		'syntaxhighlighter-core',
+		'wp-polyfill',
+		'wp-hooks',
+		'wp-i18n',
+		'wp-tinymce-root',
 	];
     if (  in_array($handle, $not_deferred)   ) return $tag;
     return str_replace( ' src', ' defer src', $tag );
