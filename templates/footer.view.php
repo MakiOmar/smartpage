@@ -34,6 +34,7 @@
 	
 <?php do_action( 'anony_after_page_footer' );?>
 
+<?php if($anonyOptions->compress_html == 1) ob_end_flush();?>
 </body>
 
 </html>
