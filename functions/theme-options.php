@@ -121,7 +121,8 @@ add_action( 'init', function(){
 								'id'      => 'compress_html',
 								'title'   => esc_html__('Compress HTML', ANONY_TEXTDOM),
 								'type'    => 'switch',
-								'validate'=> 'no_html'
+								'validate'=> 'no_html',
+								'desc'    =>esc_html__('Please activate onlyif ou think that GZIP is not enabled on your server.', ANONY_TEXTDOM).' <a href="https://www.giftofspeed.com/gzip-test/">'.esc_html__('Check gzip compression', ANONY_TEXTDOM).'</a>'
 							),
 							array(
 								'id'      => 'query_string',
