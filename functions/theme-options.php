@@ -242,6 +242,16 @@ add_action( 'init', function(){
 								'type'    => 'switch',
 								'validate'=> 'no_html',
 								'desc'    =>esc_html__('prettyPhoto disable may help improve performance', ANONY_TEXTDOM)
+							),
+							array(
+								'id'      => 'preload_fonts',
+								'title'   => esc_html__('Preload fonts', ANONY_TEXTDOM),
+								'type'    => 'textarea',
+								'columns' => '70',
+								'rows'    => '8',
+								'validate'=> 'no_html',
+								'text-align' => 'left' ,
+								'desc'    =>esc_html__('Help to improve CLS', ANONY_TEXTDOM)
 							)				
 						)
 	);
