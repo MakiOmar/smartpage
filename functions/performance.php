@@ -370,3 +370,21 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_image_id, $siz
 	
 }, 10, 5);
 
+
+add_action('wp_head', function(){
+	
+	if(!class_exists('ANONY_STRING_HELP')) return;
+	
+	$anonyOptions = ANONY_Options_Model::get_instance();
+	
+	if(!empty($anonyOptions->preload_fonts)){
+		$arr = ANONY_STRING_HELP::lineByLineTextArea($anonyOptions->preload_fonts);
+		
+		if(!is_array($arr)) return;
+		
+		foreach($arr as $line){?>
+			<link rel="preload" href="<?= $line ?>" as="font" type="font/woff2" crossorigin>
+		<?php }
+	}
+});
+

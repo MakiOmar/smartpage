@@ -7,7 +7,6 @@
 <html itemscope itemtype="http://schema.org/WebPage" <?= $langAtts ?>>
 <head>
 <meta http-equiv="Content-Type" content="<?= $contentType ?>" charset="<?= $charSet ?>"/>
-<link rel="preload" href="<?= ANONY_THEME_URI ?>/fonts/ARBfonts/shahd-bold-webfont.woff" as="font" type="font/woff2" crossorigin>
 <meta http-equiv="x-ua-compatible" content="IE=edge" >
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <?php wp_head(); ?>
