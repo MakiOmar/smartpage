@@ -1,3 +1,6 @@
+/**
+ * http://tympanus.net/codrops/2011/08/16/circular-content-carousel/
+ */
 (function($) {
 	var	aux		= {
 			// navigates left / right
@@ -192,7 +195,7 @@
 						});
 						
 						// click to open the item(s)
-						$el.find('a.ca-more').live('click.contentcarousel', function( event ) {
+						$el.on('click.contentcarousel', 'a.ca-more' ,function( event ) {
 							if( cache.isAnimating ) return false;
 							cache.isAnimating	= true;
 							$(this).hide();
@@ -202,7 +205,7 @@
 						});
 						
 						// click to close the item(s)
-						$el.find('a.anony-ca-close').live('click.contentcarousel', function( event ) {
+						$el.on('click.contentcarousel', 'a.anony-ca-close' ,function( event ) {
 							if( cache.isAnimating ) return false;
 							cache.isAnimating	= true;
 							var $item	= $(this).closest('div.anony-ca-item');
