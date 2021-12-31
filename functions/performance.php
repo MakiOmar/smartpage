@@ -362,9 +362,13 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_image_id, $siz
 	
 	$anonyOptions = ANONY_Options_Model::get_instance();
 	
-	if($anonyOptions->disable_prettyphoto == '1') return $html;
+	//if($anonyOptions->disable_prettyphoto == '1') return $html;
 	
-	$html = '<a href="' . get_the_post_thumbnail_url($post_id, 'full') . '" rel="prettyPhoto" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . wp_get_attachment_image( $post_image_id, $size, false, $attr ) . '</a>';
+	$lightbox_library = 'lightbox';
+	
+	$library_attribute = ($lightbox_library == 'prettyphoto') ? 'rel="prettyPhoto"' : 'data-lightbox="image-'.$post_image_id.'"';
+	
+	$html = '<a href="' . get_the_post_thumbnail_url($post_id, 'full') . '" '.$library_attribute.' title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . wp_get_attachment_image( $post_image_id, $size, false, $attr ) . '</a>';
 	
 	return $html;
 	

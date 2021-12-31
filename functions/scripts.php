@@ -17,7 +17,7 @@ function anony_styles(){
 	
 	$styles = array('main','responsive', 'theme-styles');
 		
-	$styles_libs = ['font-awesome.min'];
+	$styles_libs = ['font-awesome.min', 'lightbox.min'];
 	
 	$media = ($anonyOptions->defer_stylesheets !== '1') ? 'all' : 'all';
 	
@@ -94,6 +94,7 @@ function anony_scripts(){
 
 	//load prettyPhoto if needed
 	$libs_scripts[] = 'jquery.prettyPhoto';
+	$libs_scripts[] = 'lightbox.min';
 	
 	if (is_single( )) {
 		$libs_scripts[] = 'jquery.validate.min';
@@ -117,6 +118,8 @@ function anony_scripts(){
 	}
 	//load prettyPhoto if needed
 	if($anonyOptions->disable_prettyphoto != '1') wp_enqueue_script( 'jquery.prettyPhoto' );
+	
+	wp_enqueue_script( 'lightbox.min' );
 	
 	wp_enqueue_script( 'anony-custom' );
 	
