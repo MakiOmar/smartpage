@@ -13,7 +13,7 @@ function clean(node){
 	}
 }
 clean(document);
-
+    
 window.onload = function() {
   "use strict";
   var loader = document.getElementById('anony-preloader');
@@ -225,7 +225,32 @@ jQuery(document).ready(function($){
 	
 	if($('#anony-ca-container').length !== 0){
 		//carousel slider
-		$('#anony-ca-container').contentcarousel();
+		$('#anony-ca-container').contentcarousel({
+			// speed for the sliding animation
+			sliderSpeed		: 500,
+			// easing for the sliding animation
+			sliderEasing	: 'easeOutExpo',
+			// speed for the item animation (open / close)
+			itemSpeed		: 500,
+			// easing for the item animation (open / close)
+			itemEasing		: 'easeOutExpo',
+			// number of items to scroll at a time
+			scroll			: 1	
+		});
+		
+		//Autoplay
+		var autoPlay = setInterval(function(){
+			$('.anony-ca-nav-next').trigger('click');
+		},3000);
+		
+		//Stop on hover
+		$('.anony-ca-item').hover(function(){
+			clearInterval(autoPlay);
+		},function(){
+			autoPlay = setInterval(function(){
+				$('.anony-ca-nav-next').trigger('click');
+			},3000);    
+		});
 	}
 	
 	// Rating

@@ -18,8 +18,6 @@ get_header( );?>
 
 					<?= '--- '.$cat_name.' / '.$page_title.' ---'?>
 
-				</h3> <a href="#" class="anony-share-email-popup">click</a>
-
 				<div id="anony-ca-container" class="anony-ca-container">
 					<div class="anony-ca-wrapper">
 						<?php 
