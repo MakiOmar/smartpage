@@ -107,7 +107,6 @@ vertical-align: middle;
 	box-sizing: inherit;
 }
 [class*='anony-grid-col-']{
-	width: 100%;
 	display: inline-block;
 	vertical-align: text-top;
 }
