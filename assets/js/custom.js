@@ -17,7 +17,7 @@ clean(document);
 window.onload = function() {
   "use strict";
   var loader = document.getElementById('anony-preloader');
-  loader.style.display = 'none';
+  if(loader !== null) loader.style.display = 'none';
 };
 
 //Start Jquery for wordpress
