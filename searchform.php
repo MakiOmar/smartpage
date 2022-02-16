@@ -1,6 +1,6 @@
 <?php
 /**
- * Search form
+ * Search form template
  *
  * PHP version 7.3 Or Later
  * 
