@@ -1,7 +1,16 @@
 <?php 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
+/**
+ * Footer template
+ *
+ * PHP version 7.3 Or Later
+ * 
+ * @category WordPress
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
+ */
+defined('ABSPATH') or die(); // Exit if accessed direct
 
 $anonyOptions = ANONY_Options_Model::get_instance();
 
@@ -9,7 +18,7 @@ $copyright = esc_html($anonyOptions->copyright);
 
 $ajaxUrl = ANONY_WPML_HELP::getAjaxUrl();
 
-$footer_ad = has_action( 'footer_ad' );
+$footer_ad = has_action('footer_ad');
 
-include(locate_template( 'templates/footer.view.php', false, false ));
+require locate_template('templates/footer.view.php', false, false);
 ?>
