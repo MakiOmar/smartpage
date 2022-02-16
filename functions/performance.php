@@ -394,20 +394,6 @@ add_action('wp_head', function(){
 
 // Add image sizes
 add_filter('the_content',function ($content){
-  $pattern = '/<img [^>]*?src="(\w+?:\/\/[^"]+?)"[^>]*?>/iu';
-  preg_match_all($pattern, $content, $imgs);
-  foreach ( $imgs[0] as $i => $img ) {
-	  
-    if ( false !== strpos( $img, 'width=' ) && false !== strpos( $img, 'height=' ) ) continue;
-    
-    $img_url = $imgs[1][$i];
-    $img_size = @getimagesize( $img_url );
-      
-    if ( false === $img_size ) continue;
-    
-    $replaced_img = str_replace( '<img ', '<img ' . $img_size[3] . ' ', $imgs[0][$i] );
-    $content = str_replace( $img, $replaced_img, $content );
-  }
-  return $content;
+  	return ANONY_STRING_HELP::addImagesMissingDimensions($content);
 });
 
