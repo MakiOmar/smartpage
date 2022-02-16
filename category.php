@@ -1,5 +1,16 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+/**
+ * Category template
+ *
+ * PHP version 7.3 Or Later
+ * 
+ * @category WordPress
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
+ */
+defined('ABSPATH') or die(); // Exit if accessed direct
 
 $anonyOptions = ANONY_Options_Model::get_instance();
 
@@ -10,67 +21,69 @@ $cat_id = $cat;
 $cat_obj = get_category($cat);
 
 $data = [
-	
-	'cat_id' => $cat_id,
-	'cat_obj' => $cat_obj,
-	'cat_name' => ucfirst($cat_obj->cat_name),
-	'page_title' => esc_html__('sub categories',ANONY_TEXTDOM),
-	'sub_categories' => get_categories(
-							[
-								'hide_empty' => '0',
-								'parent'=>$cat_obj->cat_ID,
-								'order'=> 'ASC','depth'=> '1'
-							]
-						),
+    
+    'cat_id' => $cat_id,
+    'cat_obj' => $cat_obj,
+    'cat_name' => ucfirst($cat_obj->cat_name),
+    'page_title' => esc_html__('sub categories', ANONY_TEXTDOM),
+    'sub_categories' => get_categories(
+        [
+                                'hide_empty' => '0',
+                                'parent'=>$cat_obj->cat_ID,
+                                'order'=> 'ASC','depth'=> '1'
+                            ]
+    ),
 ];
 
 if (!empty($data['sub_categories'])) :
-	
-	foreach ($data['sub_categories'] as $sub_cat):
+    
+    foreach ($data['sub_categories'] as $sub_cat):
 
-		$temp['sc_id'] = $sub_cat->cat_id;
-		$temp['sc_name'] = $sub_cat->cat_name;
-		$temp['sc_desc'] = wp_trim_words( $sub_cat->category_description, 10);
-		$temp['sc_quote'] = !is_rtl() ? '&ldquo;' : '&rdquo;';
-		$temp['sc_link'] = get_category_link($sub_cat->term_id);
-		$temp['sc_link_text'] = esc_html__('Enter',ANONY_TEXTDOM);
-		$data['sc_view_data'][] = $temp;
-	
-	endforeach;
-	
+        $temp['sc_id'] = $sub_cat->cat_id;
+        $temp['sc_name'] = $sub_cat->cat_name;
+        $temp['sc_desc'] = wp_trim_words($sub_cat->category_description, 10);
+        $temp['sc_quote'] = !is_rtl() ? '&ldquo;' : '&rdquo;';
+        $temp['sc_link'] = get_category_link($sub_cat->term_id);
+        $temp['sc_link_text'] = esc_html__('Enter', ANONY_TEXTDOM);
+        $data['sc_view_data'][] = $temp;
+    
+    endforeach;
+    
 endif;
 
 
 $args = [
-			'category__in' => [$cat_obj ->cat_ID],
-			'tax_query' => [
-								[
-									'include_children ' => false,
-								],
-							],
-		];
-		
-$query = new WP_Query( $args );
+            'category__in' => [$cat_obj ->cat_ID],
+            'tax_query' => [
+                                [
+                                    'include_children ' => false,
+                                ],
+                            ],
+        ];
+        
+$query = new WP_Query($args);
 
 $data['posts'] = false;
 
-if ( have_posts() ) :
-	
-	while (have_posts() ) :
-		
-		the_post();
-		
-		$data['posts'][] = anony_common_post_data();
-		
-	endwhile;
+if (have_posts() ) :
+    
+    while (have_posts() ) :
+        
+        the_post();
+        
+        $data['posts'][] = anony_common_post_data();
+        
+    endwhile;
 
-	$data['page_title'] = esc_html__( 'Category posts', ANONY_TEXTDOM );
-	$data['read_more']  = esc_html__( 'Read more', ANONY_TEXTDOM );
-	
-	$pagination = anony_pagination();
-	
+    $data['page_title'] = esc_html__('Category posts', ANONY_TEXTDOM);
+    $data['read_more']  = esc_html__('Read more', ANONY_TEXTDOM);
+    
+    $pagination = anony_pagination();
+    
 endif;
 
-if($data['posts']) extract($data);
+if ($data['posts']) { 
+    extract($data);
+}
 
-include(locate_template( 'templates/category.view.php', false, false ));
+require locate_template('templates/category.view.php', false, false);
