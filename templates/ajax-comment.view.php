@@ -1,36 +1,36 @@
-<div <?= $comment_class ?> id="comment-<?= $comment->comment_ID ?>">			
+<div <?php echo $comment_class ?> id="comment-<?php echo $comment->comment_ID ?>">            
 
-	<div class="anony-comment-author vcard">
-		<?= $avatar ?> <cite class="fn"><?= $author_link ?></cite> <span class="says"><?= $says ?></span>
-	</div>
+    <div class="anony-comment-author vcard">
+        <?php echo $avatar ?> <cite class="fn"><?php echo $author_link ?></cite> <span class="says"><?php echo $says ?></span>
+    </div>
 
-	<div class="anony-comment-metadata">
-		<a href="<?= $comment_link ?>"><?= $when_text ?></a>
+    <div class="anony-comment-metadata">
+        <a href="<?php echo $comment_link ?>"><?php echo $when_text ?></a>
 
-		<?php if( $edit_link ) : ?>
-		
-			<span class="edit-link"><a class="anony-comment-edit-link" href="<?= $edit_link ?>"><?= $edit_text ?></a></span>
-			
-		<?php endif ?>
+        <?php if($edit_link ) : ?>
+        
+            <span class="edit-link"><a class="anony-comment-edit-link" href="<?php echo $edit_link ?>"><?php echo $edit_text ?></a></span>
+            
+        <?php endif ?>
 
-	</div>
+    </div>
 
-	<?php if ( $comment_approved == '0' ) : ?>
-		
-		<p class="anony-comment-awaiting-moderation"><?= $waiting_approve ?></p>
-	
-	<?php endif ?>
+    <?php if ($comment_approved == '0' ) : ?>
+        
+        <p class="anony-comment-awaiting-moderation"><?php echo $waiting_approve ?></p>
+    
+    <?php endif ?>
 
-	<div class="anony-comment-content"><?= $comment_text ?></div>
+    <div class="anony-comment-content"><?php echo $comment_text ?></div>
 
-	<?php if($maxNOcomments > $comment_depth) : ?>
-		
-		<div class="reply"><?= $reply_link ?></div>
-		
-	<?php else : ?>
-		
-		<p class="limit-reach"><?= $limit_reached_text ?><p>
-			
-	<?php endif ?>
+    <?php if($maxNOcomments > $comment_depth) : ?>
+        
+        <div class="reply"><?php echo $reply_link ?></div>
+        
+    <?php else : ?>
+        
+        <p class="limit-reach"><?php echo $limit_reached_text ?><p>
+            
+    <?php endif ?>
 
 </div>

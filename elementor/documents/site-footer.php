@@ -1,5 +1,6 @@
 <?php namespace ANONYELEMENTOR\Documents;
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined('ABSPATH') ) { exit; // Exit if accessed directly
+}
 
 use Elementor\Controls_Manager;
 use Elementor\Core\Base\Document;
@@ -19,7 +20,7 @@ final class ANONY_Site_Footer extends Library_Document
      *
      * Retrieve the document properties.
      *
-     * @since 2.0.0
+     * @since  2.0.0
      * @access public
      * @static
      *
@@ -27,16 +28,16 @@ final class ANONY_Site_Footer extends Library_Document
      */
     public static function get_properties()
     {
-    	
+        
         $properties = parent::get_properties();
        
 
         $properties['admin_tab_group'] = 'library';
-		$properties['support_wp_page_templates'] = true;
-		$properties['support_kit'] = true;
-		$properties['register_type'] = true;
-		$properties['edit_capability'] = true;
-		$properties['show_in_library'] = true;
+        $properties['support_wp_page_templates'] = true;
+        $properties['support_kit'] = true;
+        $properties['register_type'] = true;
+        $properties['edit_capability'] = true;
+        $properties['show_in_library'] = true;
 
         return $properties;
     }
@@ -46,7 +47,7 @@ final class ANONY_Site_Footer extends Library_Document
      *
      * Retrieve the document name.
      *
-     * @since 2.0.0
+     * @since  2.0.0
      * @access public
      *
      * @return string Document name.
@@ -107,14 +108,14 @@ final class ANONY_Site_Footer extends Library_Document
         do_action('anony_before_render_site_footer', $elements_data);
         ?>
 
-		<footer id="anony-site-header" <?php echo Utils::render_html_attributes($this->get_container_attributes()); ?>>
-			<div class="elementor-inner">
-				<div class="elementor-section-wrap">
-					<?php $this->print_elements($elements_data); ?>
-				</div>
-			</div>
-		</footer>
-		<?php
+        <footer id="anony-site-header" <?php echo Utils::render_html_attributes($this->get_container_attributes()); ?>>
+            <div class="elementor-inner">
+                <div class="elementor-section-wrap">
+        <?php $this->print_elements($elements_data); ?>
+                </div>
+            </div>
+        </footer>
+        <?php
 
         do_action('anony_after_render_site_footer', $elements_data);
     }

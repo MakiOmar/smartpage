@@ -1,7 +1,9 @@
 <?php namespace ANONYELEMENTOR;
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined('ABSPATH') ) { exit; // Exit if accessed directly
+}
 
-if ( ! did_action( 'elementor/loaded' ) ) return; //Return if  Elementor is not active
+if (! did_action('elementor/loaded') ) { return; //Return if  Elementor is not active
+}
 
 use Elementor\Controls_Manager;
 use Elementor\Plugin as Elementor;
@@ -10,11 +12,12 @@ use Elementor\Core\Documents_Manager;
 /**
  * DocumentsManager
  */
-final class DocumentsManager{
-	
-	/**
-     * @var string
-     */
+final class DocumentsManager
+{
+    
+    /**
+        * @var string
+        */
     const GLOBAL_HEADER_META_KEY = 'anony_use_as_global_header';
 
     /**
@@ -23,8 +26,8 @@ final class DocumentsManager{
     const GLOBAL_FOOTER_META_KEY = 'anony_use_as_global_footer';
     
      /**
-     * Constructor
-     */
+      * Constructor
+      */
     function __construct()
     {
         $current_theme = wp_get_theme();
@@ -42,8 +45,8 @@ final class DocumentsManager{
 
     }
      /**
-     * @internal Callback
-     */
+      * @internal Callback
+      */
     function _includeDocTemplate($template)
     {
         if (is_singular()) {
@@ -78,7 +81,8 @@ final class DocumentsManager{
         $page_id = $this->getCurrentPageId();
         $header_name = get_post_meta($page_id, 'anony_elementor_header_template', true);
         
-        $headers = get_posts([
+        $headers = get_posts(
+            [
                 'fields' => 'ids',
                 'post_type' => 'elementor_library',
                 'post_status' => 'publish',
@@ -87,11 +91,13 @@ final class DocumentsManager{
                 'nopaging' => true,
                 'no_found_rows' => true,
                 'posts_per_page' => 1
-            ]);
+            ]
+        );
 
 
-       if (!$header_name || 'inherit' === $header_name || $header_name  == '') { // Means the global will be used
-            $headers = get_posts([
+        if (!$header_name || 'inherit' === $header_name || $header_name  == '') { // Means the global will be used
+            $headers = get_posts(
+                [
                 'fields' => 'ids',
                 'post_type' => 'elementor_library',
                 'post_status' => 'publish',
@@ -100,8 +106,9 @@ final class DocumentsManager{
                 'nopaging' => true,
                 'no_found_rows' => true,
                 'posts_per_page' => 1
-            ]);
-            $site_header_id = !empty($headers[0]) ? $headers[0] : false;
+                ]
+            );
+             $site_header_id = !empty($headers[0]) ? $headers[0] : false;
         } else {
             $header = get_page_by_path($header_name, OBJECT, 'elementor_library');
             if ($header) {
@@ -111,14 +118,14 @@ final class DocumentsManager{
 
         if ($site_header_id) {
             if(has_filter('wpml_object_id')) {
-                $site_header_id = apply_filters('wpml_object_id', $site_header_id, 'elementor_library', TRUE);
+                $site_header_id = apply_filters('wpml_object_id', $site_header_id, 'elementor_library', true);
             }
-            require ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-header.php';
+            include ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-header.php';
             
             $templates = [];
             
             $name = (string) $name;
-            if ( '' !== $name ) {
+            if ('' !== $name ) {
                 $templates[] = "header-{$name}.php";
             }
             $templates[] = 'header.php';
@@ -132,8 +139,8 @@ final class DocumentsManager{
     }
     
         /**
-     * @internal Callback
-     */
+         * @internal Callback
+         */
     function _maybeRenderSiteFooter($name)
     {
         $site_footer_id = false;
@@ -141,7 +148,8 @@ final class DocumentsManager{
         $footer_name = get_post_meta($page_id, 'anony_elementor_footer_template', true);
 
         if (!$footer_name || 'inherit' === $footer_name) {
-            $footers = get_posts([
+            $footers = get_posts(
+                [
                 'fields' => 'ids',
                 'post_type' => 'elementor_library',
                 'post_status' => 'publish',
@@ -150,7 +158,8 @@ final class DocumentsManager{
                 'nopaging' => true,
                 'no_found_rows' => true,
                 'posts_per_page' => 1
-            ]);
+                ]
+            );
             $site_footer_id = !empty($footers[0]) ? $footers[0] : false;
         } else {
             $footer = get_page_by_path($footer_name, OBJECT, 'elementor_library');
@@ -161,13 +170,13 @@ final class DocumentsManager{
 
         if ($site_footer_id) {
             if(has_filter('wpml_object_id')) {
-                $site_footer_id = apply_filters('wpml_object_id', $site_footer_id, 'elementor_library', TRUE);
+                $site_footer_id = apply_filters('wpml_object_id', $site_footer_id, 'elementor_library', true);
             }
-            require ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-footer.php';
+            include ANONY_ELEMENTOR_EXTENSION . 'src/templates/site-footer.php';
             
             $templates = [];
             $name = (string) $name;
-            if ( '' !== $name ) {
+            if ('' !== $name ) {
                 $templates[] = "footer-{$name}.php";
             }
             $templates[] = 'footer.php';
@@ -181,7 +190,7 @@ final class DocumentsManager{
     }
     
     /**
-     * @internal  Used as a callback
+     * @internal Used as a callback
      */
     
     function _addControls($document)
@@ -195,9 +204,11 @@ final class DocumentsManager{
             } else {
                 $current = get_post_meta(self::GLOBAL_FOOTER_META_KEY);
             }
-            $document->start_injection([
+            $document->start_injection(
+                [
                 'of' => 'post_status'
-            ]);
+                ]
+            );
             $document->add_control(
                 'use_as_default',
                 [
@@ -212,8 +223,8 @@ final class DocumentsManager{
         }
     }
        /**
-     * @internal  Used as a callback
-     */
+        * @internal Used as a callback
+        */
     function _maybeSetDefaultHeaderFooter($post_id, $editor_data)
     {
         $post = get_post($post_id);
@@ -223,7 +234,8 @@ final class DocumentsManager{
         if ('site_header' === $type) {
             if (isset($settings['use_as_default']) && $post->post_name === $settings['use_as_default']) {
                 update_post_meta($post_id, self::GLOBAL_HEADER_META_KEY, $settings['use_as_default']);
-                $headers = get_posts([
+                $headers = get_posts(
+                    [
                     'fields' => 'ids',
                     'post_type' => 'elementor_library',
                     'post_status' => 'publish',
@@ -235,7 +247,8 @@ final class DocumentsManager{
                     'posts_per_page' => -1,
                     'update_post_meta_cache' => false,
                     'update_post_term_cache' => false
-                ]);
+                    ]
+                );
                 if ($headers) { // TODO: Unset other global headers
                     foreach ($headers as $header_id) {
                         if ($post_id == $header_id) {
@@ -253,7 +266,8 @@ final class DocumentsManager{
         } elseif ('site_footer' === $type) {
             if (isset($settings['use_as_default']) && $post->post_name === $settings['use_as_default']) {
                 update_post_meta($post_id, self::GLOBAL_FOOTER_META_KEY, $settings['use_as_default']);
-                $footers = get_posts([
+                $footers = get_posts(
+                    [
                     'fields' => 'ids',
                     'post_type' => 'elementor_library',
                     'post_status' => 'publish',
@@ -265,7 +279,8 @@ final class DocumentsManager{
                     'posts_per_page' => -1,
                     'update_post_meta_cache' => false,
                     'update_post_term_cache' => false
-                ]);
+                    ]
+                );
                 if ($footers) {
                     foreach ($footers as $footer_id) {
                         if ($post_id == $footer_id) {
@@ -286,8 +301,8 @@ final class DocumentsManager{
     }
 
         /**
-     * @return int
-     */
+         * @return int
+         */
     private function getCurrentPageId()
     {
         global $wp_query;

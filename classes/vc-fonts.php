@@ -1,10 +1,11 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH') ) {
     exit; // Exit if accessed directly
 }
 
 if (!class_exists('ANONY_VC_Fonts')) {
-    class ANONY_VC_Fonts{
+    class ANONY_VC_Fonts
+    {
         /**
          * @var string
          */
@@ -22,17 +23,22 @@ if (!class_exists('ANONY_VC_Fonts')) {
 
         /**
          * Class constructor
-         * @param array $library_data Font library data
+         *
+         * @param  array $library_data Font library data
          * @return void
          */
-        public function __construct($library_data){
-			
-			//check if visual composer is active
-			if(!ANONY_WPPLUGIN_HELP::isActive('js_composer/js_composer.php')) return;
-			
-            if (!is_array($library_data)) return;
+        public function __construct($library_data)
+        {
+            
+            //check if visual composer is active
+            if(!ANONY_WPPLUGIN_HELP::isActive('js_composer/js_composer.php')) { return;
+            }
+            
+            if (!is_array($library_data)) { return;
+            }
 
-            if(empty($library_data['font_library']) || empty($library_data['fonts_list'])) return;
+            if(empty($library_data['font_library']) || empty($library_data['fonts_list'])) { return;
+            }
 
             $this->font_library = $library_data['font_library'];
 
@@ -40,29 +46,30 @@ if (!class_exists('ANONY_VC_Fonts')) {
 
             $this->fonts_lib_meta   = $library_data['fonts_lib_meta'];
 
-            if(!isset($this->fonts_lib_meta['heading'])) $this->fonts_lib_meta['heading'] = esc_html__( 'Custom font', ANONY_TEXTDOM );
+            if(!isset($this->fonts_lib_meta['heading'])) { $this->fonts_lib_meta['heading'] = esc_html__('Custom font', ANONY_TEXTDOM);
+            }
 
             // In the 'Icon library' dropdown for an icon content type, add a new family of icons.
-            add_filter( 'init', array($this, 'add_vc_icon_library'), 40 );
+            add_filter('init', array($this, 'add_vc_icon_library'), 40);
 
             /**
              * This adds a new parameter to the vc_icon content block.
              * 
              * This parameter is an icon_picker element, that displays when flaticon is picked from the dropdown.
              */
-            add_filter( 'vc_after_init', array($this, 'define_vc_icon_picker'), 50 );
+            add_filter('vc_after_init', array($this, 'define_vc_icon_picker'), 50);
 
             // Add all the icons we want to display in our font family.
-            add_filter( 'vc_iconpicker-type-'.$this->font_library , array($this, 'add_vc_icon_list') );
+            add_filter('vc_iconpicker-type-'.$this->font_library, array($this, 'add_vc_icon_list'));
 
             // Enqueue the CSS file so that the icons display in the backend editor.
-            add_action( 'vc_backend_editor_enqueue_js_css',  array($this, 'enqueue_vc_icon_styles') );
+            add_action('vc_backend_editor_enqueue_js_css',  array($this, 'enqueue_vc_icon_styles'));
 
 
             // Enqueue the CSS file so that the icons display in the frontend editor.
-            add_action( 'vc_frontend_editor_enqueue_js_css', array($this, 'enqueue_vc_icon_styles') );
+            add_action('vc_frontend_editor_enqueue_js_css', array($this, 'enqueue_vc_icon_styles'));
 
-            add_action( 'vc_enqueue_font_icon_element', array($this,'enqueue_vc_icon_styles_on_request'), 10 );
+            add_action('vc_enqueue_font_icon_element', array($this,'enqueue_vc_icon_styles_on_request'), 10);
 
         }
 
@@ -71,13 +78,14 @@ if (!class_exists('ANONY_VC_Fonts')) {
          * 
          * @return void
          */
-        public function add_vc_icon_library(){
+        public function add_vc_icon_library()
+        {
 
-            $param = WPBMap::getParam( 'vc_icon', 'type' );
+            $param = WPBMap::getParam('vc_icon', 'type');
             
             $param['value'][ $this->fonts_lib_meta['heading'] ] = $this->font_library;
 
-            vc_update_shortcode_param( 'vc_icon', $param );
+            vc_update_shortcode_param('vc_icon', $param);
         }
 
         /**
@@ -85,7 +93,8 @@ if (!class_exists('ANONY_VC_Fonts')) {
          * 
          * This parameter is an icon_picker element, that displays when flaticon is picked from the dropdown.
          */
-        public function define_vc_icon_picker(){
+        public function define_vc_icon_picker()
+        {
 
             $settings = array(
                 'type'        => 'iconpicker',
@@ -105,35 +114,41 @@ if (!class_exists('ANONY_VC_Fonts')) {
 
             );
 
-            vc_add_param( 'vc_icon', $settings );
+            vc_add_param('vc_icon', $settings);
         }
 
         /**
          * Add all the icons we want to display in our font family.
-         * @param array $icons 
+         *
+         * @param  array $icons 
          * @return array Icons array
          */
-        public function add_vc_icon_list($icons){
+        public function add_vc_icon_list($icons)
+        {
             return $this->fonts_list;
         }
 
         /**
          * Enqueue font library style
+         *
          * @return void
          */
-        public function enqueue_vc_icon_styles(){
+        public function enqueue_vc_icon_styles()
+        {
 
-            wp_enqueue_style( $this->font_library , $this->fonts_lib_meta['fonts_css_uri'] );
+            wp_enqueue_style($this->font_library, $this->fonts_lib_meta['fonts_css_uri']);
         }
 
         /**
          * Optional - Conditionally load CSS for your icon font as requested by modules on the live site, Only required if you aren't already loading the custom font globally
-         * @param string $font 
+         *
+         * @param  string $font 
          * @return void
          */
-        public function enqueue_vc_icon_styles_on_request( $font ) {
-            if ( ! empty( $font ) && $this->font_library == $font ) {
-                wp_enqueue_style( $this->font_library , $this->fonts_lib_meta['fonts_css_uri'] );
+        public function enqueue_vc_icon_styles_on_request( $font )
+        {
+            if (! empty($font) && $this->font_library == $font ) {
+                wp_enqueue_style($this->font_library, $this->fonts_lib_meta['fonts_css_uri']);
             }
         }
 

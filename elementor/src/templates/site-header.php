@@ -1,13 +1,13 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH') ) {
     exit; // Exit if accessed directly
 }
 /**
  * Template used to render site header
  *
  * @internal
- * @var int $site_header_id
- * @see CafePro\DocumentsManager::__construct()
+ * @var      int $site_header_id
+ * @see      CafePro\DocumentsManager::__construct()
  */
 ?>
 <!DOCTYPE html>

@@ -1,53 +1,54 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH') ) {
     exit; // Exit if accessed directly
 }
 
-	
+    
 $query= new WP_Query(['post_type' => 'anony_news','posts_per_page'=>5]);
 
-$simple_info_title = esc_html__('Simple Info',ANONY_TEXTDOM);
+$simple_info_title = esc_html__('Simple Info', ANONY_TEXTDOM);
 $search_form       = get_search_form(false);
 $dun_wrapper_class = is_rtl() ? ' class="is-rtl"' : '';
 
-if(!isset($news_bar_style)){
-	
-	$news_bar_style = '';
+if(!isset($news_bar_style)) {
+    
+    $news_bar_style = '';
 }
 
-if(!isset($text_style)){
-	
-	$text_style = '';
+if(!isset($text_style)) {
+    
+    $text_style = '';
 }
 
 $direction = is_rtl() ? 'right' : 'left';
 
-if(isset($text_motion_direction) && $text_motion_direction != ''){
-	
-	$direction  = $text_motion_direction;
+if(isset($text_motion_direction) && $text_motion_direction != '') {
+    
+    $direction  = $text_motion_direction;
 }
 
-if(!isset($motion_speed) || $motion_speed == ''){
-	$motion_speed = 3;
+if(!isset($motion_speed) || $motion_speed == '') {
+    $motion_speed = 3;
 }
 $data = [];
 
 if ($query->have_posts()) {
-	
-	while($query->have_posts()) {
-		
-		$query->the_post();
-		
-		$temp['id']      = get_the_ID();
-		$temp['content'] = strip_tags(get_the_content(get_the_ID()));
-		
-		$data[] = $temp;
-	}
-	
-	wp_reset_postdata();
+    
+    while($query->have_posts()) {
+        
+        $query->the_post();
+        
+        $temp['id']      = get_the_ID();
+        $temp['content'] = strip_tags(get_the_content(get_the_ID()));
+        
+        $data[] = $temp;
+    }
+    
+    wp_reset_postdata();
 }
 
-if (empty($data)) return;
+if (empty($data)) { return;
+}
 
-include(locate_template( 'templates/news.view.php', false, false ));
+require locate_template('templates/news.view.php', false, false);
 ?>

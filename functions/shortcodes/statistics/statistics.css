@@ -1,72 +1,72 @@
 .anony-counter-wrapper{
-	text-align: center;
-	padding: 15px;
-	box-sizing: border-box;
-	box-shadow: 2px 2px 6px 2px #2c2c2c1a;
-	margin: 10px;
-	width: 30%;
-	display: inline-block;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 6px 2px #2c2c2c1a;
+    margin: 10px;
+    width: 30%;
+    display: inline-block;
 }
 .anony-counter{
-	height: 120px;
-	width: 120px;
-	border-radius: 50%;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 .anony-counter-inner{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	text-align: center;
-	font-size:35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    text-align: center;
+    font-size:35px;
 }
 .anony-counter-icon{
-	margin: 10px 0;
+    margin: 10px 0;
 }
 /*-------------------------------------*/
 .anony-counter-icon > i{
-	color:#f4524d
+    color:#f4524d
 }
 .anony-counter-title{
-	display: block!important;
-	margin-top: 5px;
-	color:#a21c18
+    display: block!important;
+    margin-top: 5px;
+    color:#a21c18
 }
 
 
 .anony-counter {
-	border-bottom: 8px solid #f4524d;
-	border-right: 8px solid #a21c18;
+    border-bottom: 8px solid #f4524d;
+    border-right: 8px solid #a21c18;
 }
 
 .anony-counter-inner {
-	border-top: 8px solid #a21c18;
-	border-right: 8px solid #f4524d;
+    border-top: 8px solid #a21c18;
+    border-right: 8px solid #f4524d;
 }
 
 @media screen and (min-width:480px ) and (max-width: 768px){
-	.anony-counter-wrapper{
-		width: 45%;
-	}
+    .anony-counter-wrapper{
+        width: 45%;
+    }
 }
 
 @media screen and (max-width: 480px){
-	.anony-counter-wrapper{
-		width: 70%;
-	}
+    .anony-counter-wrapper{
+        width: 70%;
+    }
 
-	.anony-counter {
-	    height: 90px;
-	    width: 90px;
-	}
-	
-	.anony-counter-inner{
-		height: 70px;
-		width: 70px;
-	}
+    .anony-counter {
+        height: 90px;
+        width: 90px;
+    }
+    
+    .anony-counter-inner{
+        height: 70px;
+        width: 70px;
+    }
 }

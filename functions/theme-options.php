@@ -1,679 +1,685 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH') ) {
     exit; // Exit if accessed directly
 }
 /**
  * Options fields and navigation
  *
  * @package Anonymous theme
- * @author Makiomar
- * @link http://makiomar.com
+ * @author  Makiomar
+ * @link    http://makiomar.com
  */
 
 /**
  * Multilingual options
  */
-add_action( 'after_setup_theme', function(){
-		
-	if (!ANONY_WPML_HELP::isActive()) return;
-	
-	do_action('wpml_multilingual_options', ANONY_OPTIONS);
-		
-	
-}, 1);
+add_action(
+    'after_setup_theme', function () {
+        
+        if (!ANONY_WPML_HELP::isActive()) { return;
+        }
+    
+        do_action('wpml_multilingual_options', ANONY_OPTIONS);
+        
+    
+    }, 1
+);
 
-add_action( 'init', function(){
-	if(get_option(ANONY_OPTIONS) ) $anonyOptions = ANONY_Options_Model::get_instance();
-
-
-	// Navigation elements
-	$options_nav = array(
-		// General --------------------------------------------
-		'general' => array(
-			'title' => esc_html__('Getting started', ANONY_TEXTDOM),
-			'sections' => array('general', 'advertisements'),
-		),
-		// Performance --------------------------------------------
-		'Performance' => array(
-			'title' => esc_html__('Performance', ANONY_TEXTDOM),
-		),
-		// Slider --------------------------------------------
-		'slider' => array(
-			'title' => esc_html__('Slider', ANONY_TEXTDOM),
-		),
-		// Layout --------------------------------------------
-		'layout' => array(
-			'title' => esc_html__('Layout', ANONY_TEXTDOM),
-			'sections' => array('sidebars', 'blog'),
-		),
-
-		// Colors --------------------------------------------
-		'colors' => array(
-			'title' => esc_html__('Colors', ANONY_TEXTDOM),
-			'sections' => array('general-colors','menu-colors'),
-		),
-
-		// Fonts --------------------------------------------
-		'fonts' => array(
-			'title' => esc_html__('Fonts', ANONY_TEXTDOM),
-			'sections' => array( 'arabic-fonts', 'english-fonts' ),
-		),
-
-		// Translate --------------------------------------------
-		/*'translate' => array(
-			'title' => esc_html__('Translate', ANONY_TEXTDOM),
-			'sections' => array('translate'),
-		),
-		*/
-		// Socials --------------------------------------------
-		'socials' => array(
-			'title' => esc_html__('Socials', ANONY_TEXTDOM),
-			//'sections' => array('socials'),
-		),
-		
-		// Miscellanous --------------------------------------------
-		'miscellanous' => array(
-			'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
-		),
-		
-	);
-
-	//Sectoins
-	$sections = array();
-
-	$sliders = ANONY_WPMISC_HELP::getRevSliders();
-
-	$sections['general']= array(
-			'title' => esc_html__('General', ANONY_TEXTDOM),
-			'icon'  => 'x',
-			'fields' => array(
-							array(
-								'id'      => 'copyright',
-								'title'   => esc_html__('Copyright', ANONY_TEXTDOM),
-								'type'    => 'textarea',
-								'validate'=> 'html',
-								'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
-							),
-							
-							array(
-								'id'      => 'preloader',
-								'title'   => esc_html__('Enable preloader', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    => esc_html__('Enabel or disable page preloader', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'preloader_img',
-								'title'   => esc_html__('Preloader image', ANONY_TEXTDOM),
-								'type'    => 'uploader',
-								'validate'=> 'no_html',
-								'desc'    => esc_html__('Choose preloader image', ANONY_TEXTDOM)
-							),						
-						)
-	);
-	
-	$sections['Performance']= array(
-			'title' => esc_html__('Performance', ANONY_TEXTDOM),
-			'icon'  => 'x',
-			'fields' => array(
-							array(
-								'id'      => 'compress_html',
-								'title'   => esc_html__('Compress HTML', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Please activate onlyif ou think that GZIP is not enabled on your server.', ANONY_TEXTDOM).' <a href="https://www.giftofspeed.com/gzip-test/">'.esc_html__('Check gzip compression', ANONY_TEXTDOM).'</a>'
-							),
-							array(
-								'id'      => 'query_string',
-								'title'   => esc_html__('Remove query string', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Removes query string from styles/scripts and help speed up your website', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'keep_query_string',
-								'title'   => esc_html__('Keep query string', ANONY_TEXTDOM),
-								'type'    => 'text',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', ANONY_TEXTDOM)
-							),	
-							
-							array(
-								'id'      => 'defer_stylesheets',
-								'title'   => esc_html__('Defer stylesheets loading', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights. Be careful when using with minification plugins, it may cause style issues', ANONY_TEXTDOM)
-							),
-		
-							array(
-								'id'      => 'defer_scripts',
-								'title'   => esc_html__('Defer scripts loading', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights.', ANONY_TEXTDOM)
-							),	
-							
-							array(
-								'id'      => 'gravatar',
-								'title'   => esc_html__('Disable gravatar.com', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Stops getting gravatar from gravatar.com', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'disable_embeds',
-								'title'   => esc_html__('Disable WP embeds', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Disables WP embeds completely', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'enable_singular_embeds',
-								'title'   => esc_html__('Enable WP embeds on singular', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Enables WP embeds on singular pages (e.g. post/page). Will override (disable WP embeds) option', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'disable_emojis',
-								'title'   => esc_html__('Disable WP emojis', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Disables WP emojis completely', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'enable_singular_emojis',
-								'title'   => esc_html__('Enable WP emojis on singular', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Enables WP emojis on singular pages (e.g. post/page). Will override (disable WP emojis) option', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'disable_gutenburg_scripts',
-								'title'   => esc_html__('Disable Gutenburg editor scripts', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('If your using classic editor, enable this to remove unwanted Gutenburg\'s editor scripts', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'dynamic_css_ajax',
-								'title'   => esc_html__('Disable dynamic AJAX css', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('If your website loads slowly because of AJAX css, enable this', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'cf7_scripts',
-								'title'   => esc_html__('Contact form 7 scripts/styles', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'options' => ANONY_POST_HELP::getPagesIdsTitles(),
-								'validate'=> 'multiple_options',
-								'desc'    =>esc_html__('Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'wc_shop_only_scripts',
-								'title'   => esc_html__('Woocommerce shop only scripts/styles', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'disable_jq_migrate',
-								'title'   => esc_html__('Disable jquery migrate', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('This will prevent the jQuery Migrate script from being loaded on the front end while keeping the jQuery script itself intact. It\'s still being loaded in the admin to not break anything there.)', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'disable_prettyphoto',
-								'title'   => esc_html__('Disable prettyPhoto image light box', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('prettyPhoto disable may help improve performance', ANONY_TEXTDOM)
-							),
-							array(
-								'id'      => 'preload_fonts',
-								'title'   => esc_html__('Preload fonts', ANONY_TEXTDOM),
-								'type'    => 'textarea',
-								'columns' => '70',
-								'rows'    => '8',
-								'validate'=> 'no_html',
-								'text-align' => 'left' ,
-								'desc'    =>esc_html__('Help to improve CLS', ANONY_TEXTDOM)
-							)				
-						)
-	);
-
-	$sections['slider']= array(
-			'title' => esc_html__('Slider', ANONY_TEXTDOM),
-			'icon' => 'P',
-			'fields' => array(
-							array(
-								'id'      => 'home_slider',
-								'title'   => esc_html__('Revolution slider', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    => esc_html('If checked, it will show revolution slider on Homepage', ANONY_TEXTDOM),
-							),
-
-							array(
-								'id'      => 'rev_slider',
-								'title'   => esc_html__('Select a slider', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
-								'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), admin_url( '?page=revslider' )) : '',
-								'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
-							),
-							array(
-								'id'      => 'slider_content',
-								'title'   => esc_html__('Featured Posts slider content', ANONY_TEXTDOM),
-								'type'    => 'radio',
-								'validate'=> 'multiple_options',
-								'options' => array(
-												'featured-cat'	=> array(
-													'title' => esc_html__('Featured category', ANONY_TEXTDOM),
-													'class' => 'slider'
-												),
-		
-												'featured-post'	=> array(
-													'title' => esc_html__('Featured posts', ANONY_TEXTDOM),
-													'class' => 'slider'
-												),
-											),
-								'default'  => 'featured-cat',
-							),
-							array(
-								'id'      => 'featured_tax',
-								'title'   => esc_html__('Select featured taxonomy', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => get_taxonomies(),
-								'default' => 'category',
-								'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : '')
-							),
-		
-		
-							array(
-								'id'      => 'featured_cat',
-								'title'   => esc_html__('Select featured category', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => isset($anonyOptions)  ? ANONY_TERM_HELP::wpTermQuery($anonyOptions->featured_tax, 'id=>name') : array(),
-								'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : ''),
-								'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', ANONY_TEXTDOM) : '')
-							),
-						),
-				'note'     => esc_html__('This options only applies to the front-page.php', ANONY_TEXTDOM), 
-		);
-
-	$sections['menu-colors']= array(
-			'title' => esc_html__('Menu Colors', ANONY_TEXTDOM),
-			'icon' => 'E',
-			'fields' => array(	
-							array(
-								'id'      => 'main_menu_color',
-								'title'   => esc_html__('Main menu', ANONY_TEXTDOM),
-								'type'    => 'color',
-								'validate'=> 'no_html',
-								'default' => '#230005'
-							),						
-						)
-	);
-	$sections['general-colors']= array(
-			'title' => esc_html__('General', ANONY_TEXTDOM),
-			'icon' => 'E',
-			'fields' => array(
-							array(
-								'id'      => 'color_skin',
-								'title'   => esc_html__('Color skin', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array(
-												'blue'     => esc_html__('Blue', ANONY_TEXTDOM),
-												'firebrick'=> esc_html__('Firebrick', ANONY_TEXTDOM),
-												'red'     => esc_html__('Red', ANONY_TEXTDOM),
-												'custom'   => esc_html__('Custom', ANONY_TEXTDOM),
-												),
-								'default' => 'firebrick',
-								'desc' => esc_html__('Other color options like (Menu colors, Headings colors) works only if color skin is custom', ANONY_TEXTDOM),
-							),						
-						)
-	);
-
-	$sections['sidebars']= array(
-			'title' => esc_html__('Sidebars', ANONY_TEXTDOM),
-			'icon' => 'y',
-			'fields' => array(
-							array(
-								'id'      => 'sidebar',
-								'title'   => esc_html__('Sidebar', ANONY_TEXTDOM),
-								'type'    => 'radio_img',
-								'validate'=> 'multiple_options',
-								'options' => array(
-												'left-sidebar'	=> array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/left-sidebar.png'),
-		
-												'right-sidebar'	=> array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/right-sidebar.png'),
-												
-												'no-sidebar' 	=> array('title' => esc_html__('Full width', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/full-width.png'),
-											),
-								'default'  => 'left-sidebar',
-								'desc'  => esc_html__('This controls the direction of the main sidebar', ANONY_TEXTDOM),
-							),
-							array(
-								'id'      => 'single_sidebar',
-								'title'   => esc_html__('Single post sidebar', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', ANONY_TEXTDOM),
-							),
-
-							
-						)
-	);
-	$sections['blog']= array(
-			'title' => esc_html__('Blog', ANONY_TEXTDOM),
-			'icon' => 'n',
-			'fields' => array(
-							array(
-								'id'      => 'posts_grid',
-								'title'   => esc_html__('Posts grid', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array(
-												'standard'     => esc_html__('Standard', ANONY_TEXTDOM),
-												'masonry'=> esc_html__('Masonry', ANONY_TEXTDOM),
-												),
-								'default'  => 'masonry',
-								
-							),
-
-						)
-	);
-
-	$anonyAdsLocs = array(
-						'header'  => esc_html__('Header', ANONY_TEXTDOM),
-						'footer'  => esc_html__('Footer', ANONY_TEXTDOM),
-						'sidebar' => esc_html__('Sidebar', ANONY_TEXTDOM),
-						'post'    => esc_html__('Single post', ANONY_TEXTDOM),
-						'page'    => esc_html__('page', ANONY_TEXTDOM),
-						'before_fotter' => esc_html__('Before footer', ANONY_TEXTDOM),
-					);
-	$sections['advertisements']= array(
-			'title' => esc_html__('Advertisements', ANONY_TEXTDOM),
-			'icon' => 'E',
-			'fields' => array(
-							array(
-								'id'      => 'ad_block_one',
-								'title'   => esc_html__('AD block one', ANONY_TEXTDOM),
-								'type'    => 'textarea',
-								'validate'=> 'html',	
-							),
-							array(
-								'id'      => 'ad_block_one_location',
-								'title'   => esc_html__('AD block one location', ANONY_TEXTDOM),
-								'type'    => 'checkbox',
-								'validate'=> 'multiple_options',
-								'options' => $anonyAdsLocs,
-								
-							),
-							array(
-								'id'      => 'ad_block_two',
-								'title'   => esc_html__('AD block two', ANONY_TEXTDOM),
-								'type'    => 'textarea',
-								'validate'=> 'html',	
-							),
-							array(
-								'id'      => 'ad_block_two_location',
-								'title'   => esc_html__('AD block two location', ANONY_TEXTDOM),
-								'type'    => 'checkbox',
-								'validate'=> 'multiple_options',
-								'options' => $anonyAdsLocs,
-								
-							),
-							array(
-								'id'      => 'ad_block_three',
-								'title'   => esc_html__('AD block three', ANONY_TEXTDOM),
-								'type'    => 'textarea',
-								'validate'=> 'html',	
-							),
-							array(
-								'id'      => 'ad_block_three_location',
-								'title'   => esc_html__('AD block three location', ANONY_TEXTDOM),
-								'type'    => 'checkbox',
-								'validate'=> 'multiple_options',
-								'options' => $anonyAdsLocs,
-								
-							),
-
-						)
-	);
-
-	$arFonts = (
-		isset($anonyOptions) && 
-		is_array(
-			$anonyOptions->custom_ar_fonts
-		)
-	) ? $anonyOptions->custom_ar_fonts : array();
-
-	$defaultArFonts = array(
-							'droid_arabic_kufiregular' => 'Droid kufi regular',
-							'droid_arabic_kufibold'    => 'Droid kufi bold',
-							'decotypethuluthiiregular' => 'Thuluthii regular',
-							'hsn_shahd_boldbold'       => 'Shahd boldbold',
-							'ae_alarabiyaregular'      => 'Alarabiya regular',
-							'ae_alhorregular'          => 'Alhor regular',
-							'ae_almohanadregular'      => 'Almohanad regular',
-							'dubairegular'             => 'Dubai regular',
-							'ae_albattarregular'       => 'Ae Albattar regular',
-							'smartmanartregular'       => 'Smart man art regular',
-
-						);
-
-	$enFonts = (isset($anonyOptions) && is_array($anonyOptions->custom_en_fonts)) ? $anonyOptions->custom_en_fonts : array();
-
-	$defaultEnFonts = array(
-							'ralewaybold'    => 'Raleway bold',
-							'ralewaylight'   => 'Raleway light',
-							'ralewayregular' => 'Raleway regular',
-							'ralewaythin'    => 'Raleway thin',
-
-						);
-
-	$sections['arabic-fonts']= array(
-			'title'  => esc_html__('Arabic fonts', ANONY_TEXTDOM),
-			'icon'   => 'W',
-			'fields' => array(
-							array(
-								'id'      => 'anony_headings_ar_font',
-								'title'   => esc_html__('Arabic font for headings', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array_merge($defaultArFonts , $arFonts),
-								'default' => 'smartmanartregular',
-							),
-							array(
-								'id'      => 'anony_links_ar_font',
-								'title'   => esc_html__('Arabic font for links', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array_merge($defaultArFonts , $arFonts),
-								'default' => 'smartmanartregular',
-							),
-							array(
-								'id'      => 'anony_paragraph_ar_font',
-								'title'   => esc_html__('Arabic font for paragraph', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array_merge($defaultArFonts , $arFonts),
-								'default' => 'smartmanartregular',
-							),
-							
-						)
-	);
-
-	$sections['english-fonts']= array(
-			'title'  => esc_html__('English fonts', ANONY_TEXTDOM),
-			'icon'   => 'W',
-			'fields' => array(
-
-							array(
-								'id'      => 'anony_headings_en_font',
-								'title'   => esc_html__('English font for headings', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array_merge( $defaultEnFonts, $enFonts),
-								'default' => 'ralewaybold',
-							),
-							
-							array(
-								'id'      => 'anony_links_en_font',
-								'title'   => esc_html__('English font for links', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array_merge( $defaultEnFonts, $enFonts),
-								'default' => 'ralewaybold',
-							),
-							array(
-								'id'      => 'anony_paragraph_en_font',
-								'title'   => esc_html__('English font for paragraph', ANONY_TEXTDOM),
-								'type'    => 'select',
-								'validate'=> 'multiple_options',
-								'options' => array_merge( $defaultEnFonts, $enFonts),
-								'default' => 'ralewaybold',
-							),
-							
-						)
-	);
-	$sections['socials']= array(
-			'title'  => esc_html__('Social Media', ANONY_TEXTDOM),
-			'icon'   => 'B',
-			'fields' => array(
-							array(
-								'id'      => 'facebook',
-								'title'   => esc_html__('Facebook account link', ANONY_TEXTDOM),
-								'type'    => 'text',	
-								'validate'=> 'url',
-								'default' => '#',
-							),
-							array(
-								'id'      => 'twitter',
-								'title'   => esc_html__('Twitter account link', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'url',	
-								'default' => '#',	
-							),
-							array(
-								'id'      => 'linkedin',
-								'title'   => esc_html__('Linkedin account link', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'url',	
-								'default' => '#',
-							),
-							array(
-								'id'      => 'instagram',
-								'title'   => esc_html__('Instagram account link', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'url',		
-								'default' => '#',		
-							),
-							array(
-								'id'      => 'tumblr',
-								'title'   => esc_html__('Tumbler account link', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'url',		
-								'default' => '#',		
-							),
-							array(
-								'id'      => 'youtube',
-								'title'   => esc_html__('Youtube channel', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'url',		
-								'default' => '#',
-							),
-							array(
-								'id'      => 'rss',
-								'title'   => esc_html__('RSS feed', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'url',		
-								'default' => get_bloginfo('rss_url'),
-							),
-							array(
-								'id'      => 'email',
-								'title'   => esc_html__('Email address', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'email',		
-								'default' => get_bloginfo('admin_email'),		
-							),
-							array(
-								'id'      => 'phone',
-								'title'   => esc_html__('Phone number', ANONY_TEXTDOM),
-								'type'    => 'text',		
-								'validate'=> 'no_html',		
-								'default' => '#',		
-							),
-
-						)
-	);
+add_action(
+    'init', function () {
+        if(get_option(ANONY_OPTIONS) ) { $anonyOptions = ANONY_Options_Model::get_instance();
+        }
 
 
-	$sections['miscellanous']= array(
-			'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
-			'icon' => 'x',
-			'fields' => array(
-							array(
-								'id'      => 'admin_bar',
-								'title'   => esc_html__('Hide admin bar', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Shows admin bar only for admins', ANONY_TEXTDOM)
-							),	
-							array(
-								'id'      => 'not_admin_restricted',
-								'title'   => esc_html__('Restrict access to admin', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Restricts non-admins from accessing the dashboard', ANONY_TEXTDOM)
-							),
-							array(
-								'id'      => 'change_login_title',
-								'title'   => esc_html__('Change login header title', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Changes the default header title in WordPress login page to be your site title', ANONY_TEXTDOM)
-							),
-							array(
-								'id'      => 'cats_in_nav',
-								'title'   => esc_html__('Add categories to Navigation', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-								'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', ANONY_TEXTDOM)
-							),
-							
-							array(
-								'id'      => 'tinymce_comments',
-								'title'   => esc_html__('Enable tinymce for comment form', ANONY_TEXTDOM),
-								'type'    => 'switch',
-								'validate'=> 'no_html',
-							)
-							
-						)
-	);
+        // Navigation elements
+        $options_nav = array(
+        // General --------------------------------------------
+        'general' => array(
+        'title' => esc_html__('Getting started', ANONY_TEXTDOM),
+        'sections' => array('general', 'advertisements'),
+        ),
+        // Performance --------------------------------------------
+        'Performance' => array(
+        'title' => esc_html__('Performance', ANONY_TEXTDOM),
+        ),
+        // Slider --------------------------------------------
+        'slider' => array(
+        'title' => esc_html__('Slider', ANONY_TEXTDOM),
+        ),
+        // Layout --------------------------------------------
+        'layout' => array(
+        'title' => esc_html__('Layout', ANONY_TEXTDOM),
+        'sections' => array('sidebars', 'blog'),
+        ),
 
-	$widgets = array('ANONY_Sidebar_Ad');
+        // Colors --------------------------------------------
+        'colors' => array(
+        'title' => esc_html__('Colors', ANONY_TEXTDOM),
+        'sections' => array('general-colors','menu-colors'),
+        ),
 
-	$Anony_Options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
-});
+        // Fonts --------------------------------------------
+        'fonts' => array(
+        'title' => esc_html__('Fonts', ANONY_TEXTDOM),
+        'sections' => array( 'arabic-fonts', 'english-fonts' ),
+        ),
+
+        // Translate --------------------------------------------
+        /*'translate' => array(
+        'title' => esc_html__('Translate', ANONY_TEXTDOM),
+        'sections' => array('translate'),
+        ),
+        */
+        // Socials --------------------------------------------
+        'socials' => array(
+        'title' => esc_html__('Socials', ANONY_TEXTDOM),
+        //'sections' => array('socials'),
+        ),
+        
+        // Miscellanous --------------------------------------------
+        'miscellanous' => array(
+        'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
+        ),
+        
+        );
+
+        //Sectoins
+        $sections = array();
+
+        $sliders = ANONY_WPMISC_HELP::getRevSliders();
+
+        $sections['general']= array(
+        'title' => esc_html__('General', ANONY_TEXTDOM),
+        'icon'  => 'x',
+        'fields' => array(
+                            array(
+                                'id'      => 'copyright',
+                                'title'   => esc_html__('Copyright', ANONY_TEXTDOM),
+                                'type'    => 'textarea',
+                                'validate'=> 'html',
+                                'default' => sprintf(__('All rights are reserved to Anonymous %s', ANONY_TEXTDOM), date('Y'))
+                            ),
+                            
+                            array(
+                                'id'      => 'preloader',
+                                'title'   => esc_html__('Enable preloader', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    => esc_html__('Enabel or disable page preloader', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'preloader_img',
+                                'title'   => esc_html__('Preloader image', ANONY_TEXTDOM),
+                                'type'    => 'uploader',
+                                'validate'=> 'no_html',
+                                'desc'    => esc_html__('Choose preloader image', ANONY_TEXTDOM)
+                            ),                        
+                        )
+        );
+    
+        $sections['Performance']= array(
+        'title' => esc_html__('Performance', ANONY_TEXTDOM),
+        'icon'  => 'x',
+        'fields' => array(
+                            array(
+                                'id'      => 'compress_html',
+                                'title'   => esc_html__('Compress HTML', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Please activate onlyif ou think that GZIP is not enabled on your server.', ANONY_TEXTDOM).' <a href="https://www.giftofspeed.com/gzip-test/">'.esc_html__('Check gzip compression', ANONY_TEXTDOM).'</a>'
+                            ),
+                            array(
+                                'id'      => 'query_string',
+                                'title'   => esc_html__('Remove query string', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Removes query string from styles/scripts and help speed up your website', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'keep_query_string',
+                                'title'   => esc_html__('Keep query string', ANONY_TEXTDOM),
+                                'type'    => 'text',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Add comma separated handles of scripts/styles you want to keep query string', ANONY_TEXTDOM)
+                            ),    
+                            
+                            array(
+                                'id'      => 'defer_stylesheets',
+                                'title'   => esc_html__('Defer stylesheets loading', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights. Be careful when using with minification plugins, it may cause style issues', ANONY_TEXTDOM)
+                            ),
+        
+                            array(
+                                'id'      => 'defer_scripts',
+                                'title'   => esc_html__('Defer scripts loading', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Improves First content paint, and get higher score on page speed insights.', ANONY_TEXTDOM)
+                            ),    
+                            
+                            array(
+                                'id'      => 'gravatar',
+                                'title'   => esc_html__('Disable gravatar.com', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Stops getting gravatar from gravatar.com', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'disable_embeds',
+                                'title'   => esc_html__('Disable WP embeds', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Disables WP embeds completely', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'enable_singular_embeds',
+                                'title'   => esc_html__('Enable WP embeds on singular', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Enables WP embeds on singular pages (e.g. post/page). Will override (disable WP embeds) option', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'disable_emojis',
+                                'title'   => esc_html__('Disable WP emojis', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Disables WP emojis completely', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'enable_singular_emojis',
+                                'title'   => esc_html__('Enable WP emojis on singular', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Enables WP emojis on singular pages (e.g. post/page). Will override (disable WP emojis) option', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'disable_gutenburg_scripts',
+                                'title'   => esc_html__('Disable Gutenburg editor scripts', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('If your using classic editor, enable this to remove unwanted Gutenburg\'s editor scripts', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'dynamic_css_ajax',
+                                'title'   => esc_html__('Disable dynamic AJAX css', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('If your website loads slowly because of AJAX css, enable this', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'cf7_scripts',
+                                'title'   => esc_html__('Contact form 7 scripts/styles', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'options' => ANONY_POST_HELP::getPagesIdsTitles(),
+                                'validate'=> 'multiple_options',
+                                'desc'    =>esc_html__('Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'wc_shop_only_scripts',
+                                'title'   => esc_html__('Woocommerce shop only scripts/styles', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'disable_jq_migrate',
+                                'title'   => esc_html__('Disable jquery migrate', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('This will prevent the jQuery Migrate script from being loaded on the front end while keeping the jQuery script itself intact. It\'s still being loaded in the admin to not break anything there.)', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'disable_prettyphoto',
+                                'title'   => esc_html__('Disable prettyPhoto image light box', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('prettyPhoto disable may help improve performance', ANONY_TEXTDOM)
+                            ),
+                            array(
+                                'id'      => 'preload_fonts',
+                                'title'   => esc_html__('Preload fonts', ANONY_TEXTDOM),
+                                'type'    => 'textarea',
+                                'columns' => '70',
+                                'rows'    => '8',
+                                'validate'=> 'no_html',
+                                'text-align' => 'left' ,
+                                'desc'    =>esc_html__('Help to improve CLS', ANONY_TEXTDOM)
+                            )                
+                        )
+        );
+
+        $sections['slider']= array(
+        'title' => esc_html__('Slider', ANONY_TEXTDOM),
+        'icon' => 'P',
+        'fields' => array(
+                            array(
+                                'id'      => 'home_slider',
+                                'title'   => esc_html__('Revolution slider', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    => esc_html('If checked, it will show revolution slider on Homepage', ANONY_TEXTDOM),
+                            ),
+
+                            array(
+                                'id'      => 'rev_slider',
+                                'title'   => esc_html__('Select a slider', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => !empty($sliders) ? $sliders : array('0' => 'No sliders', ),
+                                'desc'    => empty($sliders) ? sprintf(__('Add slider from <a href="%s">here</a>'), admin_url('?page=revslider')) : '',
+                                'class'    => 'home_slider_' . (isset($anonyOptions) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '')
+                            ),
+                            array(
+                                'id'      => 'slider_content',
+                                'title'   => esc_html__('Featured Posts slider content', ANONY_TEXTDOM),
+                                'type'    => 'radio',
+                                'validate'=> 'multiple_options',
+                                'options' => array(
+                                                'featured-cat'    => array(
+                                                    'title' => esc_html__('Featured category', ANONY_TEXTDOM),
+                                                    'class' => 'slider'
+                                                ),
+        
+                                                'featured-post'    => array(
+                                                    'title' => esc_html__('Featured posts', ANONY_TEXTDOM),
+                                                    'class' => 'slider'
+                                                ),
+                                            ),
+                                'default'  => 'featured-cat',
+                            ),
+                            array(
+                                'id'      => 'featured_tax',
+                                'title'   => esc_html__('Select featured taxonomy', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => get_taxonomies(),
+                                'default' => 'category',
+                                'class'    => 'slider_ featured-cat'. (isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : '')
+                            ),
+        
+        
+                            array(
+                                'id'      => 'featured_cat',
+                                'title'   => esc_html__('Select featured category', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => isset($anonyOptions)  ? ANONY_TERM_HELP::wpTermQuery($anonyOptions->featured_tax, 'id=>name') : array(),
+                                'class'    => 'slider_ featured-cat'.( isset($anonyOptions) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : ''),
+                                'note'    => (isset($anonyOptions) && empty($anonyOptions->featured_cat) ? esc_html__('No category selected, you have to select one', ANONY_TEXTDOM) : '')
+                            ),
+                        ),
+                'note'     => esc_html__('This options only applies to the front-page.php', ANONY_TEXTDOM), 
+        );
+
+        $sections['menu-colors']= array(
+        'title' => esc_html__('Menu Colors', ANONY_TEXTDOM),
+        'icon' => 'E',
+        'fields' => array(    
+                            array(
+                                'id'      => 'main_menu_color',
+                                'title'   => esc_html__('Main menu', ANONY_TEXTDOM),
+                                'type'    => 'color',
+                                'validate'=> 'no_html',
+                                'default' => '#230005'
+                            ),                        
+                        )
+        );
+        $sections['general-colors']= array(
+        'title' => esc_html__('General', ANONY_TEXTDOM),
+        'icon' => 'E',
+        'fields' => array(
+                            array(
+                                'id'      => 'color_skin',
+                                'title'   => esc_html__('Color skin', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array(
+                                                'blue'     => esc_html__('Blue', ANONY_TEXTDOM),
+                                                'firebrick'=> esc_html__('Firebrick', ANONY_TEXTDOM),
+                                                'red'     => esc_html__('Red', ANONY_TEXTDOM),
+                                                'custom'   => esc_html__('Custom', ANONY_TEXTDOM),
+                                                ),
+                                'default' => 'firebrick',
+                                'desc' => esc_html__('Other color options like (Menu colors, Headings colors) works only if color skin is custom', ANONY_TEXTDOM),
+                            ),                        
+                        )
+        );
+
+        $sections['sidebars']= array(
+        'title' => esc_html__('Sidebars', ANONY_TEXTDOM),
+        'icon' => 'y',
+        'fields' => array(
+                            array(
+                                'id'      => 'sidebar',
+                                'title'   => esc_html__('Sidebar', ANONY_TEXTDOM),
+                                'type'    => 'radio_img',
+                                'validate'=> 'multiple_options',
+                                'options' => array(
+                                                'left-sidebar'    => array('title' => esc_html__('Left Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/left-sidebar.png'),
+        
+                                                'right-sidebar'    => array('title' => esc_html__('Right Sidebar', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/right-sidebar.png'),
+                                                
+                                                'no-sidebar'     => array('title' => esc_html__('Full width', ANONY_TEXTDOM), 'img' => ANONY_THEME_URI.'/images/icons/full-width.png'),
+                                            ),
+                                'default'  => 'left-sidebar',
+                                'desc'  => esc_html__('This controls the direction of the main sidebar', ANONY_TEXTDOM),
+                            ),
+                            array(
+                                'id'      => 'single_sidebar',
+                                'title'   => esc_html__('Single post sidebar', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    => esc_html('A single post can have two sidebars, check this to enable the secondary sidebar', ANONY_TEXTDOM),
+                            ),
+
+                            
+                        )
+        );
+        $sections['blog']= array(
+        'title' => esc_html__('Blog', ANONY_TEXTDOM),
+        'icon' => 'n',
+        'fields' => array(
+                            array(
+                                'id'      => 'posts_grid',
+                                'title'   => esc_html__('Posts grid', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array(
+                                                'standard'     => esc_html__('Standard', ANONY_TEXTDOM),
+                                                'masonry'=> esc_html__('Masonry', ANONY_TEXTDOM),
+                                                ),
+                                'default'  => 'masonry',
+                                
+                            ),
+
+                        )
+        );
+
+        $anonyAdsLocs = array(
+                        'header'  => esc_html__('Header', ANONY_TEXTDOM),
+                        'footer'  => esc_html__('Footer', ANONY_TEXTDOM),
+                        'sidebar' => esc_html__('Sidebar', ANONY_TEXTDOM),
+                        'post'    => esc_html__('Single post', ANONY_TEXTDOM),
+                        'page'    => esc_html__('page', ANONY_TEXTDOM),
+                        'before_fotter' => esc_html__('Before footer', ANONY_TEXTDOM),
+                    );
+        $sections['advertisements']= array(
+        'title' => esc_html__('Advertisements', ANONY_TEXTDOM),
+        'icon' => 'E',
+        'fields' => array(
+                            array(
+                                'id'      => 'ad_block_one',
+                                'title'   => esc_html__('AD block one', ANONY_TEXTDOM),
+                                'type'    => 'textarea',
+                                'validate'=> 'html',    
+                            ),
+                            array(
+                                'id'      => 'ad_block_one_location',
+                                'title'   => esc_html__('AD block one location', ANONY_TEXTDOM),
+                                'type'    => 'checkbox',
+                                'validate'=> 'multiple_options',
+                                'options' => $anonyAdsLocs,
+                                
+                            ),
+                            array(
+                                'id'      => 'ad_block_two',
+                                'title'   => esc_html__('AD block two', ANONY_TEXTDOM),
+                                'type'    => 'textarea',
+                                'validate'=> 'html',    
+                            ),
+                            array(
+                                'id'      => 'ad_block_two_location',
+                                'title'   => esc_html__('AD block two location', ANONY_TEXTDOM),
+                                'type'    => 'checkbox',
+                                'validate'=> 'multiple_options',
+                                'options' => $anonyAdsLocs,
+                                
+                            ),
+                            array(
+                                'id'      => 'ad_block_three',
+                                'title'   => esc_html__('AD block three', ANONY_TEXTDOM),
+                                'type'    => 'textarea',
+                                'validate'=> 'html',    
+                            ),
+                            array(
+                                'id'      => 'ad_block_three_location',
+                                'title'   => esc_html__('AD block three location', ANONY_TEXTDOM),
+                                'type'    => 'checkbox',
+                                'validate'=> 'multiple_options',
+                                'options' => $anonyAdsLocs,
+                                
+                            ),
+
+                        )
+        );
+
+        $arFonts = (
+        isset($anonyOptions) && 
+        is_array(
+            $anonyOptions->custom_ar_fonts
+        )
+        ) ? $anonyOptions->custom_ar_fonts : array();
+
+        $defaultArFonts = array(
+                            'droid_arabic_kufiregular' => 'Droid kufi regular',
+                            'droid_arabic_kufibold'    => 'Droid kufi bold',
+                            'decotypethuluthiiregular' => 'Thuluthii regular',
+                            'hsn_shahd_boldbold'       => 'Shahd boldbold',
+                            'ae_alarabiyaregular'      => 'Alarabiya regular',
+                            'ae_alhorregular'          => 'Alhor regular',
+                            'ae_almohanadregular'      => 'Almohanad regular',
+                            'dubairegular'             => 'Dubai regular',
+                            'ae_albattarregular'       => 'Ae Albattar regular',
+                            'smartmanartregular'       => 'Smart man art regular',
+
+                        );
+
+        $enFonts = (isset($anonyOptions) && is_array($anonyOptions->custom_en_fonts)) ? $anonyOptions->custom_en_fonts : array();
+
+        $defaultEnFonts = array(
+                            'ralewaybold'    => 'Raleway bold',
+                            'ralewaylight'   => 'Raleway light',
+                            'ralewayregular' => 'Raleway regular',
+                            'ralewaythin'    => 'Raleway thin',
+
+                        );
+
+        $sections['arabic-fonts']= array(
+        'title'  => esc_html__('Arabic fonts', ANONY_TEXTDOM),
+        'icon'   => 'W',
+        'fields' => array(
+                            array(
+                                'id'      => 'anony_headings_ar_font',
+                                'title'   => esc_html__('Arabic font for headings', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array_merge($defaultArFonts, $arFonts),
+                                'default' => 'smartmanartregular',
+                            ),
+                            array(
+                                'id'      => 'anony_links_ar_font',
+                                'title'   => esc_html__('Arabic font for links', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array_merge($defaultArFonts, $arFonts),
+                                'default' => 'smartmanartregular',
+                            ),
+                            array(
+                                'id'      => 'anony_paragraph_ar_font',
+                                'title'   => esc_html__('Arabic font for paragraph', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array_merge($defaultArFonts, $arFonts),
+                                'default' => 'smartmanartregular',
+                            ),
+                            
+                        )
+        );
+
+        $sections['english-fonts']= array(
+        'title'  => esc_html__('English fonts', ANONY_TEXTDOM),
+        'icon'   => 'W',
+        'fields' => array(
+
+                            array(
+                                'id'      => 'anony_headings_en_font',
+                                'title'   => esc_html__('English font for headings', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array_merge($defaultEnFonts, $enFonts),
+                                'default' => 'ralewaybold',
+                            ),
+                            
+                            array(
+                                'id'      => 'anony_links_en_font',
+                                'title'   => esc_html__('English font for links', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array_merge($defaultEnFonts, $enFonts),
+                                'default' => 'ralewaybold',
+                            ),
+                            array(
+                                'id'      => 'anony_paragraph_en_font',
+                                'title'   => esc_html__('English font for paragraph', ANONY_TEXTDOM),
+                                'type'    => 'select',
+                                'validate'=> 'multiple_options',
+                                'options' => array_merge($defaultEnFonts, $enFonts),
+                                'default' => 'ralewaybold',
+                            ),
+                            
+                        )
+        );
+        $sections['socials']= array(
+        'title'  => esc_html__('Social Media', ANONY_TEXTDOM),
+        'icon'   => 'B',
+        'fields' => array(
+                            array(
+                                'id'      => 'facebook',
+                                'title'   => esc_html__('Facebook account link', ANONY_TEXTDOM),
+                                'type'    => 'text',    
+                                'validate'=> 'url',
+                                'default' => '#',
+                            ),
+                            array(
+                                'id'      => 'twitter',
+                                'title'   => esc_html__('Twitter account link', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'url',    
+                                'default' => '#',    
+                            ),
+                            array(
+                                'id'      => 'linkedin',
+                                'title'   => esc_html__('Linkedin account link', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'url',    
+                                'default' => '#',
+                            ),
+                            array(
+                                'id'      => 'instagram',
+                                'title'   => esc_html__('Instagram account link', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'url',        
+                                'default' => '#',        
+                            ),
+                            array(
+                                'id'      => 'tumblr',
+                                'title'   => esc_html__('Tumbler account link', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'url',        
+                                'default' => '#',        
+                            ),
+                            array(
+                                'id'      => 'youtube',
+                                'title'   => esc_html__('Youtube channel', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'url',        
+                                'default' => '#',
+                            ),
+                            array(
+                                'id'      => 'rss',
+                                'title'   => esc_html__('RSS feed', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'url',        
+                                'default' => get_bloginfo('rss_url'),
+                            ),
+                            array(
+                                'id'      => 'email',
+                                'title'   => esc_html__('Email address', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'email',        
+                                'default' => get_bloginfo('admin_email'),        
+                            ),
+                            array(
+                                'id'      => 'phone',
+                                'title'   => esc_html__('Phone number', ANONY_TEXTDOM),
+                                'type'    => 'text',        
+                                'validate'=> 'no_html',        
+                                'default' => '#',        
+                            ),
+
+                        )
+        );
+
+
+        $sections['miscellanous']= array(
+        'title' => esc_html__('Miscellanous', ANONY_TEXTDOM),
+        'icon' => 'x',
+        'fields' => array(
+                            array(
+                                'id'      => 'admin_bar',
+                                'title'   => esc_html__('Hide admin bar', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Shows admin bar only for admins', ANONY_TEXTDOM)
+                            ),    
+                            array(
+                                'id'      => 'not_admin_restricted',
+                                'title'   => esc_html__('Restrict access to admin', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Restricts non-admins from accessing the dashboard', ANONY_TEXTDOM)
+                            ),
+                            array(
+                                'id'      => 'change_login_title',
+                                'title'   => esc_html__('Change login header title', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Changes the default header title in WordPress login page to be your site title', ANONY_TEXTDOM)
+                            ),
+                            array(
+                                'id'      => 'cats_in_nav',
+                                'title'   => esc_html__('Add categories to Navigation', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                                'desc'    =>esc_html__('Adds categories menu to the main navigation menu (Show only if on mobile device)', ANONY_TEXTDOM)
+                            ),
+                            
+                            array(
+                                'id'      => 'tinymce_comments',
+                                'title'   => esc_html__('Enable tinymce for comment form', ANONY_TEXTDOM),
+                                'type'    => 'switch',
+                                'validate'=> 'no_html',
+                            )
+                            
+                        )
+        );
+
+        $widgets = array('ANONY_Sidebar_Ad');
+
+        $Anony_Options = new ANONY_Theme_Settings($options_nav, $sections, $widgets);
+    }
+);
