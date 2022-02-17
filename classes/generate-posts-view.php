@@ -17,9 +17,9 @@ defined('ABSPATH') or die(); // Exit if accessed direct
 /**
  * Post view generator class
  *
- * @category   Widgets
- * @package    Widgets
- * @subpackage Category
+ * @category   Posts
+ * @package    Posts
+ * @subpackage Menu
  * @author     Makiomar <info@makior.com>
  * @license    https://makiomar.com SmartPage Licence
  * @link       https://makiomar.com
