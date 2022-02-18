@@ -30,7 +30,7 @@ class ANONY_Posts_Widget extends WP_Widget {
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', 'smartpage' ); ?></label>
 
-				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( ''smartpage'' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
+				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'smartpage' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 		<?php
 		$postType = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
 		$selected = selected( $postType, 'current', false );
