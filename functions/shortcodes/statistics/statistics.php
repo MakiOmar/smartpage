@@ -1,138 +1,146 @@
 <?php
-if (! defined('ABSPATH') ) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 add_shortcode(
-    'anony_statistics', function ($atts) {
-        $counters = [];
+	'anony_statistics',
+	function ( $atts ) {
+		$counters = array();
 
-        /**
-    * 
-     -----------------------------------------------
-         * Users
-         *-----------------------------------------------
-    */ 
-        $users = 
-        [
-        'title' => esc_html__('Users'),
-        'count' => count_users()['total_users'],
-        'icon'  => 'users',
-        'id'    => 'anony-our-clients',
-        ];
+		/**
+	*
+	 -----------------------------------------------
+		 * Users
+		 *-----------------------------------------------
+	*/
+		$users =
+		array(
+			'title' => esc_html__( 'Users' ),
+			'count' => count_users()['total_users'],
+			'icon'  => 'users',
+			'id'    => 'anony-our-clients',
+		);
 
-        /**
-    * 
-     -----------------------------------------------
-         * posts
-         *-----------------------------------------------
-    */ 
-        $posts = 
-        [
-        'title' => esc_html__('Posts'),
-        'count' => wp_count_posts('post', 'readable')->publish,
-        'icon'  => 'newspaper-o',
-        'id'    => 'anony-posts',
-        ];
-        /**
-    * 
-     -----------------------------------------------
-         * Online
-         *-----------------------------------------------
-    */
+		/**
+	*
+	 -----------------------------------------------
+		 * posts
+		 *-----------------------------------------------
+	*/
+		$posts =
+		array(
+			'title' => esc_html__( 'Posts' ),
+			'count' => wp_count_posts( 'post', 'readable' )->publish,
+			'icon'  => 'newspaper-o',
+			'id'    => 'anony-posts',
+		);
+		/**
+	*
+	 -----------------------------------------------
+		 * Online
+		 *-----------------------------------------------
+	*/
 
-        if(shortcode_exists('wpstatistics')) {
-            $number = do_shortcode('[wpstatistics stat=usersonline]'); 
-        }else{
-            $number = 0;
-        }
+		if ( shortcode_exists( 'wpstatistics' ) ) {
+			$number = do_shortcode( '[wpstatistics stat=usersonline]' );
+		} else {
+			$number = 0;
+		}
 
-        $online = 
-        [
-        'title' => esc_html__('Online now'),
-        'count' => $number,
-        'icon'  => 'user',
-        'id'    => 'anony-online-clients',
-        ];
+		$online =
+		array(
+			'title' => esc_html__( 'Online now' ),
+			'count' => $number,
+			'icon'  => 'user',
+			'id'    => 'anony-online-clients',
+		);
 
-        $counters[] = $users;
-        $counters[] = $posts;
-        $counters[] = $online;
+		$counters[] = $users;
+		$counters[] = $posts;
+		$counters[] = $online;
 
-        foreach ($counters as $counter) {
-            extract($counter);
-            include 'statistics.view.php';
-        }
-    }
+		foreach ( $counters as $counter ) {
+			extract( $counter );
+			include 'statistics.view.php';
+		}
+	}
 );
 
 add_action(
-    'wp_enqueue_scripts', function () {
-    
-        if(is_archive()) { return;
-        }
+	'wp_enqueue_scripts',
+	function () {
 
-        global $post;
+		if ( is_archive() ) {
+			return;
+		}
 
-        $path = ANONY_LIBS_DIR . '/shortcodes/statistics/';
-        $uri  = ANONY_LIBS_URI . '/shortcodes/statistics/';
+		global $post;
 
-        if(!ANONY_POST_HELP::isPageHasShortcode($post, 'anony_statistics')) { return;
-        }
+		$path = ANONY_LIBS_DIR . '/shortcodes/statistics/';
+		$uri  = ANONY_LIBS_URI . '/shortcodes/statistics/';
 
-        wp_enqueue_style( 
-            'anony-statistics',
-            $uri . 'statistics.css',
-            fileatime($path . 'statistics.css') 
-        );
+		if ( ! ANONY_POST_HELP::isPageHasShortcode( $post, 'anony_statistics' ) ) {
+			return;
+		}
 
-        wp_enqueue_script( 
-            'waypoints',
-            $uri . 'jquery.waypoints.min.js',
-            ['jquery'],
-            '4.0.1',
-            true
-        );
-    
-        wp_enqueue_script( 
-            'waypoints-counterup',
-            $uri . 'jquery.counterup.js',
-            ['waypoints'],
-            '1.0',
-            true
-        );
-    }
+		wp_enqueue_style(
+			'anony-statistics',
+			$uri . 'statistics.css',
+			fileatime( $path . 'statistics.css' )
+		);
+
+		wp_enqueue_script(
+			'waypoints',
+			$uri . 'jquery.waypoints.min.js',
+			array( 'jquery' ),
+			'4.0.1',
+			true
+		);
+
+		wp_enqueue_script(
+			'waypoints-counterup',
+			$uri . 'jquery.counterup.js',
+			array( 'waypoints' ),
+			'1.0',
+			true
+		);
+	}
 );
 
 add_action(
-    'wp_footer', function () {
+	'wp_footer',
+	function () {
 
-        if(is_archive()) { return;
-        }
+		if ( is_archive() ) {
+			return;
+		}
 
-        global $post;
+		global $post;
 
-        if(!ANONY_POST_HELP::isPageHasShortcode($post, 'anony_statistics')) { return;
-        }
-        ?>
+		if ( ! ANONY_POST_HELP::isPageHasShortcode( $post, 'anony_statistics' ) ) {
+			return;
+		}
+		?>
 
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            "use strict";
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
 
-            //waypoint plugin counter
-            $('.counter').each(function(){
-                if($(this).text() !== '0'){
-                    $(this).counterUp({
-                        delay: 30,
-                        time: 1000
-                    });
-                }
-            });
+			//waypoint plugin counter
+			$('.counter').each(function(){
+				if($(this).text() !== '0'){
+					$(this).counterUp({
+						delay: 30,
+						time: 1000
+					});
+				}
+			});
 
-        });
-    </script>
+		});
+	</script>
 
-    <?php }
+		<?php
+	}
 );
 
 

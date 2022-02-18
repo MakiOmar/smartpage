@@ -1,5 +1,6 @@
 <?php
-if (! defined('ABSPATH') ) { exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -10,11 +11,11 @@ if (! defined('ABSPATH') ) { exit; // Exit if accessed directly
  * @link    http://makiomar.com
  */
 
-//Array of shortcodes to be added
-$shcods = array('ltrtext');
+// Array of shortcodes to be added
+$shcods = array( 'ltrtext' );
 
-foreach($shcods as $code){
-    add_shortcode($code, $code.'_shcode');
+foreach ( $shcods as $code ) {
+	add_shortcode( $code, $code . '_shcode' );
 }
 
 /**
@@ -24,7 +25,6 @@ foreach($shcods as $code){
  * @param  string $content the shortcode content
  * @return string the text that is to be used to replace the shortcode
  */
-function ltrtext_shcode( $atts,$content = null )
-{
-    return '<span dir="ltr">'.$content.'</span>';
+function ltrtext_shcode( $atts, $content = null ) {
+	 return '<span dir="ltr">' . $content . '</span>';
 }

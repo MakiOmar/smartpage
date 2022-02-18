@@ -1,6 +1,6 @@
 <?php
-if (! defined('ABSPATH') ) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 /**
  * Media functions
@@ -10,5 +10,5 @@ if (! defined('ABSPATH') ) {
  * @link    http://makiomar.com
  */
 
-//Ready for later use
-?>
+// Ready for later use
+

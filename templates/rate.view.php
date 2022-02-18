@@ -1,35 +1,36 @@
 <?php
-if (! defined('ABSPATH') ) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 ?>
-<div id="rating-<?php echo $pID ?>" class="anony-metadata">
+<div id="rating-<?php echo $pID; ?>" class="anony-metadata">
 
-    <?php for($r = 1; $r <= 5; $r++){
-        
-        $rate_star = ($r <= $ratedCount) ? 'fa-star' : 'fa-star-o' ;
-        ?>
+	<?php
+	for ( $r = 1; $r <= 5; $r++ ) {
 
-        <i id="<?php echo $r ?>-<?php echo $pID ?>" class="fa <?php echo $rate_star ?> btn-<?php echo $pID ?>-<?php echo $r ?> <?php echo $rate_class ?>"></i><?php echo (($r != 5) ? '&nbsp': '')?>
+		$rate_star = ( $r <= $ratedCount ) ? 'fa-star' : 'fa-star-o';
+		?>
 
-    <?php }?>
-    
-    <span class="hidden" id="rated-<?php echo $pID ?>"><?php echo $ratedCount ?></span>
-    
-    <span class="hidden" id="clicked-<?php echo $pID ?>"></span>
-    
-    <?php if(is_single()) : ?>
+		<i id="<?php echo $r; ?>-<?php echo $pID; ?>" class="fa <?php echo $rate_star; ?> btn-<?php echo $pID; ?>-<?php echo $r; ?> <?php echo $rate_class; ?>"></i><?php echo ( ( $r != 5 ) ? '&nbsp' : '' ); ?>
 
-        <p class ="rated-text"><?php echo $ratedText  ?>
+	<?php } ?>
+	 
+	<span class="hidden" id="rated-<?php echo $pID; ?>"><?php echo $ratedCount; ?></span>
+	 
+	<span class="hidden" id="clicked-<?php echo $pID; ?>"></span>
+	 
+	<?php if ( is_single() ) : ?>
 
-            <span class="rated-<?php echo $pID ?>"><?php echo $ratedCount ?></span><?php echo $outOf  ?>
+		<p class ="rated-text"><?php echo $ratedText; ?>
 
-            <span class="times-<?php echo $pID ?>">&nbsp;<?php echo $rateTimes ?>&nbsp;</span><?php echo $reviewsText  ?>
+			<span class="rated-<?php echo $pID; ?>"><?php echo $ratedCount; ?></span><?php echo $outOf; ?>
 
-        </p>
+			<span class="times-<?php echo $pID; ?>">&nbsp;<?php echo $rateTimes; ?>&nbsp;</span><?php echo $reviewsText; ?>
 
-    <?php endif ?>
+		</p>
+
+	<?php endif ?>
 
 </div>
 
-<input id="post-id-<?php echo $pID ?>" type="hidden" value="<?php echo $pID ?>"/>
+<input id="post-id-<?php echo $pID; ?>" type="hidden" value="<?php echo $pID; ?>"/>
