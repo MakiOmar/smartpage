@@ -13,126 +13,126 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
-if (! class_exists( 'ANONY_Generate_Posts_View' )) {
-
-/**
- * Post view generator class
- *
- * @category   Posts
- * @package    Posts
- * @subpackage Menu
- * @author     Makiomar <info@makior.com>
- * @license    https://makiomar.com SmartPage Licence
- * @link       https://makiomar.com
- */
-class ANONY_Generate_Posts_View {
-
-
-	/*
-	*@var  string  $postsTemplate  the posts template
-	*/
-
-	public $postsTemplate;
-
-	/*
-	*@var  bool  $resetLoop  a flag to determine if the loop need to be reset
-	*/
-
-	public $resetLoop;
-
-	/*
-	*@var  object  $post  the post object
-	*/
-
-	public $post;
-
-	/*
-	*@var  bool  $HomeView  Flage to check if post view will be at homepage
-	*/
-
-	public $HomeView = false;
-
-	/*
-	*@var  array  $args  arge of WP_Query
-	*/
-
-	public $args = array();
-
-	/*
-	*@var  string $IfNot  stores the else part
-	*/
-	public $IfNot = '';
-
-	/*
-	* @var integer $excerptLength  Stores excerpt length
-	*/
-	public $excerptLength = 15;
-
-
-	/*
-	*@var array  $PostsIds post ids inside the loop for further use
-	*/
-	public $PostsIds = array();
-
-	/*
-	*@var string message to show
-	*/
-	public $msg = null;
+if ( ! class_exists( 'ANONY_Generate_Posts_View' ) ) {
 
 	/**
-	 * Class constructor
+	 * Post view generator class
 	 *
-	 * @param array  $args     array to create post object
-	 * @param string $template the name of posts template
-	 * @param bool   $reset    if the loop need to be reset
+	 * @category   Posts
+	 * @package    Posts
+	 * @subpackage Menu
+	 * @author     Makiomar <info@makior.com>
+	 * @license    https://makiomar.com SmartPage Licence
+	 * @link       https://makiomar.com
 	 */
-	public function __construct( $args, $template = 'blog-post.view', $reset = false ) {
-		$this->resetLoop = $reset;
+	class ANONY_Generate_Posts_View {
 
-		$this->postsTemplate = $template;
 
-		$this->args = $args;
+		/*
+		*@var  string  $postsTemplate  the posts template
+		*/
 
-		$this->resetLoop = $reset;
+		public $postsTemplate;
 
-		$this->post = new WP_Query( $args );
+		/*
+		*@var  bool  $resetLoop  a flag to determine if the loop need to be reset
+		*/
 
-	}
+		public $resetLoop;
 
-	/**
-	 * Display posts list view
-	 *
-	 * @return void
-	 */
-	public function postsView() {
-		$className = 'ANONY_views__' . ucfirst( $this->postsTemplate );
+		/*
+		*@var  object  $post  the post object
+		*/
 
-		if ( class_exists( $className ) ) {
+		public $post;
 
-			$view = new $className( $this );
+		/*
+		*@var  bool  $HomeView  Flage to check if post view will be at homepage
+		*/
 
-			if ( method_exists( $view, 'IfNot' ) ) {
-				$this->IfNot = $view->IfNot();
-			}
+		public $HomeView = false;
+
+		/*
+		*@var  array  $args  arge of WP_Query
+		*/
+
+		public $args = array();
+
+		/*
+		*@var  string $IfNot  stores the else part
+		*/
+		public $IfNot = '';
+
+		/*
+		* @var integer $excerptLength  Stores excerpt length
+		*/
+		public $excerptLength = 15;
+
+
+		/*
+		*@var array  $PostsIds post ids inside the loop for further use
+		*/
+		public $PostsIds = array();
+
+		/*
+		*@var string message to show
+		*/
+		public $msg = null;
+
+		/**
+		 * Class constructor
+		 *
+		 * @param array  $args     array to create post object
+		 * @param string $template the name of posts template
+		 * @param bool   $reset    if the loop need to be reset
+		 */
+		public function __construct( $args, $template = 'blog-post.view', $reset = false ) {
+			$this->resetLoop = $reset;
+
+			$this->postsTemplate = $template;
+
+			$this->args = $args;
+
+			$this->resetLoop = $reset;
+
+			$this->post = new WP_Query( $args );
+
 		}
 
-		if ( $this->post->have_posts() ) {
-			if ( isset( $view ) ) {
-				if ( ! is_null( $this->msg ) && ! empty( $this->msg ) ) {
-					$view->msg = $this->msg;
+		/**
+		 * Display posts list view
+		 *
+		 * @return void
+		 */
+		public function postsView() {
+			$className = 'ANONY_views__' . ucfirst( $this->postsTemplate );
+
+			if ( class_exists( $className ) ) {
+
+				$view = new $className( $this );
+
+				if ( method_exists( $view, 'IfNot' ) ) {
+					$this->IfNot = $view->IfNot();
 				}
-				$view->render();
 			}
 
-			if ( $this->resetLoop === true ) {
+			if ( $this->post->have_posts() ) {
+				if ( isset( $view ) ) {
+					if ( ! is_null( $this->msg ) && ! empty( $this->msg ) ) {
+						$view->msg = $this->msg;
+					}
+					$view->render();
+				}
 
-				wp_reset_postdata();
+				if ( $this->resetLoop === true ) {
 
+					wp_reset_postdata();
+
+				}
+			} else {
+				echo $this->IfNot;
 			}
-		} else {
-			echo $this->IfNot;
 		}
-	}
 
-}
+	}
 }
