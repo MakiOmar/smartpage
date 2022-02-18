@@ -10,7 +10,7 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) or die(); // Exit if accessed direct
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct
 
 ! class_exists( 'ANONY_Cats_Widget' )) or return;
 

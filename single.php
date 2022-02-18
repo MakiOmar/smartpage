@@ -10,7 +10,7 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) or die(); // Exit if accessed directly
+defined( 'ABSPATH' ) || die(); // Exit if accessed directly
 
 $anony_options = ANONY_Options_Model::get_instance();
 
