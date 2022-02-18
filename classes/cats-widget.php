@@ -50,15 +50,15 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 		 * @return void
 		 */
 		public function form( $instance ) {
-			 extract( $instance );?>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
-			
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo ( isset( $title ) && ! empty( $title ) ) ? esc_attr( $title ) : esc_attr__( 'Categories', 'smartpage' ); ?>">
-			
-		</p>
-		
+			$title       = ( isset( $instance['title'] ) && ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Categories', 'smartpage' );
+			$field_title = $this->get_field_id( 'title' );
+			$field_name  = $this->get_field_name( 'title' );
+			?>
+			<p>
+				<label for="<?php echo esc_attr( $field_title ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
+				<input type="text" class="widefat" id="<?php echo esc_attr( $field_title ); ?>" name="<?php echo esc_attr( $field_name ); ?>"  value="<?php echo esc_attr( $title ); ?>">
+			</p>
+
 			<?php
 		}
 
@@ -76,15 +76,12 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 		 * @return void
 		 */
 		public function widget( $parms, $instance ) {
-			extract( $parms );
 
-			extract( $instance );
+			$title = empty( $instance['title'] ) ? __( 'Categories', 'smartpage' ) : $instance['title'];
 
-			$title = empty( $title ) ? esc_html__( 'Categories', 'smartpage' ) : $title;
+			echo $parms['before_widget'];
 
-			echo $before_widget;
-
-			echo $before_title . $title . $after_title;
+			echo $parms['before_title'] . esc_html( $title ) . $parms['after_title'];
 
 			echo '<ul id="anony-cat-list">';
 
@@ -97,7 +94,7 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 				)
 			);
 
-			echo $after_widget;
+			echo $parms['after_widget'] ;
 
 			echo '</ul>';
 
