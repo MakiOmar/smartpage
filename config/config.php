@@ -30,25 +30,11 @@ define( 'ANONY_NODATA', esc_html__( 'No data found' ) );
 define( 'ANONY_PREFIX', 'ANONY_' );
 
 /**
- * Holds theme's name
- *
- * @const
- */
-define( 'ANONY_THEME_NAME', 'Anonymous' );
-
-/**
  * Holds theme's version
  *
  * @const
  */
 define( 'ANONY_THEME_VERSION', '1.0' );
-
-/**
- * Holds theme's text domain
- *
- * @const
- */
-define( 'ANONY_TEXTDOM', strtolower( ANONY_THEME_NAME ) );
 
 /**
  * Holds theme's URI
