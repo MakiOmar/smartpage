@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
-! class_exists( 'ANONY_Cats_Widget' )) || exit();;
+! class_exists( 'ANONY_Cats_Widget' ) || exit();
 
 /**
  * Categories menu walkker class
