@@ -55,8 +55,10 @@ endif;
 
 
 $args = array(
-	'category__in' => array( $cat_obj->cat_ID ),
-	'tax_query'    => array(
+	'posts_per_page' => 12,
+	'post_status'    => 'publish',
+	'category__in'   => array( $cat_obj->cat_ID ),
+	'tax_query'      => array(
 		array(
 			'include_children ' => false,
 		),
