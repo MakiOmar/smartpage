@@ -79,7 +79,7 @@ function anony_breadcrumbs() {
 	$pageLink = home_url( $wp->request );
 	$homeLink = home_url();
 	echo '<ul class="anony-breadcrumbs">';
-	echo '<li class="home"><i class="fa fa-home"></i> <a href="' . $homeLink . '">' . esc_html__( 'Home', ANONY_TEXTDOM ) . '</a> <span>/</span></li>';
+	echo '<li class="home"><i class="fa fa-home"></i> <a href="' . $homeLink . '">' . esc_html__( 'Home', 'smartpage' ) . '</a> <span>/</span></li>';
 
 	// Blog Category
 	if ( is_category() ) {
@@ -162,10 +162,10 @@ add_action(
 	function () {
 
 		$menus = array(
-			'anony-main-menu'      => esc_html__( 'Main menu. Shows on the main navigation', ANONY_TEXTDOM ),
-			'anonyfooter-menu'     => esc_html__( 'Footer menu. Shows on the footer', ANONY_TEXTDOM ),
-			'anony-languages-menu' => esc_html__( 'Languages menu. Shows on the top header', ANONY_TEXTDOM ),
-			'anony-user-menu'      => esc_html__( 'Users menu. Shows on the top header', ANONY_TEXTDOM ),
+			'anony-main-menu'      => esc_html__( 'Main menu. Shows on the main navigation', 'smartpage' ),
+			'anonyfooter-menu'     => esc_html__( 'Footer menu. Shows on the footer', 'smartpage' ),
+			'anony-languages-menu' => esc_html__( 'Languages menu. Shows on the top header', 'smartpage' ),
+			'anony-user-menu'      => esc_html__( 'Users menu. Shows on the top header', 'smartpage' ),
 		);
 
 		foreach ( $menus as $name => $description ) {
@@ -281,7 +281,7 @@ add_filter(
 add_filter(
 	'wp_list_pages',
 	function ( $output, $r, $pages ) {
-		$home   = '<li><a href="' . get_home_url() . '">' . __( '<i class="fa fa-home"></i>', ANONY_TEXTDOM ) . '</a></li>';
+		$home   = '<li><a href="' . get_home_url() . '">' . __( '<i class="fa fa-home"></i>', 'smartpage' ) . '</a></li>';
 		$output = $home . $output;
 		return $output;
 	},

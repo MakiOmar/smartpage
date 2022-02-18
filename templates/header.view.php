@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 
 	<?php if ( $preloader == '1' ) : ?>
 		<div id="anony-preloader">
-			<p><?php echo $blogname; ?> <?php echo esc_html__( 'Loading...', ANONY_TEXTDOM ); ?></p>
+			<p><?php echo $blogname; ?> <?php echo esc_html__( 'Loading...', 'smartpage' ); ?></p>
 			<img class="anony-loader-img" src="<?php echo $preloader_img; ?>" alt="<?php echo $blogname; ?>"/>
 		</div>
 	<?php endif ?>

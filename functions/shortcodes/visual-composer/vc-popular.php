@@ -17,19 +17,19 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 		public function __construct() {
 			parent::__construct(
 				array(
-					'category'          => esc_html__( 'Anony Shortcodes', ANONY_TEXTDOM ),
-					'name'              => esc_html__( 'Anony Most Popular', ANONY_TEXTDOM ),
+					'category'          => esc_html__( 'Anony Shortcodes', 'smartpage' ),
+					'name'              => esc_html__( 'Anony Most Popular', 'smartpage' ),
 					'base'              => 'anony-most-popular',
 					'icon'              => ANONY_THEME_URI . '/images/vc/most_popular.png',
 					'admin_label'       => false,
 					'front_enqueue_css' => array( get_template_directory_uri() . '/assets/elements/popular.css' ),
 					'params'            => array(
 						array(
-							'group'       => __( 'Shortcode Output', ANONY_TEXTDOM ),
+							'group'       => __( 'Shortcode Output', 'smartpage' ),
 							'type'        => 'custom_markup',
-							'heading'     => __( 'Shortcode Output', ANONY_TEXTDOM ),
+							'heading'     => __( 'Shortcode Output', 'smartpage' ),
 							'param_name'  => 'order_field_key',
-							'description' => __( 'Ouput of the shortcode will be look like this.', ANONY_TEXTDOM ),
+							'description' => __( 'Ouput of the shortcode will be look like this.', 'smartpage' ),
 						),
 
 						vc_map_add_css_animation(),
@@ -42,49 +42,49 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'checkbox',
-							'heading'          => __( 'Hide thumbnail', ANONY_TEXTDOM ),
+							'heading'          => __( 'Hide thumbnail', 'smartpage' ),
 							'param_name'       => 'hide_thumb',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'checkbox',
-							'heading'          => __( 'Hide Date', ANONY_TEXTDOM ),
+							'heading'          => __( 'Hide Date', 'smartpage' ),
 							'param_name'       => 'hide_date',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'checkbox',
-							'heading'          => __( 'Hide views', ANONY_TEXTDOM ),
+							'heading'          => __( 'Hide views', 'smartpage' ),
 							'param_name'       => 'hide_views',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'checkbox',
-							'heading'          => __( 'Hide rating', ANONY_TEXTDOM ),
+							'heading'          => __( 'Hide rating', 'smartpage' ),
 							'param_name'       => 'hide_rating',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'checkbox',
-							'heading'          => __( 'Hide Most popular tab', ANONY_TEXTDOM ),
+							'heading'          => __( 'Hide Most popular tab', 'smartpage' ),
 							'param_name'       => 'hide_most_popular',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'checkbox',
-							'heading'          => __( 'Hide recent comments tab', ANONY_TEXTDOM ),
+							'heading'          => __( 'Hide recent comments tab', 'smartpage' ),
 							'param_name'       => 'hide_recent_comments',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
@@ -108,7 +108,7 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 							'type'             => 'colorpicker',
 							'holder'           => 'div',
 							'class'            => 'anony-most-popular',
-							'heading'          => esc_html__( 'Text color', ANONY_TEXTDOM ),
+							'heading'          => esc_html__( 'Text color', 'smartpage' ),
 							'param_name'       => 'text_color',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
@@ -117,10 +117,10 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 							'group'            => esc_html__( 'Design Options', 'js_composer' ),
 							'type'             => 'colorpicker',
 							'holder'           => 'div',
-							'heading'          => esc_html__( 'Tabs background', ANONY_TEXTDOM ),
+							'heading'          => esc_html__( 'Tabs background', 'smartpage' ),
 							'param_name'       => 'tabs_bar_background',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
-							'description'      => esc_html__( 'Background for tabs bar', ANONY_TEXTDOM ),
+							'description'      => esc_html__( 'Background for tabs bar', 'smartpage' ),
 						),
 
 					),
@@ -151,9 +151,9 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 				$atts
 			) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 
-			$popular_title = esc_html__( 'Popular', ANONY_TEXTDOM );
+			$popular_title = esc_html__( 'Popular', 'smartpage' );
 
-			$recent_comments_title = esc_html__( 'Recent comments', ANONY_TEXTDOM );
+			$recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );
 
 			$tabs_bar_style = ( $tabs_bar_background !== '' ) ? ' style="background-color:' . $tabs_bar_background . '"' : '';
 			$id             = '';

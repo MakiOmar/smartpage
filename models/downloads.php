@@ -67,8 +67,8 @@ if (empty($data)) { return;
 }
 
 $sec_class = (is_front_page() || is_home()) ? ' section-front-page' : '';
-$sec_title = esc_html__('Suggested downloads', ANONY_TEXTDOM);
-$downloads_text = esc_html__('Downloads', ANONY_TEXTDOM);
+$sec_title = esc_html__('Suggested downloads', 'smartpage');
+$downloads_text = esc_html__('Downloads', 'smartpage');
 $default_thumb = ANONY_THEME_URI . '/images/temporary-bg.jpg';
 
 wp_enqueue_script('anony-download');

@@ -48,7 +48,7 @@ if ( ! class_exists( 'ANONY_VC_Fonts' ) ) {
 			$this->fonts_lib_meta = $library_data['fonts_lib_meta'];
 
 			if ( ! isset( $this->fonts_lib_meta['heading'] ) ) {
-				$this->fonts_lib_meta['heading'] = esc_html__( 'Custom font', ANONY_TEXTDOM );
+				$this->fonts_lib_meta['heading'] = esc_html__( 'Custom font', 'smartpage' );
 			}
 
 			// In the 'Icon library' dropdown for an icon content type, add a new family of icons.

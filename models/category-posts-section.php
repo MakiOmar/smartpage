@@ -37,7 +37,7 @@ if($sliderOpt != 'rev-slider') {
 }
 
 $sections = [
-    esc_html__('Recent Posts', ANONY_TEXTDOM) => $featured_args,
+    esc_html__('Recent Posts', 'smartpage') => $featured_args,
     get_term(58)->name => array_merge(
         $featured_args, 
         [

@@ -115,17 +115,17 @@ function anony_comments_number() {
 
 	if ( comments_open() ) {
 
-		$comment_text = esc_html__( 'comment', ANONY_TEXTDOM );
+		$comment_text = esc_html__( 'comment', 'smartpage' );
 
 		if ( $num_comments != 1 ) {
 
-			$comment_text = esc_html__( 'comments', ANONY_TEXTDOM );
+			$comment_text = esc_html__( 'comments', 'smartpage' );
 
 		}
 
 		$comments = '<a class="meta-text" href="' . esc_url( get_comments_link() ) . '"> ' . $num_comments . '</a><span class="meta-text single-meta-text">&nbsp;' . $comment_text . '&nbsp;</span>';
 	} else {
-		$comments = '<span class="meta-text single-meta-text">' . esc_html__( 'Comments-off', ANONY_TEXTDOM ) . '</span>';
+		$comments = '<span class="meta-text single-meta-text">' . esc_html__( 'Comments-off', 'smartpage' ) . '</span>';
 	}
 	return $comments;
 }
@@ -153,8 +153,8 @@ function anony_common_post_data( $post_type = 'post' ) {
 	$temp['thumbnail_img']   = get_the_post_thumbnail_url( $ID, 'thumbnail' );
 	$temp['date']            = get_the_date();
 	$temp['gravatar']        = get_avatar( get_the_author_meta( 'ID' ), 32 );
-	$temp['author']          = sprintf( esc_html__( 'By %s', ANONY_TEXTDOM ), get_the_author() );
-	$temp['read_more']       = esc_html__( 'Read more', ANONY_TEXTDOM );
+	$temp['author']          = sprintf( esc_html__( 'By %s', 'smartpage' ), get_the_author() );
+	$temp['read_more']       = esc_html__( 'Read more', 'smartpage' );
 	$temp['grid']            = $grid;
 	$temp['views']           = anony_get_post_views( $ID );
 	$temp['comments_open']   = comments_open();

@@ -59,7 +59,7 @@ final class ANONY_Site_Header extends Library_Document {
 	 * @return string Document title.
 	 */
 	public static function get_title() {
-		return __( 'Site Header', ANONY_TEXTDOM );
+		return __( 'Site Header', 'smartpage' );
 	}
 
 	/**
@@ -123,7 +123,7 @@ final class ANONY_Site_Header extends Library_Document {
 		$this->start_controls_section(
 			'absolute_header',
 			array(
-				'label' => __( 'Absolute Header', ANONY_TEXTDOM ),
+				'label' => __( 'Absolute Header', 'smartpage' ),
 				'tab'   => Controls_Manager::TAB_ADVANCED,
 			)
 		);
@@ -131,11 +131,11 @@ final class ANONY_Site_Header extends Library_Document {
 		$this->add_control(
 			'enable_absolute_header',
 			array(
-				'label'              => __( 'Enable Absolute Header', ANONY_TEXTDOM ),
-				'description'        => __( 'Header will overlap to content. It helpful for create header transparent.', ANONY_TEXTDOM ),
+				'label'              => __( 'Enable Absolute Header', 'smartpage' ),
+				'description'        => __( 'Header will overlap to content. It helpful for create header transparent.', 'smartpage' ),
 				'type'               => Controls_Manager::SWITCHER,
-				'label_on'           => __( 'Yes', ANONY_TEXTDOM ),
-				'label_off'          => __( 'No', ANONY_TEXTDOM ),
+				'label_on'           => __( 'Yes', 'smartpage' ),
+				'label_off'          => __( 'No', 'smartpage' ),
 				'default'            => '',
 				'frontend_available' => true,
 			)

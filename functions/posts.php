@@ -26,25 +26,25 @@ add_filter(
 		$custom_posts = array(
 			'anony_download' =>
 				array(
-					esc_html__( 'Download', ANONY_TEXTDOM ),
-					esc_html__( 'Downloads', ANONY_TEXTDOM ),
+					esc_html__( 'Download', 'smartpage' ),
+					esc_html__( 'Downloads', 'smartpage' ),
 				),
 
 			'portfolio'      =>
 				array(
-					esc_html__( 'portfolio', ANONY_TEXTDOM ),
-					esc_html__( 'Portfolios', ANONY_TEXTDOM ),
+					esc_html__( 'portfolio', 'smartpage' ),
+					esc_html__( 'Portfolios', 'smartpage' ),
 				),
 
 			'testimonial'    =>
 				array(
-					esc_html__( 'Testimonial', ANONY_TEXTDOM ),
-					esc_html__( 'Testimonials', ANONY_TEXTDOM ),
+					esc_html__( 'Testimonial', 'smartpage' ),
+					esc_html__( 'Testimonials', 'smartpage' ),
 				),
 			'anony_news'     =>
 				array(
-					esc_html__( 'New', ANONY_TEXTDOM ),
-					esc_html__( 'News', ANONY_TEXTDOM ),
+					esc_html__( 'New', 'smartpage' ),
+					esc_html__( 'News', 'smartpage' ),
 				),
 		);
 
@@ -66,8 +66,8 @@ add_filter(
 		array(
 			'anony_download_type' =>
 				array(
-					esc_html__( 'Download type', ANONY_TEXTDOM ),
-					esc_html__( 'Download type', ANONY_TEXTDOM ),
+					esc_html__( 'Download type', 'smartpage' ),
+					esc_html__( 'Download type', 'smartpage' ),
 				),
 
 		);
@@ -358,12 +358,12 @@ function anony_latest_comments() {
 			
 				<div  class="anony-recent-comment-wrapper">
 				
-					<h3><?php echo '<i class="fa fa-user"></i> ' . $comment->comment_author . ' ' . __( 'Commented', ANONY_TEXTDOM ); ?></h3>
+					<h3><?php echo '<i class="fa fa-user"></i> ' . $comment->comment_author . ' ' . __( 'Commented', 'smartpage' ); ?></h3>
 					
 					<p class='recent-comment'>
 			<?php echo mb_substr( $comment->comment_content, 0, 150 ) . '... '; ?>
 					
-					<a href="<?php echo get_the_permalink( $comment->comment_post_ID ); ?>"><?php esc_html_e( 'View Post', ANONY_TEXTDOM ); ?></a>
+					<a href="<?php echo get_the_permalink( $comment->comment_post_ID ); ?>"><?php esc_html_e( 'View Post', 'smartpage' ); ?></a>
 					
 					</p>
 					
@@ -374,7 +374,7 @@ function anony_latest_comments() {
 	} else {
 		?>
 				
-		<p><?php esc_html_e( 'No comments yet', ANONY_TEXTDOM ); ?></p>
+		<p><?php esc_html_e( 'No comments yet', 'smartpage' ); ?></p>
 		
 		<?php
 	};

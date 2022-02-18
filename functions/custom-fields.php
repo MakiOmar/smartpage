@@ -18,7 +18,7 @@ add_filter(
 		$metaboxes[] =
 		array(
 			'id'            => 'anony_download', // Meta box ID
-			'title'         => esc_html__( 'Downloads', ANONY_TEXTDOM ),
+			'title'         => esc_html__( 'Downloads', 'smartpage' ),
 			'context'       => 'normal',
 			'priority'      => 'high', // high|low
 			'hook_priority' => '10', // Default 10
@@ -27,7 +27,7 @@ add_filter(
 					array(
 						array(
 							'id'       => 'anony_download_attachment',
-							'title'    => esc_html__( 'Download file', ANONY_TEXTDOM ),
+							'title'    => esc_html__( 'Download file', 'smartpage' ),
 							'type'     => 'file_upload',
 							'validate' => 'no_html',
 						),

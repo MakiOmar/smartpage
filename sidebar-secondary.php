@@ -13,8 +13,8 @@
  */
 defined( 'ABSPATH' ) or die(); // Exit if accessed directly
 
-$popular_title         = esc_html__( 'Popular', ANONY_TEXTDOM );
-$recent_comments_title = esc_html__( 'Recent comments', ANONY_TEXTDOM );
+$popular_title         = esc_html__( 'Popular', 'smartpage' );
+$recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );
 ?>
 <div class="anony-secondary-sidebar anony-grid-col-md-4 anony-grid-col">
 	

@@ -15,46 +15,46 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
 		public function __construct() {
 			parent::__construct(
 				array(
-					'name'     => esc_html__( 'Anony news bar', ANONY_TEXTDOM ),
+					'name'     => esc_html__( 'Anony news bar', 'smartpage' ),
 					'base'     => 'anony-news-bar',
-					'category' => esc_html__( 'Anony Shortcodes', ANONY_TEXTDOM ),
+					'category' => esc_html__( 'Anony Shortcodes', 'smartpage' ),
 					'icon'     => ANONY_THEME_URI . '/images/vc/news.png',
 					'params'   => array(
 						array(
-							'group'       => __( 'Shortcode Output', ANONY_TEXTDOM ),
+							'group'       => __( 'Shortcode Output', 'smartpage' ),
 							'type'        => 'custom_markup',
-							'heading'     => __( 'Shortcode Output', ANONY_TEXTDOM ),
+							'heading'     => __( 'Shortcode Output', 'smartpage' ),
 							'param_name'  => 'order_field_key',
-							'description' => __( 'Ouput of the shortcode will be look like this.', ANONY_TEXTDOM ),
+							'description' => __( 'Ouput of the shortcode will be look like this.', 'smartpage' ),
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'dropdown',
 							'value'            => array(
 
-								esc_html__( 'From left to right', ANONY_TEXTDOM ) => 'right',
-								esc_html__( 'From right to left', ANONY_TEXTDOM ) => 'left',
+								esc_html__( 'From left to right', 'smartpage' ) => 'right',
+								esc_html__( 'From right to left', 'smartpage' ) => 'left',
 							),
-							'std'              => esc_html__( 'From right to left', ANONY_TEXTDOM ),
-							'heading'          => __( 'Text motion direction', ANONY_TEXTDOM ),
+							'std'              => esc_html__( 'From right to left', 'smartpage' ),
+							'heading'          => __( 'Text motion direction', 'smartpage' ),
 							'param_name'       => 'text_motion_direction',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
 
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'textfield',
-							'heading'          => __( 'Speed', ANONY_TEXTDOM ),
+							'heading'          => __( 'Speed', 'smartpage' ),
 							'param_name'       => 'motion_speed',
 							'std'              => 3,
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
-							'description'      => __( 'Motion speed (a number of 3 is good, more than that will be fast)', ANONY_TEXTDOM ),
+							'description'      => __( 'Motion speed (a number of 3 is good, more than that will be fast)', 'smartpage' ),
 						),
 						array(
-							'group'            => __( 'Settings', ANONY_TEXTDOM ),
+							'group'            => __( 'Settings', 'smartpage' ),
 							'type'             => 'anony-switch',
-							'heading'          => __( 'test', ANONY_TEXTDOM ),
+							'heading'          => __( 'test', 'smartpage' ),
 							'param_name'       => 'test_switch',
 							'std'              => 'on',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
@@ -71,7 +71,7 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
 							'group'            => esc_html__( 'Design Options', 'js_composer' ),
 							'type'             => 'colorpicker',
 							'holder'           => 'div',
-							'heading'          => esc_html__( 'Text color', ANONY_TEXTDOM ),
+							'heading'          => esc_html__( 'Text color', 'smartpage' ),
 							'param_name'       => 'text_color',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
 						),
@@ -80,10 +80,10 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
 							'group'            => esc_html__( 'Design Options', 'js_composer' ),
 							'type'             => 'colorpicker',
 							'holder'           => 'div',
-							'heading'          => esc_html__( 'News bar background', ANONY_TEXTDOM ),
+							'heading'          => esc_html__( 'News bar background', 'smartpage' ),
 							'param_name'       => 'news_bar_background',
 							'edit_field_class' => 'vc_col-sm-6 vc_column',
-							'description'      => esc_html__( 'Background for News bar', ANONY_TEXTDOM ),
+							'description'      => esc_html__( 'Background for News bar', 'smartpage' ),
 						),
 
 						array(

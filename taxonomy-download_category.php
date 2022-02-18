@@ -43,7 +43,7 @@ get_header();?>
 					ucfirst( $this_term->name ),
 					esc_html__(
 						'sub categories',
-						ANONY_TEXTDOM
+						'smartpage'
 					)
 				);
 				?>
@@ -78,7 +78,7 @@ get_header();?>
 						  <a 
 						  href="<?php echo get_term_link( $term->term_id ); ?>" 
 						  class="anony-cat-more">
-						  <?php esc_html_e( 'Enter', ANONY_TEXTDOM ); ?>
+						  <?php esc_html_e( 'Enter', 'smartpage' ); ?>
 						  </a>
 					  </div>
 					</div>
@@ -106,7 +106,7 @@ get_header();?>
 				printf(
 					'--- %1$s / %$s ---',
 					ucfirst( $this_term->name ),
-					__( 'Category posts', ANONY_TEXTDOM )
+					__( 'Category posts', 'smartpage' )
 				);
 				?>
 			  </h3>

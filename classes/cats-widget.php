@@ -35,8 +35,8 @@ class ANONY_Cats_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 		 $parms = array(
-			 'description' => esc_html__( 'Displays an organized dropdown list of your categories', ANONY_TEXTDOM ),
-			 'name'        => esc_html__( 'Anonymous categories', ANONY_TEXTDOM ),
+			 'description' => esc_html__( 'Displays an organized dropdown list of your categories', 'smartpage' ),
+			 'name'        => esc_html__( 'Anonymous categories', 'smartpage' ),
 		 );
 		 parent::__construct( 'ANONY_Cats_Widget', '', $parms );
 	}
@@ -54,9 +54,9 @@ class ANONY_Cats_Widget extends WP_Widget {
 		 extract( $instance );?>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', ANONY_TEXTDOM ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
 			
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo ( isset( $title ) && ! empty( $title ) ) ? esc_attr( $title ) : esc_attr__( 'Categories', ANONY_TEXTDOM ); ?>">
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo ( isset( $title ) && ! empty( $title ) ) ? esc_attr( $title ) : esc_attr__( 'Categories', 'smartpage' ); ?>">
 			
 		</p>
 		
@@ -81,7 +81,7 @@ class ANONY_Cats_Widget extends WP_Widget {
 
 		extract( $instance );
 
-		$title = empty( $title ) ? esc_html__( 'Categories', ANONY_TEXTDOM ) : $title;
+		$title = empty( $title ) ? esc_html__( 'Categories', 'smartpage' ) : $title;
 
 		echo $before_widget;
 

@@ -22,32 +22,32 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 
 		public function params() {
 			return array(
-				'category'          => esc_html__( 'Anony Shortcodes', ANONY_TEXTDOM ),
-				'name'              => esc_html__( 'Anony Most Popular', ANONY_TEXTDOM ),
+				'category'          => esc_html__( 'Anony Shortcodes', 'smartpage' ),
+				'name'              => esc_html__( 'Anony Most Popular', 'smartpage' ),
 				'base'              => 'anony-most-popular',
 				'icon'              => 'icon-wpb-ui-custom_heading',
 				'front_enqueue_css' => array( get_template_directory_uri() . '/assets/elements/popular.css' ),
 				'params'            => array(
 					array(
-						'group'       => __( 'Shortcode Output', ANONY_TEXTDOM ),
+						'group'       => __( 'Shortcode Output', 'smartpage' ),
 						'type'        => 'custom_markup',
-						'heading'     => __( 'Shortcode Output', ANONY_TEXTDOM ),
+						'heading'     => __( 'Shortcode Output', 'smartpage' ),
 						'param_name'  => 'order_field_key',
-						'description' => __( 'Ouput of the shortcode will be look like this.', ANONY_TEXTDOM ),
+						'description' => __( 'Ouput of the shortcode will be look like this.', 'smartpage' ),
 					),
 
 					array(
-						'group'            => esc_html__( 'Settings', ANONY_TEXTDOM ),
+						'group'            => esc_html__( 'Settings', 'smartpage' ),
 						'type'             => 'colorpicker',
 						'holder'           => 'div',
 						'class'            => 'anony-most-popular',
-						'heading'          => esc_html__( 'Text color', ANONY_TEXTDOM ),
+						'heading'          => esc_html__( 'Text color', 'smartpage' ),
 						'param_name'       => 'text_color',
 						'edit_field_class' => 'vc_col-sm-12 vc_column',
 					),
 
 					array(
-						'group'      => esc_html__( 'Settings', ANONY_TEXTDOM ),
+						'group'      => esc_html__( 'Settings', 'smartpage' ),
 						'type'       => 'css_editor',
 						'heading'    => __( 'Css', 'my-text-domain' ),
 						'param_name' => 'css',
@@ -82,8 +82,8 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 				$atts
 			);
 
-			$popular_title         = esc_html__( 'Popular', ANONY_TEXTDOM );
-			$recent_comments_title = esc_html__( 'Recent comments', ANONY_TEXTDOM );
+			$popular_title         = esc_html__( 'Popular', 'smartpage' );
+			$recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );
 
 			ob_start(); ?>
 			

@@ -121,7 +121,7 @@ add_action(
 		anony_thumbs_sizes();
 
 		// Load Text Domain
-		load_theme_textdomain( ANONY_TEXTDOM, ANONY_LANG_DIR );
+		load_theme_textdomain( 'smartpage', ANONY_LANG_DIR );
 
 		// hide admin bar for non admins
 		anony_hide_admin_bar();

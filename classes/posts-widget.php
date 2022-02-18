@@ -6,8 +6,8 @@ class ANONY_Posts_Widget extends WP_Widget {
 
 	public function __construct() {
 		 $parms = array(
-			 'description' => esc_html__( 'Displays posts by post type', ANONY_TEXTDOM ),
-			 'name'        => esc_html__( 'Anonymous posts', ANONY_TEXTDOM ),
+			 'description' => esc_html__( 'Displays posts by post type', 'smartpage' ),
+			 'name'        => esc_html__( 'Anonymous posts', 'smartpage' ),
 		 );
 		 parent::__construct( 'ANONY_Posts_Widget', '', $parms );
 	}
@@ -15,27 +15,27 @@ class ANONY_Posts_Widget extends WP_Widget {
 		 extract( $instance );
 
 		if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
-			esc_html_e( 'You should select a post type', ANONY_TEXTDOM );
+			esc_html_e( 'You should select a post type', 'smartpage' );
 		}
 		?>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', ANONY_TEXTDOM ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
 				
-				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo ( isset( $title ) && ! empty( $title ) ) ? esc_attr( $title ) : esc_attr__( 'Top places', ANONY_TEXTDOM ); ?>">
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo ( isset( $title ) && ! empty( $title ) ) ? esc_attr( $title ) : esc_attr__( 'Top places', 'smartpage' ); ?>">
 				
 			</p>
 
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', ANONY_TEXTDOM ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', 'smartpage' ); ?></label>
 
-				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ANONY_TEXTDOM' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
+				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( ''smartpage'' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 		<?php
 		$postType = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
 		$selected = selected( $postType, 'current', false );
 		?>
-					<option value="current" <?php echo $selected; ?>><?php esc_html_e( 'Current post type', ANONY_TEXTDOM ); ?></option>
+					<option value="current" <?php echo $selected; ?>><?php esc_html_e( 'Current post type', 'smartpage' ); ?></option>
 		<?php
 		foreach ( get_post_types(
 			array(
@@ -105,7 +105,7 @@ class ANONY_Posts_Widget extends WP_Widget {
 			echo $output;
 		} else {
 			if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
-				esc_html_e( 'You should select a post type', ANONY_TEXTDOM );
+				esc_html_e( 'You should select a post type', 'smartpage' );
 			}
 		}
 	}

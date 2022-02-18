@@ -83,9 +83,9 @@ function anony_submit_ajax_comment() {
 	$comment_link       = esc_url( get_comment_link( $comment->comment_ID ) );
 	$when_text          = sprintf( esc_html__( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() );
 	$edit_link          = get_edit_comment_link();
-	$edit_text          = esc_html__( 'Edit', ANONY_TEXTDOM );
+	$edit_text          = esc_html__( 'Edit', 'smartpage' );
 	$comment_approved   = $comment->comment_approved;
-	$waiting_approve    = esc_html__( 'Your comment is awaiting moderation', ANONY_TEXTDOM );
+	$waiting_approve    = esc_html__( 'Your comment is awaiting moderation', 'smartpage' );
 	$comment_text       = apply_filters( 'comment_text', get_comment_text( $comment ), $comment );
 	$reply_link         = get_comment_reply_link(
 		array(

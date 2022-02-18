@@ -87,49 +87,49 @@ $socials_follow
         [
             'icon'   => 'facebook',
             'url'    => $anony_options->facebook,
-            'title'  => esc_html__('Follow us on Facebook', ANONY_TEXTDOM)
+            'title'  => esc_html__('Follow us on Facebook', 'smartpage')
         ],
         
         [
             'icon'   => 'twitter',
             'url'    => $anony_options->twitter,
-            'title'  => esc_html__('Follow us on Twitter', ANONY_TEXTDOM)
+            'title'  => esc_html__('Follow us on Twitter', 'smartpage')
         ],
         
         [
             'icon'   => 'youtube',
             'url'    => $anony_options->youtube,
-            'title'  => esc_html__('Follow us on Youtube', ANONY_TEXTDOM)
+            'title'  => esc_html__('Follow us on Youtube', 'smartpage')
         ],
         
         [
             'icon'   => 'pinterest',
             'url'    => $anony_options->pinterest,
-            'title'  => esc_html__('Follow us on Pinterest', ANONY_TEXTDOM)
+            'title'  => esc_html__('Follow us on Pinterest', 'smartpage')
         ],
         
         [
             'icon'   => 'linkedin',
             'url'    => $anony_options->linkedin,
-            'title'  => esc_html__('Follow us on Linkedin', ANONY_TEXTDOM)
+            'title'  => esc_html__('Follow us on Linkedin', 'smartpage')
         ],
         
         [
             'icon'   => 'instagram',
             'url'    => $anony_options->instagram,
-            'title'  => esc_html__('Follow us on Instagram', ANONY_TEXTDOM),
+            'title'  => esc_html__('Follow us on Instagram', 'smartpage'),
         ],
 
         [
             'icon'   => 'tumblr',
             'url'    => $anony_options->tumblr,
-            'title'  => esc_html__('Follow us on Tumblr', ANONY_TEXTDOM),
+            'title'  => esc_html__('Follow us on Tumblr', 'smartpage'),
         ],
         
         [
             'icon'   => 'rss',
             'url'    => $anony_options->rss,
-            'title'  => esc_html__('Follow us with RSS feed', ANONY_TEXTDOM),
+            'title'  => esc_html__('Follow us with RSS feed', 'smartpage'),
         ],
     ];
 $phone = $anony_options->phone;

@@ -59,7 +59,7 @@ final class ANONY_Site_Footer extends Library_Document {
 	 * @return string Document title.
 	 */
 	public static function get_title() {
-		return __( 'Site Footer', ANONY_TEXTDOM );
+		return __( 'Site Footer', 'smartpage' );
 	}
 
 	/**

@@ -16,9 +16,9 @@ if(!$post_ratings || empty($post_ratings) || !is_array($post_ratings)) {
     $rateBg = (($rateValue)/5)*100;
 }
 $ratedCount  = floor($rateValue);
-$ratedText   = esc_html__('Rated', ANONY_TEXTDOM);
-$outOf       = esc_html__('out of', ANONY_TEXTDOM);
-$reviewsText = esc_html__('Review(s)', ANONY_TEXTDOM);
+$ratedText   = esc_html__('Rated', 'smartpage');
+$outOf       = esc_html__('out of', 'smartpage');
+$reviewsText = esc_html__('Review(s)', 'smartpage');
 
 $rate_class = is_user_logged_in() ? ' rate-btn' : '';
 //$rateStatus  = !in_array($_SERVER["REMOTE_ADDR"],$userIps) ? 'new_rate'  : 'current_rate';

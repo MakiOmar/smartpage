@@ -16,15 +16,15 @@ if ($recent->have_posts() ) {
         $temp['id']        = get_the_ID();
         $temp['permalink'] = esc_url(get_the_permalink());
         $temp['title']     = esc_html(get_the_title());
-        $temp['no_posts']  = esc_html__('No published posts', ANONY_TEXTDOM);
+        $temp['no_posts']  = esc_html__('No published posts', 'smartpage');
         $temp['meta']      = 
         [
         'calender' => esc_html(get_the_date('Y-m-d')),
         'eye'      => esc_html(anony_get_post_views(get_the_ID())),
         'comment'  => comments_number( 
-            esc_html__('No comments', ANONY_TEXTDOM),
-            esc_html__('One comment', ANONY_TEXTDOM),
-            '%'.esc_html__('comments', ANONY_TEXTDOM) 
+            esc_html__('No comments', 'smartpage'),
+            esc_html__('One comment', 'smartpage'),
+            '%'.esc_html__('comments', 'smartpage') 
         ),
         ];
         $data[] = $temp;

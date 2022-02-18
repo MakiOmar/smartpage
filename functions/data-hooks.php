@@ -62,7 +62,7 @@ add_filter(
 			}
 		}
 
-		$temp['download_text'] = esc_html__( 'Download', ANONY_TEXTDOM );
+		$temp['download_text'] = esc_html__( 'Download', 'smartpage' );
 
 		ob_start();
 

@@ -48,7 +48,7 @@ if($anony_options->slider_content == 'featured-cat' && $anony_options->featured_
     if($FreaturedCat) {
         $args['cat'] = $FreaturedCat->term_id;
     }else{
-        $message = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
+        $message = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', 'smartpage');
     }
 
 }elseif($anony_options->slider_content == 'featured-post') {
@@ -80,7 +80,7 @@ if ($query->have_posts()) {
 }
 
 if(empty($data)) {
-    $message = esc_html__('Sorry! but we can\'t find any post with available thumbnail to show in slider', ANONY_TEXTDOM);
+    $message = esc_html__('Sorry! but we can\'t find any post with available thumbnail to show in slider', 'smartpage');
 }
 
 $count = count($data);
@@ -109,7 +109,7 @@ if($show_pagination) {
 
 $title_link = isset($args['cat']) ? get_category_link($args['cat']) : '#';
 
-$title_text = isset($args['cat']) ? get_cat_name($args['cat']) : esc_html__('Featured Posts', ANONY_TEXTDOM);
+$title_text = isset($args['cat']) ? get_cat_name($args['cat']) : esc_html__('Featured Posts', 'smartpage');
 
 
 

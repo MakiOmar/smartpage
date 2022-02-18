@@ -23,7 +23,7 @@ $data = array(
 			'%1$s Comments',
 			get_comments_number(),
 			'comments title',
-			ANONY_TEXTDOM
+			'smartpage'
 		),
 		number_format_i18n( get_comments_number() )
 	),
@@ -38,7 +38,7 @@ $data = array(
 	),
 
 	'comments_open'     => comments_open(),
-	'comments_off_text' => esc_html__( 'Comments off', ANONY_TEXTDOM ),
+	'comments_off_text' => esc_html__( 'Comments off', 'smartpage' ),
 
 );
 

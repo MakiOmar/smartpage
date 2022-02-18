@@ -14,8 +14,8 @@
 defined( 'ABSPATH' ) or die(); // Exit if accessed directly
 
 $widgets_url     = esc_url( admin_url( 'widgets.php' ) );
-$go_widget       = esc_html__( 'Please add some widgets. ', ANONY_TEXTDOM );
-$link_text       = esc_html__( 'Add Here', ANONY_TEXTDOM );
+$go_widget       = esc_html__( 'Please add some widgets. ', 'smartpage' );
+$link_text       = esc_html__( 'Add Here', 'smartpage' );
 $is_active_right = is_active_sidebar( 'right-sidebar' );
 $sidebar_ad      = has_action( 'sidebar_ad' );
 ?>

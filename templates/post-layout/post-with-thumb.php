@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="anony-shares-count">
 		<i class="fa fa-share-alt"></i>
-		<span>1000 <?php esc_html_e( 'Shares', ANONY_TEXTDOM ); ?></span>
+		<span>1000 <?php esc_html_e( 'Shares', 'smartpage' ); ?></span>
 	</div>
 	   
 	<div class="anony-post-title-cover">

@@ -13,7 +13,7 @@
 defined( 'ABSPATH' ) or die(); // Exit if accessed direct
 
 $search_query = get_search_query();
-$search_text  = esc_attr__( 'Search', ANONY_TEXTDOM );
+$search_text  = esc_attr__( 'Search', 'smartpage' );
 ?>
 
 <form 

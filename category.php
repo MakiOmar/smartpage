@@ -26,7 +26,7 @@ $data = array(
 	'cat_id'         => $_cat_id,
 	'cat_obj'        => $cat_obj,
 	'cat_name'       => ucfirst( $cat_obj->cat_name ),
-	'page_title'     => esc_html__( 'sub categories', ANONY_TEXTDOM ),
+	'page_title'     => esc_html__( 'sub categories', 'smartpage' ),
 	'sub_categories' => get_categories(
 		array(
 			'hide_empty' => '0',
@@ -46,7 +46,7 @@ if ( ! empty( $data['sub_categories'] ) ) :
 		$temp['sc_desc']        = wp_trim_words( $sub_cat->category_description, 10 );
 		$temp['sc_quote']       = ! is_rtl() ? '&ldquo;' : '&rdquo;';
 		$temp['sc_link']        = get_category_link( $sub_cat->term_id );
-		$temp['sc_link_text']   = esc_html__( 'Enter', ANONY_TEXTDOM );
+		$temp['sc_link_text']   = esc_html__( 'Enter', 'smartpage' );
 		$data['sc_view_data'][] = $temp;
 
 	endforeach;
@@ -77,8 +77,8 @@ if ( have_posts() ) :
 
 	endwhile;
 
-	$data['page_title'] = esc_html__( 'Category posts', ANONY_TEXTDOM );
-	$data['read_more']  = esc_html__( 'Read more', ANONY_TEXTDOM );
+	$data['page_title'] = esc_html__( 'Category posts', 'smartpage' );
+	$data['read_more']  = esc_html__( 'Read more', 'smartpage' );
 
 	$pagination = anony_pagination();
 

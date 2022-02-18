@@ -6,7 +6,7 @@ if (! defined('ABSPATH') ) {
     
 $query= new WP_Query(['post_type' => 'anony_news','posts_per_page'=>5]);
 
-$simple_info_title = esc_html__('Simple Info', ANONY_TEXTDOM);
+$simple_info_title = esc_html__('Simple Info', 'smartpage');
 $search_form       = get_search_form(false);
 $dun_wrapper_class = is_rtl() ? ' class="is-rtl"' : '';
 

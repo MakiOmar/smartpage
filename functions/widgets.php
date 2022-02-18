@@ -17,14 +17,14 @@ add_action(
 
 		$sidebars =
 		array(
-			'main-sidebar'      => esc_html__( 'Main Sidebar', ANONY_TEXTDOM ),
-			'right-sidebar'     => esc_html__( 'Right Sidebar', ANONY_TEXTDOM ),
-			'left-sidebar'      => esc_html__( 'Left Sidebar', ANONY_TEXTDOM ),
-			'secondary-sidebar' => esc_html__( 'Secondary Sidebar', ANONY_TEXTDOM ),
-			'footer-widget-1'   => esc_html__( 'Footer Widget 1', ANONY_TEXTDOM ),
-			'footer-widget-2'   => esc_html__( 'Footer Widget 2', ANONY_TEXTDOM ),
-			'footer-widget-3'   => esc_html__( 'Footer Widget 3', ANONY_TEXTDOM ),
-			'footer-widget-4'   => esc_html__( 'Footer Widget 4', ANONY_TEXTDOM ),
+			'main-sidebar'      => esc_html__( 'Main Sidebar', 'smartpage' ),
+			'right-sidebar'     => esc_html__( 'Right Sidebar', 'smartpage' ),
+			'left-sidebar'      => esc_html__( 'Left Sidebar', 'smartpage' ),
+			'secondary-sidebar' => esc_html__( 'Secondary Sidebar', 'smartpage' ),
+			'footer-widget-1'   => esc_html__( 'Footer Widget 1', 'smartpage' ),
+			'footer-widget-2'   => esc_html__( 'Footer Widget 2', 'smartpage' ),
+			'footer-widget-3'   => esc_html__( 'Footer Widget 3', 'smartpage' ),
+			'footer-widget-4'   => esc_html__( 'Footer Widget 4', 'smartpage' ),
 		);
 		foreach ( $sidebars as $sidebar_id => $sidebar ) {
 			$args = array(
@@ -47,13 +47,13 @@ add_filter(
 
 		if ( ! is_rtl() && $param[0]['id'] == 'right-sidebar' ) {
 
-			$param[0]['name'] = esc_html__( 'Left Sidebar', ANONY_TEXTDOM );
+			$param[0]['name'] = esc_html__( 'Left Sidebar', 'smartpage' );
 
 		}
 
 		if ( ! is_rtl() && $param[0]['id'] == 'left-sidebar' ) {
 
-			$param[0]['name'] = esc_html__( 'Right Sidebar', ANONY_TEXTDOM );
+			$param[0]['name'] = esc_html__( 'Right Sidebar', 'smartpage' );
 
 		}
 
