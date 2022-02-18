@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
-! class_exists( 'ANONY_Generate_Posts_View' ) || exit();
+if (! class_exists( 'ANONY_Generate_Posts_View' )) {
 
 /**
  * Post view generator class
@@ -134,4 +134,5 @@ class ANONY_Generate_Posts_View {
 		}
 	}
 
+}
 }

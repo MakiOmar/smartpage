@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
-! class_exists( 'ANONY_Cats_Widget' ) || exit();
+if (! class_exists( 'ANONY_Cats_Widget' )) {
 
 /**
  * Categories menu walkker class
@@ -106,4 +106,4 @@ class ANONY_Cats_Widget extends WP_Widget {
 		wp_enqueue_script( 'anony-cats-menu' );
 	}
 }
-
+}

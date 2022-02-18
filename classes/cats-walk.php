@@ -13,9 +13,7 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
-! class_exists( 'ANONY_Cats_Walk' ) || exit();
-
-
+if (! class_exists( 'ANONY_Cats_Walk' )) {
 
 /**
  * Categories menu walkker class
@@ -181,4 +179,5 @@ class ANONY_Cats_Walk extends Walker_Category {
 			$output .= '<span class="toggle-category" rel-id="anony-cat-dropdown-' . $category->term_id . '"><i class="fa fa-plus" aria-hidden="true"></i></span>';
 		}
 	}
+}
 }
