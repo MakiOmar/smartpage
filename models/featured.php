@@ -12,7 +12,7 @@ if (! defined('ABSPATH') ) {
  */
 
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
 $slider_settings = [
     
@@ -37,12 +37,12 @@ $args = array(
         );
 
         
-if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_cat != '0') {
+if($anony_options->slider_content == 'featured-cat' && $anony_options->featured_cat != '0') {
     
     $FreaturedCat = get_term_by( 
         'id', 
-        $anonyOptions->featured_cat,
-        $anonyOptions->featured_tax
+        $anony_options->featured_cat,
+        $anony_options->featured_tax
     );
 
     if($FreaturedCat) {
@@ -51,7 +51,7 @@ if($anonyOptions->slider_content == 'featured-cat' && $anonyOptions->featured_ca
         $message = esc_html__('Please make sure you select a category and its corresponding taxonomy from theme options->slider', ANONY_TEXTDOM);
     }
 
-}elseif($anonyOptions->slider_content == 'featured-post') {
+}elseif($anony_options->slider_content == 'featured-post') {
     $args['meta_key'] = 'anony__set_as_featured';
 }    
 

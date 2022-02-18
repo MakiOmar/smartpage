@@ -204,9 +204,9 @@ add_filter(
 	'comment_form_defaults',
 	function ( $args ) {
 
-		$anonyOptions = ANONY_Options_Model::get_instance();
+		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( $anonyOptions->tinymce_comments != '1' ) {
+		if ( $anony_options->tinymce_comments != '1' ) {
 			return $args;
 		}
 

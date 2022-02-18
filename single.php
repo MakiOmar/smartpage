@@ -12,9 +12,9 @@
  */
 defined( 'ABSPATH' ) or die(); // Exit if accessed directly
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
-$wrapper_class = ( $anonyOptions->single_sidebar == '1' ) ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5';
+$wrapper_class = ( $anony_options->single_sidebar == '1' ) ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5';
 
 $post_type = get_post_type();
 

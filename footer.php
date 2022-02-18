@@ -12,9 +12,9 @@
  */
 defined( 'ABSPATH' ) or die(); // Exit if accessed direct
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
-$copyright = esc_html( $anonyOptions->copyright );
+$copyright = esc_html( $anony_options->copyright );
 
 $ajaxUrl = ANONY_WPML_HELP::getAjaxUrl();
 

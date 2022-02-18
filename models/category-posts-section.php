@@ -4,13 +4,13 @@ if (! defined('ABSPATH') ) {
 }
 
     
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
     
 $args = array('post_type' => 'post', 'posts_per_page' => 4, 'order' => 'DESC');
 
-$sliderOpt   = $anonyOptions->slider;
-$featuredCat = $anonyOptions->featured_cat;
-$featuredTax = $anonyOptions->featured_tax;
+$sliderOpt   = $anony_options->slider;
+$featuredCat = $anony_options->featured_cat;
+$featuredTax = $anony_options->featured_tax;
 
 $featured_args = $args;
     

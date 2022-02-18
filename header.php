@@ -12,7 +12,7 @@
  */
 defined('ABSPATH') or die(); // Exit if accessed direct
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
 $langAtts    = get_language_attributes();
 $contentType = get_bloginfo('html_type');
@@ -22,24 +22,24 @@ $bodyClass
     = 'class="' . 
     join(' ', get_body_class()) . 
     ' '. 
-    $anonyOptions->color_skin . 
+    $anony_options->color_skin . 
     '"';
 
 $logo        = anony_get_custom_logo('orange');
 $preloader_img    = anony_get_custom_logo_url('orange');
 $nav         = anony_navigation('anony-main-menu');
 
-if ($anonyOptions->preloader_img 
-    && !empty($anonyOptions->preloader_img) 
+if ($anony_options->preloader_img 
+    && !empty($anony_options->preloader_img) 
     && filter_var(
-        $anonyOptions->preloader_img, 
+        $anony_options->preloader_img, 
         FILTER_VALIDATE_URL
     ) !== false
 ) {
-    $preloader_img = $anonyOptions->preloader_img;
+    $preloader_img = $anony_options->preloader_img;
 }
 
-$preloader = $anonyOptions->preloader;
+$preloader = $anony_options->preloader;
 /** 
  * The ANONY_MENU constant is defined in User control plugin.
  * It contains user menu slug, defined by the plugin
@@ -86,54 +86,54 @@ $socials_follow
     = [
         [
             'icon'   => 'facebook',
-            'url'    => $anonyOptions->facebook,
+            'url'    => $anony_options->facebook,
             'title'  => esc_html__('Follow us on Facebook', ANONY_TEXTDOM)
         ],
         
         [
             'icon'   => 'twitter',
-            'url'    => $anonyOptions->twitter,
+            'url'    => $anony_options->twitter,
             'title'  => esc_html__('Follow us on Twitter', ANONY_TEXTDOM)
         ],
         
         [
             'icon'   => 'youtube',
-            'url'    => $anonyOptions->youtube,
+            'url'    => $anony_options->youtube,
             'title'  => esc_html__('Follow us on Youtube', ANONY_TEXTDOM)
         ],
         
         [
             'icon'   => 'pinterest',
-            'url'    => $anonyOptions->pinterest,
+            'url'    => $anony_options->pinterest,
             'title'  => esc_html__('Follow us on Pinterest', ANONY_TEXTDOM)
         ],
         
         [
             'icon'   => 'linkedin',
-            'url'    => $anonyOptions->linkedin,
+            'url'    => $anony_options->linkedin,
             'title'  => esc_html__('Follow us on Linkedin', ANONY_TEXTDOM)
         ],
         
         [
             'icon'   => 'instagram',
-            'url'    => $anonyOptions->instagram,
+            'url'    => $anony_options->instagram,
             'title'  => esc_html__('Follow us on Instagram', ANONY_TEXTDOM),
         ],
 
         [
             'icon'   => 'tumblr',
-            'url'    => $anonyOptions->tumblr,
+            'url'    => $anony_options->tumblr,
             'title'  => esc_html__('Follow us on Tumblr', ANONY_TEXTDOM),
         ],
         
         [
             'icon'   => 'rss',
-            'url'    => $anonyOptions->rss,
+            'url'    => $anony_options->rss,
             'title'  => esc_html__('Follow us with RSS feed', ANONY_TEXTDOM),
         ],
     ];
-$phone = $anonyOptions->phone;
-$email = $anonyOptions->email;
+$phone = $anony_options->phone;
+$email = $anony_options->email;
 
 require locate_template('templates/header.view.php', false, false);
 

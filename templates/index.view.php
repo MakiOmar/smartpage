@@ -12,7 +12,7 @@ get_header();?>
 		<div class="anony-grid-col">
 	 
 			<?php
-			if ( $anonyOptions->sidebar == 'left-sidebar' ) {
+			if ( $anony_options->sidebar == 'left-sidebar' ) {
 				get_sidebar();
 			}
 			?>
@@ -41,7 +41,7 @@ get_header();?>
 			</div>
 	  
 			  <?php
-				if ( $anonyOptions->sidebar == 'right-sidebar' ) {
+				if ( $anony_options->sidebar == 'right-sidebar' ) {
 					get_sidebar();
 				}
 				?>

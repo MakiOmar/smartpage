@@ -31,7 +31,7 @@ add_action(
 	'init',
 	function () {
 		if ( get_option( ANONY_OPTIONS ) ) {
-			$anonyOptions = ANONY_Options_Model::get_instance();
+			$anony_options = ANONY_Options_Model::get_instance();
 		}
 
 		// Navigation elements
@@ -283,7 +283,7 @@ add_action(
 					'validate' => 'multiple_options',
 					'options'  => ! empty( $sliders ) ? $sliders : array( '0' => 'No sliders' ),
 					'desc'     => empty( $sliders ) ? sprintf( __( 'Add slider from <a href="%s">here</a>' ), admin_url( '?page=revslider' ) ) : '',
-					'class'    => 'home_slider_' . ( isset( $anonyOptions ) && $anonyOptions->home_slider == '1' ? ' show-in-table' : '' ),
+					'class'    => 'home_slider_' . ( isset( $anony_options ) && $anony_options->home_slider == '1' ? ' show-in-table' : '' ),
 				),
 				array(
 					'id'       => 'slider_content',
@@ -310,7 +310,7 @@ add_action(
 					'validate' => 'multiple_options',
 					'options'  => get_taxonomies(),
 					'default'  => 'category',
-					'class'    => 'slider_ featured-cat' . ( isset( $anonyOptions ) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
+					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && $anony_options->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
 				),
 
 				array(
@@ -318,9 +318,9 @@ add_action(
 					'title'    => esc_html__( 'Select featured category', ANONY_TEXTDOM ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => isset( $anonyOptions ) ? ANONY_TERM_HELP::wpTermQuery( $anonyOptions->featured_tax, 'id=>name' ) : array(),
-					'class'    => 'slider_ featured-cat' . ( isset( $anonyOptions ) && $anonyOptions->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
-					'note'     => ( isset( $anonyOptions ) && empty( $anonyOptions->featured_cat ) ? esc_html__( 'No category selected, you have to select one', ANONY_TEXTDOM ) : '' ),
+					'options'  => isset( $anony_options ) ? ANONY_TERM_HELP::wpTermQuery( $anony_options->featured_tax, 'id=>name' ) : array(),
+					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && $anony_options->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
+					'note'     => ( isset( $anony_options ) && empty( $anony_options->featured_cat ) ? esc_html__( 'No category selected, you have to select one', ANONY_TEXTDOM ) : '' ),
 				),
 			),
 			'note'   => esc_html__( 'This options only applies to the front-page.php', ANONY_TEXTDOM ),
@@ -477,11 +477,11 @@ add_action(
 		);
 
 		$arFonts = (
-		isset( $anonyOptions ) &&
+		isset( $anony_options ) &&
 		is_array(
-			$anonyOptions->custom_ar_fonts
+			$anony_options->custom_ar_fonts
 		)
-		) ? $anonyOptions->custom_ar_fonts : array();
+		) ? $anony_options->custom_ar_fonts : array();
 
 		$defaultArFonts = array(
 			'droid_arabic_kufiregular' => 'Droid kufi regular',
@@ -497,7 +497,7 @@ add_action(
 
 		);
 
-		$enFonts = ( isset( $anonyOptions ) && is_array( $anonyOptions->custom_en_fonts ) ) ? $anonyOptions->custom_en_fonts : array();
+		$enFonts = ( isset( $anony_options ) && is_array( $anony_options->custom_en_fonts ) ) ? $anony_options->custom_en_fonts : array();
 
 		$defaultEnFonts = array(
 			'ralewaybold'    => 'Raleway bold',

@@ -9,9 +9,9 @@ if (! defined('ABSPATH') ) {  exit;
  */
 function wp_html_compression_finish($html)
 {
-    $anonyOptions = ANONY_Options_Model::get_instance();
+    $anony_options = ANONY_Options_Model::get_instance();
     
-    if($anonyOptions->compress_html != 1) { return $html;
+    if($anony_options->compress_html != 1) { return $html;
     }
     
     return new ANONY_Wp_Html_Compression($html);
@@ -33,16 +33,16 @@ if (!function_exists('anony_control_query_strings')) {
         if(is_admin()) { return $src;
         }
 
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
         
         //Keep query string for these items
         $neglected = array();
         
-        if(!empty($anonyOptions->keep_query_string)) {
-            $neglected = explode(',', $anonyOptions->keep_query_string);
+        if(!empty($anony_options->keep_query_string)) {
+            $neglected = explode(',', $anony_options->keep_query_string);
         }
         
-        if($anonyOptions->query_string != '0' && !in_array($handle, $neglected)) {
+        if($anony_options->query_string != '0' && !in_array($handle, $neglected)) {
             $src = remove_query_arg('ver', $src);
         }
         return $src;
@@ -64,9 +64,9 @@ add_filter(
         if(is_admin()) { return $tag;
         }
     
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
-        if($anonyOptions->defer_stylesheets !== '1') { return $tag;
+        if($anony_options->defer_stylesheets !== '1') { return $tag;
         }
         $tag = preg_replace("/media='\w+'/", "media='print' onload=\"this.media='all'\"", $tag);
 
@@ -77,8 +77,8 @@ add_filter(
 //Scripts defer
 add_filter(
     'script_loader_tag', function ( $tag, $handle, $src ) {
-        $anonyOptions = ANONY_Options_Model::get_instance();
-        if (is_admin() || $anonyOptions->defer_scripts !== '1' ) { return $tag; //don't break WP Admin
+        $anony_options = ANONY_Options_Model::get_instance();
+        if (is_admin() || $anony_options->defer_scripts !== '1' ) { return $tag; //don't break WP Admin
         }
     
         if (false === strpos($src, '.js') ) { return $tag;
@@ -102,9 +102,9 @@ add_filter(
 //Use custom avatar instead of Gravatar.com
 add_filter(
     'get_avatar', function ($avatar) {
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
-        if(!$anonyOptions->gravatar || $anonyOptions->gravatar != '1') { return $avatar;
+        if(!$anony_options->gravatar || $anony_options->gravatar != '1') { return $avatar;
         }
     
         $avatar = '<img src="'.ANONY_THEME_URI.'/images/user.png" width="48" height="48"/>';
@@ -117,14 +117,14 @@ if (!function_exists('anony_disable_wp_embeds')) {
     
     function anony_disable_wp_embeds()
     {
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
         
         $keep = true;
         
-        if($anonyOptions->disable_embeds == '1' ) { $keep = false;
+        if($anony_options->disable_embeds == '1' ) { $keep = false;
         }
         
-        if($anonyOptions->enable_singular_embeds == '1' && is_single()) { $keep = true;
+        if($anony_options->enable_singular_embeds == '1' && is_single()) { $keep = true;
         }
 
         if($keep) { return;
@@ -172,14 +172,14 @@ if (!function_exists('anony_disable_wp_emojis')) {
     
     function anony_disable_wp_emojis()
     {
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
         
         $keep = true;
         
-        if($anonyOptions->disable_emojis == '1' ) { $keep = false;
+        if($anony_options->disable_emojis == '1' ) { $keep = false;
         }
         
-        if($anonyOptions->enable_singular_emojis == '1' && is_single()) { $keep = true;
+        if($anony_options->enable_singular_emojis == '1' && is_single()) { $keep = true;
         }
 
         if($keep) { return;
@@ -257,9 +257,9 @@ if (!function_exists('anony_load_cf7_scripts')) {
         
         global $post;
         
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
         
-        if(!$anonyOptions->cf7_scripts || $anonyOptions->cf7_scripts == '' || intval($anonyOptions->cf7_scripts) !== $post->ID ) { return $return;
+        if(!$anony_options->cf7_scripts || $anony_options->cf7_scripts == '' || intval($anony_options->cf7_scripts) !== $post->ID ) { return $return;
         }
         
         setup_postdata($post);
@@ -281,13 +281,13 @@ add_filter('wpcf7_load_css', 'anony_load_cf7_scripts', 200);
 //Dequeue unwanted style
 add_action(
     'wp_print_styles',  function () {
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
         $dequeued_styles = [
             'wpml-tm-admin-bar', 
         ];
         
-        if($anonyOptions->disable_gutenburg_scripts == '1') {
+        if($anony_options->disable_gutenburg_scripts == '1') {
             $dequeued_styles = array_merge($dequeued_styles, ['wp-block-library', 'wp-block-library-theme', 'wc-block-style']);
         }
     
@@ -295,7 +295,7 @@ add_action(
         
             global $post;
         
-            if (intval($anonyOptions->cf7_scripts) !== $post->ID) {
+            if (intval($anony_options->cf7_scripts) !== $post->ID) {
                 $dequeued_styles = array_merge($dequeued_styles, ['contact-form-7']);
             }
         
@@ -314,7 +314,7 @@ add_action(
 //Dequeue unwanted scripts
 add_action(
     'wp_print_scripts',  function () {
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
         $dequeued_scripts = [];
     
@@ -323,7 +323,7 @@ add_action(
         
             global $post;
         
-            if (intval($anonyOptions->cf7_scripts) !== $post->ID) {
+            if (intval($anony_options->cf7_scripts) !== $post->ID) {
                 $dequeued_scripts = array_merge($dequeued_scripts, ['contact-form-7', 'google-recaptcha']);
             }
         
@@ -344,9 +344,9 @@ add_action(
 add_action(
     'wp_default_scripts', function ( $scripts ) {
     
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
-        if($anonyOptions->disable_jq_migrate != '1') { return;
+        if($anony_options->disable_jq_migrate != '1') { return;
         }
     
         if (! is_admin() && ! empty($scripts->registered['jquery']) ) {
@@ -364,9 +364,9 @@ add_action(
 */
 add_action(
     'wp_enqueue_scripts', function () {
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
-        if ($anonyOptions->wc_shop_only_scripts != 1) { return;
+        if ($anony_options->wc_shop_only_scripts != 1) { return;
         }
     
         //Check if woocommerce plugin is active
@@ -418,9 +418,9 @@ if(ini_get('zlib.output_compression') == '1') {
 add_filter(
     'post_thumbnail_html', function ($html, $post_id, $post_image_id, $size, $attr) {
     
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
-        //if($anonyOptions->disable_prettyphoto == '1') return $html;
+        //if($anony_options->disable_prettyphoto == '1') return $html;
     
         $lightbox_library = 'lightbox';
     
@@ -440,10 +440,10 @@ add_action(
         if(!class_exists('ANONY_STRING_HELP')) { return;
         }
     
-        $anonyOptions = ANONY_Options_Model::get_instance();
+        $anony_options = ANONY_Options_Model::get_instance();
     
-        if(!empty($anonyOptions->preload_fonts)) {
-            $arr = ANONY_STRING_HELP::lineByLineTextArea($anonyOptions->preload_fonts);
+        if(!empty($anony_options->preload_fonts)) {
+            $arr = ANONY_STRING_HELP::lineByLineTextArea($anony_options->preload_fonts);
         
             if(!is_array($arr)) { return;
             }

@@ -12,15 +12,15 @@
  */
 defined( 'ABSPATH' ) or die(); // Exit if accessed direct
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
-$grid = $anonyOptions->posts_grid;
+$grid = $anony_options->posts_grid;
 
 $slider = false;
 
-$revSlider = $anonyOptions->rev_slider;
+$revSlider = $anony_options->rev_slider;
 
-$homeSlider = $anonyOptions->home_slider;
+$homeSlider = $anony_options->home_slider;
 
 $chooseSlider
 	= esc_html__(

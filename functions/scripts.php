@@ -12,16 +12,16 @@ function anoe_dynamic_css() {
 }
 
 function anony_styles() {
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	$anony_options = ANONY_Options_Model::get_instance();
 
 	$styles = array( 'main', 'responsive', 'theme-styles' );
 
 	$styles_libs = array( 'font-awesome.min', 'lightbox.min' );
 
-	$media = ( $anonyOptions->defer_stylesheets !== '1' ) ? 'all' : 'all';
+	$media = ( $anony_options->defer_stylesheets !== '1' ) ? 'all' : 'all';
 
 	// load prettyPhoto if needed
-	if ( $anonyOptions->disable_prettyphoto != '1' ) {
+	if ( $anony_options->disable_prettyphoto != '1' ) {
 		$styles_libs[] = 'prettyPhoto';
 	}
 
@@ -56,9 +56,9 @@ function anony_styles() {
 
 	$dynamic_deps = array( 'anony-main' );
 
-	if ( $anonyOptions->color_skin !== 'custom' && ! empty( $anonyOptions->color_skin ) ) {
+	if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
 
-		$skin = $anonyOptions->color_skin;
+		$skin = $anony_options->color_skin;
 
 		$dynamic_deps = array( $skin . '-skin' );
 
@@ -73,13 +73,13 @@ function anony_styles() {
 		);
 	}
 
-	if ( $anonyOptions->dynamic_css_ajax != '1' ) {
+	if ( $anony_options->dynamic_css_ajax != '1' ) {
 		wp_enqueue_style( 'anonyengine-dynamics', admin_url( 'admin-ajax.php' ) . '?action=anoe_dynamic_css', $dynamic_deps, false, $media );
 	}
 }
 
 function anony_scripts() {
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	$anony_options = ANONY_Options_Model::get_instance();
 
 	/**
 *
@@ -122,7 +122,7 @@ function anony_scripts() {
 		);
 	}
 	// load prettyPhoto if needed
-	if ( $anonyOptions->disable_prettyphoto != '1' ) {
+	if ( $anony_options->disable_prettyphoto != '1' ) {
 		wp_enqueue_script( 'jquery.prettyPhoto' );
 	}
 
@@ -160,8 +160,8 @@ function anony_scripts() {
 		'anonyFormEmail'      => esc_html__( 'Please enter a valid email', ANONY_TEXTDOM ),
 		'anonyFormUrl'        => esc_html__( 'Please use a valid website address', ANONY_TEXTDOM ),
 		'anonyFormComment'    => esc_html__( 'Comment must be at least 20 characters', ANONY_TEXTDOM ),
-		'anonyUseTinymce'     => $anonyOptions->tinymce_comments == '1' ? true : false,
-		'anonyUsePrettyPhoto' => $anonyOptions->disable_prettyphoto == '1' ? false : true,
+		'anonyUseTinymce'     => $anony_options->tinymce_comments == '1' ? true : false,
+		'anonyUsePrettyPhoto' => $anony_options->disable_prettyphoto == '1' ? false : true,
 	);
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }
@@ -181,7 +181,7 @@ add_action(
 add_action(
 	'wp_head',
 	function () {
-		$anonyOptions = ANONY_Options_Model::get_instance();?>
+		$anony_options = ANONY_Options_Model::get_instance();?>
 	
 	<!-- Head styles -->
 	<style type="text/css">
@@ -261,7 +261,7 @@ add_action(
 		  100% { transform: scale(1); }
 		}
 		<?php
-		if ( $anonyOptions->dynamic_css_ajax == '1' ) {
+		if ( $anony_options->dynamic_css_ajax == '1' ) {
 
 			ob_start();
 

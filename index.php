@@ -13,9 +13,9 @@
 
 defined( 'ABSPATH' ) || die();
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
-$grid = $anonyOptions->posts_grid;
+$grid = $anony_options->posts_grid;
 
 $data = array();
 

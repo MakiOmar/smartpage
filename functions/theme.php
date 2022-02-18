@@ -15,9 +15,9 @@ if ( ! function_exists( 'anony_hide_admin_bar' ) ) {
 	 * Hide admin bar
 	 */
 	function anony_hide_admin_bar() {
-		$anonyOptions = ANONY_Options_Model::get_instance();
+		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( $anonyOptions->admin_bar != '0' && ! current_user_can( 'administrator' ) && ! is_admin() ) {
+		if ( $anony_options->admin_bar != '0' && ! current_user_can( 'administrator' ) && ! is_admin() ) {
 
 			show_admin_bar( false );
 
@@ -37,7 +37,7 @@ if ( ! function_exists( 'anony_display_ads' ) ) {
 	 * do_action('{location}_ad') should be existed in the desired location [header, footer, sidebar, post, page]
 	 */
 	function anony_display_ads() {
-		$anonyOptions = ANONY_Options_Model::get_instance();
+		$anony_options = ANONY_Options_Model::get_instance();
 
 		$anonyADs = array( 'one', 'two', 'three' );
 
@@ -46,14 +46,14 @@ if ( ! function_exists( 'anony_display_ads' ) ) {
 			$block    = 'ad_block_' . $adBlock;
 			$blockLoc = $block . '_location';
 
-			if ( isset( $anonyOptions->$blockLoc ) && ! empty( $anonyOptions->$blockLoc ) ) {
+			if ( isset( $anony_options->$blockLoc ) && ! empty( $anony_options->$blockLoc ) ) {
 
-				foreach ( $anonyOptions->$blockLoc as $loc ) {
+				foreach ( $anony_options->$blockLoc as $loc ) {
 
 					add_action(
 						$loc . '_ad',
-						function () use ( $anonyOptions, $block ) {
-							echo $anonyOptions->$block;
+						function () use ( $anony_options, $block ) {
+							echo $anony_options->$block;
 						}
 					);
 
@@ -75,9 +75,9 @@ if ( ! function_exists( 'anony_restrict_admin_access' ) ) {
 			return;
 		}
 
-		$anonyOptions = ANONY_Options_Model::get_instance();
+		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anonyOptions->not_admin_restricted != '0' ) {
+		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anony_options->not_admin_restricted != '0' ) {
 
 			wp_redirect( home_url() );
 

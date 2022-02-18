@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param $title string Section title
  */
 function anony_category_posts_section( $args, $title = '' ) {
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	$anony_options = ANONY_Options_Model::get_instance();
 
-	$grid = $anonyOptions->posts_grid;
+	$grid = $anony_options->posts_grid;
 
 	$query = new WP_Query( $args );
 
@@ -39,11 +39,11 @@ function anony_category_posts_section( $args, $title = '' ) {
  * @return void
  */
 function anony_get_correct_sidebar() {
-	$anonyOptions = ANONY_Options_Model::get_instance();
+	$anony_options = ANONY_Options_Model::get_instance();
 
-	if ( $anonyOptions->sidebar == 'left-sidebar' ) {
+	if ( $anony_options->sidebar == 'left-sidebar' ) {
 		get_sidebar();
-	} elseif ( $anonyOptions->single_sidebar == '1' ) {
+	} elseif ( $anony_options->single_sidebar == '1' ) {
 		get_sidebar( 'left' );
 	}
 
@@ -136,8 +136,8 @@ function anony_comments_number() {
  * @return array
  */
 function anony_common_post_data( $post_type = 'post' ) {
-	$anonyOptions = ANONY_Options_Model::get_instance();
-	$grid         = $anonyOptions->posts_grid;
+	$anony_options = ANONY_Options_Model::get_instance();
+	$grid         = $anony_options->posts_grid;
 
 	$ID                      = get_the_ID();
 	$temp['id']              = $ID;

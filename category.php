@@ -12,9 +12,9 @@
  */
 defined( 'ABSPATH' ) or die(); // Exit if accessed direct
 
-$anonyOptions = ANONY_Options_Model::get_instance();
+$anony_options = ANONY_Options_Model::get_instance();
 
-$grid = $anonyOptions->posts_grid;
+$grid = $anony_options->posts_grid;
 
 $cat_id = $cat;
 
