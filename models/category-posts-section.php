@@ -36,9 +36,8 @@ if($sliderOpt != 'rev-slider') {
     
 }
 
-$sections = [
-    esc_html__('Recent Posts', 'smartpage') => $featured_args,
-    get_term(58)->name => array_merge(
+/*
+get_term(58)->name => array_merge(
         $featured_args, 
         [
             'tax_query' => [
@@ -49,33 +48,12 @@ $sections = [
             ]
                 
         ]
-    ),
+    )
+*/
+$sections = [
+    esc_html__('Recent Posts', 'smartpage') => $featured_args,
+    []
     
-    get_term(27)->name => array_merge(
-        $featured_args, 
-        [
-            'tax_query' => [
-                [
-                 'taxonomy' => 'category', //the slug of the taxonomy you want to get
-                 'terms' => [27]
-                ]
-            ]
-                
-        ]
-    ),
-    
-    get_term(60)->name => array_merge(
-        $featured_args, 
-        [
-            'tax_query' => [
-                [
-                 'taxonomy' => 'category', //the slug of the taxonomy you want to get
-                 'terms' => [60]
-                ]
-            ]
-                
-        ]
-    ),
     
 ];
 
