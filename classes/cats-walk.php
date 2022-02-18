@@ -10,9 +10,11 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed direct
 
-! class_exists( 'ANONY_Cats_Walk' )) or return;
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+! class_exists( 'ANONY_Cats_Walk' ) || exit();
+
 
 
 /**
@@ -27,6 +29,11 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct
  */
 class ANONY_Cats_Walk extends Walker_Category {
 
+	/**
+	 * Tree type
+	 *
+	 * @var string
+	 */
 	public $tree_type = 'category';
 	/**
 	 * Starts the list before the elements are added.
@@ -58,11 +65,11 @@ class ANONY_Cats_Walk extends Walker_Category {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @see    Walker::start_el()
+	 * @see   Walker::start_el()
 	 * @return void
 	 */
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
-		 /**
+		/**
 		 * This filter is documented in wp-includes/category-template.php
 		 */
 		$cat_name = apply_filters( 'list_cats', esc_attr( $category->name ), $category );
@@ -82,7 +89,11 @@ class ANONY_Cats_Walk extends Walker_Category {
 			 *
 			 * @since 1.2.0
 			 */
-			$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
+			$link .= 'title="' . esc_attr(
+				wp_strip_all_tags(
+					apply_filters( 'category_description', $category->description, $category )
+				)
+			) . '"';
 		}
 
 		$link .= '>';
@@ -98,7 +109,8 @@ class ANONY_Cats_Walk extends Walker_Category {
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $args['feed_type'] ) ) . '"';
 
 			if ( empty( $args['feed'] ) ) {
-				$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
+				/* translators: %s: category name */
+				$alt = ' alt="' . sprintf( esc_attr__( 'Feed for all posts filed under %s', 'smartpage' ), $cat_name ) . '"';
 			} else {
 				$alt   = ' alt="' . $args['feed'] . '"';
 				$name  = $args['feed'];
@@ -122,7 +134,7 @@ class ANONY_Cats_Walk extends Walker_Category {
 		if ( ! empty( $args['show_count'] ) ) {
 			$link .= ' (' . number_format_i18n( $category->count ) . ')';
 		}
-		if ( 'list' == $args['style'] ) {
+		if ( 'list' === $args['style'] ) {
 			$output     .= "\t<li";
 			$css_classes = array( 'cat-item', 'cat-item-' . $category->term_id );
 			if ( $this->has_children ) {
@@ -140,13 +152,13 @@ class ANONY_Cats_Walk extends Walker_Category {
 				);
 
 				foreach ( $_current_terms as $_current_term ) {
-					if ( $category->term_id == $_current_term->term_id ) {
+					if ( $category->term_id === $_current_term->term_id ) {
 						$css_classes[] = 'current-cat';
-					} elseif ( $category->term_id == $_current_term->parent ) {
+					} elseif ( $category->term_id === $_current_term->parent ) {
 						$css_classes[] = 'current-cat-parent';
 					}
 					while ( $_current_term->parent ) {
-						if ( $category->term_id == $_current_term->parent ) {
+						if ( $category->term_id === $_current_term->parent ) {
 							$css_classes[] = 'current-cat-ancestor';
 							break;
 						}

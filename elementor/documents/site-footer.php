@@ -1,7 +1,7 @@
 <?php namespace ANONYELEMENTOR\Documents;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed direct.ly
 }
 
 use Elementor\Controls_Manager;

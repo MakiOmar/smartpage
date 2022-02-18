@@ -1,7 +1,7 @@
 <?php namespace ANONYELEMENTOR;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed direct.ly
 }
 
 if ( ! did_action( 'elementor/loaded' ) ) {

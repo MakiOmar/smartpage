@@ -11,7 +11,7 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed directly
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.ly
 
 $popular_title         = esc_html__( 'Popular', 'smartpage' );
 $recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );

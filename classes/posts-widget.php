@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed direct.ly
 }
 class ANONY_Posts_Widget extends WP_Widget {
 

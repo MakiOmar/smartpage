@@ -10,9 +10,10 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed direct
 
-! class_exists( 'ANONY_Generate_Posts_View' )) or return;
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+! class_exists( 'ANONY_Generate_Posts_View' )) || exit();;
 
 /**
  * Post view generator class

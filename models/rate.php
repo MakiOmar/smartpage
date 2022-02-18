@@ -1,6 +1,6 @@
 <?php 
 if (! defined('ABSPATH') ) {
-    exit; // Exit if accessed directly
+    exit; // Exit if accessed direct.ly
 }
 
 $post_ratings = get_post_meta($pID, 'anony_post_rating', true);

@@ -10,9 +10,10 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed direct
 
-! class_exists( 'ANONY_Cats_Widget' )) or return;
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+! class_exists( 'ANONY_Cats_Widget' )) || exit();;
 
 /**
  * Categories menu walkker class

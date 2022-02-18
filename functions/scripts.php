@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed direct.ly
 }
 
 add_action( 'wp_ajax_anoe_dynamic_css', 'anoe_dynamic_css' );

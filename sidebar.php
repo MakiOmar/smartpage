@@ -10,7 +10,7 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed directly
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.ly
 
 $widgets_url    = esc_url( admin_url( 'widgets.php' ) );
 $go_widget      = esc_html__( 'Please add some widgets. ', 'smartpage' );
