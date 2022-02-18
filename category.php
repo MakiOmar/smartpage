@@ -10,19 +10,20 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) or die(); // Exit if accessed direct
+
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 $anony_options = ANONY_Options_Model::get_instance();
 
 $grid = $anony_options->posts_grid;
 
-$cat_id = $cat;
+$_cat_id = $cat;
 
 $cat_obj = get_category( $cat );
 
 $data = array(
 
-	'cat_id'         => $cat_id,
+	'cat_id'         => $_cat_id,
 	'cat_obj'        => $cat_obj,
 	'cat_name'       => ucfirst( $cat_obj->cat_name ),
 	'page_title'     => esc_html__( 'sub categories', ANONY_TEXTDOM ),
