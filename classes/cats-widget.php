@@ -17,9 +17,7 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 	/**
 	 * Categories menu walkker class
 	 *
-	 * @category   Widgets
 	 * @package    Widgets
-	 * @subpackage Category
 	 * @author     Makiomar <info@makior.com>
 	 * @license    https://makiomar.com SmartPage Licence
 	 * @link       https://makiomar.com
@@ -64,13 +62,11 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 		/**
 		 * Echoes the widget content.
 		 *
-		 * Subclasses should override this function to generate their widget code.
 		 *
 		 * @param array $parms    Display arguments including 'before_title', 'after_title',
 		 *                        'before_widget', and 'after_widget'.
 		 * @param array $instance The settings for the particular instance of the widget.
 		 *
-		 * @since 2.8.0
 		 *
 		 * @return void
 		 */

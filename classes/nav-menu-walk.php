@@ -15,7 +15,6 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 /**
  * Frontend Main Menu Walker class
  *
- * @category   Walker
  * @package    Navigation
  * @subpackage Category
  * @author     Makiomar <info@makior.com>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend Main Menu Walker
+ * Posts Widget
  *
  * PHP version 7.3 Or Later
  *
@@ -12,29 +12,53 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
-if (!class_exists('ANONY_Posts_Widget')) {
+if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
+	/**
+	 * Posts Widget class
+	 *
+	 * @package    SmartPage
+	 * @author     Makiomar <info@makior.com>
+	 * @license    https://makiomar.com SmartPage Licence
+	 * @link       https://makiomar.com
+	 */
+	class ANONY_Posts_Widget extends WP_Widget {
 
-class ANONY_Posts_Widget extends WP_Widget {
-
-	public function __construct() {
-		 $parms = array(
-			 'description' => esc_html__( 'Displays posts by post type', 'smartpage' ),
-			 'name'        => esc_html__( 'Anonymous posts', 'smartpage' ),
-		 );
-		 parent::__construct( 'ANONY_Posts_Widget', '', $parms );
-	}
-	public function form( $instance ) {
-		 extract( $instance );
-
-		if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
-			esc_html_e( 'You should select a post type', 'smartpage' );
+		/**
+		 * Class constructor
+		 *
+		 * @return void
+		 */
+		public function __construct() {
+			$parms = array(
+				'description' => esc_html__( 'Displays posts by post type', 'smartpage' ),
+				'name'        => esc_html__( 'Anonymous posts', 'smartpage' ),
+			);
+			parent::__construct( 'ANONY_Posts_Widget', '', $parms );
 		}
-		?>
+
+		/**
+		 * Outputs the settings update form.
+		 *
+		 * @param array $instance Current settings.
+		 *
+		 * @return void
+		 */
+		public function form( $instance ) {
+
+			if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
+				esc_html_e( 'You should select a post type', 'smartpage' );
+			}
+			?>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
 				
-				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"  value="<?php echo ( isset( $title ) && ! empty( $title ) ) ? esc_attr( $title ) : esc_attr__( 'Top places', 'smartpage' ); ?>">
+				<input 
+				type="text" 
+				class="widefat" 
+				id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"  
+				value="<?php echo ( isset( $instance['title'] ) && ! empty( $instance['title'] ) ) ? esc_attr( $instance['title'] ) : esc_attr__( 'Top places', 'smartpage' ); ?>">
 				
 			</p>
 
@@ -42,104 +66,114 @@ class ANONY_Posts_Widget extends WP_Widget {
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_attr_e( 'Post Type:', 'smartpage' ); ?></label>
 
-				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'smartpage' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
-		<?php
-		$postType = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
-		$selected = selected( $postType, 'current', false );
-		?>
-					<option value="current" <?php echo $selected; ?>><?php esc_html_e( 'Current post type', 'smartpage' ); ?></option>
-		<?php
-		foreach ( get_post_types(
-			array(
-				'public'   => true,
-				'_builtin' => false,
-			)
-		) as $type ) {
-			$selected = selected( $postType, $type, false )
-			?>
-							<option value="<?php echo $postType; ?>" <?php echo $selected; ?>><?php echo $type; ?></option>
+				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 			<?php
-		}
+			$postType = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
+			$selected = selected( $postType, 'current', false );
+			?>
+					<option value="current" <?php echo $selected; ?>><?php esc_html_e( 'Current post type', 'smartpage' ); ?></option>
+			<?php
+			foreach ( get_post_types(
+				array(
+					'public'   => true,
+					'_builtin' => false,
+				)
+			) as $type ) {
+				$selected = selected( $postType, $type, false )
+				?>
+							<option value="<?php echo esc_attr( $postType ); ?>" <?php echo $selected; ?>><?php echo esc_html( $type ); ?></option>
+				<?php
+			}
 
-		?>
+			?>
 					
 				</select>
 
 			</p>
 			
-		<?php
-	}
-	public function widget( $parms, $instance ) {
-		extract( $parms );
-
-		extract( $instance );
-
-		if ( $instance['post_type'] == 'current' && ! is_single() ) {
-			$post_type = 'post';
-		} else {
-			$post_type = ( $instance['post_type'] == 'current' ) ? get_post_type() : $instance['post_type'];
+			<?php
 		}
 
-		$args  = array(
-			'post_type'      => $post_type,
-			'posts_per_page' => -1,
-		);
-		$query = new WP_Query( $args );
+		/**
+		 * Echoes the widget content.
+		 *
+		 * @param array $parms    Display arguments including 'before_title', 'after_title',
+		 *                        'before_widget', and 'after_widget'.
+		 * @param array $instance The settings for the particular instance of the widget.
+		 *
+		 * @return void
+		 */
+		public function widget( $parms, $instance ) {
 
-		if ( $query->have_posts() ) {
+			extract( $instance );
 
-			$post_type_object = get_post_type_object( $post_type );
-
-			if ( $instance['post_type'] == 'current' ) {
-				$title = $post_type_object->label;
+			if ( $instance['post_type'] == 'current' && ! is_single() ) {
+				$post_type = 'post';
+			} else {
+				$post_type = ( $instance['post_type'] == 'current' ) ? get_post_type() : $instance['post_type'];
 			}
+			$title = $instance['title'];
 
-			$output = '';
+			$args  = array(
+				'post_type'      => $post_type,
+				'posts_per_page' => -1,
+			);
+			$query = new WP_Query( $args );
 
-			$output .= $before_widget;
+			if ( $query->have_posts() ) {
 
-			$output .= $before_title . $title . $after_title;
+				$post_type_object = get_post_type_object( $post_type );
 
-			$output .= '<ul class="artr_terms_list">';
+				if ( $instance['post_type'] == 'current' ) {
+					$title = $post_type_object->label;
+				}
 
-			while ( $query->have_posts() ) {
-				$query->the_post();
+				$output = '';
 
-				$output .= sprintf( '<li class="artr_post_item"><a class="artr_post_link" href="%1$s">%2$s</a></li>', esc_url( get_the_permalink( get_the_ID() ) ), get_the_title() );
-			}
+				$output .= $before_widget;
 
-			wp_reset_postdata();
+				$output .= $before_title . esc_html( $title ) . $after_title;
 
-			$output .= '</ul>';
+				$output .= '<ul class="artr_terms_list">';
 
-			$output .= $after_widget;
+				while ( $query->have_posts() ) {
+					$query->the_post();
 
-			echo $output;
-		} else {
-			if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
-				esc_html_e( 'You should select a post type', 'smartpage' );
+					$output .= sprintf( '<li class="artr_post_item"><a class="artr_post_link" href="%1$s">%2$s</a></li>', esc_url( get_the_permalink( get_the_ID() ) ), get_the_title() );
+				}
+
+				wp_reset_postdata();
+
+				$output .= '</ul>';
+
+				$output .= $after_widget;
+
+				echo $output;
+			} else {
+				if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
+					esc_html_e( 'You should select a post type', 'smartpage' );
+				}
 			}
 		}
+
+		/**
+		 * Sanitize widget form values as they are saved.
+		 *
+		 * @see WP_Widget::update()
+		 *
+		 * @param array $new_instance Values just sent to be saved.
+		 * @param array $old_instance Previously saved values from database.
+		 *
+		 * @return array Updated safe values to be saved.
+		 */
+		public function update( $new_instance, $old_instance ) {
+			$instance              = array();
+			$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+			$instance['post_type'] = ( ! empty( $new_instance['post_type'] ) ) ? sanitize_text_field( $new_instance['post_type'] ) : 'place';
+
+			return $instance;
+		}
+
+
 	}
-
-	/**
-	 * Sanitize widget form values as they are saved.
-	 *
-	 * @see WP_Widget::update()
-	 *
-	 * @param array $new_instance Values just sent to be saved.
-	 * @param array $old_instance Previously saved values from database.
-	 *
-	 * @return array Updated safe values to be saved.
-	 */
-	public function update( $new_instance, $old_instance ) {
-		$instance              = array();
-		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['post_type'] = ( ! empty( $new_instance['post_type'] ) ) ? sanitize_text_field( $new_instance['post_type'] ) : 'place';
-
-		return $instance;
-	}
-
-
-}
 }
