@@ -5,7 +5,6 @@
  *
  * PHP version 7.3 Or Later
  *
- * @category WordPress
  * @package  SmartPage
  * @author   Makiomar <info@makior.com>
  * @license  https://makiomar.com SmartPage Licence

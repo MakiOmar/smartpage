@@ -1,7 +1,19 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
+/**
+ * Frontend Main Menu Walker
+ *
+ * PHP version 7.3 Or Later
+ *
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
+ */
+
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+if (!class_exists('ANONY_Posts_Widget')) {
+
 class ANONY_Posts_Widget extends WP_Widget {
 
 	public function __construct() {
@@ -129,4 +141,5 @@ class ANONY_Posts_Widget extends WP_Widget {
 	}
 
 
+}
 }
