@@ -89,10 +89,8 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 				)
 			);
 
-			echo $parms['after_widget'] ;
-
 			echo '</ul>';
-
+			echo $parms['after_widget'] ;
 			wp_enqueue_script( 'anony-cats-menu' );
 		}
 	}
