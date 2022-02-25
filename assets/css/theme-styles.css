@@ -1,5 +1,4 @@
 /*----Popular section style----*/
-
 .anony-popular-tabs span {
   width: 49.7%;
   text-align: center;
@@ -20,8 +19,7 @@
   display: inline-block;
 }
 
-#anony-popular,
-#anony-comments {
+#anony-popular, #anony-comments {
   position: relative;
 }
 
@@ -81,14 +79,12 @@
   font-size: 14px;
 }
 
-.anony-recent-comment-wrapper,
-.anony-posts-list-wrapper {
+.anony-recent-comment-wrapper, .anony-posts-list-wrapper {
   position: relative;
   padding: 10px;
 }
 
-.anony-recent-comment-wrapper:after,
-.anony-posts-list-wrapper::after {
+.anony-recent-comment-wrapper:after, .anony-posts-list-wrapper::after {
   content: "";
   display: block;
   width: 90%;
@@ -97,17 +93,13 @@
   bottom: 0;
 }
 
-.anony-posts-list-wrapper:last-child:after,
-.anony-recent-comment-wrapper:last-child:after {
+.anony-posts-list-wrapper:last-child:after, .anony-recent-comment-wrapper:last-child:after {
   border-bottom: none;
 }
 
 /* End popular section style */
-
 /* CSS slider */
-
-#anony-active-slide,
-.anony-view {
+#anony-active-slide, .anony-view {
   height: 355px;
 }
 
@@ -160,8 +152,7 @@
   cursor: pointer;
 }
 
-.anony-active-slide.anony-pagination-dot,
-.anony-slide-item.anony-pagination-dot:hover {
+.anony-active-slide.anony-pagination-dot, .anony-slide-item.anony-pagination-dot:hover {
   opacity: 1;
 }
 
@@ -201,9 +192,7 @@
 }
 
 /* End slider css*/
-
 /* CSS Featured */
-
 .anony-featured-col {
   width: 33%;
   height: inherit;
@@ -237,37 +226,3 @@
 }
 
 /* End slider css*/
-
-/*-----Categories dropdown widget-----*/
-
-#anony-cat-list li,
-#anony-cat-list li ul li {
-  position: relative;
-  background-color: #444444;
-}
-
-#anony-cat-list li a {
-  display: inline-block !important;
-  vertical-align: middle;
-  font-size: 14px;
-  padding: 10px;
-}
-
-#anony-cat-list .has-children {
-  background-color: #fbfbfb !important;
-}
-
-#anony-cat-list .has-children ul {
-  background-color: #fff !important;
-}
-
-#anony-cat-list {
-  position: relative;
-  width: 100%;
-  border-radius: 5px;
-  padding: 0 8px;
-  overflow: hidden;
-}
-
-/* End categories dropdown widget */
-

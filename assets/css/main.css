@@ -1184,21 +1184,7 @@ tr:nth-child(even) {
 	.widgeted_title a{
 		color: #ffffff;
 	}
-	.widgeted #anony-cat-list li, .widgeted #anony-cat-list li ul li{
-		background: none;
-		background-color:transparent;
-		padding: 0;
-	}
-	.widgeted #anony-cat-list li a,.widgeted .toggle-category{
-		color: #444444;
-		vertical-align: middle;
-	}
-	.widgeted .anony-dropdown{
-		background-color: transparent;
-	}
-	.widgeted .anony-dropdown li{
-		background-color: transparent!important;
-	}
+	
 	.widgeted a{
 		color: #444;
 	}
@@ -1601,16 +1587,6 @@ tr:nth-child(even) {
 	    margin: 0;
 	    border-radius: 5px;
 		}
-	.toggle-category{
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		padding: 10px;
-		position: absolute;
-		top: 0;
-		right: 0;
-		justify-content: center;
-	}
 .anony-toggle-excerpt{
 		position: absolute;
 		background-color: rgba(50,48,48,0.95);

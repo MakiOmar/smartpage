@@ -1,100 +1,45 @@
-.firebrick .anony-skew-bg::after,
-.firebrick .page-numbers li,
-.firebrick .active,
-.firebrick .button,
-.firebrick .anony-active-tab,
-.firebrick .anony-page-numbers a,
-.firebrick .widgeted_title,
-.firebrick #anony-dun-title,
-.firebrick #submit,
-.firebrick .anony-form_submit,
-.firebrick .anony-featured-posts-title,
-.firebrick .anony-section_title,
-.firebrick #anony-page-scroll,
-.firebrick .anony-button,
-.firebrick .anony-post-image-wrapper h4,
-.firebrick .f-post-title,
-.firebrick .reply,
-.firebrick .dun_text:after {
+.firebrick .anony-skew-bg::after, .firebrick .page-numbers li, .firebrick .active, .firebrick .button, .firebrick .anony-active-tab,
+.firebrick .anony-page-numbers a, .firebrick .widgeted_title, .firebrick #anony-dun-title, .firebrick #submit, .firebrick .anony-form_submit,
+.firebrick .anony-featured-posts-title, .firebrick .anony-section_title, .firebrick #anony-page-scroll, .firebrick .anony-button,
+.firebrick .anony-post-image-wrapper h4, .firebrick .f-post-title, .firebrick .reply, .firebrick .dun_text:after {
   background-color: #ef1450;
 }
-
-.firebrick .anony-post-info .anony-nothumb-post .anony-thumb-post-title,
-.firebrick #anony-top-header-wrapper,
-.firebrick #anony-page-loading-bg {
+.firebrick .anony-post-info .anony-nothumb-post .anony-thumb-post-title, .firebrick #anony-top-header-wrapper, .firebrick #anony-page-loading-bg {
   border-bottom-bottom: #ef1450;
 }
-
-.firebrick .anony-section,
-.firebrick #anony-slider-wrapper {
+.firebrick .anony-section, .firebrick #anony-slider-wrapper {
   border-top-color: #ef1450;
 }
-
-.firebrick .single-download,
-.firebrick .anony-toggle-sidebar,
-.firebrick #anony-main_nav_con,
-.firebrick .anony-popular-tabs span:not(.anony-active-tab):nth-child(2) {
+.firebrick .single-download, .firebrick .anony-toggle-sidebar, .firebrick #anony-main_nav_con, .firebrick .anony-popular-tabs span:not(.anony-active-tab):nth-child(2) {
   background-color: #230004;
 }
-
-.firebrick .fa-calendar,
-.firebrick .fa-comments-o,
-.firebrick .fa-folder-open,
-.firebrick .fa-eye,
-.firebrick .fa-download,
-.firebrick a,
-.firebrick h1,
-.firebrick h2,
-.firebrick h3,
-.firebrick h4,
-.firebrick h5,
-.firebrick h6,
-.firebrick .anony-breadcrumbs li,
-.firebrick .anony-breadcrumbs a {
+.firebrick .fa-calendar, .firebrick .fa-comments-o, .firebrick .fa-folder-open, .firebrick .fa-eye, .firebrick .fa-download, .firebrick a, .firebrick h1, .firebrick h2, .firebrick h3, .firebrick h4, .firebrick h5, .firebrick h6, .firebrick .anony-breadcrumbs li, .firebrick .anony-breadcrumbs a {
   color: #b10030;
 }
-
 .firebrick #anony-main-menu-con .anony-sub-menu li a {
   color: #230004;
   text-shadow: none;
 }
-
-.firebrick #cancel-comment-reply-link,
-.firebrick .fa-bars,
-.firebrick #anony-cat-list .toggle-category .fa {
+.firebrick #cancel-comment-reply-link, .firebrick .fa-bars, .firebrick #anony-cat-list .toggle-category .fa {
   color: #ef1450;
 }
-
 .firebrick .anony-warning {
   background-color: #e09352;
   border-left: 6px solid #230004;
 }
-
-.firebrick .page-numbers,
-.firebrick #anony-main-menu-con .anony-sub-menu li a,
-.firebrick .widgeted_title,
-.firebrick .anony-slide-title a,
-.firebrick .anony-featured-button,
-.firebrick .anony-featured-posts-title a,
-.firebrick .anony-section_title,
-.firebrick .anony-button,
-.firebrick .anony-single_post_title a {
+.firebrick .page-numbers, .firebrick #anony-main-menu-con .anony-sub-menu li a, .firebrick .widgeted_title, .firebrick .anony-slide-title a, .firebrick .anony-featured-button, .firebrick .anony-featured-posts-title a, .firebrick .anony-section_title, .firebrick .anony-button, .firebrick .anony-single_post_title a {
   color: #fff;
 }
-
 .firebrick #anony-main-menu-con .anony-sub-menu li {
   border-bottom: 1px solid #230004;
   background-color: #b10030;
 }
-
 .firebrick li .current::after {
   background-color: #b10030;
 }
-
 @media screen and (min-width: 768px) {
   .firebrick #anony-main-menu-con li a:hover {
     background-color: #b10030;
     font-size: 16px;
   }
 }
-
