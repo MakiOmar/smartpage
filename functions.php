@@ -72,7 +72,7 @@ add_action(
 					array(
 						array(
 							'id'    => 'anony_brand_logo',
-							'title' => esc_html__( 'Brand logo', ANOE_TEXTDOM ),
+							'title' => esc_html__( 'Brand logo', 'smartpage' ),
 							'type'  => 'gallery',
 						),
 					),
