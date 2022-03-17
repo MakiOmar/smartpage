@@ -8,9 +8,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param $title string Section title
  */
 function anony_category_posts_section( $args, $title = '' ) {
-	$anony_options = ANONY_Options_Model::get_instance();
+    $grid = 'standard';
+    if ( class_exists( 'ANONY_Options_Model' ) ){
+        
+        $anony_options = ANONY_Options_Model::get_instance();
 
-	$grid = $anony_options->posts_grid;
+	    $grid = $anony_options->posts_grid;
+    }
+	
 
 	$query = new WP_Query( $args );
 
@@ -36,17 +41,23 @@ function anony_category_posts_section( $args, $title = '' ) {
 /**
  * Desides which sidebar to load according to page direction
  *
- * @return void
  */
 function anony_get_correct_sidebar() {
-	$anony_options = ANONY_Options_Model::get_instance();
+    
+    if ( class_exists( 'ANONY_Options_Model' ) ){
+        $anony_options = ANONY_Options_Model::get_instance();
 
-	if ( $anony_options->sidebar == 'left-sidebar' ) {
-		get_sidebar();
-	} elseif ( $anony_options->single_sidebar == '1' ) {
-		get_sidebar( 'left' );
-	}
-
+    	if ( $anony_options->sidebar == 'left-sidebar' ) {
+    		get_sidebar();
+    		
+    		return;
+    	} elseif ( $anony_options->single_sidebar == '1' ) {
+    		get_sidebar( 'left' );
+    		return;
+    	}
+    }
+	
+    get_sidebar();
 }
 
 /**
@@ -136,8 +147,13 @@ function anony_comments_number() {
  * @return array
  */
 function anony_common_post_data( $post_type = 'post' ) {
-	$anony_options = ANONY_Options_Model::get_instance();
-	$grid         = $anony_options->posts_grid;
+	$grid = 'standard';
+    if ( class_exists( 'ANONY_Options_Model' ) ){
+        
+        $anony_options = ANONY_Options_Model::get_instance();
+
+	    $grid = $anony_options->posts_grid;
+    }
 
 	$ID                      = get_the_ID();
 	$temp['id']              = $ID;
@@ -147,7 +163,7 @@ function anony_common_post_data( $post_type = 'post' ) {
 	$temp['content']         = apply_filters( 'the_content', get_the_content() );
 	$temp['excerpt']         = esc_html( get_the_excerpt() );
 	$temp['thumb']           = has_post_thumbnail();
-	$temp['thumb_exists']    = ANONY_LINK_HELP::curlUrlExists( get_the_post_thumbnail_url( $ID ) );
+	$temp['thumb_exists']    =  class_exists( 'ANONY_LINK_HELP' ) ? ANONY_LINK_HELP::curlUrlExists( get_the_post_thumbnail_url( $ID ) ) : get_the_post_thumbnail_url( $ID );
 	$temp['thumb_img_full']  = get_the_post_thumbnail( $ID, 'full' );
 	$temp['thumb_img']       = get_the_post_thumbnail( $ID, 'category-post-thumb' );
 	$temp['thumbnail_img']   = get_the_post_thumbnail_url( $ID, 'thumbnail' );
@@ -205,4 +221,105 @@ function anony_pagination() {
 	);
 
 	return $pagination;
+}
+
+/*
+-------------------------------------------------------------
+ * Posts functions
+ *-----------------------------------------------------------*/
+
+/**
+ * Gets post views count.
+ *
+ * @param  string $postID The post ID to get views count for
+ * @return string post views count
+ */
+function anony_get_post_views( $postID ) {
+	$count_key = 'post_views_count';
+	$count     = get_post_meta( $postID, $count_key, true );
+	if ( $count == '' ) {
+		delete_post_meta( $postID, $count_key );
+		add_post_meta( $postID, $count_key, '0' );
+		return '0';
+	}
+	return $count;
+}
+
+/**
+ * Sets post views count.
+ *
+ * @param  string $postID The post ID to set views count for
+ * @return void
+ */
+function anony_set_post_views( $postID ) {
+	$count_key = 'post_views_count';
+	$count     = get_post_meta( $postID, $count_key, true );
+	if ( $count == '' ) {
+		$count = 0;
+		delete_post_meta( $postID, $count_key );
+		add_post_meta( $postID, $count_key, '0' );
+	} else {
+		$count++;
+		update_post_meta( $postID, $count_key, $count );
+	}
+}
+
+/**
+ * Gets number of posts per category.
+ *
+ * @param  int $idcat The category ID to get posts count for
+ * @return int posts count
+ */
+function anony_cat_posts_count( $idcat ) {
+	global $wpdb;
+	$query = "SELECT count FROM $wpdb->term_taxonomy WHERE term_id = $idcat";
+	$num   = $wpdb->get_col( $query );
+	if ( is_array( $num ) && ! empty( $num ) ) {
+		return $num[0];
+	}
+
+}
+
+/**
+ * Gets latest comments.
+ *
+ * **Description: ** Outputs HTML for latest comments.
+ *
+ * @return void
+ */
+function anony_latest_comments() {
+	$args = array( 'number' => 4 );
+
+	if ( is_user_logged_in() ) {
+		$args['author__not_in'] = array( get_current_user_id() );
+	}
+
+	$comments = get_comments( $args );
+
+	if ( count( $comments ) > 0 ) {
+
+		foreach ( $comments as $comment ) { ?>    
+			
+				<div  class="anony-recent-comment-wrapper">
+				
+					<h3><?php echo '<i class="fa fa-user"></i> ' . $comment->comment_author . ' ' . __( 'Commented', 'smartpage' ); ?></h3>
+					
+					<p class='recent-comment'>
+			<?php echo mb_substr( $comment->comment_content, 0, 150 ) . '... '; ?>
+					
+					<a href="<?php echo get_the_permalink( $comment->comment_post_ID ); ?>"><?php esc_html_e( 'View Post', 'smartpage' ); ?></a>
+					
+					</p>
+					
+				</div>
+				
+			<?php
+		}
+	} else {
+		?>
+				
+		<p><?php esc_html_e( 'No comments yet', 'smartpage' ); ?></p>
+		
+		<?php
+	};
 }

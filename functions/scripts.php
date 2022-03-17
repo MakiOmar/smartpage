@@ -12,19 +12,12 @@ function anoe_dynamic_css() {
 }
 
 function anony_styles() {
-	$anony_options = ANONY_Options_Model::get_instance();
+    $media = 'all';
 
 	$styles = array( 'main', 'responsive', 'theme-styles' );
 
 	$styles_libs = array( 'font-awesome.min', 'lightbox.min' );
-
-	$media = ( $anony_options->defer_stylesheets !== '1' ) ? 'all' : 'all';
-
-	// load prettyPhoto if needed
-	if ( $anony_options->disable_prettyphoto != '1' ) {
-		$styles_libs[] = 'prettyPhoto';
-	}
-
+    
 	$styles = array_merge( $styles, $styles_libs );
 
 	foreach ( $styles as $style ) {
@@ -53,33 +46,48 @@ function anony_styles() {
 			$media
 		);
 	}
+	
+	
+	if( class_exists( 'ANONY_Options_Model' ) ){
+        
+        $anony_options = ANONY_Options_Model::get_instance();
+        
+        $media = ( $anony_options->defer_stylesheets !== '1' ) ? 'all' : $media;
 
-	$dynamic_deps = array( 'anony-main' );
+    	// load prettyPhoto if needed
+    	if ( $anony_options->disable_prettyphoto != '1' ) {
+    		$styles_libs[] = 'prettyPhoto';
+    	}
+    	
+    	$dynamic_deps = array( 'anony-main' );
 
-	if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
+    	if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
+    
+    		$skin = $anony_options->color_skin;
+    
+    		$dynamic_deps = array( $skin . '-skin' );
+    
+    		wp_enqueue_style(
+    			$skin . '-skin',
+    			ANONY_THEME_URI . '/assets/css/skins/' . $skin . '.css',
+    			array( 'anony-main' ),
+    			filemtime(
+    				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/skins/' . $skin . '.css' )
+    			),
+    			$media
+    		);
+    	}
+    
+    	if ( $anony_options->dynamic_css_ajax != '1' ) {
+    		wp_enqueue_style( 'anonyengine-dynamics', admin_url( 'admin-ajax.php' ) . '?action=anoe_dynamic_css', $dynamic_deps, false, $media );
+    	}
+        
+    }
 
-		$skin = $anony_options->color_skin;
-
-		$dynamic_deps = array( $skin . '-skin' );
-
-		wp_enqueue_style(
-			$skin . '-skin',
-			ANONY_THEME_URI . '/assets/css/skins/' . $skin . '.css',
-			array( 'anony-main' ),
-			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/skins/' . $skin . '.css' )
-			),
-			$media
-		);
-	}
-
-	if ( $anony_options->dynamic_css_ajax != '1' ) {
-		wp_enqueue_style( 'anonyengine-dynamics', admin_url( 'admin-ajax.php' ) . '?action=anoe_dynamic_css', $dynamic_deps, false, $media );
-	}
 }
 
 function anony_scripts() {
-	$anony_options = ANONY_Options_Model::get_instance();
+	
 
 	/**
 *
@@ -121,10 +129,7 @@ function anony_scripts() {
 			true
 		);
 	}
-	// load prettyPhoto if needed
-	if ( $anony_options->disable_prettyphoto != '1' ) {
-		wp_enqueue_script( 'jquery.prettyPhoto' );
-	}
+	
 
 	wp_enqueue_script( 'lightbox.min' );
 
@@ -153,16 +158,31 @@ function anony_scripts() {
 
 	// Localize the script with new data tinymce_comments
 	$anony_loca = array(
-		'ajaxURL'             => ANONY_WPML_HELP::getAjaxUrl(),
 		'textDir'             => ( is_rtl() ? 'rtl' : 'ltr' ),
 		'themeLang'           => get_bloginfo( 'language' ),
 		'anonyFormAuthor'     => esc_html__( 'Please enter a valid name', 'smartpage' ),
 		'anonyFormEmail'      => esc_html__( 'Please enter a valid email', 'smartpage' ),
 		'anonyFormUrl'        => esc_html__( 'Please use a valid website address', 'smartpage' ),
 		'anonyFormComment'    => esc_html__( 'Comment must be at least 20 characters', 'smartpage' ),
-		'anonyUseTinymce'     => $anony_options->tinymce_comments == '1' ? true : false,
-		'anonyUsePrettyPhoto' => $anony_options->disable_prettyphoto == '1' ? false : true,
 	);
+	
+	if( class_exists( 'ANONY_Options_Model' ) ){
+        
+        $anony_options = ANONY_Options_Model::get_instance();
+        
+        $anony_loca[ 'ajaxURL' ]         = ANONY_WPML_HELP::getAjaxUrl();
+        
+        $anony_loca[ 'anonyUseTinymce' ] = $anony_options->tinymce_comments == '1' ? true : false;
+        
+        $anony_loca[ 'anonyUsePrettyPhoto' ] = $anony_options->disable_prettyphoto == '1' ? false : true;
+        
+        
+        // load prettyPhoto if needed
+    	if ( $anony_options->disable_prettyphoto != '1' ) {
+    		wp_enqueue_script( 'jquery.prettyPhoto' );
+    	}
+        
+    }
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }
 
@@ -180,8 +200,7 @@ add_action(
 
 add_action(
 	'wp_head',
-	function () {
-		$anony_options = ANONY_Options_Model::get_instance();?>
+	function () { ?>
 	
 	<!-- Head styles -->
 	<style type="text/css">
@@ -261,15 +280,19 @@ add_action(
 		  100% { transform: scale(1); }
 		}
 		<?php
-		if ( $anony_options->dynamic_css_ajax == '1' ) {
+		
+		if( class_exists( 'ANONY_Options_Model' ) ){
+		    $anony_options = ANONY_Options_Model::get_instance();
+		    
+		    if ( $anony_options->dynamic_css_ajax == '1' ) {
 
-			ob_start();
-
-			include ANONY_THEME_DIR . '/assets/css/dynamic.php';
-
-			echo ob_get_clean();
-		}
-		?>
+    			ob_start();
+    
+    			include ANONY_THEME_DIR . '/assets/css/dynamic.php';
+    
+    			echo ob_get_clean();
+    		}
+		}?>
 	</style>
 	
 		<?php
