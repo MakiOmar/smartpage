@@ -157,7 +157,7 @@ add_action(
 
 	'init',
 	function () {
-		//return;
+		return;
 		if ( $GLOBALS['pagenow'] === 'wp-login.php' ) {
 			return;
 		}

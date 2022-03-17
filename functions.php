@@ -9,24 +9,63 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
+ 
 require_once wp_normalize_path( get_template_directory() . '/config/config.php' );
 
+// Functions files
+$anonylibs = array(
+	
+	'scripts'             => '',
+	'theme-helpers'       => '',
+	'menus'               => '',
+);
+
+foreach ( $anonylibs as $anonylib => $path ) {
+	include_once wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib . '.php' );
+}
+
 if ( ! defined( 'ANOENGINE' ) ) {
+
+	$default_templates = array( 
+		'404',
+		'archive',
+		'attachment',
+		'author',
+		'category',
+		'date',
+		'embed',
+		'frontpage',
+		'home',
+		'index',
+		'page',
+		'paged',
+		'privacypolicy',
+		'search',
+		'single',
+		'singular',
+		'tag',
+		'taxonomy'
+	);
+	
+	foreach( $default_templates as $type ){
+		add_filter( $type . '_template', function( $template ) {
+			$template = locate_template( 'defaults/index.php', false, false );
+			return $template;
+		} );
+	}
+	
 	return;
 }
 
 // Functions files
 $anonylibs = array(
-	'theme-helpers'       => '',
+    'theme'               => '',
 	'theme-options'       => '',
 	'data-hooks'          => '',
 	'vc-includes'         => '',
 	'posts'               => '',
-	'scripts'             => '',
-	'theme'               => '',
 	'woocommerce'         => '',
 	'performance'         => '',
-	'menus'               => '',
 	'admin'               => '',
 	'media'               => '',
 	'widgets'             => '',
