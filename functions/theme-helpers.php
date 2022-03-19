@@ -3,6 +3,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed direct.ly
 }
 
+function anony_load_defaults(){
+	$default_templates = array( 
+		'404',
+		'archive',
+		'attachment',
+		'author',
+		'category',
+		'date',
+		'embed',
+		'frontpage',
+		'home',
+		'index',
+		'page',
+		'paged',
+		'privacypolicy',
+		'search',
+		'single',
+		'singular',
+		'tag',
+		'taxonomy'
+	);
+	
+	foreach( $default_templates as $type ){
+		add_filter( $type . '_template', function( $template ) {
+			$template = locate_template( 'defaults/index.php', false, false );
+			return $template;
+		} );
+	}
+}
 /**
  * @param $args  array Loop args
  * @param $title string Section title

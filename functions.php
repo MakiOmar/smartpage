@@ -12,111 +12,118 @@
  
 require_once wp_normalize_path( get_template_directory() . '/config/config.php' );
 
-// Functions files
-$anonylibs = array(
-	
-	'scripts'             => '',
-	'theme-helpers'       => '',
-	'menus'               => '',
-);
+// Initial functions files.
 
-foreach ( $anonylibs as $anonylib => $path ) {
-	include_once wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib . '.php' );
-}
+/**
+ * Theme Scripts.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'scripts.php' );
+
+/**
+ * Theme helper functions.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'theme-helpers.php' );
+
+/**
+ * Theme menus.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'menus.php' );
+
 
 if ( ! defined( 'ANOENGINE' ) ) {
 
-	$default_templates = array( 
-		'404',
-		'archive',
-		'attachment',
-		'author',
-		'category',
-		'date',
-		'embed',
-		'frontpage',
-		'home',
-		'index',
-		'page',
-		'paged',
-		'privacypolicy',
-		'search',
-		'single',
-		'singular',
-		'tag',
-		'taxonomy'
-	);
-	
-	foreach( $default_templates as $type ){
-		add_filter( $type . '_template', function( $template ) {
-			$template = locate_template( 'defaults/index.php', false, false );
-			return $template;
-		} );
-	}
+	anony_load_defaults();
 	
 	return;
 }
 
-// Functions files
-$anonylibs = array(
-    'theme'               => '',
-	'theme-options'       => '',
-	'data-hooks'          => '',
-	'vc-includes'         => '',
-	'posts'               => '',
-	'woocommerce'         => '',
-	'performance'         => '',
-	'admin'               => '',
-	'media'               => '',
-	'widgets'             => '',
-	'custom-fields'       => '',
-	'statistics'          => 'shortcodes/statistics/',
-	'ajax-comments'       => 'ajax/',
-	'ajax-download'       => 'ajax/',
-	'ajax-rate'           => 'ajax/',
-	'tinymce-editor-btns' => 'mce/',
-	'switch'              => 'vc-shortcode-types/',
-);
+// Main functions files.
 
-foreach ( $anonylibs as $anonylib => $path ) {
-	include_once wp_normalize_path( ANONY_LIBS_DIR . $path . $anonylib . '.php' );
-}
+/**
+ * Theme features.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'theme.php' );
+
+/**
+ * Theme options.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'theme-options.php' );
+
+/**
+ * Data injection.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'data-hooks.php' );
+
+/**
+ * Posts registrations.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'posts.php' );
+
+/**
+ * WooCommerce.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'woocommerce.php' );
+
+/**
+ * Performance.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'performance.php' );
+
+/**
+ * Admin area.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'admin.php' );
+
+/**
+ * Media handing.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'media.php' );
+
+/**
+ * Widgets registration.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'widgets.php' );
+
+/**
+ * Custom fields.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'custom-fields.php' );
+
+
+/**
+ * Comments AJAX.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-comments.php' );
+
+/**
+ * Download AJAX.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-download.php' );
+
+/**
+ * Rating AJAX.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-rate.php' );
+
+/**
+ * TinyMCE buttons.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'mce/tinymce-editor-btns.php' );
+
+
+/**
+ * Custom shortcodes.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'shortcodes/statistics/statistics.php' );
+
+/**
+ * Visual composer includes
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'vc-includes.php' );
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'vc-shortcode-types/switch.php' );
+
 
 /**
  * Elementor includes
  */
 require_once wp_normalize_path( ANONY_ELEMENTOR_EXTENSION . 'elementor-incl.php' );
-
-// Just for testing purposes
-add_action(
-	'wp_footer',
-	function () {
-
-	}
-);
-
-
-add_action(
-	'init',
-	function () {
-
-		ANONY_WOO_HELP::createProductAttribute( 'Brand' );
-
-		$termMetaBox = new ANONY_Term_Metabox(
-			array(
-				'id'       => 'anony_brand',
-				'taxonomy' => 'pa_brand',
-				'context'  => 'term',
-				'fields'   =>
-					array(
-						array(
-							'id'    => 'anony_brand_logo',
-							'title' => esc_html__( 'Brand logo', 'smartpage' ),
-							'type'  => 'gallery',
-						),
-					),
-			)
-		);
-
-	}
-);

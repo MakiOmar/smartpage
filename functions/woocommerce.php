@@ -53,5 +53,27 @@ add_action(
 	10
 );
 
+function anony_create_product_attributes(){
+	ANONY_WOO_HELP::createProductAttribute( 'Brand' );
+}
+add_action( 'init', 'anony_create_product_attributes' );
 
+function anony_create_product_attributes_metaboxes(){
+	new ANONY_Term_Metabox(
+		array(
+			'id'       => 'anony_brand',
+			'taxonomy' => 'pa_brand',
+			'context'  => 'term',
+			'fields'   =>
+				array(
+					array(
+						'id'    => 'anony_brand_logo',
+						'title' => esc_html__( 'Brand logo', 'smartpage' ),
+						'type'  => 'gallery',
+					),
+				),
+		)
+	);
+}
 
+add_action( 'init', 'anony_create_product_attributes_metaboxes' );
