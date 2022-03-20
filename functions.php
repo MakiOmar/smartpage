@@ -7,9 +7,11 @@
  * @package  SmartPage
  * @author   Makiomar <info@makior.com>
  * @license  https://makiomar.com SmartPage Licence
- * @link     https://makiomar.com
+ * @link     https://makiomar.com/smartpage
  */
- 
+
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
 require_once wp_normalize_path( get_template_directory() . '/config/config.php' );
 
 // Initial functions files.
@@ -33,7 +35,7 @@ require_once wp_normalize_path( ANONY_LIBS_DIR . 'menus.php' );
 if ( ! defined( 'ANOENGINE' ) ) {
 
 	anony_load_defaults();
-	
+
 	return;
 }
 
