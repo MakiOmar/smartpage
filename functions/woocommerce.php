@@ -1,64 +1,57 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
+/**
+ * SmartPage WooComerce.
+ *
+ * PHP version 7.3 Or Later.
+ *
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com/anonyengine_elements
+ */
+
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+/**
+ * Add theme support for WooCommerce gallery features
+ */
+function anony_woo_add_theme_support() {
+
+	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-slider' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
 }
 
-add_action(
-	'after_setup_theme',
-	function () {
-
-		// Support woocommerce
-		add_theme_support( 'woocommerce' );
-		add_theme_support( 'wc-product-gallery-slider' );
-		add_theme_support( 'wc-product-gallery-zoom' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-
-	},
-	20
-);
-
-
-// Alter The Archive Title for The Shop
-add_filter(
-	'get_the_archive_title',
-	function ( $title ) {
-		if ( is_shop() && $shop_id = wc_get_page_id( 'shop' ) ) {
-			$title = get_the_title( $shop_id );
-		}
-		return $title;
-	}
-);
-
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-
-add_action(
-	'woocommerce_before_main_content',
-	function () {
-
-		echo '<div class="anony-grid-col anony-post-contents anony-single_post">
+/**
+ * Wrap WooCommerce content with apropriate markup
+ */
+function anony_woocommerce_before_main_content() {
+	echo '<div class="anony-grid-col anony-post-contents anony-single_post">
 							
 				<div class="anony-post-info">
 								
 						<div class="anony-single-text">';
-	},
-	10
-);
+}
 
-add_action(
-	'woocommerce_after_main_content',
-	function () {
-		echo '</div></div></div>';
-	},
-	10
-);
+/**
+ * Close wrapped WooCommerce content with apropriate markup
+ */
+function anony_woocommerce_after_main_content() {
+	echo '</div></div></div>';
+}
 
-function anony_create_product_attributes(){
+/**
+ * Create brand attribute
+ */
+function anony_create_product_attributes() {
 	ANONY_WOO_HELP::createProductAttribute( 'Brand' );
 }
-add_action( 'init', 'anony_create_product_attributes' );
 
-function anony_create_product_attributes_metaboxes(){
+/**
+ * Add brand's logo meta box
+ */
+function anony_create_product_attributes_metaboxes() {
 	new ANONY_Term_Metabox(
 		array(
 			'id'       => 'anony_brand',
@@ -76,4 +69,13 @@ function anony_create_product_attributes_metaboxes(){
 	);
 }
 
+// Remove actions.
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+
+// Add actions.
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
+add_action( 'init', 'anony_create_product_attributes' );
+add_action( 'woocommerce_after_main_content', 'anony_woocommerce_after_main_content' );
+add_action( 'woocommerce_before_main_content', 'anony_woocommerce_before_main_content' );
+add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
