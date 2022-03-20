@@ -22,7 +22,7 @@ get_header();?>
 				
 			<?php
 			if ( has_action( 'page_ad' ) ) {
-				do_action( 'page_ad' )
+				do_action( 'page_ad' );
 			}
 			?>
 			
