@@ -26,8 +26,10 @@ function anony_load_defaults(){
 	);
 	
 	foreach( $default_templates as $type ){
-		add_filter( $type . '_template', function( $template ) {
-			$template = locate_template( 'defaults/index.php', false, false );
+
+		$type = in_array( $type, array( 'page' ) ) ? $type : 'index';
+		add_filter( $type . '_template', function( $template ) use(  $type ) {
+			$template = locate_template( 'defaults/' . $type . '.php', false, false );
 			return $template;
 		} );
 	}
