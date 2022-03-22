@@ -15,6 +15,7 @@ function clean(node){
 clean(document);
     
 window.onload = function() {
+
   "use strict";
   var loader = document.getElementById('anony-preloader');
   if(loader !== null) loader.style.display = 'none';
