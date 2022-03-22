@@ -127,6 +127,13 @@ add_action(
 			'icon'   => 'x',
 			'fields' => array(
 				array(
+					'id'       => 'load_minified_styles',
+					'title'    => esc_html__( 'Load minified styles', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Speeds up page load time.', 'smartpage' ) ,
+				),
+				array(
 					'id'       => 'compress_html',
 					'title'    => esc_html__( 'Compress HTML', 'smartpage' ),
 					'type'     => 'switch',
