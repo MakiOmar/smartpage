@@ -20,7 +20,7 @@ get_header( 'default' );
 
 	<div class="anony-grid-row anony-grid-col">
 
-		<div class="anony-grid-col-sm-9-5">
+		<div class="anony-grid-col anony-grid-col-sm-9-5">
 
 			<div class="anony-grid-col anony-posts-wrapper">
 
