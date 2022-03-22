@@ -65,8 +65,9 @@ add_filter(
         }
     
         $anony_options = ANONY_Options_Model::get_instance();
-    
-        if($anony_options->defer_stylesheets !== '1') { return $tag;
+        
+        if($anony_options->defer_stylesheets !== '1' || false  !== strpos( $tag, 'anony-main' ) || false  !== strpos( $tag, 'anony-theme-styles' ) ||  false  !== strpos( $tag, 'anony-responsive' ) ) { 
+            return $tag;
         }
         $tag = preg_replace("/media='\w+'/", "media='print' onload=\"this.media='all'\"", $tag);
 
