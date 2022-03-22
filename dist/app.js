@@ -1,1 +1,244 @@
-(()=>{var r,e={309:()=>{},202:()=>{},706:()=>{},454:()=>{}},o={};function a(r){var t=o[r];if(void 0!==t)return t.exports;var n=o[r]={exports:{}};return e[r](n,n.exports,a),n.exports}a.m=e,r=[],a.O=(e,o,t,n)=>{if(!o){var v=1/0;for(f=0;f<r.length;f++){for(var[o,t,n]=r[f],i=!0,p=0;p<o.length;p++)(!1&n||v>=n)&&Object.keys(a.O).every((r=>a.O[r](o[p])))?o.splice(p--,1):(i=!1,n<v&&(v=n));if(i){r.splice(f--,1);var s=t();void 0!==s&&(e=s)}}return e}n=n||0;for(var f=r.length;f>0&&r[f-1][2]>n;f--)r[f]=r[f-1];r[f]=[o,t,n]},a.o=(r,e)=>Object.prototype.hasOwnProperty.call(r,e),(()=>{var r={532:0,575:0,419:0,864:0};a.O.j=e=>0===r[e];var e=(e,o)=>{var t,n,[v,i,p]=o,s=0;if(v.some((e=>0!==r[e]))){for(t in i)a.o(i,t)&&(a.m[t]=i[t]);if(p)var f=p(a)}for(e&&e(o);s<v.length;s++)n=v[s],a.o(r,n)&&r[n]&&r[n][0](),r[n]=0;return a.O(f)},o=self.webpackChunksmartpage=self.webpackChunksmartpage||[];o.forEach(e.bind(null,0)),o.push=e.bind(null,o.push.bind(o))})(),a.O(void 0,[575,419,864],(()=>a(309))),a.O(void 0,[575,419,864],(()=>a(202))),a.O(void 0,[575,419,864],(()=>a(706)));var t=a.O(void 0,[575,419,864],(()=>a(454)));t=a.O(t)})();
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./src/vc-styles.scss":
+/*!****************************!*\
+  !*** ./src/vc-styles.scss ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/firebrick.scss":
+/*!****************************!*\
+  !*** ./src/firebrick.scss ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/theme-styles.scss":
+/*!*******************************!*\
+  !*** ./src/theme-styles.scss ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/main.scss":
+/*!***********************!*\
+  !*** ./src/main.scss ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/responsive.scss":
+/*!*****************************!*\
+  !*** ./src/responsive.scss ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/rtl.scss":
+/*!**********************!*\
+  !*** ./src/rtl.scss ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/dist/app": 0,
+/******/ 			"assets/css/rtl": 0,
+/******/ 			"assets/css/responsive": 0,
+/******/ 			"assets/css/main": 0,
+/******/ 			"assets/css/theme-styles": 0,
+/******/ 			"assets/css/skins/firebrick": 0,
+/******/ 			"assets/css/vc-styles": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunksmartpage"] = self["webpackChunksmartpage"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/firebrick.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/theme-styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/main.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/responsive.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/rtl.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/skins/firebrick","assets/css/vc-styles"], () => (__webpack_require__("./src/vc-styles.scss")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
