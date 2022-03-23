@@ -33,9 +33,8 @@ require_once wp_normalize_path( ANONY_LIBS_DIR . 'menus.php' );
 
 
 if ( ! defined( 'ANOENGINE' ) ) {
-
-	add_filter('template_include', 'anony_load_defaults');
-
+	// Load defaults.
+	add_filter( 'template_include', 'anony_load_defaults' );
 	return;
 }
 
