@@ -12,36 +12,85 @@ function anoe_dynamic_css() {
 }
 
 function anony_styles() {
-    $media = 'all';
 
-	$styles = array( 'main', 'responsive', 'theme-styles' );
+	$media = 'all';
 
-	$styles_libs = array( 'font-awesome.min', 'lightbox.min' );
-    
-	$styles = array_merge( $styles, $styles_libs );
+	if( class_exists( 'ANONY_Options_Model' ) ){
 
-	foreach ( $styles as $style ) {
+		$anony_options = ANONY_Options_Model::get_instance();
 
-		$handle = in_array( $style, $styles_libs ) ? $style : 'anony-' . $style;
+		$min_suffix = ( '1' !== $anony_options->load_minified_styles ) ? '' : '.min';
 
-		wp_enqueue_style(
-			$handle,
-			ANONY_THEME_URI . '/assets/css/' . $style . '.css',
-			false,
-			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/' . $style . '.css' )
-			),
-			$media
-		);
+		$media = ( $anony_options->defer_stylesheets === '1' ) ? 'print' : $media;
+
+	}else{
+		
+		$min_suffix = '';
 	}
+
+	// Main theme file (Soon will be replaced with theme-styles.css).
+	wp_enqueue_style(
+		'anony-main',
+		ANONY_THEME_URI . '/assets/css/main' . $min_suffix . '.css',
+		false,
+		filemtime(
+			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/main' . $min_suffix . '.css' )
+		),
+		$media
+	);
+
+	// Responsive styles.
+	wp_enqueue_style(
+		'anony-responsive',
+		ANONY_THEME_URI . '/assets/css/responsive' . $min_suffix . '.css',
+		false,
+		filemtime(
+			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/responsive' . $min_suffix . '.css' )
+		),
+		$media
+	);
+
+	// Theme styles. (Soon will replace main.css).
+	wp_enqueue_style(
+		'anony-theme-styles',
+		ANONY_THEME_URI . '/assets/css/theme-styles' . $min_suffix . '.css',
+		false,
+		filemtime(
+			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/theme-styles' . $min_suffix . '.css' )
+		),
+		$media
+	);  
+
+	// FontAwesome.
+	wp_enqueue_style(
+		'font-awesome',
+		ANONY_THEME_URI . '/assets/css/font-awesome' . $min_suffix . '.css',
+		false,
+		filemtime(
+			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/font-awesome' . $min_suffix . '.css' )
+		),
+		$media
+	); 
+
+	// Lightbox.
+	wp_enqueue_style(
+		'lightbox',
+		ANONY_THEME_URI . '/assets/css/lightbox' . $min_suffix . '.css',
+		false,
+		filemtime(
+			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/lightbox' . $min_suffix . '.css' )
+		),
+		$media
+	);    
+
 
 	if ( is_rtl() ) {
 		wp_enqueue_style(
 			'anony-rtl',
-			ANONY_THEME_URI . '/assets/css/rtl.css',
+			ANONY_THEME_URI . '/assets/css/rtl' . $min_suffix . '.css',
 			array( 'anony-main' ),
 			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/rtl.css' )
+				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/rtl' . $min_suffix . '.css' )
 			),
 			$media
 		);
@@ -52,10 +101,9 @@ function anony_styles() {
         
         $anony_options = ANONY_Options_Model::get_instance();
         
-        $media = ( $anony_options->defer_stylesheets !== '1' ) ? 'all' : $media;
 
     	// load prettyPhoto if needed
-    	if ( $anony_options->disable_prettyphoto != '1' ) {
+    	if ( '1' !== $anony_options->disable_prettyphoto ) {
     		$styles_libs[] = 'prettyPhoto';
     	}
     	
@@ -217,7 +265,13 @@ add_action(
 				font-display: fallback; /* Fix Ensure text remains visible during webfont load */
 			}
 		body{
-			background-color: #ecf0f0
+			background-color: #ecf0f0;
+			overflow-x: hidden;
+			font-size: 16px;
+		}
+		[class*="anony-grid-col-"] {
+		  display: inline-block;
+		  vertical-align: text-top;
 		}
 		#anony-hidden-search-form{
 			display: flex;
@@ -232,26 +286,20 @@ add_action(
 			background-color: rgba(0,0,0,0.9);
 			z-index: 1000000;
 		}
-		.anony-loader-img
-		{
-			min-height: 50px;
-			min-width: 200px;
-			margin-bottom: 20px;
+		#anony-preloader p{
+			font-size: 18px;
 		}
 		#anony-preloader{
 			position: fixed;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			flex-direction: column;
 			width: 100%;
 			height: 100%;
 			background: #fff;
 			z-index: 9999;
 			background-color: rgb(249, 249, 249)
-		}
-		#anony-preloader p{
-			position: absolute;
-			top:55%
 		}
 		#anony-loading {
 			position: fixed;
@@ -265,12 +313,8 @@ add_action(
 			background: rgb(93, 93, 92, 0.5);
 		}
 		.anony-loader-img{
-			position: absolute;
-			right: 0;
-			left: 0;
-			margin: auto;
-			top: 35%;
-			animation: 1.8s infinite heartbeat;
+			margin: 20px;
+			height: 150px;
 		}
 		@keyframes heartbeat {
 		  0% { transform: scale(1); }
