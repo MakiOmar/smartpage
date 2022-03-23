@@ -15,7 +15,7 @@ function anony_styles() {
 
 	$media = 'all';
 
-	if( class_exists( 'ANONY_Options_Model' ) ){
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
 
 		$anony_options = ANONY_Options_Model::get_instance();
 
@@ -23,8 +23,8 @@ function anony_styles() {
 
 		$media = ( $anony_options->defer_stylesheets === '1' ) ? 'print' : $media;
 
-	}else{
-		
+	} else {
+
 		$min_suffix = '';
 	}
 
@@ -59,7 +59,7 @@ function anony_styles() {
 			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/theme-styles' . $min_suffix . '.css' )
 		),
 		$media
-	);  
+	);
 
 	// FontAwesome.
 	wp_enqueue_style(
@@ -70,7 +70,7 @@ function anony_styles() {
 			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/font-awesome' . $min_suffix . '.css' )
 		),
 		$media
-	); 
+	);
 
 	// Lightbox.
 	wp_enqueue_style(
@@ -81,8 +81,7 @@ function anony_styles() {
 			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/lightbox' . $min_suffix . '.css' )
 		),
 		$media
-	);    
-
+	);
 
 	if ( is_rtl() ) {
 		wp_enqueue_style(
@@ -95,47 +94,43 @@ function anony_styles() {
 			$media
 		);
 	}
-	
-	
-	if( class_exists( 'ANONY_Options_Model' ) ){
-        
-        $anony_options = ANONY_Options_Model::get_instance();
-        
 
-    	// load prettyPhoto if needed
-    	if ( '1' !== $anony_options->disable_prettyphoto ) {
-    		$styles_libs[] = 'prettyPhoto';
-    	}
-    	
-    	$dynamic_deps = array( 'anony-main' );
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
 
-    	if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
-    
-    		$skin = $anony_options->color_skin;
-    
-    		$dynamic_deps = array( $skin . '-skin' );
-    
-    		wp_enqueue_style(
-    			$skin . '-skin',
-    			ANONY_THEME_URI . '/assets/css/skins/' . $skin . '.css',
-    			array( 'anony-main' ),
-    			filemtime(
-    				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/skins/' . $skin . '.css' )
-    			),
-    			$media
-    		);
-    	}
-    
-    	if ( $anony_options->dynamic_css_ajax != '1' ) {
-    		wp_enqueue_style( 'anonyengine-dynamics', admin_url( 'admin-ajax.php' ) . '?action=anoe_dynamic_css', $dynamic_deps, false, $media );
-    	}
-        
-    }
+		$anony_options = ANONY_Options_Model::get_instance();
+
+		// load prettyPhoto if needed
+		if ( '1' !== $anony_options->disable_prettyphoto ) {
+			$styles_libs[] = 'prettyPhoto';
+		}
+
+		$dynamic_deps = array( 'anony-main' );
+
+		if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
+
+			$skin = $anony_options->color_skin;
+
+			$dynamic_deps = array( $skin . '-skin' );
+
+			wp_enqueue_style(
+				$skin . '-skin',
+				ANONY_THEME_URI . '/assets/css/skins/' . $skin . '.css',
+				array( 'anony-main' ),
+				filemtime(
+					wp_normalize_path( ANONY_THEME_DIR . '/assets/css/skins/' . $skin . '.css' )
+				),
+				$media
+			);
+		}
+
+		if ( $anony_options->dynamic_css_ajax != '1' ) {
+			wp_enqueue_style( 'anonyengine-dynamics', admin_url( 'admin-ajax.php' ) . '?action=anoe_dynamic_css', $dynamic_deps, false, $media );
+		}
+	}
 
 }
 
 function anony_scripts() {
-	
 
 	/**
 *
@@ -177,7 +172,6 @@ function anony_scripts() {
 			true
 		);
 	}
-	
 
 	wp_enqueue_script( 'lightbox.min' );
 
@@ -206,31 +200,29 @@ function anony_scripts() {
 
 	// Localize the script with new data tinymce_comments
 	$anony_loca = array(
-		'textDir'             => ( is_rtl() ? 'rtl' : 'ltr' ),
-		'themeLang'           => get_bloginfo( 'language' ),
-		'anonyFormAuthor'     => esc_html__( 'Please enter a valid name', 'smartpage' ),
-		'anonyFormEmail'      => esc_html__( 'Please enter a valid email', 'smartpage' ),
-		'anonyFormUrl'        => esc_html__( 'Please use a valid website address', 'smartpage' ),
-		'anonyFormComment'    => esc_html__( 'Comment must be at least 20 characters', 'smartpage' ),
+		'textDir'          => ( is_rtl() ? 'rtl' : 'ltr' ),
+		'themeLang'        => get_bloginfo( 'language' ),
+		'anonyFormAuthor'  => esc_html__( 'Please enter a valid name', 'smartpage' ),
+		'anonyFormEmail'   => esc_html__( 'Please enter a valid email', 'smartpage' ),
+		'anonyFormUrl'     => esc_html__( 'Please use a valid website address', 'smartpage' ),
+		'anonyFormComment' => esc_html__( 'Comment must be at least 20 characters', 'smartpage' ),
 	);
-	
-	if( class_exists( 'ANONY_Options_Model' ) ){
-        
-        $anony_options = ANONY_Options_Model::get_instance();
-        
-        $anony_loca[ 'ajaxURL' ]         = ANONY_WPML_HELP::getAjaxUrl();
-        
-        $anony_loca[ 'anonyUseTinymce' ] = $anony_options->tinymce_comments == '1' ? true : false;
-        
-        $anony_loca[ 'anonyUsePrettyPhoto' ] = $anony_options->disable_prettyphoto == '1' ? false : true;
-        
-        
-        // load prettyPhoto if needed
-    	if ( $anony_options->disable_prettyphoto != '1' ) {
-    		wp_enqueue_script( 'jquery.prettyPhoto' );
-    	}
-        
-    }
+
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
+
+		$anony_options = ANONY_Options_Model::get_instance();
+
+		$anony_loca['ajaxURL'] = ANONY_WPML_HELP::getAjaxUrl();
+
+		$anony_loca['anonyUseTinymce'] = $anony_options->tinymce_comments == '1' ? true : false;
+
+		$anony_loca['anonyUsePrettyPhoto'] = $anony_options->disable_prettyphoto == '1' ? false : true;
+
+		// load prettyPhoto if needed
+		if ( $anony_options->disable_prettyphoto != '1' ) {
+			wp_enqueue_script( 'jquery.prettyPhoto' );
+		}
+	}
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }
 
@@ -324,19 +316,20 @@ add_action(
 		  100% { transform: scale(1); }
 		}
 		<?php
-		
-		if( class_exists( 'ANONY_Options_Model' ) ){
-		    $anony_options = ANONY_Options_Model::get_instance();
-		    
-		    if ( $anony_options->dynamic_css_ajax == '1' ) {
 
-    			ob_start();
-    
-    			include ANONY_THEME_DIR . '/assets/css/dynamic.php';
-    
-    			echo ob_get_clean();
-    		}
-		}?>
+		if ( class_exists( 'ANONY_Options_Model' ) ) {
+			$anony_options = ANONY_Options_Model::get_instance();
+
+			if ( $anony_options->dynamic_css_ajax == '1' ) {
+
+				ob_start();
+
+				include ANONY_THEME_DIR . '/assets/css/dynamic.php';
+
+				echo ob_get_clean();
+			}
+		}
+		?>
 	</style>
 	
 		<?php
