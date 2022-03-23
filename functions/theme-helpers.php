@@ -3,37 +3,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed direct.ly
 }
 
-function anony_load_defaults(){
-	$default_templates = array( 
-		'404',
-		'archive',
-		'attachment',
-		'author',
-		'category',
-		'date',
-		'embed',
-		'frontpage',
-		'home',
-		'index',
-		'page',
-		'paged',
-		'privacypolicy',
-		'search',
-		'single',
-		'singular',
-		'tag',
-		'taxonomy'
-	);
-	
-	foreach( $default_templates as $type ){
+/**
+ * Load default templates.
+ *
+ * @param string $template The path of the template to include.
+ * @return string The path of the template to include.
+ */
+function anony_load_defaults( $template ) {
 
-		$type = in_array( $type, array( 'page' ) ) ? $type : 'index';
-		add_filter( $type . '_template', function( $template ) use(  $type ) {
-			$template = locate_template( 'defaults/' . $type . '.php', false, false );
-			return $template;
-		} );
+	$template = locate_template( 'defaults/index.php', false, false );
+
+	if ( is_page() && !is_front_page() ) {
+		$template = locate_template( 'defaults/page.php', false, false );
 	}
+	return $template;
 }
+
 /**
  * @param $args  array Loop args
  * @param $title string Section title
