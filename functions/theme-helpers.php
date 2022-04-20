@@ -13,7 +13,7 @@ function anony_load_defaults( $template ) {
 
 	$template = locate_template( 'defaults/index.php', false, false );
 
-	if ( is_page() && !is_front_page() ) {
+	if ( is_page() && ! is_front_page() ) {
 		$template = locate_template( 'defaults/page.php', false, false );
 	}
 	return $template;
@@ -24,14 +24,13 @@ function anony_load_defaults( $template ) {
  * @param $title string Section title
  */
 function anony_category_posts_section( $args, $title = '' ) {
-    $grid = 'standard';
-    if ( class_exists( 'ANONY_Options_Model' ) ){
-        
-        $anony_options = ANONY_Options_Model::get_instance();
+	$grid = 'standard';
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
 
-	    $grid = $anony_options->posts_grid;
-    }
-	
+		$anony_options = ANONY_Options_Model::get_instance();
+
+		$grid = $anony_options->posts_grid;
+	}
 
 	$query = new WP_Query( $args );
 
@@ -56,24 +55,23 @@ function anony_category_posts_section( $args, $title = '' ) {
 }
 /**
  * Desides which sidebar to load according to page direction
- *
  */
 function anony_get_correct_sidebar() {
-    
-    if ( class_exists( 'ANONY_Options_Model' ) ){
-        $anony_options = ANONY_Options_Model::get_instance();
 
-    	if ( $anony_options->sidebar == 'left-sidebar' ) {
-    		get_sidebar();
-    		
-    		return;
-    	} elseif ( $anony_options->single_sidebar == '1' ) {
-    		get_sidebar( 'left' );
-    		return;
-    	}
-    }
-	
-    get_sidebar();
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
+		$anony_options = ANONY_Options_Model::get_instance();
+
+		if ( $anony_options->sidebar == 'left-sidebar' ) {
+			get_sidebar();
+
+			return;
+		} elseif ( $anony_options->single_sidebar == '1' ) {
+			get_sidebar( 'left' );
+			return;
+		}
+	}
+
+	get_sidebar();
 }
 
 /**
@@ -164,12 +162,12 @@ function anony_comments_number() {
  */
 function anony_common_post_data( $post_type = 'post' ) {
 	$grid = 'standard';
-    if ( class_exists( 'ANONY_Options_Model' ) ){
-        
-        $anony_options = ANONY_Options_Model::get_instance();
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
 
-	    $grid = $anony_options->posts_grid;
-    }
+		$anony_options = ANONY_Options_Model::get_instance();
+
+		$grid = $anony_options->posts_grid;
+	}
 
 	$ID                      = get_the_ID();
 	$temp['id']              = $ID;
@@ -179,7 +177,7 @@ function anony_common_post_data( $post_type = 'post' ) {
 	$temp['content']         = apply_filters( 'the_content', get_the_content() );
 	$temp['excerpt']         = esc_html( get_the_excerpt() );
 	$temp['thumb']           = has_post_thumbnail();
-	$temp['thumb_exists']    =  class_exists( 'ANONY_LINK_HELP' ) ? ANONY_LINK_HELP::curlUrlExists( get_the_post_thumbnail_url( $ID ) ) : get_the_post_thumbnail_url( $ID );
+	$temp['thumb_exists']    = class_exists( 'ANONY_LINK_HELP' ) ? ANONY_LINK_HELP::curlUrlExists( get_the_post_thumbnail_url( $ID ) ) : get_the_post_thumbnail_url( $ID );
 	$temp['thumb_img_full']  = get_the_post_thumbnail( $ID, 'full' );
 	$temp['thumb_img']       = get_the_post_thumbnail( $ID, 'category-post-thumb' );
 	$temp['thumbnail_img']   = get_the_post_thumbnail_url( $ID, 'thumbnail' );
