@@ -29,7 +29,7 @@ if ( ! class_exists( 'ANONY_VC_Fonts' ) ) {
 		 */
 		public function __construct( $library_data ) {
 			// check if visual composer is active
-			if ( ! ANONY_WPPLUGIN_HELP::isActive( 'js_composer/js_composer.php' ) ) {
+			if ( ! ANONY_Wp_Plugin_Help::is_active( 'js_composer/js_composer.php' ) ) {
 				return;
 			}
 
