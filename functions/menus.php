@@ -209,7 +209,7 @@ add_filter(
 	'wp_nav_menu_items',
 	function ( $item, $args ) {
 
-		if ( !class_exists( 'ANONY_WPML_HELP' ) || !ANONY_WPML_HELP::isActive() ) {
+		if ( !class_exists( 'ANONY_WPML_HELP' ) || !ANONY_WPML_HELP::is_active() ) {
 			return $item;
 		}
 
@@ -236,7 +236,7 @@ add_filter(
 
 
 function anony_get_wpml_switcher( $style = '1' ) {
-	if ( ! class_exists( 'ANONY_WPML_HELP' ) || ! ANONY_WPML_HELP::isActive() ) {
+	if ( ! class_exists( 'ANONY_WPML_HELP' ) || ! ANONY_WPML_HELP::is_active() ) {
 		return;
 	}
 
