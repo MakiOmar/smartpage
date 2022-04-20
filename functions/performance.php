@@ -459,7 +459,7 @@ add_action(
 // Add image sizes
 add_filter(
     'the_content', function ($content) {
-        return ANONY_STRING_HELP::addImagesMissingDimensions($content);
+        return ANONY_IMAGES_HELP::add_missing_dimensions($content);
     }
 );
 
