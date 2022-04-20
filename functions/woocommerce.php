@@ -45,7 +45,7 @@ function anony_woocommerce_after_main_content() {
  * Create brand attribute
  */
 function anony_create_product_attributes() {
-	ANONY_WOO_HELP::createProductAttribute( 'Brand' );
+	ANONY_WOO_HELP::create_product_attribute( 'Brand' );
 }
 
 /**
