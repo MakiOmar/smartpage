@@ -17,7 +17,7 @@ add_action(
 	'after_setup_theme',
 	function () {
 
-		if ( ! ANONY_WPML_HELP::isActive() ) {
+		if ( ! ANONY_WPML_HELP::is_active() ) {
 			return;
 		}
 
@@ -90,7 +90,7 @@ add_action(
 		// Sectoins
 		$sections = array();
 
-		$sliders = ANONY_WPMISC_HELP::getRevSliders();
+		$sliders = ANONY_Wp_Misc_Help::get_rev_sliders();
 
 		$sections['general'] = array(
 			'title'  => esc_html__( 'General', 'smartpage' ),
@@ -230,7 +230,7 @@ add_action(
 					'id'       => 'cf7_scripts',
 					'title'    => esc_html__( 'Contact form 7 scripts/styles', 'smartpage' ),
 					'type'     => 'select',
-					'options'  => ANONY_POST_HELP::getPagesIdsTitles(),
+					'options'  => ANONY_POST_HELP::queryPostTypeSimple( 'page' ),
 					'validate' => 'multiple_options',
 					'desc'     => esc_html__( 'Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', 'smartpage' ),
 				),
@@ -325,7 +325,7 @@ add_action(
 					'title'    => esc_html__( 'Select featured category', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => isset( $anony_options ) ? ANONY_TERM_HELP::wpTermQuery( $anony_options->featured_tax, 'id=>name' ) : array(),
+					'options'  => isset( $anony_options ) ? ANONY_TERM_HELP::wp_term_query( $anony_options->featured_tax, 'id=>name' ) : array(),
 					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && $anony_options->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
 					'note'     => ( isset( $anony_options ) && empty( $anony_options->featured_cat ) ? esc_html__( 'No category selected, you have to select one', 'smartpage' ) : '' ),
 				),
