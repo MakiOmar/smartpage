@@ -193,7 +193,7 @@ add_filter(
 add_filter(
 	'wp_nav_menu_items',
 	function ( $item, $args ) {
-		if ( $args->theme_location == 'anony-main-menu' && ( ! is_front_page() || ! is_page() ) ) {
+		if ( $args->theme_location == 'anony-main-menu' ) {
 			$item .= '<li class="anony-search-form-toggle active"><a href="#"><i class="fa fa-search"></i></a></li>';
 			return $item;
 		} else {
