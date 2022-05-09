@@ -117,8 +117,8 @@ final class ANONY_Site_Footer extends Library_Document {
 	/**
 	 * Register controls
 	 */
-	protected function _register_controls() {
-		parent::_register_controls();
+	protected function register_controls() {
+		parent::register_controls();
 
 	}
 

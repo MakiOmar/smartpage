@@ -35,7 +35,7 @@ final class DocumentsManager {
 		$current_theme = wp_get_theme();
 
 		$this->global_header_key = 'anony_global_header_template_for_' . $current_theme->Template;
-		// $this->global_footer_key = 'anony_global_footer_template_for_' . $current_theme->Template;
+		$this->global_footer_key = 'anony_global_footer_template_for_' . $current_theme->Template;
 		add_action( 'template_include', array( $this, '_includeDocTemplate' ), 11 );
 
 		add_action( 'get_header', array( $this, '_maybeRenderSiteHeader' ), 9 );
@@ -205,11 +205,11 @@ final class DocumentsManager {
 			$document->add_control(
 				'use_as_default',
 				array(
-					'label'        => esc_html__( 'Use as default', 'cafe-pro' ),
+					'label'        => esc_html__( 'Use as default', 'smartpage' ),
 					'type'         => Controls_Manager::SWITCHER,
 					'default'      => false,
 					'return_value' => $post->post_name,
-					'description'  => sprintf( __( 'If multiple %ss being set as default, the last one marked as default will be used.', 'cafe-pro' ), str_replace( '_', ' ', $type ) ),
+					'description'  => sprintf( __( 'If multiple %ss being set as default, the last one marked as default will be used.', 'smartpage' ), str_replace( '_', ' ', $type ) ),
 				)
 			);
 			$document->end_injection();
