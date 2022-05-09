@@ -31,7 +31,7 @@ add_action(
 				'name'          => $sidebar,
 				'id'            => $sidebar_id,
 				'class'         => $sidebar_id,
-				'before_widget' => '<div class="white-bg widgeted anony-grid-col-md-6 anony-grid-col-av-6 anony-grid-col-sm-12 anony-grid-col">',
+				'before_widget' => '<div class="white-bg widgeted anony-grid-col">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h3 class="widgeted_title">',
 				'after_title'   => '</h3>',
