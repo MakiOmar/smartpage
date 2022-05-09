@@ -209,7 +209,7 @@ add_filter(
 	'wp_nav_menu_items',
 	function ( $item, $args ) {
 
-		if ( !class_exists( 'ANONY_WPML_HELP' ) || !ANONY_WPML_HELP::is_active() ) {
+		if ( !class_exists( 'ANONY_Wpml_Help' ) || !ANONY_Wpml_Help::is_active() ) {
 			return $item;
 		}
 
@@ -220,7 +220,7 @@ add_filter(
 					  $curr_lang = $l;
 				}
 				$item .= '<li class="anony-lang">';
-				$item .= '<a class="lang-item ' . ANONY_WPML_HELP::ActiveLangClass( $l['language_code'] ) . '" href="' . $l['url'] . '">';
+				$item .= '<a class="lang-item ' . ANONY_Wpml_Help::active_lang_class( $l['language_code'] ) . '" href="' . $l['url'] . '">';
 				$item .= icl_disp_language( strtoupper( $l['language_code'] ) );
 				$item .= '</a>';
 				$item .= '</li>';
@@ -236,7 +236,7 @@ add_filter(
 
 
 function anony_get_wpml_switcher( $style = '1' ) {
-	if ( ! class_exists( 'ANONY_WPML_HELP' ) || ! ANONY_WPML_HELP::is_active() ) {
+	if ( ! class_exists( 'ANONY_Wpml_Help' ) || ! ANONY_Wpml_Help::is_active() ) {
 		return;
 	}
 
@@ -250,7 +250,7 @@ function anony_get_wpml_switcher( $style = '1' ) {
 				$curr_lang_flag = $l['country_flag_url'];
 			}
 
-			$active_class = ANONY_WPML_HELP::ActiveLangClass( $l['language_code'] );
+			$active_class = ANONY_Wpml_Help::active_lang_class( $l['language_code'] );
 
 			$temp['lang_url']  = $l['url'];
 			$temp['lang_code'] = icl_disp_language( strtoupper( $l['language_code'] ) );

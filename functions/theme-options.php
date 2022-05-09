@@ -17,7 +17,7 @@ add_action(
 	'after_setup_theme',
 	function () {
 
-		if ( ! ANONY_WPML_HELP::is_active() ) {
+		if ( ! ANONY_Wpml_Help::is_active() ) {
 			return;
 		}
 
@@ -230,7 +230,7 @@ add_action(
 					'id'       => 'cf7_scripts',
 					'title'    => esc_html__( 'Contact form 7 scripts/styles', 'smartpage' ),
 					'type'     => 'select',
-					'options'  => ANONY_POST_HELP::queryPostTypeSimple( 'page' ),
+					'options'  => ANONY_Post_Help::queryPostTypeSimple( 'page' ),
 					'validate' => 'multiple_options',
 					'desc'     => esc_html__( 'Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', 'smartpage' ),
 				),

@@ -444,7 +444,7 @@ add_action(
         $anony_options = ANONY_Options_Model::get_instance();
     
         if(!empty($anony_options->preload_fonts)) {
-            $arr = ANONY_STRING_HELP::lineByLineTextArea($anony_options->preload_fonts);
+            $arr = ANONY_STRING_HELP::line_by_line_textarea($anony_options->preload_fonts);
         
             if(!is_array($arr)) { return;
             }

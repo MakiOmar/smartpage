@@ -30,7 +30,7 @@ if($sliderOpt != 'rev-slider') {
         
 
     }elseif($sliderOpt == 'featured-post') {
-        $featured_args['post__not_in'] =  ANONY_POST_HELP::queryIdsByMeta('anony__set_as_featured', 'on');
+        $featured_args['post__not_in'] =  ANONY_Post_Help::queryIdsByMeta('anony__set_as_featured', 'on');
 
     }
     

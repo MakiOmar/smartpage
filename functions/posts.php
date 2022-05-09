@@ -45,13 +45,12 @@ add_filter(
 				array(
 					esc_html__( 'New', 'smartpage' ),
 					esc_html__( 'News', 'smartpage' ),
-				),
+				)
 		);
 
 		return array_merge( $custom_post_types, $custom_posts );
 	}
 );
-
 
 /**
  * Extend custom taxonomies

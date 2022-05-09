@@ -212,7 +212,7 @@ function anony_scripts() {
 
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		$anony_loca['ajaxURL'] = ANONY_WPML_HELP::getAjaxUrl();
+		$anony_loca['ajaxURL'] = ANONY_Wpml_Help::get_ajax_url();
 
 		$anony_loca['anonyUseTinymce'] = $anony_options->tinymce_comments == '1' ? true : false;
 
