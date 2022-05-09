@@ -1405,15 +1405,6 @@ header {
   box-shadow: 0px 0px 5px #888888;
 }
 
-.widgeted ul li {
-  padding-top: 8px;
-  border-bottom: 1px solid rgba(35, 0, 5, 0.1);
-}
-
-.widgeted ul li:last-child {
-  border-bottom: none;
-}
-
 /***End sidebars***/
 #fixed-body-bg {
   /*background: url(../../images/pattern-2.png) repeat fixed;
