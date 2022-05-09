@@ -44,7 +44,7 @@ jQuery(document).ready(function($){
 		//Close all dropdowns when click on any place in the document
 		//And this clicked place is not of toggle elements
 		$(document).click( function(e){
-			if(!$(e.target.offsetParent).is('.toggle-category') && !$(e.target).is('.toggle-category')){
+			if(!$(e.target.offsetParent).is('.toggle-category') && !$(e.target).is('.toggle-category') && !$(e.target.parentElement).is('.toggle-category') ){
 				$('.anony-dropdown').slideUp('slow');
 				$('.anony-dropdown').removeClass('anony-show');
 				$('.toggle-category').find('i').removeClass("fa-minus").addClass("fa-plus");
