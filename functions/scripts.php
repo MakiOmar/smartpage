@@ -3,14 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed direct.ly
 }
 
-add_action( 'wp_ajax_anoe_dynamic_css', 'anoe_dynamic_css' );
-add_action( 'wp_ajax_nopriv_anoe_dynamic_css', 'anoe_dynamic_css' );
-
-function anoe_dynamic_css() {
-	include ANONY_THEME_DIR . '/assets/css/dynamic.php';
-	exit;
-}
-
 function anony_styles() {
 
 	$media = 'all';
@@ -103,7 +95,7 @@ function anony_styles() {
 		if ( '1' !== $anony_options->disable_prettyphoto ) {
 			$styles_libs[] = 'prettyPhoto';
 		}
-
+/*
 		$dynamic_deps = array( 'anony-main' );
 
 		if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
@@ -122,10 +114,7 @@ function anony_styles() {
 				$media
 			);
 		}
-
-		if ( $anony_options->dynamic_css_ajax != '1' ) {
-			wp_enqueue_style( 'anonyengine-dynamics', admin_url( 'admin-ajax.php' ) . '?action=anoe_dynamic_css', $dynamic_deps, false, $media );
-		}
+*/
 	}
 
 }
@@ -244,7 +233,7 @@ add_action(
 	
 	<!-- Head styles -->
 	<style type="text/css">
-		@font-face{
+		/*@font-face{
 			font-family:'FontAwesome';
 			src:url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.eot?v=4.7.0');
 			src:url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
@@ -255,7 +244,7 @@ add_action(
 				font-weight:normal;
 				font-style:normal;
 				font-display: fallback; /* Fix Ensure text remains visible during webfont load */
-			}
+			/*}*/
 		body{
 			background-color: #ecf0f0;
 			overflow-x: hidden;
@@ -315,21 +304,6 @@ add_action(
 		  75% { transform: scale(1.05); }
 		  100% { transform: scale(1); }
 		}
-		<?php
-
-		if ( class_exists( 'ANONY_Options_Model' ) ) {
-			$anony_options = ANONY_Options_Model::get_instance();
-
-			if ( $anony_options->dynamic_css_ajax == '1' ) {
-
-				ob_start();
-
-				include ANONY_THEME_DIR . '/assets/css/dynamic.php';
-
-				echo ob_get_clean();
-			}
-		}
-		?>
 	</style>
 	
 		<?php
