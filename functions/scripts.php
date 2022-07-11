@@ -52,7 +52,7 @@ function anony_styles() {
 		),
 		$media
 	);
-
+/*
 	// FontAwesome.
 	wp_enqueue_style(
 		'font-awesome',
@@ -74,7 +74,7 @@ function anony_styles() {
 		),
 		$media
 	);
-
+*/
 	if ( is_rtl() ) {
 		wp_enqueue_style(
 			'anony-rtl',
