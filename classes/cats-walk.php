@@ -27,11 +27,23 @@ if ( ! class_exists( 'ANONY_Cats_Walk' ) ) {
 	class ANONY_Cats_Walk extends Walker_Category {
 
 		/**
+		 * Dropdown settings
+		 * 
+		 * @var array
+		 */ 
+		public $dropdown_settings = [];
+
+		/**
 		 * Tree type
 		 *
 		 * @var string
 		 */
 		public $tree_type = 'category';
+
+		public function __construct( $settings = array() ) {
+
+			$this->dropdown_settings = $settings;
+		}
 		/**
 		 * Starts the list before the elements are added.
 		 *
