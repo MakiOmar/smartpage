@@ -127,6 +127,20 @@ add_action(
 			'icon'   => 'x',
 			'fields' => array(
 				array(
+					'id'       => 'disable_rsponsive_css',
+					'title'    => esc_html__( 'Disable responsive css', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'You may need to disable theme\'s responsive css if all your pages are built with elementor, Or you think this introduces more speed', 'smartpage' ) ,
+				),
+				array(
+					'id'       => 'disable_main_css',
+					'title'    => esc_html__( 'Disable Main css', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'You may need to disable theme\'s main css if you think this introduces more speed and will not affect design', 'smartpage' ) ,
+				),
+				array(
 					'id'       => 'load_minified_styles',
 					'title'    => esc_html__( 'Load minified styles', 'smartpage' ),
 					'type'     => 'switch',
@@ -138,7 +152,7 @@ add_action(
 					'title'    => esc_html__( 'Compress HTML', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Please activate onlyif ou think that GZIP is not enabled on your server.', 'smartpage' ) . ' <a href="https://www.giftofspeed.com/gzip-test/">' . esc_html__( 'Check gzip compression', 'smartpage' ) . '</a>',
+					'desc'     => esc_html__( 'Please activate only if you think that GZIP is not enabled on your server.', 'smartpage' ) . ' <a href="https://www.giftofspeed.com/gzip-test/">' . esc_html__( 'Check gzip compression', 'smartpage' ) . '</a>',
 				),
 				array(
 					'id'       => 'query_string',
