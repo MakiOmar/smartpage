@@ -26,10 +26,6 @@
 
 <input type="hidden" id="anony_ajax_url" value="<?php echo $ajaxUrl; ?>" />
 
-<div id="anony-loading">
-	<div id="anony-page-loading-wrapper"><div id="anony-page-loading-bg"></div></div>
-</div>
-
 <?php wp_footer(); ?> 
 	 
 <?php do_action( 'anony_after_page_footer' ); ?>
