@@ -123,16 +123,18 @@ html {
 }
 
 body :not(i) {
-  font-family: "hsn_shahd_boldbold";
-  font-size: 14px;
   font-style: normal;
   letter-spacing: 0;
 }
 
-/*h1,h2,h3,h4,h5,h6{
-	font-family:'hsn_shahd_boldbold';
+body :not(i), h1, h2, h3, h4, h5, h6 {
+  font-family: "hsn_shahd_boldbold";
 }
-*/
+
+.elementor-element .elementor-widget-container .elementor-heading-title {
+  font-family: "hsn_shahd_boldbold" !important;
+}
+
 a.pp_close, a.pp_expand {
   text-indent: 10000px;
 }

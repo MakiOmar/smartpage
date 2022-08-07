@@ -101,11 +101,7 @@ i{
 vertical-align: middle;
 	font-style: normal;
 }
-*{
-	margin: 0;
-	padding:0;
-	box-sizing: inherit;
-}
+
 [class*='anony-grid-col-']{
 	display: inline-block;
 	vertical-align: text-top;
@@ -222,14 +218,7 @@ tr:nth-child(even) {
 /***End Custom Fontawesome colors***/
 
 /***Header****/
-	header {
-		margin-top: 0;
-		margin-bottom: 15px;
-		max-height: 100%;
-		-webkit-box-shadow: 0 8px 10px -6px #4b4949;
-		-moz-box-shadow: 0 8px 10px -6px #4b4949;
-		box-shadow: 0 8px 10px -6px #4b4949;
-	}
+	
 	#anony-grid-wrapper{
 		margin: auto;
 		position: relative;
