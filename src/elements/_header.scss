@@ -1,0 +1,12 @@
+header {
+	margin-top: 0;
+	margin-bottom: 15px;
+	width: 100%
+}
+header.elemetor{
+	margin: initial;
+}
+header.anony-absolute-header{
+	position: absolute;
+	z-index: 99
+}
