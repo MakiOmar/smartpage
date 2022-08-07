@@ -84,11 +84,16 @@ add_filter(
     
         if (false === strpos($src, '.js') ) { return $tag;
         }
+
+        if (false !== strpos($tag, 'defer') ) { return $tag;
+        }
+
         //if ( strpos( $src, 'wp-includes/js' ) ) return $tag; //Exclude all from w-includes
     
         //Try not defer all
         $not_deferred = [
         'syntaxhighlighter-core',
+        'jquery-core',
         'wp-polyfill',
         'wp-hooks',
         'wp-i18n',
@@ -360,50 +365,85 @@ add_action(
 );
 
 /**
-* 
+ * 
+ * Disable All WooCommerce  Styles
+ */
+function dequeue_wc_style() {
+    $woo_styles = [
+        'woocommerce-general',
+        'woocommerce-general-rtl',
+        'woocommerce-layout',
+        'woocommerce-layout-rtl',
+        'woocommerce-smallscreen',
+        'woocommerce-smallscreen-rtl',
+        'woocommerce_frontend_styles',
+        'woocommerce_fancybox_styles',
+        'woocommerce_chosen_styles',
+        'woocommerce_prettyPhoto_css',
+		'wc-blocks-vendors-style',
+		'wc-blocks-style-rtl'
+
+        ];
+    
+    foreach( $woo_styles as $style){
+        wp_deregister_style($style);
+        wp_dequeue_style($style);
+        
+    }
+}
+
+/**
+ * 
+ * Disable All WooCommerce Scripts
+ */
+function dequeue_wc_scripts(){
+    $woo_scripts = [ 
+        'wc_price_slider',
+        'wc-single-product',
+        'wc-add-to-cart',
+        'wc-cart-fragments',
+        'wc-checkout',
+        'wc-add-to-cart-variation',
+        'wc-single-product',
+        'wc-cart',
+        'wc-chosen',
+        'woocommerce',
+        'prettyPhoto',
+        'prettyPhoto-init',
+        'jquery-blockui',
+        'jquery-placeholder',
+        'fancybox',
+        'jqueryui'
+        ];
+        
+    foreach( $woo_scripts as $script){
+        wp_deregister_script($script);
+        wp_dequeue_script($script);
+        
+    }
+}
+
+/**
+ * 
  * Disable All WooCommerce  Styles and Scripts Except Shop Pages
-*/
-add_action(
-    'wp_enqueue_scripts', function () {
-        $anony_options = ANONY_Options_Model::get_instance();
+ */
+function load_scripts_on_wc_templates_only(){
+    if ( is_admin() ) {
+        return;
+    }
+    $anony_options = ANONY_Options_Model::get_instance();
     
-        if ($anony_options->wc_shop_only_scripts != 1) { return;
+    if ($anony_options->wc_shop_only_scripts != 1) { return;
+    }
+    if (function_exists('is_woocommerce') ) {
+        if (! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
+            dequeue_wc_style();
+            dequeue_wc_scripts();
         }
-    
-        //Check if woocommerce plugin is active
-        if (function_exists('is_woocommerce') ) {
-            if (! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
-                // Styles
-                wp_dequeue_style('woocommerce-general');
-                wp_dequeue_style('woocommerce-layout');
-                wp_dequeue_style('woocommerce-smallscreen');
-                wp_dequeue_style('woocommerce_frontend_styles');
-                wp_dequeue_style('woocommerce_fancybox_styles');
-                wp_dequeue_style('woocommerce_chosen_styles');
-                wp_dequeue_style('woocommerce_prettyPhoto_css');
-                // Scripts
-                wp_dequeue_script('wc_price_slider');
-                wp_dequeue_script('wc-single-product');
-                wp_dequeue_script('wc-add-to-cart');
-                wp_dequeue_script('wc-cart-fragments');
-                wp_dequeue_script('wc-checkout');
-                wp_dequeue_script('wc-add-to-cart-variation');
-                wp_dequeue_script('wc-single-product');
-                wp_dequeue_script('wc-cart');
-                wp_dequeue_script('wc-chosen');
-                wp_dequeue_script('woocommerce');
-                wp_dequeue_script('prettyPhoto');
-                wp_dequeue_script('prettyPhoto-init');
-                wp_dequeue_script('jquery-blockui');
-                wp_dequeue_script('jquery-placeholder');
-                wp_dequeue_script('fancybox');
-                wp_dequeue_script('jqueryui');
-            }
-        }
-    
-    
-    }, 11
-);
+    }
+}
+
+add_action( 'wp_print_styles', 'load_scripts_on_wc_templates_only' );
 
 //Fix: Notice: ob_end_flush(): failed to send buffer of zlib output compression
 if(ini_get('zlib.output_compression') == '1') {
