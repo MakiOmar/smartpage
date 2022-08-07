@@ -5,3 +5,5 @@ webpack.mix.js
 node_modules
 _notes/
 *_notes/
+*/src/*.css
+src/*.css
