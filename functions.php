@@ -60,10 +60,13 @@ require_once wp_normalize_path( ANONY_LIBS_DIR . 'data-hooks.php' );
  */
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'posts.php' );
 
-/**
- * WooCommerce.
- */
-require_once wp_normalize_path( ANONY_LIBS_DIR . 'woocommerce.php' );
+if ( class_exists( 'woocommerce' ) ){
+	/**
+	 * WooCommerce.
+	 */
+	require_once wp_normalize_path( ANONY_LIBS_DIR . 'woocommerce.php' );
+}
+
 
 /**
  * Performance.
