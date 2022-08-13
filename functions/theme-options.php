@@ -86,6 +86,12 @@ add_action(
 			),
 
 		);
+		
+		if( class_exists( 'woocommerce' ) ){
+			$options_nav[ 'woocommerce' ] = array(
+				'title' => esc_html__( 'woocommerce', 'smartpage' )
+			);
+		}
 
 		// Sectoins
 		$sections = array();
@@ -706,6 +712,21 @@ add_action(
 
 			),
 		);
+		if( class_exists( 'woocommerce' ) ){
+			$sections['woocommerce'] = array(
+				'title'  => esc_html__( 'Woocommerce', 'smartpage' ),
+				'icon'   => 'x',
+				'fields' => array(
+					array(
+						'id'       => 'hide_no_price_products',
+						'title'    => esc_html__( 'Hide products without prices', 'smartpage' ),
+						'type'     => 'switch',
+						'validate' => 'no_html',
+					)
+				)
+			);
+		}
+		
 
 		$widgets = array( 'ANONY_Sidebar_Ad' );
 

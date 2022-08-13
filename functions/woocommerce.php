@@ -69,6 +69,21 @@ function anony_create_product_attributes_metaboxes() {
 	);
 }
 
+function anony_hide_products_without_price( $query ) {
+	$anony_options = ANONY_Options_Model::get_instance();
+
+	if ( '1' === $anony_options->hide_no_price_products && ! is_admin() && in_array( $query->get( 'post_type' ), array( 'product' ) ) ) {
+		$meta_query   = $query->get( 'meta_query' );
+		$meta_query[] = array(
+			'key'     => '_price',
+			'value'   => '',
+			'compare' => '!=',
+		);
+		$query->set( 'meta_query', $meta_query );
+	}
+
+}
+
 // Remove actions.
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -79,3 +94,5 @@ add_action( 'init', 'anony_create_product_attributes' );
 add_action( 'woocommerce_after_main_content', 'anony_woocommerce_after_main_content' );
 add_action( 'woocommerce_before_main_content', 'anony_woocommerce_before_main_content' );
 add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
+add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
+
