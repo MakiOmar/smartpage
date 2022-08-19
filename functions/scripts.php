@@ -45,6 +45,19 @@ function anony_styles() {
 		);
 	}
 	
+	if( class_exists( 'woocommerce' ) ){
+		// WooCommerce styles.
+		wp_enqueue_style(
+			'anony-woocommerce',
+			ANONY_THEME_URI . '/assets/css/woocommerce' . $min_suffix . '.css',
+			false,
+			filemtime(
+				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/woocommerce' . $min_suffix . '.css' )
+			),
+			$media
+		);
+	}
+	
 
 	// Theme styles. (Soon will replace main.css).
 	wp_enqueue_style(
@@ -161,7 +174,7 @@ function anony_scripts() {
 		wp_register_script(
 			$handle,
 			ANONY_THEME_URI . '/assets/js/' . $script . '.js',
-			array( 'jquery', 'jquery.helpme' ),
+			array( 'jquery' ),
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/js/' . $script . '.js' )
 			),
