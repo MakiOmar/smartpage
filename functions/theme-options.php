@@ -369,20 +369,21 @@ add_action(
 		$sections['general-colors'] = array(
 			'title'  => esc_html__( 'General', 'smartpage' ),
 			'icon'   => 'E',
-			'fields' => array(
+			'fields' => array(		
 				array(
-					'id'       => 'color_skin',
-					'title'    => esc_html__( 'Color skin', 'smartpage' ),
-					'type'     => 'select',
-					'validate' => 'multiple_options',
-					'options'  => array(
-						'blue'      => esc_html__( 'Blue', 'smartpage' ),
-						'firebrick' => esc_html__( 'Firebrick', 'smartpage' ),
-						'red'       => esc_html__( 'Red', 'smartpage' ),
-						'custom'    => esc_html__( 'Custom', 'smartpage' ),
-					),
-					'default'  => 'firebrick',
-					'desc'     => esc_html__( 'Other color options like (Menu colors, Headings colors) works only if color skin is custom', 'smartpage' ),
+					'id'       => 'primary_skin_color',
+					'title'    => esc_html__( 'Primary color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#230005',
+				),
+				
+				array(
+					'id'       => 'secondary_skin_color',
+					'title'    => esc_html__( 'secondary color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#e2e2e2',
 				),
 			),
 		);

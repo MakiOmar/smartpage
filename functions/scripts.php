@@ -329,3 +329,5 @@ add_action(
 		<?php
 	}
 );
+
+include_once wp_normalize_path( ANONY_LIBS_DIR . 'skin.php' );
