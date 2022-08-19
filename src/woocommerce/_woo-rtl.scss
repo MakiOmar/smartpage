@@ -1,0 +1,33 @@
+body.rtl{
+	.elementor-element .elementor-widget-container .elementor-heading-title,.elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .woocommerce-loop-product__title,.elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .woocommerce-loop-category__title,.elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .button, .elementor-widget-search-form input[type="search"].elementor-search-form__input,.elementor-widget-woocommerce-menu-cart .elementor-menu-cart__product-name a{
+		font-family:'dintext';
+	}
+	
+	span.onsale {
+		top: 1.5em;
+		right: 1.5em;
+		left: auto;
+	}
+	
+	ul.products li.product, .woocommerce-page ul.products li.product {
+		margin: 0 0 0.8em 0.8em;
+	}
+	
+	.woocommerce .products li .woocommerce-Price-amount bdi{
+		flex-direction: row-reverse;
+	}
+}
+
+@media screen and ( min-width:768px ){
+	body.rtl{
+		#content div.product div.summary, div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
+			padding-left: 10px;
+			padding-right: 5px;
+		}
+
+		#content div.product div.images, div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images{
+			padding-right: 10px;
+			padding-left: 5px;
+		}
+	}
+}
