@@ -115,26 +115,6 @@ function anony_styles() {
 		if ( '1' !== $anony_options->disable_prettyphoto ) {
 			$styles_libs[] = 'prettyPhoto';
 		}
-/*
-		$dynamic_deps = array( 'anony-main' );
-
-		if ( $anony_options->color_skin !== 'custom' && ! empty( $anony_options->color_skin ) ) {
-
-			$skin = $anony_options->color_skin;
-
-			$dynamic_deps = array( $skin . '-skin' );
-
-			wp_enqueue_style(
-				$skin . '-skin',
-				ANONY_THEME_URI . '/assets/css/skins/' . $skin . '.css',
-				array( 'anony-main' ),
-				filemtime(
-					wp_normalize_path( ANONY_THEME_DIR . '/assets/css/skins/' . $skin . '.css' )
-				),
-				$media
-			);
-		}
-*/
 	}
 
 }
