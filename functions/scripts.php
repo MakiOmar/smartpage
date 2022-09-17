@@ -130,13 +130,16 @@ function anony_scripts() {
 
 	$scripts = array(
 		'tabs',
-		'download',
 		'ajax_comment',
 		'custom',
 		'featured-slider',
 		'cats-menu',
 	);
-
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
+		if ( '1' === $anony_options->enable_downloads ) {
+			$scripts [] = 'download';
+		}
+	}
 	// load prettyPhoto if needed
 	$libs_scripts[] = 'jquery.prettyPhoto';
 	$libs_scripts[] = 'lightbox.min';
@@ -232,7 +235,7 @@ add_action(
 	function () { ?>
 	
 	<!-- Head styles -->
-	<style type="text/css">
+	<style id="anony-head-styles" type="text/css">
 		/*@font-face{
 			font-family:'FontAwesome';
 			src:url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -252,7 +255,7 @@ add_action(
 		}
 		[class*="anony-grid-col-"] {
 		  display: inline-block;
-		  vertical-align: text-top;
+		  vertical-align: top;
 		}
 		#anony-hidden-search-form{
 			display: flex;
