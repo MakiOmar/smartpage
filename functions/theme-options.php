@@ -84,6 +84,12 @@ add_action(
 			'miscellanous' => array(
 				'title' => esc_html__( 'Miscellanous', 'smartpage' ),
 			),
+			
+			// Modules --------------------------------------------
+			'modules'        => array(
+				'title'    => esc_html__( 'Modules', 'smartpage' ),
+				'sections' => array( 'post-types' ),
+			),
 
 		);
 		
@@ -127,7 +133,7 @@ add_action(
 				),
 			),
 		);
-
+		
 		$sections['Performance'] = array(
 			'title'  => esc_html__( 'Performance', 'smartpage' ),
 			'icon'   => 'x',
@@ -247,23 +253,6 @@ add_action(
 				),
 
 				array(
-					'id'       => 'cf7_scripts',
-					'title'    => esc_html__( 'Contact form 7 scripts/styles', 'smartpage' ),
-					'type'     => 'select',
-					'options'  => ANONY_Post_Help::queryPostTypeSimple( 'page' ),
-					'validate' => 'multiple_options',
-					'desc'     => esc_html__( 'Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'wc_shop_only_scripts',
-					'title'    => esc_html__( 'Woocommerce shop only scripts/styles', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', 'smartpage' ),
-				),
-
-				array(
 					'id'       => 'disable_jq_migrate',
 					'title'    => esc_html__( 'Disable jquery migrate', 'smartpage' ),
 					'type'     => 'switch',
@@ -290,6 +279,7 @@ add_action(
 				),
 			),
 		);
+		
 
 		$sections['slider'] = array(
 			'title'  => esc_html__( 'Slider', 'smartpage' ),
@@ -713,6 +703,40 @@ add_action(
 
 			),
 		);
+		
+		$sections['post-types'] = array(
+			'title'  => esc_html__( 'Post types', 'smartpage' ),
+			'icon'   => 'x',
+			'fields' => array(
+				array(
+					'id'       => 'enable_portfolio',
+					'title'    => esc_html__( 'Enable portfolio', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				
+				array(
+					'id'       => 'enable_news',
+					'title'    => esc_html__( 'Enable news', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				
+				array(
+					'id'       => 'enable_downloads',
+					'title'    => esc_html__( 'Enable downloads', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				
+				array(
+					'id'       => 'enable_testimonials',
+					'title'    => esc_html__( 'Enable testimonials', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				)
+			)
+		);
 		if( class_exists( 'woocommerce' ) ){
 			$sections['woocommerce'] = array(
 				'title'  => esc_html__( 'Woocommerce', 'smartpage' ),
@@ -723,9 +747,53 @@ add_action(
 						'title'    => esc_html__( 'Hide products without prices', 'smartpage' ),
 						'type'     => 'switch',
 						'validate' => 'no_html',
-					)
+					),
+					
+					array(
+						'id'       => 'related_products_title',
+						'title'    => esc_html__( 'Related products title', 'smartpage' ),
+						'type'     => 'text',
+						'validate' => 'no_html',
+						'default'  => 'Related products',
+					),
 				)
 			);
+
+			$sections['Performance']['fields'][] = array(
+				'id'       => 'wc_shop_only_scripts',
+				'title'    => esc_html__( 'Woocommerce shop only scripts/styles', 'smartpage' ),
+				'type'     => 'switch',
+				'validate' => 'no_html',
+				'desc'     => esc_html__( 'Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', 'smartpage' ),
+			);
+			
+			$sections['Performance']['fields'][] = array(
+				'id'       => 'wc_disable_srcset',
+				'title'    => esc_html__( 'Disable srcset meta', 'smartpage' ),
+				'type'     => 'switch',
+				'validate' => 'no_html',
+				'desc'     => esc_html__( 'Sometimes you may need to disable srcsets on mobile if you need to set the image size manually on mobile devices. Use the option below to set product thumbnail size on mobile' ),
+			);
+			
+			$sections['Performance']['fields'][] = array(
+				'id'       => 'wc_mobile_thumb_size',
+				'title'    => esc_html__( 'Product thumnbnail size on mobile', 'smartpage' ),
+				'type'     => 'number',
+				'validate' => 'no_html',
+			);
+		}
+		
+		// If contact form 7 is acive
+		if ( defined( 'WPCF7_PLUGIN' ) ){
+			$sections['Performance']['fields'][] = array(
+				'id'       => 'cf7_scripts',
+				'title'    => esc_html__( 'Contact form 7 scripts/styles', 'smartpage' ),
+				'type'     => 'select',
+				'options'  => ANONY_Post_Help::queryPostTypeSimple( 'page' ),
+				'validate' => 'multiple_options',
+				'desc'     => esc_html__( 'Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', 'smartpage' ),
+			);
+
 		}
 		
 
