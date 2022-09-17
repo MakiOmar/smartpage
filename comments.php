@@ -32,7 +32,10 @@ $data = array(
 			'echo'        => false,
 			'avatar_size' => '64',
 			'format'      => 'xhtml',
+			'reverse_top_level' => true, //Newest first
+			'type'        => 'comment', //Don't output pingbacks & trackbacks
 			'style'       => 'div',
+			//'callback'    => 'anony_better_comments'
 		)
 	),
 
