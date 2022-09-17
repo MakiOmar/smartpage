@@ -63,15 +63,18 @@ if ( ! empty( $product_tabs ) ) :
 	
 	<div class="anony-wc-reviews">
 		<?php foreach ( $reviews as $key => $product_tab ) : ?>
-				<!-- HTML class anony-custom-bullets for custom ul bullets style -->
-				<div class="anony-custom-bullets woocommerce-panel--<?php echo esc_attr( $key ); ?> entry-content">
-					<?php
-					if ( isset( $product_tab['callback'] ) ) {
+			<h3>
+				<a><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></a>
+			</h3>
+			<!-- HTML class anony-custom-bullets for custom ul bullets style -->
+			<div class="anony-custom-bullets woocommerce-panel--<?php echo esc_attr( $key ); ?> entry-content">
+				<?php
+				if ( isset( $product_tab['callback'] ) ) {
 
-						call_user_func( $product_tab['callback'], $key, $product_tab );
-					}
-					?>
-				</div>
+					call_user_func( $product_tab['callback'], $key, $product_tab );
+				}
+				?>
+			</div>
 		<?php endforeach; ?>
 	</div>
 
