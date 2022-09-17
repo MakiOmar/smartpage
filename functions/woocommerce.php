@@ -24,24 +24,6 @@ function anony_woo_add_theme_support() {
 }
 
 /**
- * Wrap WooCommerce content with apropriate markup
- */
-function anony_woocommerce_before_main_content() {
-	echo '<div class="anony-grid-col anony-post-contents anony-single_post">
-							
-				<div class="anony-post-info">
-								
-						<div class="anony-single-text">';
-}
-
-/**
- * Close wrapped WooCommerce content with apropriate markup
- */
-function anony_woocommerce_after_main_content() {
-	echo '</div></div></div>';
-}
-
-/**
  * Create brand attribute
  */
 function anony_create_product_attributes() {
@@ -198,6 +180,17 @@ function anony_add_percentage_to_sale_badge( $html, $post, $product ) {
   return '<span class="onsale percent">' . $percentage . '</span>';
 }
 
+
+function anony_change_related_products_text($new_text, $related_text, $source)
+{
+     if ($related_text === 'Related products' && $source === 'woocommerce') {
+		 $anony_options = ANONY_Options_Model::get_instance();
+		 if( !empty( $anony_options->related_products_title  ) ){
+			 $new_text = $anony_options->related_products_title;
+		 }
+     }
+     return $new_text;
+}
 // Remove actions.
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -206,8 +199,6 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 // Add actions.
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
 add_action( 'init', 'anony_create_product_attributes' );
-add_action( 'woocommerce_after_main_content', 'anony_woocommerce_after_main_content' );
-add_action( 'woocommerce_before_main_content', 'anony_woocommerce_before_main_content' );
 add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
 add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
@@ -215,3 +206,9 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_l
 add_action('woocommerce_single_product_summary', 'change_single_product_ratings', 2 );
 
 add_filter( 'woocommerce_sale_flash', 'anony_add_percentage_to_sale_badge', 20, 3 );
+
+add_filter( 'woocommerce_product_description_heading', '__return_false' );
+add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
+add_filter( 'woocommerce_product_reviews_heading', '__return_false' );
+
+add_filter('gettext', 'anony_change_related_products_text', 10, 3);
