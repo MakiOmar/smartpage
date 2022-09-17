@@ -23,30 +23,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_filter(
 	'anony_post_types',
 	function ( $custom_post_types ) {
-		$custom_posts = array(
-			'anony_download' =>
-				array(
-					esc_html__( 'Download', 'smartpage' ),
-					esc_html__( 'Downloads', 'smartpage' ),
-				),
-
-			'portfolio'      =>
-				array(
+		$custom_posts = array();
+		if ( class_exists( 'ANONY_Options_Model' ) && get_option( ANONY_OPTIONS ) ) {
+			$anony_options = ANONY_Options_Model::get_instance();
+			
+			if( '1' === $anony_options->enable_portfolio ){
+				$custom_posts [ 'portfolio' ] = array(
 					esc_html__( 'portfolio', 'smartpage' ),
 					esc_html__( 'Portfolios', 'smartpage' ),
-				),
-
-			'testimonial'    =>
-				array(
+				);
+			}
+			
+			
+			if( '1' === $anony_options->enable_downloads ){
+				$custom_posts [ 'anony_download' ] = array(
+					esc_html__( 'Download', 'smartpage' ),
+					esc_html__( 'Downloads', 'smartpage' ),
+				);
+			}
+			
+			
+			if( '1' === $anony_options->enable_testimonials ){
+				$custom_posts [ 'testimonial' ] = array(
 					esc_html__( 'Testimonial', 'smartpage' ),
 					esc_html__( 'Testimonials', 'smartpage' ),
-				),
-			'anony_news'     =>
-				array(
+				);
+			}
+			
+			
+			if( '1' === $anony_options->enable_news ){
+				$custom_posts [ 'anony_news' ] = array(
 					esc_html__( 'New', 'smartpage' ),
 					esc_html__( 'News', 'smartpage' ),
-				)
-		);
+				);
+			}
+		}
 
 		return array_merge( $custom_post_types, $custom_posts );
 	}
