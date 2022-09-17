@@ -1,6 +1,51 @@
 <?php
 if (! defined('ABSPATH') ) {  exit;
 }
+
+/**
+ * Callback for wp_calculate_image_srcset_meta hook. Disables srcset meta for product thumbnail.
+ *
+ * @param  array $image_meta An array of srcsets.
+ * @return mixed False if srcset need to be disabled otherwise an array of srcsets.
+ */
+function anony_disable_product_mobile_srcset ( $image_meta ) {
+	if ( class_exists( 'woocommerce' ) && !is_single() && wp_is_mobile() ){
+		$anony_options = ANONY_Options_Model::get_instance();
+	
+		if ( '1' == $anony_options->wc_disable_srcset  ) return false ;
+		
+		return $image_meta;
+	}
+	
+	
+	return $image_meta;
+}
+
+add_filter( 'wp_calculate_image_srcset_meta', 'anony_disable_product_mobile_srcset' );
+
+
+/**
+ * Callback for woocommerce_get_image_size_thumbnail hook. Sets product thumbnail size on mobile.
+ *
+ * @param  array $size An array of image dimentions.
+ * @return array An array of image dimentions.
+ */
+function anony_product_custom_mobile_thumb_size ( $size ) {
+	if ( !wp_is_mobile() ) return $size;
+	
+	$anony_options = ANONY_Options_Model::get_instance();
+	
+	if ( empty( $anony_options->wc_mobile_thumb_size ) ) return $size ;
+	
+	$size['width'] = $anony_options->wc_mobile_thumb_size;
+	
+	$size['height'] = $anony_options->wc_mobile_thumb_size;
+	
+	return $size;
+}
+add_filter('woocommerce_get_image_size_thumbnail', 'anony_product_custom_mobile_thumb_size' );
+
+
 /**
  * Callback for ob_start
  *
