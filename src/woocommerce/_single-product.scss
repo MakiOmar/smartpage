@@ -4,17 +4,22 @@
 	display: inline-block;
 	vertical-align: top;
 	box-sizing: border-box;
-	padding: 10px;
+	padding: 0;
 	width: 100%;
 	
 }
-.woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport{
+.woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews{
 	padding: 20px;
 	background-color: #fff;
-	height: 450px!important;
 	
 }
-
+.anony-wc-reviews{
+	margin: 20px 10px;
+}
+/*
+.woocommerce div.product-type-variable div.anony-entry-summary, .woocommerce div.product-type-variable .woocommerce-product-gallery .flex-viewport, .woocommerce div.product-type-variable div.images.woocommerce-product-gallery{
+	height: 550px!important;
+}*/
 .anony-entry-summary{
 	height: 100%
 }
@@ -41,15 +46,15 @@
 .woocommerce div.product div.images img{
 	max-width: 380px
 }
-.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
+.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs ,section.related.products{
 	padding: 20px;
 	background-color: #fff;
 	margin: 0 10px;
 }
-.woocommerce div.product .woocommerce-tabs .panel {
-	max-width: 768px;
-}
 
+section.related.products{
+	margin-top: 30px;
+}
 .woocommerce div.product p.price del bdi, .woocommerce div.product span.price del bdi{
 	color:#c62020;
 	font-size: 22px;
@@ -75,20 +80,7 @@
 	float: none;
 	vertical-align: middle;
 }
-.woocommerce #review_form #respond textarea {
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	height: 200px;
-}
-.comment-form-rating{
-	display: flex;
-	margin: 20px 0;
-	align-items: center
-}
 
-.woocommerce #review_form #respond .comment-form-rating p.stars{
-	margin: 0 10px;
-}
 .woocommerce div.product div.images .flex-control-thumbs{
 	position: absolute;
 	left: 0;
@@ -112,4 +104,18 @@
 }
 .woocommerce #review_form #respond textarea {
 	padding: 15px;
+}
+
+.woocommerce div.product .woocommerce-tabs .panel {
+	padding: 0 10px;
+}
+
+@media screen and ( max-width:480px ){
+	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+		padding: 0;
+	}
+	.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
+		padding: 5px;
+		margin: 0
+	}
 }

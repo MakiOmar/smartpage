@@ -3,3 +3,102 @@
 	padding:0;
 	box-sizing: border-box;
 }
+
+body{
+	line-height: 2em
+}
+a{
+	 text-decoration: none;
+	 cursor: pointer;
+}
+ul li{
+	margin: 0 1em;
+}
+i{
+	padding: 3px;
+vertical-align: middle;
+	font-style: normal;
+}
+
+[class*='anony-grid-col-']{
+	display: inline-block;
+	vertical-align: top;
+}
+div{
+	margin:0;
+	padding:0;
+}
+input[type = "search"],input[type = "tel"],input[type = "text"],input[type = "email"],input[type = "password"],input[type = "url"], textarea{
+	outline: none;
+	padding: 10px;
+	margin: 5px;
+	border: none;
+	color:#222222;
+	border-radius: 6px;
+	border: 1px solid #d7d7d7;
+}
+input[type='submit']{
+	background-color: #fc2a2a;
+	color: #ffffff;
+	padding: 5px;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px;
+	min-width: 100px;
+	cursor: pointer;
+}
+input:focus{
+	color: #222222;
+	font-weight: bold;
+}
+h3{font-size: 16px;}
+h4{font-size: 15px;}
+h5{font-size: 13px;}
+h6{font-size: 11.5px;}
+img {
+    margin: auto;
+    display: inline-block;
+    max-width: 100%;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+th{
+	font-size: 20px;
+}
+
+select{
+	padding: 10px;
+    border-color: #e1e1e1;
+    border-radius: 6px;
+}
+
+.anony-custom-bullets ul{
+	list-style: none
+}
+
+.anony-custom-bullets ul li::before {
+	content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+	color: #000; /* Change the color */
+	font-weight: bold; /* If you want it to be bold */
+	font-size: 20px;
+	display: inline-block; /* Needed to add space between the bullet and the text */
+	width: 1em; /* Also needed for space (tweak if needed) */
+	margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+p, ul{
+	padding-bottom: 20px;
+}
+
+.anony-active, .anony-active-tab{
+	background-color: #fc2a2a;
+	font-weight: bold;
+	border: none;
+}

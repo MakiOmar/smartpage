@@ -1,22 +1,23 @@
 @use 'woocommerce/main-loop';
 @use 'woocommerce/single-product';
+@use 'woocommerce/checkout';
+@use 'woocommerce/shop';
 @use 'woocommerce/woo-rtl';
+@use 'woocommerce/breadcrumbs';
+@use 'woocommerce/comments';
 .woocommerce .star-rating span::before, .woocommerce p.stars a::before {
 	color: #ffb62b;
 }
 .woocommerce .woocommerce-product-rating .star-rating {
 	display: flex;
-	align-items: end;
+	align-items: flex-end;
 }
 
-.elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale {
+.elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
 	background-color: #DD3C3C;
 	width: 60px;
 	height: 60px;
 	line-height: 60px;
-}
-
-.woocommerce span.onsale {
 	top: 1.5em;
 	left: 1.5em;
 }
@@ -32,6 +33,15 @@ span.required{
 .woocommerce ul.products li.product .price {
 	font-size: 1.3em;
 }
+.products li h2{
+	line-height: normal
+}
+.woocommerce-LoopProduct-link,div.elementor-products-grid ul.products.elementor-grid li.product a.woocommerce-loop-product__link {
+	text-align: center;
+	position: initial;
+	display: block
+}
+
 @media screen and ( min-width:768px ){
 	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images,.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
 		width: 50%;
@@ -44,5 +54,11 @@ span.required{
 
 	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images{
 		padding-right: 5px;
+	}
+}
+
+@media screen and ( max-width:480px ){
+	.woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews {
+		padding: 20px 10px;	
 	}
 }
