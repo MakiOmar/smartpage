@@ -1,0 +1,26 @@
+div.elementor-widget-woocommerce-checkout-page {
+	background-color: #fff;
+	padding: 20px;
+}
+.woocommerce-order-details__title, .woocommerce-column__title{
+	padding: 20px 10px;
+	line-height: 30px;
+}
+
+table.woocommerce-table--order-details{
+	border-collapse: collapse;
+}
+
+table.woocommerce-table--order-details td, table.woocommerce-table--order-details th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table.woocommerce-table--order-details tr:nth-child(even){background-color: #f2f2f2;}
+table.woocommerce-table--order-details tr:hover {background-color: #ddd;}
+
+.elementor-widget-woocommerce-checkout-page .woocommerce .shop_table thead tr th {
+	background-color: #04AA6D!important;
+	color: #fff;
+	padding-top: 15px!important;
+}

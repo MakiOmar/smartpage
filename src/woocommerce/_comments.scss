@@ -1,0 +1,130 @@
+.woocommerce #review_form #respond p.comment-form-comment, .woocommerce #review_form #respond p.comment-form-author, .woocommerce #review_form #respond p.comment-form-email {
+	display: flex;
+	flex-direction: column;
+}
+
+.woocommerce #review_form #respond textarea {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	height: 200px;
+}
+.comment-form-rating{
+	display: flex;
+	margin: 20px 0;
+	align-items: center
+}
+
+.woocommerce #review_form #respond .comment-form-rating p.stars{
+	margin: 0 10px;
+	padding-bottom: 0
+}
+
+.woocommerce #review_form #respond .comment-form-rating p.stars span{
+	display: flex;
+	height: 100%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.woocommerce #reviews #comments ol.commentlist li .comment-text {
+	margin: 0;
+	border: none;
+	border-bottom: 1px solid #e4e1e3;
+	display: flex;
+	flex-direction: column;
+}
+.woocommerce #reviews #comments{
+	margin-bottom: 30px
+}
+.woocommerce #reviews #comments ol.commentlist {
+	margin-top: 20px;
+}
+#go-add-review{
+	padding: 10px;
+	display: inline-flex;
+	width: 120px;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
+	color: #fff;
+	margin: 10px 0;
+	border-radius: 5px
+}
+
+#anony-reviews-details .woocommerce-review-link{
+	display: block;
+	margin-bottom: 0;
+}
+
+#anony-average-rating{
+	font-size: 60px;
+	font-weight: bold;
+	margin-bottom: 15px
+}
+
+#anony-reviews-details .anony-grid-col{
+	text-align: center
+		
+}
+#anony-reviews-details .review-rating-bg{
+	background-color: #d6d4d0;
+	height: 12px;
+	position: relative;
+	display: inline-block;
+	width: 65%
+}
+#anony-reviews-details .review-rating-fg{
+	background-color: #f15a25;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 12px;
+}
+
+#anony-reviews-details .review-rating-value{
+	width: 90px;
+	display: inline-block
+}
+#anony-reviews-details .review-rating-bars{
+	padding: 0 8px
+}
+#anony-reviews-details .anony-grid-row{
+	min-height: 180px;
+	padding: 10px 0;
+}
+
+#anony-reviews-details .anony-grid-row .anony-grid-col{
+	vertical-align: middle
+}
+.woocommerce #anony-reviews-details .woocommerce-product-rating{
+	display: inline-block
+}
+
+.woocommerce .comment-text img{
+	height: auto;
+	max-width: 50px;
+	display: inline-flex;
+	margin: 10px;
+}
+.comment-text .woocommerce-review__author {
+	background-color: #ffc65a;
+	color: #fff;
+	min-width: 80px;
+	text-align: center;
+	border-radius: 20px;
+	display: inline-flex;
+	height: 25px;
+	justify-content: center;
+	align-items: center;
+}
+@media screen and ( max-width: 480px ){
+	#anony-reviews-details{
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: baseline
+	}
+	#anony-reviews-details .review-rating-value {
+		width: 60px;
+		font-size: 12px;
+	}
+}

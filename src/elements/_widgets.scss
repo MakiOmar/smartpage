@@ -1,0 +1,8 @@
+.widgeted ul li{
+	border-bottom: 1px solid rgba(35, 0, 5,0.75);
+	list-style: none;
+    padding: 10px 0;
+}
+.widgeted ul li:last-child{
+	border-bottom: none;
+}
