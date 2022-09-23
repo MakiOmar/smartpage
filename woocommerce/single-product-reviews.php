@@ -48,7 +48,7 @@ if ( ! comments_open() ) {
 					$total_count   = $product->get_rating_count();
 					$counts        = $product->get_rating_counts();
 
-					for ( $i = 1; $i <= 5 ; $i++ ) { 
+					for ( $i = 5; $i >= 1 ; $i-- ) { 
 						if( isset( $counts [ $i ] ) ){
 							$width = ($counts [ $i ] / $total_count) * 100 ;
 						}else{
