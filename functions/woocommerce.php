@@ -73,7 +73,7 @@ function anony_hide_products_without_price( $query ) {
 /**
  * Replaces product rating. Shows rating even if no ratings (Will show empty stars).
  */
-function replace_product_rating() {
+function anony_replace_product_rating() {
     global $product;
 
     $rating_count = $product->get_rating_count();
@@ -96,17 +96,17 @@ function anony_rating_after_shop_loop_item_title() {
 	if ( '1' === $anony_options->show_empty_rating  ) {
 		global $product;
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
-		add_action( 'woocommerce_after_shop_loop_item_title', 'replace_product_rating', 5 );
+		add_action( 'woocommerce_after_shop_loop_item_title', 'anony_replace_product_rating', 5 );
 	}
 
 }
 
-function change_single_product_ratings(){
+function anony_change_single_product_ratings(){
     remove_action('woocommerce_single_product_summary','woocommerce_template_single_rating', 10 );
-    add_action('woocommerce_single_product_summary','wc_single_product_ratings', 10 );
+    add_action('woocommerce_single_product_summary','anony_wc_single_product_ratings', 10 );
 }
 
-function wc_single_product_ratings(){
+function anony_wc_single_product_ratings(){
     global $product;
 
     $rating_count = $product->get_rating_count();
@@ -207,7 +207,7 @@ add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
 add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
 
-add_action('woocommerce_single_product_summary', 'change_single_product_ratings', 2 );
+add_action('woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
 
 add_filter( 'woocommerce_sale_flash', 'anony_add_percentage_to_sale_badge', 20, 3 );
 
