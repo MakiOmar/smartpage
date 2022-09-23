@@ -91,10 +91,14 @@ function replace_product_rating() {
  * Allways show rating after shop loop item title
  */
 function anony_rating_after_shop_loop_item_title() {
-    global $product;
-	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
-	add_action( 'woocommerce_after_shop_loop_item_title', 'replace_product_rating', 5 );
-    
+	
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( '1' === $anony_options->show_empty_rating  ) {
+		global $product;
+		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+		add_action( 'woocommerce_after_shop_loop_item_title', 'replace_product_rating', 5 );
+	}
+
 }
 
 function change_single_product_ratings(){

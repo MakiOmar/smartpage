@@ -748,6 +748,13 @@ add_action(
 						'type'     => 'switch',
 						'validate' => 'no_html',
 					),
+					array(
+						'id'       => 'show_empty_rating',
+						'title'    => esc_html__( 'Show product\'s empty rating', 'smartpage' ),
+						'type'     => 'switch',
+						'validate' => 'no_html',
+						'default'  => '1',
+					),
 					
 					array(
 						'id'       => 'related_products_title',
