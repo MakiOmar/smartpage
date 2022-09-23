@@ -385,6 +385,10 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
   vertical-align: middle;
 }
 
+.woocommerce .woocommerce-product-rating .star-rating {
+  margin-top: 1.2em;
+}
+
 .woocommerce #anony-reviews-details .woocommerce-product-rating {
   display: inline-block;
 }
@@ -406,6 +410,27 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
   height: 25px;
   justify-content: center;
   align-items: center;
+}
+
+.woocommerce .comment-text .star-rating, .woocommerce .comment-text .description {
+  margin: 5px 10px;
+}
+
+.woocommerce .comment-text .description > p {
+  color: #000;
+  font-weight: bold;
+}
+
+.woocommerce #reviews #comments ol.commentlist li p.meta {
+  margin: 0;
+}
+
+#anony-reviews-details .review-rating-bg, #anony-reviews-details .review-rating-fg {
+  border-radius: 8px;
+}
+
+#anony-reviews-details .woocommerce-product-rating {
+  margin: 0;
 }
 
 @media screen and (max-width: 480px) {
