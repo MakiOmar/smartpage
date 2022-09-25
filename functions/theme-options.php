@@ -753,7 +753,24 @@ add_action(
 						'title'    => esc_html__( 'Show product\'s empty rating', 'smartpage' ),
 						'type'     => 'switch',
 						'validate' => 'no_html',
-						'default'  => '1',
+						'default'  => '1'
+					),
+					
+					array(
+						'id'       => 'sale_badge_type',
+						'title'    => esc_html__( 'Sale badge type', 'smartpage' ),
+						'type'     => 'radio',
+						'validate' => 'multiple_options',
+						'options'  => array(
+							'text'  => array(
+								'title' => esc_html__( 'Text', 'smartpage' ),
+							),
+							
+							'percentage'  => array(
+								'title' => esc_html__( 'percentage', 'smartpage' ),
+							)
+						),
+						'default'  => 'percentage'
 					),
 					
 					array(
