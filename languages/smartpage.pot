@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Smart Page\n"
-"POT-Creation-Date: 2022-09-17 09:54+0200\n"
+"POT-Creation-Date: 2022-09-23 14:29+0200\n"
 "PO-Revision-Date: 2018-04-16 14:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -664,8 +664,7 @@ msgstr ""
 msgid "Comment Submission Failure"
 msgstr ""
 
-#. translators: 1: date and time(s).
-#: functions/ajax/ajax-comments.php:84 functions/theme.php:197
+#: functions/ajax/ajax-comments.php:84
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
@@ -1507,47 +1506,59 @@ msgstr ""
 msgid "Hide products without prices"
 msgstr ""
 
-#: functions/theme-options.php:754
+#: functions/theme-options.php:753
+msgid "Show product's empty rating"
+msgstr ""
+
+#: functions/theme-options.php:761
+msgid "Sale badge type"
+msgstr ""
+
+#: functions/theme-options.php:766
+msgid "Text"
+msgstr ""
+
+#: functions/theme-options.php:770
+msgid "percentage"
+msgstr ""
+
+#: functions/theme-options.php:778
 msgid "Related products title"
 msgstr ""
 
-#: functions/theme-options.php:764
+#: functions/theme-options.php:788
 msgid "Woocommerce shop only scripts/styles"
 msgstr ""
 
-#: functions/theme-options.php:767
+#: functions/theme-options.php:791
 msgid ""
 "Only allow woocommerce scripts/styles on shop related pages (e.g. product, "
 "cart and checkout pages)"
 msgstr ""
 
-#: functions/theme-options.php:772
+#: functions/theme-options.php:796
 msgid "Disable srcset meta"
 msgstr ""
 
-#: functions/theme-options.php:775
+#: functions/theme-options.php:799
 msgid ""
 "Sometimes you may need to disable srcsets on mobile if you need to set the "
 "image size manually on mobile devices. Use the option below to set product "
 "thumbnail size on mobile"
 msgstr ""
 
-#: functions/theme-options.php:780
+#: functions/theme-options.php:804
 msgid "Product thumnbnail size on mobile"
 msgstr ""
 
-#: functions/theme-options.php:790
+#: functions/theme-options.php:814
 msgid "Contact form 7 scripts/styles"
 msgstr ""
 
-#: functions/theme-options.php:794
+#: functions/theme-options.php:818
 msgid ""
 "Choose your contact form page, so cf7 styles/scripts will only be loaded "
 "in this page"
-msgstr ""
-
-#: functions/theme.php:187
-msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #: functions/widgets.php:20
@@ -1584,12 +1595,17 @@ msgstr ""
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: functions/woocommerce.php:122
+#: functions/woocommerce.php:126
 #, php-format
 msgid "%s customer review"
 msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
+
+#: functions/woocommerce.php:201
+#, php-format
+msgid "Save %1$s %2$s"
+msgstr ""
 
 #: header.php:92
 msgid "Follow us on Facebook"
@@ -1739,84 +1755,84 @@ msgstr ""
 
 #. translators: %s is product title
 #: woocommerce/single-product-reviews.php:76
-#: woocommerce/single-product-reviews.php:132
+#: woocommerce/single-product-reviews.php:131
 msgid "Add a review"
 msgstr ""
 
 #. translators: 1: reviews count 2: product name
-#: woocommerce/single-product-reviews.php:92
+#: woocommerce/single-product-reviews.php:91
 #, php-format
 msgid "%1$s review for %2$s"
 msgid_plural "%1$s reviews for %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: woocommerce/single-product-reviews.php:121
+#: woocommerce/single-product-reviews.php:120
 msgid "There are no reviews yet."
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:132
+#: woocommerce/single-product-reviews.php:131
 #, php-format
 msgid "Be the first to review &ldquo;%s&rdquo;"
 msgstr ""
 
 #. translators: %s is product title
-#: woocommerce/single-product-reviews.php:134
+#: woocommerce/single-product-reviews.php:133
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:138
+#: woocommerce/single-product-reviews.php:137
 msgid "Submit"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:146
+#: woocommerce/single-product-reviews.php:145
 msgid "Name"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:152
+#: woocommerce/single-product-reviews.php:151
 msgid "Email"
 msgstr ""
 
 #. translators: %s opening and closing link tags respectively
-#: woocommerce/single-product-reviews.php:177
+#: woocommerce/single-product-reviews.php:176
 #, php-format
 msgid "You must be %1$slogged in%2$s to post a review."
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:181
+#: woocommerce/single-product-reviews.php:180
 msgid "Your rating"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:182
+#: woocommerce/single-product-reviews.php:181
 msgid "Rate&hellip;"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:183
+#: woocommerce/single-product-reviews.php:182
 msgid "Perfect"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:184
+#: woocommerce/single-product-reviews.php:183
 msgid "Good"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:185
+#: woocommerce/single-product-reviews.php:184
 msgid "Average"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:186
+#: woocommerce/single-product-reviews.php:185
 msgid "Not that bad"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:187
+#: woocommerce/single-product-reviews.php:186
 msgid "Very poor"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:191
+#: woocommerce/single-product-reviews.php:190
 msgid "Your review"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:198
+#: woocommerce/single-product-reviews.php:197
 msgid ""
 "Only logged in customers who have purchased this product may leave a "
 "review."
