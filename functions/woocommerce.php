@@ -130,58 +130,102 @@ function anony_wc_single_product_ratings(){
         <?php
     }
 }
+if ( !function_exists( 'anony_custom_sale_badge' ) ) {
+	function anony_custom_sale_badge( $html, $post, $product ) {
+		
+		$custom_sale_badge = get_post_meta( $post->ID, 'custom-sale-badge', true );
+		
+		if( $custom_sale_badge  && !empty( $custom_sale_badge ) ){
+			
+			return sprintf( '<span class="onsale on-sale-text">%s</span>', $custom_sale_badge );
+		}
+		
+		$anony_options = ANONY_Options_Model::get_instance();
+		if( $product->is_type('variable')){
+		  $percentages    = array();
+		  $regular_prices = array();
 
-function anony_add_percentage_to_sale_badge( $html, $post, $product ) {
+		  // Get all variation prices
+		  $prices = $product->get_variation_prices();
 
-  if( $product->is_type('variable')){
-      $percentages = array();
+		  // Loop through variation prices
+		  foreach( $prices['price'] as $key => $price ){
+			  // Only on sale variations
+			  if( $prices['regular_price'][$key] !== $price ){
+				  // Calculate and set in the array the percentage for each variation on sale
+				  $percentages[] = round( 100 - ( floatval($prices['sale_price'][$key]) / floatval($prices['regular_price'][$key]) * 100 ) );
 
-      // Get all variation prices
-      $prices = $product->get_variation_prices();
+				  $sale_prices[]    = floatval($prices['sale_price'][$key]);
 
-      // Loop through variation prices
-      foreach( $prices['price'] as $key => $price ){
-          // Only on sale variations
-          if( $prices['regular_price'][$key] !== $price ){
-              // Calculate and set in the array the percentage for each variation on sale
-              $percentages[] = round( 100 - ( floatval($prices['sale_price'][$key]) / floatval($prices['regular_price'][$key]) * 100 ) );
-          }
-      }
-      // We keep the highest value
-      $percentage = max($percentages) . '%';
+				  $regular_prices[] = floatval($prices['regular_price'][$key]);
+			  }
+		  }
+		  // We keep the highest value
+		  $percentage    = max($percentages) . '%';
+		  $regular_price = max($regular_prices);
+		  $sale_price    = max($sale_prices);
 
-  } elseif( $product->is_type('grouped') ){
-      $percentages = array();
+		  $saved         = $regular_price - $sale_price;
 
-      // Get all variation prices
-      $children_ids = $product->get_children();
+		} elseif( $product->is_type('grouped') ){
+			  $percentages    = array();
+			  $regular_prices = array();
 
-      // Loop through variation prices
-      foreach( $children_ids as $child_id ){
-          $child_product = wc_get_product($child_id);
+			  // Get all variation prices
+			  $children_ids = $product->get_children();
 
-          $regular_price = (float) $child_product->get_regular_price();
-          $sale_price    = (float) $child_product->get_sale_price();
+			  // Loop through variation prices
+			  foreach( $children_ids as $child_id ){
+				  $child_product = wc_get_product($child_id);
 
-          if ( $sale_price != 0 || ! empty($sale_price) ) {
-              // Calculate and set in the array the percentage for each child on sale
-              $percentages[] = round(100 - ($sale_price / $regular_price * 100));
-          }
-      }
-      // We keep the highest value
-      $percentage = max($percentages) . '%';
+				  $regular_price = (float) $child_product->get_regular_price();
+				  $sale_price    = (float) $child_product->get_sale_price();
 
-  } else {
-      $regular_price = (float) $product->get_regular_price();
-      $sale_price    = (float) $product->get_sale_price();
+				  if ( $sale_price != 0 || ! empty($sale_price) ) {
+					  // Calculate and set in the array the percentage for each child on sale
+					  $percentages[]    = round(100 - ($sale_price / $regular_price * 100));
 
-      if ( $sale_price != 0 || ! empty($sale_price) ) {
-          $percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
-      } else {
-          return $html;
-      }
-  }
-  return '<span class="onsale percent">' . $percentage . '</span>';
+					  $regular_prices[] = $regular_price;
+					  $sale_prices[]    = $sale_price;
+				  }
+			  }
+			  // We keep the highest value
+			  $percentage    = max($percentages) . '%';
+
+			  $regular_price = max($regular_prices);
+
+			  $sale_price    = max($sale_prices);
+
+			  $saved         = $regular_price - $sale_price;
+
+			} else {
+			  $regular_price = (float) $product->get_regular_price();
+			  $sale_price    = (float) $product->get_sale_price();
+
+			  if ( $sale_price != 0 || ! empty($sale_price) ) {
+				  $percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
+
+				  $saved         = $regular_price - $sale_price;
+			  } else {
+				  return $html;
+			  }
+			}
+
+			$sale_badge_type = 'percentage';
+
+			$sale_badge_text = $percentage;
+
+			$class = 'on-sale-percent';
+
+			if ( 'text' === $anony_options->sale_badge_type ) {
+				$sale_badge_text = sprintf(  esc_html__( 'Save %1$s %2$s', 'smartpage' ), round( $saved ), get_woocommerce_currency_symbol() );
+
+				$class = 'on-sale-text';
+			}
+
+			return sprintf( '<span class="onsale %1$s">%2$s</span>', $class, $sale_badge_text );
+	}
+	
 }
 
 
@@ -209,7 +253,7 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_l
 
 add_action('woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
 
-add_filter( 'woocommerce_sale_flash', 'anony_add_percentage_to_sale_badge', 20, 3 );
+add_filter( 'woocommerce_sale_flash', 'anony_custom_sale_badge', 20, 3 );
 
 add_filter( 'woocommerce_product_description_heading', '__return_false' );
 add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
