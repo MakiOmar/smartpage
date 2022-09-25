@@ -10,7 +10,7 @@ function anony_theme_skin(){
 		.anony-skew-bg::after, .page-numbers li, .anony-active, .button, .anony-active-tab,
 .anony-page-numbers a, .widgeted_title, #anony-dun-title, #submit, .anony-form_submit,
 .anony-featured-posts-title, .anony-section_title, #anony-page-scroll, .anony-button,
-.anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, #anony-main_nav_con, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after {
+.anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, #anony-main_nav_con, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after, .elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
 		  background-color: <?php echo esc_html( $primary_color ) ;?>;
 		}
 		.anony-post-info .anony-nothumb-post .anony-thumb-post-title, #anony-top-header-wrapper, #anony-page-loading-bg {

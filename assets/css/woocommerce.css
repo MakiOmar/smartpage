@@ -463,8 +463,20 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
   left: 1.5em;
 }
 
-.woocommerce span.onsale.percent {
+.woocommerce span.onsale.on-sale-percent {
   font-size: 18px;
+}
+
+.elementor-wc-products .woocommerce ul.products li.product span.onsale.on-sale-text, .woocommerce ul.products li.product .onsale.on-sale-text, .woocommerce span.onsale.on-sale-text {
+  width: auto;
+  height: auto;
+  min-height: auto;
+  border-radius: 0;
+  line-height: normal;
+  padding: 6px 15px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 span.required {
