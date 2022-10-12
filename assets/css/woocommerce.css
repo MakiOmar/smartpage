@@ -250,9 +250,6 @@ table.woocommerce-table--order-details tr:hover {
   border-radius: 5px;
 }
 
-body.rtl .elementor-element .elementor-widget-container .elementor-heading-title, body.rtl .elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .woocommerce-loop-product__title, body.rtl .elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .woocommerce-loop-category__title, body.rtl .elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .button, body.rtl .elementor-widget-search-form input[type=search].elementor-search-form__input, body.rtl .elementor-widget-woocommerce-menu-cart .elementor-menu-cart__product-name a, body.rtl .elementor-widget-nav-menu .elementor-nav-menu .elementor-item {
-  font-family: "dintext";
-}
 body.rtl span.onsale {
   right: 1.5em;
   left: auto;

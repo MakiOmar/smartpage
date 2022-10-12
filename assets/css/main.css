@@ -32,7 +32,6 @@ html, body {
 }
 
 body {
-  /*background: url(../../images/pattern-2.png) repeat fixed;*/
   font-style: italic;
   font-size: 16px;
   color: #444444;
@@ -272,7 +271,6 @@ body {
 
 /***Navigation menus***/
 #anony-main_nav_con {
-  background: url(../../images/pattern-1.png) repeat;
   background-color: #230005;
   height: 100%;
   position: absolute;
@@ -1585,7 +1583,6 @@ li .current::after {
 /***End body***/
 /***Footer***/
 footer {
-  background: url(../../images/pattern-1.png) repeat;
   background-color: rgba(0, 0, 0, 0.88);
 }
 
@@ -1936,12 +1933,6 @@ footer p {
   #anony-main-menu-con li a:hover {
     background-color: #14a845;
     font-size: 16px;
-  }
-}
-@media screen and (min-width: 1559px) {
-  body {
-    background: url(../../images/body-bg-1.jpg) no-repeat fixed;
-    background-size: cover;
   }
 }
 @media screen and (min-width: 960px) {
