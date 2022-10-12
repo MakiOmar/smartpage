@@ -18,10 +18,6 @@ get_header();
 
 		$pID = $id;
 
-		if ( has_action( 'post_ad' ) ) {
-			do_action( 'post_ad' );
-		}
-
 		?>
 		 
 		<div class="anony-grid-col <?php echo $wrapper_class; ?>">
@@ -98,12 +94,6 @@ get_header();
 				comments_template( '', false );
 			}
 			?>
-			 
-			<div class="anony-ad">
-						 
-				<?php do_action( 'before_footer_ad' ); ?>
-						 
-			</div>
 			 
 		</div>
 		 
