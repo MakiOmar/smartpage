@@ -19,6 +19,21 @@ if ( ! function_exists( 'anony_elementor_custom_fonts_group' ) ) {
 }
 add_filter( 'elementor/fonts/groups', 'anony_elementor_custom_fonts_group' , 99);
 
+if ( ! function_exists( 'anon_allow_custom_mime_types' ) ) {
+	function anon_allow_custom_mime_types( $mimes ) {
+
+		$mimes['woff']  = 'application/x-font-woff';
+		$mimes['woff2'] = 'application/x-font-woff2';
+		$mimes['ttf']   = 'application/x-font-ttf';
+		$mimes['svg']   = 'image/svg+xml';
+		$mimes['eot']   = 'application/vnd.ms-fontobject';
+		$mimes['otf']   = 'font/otf';
+
+		return $mimes;
+	}
+}
+
+add_filter( 'upload_mimes', 'anon_allow_custom_mime_types' );
 
 if ( ! function_exists( 'anony_hide_admin_bar' ) ) {
 	/**
