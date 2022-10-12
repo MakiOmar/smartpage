@@ -57,6 +57,11 @@ add_filter(
 					esc_html__( 'News', 'smartpage' ),
 				);
 			}
+			
+			$custom_posts [ 'anony_fonts' ] = array(
+				esc_html__( 'Font', 'smartpage' ),
+				esc_html__( 'Fonts', 'smartpage' ),
+			);
 		}
 
 		return array_merge( $custom_post_types, $custom_posts );
@@ -119,7 +124,7 @@ add_filter(
 
 
 /**
- * change project post type support
+ * change news post type support
  *
  * @return array
  */
@@ -127,6 +132,24 @@ add_filter(
 	'anony_anony_news_supports',
 	function ( $support ) {
 		return array( 'editor' );
+	}
+);
+
+
+/**
+ * change anony_fonts post type args
+ *
+ * @return array
+ */
+add_filter(
+	'anony_anony_fonts_args',
+	function ( $args ) {
+		$args['public']              = false;
+		$args['supports']            = array( 'title' );
+		$args['has_archive']         = false;
+		$args['exclude_from_search'] = true;
+		
+		return $args;
 	}
 );
 
