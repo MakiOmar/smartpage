@@ -239,6 +239,22 @@ function anony_change_related_products_text($new_text, $related_text, $source)
      }
      return $new_text;
 }
+
+
+function anony_wc_comment_form_fields($fields) {
+	global $post;
+	
+	if ( 'product' !== $post->post_type ) {
+		return $fields;
+	}
+	$anony_options = ANONY_Options_Model::get_instance();
+	
+	if(isset($fields['email']) &&  '1' === $anony_options->disable_comment_form_email_field ) {
+		unset($fields['email']);
+	}
+  return $fields;
+}
+
 // Remove actions.
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -260,3 +276,5 @@ add_filter( 'woocommerce_product_additional_information_heading', '__return_fals
 add_filter( 'woocommerce_product_reviews_heading', '__return_false' );
 
 add_filter('gettext', 'anony_change_related_products_text', 10, 3);
+
+add_filter('comment_form_fields', 'anony_wc_comment_form_fields');
