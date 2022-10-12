@@ -95,7 +95,8 @@ add_action(
 		
 		if( class_exists( 'woocommerce' ) ){
 			$options_nav[ 'woocommerce' ] = array(
-				'title' => esc_html__( 'woocommerce', 'smartpage' )
+				'title' => esc_html__( 'woocommerce', 'smartpage' ),
+				'sections' => array( 'woocommerce', 'single-product' ),
 			);
 		}
 
@@ -134,6 +135,7 @@ add_action(
 			),
 		);
 		
+		
 		$sections['Performance'] = array(
 			'title'  => esc_html__( 'Performance', 'smartpage' ),
 			'icon'   => 'x',
@@ -159,90 +161,8 @@ add_action(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Speeds up page load time.', 'smartpage' ) ,
 				),
-				array(
-					'id'       => 'compress_html',
-					'title'    => esc_html__( 'Compress HTML', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Please activate only if you think that GZIP is not enabled on your server.', 'smartpage' ) . ' <a href="https://www.giftofspeed.com/gzip-test/">' . esc_html__( 'Check gzip compression', 'smartpage' ) . '</a>',
-				),
-				array(
-					'id'       => 'query_string',
-					'title'    => esc_html__( 'Remove query string', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Removes query string from styles/scripts and help speed up your website', 'smartpage' ),
-				),
 
-				array(
-					'id'       => 'keep_query_string',
-					'title'    => esc_html__( 'Keep query string', 'smartpage' ),
-					'type'     => 'text',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Add comma separated handles of scripts/styles you want to keep query string', 'smartpage' ),
-				),
-				array(
-					'id'       => 'defer_stylesheets',
-					'title'    => esc_html__( 'Defer stylesheets loading', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Improves First content paint, and get higher score on page speed insights. Be careful when using with minification plugins, it may cause style issues', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'defer_scripts',
-					'title'    => esc_html__( 'Defer scripts loading', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Improves First content paint, and get higher score on page speed insights.', 'smartpage' ),
-				),
-				array(
-					'id'       => 'gravatar',
-					'title'    => esc_html__( 'Disable gravatar.com', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Stops getting gravatar from gravatar.com', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'disable_embeds',
-					'title'    => esc_html__( 'Disable WP embeds', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Disables WP embeds completely', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'enable_singular_embeds',
-					'title'    => esc_html__( 'Enable WP embeds on singular', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Enables WP embeds on singular pages (e.g. post/page). Will override (disable WP embeds) option', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'disable_emojis',
-					'title'    => esc_html__( 'Disable WP emojis', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Disables WP emojis completely', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'enable_singular_emojis',
-					'title'    => esc_html__( 'Enable WP emojis on singular', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Enables WP emojis on singular pages (e.g. post/page). Will override (disable WP emojis) option', 'smartpage' ),
-				),
-
-				array(
-					'id'       => 'disable_gutenburg_scripts',
-					'title'    => esc_html__( 'Disable Gutenburg editor scripts', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'If your using classic editor, enable this to remove unwanted Gutenburg\'s editor scripts', 'smartpage' ),
-				),
+				
 
 				array(
 					'id'       => 'dynamic_css_ajax',
@@ -252,13 +172,6 @@ add_action(
 					'desc'     => esc_html__( 'If your website loads slowly because of AJAX css, enable this', 'smartpage' ),
 				),
 
-				array(
-					'id'       => 'disable_jq_migrate',
-					'title'    => esc_html__( 'Disable jquery migrate', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'This will prevent the jQuery Migrate script from being loaded on the front end while keeping the jQuery script itself intact. It\'s still being loaded in the admin to not break anything there.)', 'smartpage' ),
-				),
 
 				array(
 					'id'       => 'disable_prettyphoto',
@@ -267,16 +180,7 @@ add_action(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'prettyPhoto disable may help improve performance', 'smartpage' ),
 				),
-				array(
-					'id'         => 'preload_fonts',
-					'title'      => esc_html__( 'Preload fonts', 'smartpage' ),
-					'type'       => 'textarea',
-					'columns'    => '70',
-					'rows'       => '8',
-					'validate'   => 'no_html',
-					'text-align' => 'left',
-					'desc'       => esc_html__( 'Help to improve CLS', 'smartpage' ),
-				),
+				
 			),
 		);
 		
@@ -529,6 +433,13 @@ add_action(
 			'title'  => esc_html__( 'Arabic fonts', 'smartpage' ),
 			'icon'   => 'W',
 			'fields' => array(
+				array(
+					'id'       => 'anony_general_font',
+					'title'    => esc_html__( 'General font', 'smartpage' ),
+					'type'     => 'select',
+					'validate' => 'no_html',
+					'options'  => ANONY_Post_Help::queryPostTypeSimple( 'anony_fonts' ),
+				),
 				array(
 					'id'       => 'anony_headings_ar_font',
 					'title'    => esc_html__( 'Arabic font for headings', 'smartpage' ),
@@ -783,41 +694,19 @@ add_action(
 				)
 			);
 
-			$sections['Performance']['fields'][] = array(
-				'id'       => 'wc_shop_only_scripts',
-				'title'    => esc_html__( 'Woocommerce shop only scripts/styles', 'smartpage' ),
-				'type'     => 'switch',
-				'validate' => 'no_html',
-				'desc'     => esc_html__( 'Only allow woocommerce scripts/styles on shop related pages (e.g. product, cart and checkout pages)', 'smartpage' ),
-			);
 			
-			$sections['Performance']['fields'][] = array(
-				'id'       => 'wc_disable_srcset',
-				'title'    => esc_html__( 'Disable srcset meta', 'smartpage' ),
-				'type'     => 'switch',
-				'validate' => 'no_html',
-				'desc'     => esc_html__( 'Sometimes you may need to disable srcsets on mobile if you need to set the image size manually on mobile devices. Use the option below to set product thumbnail size on mobile' ),
+			$sections['single-product'] = array(
+				'title'  => esc_html__( 'Single product', 'smartpage' ),
+				'icon'   => 'x',
+				'fields' => array(
+					array(
+						'id'       => 'disable_comment_form_email_field',
+						'title'    => esc_html__( 'Disable comment\'s form\'s email\'s field', 'smartpage' ),
+						'type'     => 'switch',
+						'validate' => 'no_html',
+					)
+				)
 			);
-			
-			$sections['Performance']['fields'][] = array(
-				'id'       => 'wc_mobile_thumb_size',
-				'title'    => esc_html__( 'Product thumnbnail size on mobile', 'smartpage' ),
-				'type'     => 'number',
-				'validate' => 'no_html',
-			);
-		}
-		
-		// If contact form 7 is acive
-		if ( defined( 'WPCF7_PLUGIN' ) ){
-			$sections['Performance']['fields'][] = array(
-				'id'       => 'cf7_scripts',
-				'title'    => esc_html__( 'Contact form 7 scripts/styles', 'smartpage' ),
-				'type'     => 'select',
-				'options'  => ANONY_Post_Help::queryPostTypeSimple( 'page' ),
-				'validate' => 'multiple_options',
-				'desc'     => esc_html__( 'Choose your contact form page, so cf7 styles/scripts will only be loaded in this page', 'smartpage' ),
-			);
-
 		}
 		
 
