@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
 /**
  * Theme Functions
  *
@@ -9,6 +6,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author  Makiomar
  * @link    http://makiomar.com
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed direct.ly
+}
+
+if ( ! function_exists( 'anony_elementor_custom_fonts_group' ) ) {
+	function anony_elementor_custom_fonts_group ( $font_groups ) {
+		$font_groups['smartpage'] = esc_html__( 'SmartPage', 'smartpage' );
+		return $font_groups;
+	}
+}
+add_filter( 'elementor/fonts/groups', 'anony_elementor_custom_fonts_group' , 99);
+
 
 if ( ! function_exists( 'anony_hide_admin_bar' ) ) {
 	/**
