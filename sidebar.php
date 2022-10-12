@@ -9,6 +9,7 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
+
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.ly
 
 $widgets_url    = esc_url( admin_url( 'widgets.php' ) );
@@ -25,7 +26,7 @@ $sidebar_ad     = has_action( 'sidebar_ad' );
 
 		dynamic_sidebar( 'main-sidebar' );
 
-	else :
+	elseif ( current_user_can( 'administrator' ) ) :
 		?>
 			
 		<strong>
@@ -35,16 +36,6 @@ $sidebar_ad     = has_action( 'sidebar_ad' );
 		<?php echo $link_text; ?>
 		</a>
 			
-	<?php endif ?>
-	
-	<?php if ( $sidebar_ad ) : ?>
-		
-		<div class="anony-ad">
-					
-		<?php do_action( 'sidebar_ad' ); ?>
-			
-		</div>
-	
 	<?php endif ?>
 	
 </div>

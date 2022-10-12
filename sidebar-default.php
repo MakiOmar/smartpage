@@ -26,7 +26,7 @@ $sidebar_ad     = has_action( 'sidebar_ad' );
 
 		dynamic_sidebar( 'main-sidebar' );
 
-	else :
+	elseif ( current_user_can( 'administrator' ) ) :
 	?>
 			
 		<strong>

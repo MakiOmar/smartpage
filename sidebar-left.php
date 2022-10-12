@@ -26,22 +26,12 @@ $sidebar_ad     = has_action( 'sidebar_ad' );
 
 		dynamic_sidebar( 'left-sidebar' );
 
-	else :
+	elseif ( current_user_can( 'administrator' ) ) :
 		?>
 			
 		<strong><?php echo $go_widget; ?></strong>
 		<a href="<?php echo $widgets_url; ?>"><?php echo $link_text; ?></a>
 			
-	<?php endif ?>
-	
-	<?php if ( $sidebar_ad ) : ?>
-		
-		<div class="anony-ad">
-					
-		<?php do_action( 'sidebar_ad' ); ?>
-			
-		</div>
-	
 	<?php endif ?>
 	
 </div>
