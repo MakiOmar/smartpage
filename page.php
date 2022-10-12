@@ -14,6 +14,10 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 get_header();
 
+$anony_options = ANONY_Options_Model::get_instance();
+
+$sidebar = $anony_options->sidebar;
+
 ?>
 
 <div class="anony-grid">
