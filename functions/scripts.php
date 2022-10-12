@@ -136,6 +136,7 @@ function anony_scripts() {
 		'cats-menu',
 	);
 	if ( class_exists( 'ANONY_Options_Model' ) ) {
+		$anony_options = ANONY_Options_Model::get_instance();
 		if ( '1' === $anony_options->enable_downloads ) {
 			$scripts [] = 'download';
 		}
@@ -229,28 +230,19 @@ add_action(
 	}
 );
 
-
+add_action('wp_footer', function(){
+	anony_get_font_family();
+});
 add_action(
 	'wp_head',
 	function () { ?>
 	
 	<!-- Head styles -->
 	<style id="anony-head-styles" type="text/css">
-		/*@font-face{
-			font-family:'FontAwesome';
-			src:url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.eot?v=4.7.0');
-			src:url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
-				url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
-				url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
-				url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
-				url('<?php echo ANONY_THEME_URI; ?>/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-				font-weight:normal;
-				font-style:normal;
-				font-display: fallback; /* Fix Ensure text remains visible during webfont load */
-			/*}*/
 		body{
 			background-color: #ecf0f0;
 			overflow-x: hidden;
+			font-family: '<?php echo anony_get_font_family() ?>';
 			font-size: 16px;
 		}
 		[class*="anony-grid-col-"] {
