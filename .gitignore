@@ -1,6 +1,8 @@
 */functions/helper/*
-*.json
 webpack.mix.js
+mix-manifest.json
+package-lock.json
+package.json
 */dist/*
 node_modules
 _notes/
