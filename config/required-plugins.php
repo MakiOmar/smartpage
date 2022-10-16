@@ -49,6 +49,13 @@ function anony__register_required_plugins() {
 			'required'     => true
 		),
 
+      array(
+               'name'      => 'AnonyEngine Flash WP',
+               'slug'      => 'flash-wp',
+               'source'    => 'https://github.com/MakiOmar/AnonyEngine-Flash-WP/archive/refs/heads/master.zip',
+               'required'  => false
+        )
+
 
 	);
 
