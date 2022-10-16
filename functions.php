@@ -17,6 +17,11 @@ require_once wp_normalize_path( get_template_directory() . '/config/config.php' 
 // Initial functions files.
 
 /**
+ * Theme update checker.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'updates.php' );
+
+/**
  * Theme Scripts.
  */
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'scripts.php' );
