@@ -38,6 +38,33 @@ add_filter(
 	}
 );
 
+// Array of metaboxes to register
+add_filter(
+	'anony_metaboxes',
+	function ( $metaboxes ) {
+		$metaboxes[] =
+		array(
+			'id'            => 'anony_template_settings', // Meta box ID
+			'title'         => esc_html__( 'Page/Post settings', 'smartpage' ),
+			'context'       => 'side',
+			'priority'      => 'high', // high|low
+			'hook_priority' => '10', // Default 10
+			'post_type'     => array( 'page', 'post' ),
+			'fields'        =>
+					array(
+						array(
+							'id'       => 'is_absolute_header',
+							'title'    => esc_html__( 'Header overlaps content?', 'smartpage' ),
+							'type'     => 'switch',
+							'validate' => 'no_html',
+						),
+					),
+		);
+
+		return $metaboxes;
+	}
+);
+
 function anony_font_variations( $metaboxes ) {
 	$metaboxes[] =
 		array(

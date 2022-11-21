@@ -82,11 +82,16 @@ final class ANONY_Site_Header extends Library_Document {
 			'data-elementor-id'   => $id,
 			'class'               => 'elementor elementor-' . $id . ' anony-site-header',
 		);
+			
+		global $post;
 
-		if ( ! empty( $settings['enable_absolute_header'] ) ) {
+		$anony_template_settings = get_post_meta( $post->ID, 'anony_template_settings', true );
+
+		if( '1' === $anony_template_settings['is_absolute_header'] )
+		{
 			$attributes['class'] .= ' anony-absolute-header';
 		}
-
+		
 		return $attributes;
 	}
 
@@ -127,7 +132,7 @@ final class ANONY_Site_Header extends Library_Document {
 				'tab'   => Controls_Manager::TAB_ADVANCED,
 			)
 		);
-
+		/*
 		$this->add_control(
 			'enable_absolute_header',
 			array(
@@ -140,7 +145,7 @@ final class ANONY_Site_Header extends Library_Document {
 				'frontend_available' => true,
 			)
 		);
-
+		*/
 		$this->end_controls_section();
 
 		// Post::register_style_controls($this);
