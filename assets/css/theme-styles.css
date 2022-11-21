@@ -383,3 +383,93 @@ header.anony-absolute-header {
 .widgeted ul li:last-child {
   border-bottom: none;
 }
+
+/***Footer***/
+#anony-footer {
+  background-color: rgba(0, 0, 0, 0.88);
+}
+
+footer p {
+  padding: 20px;
+  color: #ffffff;
+}
+
+#anony-page-scroll-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  z-index: 1000;
+}
+
+#anony-page-scroll-bg {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: 2px solid #fc2a2a;
+  -webkit-animation: Rotate 1s infinite linear;
+  -moz-animation: Rotate 1s infinite linear;
+  -ms-animation: Rotate 1s infinite linear;
+  z-index: -100;
+}
+
+@-webkit-keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+#anony-page-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #fc2a2a;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+#anony-hidden-search-form #anony-searchform {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+#anony-hidden-search-form #anony-searchform .anony-search-input {
+  width: 80%;
+  height: 60px;
+  margin: 0;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#anony-hidden-search-form #anony-searchform .anony-form_submit {
+  padding: 20px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#anony-hidden-search-form > .anony-search-form-toggle {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  display: block;
+}
+
+.anony-show-search-form {
+  opacity: 100 !important;
+  visibility: visible !important;
+  display: flex;
+}
+
+/***End footer***/

@@ -1,4 +1,4 @@
-<footer class="anony-grid-col-md-12 anony-grid-col">
+<footer id="anony-footer" class="anony-grid-col-md-12 anony-grid-col">
 	 
 	<?php if ( $footer_ad ) : ?>
 	 

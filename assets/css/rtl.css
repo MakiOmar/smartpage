@@ -54,10 +54,7 @@
 @font-face {
   font-family: "hsn_shahd_boldbold";
   src: url("../../fonts/ARBfonts/shahd-bold-webfont.eot");
-  src: url("../../fonts/ARBfonts/shahd-bold-webfont.eot?#iefix") format("embedded-opentype"), 
-  url("../../fonts/ARBfonts/shahd-bold-webfont.woff") format("woff"), 
-  url("../../fonts/ARBfonts/shahd-bold-webfont.ttf") format("truetype"), 
-  url("../../fonts/ARBfonts/shahd-bold-webfont.svg#hsn_shahd_boldbold") format("svg");
+  src: url("../../fonts/ARBfonts/shahd-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/ARBfonts/shahd-bold-webfont.woff") format("woff"), url("../../fonts/ARBfonts/shahd-bold-webfont.ttf") format("truetype"), url("../../fonts/ARBfonts/shahd-bold-webfont.svg#hsn_shahd_boldbold") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
