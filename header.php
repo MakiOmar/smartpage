@@ -53,7 +53,7 @@ if ( ! defined( 'ANOENGINE' ) ) {
         $uc_menu = get_term_by('slug', ANONY_MENU, 'nav_menu');
         
         if ($uc_menu) {
-            $uc_menu_translation  = ANONY_TERM_HELP::getTermBy(
+            $uc_menu_translation  = ANONY_TERM_HELP::get_term_by(
                 $uc_menu->term_id, 
                 'nav_menu'
             );
@@ -70,7 +70,7 @@ if ( ! defined( 'ANOENGINE' ) ) {
         $uc_menu = get_term_by('slug', 'anony-user-menu', 'nav_menu');
         
         if ($uc_menu) {
-            $uc_menu_translation  = ANONY_TERM_HELP::getTermBy(
+            $uc_menu_translation  = ANONY_TERM_HELP::get_term_by(
                 $uc_menu->term_id, 
                 'nav_menu'
             );
