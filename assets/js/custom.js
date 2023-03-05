@@ -347,19 +347,19 @@ jQuery(document).ready(function($){
 			
 			//Send the new rating to database
 			$.ajax({
-			   type : "POST",
-			   data: {
-				  //'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db
-				  action: 'rate_post_meta',
-				  act:'rate',
-				  post_id : postId,
-				  rate :clickRrate
-			   },
-			  url : anonyAjaxUrl,
-			  success:function(response){
-				  //resp is define within the wp_ajax_{action} hooked function
-				  console.log(response.resp);
-			  }
+			type : "POST",
+			data: {
+				//'rate_post' is the action of the WordPress's wp_ajax_{action} hook, defined in db
+				action: 'rate_post_meta',
+				act:'rate',
+				post_id : postId,
+				rate :clickRrate
+			},
+			url : anonyAjaxUrl,
+			success:function(response){
+				//resp is define within the wp_ajax_{action} hooked function
+				//console.log(response.resp);
+			}
 			});
 		});
 	});
