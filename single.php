@@ -21,10 +21,10 @@ $data = array();
 
 if ( have_posts() ) {
 
-	while ( have_posts() ) {
-		the_post();
-		$data = anony_common_post_data( get_post_type() );
-	}
+    while ( have_posts() ) {
+        the_post();
+        $data = anony_common_post_data( get_post_type() );
+    }
 }
 
 $right_sidebar = is_rtl() ? 'right' : 'left';
@@ -32,12 +32,16 @@ $right_sidebar = is_rtl() ? 'right' : 'left';
 $left_sidebar = is_rtl() ? 'left' : 'right';
 
 if ( empty( $data ) ) {
-	return;
+    return;
 }
 
 extract( $data );
 
 do_action( 'anony_before_inculde_single', $data, $post_type );
 
-
-require locate_template( 'template-parts/single-post/' . get_post_type() . '.php', false, false );
+if( in_array( get_post_type(), array( 'anony_download', 'elementor_library' ) ) )
+{
+    require locate_template( 'template-parts/single-post/' . get_post_type() . '.php', false, false );
+}else{
+    require locate_template( 'template-parts/single-post/post.php', false, false );
+}
