@@ -7,7 +7,7 @@ function anony_theme_skin(){
 
 	<style type="text/css">
 
-		.anony-skew-bg::after, .page-numbers li, .anony-active, .button, .anony-active-tab,
+		.anony-skew-bg::after, .anony-page-numbers li, .anony-active, .button, .anony-active-tab,
 .anony-page-numbers a, .widgeted_title, #anony-dun-title, #submit, .anony-form_submit,
 .anony-featured-posts-title, .anony-section_title, #anony-page-scroll, .anony-button,
 .anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, #anony-main_nav_con, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after, .elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
@@ -37,7 +37,7 @@ function anony_theme_skin(){
 		#anony-page-scroll-bg{
 			border-left: 2px solid <?php echo esc_html( $primary_color ) ;?>;
 		}
-		.page-numbers, #anony-main-menu-con .anony-sub-menu li a, .widgeted_title, .anony-slide-title a, .anony-featured-button, .anony-featured-posts-title a, .anony-section_title, .anony-button, .anony-single_post_title a {
+		.anony-page-numbers, #anony-main-menu-con .anony-sub-menu li a, .widgeted_title, .anony-slide-title a, .anony-featured-button, .anony-featured-posts-title a, .anony-section_title, .anony-button, .anony-single_post_title a {
 		  color: #fff;
 		}
 		#anony-main-menu-con .anony-sub-menu li {

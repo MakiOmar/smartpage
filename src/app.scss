@@ -1,5 +1,5 @@
 .firebrick {
-	.anony-skew-bg::after,.page-numbers li,.active,.button, .anony-active-tab,
+	.anony-skew-bg::after,.anony-page-numbers li,.active,.button, .anony-active-tab,
 .anony-page-numbers a,.widgeted_title,#anony-dun-title,#submit,.anony-form_submit,
 .anony-featured-posts-title,.anony-section_title,#anony-page-scroll,.anony-button,.anony-post-image-wrapper h4,.f-post-title,.reply{
 	background-color: #ef1450 ;
@@ -49,7 +49,7 @@ body{
 	background-color: #e09352;
 	border-left: 6px solid #230005;
 }
-.page-numbers, #anony-main-menu-con .anony-sub-menu li a{
+.anony-page-numbers, #anony-main-menu-con .anony-sub-menu li a{
 	color: #fff;
 }
 #anony-main-menu-con .anony-sub-menu li{
