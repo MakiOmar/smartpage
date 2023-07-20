@@ -5,6 +5,7 @@
 @use 'woocommerce/woo-rtl';
 @use 'woocommerce/breadcrumbs';
 @use 'woocommerce/comments';
+@use 'woocommerce/account-page';
 .woocommerce .star-rating span::before, .woocommerce p.stars a::before {
 	color: #ffb62b;
 }
@@ -75,5 +76,5 @@ span.required{
 		padding: 20px 10px;	
 	}
 
-	
+
 }

@@ -1,0 +1,102 @@
+/* Style the headings */
+
+
+.woocommerce-MyAccount-content h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+  
+  
+
+/* Style the links */
+
+
+  .woocommerce-MyAccount-navigation ul li a {
+	font-size: 16px;
+	color: #333;
+	padding: 10px 15px;
+	display: block;
+	border-bottom: 1px solid #eee;
+}
+
+.woocommerce-MyAccount-navigation ul li.is-active a {
+	font-weight: bold;
+	background-color: #f9f9f9;
+}
+  
+  
+
+/* Style the form fields */
+
+
+  .woocommerce-EditAccountForm input[type="text"],
+  .woocommerce-EditAccountForm input[type="email"],
+  .woocommerce-EditAccountForm input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+  
+  
+
+/* Style the buttons */
+
+
+  .woocommerce-EditAccountForm button[type="submit"] {
+	background-color: #0073aa;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.woocommerce-EditAccountForm button[type="submit"]:hover {
+	background-color: #005d84;
+}
+  
+  
+
+/* Style the tables */
+
+
+  .woocommerce-MyAccount-content table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.woocommerce-MyAccount-content table th,
+  .woocommerce-MyAccount-content table td {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.woocommerce-MyAccount-content table th {
+	font-weight: bold;
+	background-color: #f9f9f9;
+}
+
+.woocommerce-MyAccount-content table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+  
+
+/* Remove list bullets */
+
+
+  .woocommerce-MyAccount-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+  
+
+/* Apply hover effect on navigation links */
+
+
+  .woocommerce-MyAccount-navigation ul li a:hover {
+	background-color: #f9f9f9;
+}
