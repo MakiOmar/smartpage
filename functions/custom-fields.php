@@ -23,6 +23,7 @@ add_filter(
 			'priority'      => 'high', // high|low
 			'hook_priority' => '10', // Default 10
 			'post_type'     => array( 'anony_download' ),
+			'tapped'        => true,
 			'fields'        =>
 					array(
 						array(
@@ -60,7 +61,7 @@ add_filter(
 						),
 					),
 		);
-
+		
 		return $metaboxes;
 	}
 );
