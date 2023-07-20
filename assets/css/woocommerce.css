@@ -203,7 +203,6 @@ section.related.products {
   .woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
     padding: 0;
   }
-
   .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
     padding: 5px;
     margin: 0;
@@ -436,7 +435,6 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
     justify-content: flex-start;
     align-items: baseline;
   }
-
   #anony-reviews-details .review-rating-value {
     width: 60px;
     font-size: 12px;
@@ -500,11 +498,9 @@ span.required {
   .woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
     width: 50%;
   }
-
   .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
     padding-left: 5px;
   }
-
   .woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
     padding-right: 5px;
   }

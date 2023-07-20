@@ -107,19 +107,13 @@ select {
 }
 
 .anony-custom-bullets ul li::before {
-  content: "•";
-  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: #000;
-  /* Change the color */
-  font-weight: bold;
-  /* If you want it to be bold */
+  content: "•"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #000; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
   font-size: 20px;
-  display: inline-block;
-  /* Needed to add space between the bullet and the text */
-  width: 1em;
-  /* Also needed for space (tweak if needed) */
-  margin-left: -1em;
-  /* Also needed for space (tweak if needed) */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
 p, ul {
@@ -418,15 +412,6 @@ footer p {
   -moz-animation: Rotate 1s infinite linear;
   -ms-animation: Rotate 1s infinite linear;
   z-index: -100;
-}
-
-@-webkit-keyframes Rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
 }
 #anony-page-scroll {
   display: flex;

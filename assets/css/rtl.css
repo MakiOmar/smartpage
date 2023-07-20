@@ -181,11 +181,9 @@ a.pp_close, a.pp_expand {
   #anony-main-menu-con li a {
     border-right: 0;
   }
-
   .anony-sub-menu {
     right: 0;
   }
-
   /***End header*/
 }
 @media screen and (max-width: 480px) {
