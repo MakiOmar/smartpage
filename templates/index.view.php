@@ -3,7 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed direct.ly
 }
 
-get_header();?>
+get_header();
+$anony_options = ANONY_Options_Model::get_instance();
+?>
 
 <div class="anony-grid">
   
