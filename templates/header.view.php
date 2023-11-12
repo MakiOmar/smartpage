@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </head>
 
 <body <?php echo $bodyClass; ?>>
-	 
+	<?php wp_body_open(); ?>
 	<?php if ( $preloader == '1' ) : ?>
 		<div id="anony-preloader">
 			<p><?php echo $blogname; ?> <?php echo esc_html__( 'Loading...', 'smartpage' ); ?></p>
