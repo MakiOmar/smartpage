@@ -79,7 +79,7 @@ add_action(
 		$path = ANONY_LIBS_DIR . '/shortcodes/statistics/';
 		$uri  = ANONY_LIBS_URI . '/shortcodes/statistics/';
 
-		if ( ! ANONY_Post_Help::isPageHasShortcode( $post, 'anony_statistics' ) ) {
+		if ( ! ANONY_Post_Help::has_shortcode( $post, 'anony_statistics' ) ) {
 			return;
 		}
 
@@ -117,7 +117,7 @@ add_action(
 
 		global $post;
 
-		if ( ! ANONY_Post_Help::isPageHasShortcode( $post, 'anony_statistics' ) ) {
+		if ( ! ANONY_Post_Help::has_shortcode( $post, 'anony_statistics' ) ) {
 			return;
 		}
 		?>
