@@ -343,7 +343,7 @@ if ( !function_exists( 'anony_common_post_data' ) ){
 		$temp['content']         = apply_filters( 'the_content', get_the_content() );
 		$temp['excerpt']         = esc_html( get_the_excerpt() );
 		$temp['thumb']           = has_post_thumbnail();
-		$temp['thumb_exists']    = class_exists( 'ANONY_LINK_HELP' ) ? ANONY_LINK_HELP::curlUrlExists( get_the_post_thumbnail_url( $ID ) ) : get_the_post_thumbnail_url( $ID );
+		$temp['thumb_exists']    = true;
 		$temp['thumb_img_full']  = get_the_post_thumbnail( $ID, 'full' );
 		$temp['thumb_img']       = get_the_post_thumbnail( $ID, 'category-post-thumb' );
 		$temp['thumbnail_img']   = get_the_post_thumbnail_url( $ID, 'thumbnail' );

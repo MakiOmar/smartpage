@@ -132,6 +132,30 @@ add_action(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Choose preloader image', 'smartpage' ),
 				),
+				
+				array(
+					'id'       => 'mutinput',
+					'title'    => esc_html__( 'Test multiinput', 'smartpage' ),
+					'type'     => 'multi_value',
+					'fields'   => array(
+						array(
+							'id'       => 'multi_input_preloader',
+							'title'    => esc_html__( 'multi_input Enable preloader', 'smartpage' ),
+							'type'     => 'switch',
+							'validate' => 'no_html',
+							'desc'     => esc_html__( 'Enabel or disable page preloader', 'smartpage' ),
+						),
+		
+						array(
+							'id'       => 'multi_input_preloader_img',
+							'title'    => esc_html__( 'multi_input Preloader image', 'smartpage' ),
+							'type'     => 'uploader',
+							'validate' => 'no_html',
+							'desc'     => esc_html__( 'Choose preloader image', 'smartpage' ),
+						),
+					),
+					'validate' => 'no_html',
+				),
 			),
 		);
 		

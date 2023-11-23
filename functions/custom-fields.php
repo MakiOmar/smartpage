@@ -59,6 +59,13 @@ add_filter(
 							'type'     => 'switch',
 							'validate' => 'no_html',
 						),
+						
+						array(
+							'id'       => 'test_gallery',
+							'title'    => esc_html__( 'test_gallery', 'smartpage' ),
+							'type'     => 'gallery',
+							'validate' => 'no_html',
+						),
 					),
 		);
 		
