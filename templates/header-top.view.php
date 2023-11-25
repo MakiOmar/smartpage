@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		 <?php echo $user_nav; ?>
 
-	  <ul id="anony-follow list-style-none">
+	  <ul id="anony-follow" class="list-style-none">
 		<?php
 		foreach ( $socials_follow as $data ) :
 			extract( $data );
