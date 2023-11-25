@@ -341,7 +341,7 @@ if ( !function_exists( 'anony_common_post_data' ) ){
 		$temp['title']           = esc_html( get_the_title() );
 		$temp['title_attr']      = the_title_attribute( array( 'echo' => false ) );
 		$temp['content']         = apply_filters( 'the_content', get_the_content() );
-		$temp['excerpt']         = esc_html( get_the_excerpt() );
+		$temp['excerpt']         = wp_trim_words( esc_html( get_the_excerpt() ), 25 );
 		$temp['thumb']           = has_post_thumbnail();
 		$temp['thumb_exists']    = true;
 		$temp['thumb_img_full']  = get_the_post_thumbnail( $ID, 'full' );
@@ -391,13 +391,13 @@ if ( !function_exists( 'anony_pagination' ) ){
 		$prev_text = is_rtl() ? 'right' : 'left';
 
 		$next_text = is_rtl() ? 'left' : 'right';
-
 		$pagination = get_the_posts_pagination(
 			array(
 				'type'               => 'list',
 				'prev_text'          => '<i class="fa fa-arrow-' . $prev_text . '"></i>',
 				'next_text'          => '<i class="fa fa-arrow-' . $next_text . '"></i>',
 				'screen_reader_text' => ' ',
+				'class'              => 'anony-page-numbers',
 
 			)
 		);
