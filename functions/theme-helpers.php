@@ -3,126 +3,123 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed direct.ly
 }
 
-if ( !function_exists( 'anony_elementor_editor_custom_fonts' ) ){
+if ( ! function_exists( 'anony_elementor_editor_custom_fonts' ) ) {
 	function anony_elementor_editor_custom_fonts() {
 
 		$custom_fonts = ANONY_Post_Help::queryPostTypeSimple( 'anony_fonts' );
 
 		$font_faces = '';
-		if ( !empty( $custom_fonts ) ) {
+		if ( ! empty( $custom_fonts ) ) {
 
-			foreach( $custom_fonts as $id => $title ) {
-				$font_faces .= anony_render_font_face ( $id );
+			foreach ( $custom_fonts as $id => $title ) {
+				$font_faces .= anony_render_font_face( $id );
 			}
 		}
 
-		if( !empty( $font_faces ) ) : ?>
+		if ( ! empty( $font_faces ) ) : ?>
 			<style id="anony-editor-custom-fonts">
-				<?php echo $font_faces ?>
+				<?php echo $font_faces; ?>
 			</style>
-		<?php  endif;
+			<?php
+		endif;
 	}
 }
 
 add_action( 'elementor/editor/wp_head', 'anony_elementor_editor_custom_fonts' );
 
 
-if ( !function_exists( 'anony_get_font_family' ) ){
+if ( ! function_exists( 'anony_get_font_family' ) ) {
 	function anony_get_font_family() {
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( !empty( $anony_options->anony_general_font ) ){
+		if ( ! empty( $anony_options->anony_general_font ) ) {
 
 			$font_variations = get_post_meta( intval( $anony_options->anony_general_font ), 'anony_font_variations', true );
 
-			if( empty( $font_variations[ 'font_family' ] ) ){
+			if ( empty( $font_variations['font_family'] ) ) {
 
 				$font_family = sanitize_title( get_the_title( intval( $anony_options->anony_general_font ) ) );
 
-			}else{
+			} else {
 
-				$font_family = sanitize_title( $font_variations[ 'font_family' ] );
+				$font_family = sanitize_title( $font_variations['font_family'] );
 			}
-		}else{
+		} else {
 			$font_family = 'Arial';
 		}
 		return $font_family;
 	}
 
 }
-if ( !function_exists( 'anony_render_font_face' ) ){
-	function anony_render_font_face ( $post_id ) {
+if ( ! function_exists( 'anony_render_font_face' ) ) {
+	function anony_render_font_face( $post_id ) {
 		$font_variations = get_post_meta( intval( $post_id ), 'anony_font_variations', true );
-		$url = '';
-		$font_face = false;
-		if( $font_variations && !empty( $font_variations ) ) {
+		$url             = '';
+		$font_face       = false;
+		if ( $font_variations && ! empty( $font_variations ) ) {
 			$font_variations = array_map( 'intval', $font_variations );
-			if( !empty( $font_variations[ 'eot' ] ) ){
-				$eot_url = wp_get_attachment_url( $font_variations[ 'eot' ] );
+			if ( ! empty( $font_variations['eot'] ) ) {
+				$eot_url = wp_get_attachment_url( $font_variations['eot'] );
 
 				if ( $eot_url ) {
 					$url .= "url('{$eot_url}') format('embedded-opentype'),";
 				}
 			}
 
-			if( !empty( $font_variations[ 'woff' ] ) ){
-				$woff = wp_get_attachment_url( $font_variations[ 'woff' ] );
+			if ( ! empty( $font_variations['woff'] ) ) {
+				$woff = wp_get_attachment_url( $font_variations['woff'] );
 
 				if ( $woff ) {
 					$url .= "url('{$woff}') format('woff'),";
 				}
 			}
 
-
-			if( !empty( $font_variations[ 'woff2' ] ) ){
-				$woff2 = wp_get_attachment_url( $font_variations[ 'woff2' ] );
+			if ( ! empty( $font_variations['woff2'] ) ) {
+				$woff2 = wp_get_attachment_url( $font_variations['woff2'] );
 
 				if ( $woff2 ) {
 					$url .= "url('{$woff2}') format('woff2'),";
 				}
 			}
 
-			if( !empty( $font_variations[ 'svg' ] ) ){
-				$svg = wp_get_attachment_url( $font_variations[ 'svg' ] );
+			if ( ! empty( $font_variations['svg'] ) ) {
+				$svg = wp_get_attachment_url( $font_variations['svg'] );
 
 				if ( $svg ) {
 					$url .= "url('{$svg}') format('svg'),";
 				}
 			}
 
-			if ( !empty( $url ) ){
+			if ( ! empty( $url ) ) {
 
-				$url = rtrim( $url,  ',');
+				$url = rtrim( $url, ',' );
 
-				if( empty( $font_variations[ 'font_family' ] ) ){
+				if ( empty( $font_variations['font_family'] ) ) {
 					$font_family = sanitize_title( get_the_title( intval( $post_id ) ) );
-				}else{
-					$font_family = sanitize_title( $font_variations[ 'font_family' ] );
+				} else {
+					$font_family = sanitize_title( $font_variations['font_family'] );
 				}
-
 
 				$font_face = '@font-face{
 						font-family:"' . $font_family . '";
-						src:'. $url . ';
+						src:' . $url . ';
 						font-weight:normal;
 						font-style:normal;
 
 					}';
 			}
-
 		}
 
 		return $font_face;
-
 	}
 }
 
-if ( !function_exists( 'anony_elementor_custom_fonts' ) ){
+if ( ! function_exists( 'anony_elementor_custom_fonts' ) ) {
 	function anony_elementor_custom_fonts( $fonts ) {
 
 		$custom_fonts = ANONY_Post_Help::queryPostTypeSimple( 'anony_fonts' );
 
-		if ( !empty( $custom_fonts ) ) {
+		if ( ! empty( $custom_fonts ) ) {
 			foreach ( $custom_fonts as $id => $title ) {
 				$fonts[ sanitize_title( $title ) ] = 'smartpage';
 			}
@@ -130,21 +127,23 @@ if ( !function_exists( 'anony_elementor_custom_fonts' ) ){
 		return $fonts;
 	}
 }
-add_filter( 'elementor/fonts/additional_fonts', 'anony_elementor_custom_fonts' , 999);
+add_filter( 'elementor/fonts/additional_fonts', 'anony_elementor_custom_fonts', 999 );
 
-if ( !function_exists( 'anony_insert_font_face' ) ){
+if ( ! function_exists( 'anony_insert_font_face' ) ) {
 	function anony_insert_font_face() {
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( !empty( $anony_options->anony_general_font ) ){
+		if ( ! empty( $anony_options->anony_general_font ) ) {
 
-			$font_face = anony_render_font_face ( $anony_options->anony_general_font );
+			$font_face = anony_render_font_face( $anony_options->anony_general_font );
 
-			if ( $font_face ) : ?>
+			if ( $font_face ) :
+				?>
 				<style id="anony-custom-font">
-					<?php echo $font_face ?>
+					<?php echo $font_face; ?>
 				</style>
-			<?php endif;
+				<?php
+			endif;
 		}
 	}
 }
@@ -169,7 +168,7 @@ function anony_load_defaults( $template ) {
 	return $template;
 }
 
-if ( !function_exists( 'anony_category_posts_section' ) ){
+if ( ! function_exists( 'anony_category_posts_section' ) ) {
 	/**
 	 * @param $args  array Loop args
 	 * @param $title string Section title
@@ -202,11 +201,10 @@ if ( !function_exists( 'anony_category_posts_section' ) ){
 		}
 
 		include locate_template( 'templates/category-posts-section.view.php', false, false );
-
 	}
 }
 
-if ( !function_exists( 'anony_get_correct_sidebar' ) ){
+if ( ! function_exists( 'anony_get_correct_sidebar' ) ) {
 	/**
 	 * Desides which sidebar to load according to page direction
 	 */
@@ -229,7 +227,7 @@ if ( !function_exists( 'anony_get_correct_sidebar' ) ){
 	}
 }
 
-if ( !function_exists( 'anony_get_custom_logo' ) ){
+if ( ! function_exists( 'anony_get_custom_logo' ) ) {
 	/**
 	 * Generates logo markup.
 	 *
@@ -242,7 +240,7 @@ if ( !function_exists( 'anony_get_custom_logo' ) ){
 	 * @return string Theme's logo with a link to the homepage
 	 */
 	function anony_get_custom_logo( $color = 'main' ) {
-		 $logo_url = ANONY_THEME_URI . '/images/logo-' . $color . '.png';
+		$logo_url = ANONY_THEME_URI . '/images/logo-' . $color . '.png';
 
 		if ( has_custom_logo() ) {
 			$logo = '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">' . get_custom_logo() . '</div>';
@@ -255,11 +253,10 @@ if ( !function_exists( 'anony_get_custom_logo' ) ){
 			$logo .= '</a></h1></div>';
 		}
 		return apply_filters( 'anony_get_custom_logo', $logo );
-
 	}
 }
 
-if ( !function_exists( 'anony_get_custom_logo_url' ) ){
+if ( ! function_exists( 'anony_get_custom_logo_url' ) ) {
 	/**
 	 * get custom logo url.
 	 */
@@ -273,11 +270,10 @@ if ( !function_exists( 'anony_get_custom_logo_url' ) ){
 		}
 
 		return apply_filters( 'anony_get_custom_logo_url', $logo );
-
 	}
 }
 
-if ( !function_exists( 'anony_remove_type_attr' ) ){
+if ( ! function_exists( 'anony_remove_type_attr' ) ) {
 	/**
 	 * Remove type attribute from styles/scripts.
 	 *
@@ -292,7 +288,7 @@ if ( !function_exists( 'anony_remove_type_attr' ) ){
 	}
 }
 
-if ( !function_exists( 'anony_comments_number' ) ){
+if ( ! function_exists( 'anony_comments_number' ) ) {
 	/**
 	 * Generates comments number markup.
 	 *
@@ -320,7 +316,7 @@ if ( !function_exists( 'anony_comments_number' ) ){
 }
 
 
-if ( !function_exists( 'anony_common_post_data' ) ){
+if ( ! function_exists( 'anony_common_post_data' ) ) {
 	/**
 	 * Collects common post data
 	 *
@@ -335,8 +331,8 @@ if ( !function_exists( 'anony_common_post_data' ) ){
 			$grid = $anony_options->posts_grid;
 		}
 
-		$ID                      = get_the_ID();
-		$temp['id']              = $ID;
+		$p_id                      = get_the_ID();
+		$temp['id']              = $p_id;
 		$temp['permalink']       = esc_url( get_the_permalink() );
 		$temp['title']           = esc_html( get_the_title() );
 		$temp['title_attr']      = the_title_attribute( array( 'echo' => false ) );
@@ -344,15 +340,15 @@ if ( !function_exists( 'anony_common_post_data' ) ){
 		$temp['excerpt']         = wp_trim_words( esc_html( get_the_excerpt() ), 25 );
 		$temp['thumb']           = has_post_thumbnail();
 		$temp['thumb_exists']    = true;
-		$temp['thumb_img_full']  = get_the_post_thumbnail( $ID, 'full' );
-		$temp['thumb_img']       = get_the_post_thumbnail( $ID, 'category-post-thumb' );
-		$temp['thumbnail_img']   = get_the_post_thumbnail_url( $ID, 'thumbnail' );
+		$temp['thumb_img_full']  = get_the_post_thumbnail( $p_id, 'full' );
+		$temp['thumb_img']       = get_the_post_thumbnail( $p_id, 'category-post-thumb' );
+		$temp['thumbnail_img']   = get_the_post_thumbnail_url( $p_id, 'thumbnail' );
 		$temp['date']            = get_the_date();
 		$temp['gravatar']        = get_avatar( get_the_author_meta( 'ID' ), 32 );
 		$temp['author']          = sprintf( esc_html__( 'By %s', 'smartpage' ), get_the_author() );
 		$temp['read_more']       = esc_html__( 'Read more', 'smartpage' );
 		$temp['grid']            = $grid;
-		$temp['views']           = anony_get_post_views( $ID );
+		$temp['views']           = anony_get_post_views( $p_id );
 		$temp['comments_open']   = comments_open();
 		$temp['comments_number'] = anony_comments_number();
 		$temp['has_category']    = has_category();
@@ -376,12 +372,11 @@ if ( !function_exists( 'anony_common_post_data' ) ){
 			}
 		}
 
-		return apply_filters( $post_type . '_loop_data', $temp, $ID );
-
+		return apply_filters( $post_type . '_loop_data', $temp, $p_id );
 	}
 }
 
-if ( !function_exists( 'anony_pagination' ) ){
+if ( ! function_exists( 'anony_pagination' ) ) {
 	/**
 	 * render posts pagination
 	 *
@@ -390,7 +385,7 @@ if ( !function_exists( 'anony_pagination' ) ){
 	function anony_pagination() {
 		$prev_text = is_rtl() ? 'right' : 'left';
 
-		$next_text = is_rtl() ? 'left' : 'right';
+		$next_text  = is_rtl() ? 'left' : 'right';
 		$pagination = get_the_posts_pagination(
 			array(
 				'type'               => 'list',
@@ -410,7 +405,7 @@ if ( !function_exists( 'anony_pagination' ) ){
  * Posts functions
  *-----------------------------------------------------------*/
 
-if ( !function_exists( 'anony_get_post_views' ) ){
+if ( ! function_exists( 'anony_get_post_views' ) ) {
 	/**
 	 * Gets post views count.
 	 *
@@ -429,7 +424,7 @@ if ( !function_exists( 'anony_get_post_views' ) ){
 	}
 }
 
-if ( !function_exists( 'anony_set_post_views' ) ){
+if ( ! function_exists( 'anony_set_post_views' ) ) {
 	/**
 	 * Sets post views count.
 	 *
@@ -444,13 +439,13 @@ if ( !function_exists( 'anony_set_post_views' ) ){
 			delete_post_meta( $postID, $count_key );
 			add_post_meta( $postID, $count_key, '0' );
 		} else {
-			$count++;
+			++$count;
 			update_post_meta( $postID, $count_key, $count );
 		}
 	}
 }
 
-if ( !function_exists( 'anony_cat_posts_count' ) ){
+if ( ! function_exists( 'anony_cat_posts_count' ) ) {
 	/**
 	 * Gets number of posts per category.
 	 *
@@ -464,10 +459,9 @@ if ( !function_exists( 'anony_cat_posts_count' ) ){
 		if ( is_array( $num ) && ! empty( $num ) ) {
 			return $num[0];
 		}
-
 	}
 }
-if ( !function_exists( 'anony_latest_comments' ) ){
+if ( ! function_exists( 'anony_latest_comments' ) ) {
 	/**
 	 * Gets latest comments.
 	 *
@@ -486,14 +480,16 @@ if ( !function_exists( 'anony_latest_comments' ) ){
 
 		if ( count( $comments ) > 0 ) {
 
-			foreach ( $comments as $comment ) { ?>    
+			foreach ( $comments as $comment ) {
+				?>
+					
 
 					<div  class="anony-recent-comment-wrapper">
 
 						<h3><?php echo '<i class="fa fa-user"></i> ' . $comment->comment_author . ' ' . __( 'Commented', 'smartpage' ); ?></h3>
 
 						<p class='recent-comment'>
-							<?php echo $comment->comment_content ?>
+							<?php echo $comment->comment_content; ?>
 
 							<?php if ( get_the_permalink( $comment->comment_post_ID ) ) : ?>
 								<a href="<?php echo get_the_permalink( $comment->comment_post_ID ); ?>"><?php esc_html_e( 'View Post', 'smartpage' ); ?></a>
@@ -511,6 +507,6 @@ if ( !function_exists( 'anony_latest_comments' ) ){
 			<p><?php esc_html_e( 'No comments yet', 'smartpage' ); ?></p>
 
 			<?php
-		};
+		}
 	}
 }
