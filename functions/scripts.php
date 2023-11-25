@@ -1,8 +1,20 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
+/**
+ * Theme scripts
+ *
+ * @package Anonymous theme
+ * @author Makiomar
+ * @link http://makiomar.com
+ */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+/**
+ * Enqueue styles
+ *
+ * @return void
+ */
 function anony_styles() {
 
 	$media = 'all';
@@ -13,14 +25,14 @@ function anony_styles() {
 
 		$min_suffix = ( '1' !== $anony_options->load_minified_styles ) ? '' : '.min';
 
-		$media = ( $anony_options->defer_stylesheets === '1' ) ? 'print' : $media;
+		$media = ( '1' === $anony_options->defer_stylesheets ) ? 'print' : $media;
 
 	} else {
 
 		$min_suffix = '';
 	}
-	
-	if( $anony_options->disable_main_css !== '1' ){
+
+	if ( '1' !== $anony_options->disable_main_css ) {
 		// Main theme file (Soon will be replaced with theme-styles.css).
 		wp_enqueue_style(
 			'anony-main',
@@ -32,7 +44,7 @@ function anony_styles() {
 			$media
 		);
 	}
-	if( $anony_options->disable_rsponsive_css !== '1' ){
+	if ( '1' !== $anony_options->disable_rsponsive_css ) {
 		// Responsive styles.
 		wp_enqueue_style(
 			'anony-responsive',
@@ -44,8 +56,8 @@ function anony_styles() {
 			$media
 		);
 	}
-	
-	if( class_exists( 'woocommerce' ) ){
+
+	if ( class_exists( 'woocommerce' ) ) {
 		// WooCommerce styles.
 		wp_enqueue_style(
 			'anony-woocommerce',
@@ -57,7 +69,6 @@ function anony_styles() {
 			$media
 		);
 	}
-	
 
 	// Theme styles. (Soon will replace main.css).
 	wp_enqueue_style(
@@ -69,7 +80,7 @@ function anony_styles() {
 		),
 		$media
 	);
-/*
+
 	// FontAwesome.
 	wp_enqueue_style(
 		'font-awesome',
@@ -91,11 +102,11 @@ function anony_styles() {
 		),
 		$media
 	);
-*/
+
 	if ( is_rtl() ) {
-		
-		$rtl_dep = $anony_options->disable_main_css !== '1' ? array( 'anony-main' ) : null ;
-		
+
+		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-main' ) : null;
+
 		wp_enqueue_style(
 			'anony-rtl',
 			ANONY_THEME_URI . '/assets/css/rtl' . $min_suffix . '.css',
@@ -111,22 +122,21 @@ function anony_styles() {
 
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		// load prettyPhoto if needed
+		// load prettyPhoto if needed.
 		if ( '1' !== $anony_options->disable_prettyphoto ) {
 			$styles_libs[] = 'prettyPhoto';
 		}
 	}
-
 }
 
+/**
+ * Enqueue scripts
+ *
+ * @return void
+ */
 function anony_scripts() {
 
-	/**
-*
-* ---------------------------------------------------------------------
-	 *                   Register scripts
-	 *---------------------------------------------------------------------
-*/
+	/**---------------------Register scripts*------------------------------*/
 
 	$scripts = array(
 		'tabs',
@@ -141,7 +151,7 @@ function anony_scripts() {
 			$scripts [] = 'download';
 		}
 	}
-	// load prettyPhoto if needed
+	// load prettyPhoto if needed.
 	$libs_scripts[] = 'jquery.prettyPhoto';
 	$libs_scripts[] = 'lightbox.min';
 
@@ -153,7 +163,7 @@ function anony_scripts() {
 
 	foreach ( $scripts as $script ) {
 
-		$handle = in_array( $script, $libs_scripts ) ? $script : 'anony-' . $script;
+		$handle = in_array( $script, $libs_scripts, true ) ? $script : 'anony-' . $script;
 
 		wp_register_script(
 			$handle,
@@ -191,7 +201,7 @@ function anony_scripts() {
 		wp_enqueue_script( $script );
 	}
 
-	// Localize the script with new data tinymce_comments
+	// Localize the script with new data tinymce_comments.
 	$anony_loca = array(
 		'textDir'          => ( is_rtl() ? 'rtl' : 'ltr' ),
 		'themeLang'        => get_bloginfo( 'language' ),
@@ -207,32 +217,34 @@ function anony_scripts() {
 
 		$anony_loca['ajaxURL'] = ANONY_Wpml_Help::get_ajax_url();
 
-		$anony_loca['anonyUseTinymce'] = $anony_options->tinymce_comments == '1' ? true : false;
+		$anony_loca['anonyUseTinymce'] = '1' === $anony_options->tinymce_comments ? true : false;
 
-		$anony_loca['anonyUsePrettyPhoto'] = $anony_options->disable_prettyphoto == '1' ? false : true;
+		$anony_loca['anonyUsePrettyPhoto'] = '1' === $anony_options->disable_prettyphoto ? false : true;
 
-		// load prettyPhoto if needed
-		if ( $anony_options->disable_prettyphoto != '1' ) {
+		// load prettyPhoto if needed.
+		if ( '1' !== $anony_options->disable_prettyphoto ) {
 			wp_enqueue_script( 'jquery.prettyPhoto' );
 		}
 	}
 	wp_localize_script( 'anony-custom', 'anonyLoca', $anony_loca );
 }
 
-// Theme Scripts
+// Theme Scripts.
 add_action(
 	'wp_enqueue_scripts',
 	function () {
 
 		anony_styles();
 		anony_scripts();
-
 	}
 );
 
-add_action('wp_footer', function(){
-	anony_get_font_family();
-});
+add_action(
+	'wp_footer',
+	function () {
+		anony_get_font_family();
+	}
+);
 add_action(
 	'wp_head',
 	function () { ?>
@@ -242,12 +254,12 @@ add_action(
 		body{
 			background-color: #ecf0f0;
 			overflow-x: hidden;
-			font-family: '<?php echo anony_get_font_family() ?>';
+			font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
 			font-size: 16px;
 		}
 		[class*="anony-grid-col-"] {
-		  display: inline-block;
-		  vertical-align: top;
+			display: inline-block;
+			vertical-align: top;
 		}
 		#anony-hidden-search-form{
 			display: flex;
@@ -293,11 +305,11 @@ add_action(
 			height: 150px;
 		}
 		@keyframes heartbeat {
-		  0% { transform: scale(1); }
-		  25% { transform: scale(1.05); }
-		  50% { transform: scale(1); }
-		  75% { transform: scale(1.05); }
-		  100% { transform: scale(1); }
+			0% { transform: scale(1); }
+			25% { transform: scale(1.05); }
+			50% { transform: scale(1); }
+			75% { transform: scale(1.05); }
+			100% { transform: scale(1); }
 		}
 	</style>
 	
@@ -305,4 +317,4 @@ add_action(
 	}
 );
 
-include_once wp_normalize_path( ANONY_LIBS_DIR . 'skin.php' );
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'skin.php' );
