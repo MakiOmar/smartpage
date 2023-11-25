@@ -14,10 +14,6 @@ a {
   cursor: pointer;
 }
 
-ul li {
-  margin: 0 1em;
-}
-
 ul.list-style-none {
   list-style-type: none;
 }
@@ -120,7 +116,7 @@ select {
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
-p, ul {
+p {
   padding-bottom: 20px;
 }
 
@@ -144,6 +140,70 @@ header.anony-absolute-header {
   z-index: 99;
 }
 
+@media screen and (min-width: 768px) {
+  #anony-main_nav_con {
+    position: relative;
+    display: block;
+    height: 60px;
+    width: 95%;
+    margin: auto;
+    left: auto;
+    z-index: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+  .active, .active a, #anony-main_nav_con {
+    border-radius: 10px;
+  }
+  #anony-main-menu-con {
+    display: flex;
+    position: relative;
+    height: inherit;
+    margin: auto;
+  }
+  #anony-main-menu-con li {
+    display: inline-block;
+    border: none;
+  }
+  #anony-main-menu-con li:hover {
+    height: 100%;
+    top: 0;
+  }
+  #anony-main-menu-con li a {
+    padding: 0 20px;
+    width: 100%;
+    border-right: 1px solid rgba(97, 27, 46, 0.5);
+  }
+  #anony-main-menu-con li ul li ul {
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+  .anony-sub-menu li a, .anony-sub-menu li a:hover {
+    font-weight: normal;
+    font-size: 14px !important;
+    height: auto !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  #anony-main-menu-con li:hover > .anony-sub-menu {
+    position: absolute;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+  #anony-toggles-wrapper {
+    display: none !important;
+  }
+  #menu-close {
+    visibility: hidden;
+    opacity: 0;
+  }
+  #anony-main_nav_con.sticky {
+    width: 100% !important;
+    border-radius: 0;
+  }
+}
 /*----Popular section style----*/
 .anony-popular-tabs span {
   width: 49.7%;
@@ -385,7 +445,8 @@ header.anony-absolute-header {
 /*-----Categories dropdown widget-----*/
 #anony-cat-list li, #anony-cat-list li ul li {
   position: relative;
-  background-color: #444444;
+  padding: 0;
+  margin: 0;
 }
 #anony-cat-list li a {
   display: inline-block !important;
@@ -399,6 +460,17 @@ header.anony-absolute-header {
 #anony-cat-list .has-children ul {
   background-color: #fff !important;
 }
+#anony-cat-list .toggle-category {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
 
 #anony-cat-list {
   position: relative;
@@ -406,16 +478,6 @@ header.anony-absolute-header {
   border-radius: 5px;
   padding: 0 8px;
   overflow: hidden;
-}
-
-.toggle-category {
-  position: absolute;
-  left: 0;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 25px;
 }
 
 /* End categories dropdown widget */
