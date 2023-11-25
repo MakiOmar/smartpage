@@ -20,13 +20,23 @@
 	}
 }
 
-	#anony-cat-list {
-		position: relative;
-		width: 100%;
-		border-radius: 5px;
-		padding: 0 8px;
-		overflow: hidden;
-	}
+#anony-cat-list {
+	position: relative;
+	width: 100%;
+	border-radius: 5px;
+	padding: 0 8px;
+	overflow: hidden;
+}
+
+.toggle-category{
+	position: absolute;
+	left: 0;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 25px;
+}
 
 
 /* End categories dropdown widget */
