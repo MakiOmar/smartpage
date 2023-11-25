@@ -1,0 +1,13 @@
+.anony-page-numbers,.anony-page-numbers li,.anony-page-numbers a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.anony-page-numbers a{
+    background-color: #fc2a2a;
+    color: #ffffff;
+    border-radius: 3px;
+    width: 30px;
+    text-align: center;
+}

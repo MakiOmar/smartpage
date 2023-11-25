@@ -1,0 +1,13 @@
+.anony-breadcrumbs li,.anony-breadcrumbs a{
+    color: #d6d4d4;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: normal;
+    align-items: center;
+}
+.anony-breadcrumbs{
+    padding: 7px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}

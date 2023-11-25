@@ -1,9 +1,11 @@
 @use 'elements/general';
 @use 'elements/header';
+@use 'elements/breadcrumbs';
 @use 'elements/main_menu';
 @use 'elements/popular';
 @use 'elements/slider';
 @use 'elements/featured_slider';
 @use 'elements/widgets';
 @use 'widgets/categories-dropdown';
+@use 'elements/pagination';
 @use 'elements/footer';

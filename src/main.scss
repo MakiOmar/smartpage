@@ -179,57 +179,7 @@ body{
 		max-width: 100%;
 	}
 	/***Navigation menus***/
-	#anony-main_nav_con {
-		background-color: #230005;
-		height: 100%;
-		position: absolute;
-		z-index: 999999;
-		top:0;
-		width: 0;
-		visibility: hidden;
-		opacity: 0;
-		-webkit-transition: all .7s ease-in-out;
-		-moz-transition: all .7s ease-in-out;
-		-ms-transition: all .7s ease-in-out;
-		-o-transition: all .7s ease-in-out;
-		transition: all .7s ease-in-out;
-	}
-	#anony-main-menu-con li {
-		position: relative;
-		display:block;
-		border: none;
-		border-bottom:1px solid #ffffff;
-	}
-	#anony-main-menu-con li a {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		color: #ffffff;
-		font-size: 16px;
-		padding: 6px;
-		width: 100%;
-		height: 100%;
-		text-shadow: 0 1px 1px #333131;
-	}
 	
-	#anony-main-menu-con .anony-sub-menu li a{
-		color: #444;
-	}
-	.anony-show-main-nav li a{
-		justify-content: flex-start!important;
-		font-size: 13px!important;
-	}
-	
-	.anony-show-main-nav .toggle-category{
-		color: #fff
-	}
-	#anony-main-menu-con li a:active {
-	  font-size: 14px;
-	}
-	#anony-main-menu-con #anony-cat-list li, #anony-main-menu-con #anony-cat-list li ul li{
-	background-color: transparent;
-}
 	#anony-languages-menu-con{
 		justify-content: center;
 		width: 20%;
@@ -254,69 +204,17 @@ body{
 		display: none;
 		width: auto;
 	}
-	#anony-main-menu-con .anony-sub-menu li{
-		background-color: #5F5D5D;
-		display: block!important;
-		border-right: none;
-		border-bottom: 1px solid #808080;
-	}
+	
 	.anony-nav-links{
-			text-align: center;
+		text-align: center;
 	}
 	.anony-page-numbers li{
 		margin: 5px;
 	}
-	.anony-page-numbers,.anony-page-numbers li,.anony-page-numbers a{
-		display: inline-block;
-	}
-	.anony-page-numbers a{
-		background-color: #fc2a2a;
-		color: #ffffff;
-		border-radius: 3px;
-		width: 30px;
-		text-align: center;
-	}
-	.anony-main-menu-toggle{
-		cursor: pointer;	
-		right: 15px;
-		color: #ffffff;
-		position: absolute;
-	}
-	.anony-dropdown{
-		position: relative!important;
-		padding: 0;
-		width: 100%;
-		display: none;
-		overflow: hidden;
-
-	}
-
-	.anony-dropdown li{
-		background-color: #fff;
-	}
-	
-	.anony-breadcrumbs li,.anony-breadcrumbs a{
-		color: #d6d4d4;
-		display: inline-flex;
-		font-size: 12px;
-		font-weight: normal;
-		align-items: center;
-	}
-	.anony-breadcrumbs{
-		padding: 7px;
-		position: relative;
-		display: flex;
-		flex-wrap: wrap;
-	}
 	.anony-lang {
 		font-weight: bold;
 	}
-	.anony-show-main-nav{
-		left:auto!important;
-		width: 50%!important;
-		visibility: visible!important;
-		opacity: 1!important;
-	}
+
 	/***End navigation menus***/
 	.anony-warning {
 		font-weight: bold;
@@ -1336,10 +1234,7 @@ body{
 
 
 /***Footer***/
-	footer{
-		background-color: rgba(0, 0, 0, 0.88);
-	}
-	footer p{
+	#anony-footer p{
 		padding: 20px;
 		color: #ffffff;
 	}
