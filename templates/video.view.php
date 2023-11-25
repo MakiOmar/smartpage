@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="anony-section">
-	<h4 anony-section_title clearfix>Choosen Videos</h4>
+	<h4 class="anony-section_title">Choosen Videos</h4>
 	<div class="anony-grid-col-md-12 videos">
 	  <div class="anony-grid-col">
 		<div class="anony-grid-col-md-3 anony-grid-col-av-6">

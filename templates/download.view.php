@@ -6,7 +6,7 @@ wp_enqueue_script( 'anony-download' );
 ?>
 <div class="anony-section<?php echo $sec_class; ?> white-bg">
 	<div class="anony-skew-bg">
-		<h4 class="anony-section_title clearfix"><?php echo $sec_title; ?></h4>
+		<h4 class="anony-section_title"><?php echo $sec_title; ?></h4>
 	</div>
 	 
 	<div class="anony-posts-wrapper">

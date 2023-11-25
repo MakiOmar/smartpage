@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }?>    
 <div class="anony-section white-bg">
 	<div class="anony-skew-bg">
-		<h4 class="anony-section_title clearfix"><?php echo $title; ?></h4>
+		<h4 class="anony-section_title"><?php echo $title; ?></h4>
 	</div>
 
 	<div id="anony-<?php echo $grid; ?>">
