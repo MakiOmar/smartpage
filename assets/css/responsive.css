@@ -10,11 +10,6 @@
   vertical-align: text-top;
 }
 
-.anony-grid-col {
-  position: relative;
-  padding: 5px;
-}
-
 .anony-grid-container {
   flex-direction: row;
 }

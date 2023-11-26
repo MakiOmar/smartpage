@@ -85,6 +85,7 @@ select{
 
 .anony-grid-row{
 	display: flex;
+	flex-wrap: wrap;
 }
 .anony-grid-row-vertical{
 	flex-direction: column;
