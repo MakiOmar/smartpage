@@ -11,35 +11,38 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
+	exit; // Exit if accessed directly.
 }
+
 ?>
 <div id="anony-top-header-wrapper">
 	<nav id="anony-follow-contact">
 
 		<?php do_action( 'anony_before_follow_links' ); ?>
 
-	  <ul id="anony-follow" class="list-style-none">
+		<ul id="anony-follow" class="list-style-none">
 		<?php
-		
-		foreach ( $socials_follow as $data ) :
-			?>	 
-			<li>
-				<a class="icon" href="<?php echo $data['url']; ?>" title="<?php echo $data['title']; ?>" target="_blank"><i class="fa fa-<?php echo $data['icon']; ?>"></i></a>
-			</li>
-				 
-		<?php endforeach ?>
+		foreach ( $socials_follow as $data ) {
+			echo '<li>';
+			echo '<a class="icon" href="' . esc_url( $data['url'] ) . '" title="' . esc_attr( $data['title'] ) . '" target="_blank"><i class="fa fa-' . esc_attr( $data['icon'] ) . '"></i></a>';
+			echo '</li>';
+		}
+		?>
 
 		<li>
-			<a href="tel:<?php echo $phone; ?>" class="phone-call"><i class="fa fa-phone"></i></a>
+			<a href="tel:<?php echo esc_attr( $phone ); ?>" class="phone-call"><i class="fa fa-phone"></i></a>
 		</li>
 		 
 		<li>
-			<a href="mailto:<?php echo $email; ?>" class="email-me"><i class="fa fa-envelope"></i></a>
+			<a href="mailto:<?php echo esc_attr( $email ); ?>" class="email-me"><i class="fa fa-envelope"></i></a>
 		</li>
 		 
-	  </ul>
+		</ul>
 
-	  <?php echo $languages_menu; ?>
+		<?php
+		//phpcs:disable
+		echo $languages_menu;
+		//phpcs:enable
+		?>
 	</nav>
 </div>
