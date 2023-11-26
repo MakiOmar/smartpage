@@ -8,17 +8,11 @@ get_header();
 ?>
 
 <div class="anony-grid">
-	<div class="anony-grid-row anony-grid-col">
+
+	<div class="anony-grid-row"><?php anony_breadcrumbs(); ?></div>
+	<div class="anony-grid-row">
 		 
-		<?php
-
-		anony_breadcrumbs();
-
-		get_sidebar( 'right' );
-
-		$pID = $id;
-
-		?>
+		<?php get_sidebar( 'right' ); ?>
 		 
 		<div class="anony-grid-col <?php echo $wrapper_class; ?>">
 						 
