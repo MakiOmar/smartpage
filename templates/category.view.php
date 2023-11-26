@@ -70,7 +70,7 @@ get_header();?>
 			</h3>
 			<div id="anony-<?php echo $grid; ?>">
 
-				<div id="anony-blog-post">
+				<div id="anony-blog-post" class="anony-grid-row">
 
 			<?php
 			foreach ( $posts as $post_data ) :

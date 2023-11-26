@@ -34,7 +34,7 @@ if ( have_posts() ) {
 
 				<div id="anony-standard ?>">
 
-						<div id="anony-blog-post">
+						<div id="anony-blog-post" class="anony-grid-row">
 
 						<?php
 						foreach ( $data as $p ) :

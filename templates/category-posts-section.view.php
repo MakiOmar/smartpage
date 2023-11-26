@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="anony-<?php echo $grid; ?>">
 
-		<div id="anony-blog-post">
+		<div id="anony-blog-post" class="anony-grid-row">
 
 			<?php
 			foreach ( $data as $p ) :
