@@ -22,5 +22,5 @@ $reviewsText = esc_html__('Review(s)', 'smartpage');
 
 $rate_class = is_user_logged_in() ? ' rate-btn' : '';
 //$rateStatus  = !in_array($_SERVER["REMOTE_ADDR"],$userIps) ? 'new_rate'  : 'current_rate';
-require locate_template('templates/rate.view.php', false, false);
+require locate_template('templates/rate-view.php', false, false);
 ?>

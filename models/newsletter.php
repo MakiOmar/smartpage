@@ -8,5 +8,5 @@ $subtitle    = esc_html__('Receive news notifications', 'smartpage');
 $placeholder = esc_html__('&#xf090; Email Adress', 'smartpage');
 $buttonText  = esc_html__('SUBSCRIBE', 'smartpage');
 
-require locate_template('templates/newsletter.view.php', false, false);
+require locate_template('templates/newsletter-view.php', false, false);
 ?>

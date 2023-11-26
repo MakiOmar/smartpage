@@ -22,6 +22,6 @@ if ( ! defined( 'ANOENGINE' ) ) {
 
     $footer_ad = has_action( 'footer_ad' );
 
-    require locate_template( 'templates/footer.view.php', false, false );
+    require locate_template( 'templates/footer-view.php', false, false );
 }
 

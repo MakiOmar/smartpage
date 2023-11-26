@@ -89,4 +89,4 @@ if ( $data['posts'] ) {
 	extract( $data );
 }
 
-require locate_template( 'templates/category.view.php', false, false );
+require locate_template( 'templates/category-view.php', false, false );

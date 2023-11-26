@@ -30,7 +30,7 @@ if ( have_posts() ) {
 	$pagination = anony_pagination();
 }
 if ( ! empty( $data ) ) {
-	include locate_template( 'templates/index.view.php', false, false );
+	include locate_template( 'templates/index-view.php', false, false );
 }
 
 

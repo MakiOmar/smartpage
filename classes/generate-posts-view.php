@@ -85,7 +85,7 @@ if ( ! class_exists( 'ANONY_Generate_Posts_View' ) ) {
 		 * @param string $template the name of posts template
 		 * @param bool   $reset    if the loop need to be reset
 		 */
-		public function __construct( $args, $template = 'blog-post.view', $reset = false ) {
+		public function __construct( $args, $template = 'blog-post-view', $reset = false ) {
 			$this->resetLoop = $reset;
 
 			$this->postsTemplate = $template;

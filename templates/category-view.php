@@ -76,7 +76,7 @@ get_header();?>
 			foreach ( $posts as $post_data ) :
 				extract( $post_data );
 
-				include locate_template( 'templates/blog-post.view.php', false, false );
+				include locate_template( 'templates/blog-post-view.php', false, false );
 
 			endforeach;
 			?>

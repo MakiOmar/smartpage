@@ -200,7 +200,7 @@ if ( ! function_exists( 'anony_category_posts_section' ) ) {
 			return;
 		}
 
-		include locate_template( 'templates/category-posts-section.view.php', false, false );
+		include locate_template( 'templates/category-posts-section-view.php', false, false );
 	}
 }
 

@@ -100,7 +100,7 @@ function anony_submit_ajax_comment() {
 
 	ob_start();
 
-	include locate_template( 'templates/ajax-comment.view.php', false, false );
+	include locate_template( 'templates/ajax-comment-view.php', false, false );
 
 	$comment_html = ob_get_clean();
 

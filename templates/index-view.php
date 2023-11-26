@@ -29,7 +29,7 @@ $anony_options = ANONY_Options_Model::get_instance();
 						foreach ( $data as $p ) :
 							extract( $p );
 
-							include locate_template( 'templates/blog-post.view.php', false, false );
+							include locate_template( 'templates/blog-post-view.php', false, false );
 
 						endforeach;
 						?>

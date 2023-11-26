@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				extract( $p );
 
 
-				include locate_template( 'templates/blog-post.view.php', false, false );
+				include locate_template( 'templates/blog-post-view.php', false, false );
 
 			endforeach
 			?>

@@ -47,5 +47,5 @@ $data = array(
 extract( $data );
 wp_enqueue_script( 'jquery.validate.min' );
 wp_enqueue_script( 'anony-ajax_comment' );
-require locate_template( 'templates/comments-single.view.php', false, false );
+require locate_template( 'templates/comments-single-view.php', false, false );
 

@@ -36,5 +36,5 @@ if ($recent->have_posts() ) {
 if(empty($data)) { return;
 }
 
-require locate_template('templates/recent-posts.view.php', false, false);
+require locate_template('templates/recent-posts-view.php', false, false);
 ?>

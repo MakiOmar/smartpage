@@ -36,5 +36,5 @@ if ( have_posts() ) {
 		)
 	);
 }
-require locate_template( 'templates/index.view.php', false, false );
+require locate_template( 'templates/index-view.php', false, false );
 

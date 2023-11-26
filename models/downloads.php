@@ -73,5 +73,5 @@ $default_thumb = ANONY_THEME_URI . '/images/temporary-bg.jpg';
 
 wp_enqueue_script('anony-download');
 
-require locate_template('templates/download.view.php', false, false);
+require locate_template('templates/download-view.php', false, false);
 ?>

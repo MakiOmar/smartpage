@@ -91,5 +91,5 @@ if (empty($data)) {
 
 wp_enqueue_script('anony-tabs');
 
-require locate_template('templates/popular.view.php', false, false);
+require locate_template('templates/popular-view.php', false, false);
 ?>
