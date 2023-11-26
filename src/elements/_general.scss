@@ -79,7 +79,16 @@ select{
     border-color: #e1e1e1;
     border-radius: 6px;
 }
+.anony-grid-row:after {
+	clear: both;
+}
 
+.anony-grid-row{
+	display: flex;
+}
+.anony-grid-row-vertical{
+	flex-direction: column;
+}
 .anony-custom-bullets ul{
 	list-style: none
 }
@@ -102,4 +111,7 @@ p{
 	background-color: #fc2a2a;
 	font-weight: bold;
 	border: none;
+}
+.anony-full-height{
+	height: 100%!important;
 }

@@ -102,6 +102,18 @@ select {
   border-radius: 6px;
 }
 
+.anony-grid-row:after {
+  clear: both;
+}
+
+.anony-grid-row {
+  display: flex;
+}
+
+.anony-grid-row-vertical {
+  flex-direction: column;
+}
+
 .anony-custom-bullets ul {
   list-style: none;
 }
@@ -124,6 +136,10 @@ p {
   background-color: #fc2a2a;
   font-weight: bold;
   border: none;
+}
+
+.anony-full-height {
+  height: 100% !important;
 }
 
 header {
@@ -432,6 +448,9 @@ header.anony-absolute-header {
   display: flex;
   justify-content: center;
   width: 100%;
+  bottom: 20px;
+  position: absolute;
+  z-index: 30;
 }
 
 .anony-slide-item:not(.anony-pagination-dot)::before {
@@ -530,6 +549,12 @@ header.anony-absolute-header {
   width: 150px;
   text-align: center;
   height: 100%;
+}
+
+#anony-slider-wrapper {
+  border-top-width: 5px;
+  border-top-style: solid;
+  border-top-color: #fc2a2a;
 }
 
 /* End slider css*/

@@ -23,6 +23,9 @@
 		display: flex;
 		justify-content: center;
 		width: 100%;
+		bottom: 20px;
+		position: absolute;
+		z-index: 30;
 	}
 	.anony-slide-item:not(.anony-pagination-dot)::before{
 		content: "";

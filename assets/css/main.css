@@ -69,10 +69,6 @@ body {
   width: 100%;
 }
 
-.anony-grid-row:after {
-  clear: both;
-}
-
 .anony-box-shadow {
   box-shadow: 0px 0px 8px 3px rgba(179, 179, 179, 0.5);
 }
@@ -1247,12 +1243,6 @@ body {
 
 .search-only .anony-search, .search-only .anony-search .anony-search-input {
   width: 100% !important;
-}
-
-#anony-slider-wrapper {
-  border-top-width: 5px;
-  border-top-style: solid;
-  border-top-color: #fc2a2a;
 }
 
 .widgeted #anony-searchform {

@@ -30,9 +30,6 @@ body{
 	margin: 0 auto;
 	width: 100%;
 }
-.anony-grid-row:after {
-	clear: both;
-}
 
 .anony-box-shadow{
 	-webkit-box-shadow: 0px 0px 3px 1px rgba(179,179,179,0.5);
@@ -1056,12 +1053,6 @@ body{
 
 	.search-only .anony-search,.search-only .anony-search .anony-search-input{
 		width: 100%!important;
-	}
-	
-	#anony-slider-wrapper{
-		border-top-width: 5px;
-		border-top-style: solid;
-		border-top-color: #fc2a2a;
 	}
 	.widgeted #anony-searchform{
 		display: flex;
