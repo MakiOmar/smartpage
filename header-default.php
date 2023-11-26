@@ -12,7 +12,7 @@
  
 defined('ABSPATH') || die(); // Exit if accessed direct.
 
-$langAtts    = get_language_attributes();
+$language_atts    = get_language_attributes();
 $contentType = get_bloginfo('html_type');
 $charSet     = get_bloginfo('charset');
 $blogname    = get_bloginfo();
@@ -24,7 +24,7 @@ $nav         = anony_navigation('anony-main-menu');
 ?>
 
 <!doctype html>
-<html itemscope itemtype="http://schema.org/WebPage" <?php echo $langAtts; ?>>
+<html itemscope itemtype="http://schema.org/WebPage" <?php echo $language_atts; ?>>
 <head>
 <meta http-equiv="Content-Type" content="<?php echo $contentType; ?>" charset="<?php echo $charSet; ?>"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge" >
