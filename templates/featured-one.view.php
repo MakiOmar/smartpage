@@ -1,4 +1,4 @@
-<div id="anony-slider-wrapper" class="white-bg">
+<div id="anony-slider-wrapper" class="white-bg anony-full-height">
 	<?php if ( $message !== '' ) : ?>
 		 
 		<p><i class="fa fa-frown-o fa-4x"></i></p>
@@ -8,15 +8,15 @@
 	 
 	<?php if ( $data !== array() ) : ?>    
 		 
-		<div id="anony-featured" data-slider='<?php echo json_encode( $slider_data ); ?>'>
+		<div id="anony-featured" class="anony-full-height" data-slider='<?php echo json_encode( $slider_data ); ?>'>
 		 
-			<div id="anony-active-slide">
+			<div id="anony-active-slide" class="anony-full-height">
 		<?php
 		foreach ( $data as $index => $p ) :
 			extract( $p );
 			?>
 
-						<div id="anony-item-<?php echo $id; ?>" class="anony-view">
+						<div id="anony-item-<?php echo $id; ?>" class="anony-view anony-full-height">
 
 			<?php echo $thumb_img; ?>
 
