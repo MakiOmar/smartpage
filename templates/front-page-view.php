@@ -16,15 +16,13 @@ get_header(); ?>
 
 <div class="anony-grid">
 
-	<?php if ( $slider ) : ?> 
-	 
-		<?php
+	<?php
+	if ( $slider ) :
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $slider;
 			// phpcs:enable.
-		?>
-	 
-	<?php endif ?>
+	endif;
+	?>
 	 
 	<?php if ( ! $slider && '1' === $home_slider ) : ?>
 
@@ -48,10 +46,12 @@ get_header(); ?>
 			</div>
 			<?php
 
-				get_template_part( 'models/downloads' );
+			get_template_part( 'models/downloads' );
 
-				require locate_template( 'models/category-posts-section.php', false, false );
-				$video_template = false;
+			require locate_template( 'models/category-posts-section.php', false, false );
+
+			$video_template = false;
+
 			if ( $video_template ) {
 				get_template_part( 'models/video' );
 			}
