@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template
+ * Header model
  *
  * PHP version 7.3 Or Later
  *
@@ -50,49 +50,49 @@ if ( ! defined( 'ANOENGINE' ) ) {
 			array(
 				'icon'  => 'facebook',
 				'url'   => $anony_options->facebook,
-				'title' => esc_html__( 'Follow us on Facebook', 'smartpage' ),
+				'title' => __( 'Follow us on Facebook', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'twitter',
 				'url'   => $anony_options->twitter,
-				'title' => esc_html__( 'Follow us on Twitter', 'smartpage' ),
+				'title' => __( 'Follow us on Twitter', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'youtube',
 				'url'   => $anony_options->youtube,
-				'title' => esc_html__( 'Follow us on Youtube', 'smartpage' ),
+				'title' => __( 'Follow us on Youtube', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'pinterest',
 				'url'   => $anony_options->pinterest,
-				'title' => esc_html__( 'Follow us on Pinterest', 'smartpage' ),
+				'title' => __( 'Follow us on Pinterest', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'linkedin',
 				'url'   => $anony_options->linkedin,
-				'title' => esc_html__( 'Follow us on Linkedin', 'smartpage' ),
+				'title' => __( 'Follow us on Linkedin', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'instagram',
 				'url'   => $anony_options->instagram,
-				'title' => esc_html__( 'Follow us on Instagram', 'smartpage' ),
+				'title' => __( 'Follow us on Instagram', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'tumblr',
 				'url'   => $anony_options->tumblr,
-				'title' => esc_html__( 'Follow us on Tumblr', 'smartpage' ),
+				'title' => __( 'Follow us on Tumblr', 'smartpage' ),
 			),
 
 			array(
 				'icon'  => 'rss',
 				'url'   => $anony_options->rss,
-				'title' => esc_html__( 'Follow us with RSS feed', 'smartpage' ),
+				'title' => __( 'Follow us with RSS feed', 'smartpage' ),
 			),
 		);
 	$phone = $anony_options->phone;
