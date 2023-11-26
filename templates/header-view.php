@@ -4,19 +4,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!doctype html>
-<html itemscope itemtype="http://schema.org/WebPage" <?php echo $langAtts; ?>>
+<html itemscope itemtype="http://schema.org/WebPage" <?php echo $language_atts; ?>>
 <head>
-<meta http-equiv="Content-Type" content="<?php echo $contentType; ?>" charset="<?php echo $charSet; ?>"/>
+<meta http-equiv="Content-Type" content="<?php echo $content_type; ?>" charset="<?php echo $char_set; ?>"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge" >
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <?php wp_head(); ?>
 </head>
 
-<body <?php echo $bodyClass; ?>>
+<body <?php echo $body_class; ?>>
 	<?php wp_body_open(); ?>
 	<?php if ( $preloader == '1' ) : ?>
 		<div id="anony-preloader">
-			<p><?php echo $blogname; ?> <?php echo esc_html__( 'Loading...', 'smartpage' ); ?></p>
+			<p><?php echo $blog_name; ?> <?php echo esc_html__( 'Loading...', 'smartpage' ); ?></p>
 			<div class="anony-loader-img"><img src="<?php echo $preloader_img; ?>" alt="<?php echo $blogname; ?>"/></div>
 		</div>
 	<?php endif ?>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<header class="white-bg">
 
-					<?php require locate_template( 'templates/header-top.view.php', false, false ); ?>
+					<?php require locate_template( 'templates/header-top-view.php', false, false ); ?>
 					 
 					<div id="anony-sub-top-wrapper">
 					 

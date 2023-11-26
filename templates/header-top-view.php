@@ -1,4 +1,15 @@
 <?php
+/**
+ * Header view
+ *
+ * PHP version 7.3 Or Later
+ *
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed direct.ly
 }
@@ -6,17 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="anony-top-header-wrapper">
 	<nav id="anony-follow-contact">
 
-		 <?php echo $user_nav; ?>
+		<?php do_action( 'anony_before_follow_links' ); ?>
 
 	  <ul id="anony-follow" class="list-style-none">
 		<?php
+		
 		foreach ( $socials_follow as $data ) :
-			extract( $data );
-			?>
-				 
-				 
+			?>	 
 			<li>
-				<a class="icon" href="<?php echo $url; ?>" title="<?php echo $title; ?>" target="_blank"><i class="fa fa-<?php echo $icon; ?>"></i></a>
+				<a class="icon" href="<?php echo $data['url']; ?>" title="<?php echo $data['title']; ?>" target="_blank"><i class="fa fa-<?php echo $data['icon']; ?>"></i></a>
 			</li>
 				 
 		<?php endforeach ?>
