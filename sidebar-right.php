@@ -10,41 +10,43 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed direct.ly
 
-$widgets_url     = esc_url( admin_url( 'widgets.php' ) );
-$go_widget       = esc_html__( 'Please add some widgets. ', 'smartpage' );
-$link_text       = esc_html__( 'Add Here', 'smartpage' );
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || die();
+
+$widgets_url     = admin_url( 'widgets.php' );
+$go_widget       = __( 'Please add some widgets. ', 'smartpage' );
+$link_text       = __( 'Add Here', 'smartpage' );
 $is_active_right = is_active_sidebar( 'right-sidebar' );
 $sidebar_ad      = has_action( 'sidebar_ad' );
 ?>
 
-<span class="anony-toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
+<div class="anony-grid-col-sm-2-5">
+	<span class="anony-toggle-sidebar"><i class="fa fa-arrow-down"></i></span>
 
-<div class="anony-grid-col-sm-2-5 anony-asidebar anony-single-sidebar">
-	<?php
-	if ( $is_active_right ) :
+	<div class="anony-asidebar anony-single-sidebar">
+		<?php
+		if ( $is_active_right ) :
 
-		dynamic_sidebar( 'right-sidebar' );
+			dynamic_sidebar( 'right-sidebar' );
 
-	elseif ( current_user_can( 'administrator' ) ) :
-		?>
-			
-		<strong>
-			<?php echo $go_widget; ?>
-		</strong>
-		<a href="<?php echo $widgets_url; ?>"><?php echo $link_text; ?></a>
-			
-	<?php endif ?>
-	
-	<?php if ( $sidebar_ad ) : ?>
+		elseif ( current_user_can( 'manage_options' ) ) :
+			?>
+				
+			<strong><?php echo esc_html( $go_widget ); ?></strong>
+			<a href="<?php echo esc_url( $widgets_url ); ?>"><?php echo esc_html( $link_text ); ?></a>
+				
+		<?php endif ?>
 		
-		<div class="anony-ad">
-					
-		<?php do_action( 'sidebar_ad' ); ?>
+		<?php if ( $sidebar_ad ) : ?>
 			
-		</div>
-	
-	<?php endif ?>
-	
+			<div class="anony-ad">
+						
+			<?php do_action( 'sidebar_ad' ); ?>
+				
+			</div>
+		
+		<?php endif ?>
+		
+	</div>
 </div>
