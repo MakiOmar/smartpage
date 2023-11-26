@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
 /**
  * Menus Functions
  *
@@ -10,10 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link    http://makiomar.com
  */
 
-/*
--------------------------------------------------------------
- * Menus functions
- *-----------------------------------------------------------*/
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 /**
  * Gets navigation menu.
@@ -23,14 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * **Note: ** This is to keep the main navigation always has items
  *
- * @param  string $location_slug The slug of manu
- * @param  string $container     The HTML container of manu
+ * @param  string $location_slug The slug of manu.
+ * @param  string $container     The HTML container of manu.
  * @return string Menu list
  */
 function anony_navigation( $location_slug, $container = 'nav' ) {
 	$container_id = $location_slug;
 
-	if ( $location_slug == 'anony-main-menu' ) {
+	if ( 'anony-main-menu' === $location_slug ) {
 		$walker       = new ANONY_Nav_Menu_Walk();
 		$container_id = 'anony-main_nav_con';
 	}
@@ -38,7 +34,6 @@ function anony_navigation( $location_slug, $container = 'nav' ) {
 	$menu_id = $location_slug . '-con';
 
 	if ( has_nav_menu( $location_slug ) ) {
-		$location_array = explode( '-', $location_slug );
 		$args           = array(
 			'theme_location' => $location_slug,
 			'depth'          => 0,
@@ -51,8 +46,7 @@ function anony_navigation( $location_slug, $container = 'nav' ) {
 			$args['walker'] = $walker;
 		}
 			return wp_nav_menu( $args );
-	} else {
-		if ( $location_slug == 'anony-main-menu' ) {
+	} elseif ( 'anony-main-menu' == $location_slug ) {
 			$page_for_posts = get_option( 'page_for_posts' );
 			$args           = array(
 				'title_li' => 0,
@@ -62,7 +56,6 @@ function anony_navigation( $location_slug, $container = 'nav' ) {
 			);
 			$menu           = '<nav id="anony-main_nav_con"><ul id="anony-main-menu-con">' . wp_list_pages( $args ) . '</ul></nav>';
 			return $menu;
-		}
 	}
 }
 
@@ -70,20 +63,20 @@ function anony_navigation( $location_slug, $container = 'nav' ) {
 /**
  * Generates anony-breadcrumbs menu
  *
- * **Description: ** Echoes out the breadcrumps menu
+ * **Description: ** Echoes out the breadcrumps menu.
  *
  * @return void
  */
 function anony_breadcrumbs() {
 	global $post, $wp;
-	$pageLink = home_url( $wp->request );
-	$homeLink = home_url();
+	$page_link = home_url( $wp->request );
+	$home_link = home_url();
 	echo '<ul class="anony-breadcrumbs">';
-	echo '<li class="home"><i class="fa fa-home"></i> <a href="' . $homeLink . '">' . esc_html__( 'Home', 'smartpage' ) . '</a> <span>/</span></li>';
+	echo '<li class="home"><i class="fa fa-home"></i> <a href="' . $home_link . '">' . esc_html__( 'Home', 'smartpage' ) . '</a> <span>/</span></li>';
 
-	// Blog Category
+	// Blog Category.
 	if ( is_category() ) {
-		// echo '<li><a href="'. $pageLink .'">'. single_cat_title('', false) . '</a></li>';
+		// echo '<li><a href="'. $page_link .'">'. single_cat_title('', false) . '</a></li>';.
 		wp_reset_query();
 		$incurr_category    = get_category( get_query_var( 'cat' ) );
 		$incurr_category_id = $incurr_category->cat_ID;
@@ -91,43 +84,43 @@ function anony_breadcrumbs() {
 		echo get_category_parents( $incurr_category_id, true, ' / ' );
 		echo '</li>';
 
-		// Blog Day
+		// Blog Day.
 	} elseif ( is_day() ) {
 		echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a> <span>/</span></li>';
 		echo '<li><a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a> <span>/</span></li>';
-		echo '<li><a href="' . $pageLink . '">' . get_the_time( 'd' ) . '</a></li>';
+		echo '<li><a href="' . $page_link . '">' . get_the_time( 'd' ) . '</a></li>';
 
-		// Blog Month
+		// Blog Month.
 	} elseif ( is_month() ) {
 		echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a> <span>/</span></li>';
-		echo '<li><a href="' . $pageLink . '">' . get_the_time( 'F' ) . '</a></li>';
+		echo '<li><a href="' . $page_link . '">' . get_the_time( 'F' ) . '</a></li>';
 
-		// Blog Year
+		// Blog Year.
 	} elseif ( is_year() ) {
-		echo '<li><a href="' . $pageLink . '">' . get_the_time( 'Y' ) . '</a></li>';
+		echo '<li><a href="' . $page_link . '">' . get_the_time( 'Y' ) . '</a></li>';
 
-		// Single Post
+		// Single Post.
 	} elseif ( is_single() && ! is_attachment() ) {
 
-		// Custom post type
+		// Custom post type.
 		if ( get_post_type() != 'post' ) {
 			$post_type = get_post_type_object( get_post_type() );
 			$slug      = $post_type->rewrite;
 
-			// Blog post
+			// Blog post.
 		} else {
 			$cat = get_the_category();
 			$cat = $cat[0];
 			echo '<li>';
 			echo get_category_parents( $cat, true, ' <span>/</span>' );
 			echo '</li>';
-			echo '<li><a href="' . $pageLink . '">' . wp_title( '', false ) . '</a></li>';
+			echo '<li><a href="' . $page_link . '">' . wp_title( '', false ) . '</a></li>';
 		}
 
-		// Taxonomy
+		// Taxonomy.
 	} elseif ( get_post_taxonomies() ) {
 
-		// Page with parent
+		// Page with parent.
 	} elseif ( is_page() && $post->post_parent ) {
 		$parent_id   = $post->post_parent;
 		$breadcrumbs = array();
@@ -141,11 +134,11 @@ function anony_breadcrumbs() {
 			echo $crumb;
 		}
 
-		echo '<li><a href="' . $pageLink . '">' . get_the_title() . '</a></li>';
+		echo '<li><a href="' . $page_link . '">' . get_the_title() . '</a></li>';
 
 		// Default
 	} elseif ( get_the_title() != 'Home' ) {
-		echo '<li><a href="' . $pageLink . '">' . get_the_title() . '</a></li>';
+		echo '<li><a href="' . $page_link . '">' . get_the_title() . '</a></li>';
 	}
 
 	echo '</ul>';
@@ -165,7 +158,6 @@ add_action(
 			'anony-main-menu'      => esc_html__( 'Main menu. Shows on the main navigation', 'smartpage' ),
 			'anonyfooter-menu'     => esc_html__( 'Footer menu. Shows on the footer', 'smartpage' ),
 			'anony-languages-menu' => esc_html__( 'Languages menu. Shows on the top header', 'smartpage' ),
-			'anony-user-menu'      => esc_html__( 'Users menu. Shows on the top header', 'smartpage' ),
 		);
 
 		foreach ( $menus as $name => $description ) {
@@ -174,8 +166,7 @@ add_action(
 	}
 );
 
-
-// Adds active class to the currently active menu item
+// Adds active class to the currently active menu item.
 add_filter(
 	'nav_menu_css_class',
 	function ( $classes, $item ) {
@@ -189,7 +180,7 @@ add_filter(
 	2
 );
 
-// Add search form to main menu
+// Add search form to main menu.
 add_filter(
 	'wp_nav_menu_items',
 	function ( $item, $args ) {
@@ -204,12 +195,12 @@ add_filter(
 	2
 );
 
-// Adds WPML language switcher to languages-menu location
+// Adds WPML language switcher to languages-menu location.
 add_filter(
 	'wp_nav_menu_items',
 	function ( $item, $args ) {
 
-		if ( !class_exists( 'ANONY_Wpml_Help' ) || !ANONY_Wpml_Help::is_active() ) {
+		if ( ! class_exists( 'ANONY_Wpml_Help' ) || ! ANONY_Wpml_Help::is_active() ) {
 			return $item;
 		}
 
@@ -217,7 +208,7 @@ add_filter(
 		if ( ! empty( $languages ) ) {
 			foreach ( $languages as $l ) {
 				if ( $l['language_code'] == ICL_LANGUAGE_CODE ) {
-					  $curr_lang = $l;
+						$curr_lang = $l;
 				}
 				$item .= '<li class="anony-lang">';
 				$item .= '<a class="lang-item ' . ANONY_Wpml_Help::active_lang_class( $l['language_code'] ) . '" href="' . $l['url'] . '">';
@@ -228,7 +219,6 @@ add_filter(
 			$item .= '<li id="anony-lang-toggle"><img src="' . $curr_lang['country_flag_url'] . '" width="32" height="20" alt="' . $l['language_code'] . '"/></li>';
 		}
 		return $item;
-
 	},
 	10,
 	2
@@ -261,10 +251,9 @@ function anony_get_wpml_switcher( $style = '1' ) {
 		include locate_template( 'templates/wpml-lang-switcher-' . $style . '.php', false, false );
 
 	}
-
 }
 
-// Adds the active class to menu item of current active page
+// Adds the active class to menu item of current active page.
 add_filter(
 	'page_css_class',
 	function ( $css_class, $page, $depth, $args, $current_page ) {
@@ -277,7 +266,7 @@ add_filter(
 	5
 );
 
-// add a menu item for homepage to pages menu
+// add a menu item for homepage to pages menu.
 add_filter(
 	'wp_list_pages',
 	function ( $output, $r, $pages ) {
@@ -288,4 +277,3 @@ add_filter(
 	10,
 	3
 );
-
