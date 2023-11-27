@@ -32,6 +32,3 @@ if ( have_posts() ) {
 if ( ! empty( $data ) ) {
 	include locate_template( 'templates/index-view.php', false, false );
 }
-
-
-
