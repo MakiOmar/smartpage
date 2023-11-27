@@ -99,7 +99,7 @@ if($show_pagination) {
         $slider_nav_temp['id'] = $id;
         $slider_nav_temp['title']     = $title;
         $slider_nav_temp['class']     = $index == 0 ?  'anony-active-slide ': '';
-        $slider_nav_temp['thumbnail_img']     = $thumbnail_img;
+        $slider_nav_temp['thumbnail_img']     = get_the_post_thumbnail( $id, 'full' );
 
         $slider_nav[] = $slider_nav_temp;
 

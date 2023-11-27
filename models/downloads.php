@@ -13,9 +13,7 @@ if ($query->have_posts()) {
         $query->the_post();
         
         $temp = anony_common_post_data();
-        
-        $temp['thumb_img'] = get_the_post_thumbnail(get_the_ID(), [160, 180]);
-        
+
         $curr_download_meta = get_post_meta(get_the_ID(), 'anony_download', true);
         
         $download_times = 0;

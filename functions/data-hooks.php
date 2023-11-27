@@ -22,7 +22,6 @@ add_filter(
 	'anony_download_loop_data',
 	function( $temp, $ID ) {
 
-		$temp['thumb_img'] = get_the_post_thumbnail( $ID, array( 160, 180 ) );
 		$temp['date']      = explode( ' ', get_the_date() );
 
 		$curr_download_meta = get_post_meta( $ID, 'anony_download', true );

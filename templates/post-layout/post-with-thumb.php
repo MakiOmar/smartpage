@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	   </div>
 		
 	   <div class="anony-thumb">
-		   <?php echo $thumb_img; ?>
+		   <?php echo get_the_post_thumbnail( $id, 'full' ); ?>
 	   </div>
 	 
 </div>

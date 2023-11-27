@@ -73,8 +73,6 @@ if ($query->have_posts()) {
         
         $temp = anony_common_post_data();
         
-        $temp['thumb_img'] = get_the_post_thumbnail(get_the_ID(), 'popular-post-thumb', array( 'class' => 'post-thumb'));
-        
         $data[] = $temp;
         
     }
