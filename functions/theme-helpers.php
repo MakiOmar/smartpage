@@ -331,17 +331,17 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 			$grid = $anony_options->posts_grid;
 		}
 
-		$p_id                    = get_the_ID();
-		$temp['id']              = $p_id;
-		$temp['permalink']       = esc_url( get_the_permalink() );
-		$temp['title']           = esc_html( get_the_title() );
-		$temp['title_attr']      = the_title_attribute( array( 'echo' => false ) );
-		$temp['content']         = apply_filters( 'the_content', get_the_content() );
-		$temp['excerpt']         = wp_trim_words( esc_html( get_the_excerpt() ), 25 );
-		$temp['thumb']           = has_post_thumbnail();
-		$temp['thumb_exists']    = true;
-		$temp['date']            = get_the_date();
-		$temp['gravatar']        = get_avatar( get_the_author_meta( 'ID' ), 32 );
+		$p_id                 = get_the_ID();
+		$temp['id']           = $p_id;
+		$temp['permalink']    = esc_url( get_the_permalink() );
+		$temp['title']        = esc_html( get_the_title() );
+		$temp['title_attr']   = the_title_attribute( array( 'echo' => false ) );
+		$temp['content']      = apply_filters( 'the_content', get_the_content() );
+		$temp['excerpt']      = wp_trim_words( esc_html( get_the_excerpt() ), 25 );
+		$temp['thumb']        = has_post_thumbnail();
+		$temp['thumb_exists'] = true;
+		$temp['date']         = get_the_date();
+		$temp['gravatar']     = get_avatar( get_the_author_meta( 'ID' ), 32 );
 		// Translators: Author's name.
 		$temp['author']          = sprintf( esc_html__( 'By %s', 'smartpage' ), get_the_author() );
 		$temp['read_more']       = esc_html__( 'Read more', 'smartpage' );
