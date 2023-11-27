@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Smart Page\n"
-"POT-Creation-Date: 2022-09-23 14:29+0200\n"
+"POT-Creation-Date: 2023-11-27 09:51+0200\n"
 "PO-Revision-Date: 2018-04-16 14:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Category posts"
 msgstr ""
 
-#: category.php:82 functions/theme-helpers.php:187
+#: category.php:82 functions/theme-helpers.php:349
 msgid "Read more"
 msgstr ""
 
@@ -606,7 +606,7 @@ msgstr ""
 msgid "No data found"
 msgstr ""
 
-#: config/required-plugins.php:179
+#: config/required-plugins.php:186
 msgid ""
 "Please activate/install AnonyEngine plugin, for User AnonyEngine theme can "
 "work properly"
@@ -620,25 +620,8 @@ msgstr ""
 msgid "Site Header"
 msgstr ""
 
-#: elementor/documents/site-header.php:126
+#: elementor/documents/site-header.php:131
 msgid "Absolute Header"
-msgstr ""
-
-#: elementor/documents/site-header.php:134
-msgid "Enable Absolute Header"
-msgstr ""
-
-#: elementor/documents/site-header.php:135
-msgid ""
-"Header will overlap to content. It helpful for create header transparent."
-msgstr ""
-
-#: elementor/documents/site-header.php:137
-msgid "Yes"
-msgstr ""
-
-#: elementor/documents/site-header.php:138
-msgid "No"
 msgstr ""
 
 #: elementor/elementor-incl.php:208
@@ -656,8 +639,36 @@ msgstr ""
 msgid "Freen Smart Page theme"
 msgstr ""
 
-#: front-page.php:26
+#: front-page.php:27
 msgid "You didn't choose a slider, Please select one from theme options page"
+msgstr ""
+
+#: functions.php:158
+msgid "Accept return"
+msgstr ""
+
+#: functions.php:170
+msgid "Return within"
+msgstr ""
+
+#: functions.php:175
+msgid "Allowed to reteun within x days"
+msgstr ""
+
+#: functions.php:181
+msgid "FAQs"
+msgstr ""
+
+#: functions.php:191
+msgid "Question"
+msgstr ""
+
+#: functions.php:198
+msgid "Answer"
+msgstr ""
+
+#: functions.php:373
+msgid "gallery"
 msgstr ""
 
 #: functions/ajax/ajax-comments.php:37
@@ -691,35 +702,52 @@ msgstr ""
 msgid "Downloads"
 msgstr ""
 
-#: functions/custom-fields.php:30
+#: functions/custom-fields.php:31
 msgid "Download file"
+msgstr ""
+
+#: functions/custom-fields.php:49
+msgid "Page/Post settings"
+msgstr ""
+
+#: functions/custom-fields.php:58
+msgid "Header overlaps content?"
+msgstr ""
+
+#: functions/custom-fields.php:65
+msgid "test_gallery"
+msgstr ""
+
+#: functions/custom-fields.php:80
+msgid "Font variations"
+msgstr ""
+
+#: functions/custom-fields.php:92
+msgid ""
+"If left empty, slug will be used as font family. Input will be sanitized"
 msgstr ""
 
 #: functions/data-hooks.php:65 functions/posts.php:40
 msgid "Download"
 msgstr ""
 
-#: functions/menus.php:82
+#: functions/menus.php:75
 msgid "Home"
 msgstr ""
 
-#: functions/menus.php:165
+#: functions/menus.php:158
 msgid "Main menu. Shows on the main navigation"
 msgstr ""
 
-#: functions/menus.php:166
+#: functions/menus.php:159
 msgid "Footer menu. Shows on the footer"
 msgstr ""
 
-#: functions/menus.php:167
+#: functions/menus.php:160
 msgid "Languages menu. Shows on the top header"
 msgstr ""
 
-#: functions/menus.php:168
-msgid "Users menu. Shows on the top header"
-msgstr ""
-
-#: functions/menus.php:284
+#: functions/menus.php:273
 msgid "<i class=\"fa fa-home\"></i>"
 msgstr ""
 
@@ -747,23 +775,31 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: functions/posts.php:79 functions/posts.php:80
+#: functions/posts.php:62
+msgid "Font"
+msgstr ""
+
+#: functions/posts.php:63 functions/theme-options.php:66
+msgid "Fonts"
+msgstr ""
+
+#: functions/posts.php:84 functions/posts.php:85
 msgid "Download type"
 msgstr ""
 
-#: functions/scripts.php:197
+#: functions/scripts.php:208
 msgid "Please enter a valid name"
 msgstr ""
 
-#: functions/scripts.php:198
+#: functions/scripts.php:209
 msgid "Please enter a valid email"
 msgstr ""
 
-#: functions/scripts.php:199
+#: functions/scripts.php:210
 msgid "Please use a valid website address"
 msgstr ""
 
-#: functions/scripts.php:200
+#: functions/scripts.php:211
 msgid "Comment must be at least 20 characters"
 msgstr ""
 
@@ -950,32 +986,32 @@ msgstr ""
 msgid "Background for tabs bar"
 msgstr ""
 
-#: functions/theme-helpers.php:143
+#: functions/theme-helpers.php:302
 msgid "comment"
 msgstr ""
 
-#: functions/theme-helpers.php:147 models/recent-posts.php:27
+#: functions/theme-helpers.php:306 models/recent-posts.php:27
 msgid "comments"
 msgstr ""
 
-#: functions/theme-helpers.php:153
+#: functions/theme-helpers.php:312
 msgid "Comments-off"
 msgstr ""
 
-#: functions/theme-helpers.php:186
+#: functions/theme-helpers.php:348
 #, php-format
 msgid "By %s"
 msgstr ""
 
-#: functions/theme-helpers.php:319
+#: functions/theme-helpers.php:489
 msgid "Commented"
 msgstr ""
 
-#: functions/theme-helpers.php:324
+#: functions/theme-helpers.php:495
 msgid "View Post"
 msgstr ""
 
-#: functions/theme-helpers.php:335
+#: functions/theme-helpers.php:507
 msgid "No comments yet"
 msgstr ""
 
@@ -983,11 +1019,11 @@ msgstr ""
 msgid "Getting started"
 msgstr ""
 
-#: functions/theme-options.php:46 functions/theme-options.php:138
+#: functions/theme-options.php:46 functions/theme-options.php:164
 msgid "Performance"
 msgstr ""
 
-#: functions/theme-options.php:50 functions/theme-options.php:285
+#: functions/theme-options.php:50 functions/theme-options.php:213
 msgid "Slider"
 msgstr ""
 
@@ -999,15 +1035,11 @@ msgstr ""
 msgid "Colors"
 msgstr ""
 
-#: functions/theme-options.php:66
-msgid "Fonts"
-msgstr ""
-
 #: functions/theme-options.php:79
 msgid "Socials"
 msgstr ""
 
-#: functions/theme-options.php:85 functions/theme-options.php:665
+#: functions/theme-options.php:85 functions/theme-options.php:600
 msgid "Miscellanous"
 msgstr ""
 
@@ -1019,546 +1051,416 @@ msgstr ""
 msgid "woocommerce"
 msgstr ""
 
-#: functions/theme-options.php:108 functions/theme-options.php:360
+#: functions/theme-options.php:109 functions/theme-options.php:288
 msgid "General"
 msgstr ""
 
-#: functions/theme-options.php:113
+#: functions/theme-options.php:114
 msgid "Copyright"
 msgstr ""
 
-#: functions/theme-options.php:116
+#: functions/theme-options.php:117
 #, php-format
 msgid "All rights are reserved to Anonymous %s"
 msgstr ""
 
-#: functions/theme-options.php:121
+#: functions/theme-options.php:122
 msgid "Enable preloader"
 msgstr ""
 
-#: functions/theme-options.php:124
+#: functions/theme-options.php:125 functions/theme-options.php:146
 msgid "Enabel or disable page preloader"
 msgstr ""
 
-#: functions/theme-options.php:129
+#: functions/theme-options.php:130
 msgid "Preloader image"
 msgstr ""
 
-#: functions/theme-options.php:132
+#: functions/theme-options.php:133 functions/theme-options.php:154
 msgid "Choose preloader image"
 msgstr ""
 
+#: functions/theme-options.php:138
+msgid "Test multiinput"
+msgstr ""
+
 #: functions/theme-options.php:143
+msgid "multi_input Enable preloader"
+msgstr ""
+
+#: functions/theme-options.php:151
+msgid "multi_input Preloader image"
+msgstr ""
+
+#: functions/theme-options.php:169
 msgid "Disable responsive css"
 msgstr ""
 
-#: functions/theme-options.php:146
+#: functions/theme-options.php:172
 msgid ""
 "You may need to disable theme's responsive css if all your pages are built "
 "with elementor, Or you think this introduces more speed"
 msgstr ""
 
-#: functions/theme-options.php:150
+#: functions/theme-options.php:176
 msgid "Disable Main css"
 msgstr ""
 
-#: functions/theme-options.php:153
+#: functions/theme-options.php:179
 msgid ""
 "You may need to disable theme's main css if you think this introduces more "
 "speed and will not affect design"
 msgstr ""
 
-#: functions/theme-options.php:157
+#: functions/theme-options.php:183
 msgid "Load minified styles"
 msgstr ""
 
-#: functions/theme-options.php:160
+#: functions/theme-options.php:186
 msgid "Speeds up page load time."
 msgstr ""
 
-#: functions/theme-options.php:164
-msgid "Compress HTML"
-msgstr ""
-
-#: functions/theme-options.php:167
-msgid ""
-"Please activate only if you think that GZIP is not enabled on your server."
-msgstr ""
-
-#: functions/theme-options.php:167
-msgid "Check gzip compression"
-msgstr ""
-
-#: functions/theme-options.php:171
-msgid "Remove query string"
-msgstr ""
-
-#: functions/theme-options.php:174
-msgid ""
-"Removes query string from styles/scripts and help speed up your website"
-msgstr ""
-
-#: functions/theme-options.php:179
-msgid "Keep query string"
-msgstr ""
-
-#: functions/theme-options.php:182
-msgid ""
-"Add comma separated handles of scripts/styles you want to keep query string"
-msgstr ""
-
-#: functions/theme-options.php:186
-msgid "Defer stylesheets loading"
-msgstr ""
-
-#: functions/theme-options.php:189
-msgid ""
-"Improves First content paint, and get higher score on page speed insights. "
-"Be careful when using with minification plugins, it may cause style issues"
-msgstr ""
-
-#: functions/theme-options.php:194
-msgid "Defer scripts loading"
-msgstr ""
-
-#: functions/theme-options.php:197
-msgid ""
-"Improves First content paint, and get higher score on page speed insights."
-msgstr ""
-
-#: functions/theme-options.php:201
-msgid "Disable gravatar.com"
-msgstr ""
-
-#: functions/theme-options.php:204
-msgid "Stops getting gravatar from gravatar.com"
-msgstr ""
-
-#: functions/theme-options.php:209
-msgid "Disable WP embeds"
-msgstr ""
-
-#: functions/theme-options.php:212
-msgid "Disables WP embeds completely"
-msgstr ""
-
-#: functions/theme-options.php:217
-msgid "Enable WP embeds on singular"
-msgstr ""
-
-#: functions/theme-options.php:220
-msgid ""
-"Enables WP embeds on singular pages (e.g. post/page). Will override "
-"(disable WP embeds) option"
-msgstr ""
-
-#: functions/theme-options.php:225
-msgid "Disable WP emojis"
-msgstr ""
-
-#: functions/theme-options.php:228
-msgid "Disables WP emojis completely"
-msgstr ""
-
-#: functions/theme-options.php:233
-msgid "Enable WP emojis on singular"
-msgstr ""
-
-#: functions/theme-options.php:236
-msgid ""
-"Enables WP emojis on singular pages (e.g. post/page). Will override "
-"(disable WP emojis) option"
-msgstr ""
-
-#: functions/theme-options.php:241
-msgid "Disable Gutenburg editor scripts"
-msgstr ""
-
-#: functions/theme-options.php:244
-msgid ""
-"If your using classic editor, enable this to remove unwanted Gutenburg's "
-"editor scripts"
-msgstr ""
-
-#: functions/theme-options.php:249
+#: functions/theme-options.php:193
 msgid "Disable dynamic AJAX css"
 msgstr ""
 
-#: functions/theme-options.php:252
+#: functions/theme-options.php:196
 msgid "If your website loads slowly because of AJAX css, enable this"
 msgstr ""
 
-#: functions/theme-options.php:257
-msgid "Disable jquery migrate"
-msgstr ""
-
-#: functions/theme-options.php:260
-msgid ""
-"This will prevent the jQuery Migrate script from being loaded on the front "
-"end while keeping the jQuery script itself intact. It's still being loaded "
-"in the admin to not break anything there.)"
-msgstr ""
-
-#: functions/theme-options.php:265
+#: functions/theme-options.php:202
 msgid "Disable prettyPhoto image light box"
 msgstr ""
 
-#: functions/theme-options.php:268
+#: functions/theme-options.php:205
 msgid "prettyPhoto disable may help improve performance"
 msgstr ""
 
-#: functions/theme-options.php:272
-msgid "Preload fonts"
-msgstr ""
-
-#: functions/theme-options.php:278
-msgid "Help to improve CLS"
-msgstr ""
-
-#: functions/theme-options.php:290
+#: functions/theme-options.php:218
 msgid "Revolution slider"
 msgstr ""
 
-#: functions/theme-options.php:298
+#: functions/theme-options.php:226
 msgid "Select a slider"
 msgstr ""
 
-#: functions/theme-options.php:302
+#: functions/theme-options.php:230
 #, php-format
 msgid "Add slider from <a href=\"%s\">here</a>"
 msgstr ""
 
-#: functions/theme-options.php:307
+#: functions/theme-options.php:235
 msgid "Featured Posts slider content"
 msgstr ""
 
-#: functions/theme-options.php:312
+#: functions/theme-options.php:240
 msgid "Featured category"
 msgstr ""
 
-#: functions/theme-options.php:317
+#: functions/theme-options.php:245
 msgid "Featured posts"
 msgstr ""
 
-#: functions/theme-options.php:325
+#: functions/theme-options.php:253
 msgid "Select featured taxonomy"
 msgstr ""
 
-#: functions/theme-options.php:335
+#: functions/theme-options.php:263
 msgid "Select featured category"
 msgstr ""
 
-#: functions/theme-options.php:340
+#: functions/theme-options.php:268
 msgid "No category selected, you have to select one"
 msgstr ""
 
-#: functions/theme-options.php:343
+#: functions/theme-options.php:271
 msgid "This options only applies to the front-page.php"
 msgstr ""
 
-#: functions/theme-options.php:347
+#: functions/theme-options.php:275
 msgid "Menu Colors"
 msgstr ""
 
-#: functions/theme-options.php:352
+#: functions/theme-options.php:280
 msgid "Main menu"
 msgstr ""
 
-#: functions/theme-options.php:365
+#: functions/theme-options.php:293
 msgid "Primary color"
 msgstr ""
 
-#: functions/theme-options.php:373
+#: functions/theme-options.php:301
 msgid "secondary color"
 msgstr ""
 
-#: functions/theme-options.php:382
+#: functions/theme-options.php:310
 msgid "Sidebars"
 msgstr ""
 
-#: functions/theme-options.php:387 functions/theme-options.php:442
+#: functions/theme-options.php:315 functions/theme-options.php:370
 msgid "Sidebar"
 msgstr ""
 
-#: functions/theme-options.php:392 functions/widgets.php:22
+#: functions/theme-options.php:320 functions/widgets.php:22
 #: functions/widgets.php:50
 msgid "Left Sidebar"
 msgstr ""
 
-#: functions/theme-options.php:397 functions/widgets.php:21
+#: functions/theme-options.php:325 functions/widgets.php:21
 #: functions/widgets.php:56
 msgid "Right Sidebar"
 msgstr ""
 
-#: functions/theme-options.php:402
+#: functions/theme-options.php:330
 msgid "Full width"
 msgstr ""
 
-#: functions/theme-options.php:407
+#: functions/theme-options.php:335
 msgid "This controls the direction of the main sidebar"
 msgstr ""
 
-#: functions/theme-options.php:411
+#: functions/theme-options.php:339
 msgid "Single post sidebar"
 msgstr ""
 
-#: functions/theme-options.php:420
+#: functions/theme-options.php:348
 msgid "Blog"
 msgstr ""
 
-#: functions/theme-options.php:425
+#: functions/theme-options.php:353
 msgid "Posts grid"
 msgstr ""
 
-#: functions/theme-options.php:429
+#: functions/theme-options.php:357
 msgid "Standard"
 msgstr ""
 
-#: functions/theme-options.php:430
+#: functions/theme-options.php:358
 msgid "Masonry"
 msgstr ""
 
-#: functions/theme-options.php:440
+#: functions/theme-options.php:368
 msgid "Header"
 msgstr ""
 
-#: functions/theme-options.php:441
+#: functions/theme-options.php:369
 msgid "Footer"
 msgstr ""
 
-#: functions/theme-options.php:443
+#: functions/theme-options.php:371
 msgid "Single post"
 msgstr ""
 
-#: functions/theme-options.php:444
+#: functions/theme-options.php:372
 msgid "page"
 msgstr ""
 
-#: functions/theme-options.php:445
+#: functions/theme-options.php:373
 msgid "Before footer"
 msgstr ""
 
-#: functions/theme-options.php:448
+#: functions/theme-options.php:376
 msgid "Advertisements"
 msgstr ""
 
-#: functions/theme-options.php:453
+#: functions/theme-options.php:381
 msgid "AD block one"
 msgstr ""
 
-#: functions/theme-options.php:459
+#: functions/theme-options.php:387
 msgid "AD block one location"
 msgstr ""
 
-#: functions/theme-options.php:467
+#: functions/theme-options.php:395
 msgid "AD block two"
 msgstr ""
 
-#: functions/theme-options.php:473
+#: functions/theme-options.php:401
 msgid "AD block two location"
 msgstr ""
 
-#: functions/theme-options.php:481
+#: functions/theme-options.php:409
 msgid "AD block three"
 msgstr ""
 
-#: functions/theme-options.php:487
+#: functions/theme-options.php:415
 msgid "AD block three location"
 msgstr ""
 
-#: functions/theme-options.php:529
+#: functions/theme-options.php:457
 msgid "Arabic fonts"
 msgstr ""
 
-#: functions/theme-options.php:534
+#: functions/theme-options.php:462
+msgid "General font"
+msgstr ""
+
+#: functions/theme-options.php:469
 msgid "Arabic font for headings"
 msgstr ""
 
-#: functions/theme-options.php:542
+#: functions/theme-options.php:477
 msgid "Arabic font for links"
 msgstr ""
 
-#: functions/theme-options.php:550
+#: functions/theme-options.php:485
 msgid "Arabic font for paragraph"
 msgstr ""
 
-#: functions/theme-options.php:561
+#: functions/theme-options.php:496
 msgid "English fonts"
 msgstr ""
 
-#: functions/theme-options.php:567
+#: functions/theme-options.php:502
 msgid "English font for headings"
 msgstr ""
 
-#: functions/theme-options.php:576
+#: functions/theme-options.php:511
 msgid "English font for links"
 msgstr ""
 
-#: functions/theme-options.php:584
+#: functions/theme-options.php:519
 msgid "English font for paragraph"
 msgstr ""
 
-#: functions/theme-options.php:594
+#: functions/theme-options.php:529
 msgid "Social Media"
 msgstr ""
 
-#: functions/theme-options.php:599
+#: functions/theme-options.php:534
 msgid "Facebook account link"
 msgstr ""
 
-#: functions/theme-options.php:606
+#: functions/theme-options.php:541
 msgid "Twitter account link"
 msgstr ""
 
-#: functions/theme-options.php:613
+#: functions/theme-options.php:548
 msgid "Linkedin account link"
 msgstr ""
 
-#: functions/theme-options.php:620
+#: functions/theme-options.php:555
 msgid "Instagram account link"
 msgstr ""
 
-#: functions/theme-options.php:627
+#: functions/theme-options.php:562
 msgid "Tumbler account link"
 msgstr ""
 
-#: functions/theme-options.php:634
+#: functions/theme-options.php:569
 msgid "Youtube channel"
 msgstr ""
 
-#: functions/theme-options.php:641
+#: functions/theme-options.php:576
 msgid "RSS feed"
 msgstr ""
 
-#: functions/theme-options.php:648
+#: functions/theme-options.php:583
 msgid "Email address"
 msgstr ""
 
-#: functions/theme-options.php:655
+#: functions/theme-options.php:590
 msgid "Phone number"
 msgstr ""
 
-#: functions/theme-options.php:670
+#: functions/theme-options.php:605
 msgid "Hide admin bar"
 msgstr ""
 
-#: functions/theme-options.php:673
+#: functions/theme-options.php:608
 msgid "Shows admin bar only for admins"
 msgstr ""
 
-#: functions/theme-options.php:677
+#: functions/theme-options.php:612
 msgid "Restrict access to admin"
 msgstr ""
 
-#: functions/theme-options.php:680
+#: functions/theme-options.php:615
 msgid "Restricts non-admins from accessing the dashboard"
 msgstr ""
 
-#: functions/theme-options.php:684
+#: functions/theme-options.php:619
 msgid "Change login header title"
 msgstr ""
 
-#: functions/theme-options.php:687
+#: functions/theme-options.php:622
 msgid ""
 "Changes the default header title in WordPress login page to be your site "
 "title"
 msgstr ""
 
-#: functions/theme-options.php:691
+#: functions/theme-options.php:626
 msgid "Add categories to Navigation"
 msgstr ""
 
-#: functions/theme-options.php:694
+#: functions/theme-options.php:629
 msgid ""
 "Adds categories menu to the main navigation menu (Show only if on mobile "
 "device)"
 msgstr ""
 
-#: functions/theme-options.php:699
+#: functions/theme-options.php:634
 msgid "Enable tinymce for comment form"
 msgstr ""
 
-#: functions/theme-options.php:708
+#: functions/theme-options.php:643
 msgid "Post types"
 msgstr ""
 
-#: functions/theme-options.php:713
+#: functions/theme-options.php:648
 msgid "Enable portfolio"
 msgstr ""
 
-#: functions/theme-options.php:720
+#: functions/theme-options.php:655
 msgid "Enable news"
 msgstr ""
 
-#: functions/theme-options.php:727
+#: functions/theme-options.php:662
 msgid "Enable downloads"
 msgstr ""
 
-#: functions/theme-options.php:734
+#: functions/theme-options.php:669
 msgid "Enable testimonials"
 msgstr ""
 
-#: functions/theme-options.php:742
+#: functions/theme-options.php:677
 msgid "Woocommerce"
 msgstr ""
 
-#: functions/theme-options.php:747
+#: functions/theme-options.php:682
 msgid "Hide products without prices"
 msgstr ""
 
-#: functions/theme-options.php:753
+#: functions/theme-options.php:688
 msgid "Show product's empty rating"
 msgstr ""
 
-#: functions/theme-options.php:761
+#: functions/theme-options.php:696
 msgid "Sale badge type"
 msgstr ""
 
-#: functions/theme-options.php:766
+#: functions/theme-options.php:701
 msgid "Text"
 msgstr ""
 
-#: functions/theme-options.php:770
+#: functions/theme-options.php:705
 msgid "percentage"
 msgstr ""
 
-#: functions/theme-options.php:778
+#: functions/theme-options.php:713
 msgid "Related products title"
 msgstr ""
 
-#: functions/theme-options.php:788
-msgid "Woocommerce shop only scripts/styles"
+#: functions/theme-options.php:723
+msgid "Single product"
 msgstr ""
 
-#: functions/theme-options.php:791
-msgid ""
-"Only allow woocommerce scripts/styles on shop related pages (e.g. product, "
-"cart and checkout pages)"
+#: functions/theme-options.php:728
+msgid "Disable comment's form's email's field"
 msgstr ""
 
-#: functions/theme-options.php:796
-msgid "Disable srcset meta"
-msgstr ""
-
-#: functions/theme-options.php:799
-msgid ""
-"Sometimes you may need to disable srcsets on mobile if you need to set the "
-"image size manually on mobile devices. Use the option below to set product "
-"thumbnail size on mobile"
-msgstr ""
-
-#: functions/theme-options.php:804
-msgid "Product thumnbnail size on mobile"
-msgstr ""
-
-#: functions/theme-options.php:814
-msgid "Contact form 7 scripts/styles"
-msgstr ""
-
-#: functions/theme-options.php:818
-msgid ""
-"Choose your contact form page, so cf7 styles/scripts will only be loaded "
-"in this page"
+#: functions/theme.php:16
+msgid "SmartPage"
 msgstr ""
 
 #: functions/widgets.php:20
@@ -1602,40 +1504,40 @@ msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/woocommerce.php:201
+#: functions/woocommerce.php:221
 #, php-format
 msgid "Save %1$s %2$s"
 msgstr ""
 
-#: header.php:92
+#: header.php:53
 msgid "Follow us on Facebook"
 msgstr ""
 
-#: header.php:98
+#: header.php:59
 msgid "Follow us on Twitter"
 msgstr ""
 
-#: header.php:104
+#: header.php:65
 msgid "Follow us on Youtube"
 msgstr ""
 
-#: header.php:110
+#: header.php:71
 msgid "Follow us on Pinterest"
 msgstr ""
 
-#: header.php:116
+#: header.php:77
 msgid "Follow us on Linkedin"
 msgstr ""
 
-#: header.php:122
+#: header.php:83
 msgid "Follow us on Instagram"
 msgstr ""
 
-#: header.php:128
+#: header.php:89
 msgid "Follow us on Tumblr"
 msgstr ""
 
-#: header.php:134
+#: header.php:95
 msgid "Follow us with RSS feed"
 msgstr ""
 
@@ -1687,15 +1589,15 @@ msgstr ""
 msgid "No popular posts"
 msgstr ""
 
-#: models/rate.php:19
+#: models/rate.php:28
 msgid "Rated"
 msgstr ""
 
-#: models/rate.php:20
+#: models/rate.php:29
 msgid "out of"
 msgstr ""
 
-#: models/rate.php:21
+#: models/rate.php:30
 msgid "Review(s)"
 msgstr ""
 
@@ -1711,26 +1613,75 @@ msgstr ""
 msgid "One comment"
 msgstr ""
 
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:54
+msgid "View details"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:214
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:216
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:218
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p13/Vcs/PluginUpdateChecker.php:100
+msgid "There is no changelog available."
+msgstr ""
+
 #: searchform.php:15
 msgid "Search"
 msgstr ""
 
-#: sidebar-default.php:16 sidebar-left.php:15 sidebar-right.php:16
-#: sidebar.php:15
+#: sidebar-default.php:16 sidebar-left.php:17 sidebar-right.php:18
+#: sidebar.php:16
 msgid "Please add some widgets. "
 msgstr ""
 
-#: sidebar-default.php:17 sidebar-left.php:16 sidebar-right.php:17
-#: sidebar.php:16
+#: sidebar-default.php:17 sidebar-left.php:18 sidebar-right.php:19
+#: sidebar.php:17
 msgid "Add Here"
 msgstr ""
 
-#: templates/header.view.php:19
+#: templates/header-view.php:30
 msgid "Loading..."
 msgstr ""
 
-#: templates/post-layout/post-with-thumb.php:36
-msgid "Shares"
+#: templates/post-layout/post-with-thumb.php:39
+#, php-format
+msgid "%s Shares"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:26
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:87
+msgid "Your order"
 msgstr ""
 
 #: woocommerce/single-product-reviews.php:37
