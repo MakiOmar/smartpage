@@ -1,6 +1,6 @@
 <?php
 /**
- * Search form
+ * Search form results
  *
  * PHP version 7.3 Or Later
  *
@@ -10,6 +10,10 @@
  * @link     https://makiomar.com
  */
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+$anony_options = ANONY_Options_Model::get_instance();
+
+$grid = $anony_options->posts_grid;
 
 $data = array();
 
@@ -37,4 +41,3 @@ if ( have_posts() ) {
 	);
 }
 require locate_template( 'templates/index-view.php', false, false );
-
