@@ -33,7 +33,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="anony-shares-count">
 		<i class="fa fa-share-alt"></i>
-		<span>1000 <?php esc_html_e( 'Shares', 'smartpage' ); ?></span>
+		<span>
+		<?php
+		// Translators: Number of shares.
+		printf( esc_html__( '%s Shares', 'smartpage' ), esc_html( wp_rand( 200, 1000 ) ) );
+		?>
+		</span>
 	</div>
 	   
 	<div class="anony-post-title-cover">
