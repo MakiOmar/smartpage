@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( $thumb && $thumb_exists && ! $hide_thumb ) : ?>
 			 
 				<div class="anony-posts-list-thumb">
-			<?php echo $thumb_img; ?>    
+					<?php echo get_the_post_thumbnail( $id, 'thumbnail' ); ?>    
 				</div>
 				 
 		<?php endif ?>

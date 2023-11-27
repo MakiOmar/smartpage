@@ -31,7 +31,7 @@ wp_enqueue_script( 'anony-download' );
 								<div class="anony-box-shadow anony-download-thumb">
 									<?php if ( $thumb && $thumb_exists ) : ?>
 								 
-										<?php echo $thumb_img; ?>
+										<?php echo get_the_post_thumbnail( $id, 'category-post-thumb' ); ?>
 
 									<?php else : ?>
 

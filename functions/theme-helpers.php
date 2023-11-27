@@ -331,7 +331,7 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 			$grid = $anony_options->posts_grid;
 		}
 
-		$p_id                      = get_the_ID();
+		$p_id                    = get_the_ID();
 		$temp['id']              = $p_id;
 		$temp['permalink']       = esc_url( get_the_permalink() );
 		$temp['title']           = esc_html( get_the_title() );
@@ -340,11 +340,9 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 		$temp['excerpt']         = wp_trim_words( esc_html( get_the_excerpt() ), 25 );
 		$temp['thumb']           = has_post_thumbnail();
 		$temp['thumb_exists']    = true;
-		$temp['thumb_img_full']  = get_the_post_thumbnail( $p_id, 'full' );
-		$temp['thumb_img']       = get_the_post_thumbnail( $p_id, 'category-post-thumb' );
-		$temp['thumbnail_img']   = get_the_post_thumbnail_url( $p_id, 'thumbnail' );
 		$temp['date']            = get_the_date();
 		$temp['gravatar']        = get_avatar( get_the_author_meta( 'ID' ), 32 );
+		// Translators: Author's name.
 		$temp['author']          = sprintf( esc_html__( 'By %s', 'smartpage' ), get_the_author() );
 		$temp['read_more']       = esc_html__( 'Read more', 'smartpage' );
 		$temp['grid']            = $grid;
@@ -353,7 +351,7 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 		$temp['comments_number'] = anony_comments_number();
 		$temp['has_category']    = has_category();
 
-		if ( $post_type == 'post' ) {
+		if ( $post_type === 'post' ) {
 			if ( has_category() ) {
 				$_1st_category              = get_the_category()[0];
 				$temp['categories']         = get_the_category();

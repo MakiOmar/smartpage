@@ -16,7 +16,7 @@ get_header();
 
 		get_sidebar( 'right-sidebar' );
 
-		$pID = $id;
+		$p_id = $id;
 
 		if ( has_action( 'post_ad' ) ) {
 			do_action( 'post_ad' );
@@ -32,7 +32,7 @@ get_header();
 					 
 					<div class="anony-post-title-cover"></div>
 					 
-				<?php echo $thumb_img_full; ?>
+				<?php echo get_the_post_thumbnail( $p_id, 'full' ); ?>
 					 
 					<h1 class="anony-single_post_title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h1>
 				</div>

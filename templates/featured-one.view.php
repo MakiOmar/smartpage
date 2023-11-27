@@ -18,7 +18,7 @@
 
 						<div id="anony-item-<?php echo $id; ?>" class="anony-view anony-full-height">
 
-			<?php echo $thumb_img; ?>
+			<?php echo  get_the_post_thumbnail( $id, 'full' ); ?>
 
 							  <div class="anony-title-readmore">
 
@@ -54,7 +54,7 @@
 
 							<a href="<?php echo $permalink; ?>" data-id="anony-item-<?php echo $id; ?>" class="<?php echo $class; ?>anony-slide-item">
 
-								<img class="anony-slide-thumb" src="<?php echo $thumbnail_img; ?>" alt="<?php echo $title_attr; ?>"/>
+								<img class="anony-slide-thumb" src="<?php echo  get_the_post_thumbnail_url( $id, 'thumbnail' ); ?>" alt="<?php echo $title_attr; ?>"/>
 
 							</a>
 						<?php else : ?>

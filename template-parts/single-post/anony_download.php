@@ -21,7 +21,7 @@ get_header();?>
 							
 								<div class="anony-hover-toggle anony-download-meta anony-post-info anony-grid-col-lg-3">
 									<div class="download-image-wrapper">
-									<?php echo $thumb_img; ?>
+									<?php echo get_the_post_thumbnail( $id, 'category-post-thumb' ); ?>
 									 </div>
 								</div>
 							 <?php } ?>
