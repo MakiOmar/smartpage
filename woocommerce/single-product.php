@@ -16,13 +16,13 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 get_header( 'shop' ); ?>
 <?php
 	/**
-	 * woocommerce_before_main_content hook.
+	 * Hook woocommerce_before_main_content.
 	 *
 	 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 	 * @hooked woocommerce_breadcrumb - 20
@@ -30,45 +30,44 @@ get_header( 'shop' ); ?>
 	do_action( 'woocommerce_before_main_content' );
 ?>
 <div class="anony-grid">
-    <div class="anony-grid-row anony-grid-col">
+	<div class="anony-grid-row anony-grid-col">
 		
 		<div class="anony-grid-col-sm-9-5">
 			
 			<div class="anony-grid-col anony-posts-wrapper">
-			    
-			    <div class="anony-grid-container">
-
-		<?php while ( have_posts() ) : ?>
-			<?php the_post(); ?>
-
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
-			</div>
 				
-		</div>
-			
-	</div>
+				<div class="anony-grid-container">
 
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		do_action( 'woocommerce_sidebar' );
-	?>
+					<?php while ( have_posts() ) : ?>
+						<?php the_post(); ?>
+
+						<?php wc_get_template_part( 'content', 'single-product' ); ?>
+
+					<?php endwhile; // end of the loop. ?>
+
+					<?php
+						/**
+						 * Hook woocommerce_after_main_content
+						 *
+						 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+						 */
+						do_action( 'woocommerce_after_main_content' );
+					?>
+				</div>
+					
+			</div>
+			
+		</div>
+
+		<?php
+			/**
+			 * Hook woocommerce_sidebar.
+			 *
+			 * @hooked woocommerce_get_sidebar - 10
+			 */
+			do_action( 'woocommerce_sidebar' );
+		?>
 	</div>
-	
 </div>
 <?php
 get_footer( 'shop' );
