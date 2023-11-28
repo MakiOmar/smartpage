@@ -118,4 +118,18 @@ section.related.products{
 		padding: 5px;
 		margin: 0
 	}
+	.woocommerce div.product div.images .flex-control-thumbs {
+		position: relative!important;
+		left: auto;
+		right: auto;
+		bottom: 0px;
+		margin: auto;
+		z-index: auto;
+		margin-top: 15px;
+	}
+	.woocommerce div.product div.images .flex-control-thumbs li {
+			width: calc(25% - 6px);
+			float: none;
+			margin: 0 3px;
+	}
 }
