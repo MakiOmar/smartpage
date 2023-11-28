@@ -55,9 +55,9 @@ function anony_hide_products_without_price( $query ) {
 	$anony_options = ANONY_Options_Model::get_instance();
 
 	if ( '1' === $anony_options->hide_no_price_products && ! is_admin() && in_array( $query->get( 'post_type' ), array( 'product' ) ) ) {
-		$meta_query   = $query->get( 'meta_query' );
-		
-		if( is_array( $meta_query ) ){
+		$meta_query = $query->get( 'meta_query' );
+
+		if ( is_array( $meta_query ) ) {
 			$meta_query[] = array(
 				'key'     => '_price',
 				'value'   => '',
@@ -65,25 +65,23 @@ function anony_hide_products_without_price( $query ) {
 			);
 			$query->set( 'meta_query', $meta_query );
 		}
-		
 	}
-
 }
 
 /**
  * Replaces product rating. Shows rating even if no ratings (Will show empty stars).
  */
 function anony_replace_product_rating() {
-    global $product;
+	global $product;
 
-    $rating_count = $product->get_rating_count();
-    $review_count = $product->get_review_count();
-    $average      = $product->get_average_rating();
+	$rating_count = $product->get_rating_count();
+	$review_count = $product->get_review_count();
+	$average      = $product->get_average_rating();
 
-    /* translators: %s: rating */
+	/* translators: %s: rating */
 	$label = sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating_count );
 	$html  = '<div class="star-rating" role="img" aria-label="' . esc_attr( $label ) . '">' . wc_get_star_rating_html( $average, $rating_count ) . '</div>';
-	
+
 	echo $html;
 }
 
@@ -91,125 +89,124 @@ function anony_replace_product_rating() {
  * Allways show rating after shop loop item title
  */
 function anony_rating_after_shop_loop_item_title() {
-	
+
 	$anony_options = ANONY_Options_Model::get_instance();
-	if ( '1' === $anony_options->show_empty_rating  ) {
+	if ( '1' === $anony_options->show_empty_rating ) {
 		global $product;
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 		add_action( 'woocommerce_after_shop_loop_item_title', 'anony_replace_product_rating', 5 );
 	}
-
 }
 
-function anony_change_single_product_ratings(){
-    remove_action('woocommerce_single_product_summary','woocommerce_template_single_rating', 10 );
-    add_action('woocommerce_single_product_summary','anony_wc_single_product_ratings', 10 );
+function anony_change_single_product_ratings() {
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+	add_action( 'woocommerce_single_product_summary', 'anony_wc_single_product_ratings', 10 );
 }
 
-function anony_wc_single_product_ratings(){
-    global $product;
+function anony_wc_single_product_ratings() {
+	global $product;
 
-    $rating_count = $product->get_rating_count();
+	$rating_count = $product->get_rating_count();
 
-    if ( $rating_count >= 0 ) {
-        $review_count = $product->get_review_count();
-        $average      = $product->get_average_rating();
-        ?>
-        <div class="woocommerce-product-rating">
-            <div class="container-rating">
+	if ( $rating_count >= 0 ) {
+		$review_count = $product->get_review_count();
+		$average      = $product->get_average_rating();
+		?>
+		<div class="woocommerce-product-rating">
+			<div class="container-rating">
 				
 				<div class="star-rating">
 					<?php echo wc_get_rating_html( $average, $rating_count ); ?>
 				</div>
 				
-            		<?php if ( comments_open() ) : ?>
+					<?php if ( comments_open() ) : ?>
 						<a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'woocommerce' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a>
 					<?php endif ?>
-        		</div>
+				</div>
 		</div>
-        <?php
-    }
+		<?php
+	}
 }
-if ( !function_exists( 'anony_custom_sale_badge' ) ) {
+if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 	function anony_custom_sale_badge( $html, $post, $product ) {
-		
+
 		$custom_sale_badge = get_post_meta( $post->ID, 'custom-sale-badge', true );
-		
-		if( $custom_sale_badge  && !empty( $custom_sale_badge ) ){
-			
+
+		if ( $custom_sale_badge && ! empty( $custom_sale_badge ) ) {
+
 			return sprintf( '<span class="onsale on-sale-text">%s</span>', $custom_sale_badge );
 		}
-		
+
 		$anony_options = ANONY_Options_Model::get_instance();
-		if( $product->is_type('variable')){
-		  $percentages    = array();
-		  $regular_prices = array();
+		if ( $product->is_type( 'variable' ) ) {
+			$percentages    = array();
+			$regular_prices = array();
 
-		  // Get all variation prices
-		  $prices = $product->get_variation_prices();
+			// Get all variation prices
+			$prices = $product->get_variation_prices();
 
-		  // Loop through variation prices
-		  foreach( $prices['price'] as $key => $price ){
-			  // Only on sale variations
-			  if( $prices['regular_price'][$key] !== $price ){
-				  // Calculate and set in the array the percentage for each variation on sale
-				  $percentages[] = round( 100 - ( floatval($prices['sale_price'][$key]) / floatval($prices['regular_price'][$key]) * 100 ) );
+			// Loop through variation prices
+			foreach ( $prices['price'] as $key => $price ) {
+				// Only on sale variations
+				if ( $prices['regular_price'][ $key ] !== $price ) {
+					// Calculate and set in the array the percentage for each variation on sale
+					$percentages[] = round( 100 - ( floatval( $prices['sale_price'][ $key ] ) / floatval( $prices['regular_price'][ $key ] ) * 100 ) );
 
-				  $sale_prices[]    = floatval($prices['sale_price'][$key]);
+					$sale_prices[] = floatval( $prices['sale_price'][ $key ] );
 
-				  $regular_prices[] = floatval($prices['regular_price'][$key]);
-			  }
-		  }
-		  // We keep the highest value
-		  $percentage    = max($percentages) . '%';
-		  $regular_price = max($regular_prices);
-		  $sale_price    = max($sale_prices);
-
-		  $saved         = $regular_price - $sale_price;
-
-		} elseif( $product->is_type('grouped') ){
-			  $percentages    = array();
-			  $regular_prices = array();
-
-			  // Get all variation prices
-			  $children_ids = $product->get_children();
-
-			  // Loop through variation prices
-			  foreach( $children_ids as $child_id ){
-				  $child_product = wc_get_product($child_id);
-
-				  $regular_price = (float) $child_product->get_regular_price();
-				  $sale_price    = (float) $child_product->get_sale_price();
-
-				  if ( $sale_price != 0 || ! empty($sale_price) ) {
-					  // Calculate and set in the array the percentage for each child on sale
-					  $percentages[]    = round(100 - ($sale_price / $regular_price * 100));
-
-					  $regular_prices[] = $regular_price;
-					  $sale_prices[]    = $sale_price;
-				  }
-			  }
-			  // We keep the highest value
-			  $percentage    = max($percentages) . '%';
-
-			  $regular_price = max($regular_prices);
-
-			  $sale_price    = max($sale_prices);
-
-			  $saved         = $regular_price - $sale_price;
-
-			} else {
-			  $regular_price = (float) $product->get_regular_price();
-			  $sale_price    = (float) $product->get_sale_price();
-
-			  if ( $sale_price != 0 || ! empty($sale_price) ) {
-				  $percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
-
-				  $saved         = $regular_price - $sale_price;
-			  } else {
-				  return $html;
-			  }
+					$regular_prices[] = floatval( $prices['regular_price'][ $key ] );
+				}
 			}
+			// We keep the highest value
+			$percentage    = max( $percentages ) . '%';
+			$regular_price = max( $regular_prices );
+			$sale_price    = max( $sale_prices );
+
+			$saved = $regular_price - $sale_price;
+
+		} elseif ( $product->is_type( 'grouped' ) ) {
+				$percentages    = array();
+				$regular_prices = array();
+
+				// Get all variation prices
+				$children_ids = $product->get_children();
+
+				// Loop through variation prices
+			foreach ( $children_ids as $child_id ) {
+				$child_product = wc_get_product( $child_id );
+
+				$regular_price = (float) $child_product->get_regular_price();
+				$sale_price    = (float) $child_product->get_sale_price();
+
+				if ( $sale_price != 0 || ! empty( $sale_price ) ) {
+					// Calculate and set in the array the percentage for each child on sale
+					$percentages[] = round( 100 - ( $sale_price / $regular_price * 100 ) );
+
+					$regular_prices[] = $regular_price;
+					$sale_prices[]    = $sale_price;
+				}
+			}
+				// We keep the highest value
+				$percentage = max( $percentages ) . '%';
+
+				$regular_price = max( $regular_prices );
+
+				$sale_price = max( $sale_prices );
+
+				$saved = $regular_price - $sale_price;
+
+		} else {
+			$regular_price = (float) $product->get_regular_price();
+			$sale_price    = (float) $product->get_sale_price();
+
+			if ( $sale_price != 0 || ! empty( $sale_price ) ) {
+					$percentage = round( 100 - ( $sale_price / $regular_price * 100 ) ) . '%';
+
+					$saved = $regular_price - $sale_price;
+			} else {
+				return $html;
+			}
+		}
 
 			$sale_badge_type = 'percentage';
 
@@ -217,42 +214,41 @@ if ( !function_exists( 'anony_custom_sale_badge' ) ) {
 
 			$class = 'on-sale-percent';
 
-			if ( 'text' === $anony_options->sale_badge_type ) {
-				$sale_badge_text = sprintf(  esc_html__( 'Save %1$s %2$s', 'smartpage' ), round( $saved ), get_woocommerce_currency_symbol() );
+		if ( 'text' === $anony_options->sale_badge_type ) {
+			$sale_badge_text = sprintf( esc_html__( 'Save %1$s %2$s', 'smartpage' ), round( $saved ), get_woocommerce_currency_symbol() );
 
-				$class = 'on-sale-text';
-			}
+			$class = 'on-sale-text';
+		}
 
 			return sprintf( '<span class="onsale %1$s">%2$s</span>', $class, $sale_badge_text );
 	}
-	
+
 }
 
 
-function anony_change_related_products_text($new_text, $related_text, $source)
-{
-     if ($related_text === 'Related products' && $source === 'woocommerce') {
-		 $anony_options = ANONY_Options_Model::get_instance();
-		 if( !empty( $anony_options->related_products_title  ) ){
-			 $new_text = $anony_options->related_products_title;
-		 }
-     }
-     return $new_text;
+function anony_change_related_products_text( $new_text, $related_text, $source ) {
+	if ( $related_text === 'Related products' && $source === 'woocommerce' ) {
+		$anony_options = ANONY_Options_Model::get_instance();
+		if ( ! empty( $anony_options->related_products_title ) ) {
+			$new_text = $anony_options->related_products_title;
+		}
+	}
+	return $new_text;
 }
 
 
-function anony_wc_comment_form_fields($fields) {
+function anony_wc_comment_form_fields( $fields ) {
 	global $post;
-	
+
 	if ( 'product' !== $post->post_type ) {
 		return $fields;
 	}
 	$anony_options = ANONY_Options_Model::get_instance();
-	
-	if(isset($fields['email']) &&  '1' === $anony_options->disable_comment_form_email_field ) {
-		unset($fields['email']);
+
+	if ( isset( $fields['email'] ) && '1' === $anony_options->disable_comment_form_email_field ) {
+		unset( $fields['email'] );
 	}
-  return $fields;
+	return $fields;
 }
 
 // Remove actions.
@@ -267,7 +263,7 @@ add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
 add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
 
-add_action('woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
+add_action( 'woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
 
 add_filter( 'woocommerce_sale_flash', 'anony_custom_sale_badge', 20, 3 );
 
@@ -275,6 +271,6 @@ add_filter( 'woocommerce_product_description_heading', '__return_false' );
 add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
 add_filter( 'woocommerce_product_reviews_heading', '__return_false' );
 
-add_filter('gettext', 'anony_change_related_products_text', 10, 3);
+add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
 
-add_filter('comment_form_fields', 'anony_wc_comment_form_fields');
+add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
