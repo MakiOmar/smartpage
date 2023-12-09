@@ -14,7 +14,9 @@ get_header();
 
 		anony_breadcrumbs();
 
-		get_sidebar( 'right-sidebar' );
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
+			get_sidebar( 'right' );
+		}
 
 		$p_id = $id;
 
@@ -107,7 +109,11 @@ get_header();
 			 
 		</div>
 		 
-		<?php get_sidebar( 'left-sidebar' ); ?>
+		<?php
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
+			get_sidebar( 'left' );
+		}
+		?>
 		 
 	</div>
 	 

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-
+$anony_options = ANONY_Options_Model::get_instance();
 ?>
 
 <div class="anony-grid">
@@ -12,7 +12,11 @@ get_header();
 	<div class="anony-grid-row"><?php anony_breadcrumbs(); ?></div>
 	<div class="anony-grid-row">
 		 
-		<?php get_sidebar( 'right' ); ?>
+		<?php
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
+			get_sidebar( 'right' );
+		}
+		?>
 		 
 		<div class="anony-grid-col <?php echo $wrapper_class; ?>">
 						 
@@ -91,7 +95,11 @@ get_header();
 			 
 		</div>
 		 
-		<?php get_sidebar( 'left' ); ?>
+		<?php
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
+			get_sidebar( 'left' );
+		}
+		?>
 		 
 	</div>
 	 

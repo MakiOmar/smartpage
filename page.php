@@ -61,7 +61,11 @@ $sidebar = $anony_options->sidebar;
 
 		</div>
 
-		<?php get_sidebar(); ?>
+		<?php
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
+			get_sidebar();
+		}
+		?>
 
 	</div>
 

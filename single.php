@@ -13,7 +13,11 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.ly
 
 $anony_options = ANONY_Options_Model::get_instance();
 
-$wrapper_class = ( $anony_options->single_sidebar == '1' ) ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5';
+if ( 'no-sidebar' === $anony_options->sidebar ) {
+    $wrapper_class = '';
+}else{
+    $wrapper_class = ( $anony_options->single_sidebar == '1' ) ? 'anony-grid-col-sm-7' : 'anony-grid-col-sm-9-5';
+}
 
 $post_type = get_post_type();
 
