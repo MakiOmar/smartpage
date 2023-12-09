@@ -109,10 +109,12 @@ select {
 .anony-grid-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .anony-grid-row-vertical {
   flex-direction: column;
+  justify-content: initial;
 }
 
 .anony-custom-bullets ul {
@@ -170,6 +172,13 @@ header.anony-absolute-header {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+}
+
+.rated-text {
+  margin: 5px;
+  font-size: 16px;
+  text-align: center;
+  padding: 5px;
 }
 
 #anony-main_nav_con {
