@@ -19,7 +19,7 @@ $anony_options = ANONY_Options_Model::get_instance();
 
 	<div class="anony-grid-row anony-grid-col">
 
-		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? " anony-grid-col-sm-9-5" : ""  ?>">
+		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
 
 			<div class="anony-grid-col anony-posts-wrapper">
 
