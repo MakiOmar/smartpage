@@ -29,7 +29,7 @@ if ( ! comments_open() ) {
 
 			
 		<div class="anony-grid-row">
-			<div class="anony-grid-col anony-grid-col-max-480-4 anony-grid-col-sm-3">
+			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3">
 				<h3 id="anony-average-rating"><?php echo $product->get_average_rating() ?></h3>
 				<?php
 					if ( 0 == $product->get_average_rating() ) {?>
@@ -43,7 +43,7 @@ if ( ! comments_open() ) {
 
 				?>
 			</div>
-			<div class="anony-grid-col anony-grid-col-max-480-8 anony-grid-col-sm-6">
+			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-6">
 				<?php
 					$total_count   = $product->get_rating_count();
 					$counts        = $product->get_rating_counts();
@@ -70,7 +70,7 @@ if ( ! comments_open() ) {
 				?>
 			</div>
 
-			<div class="anony-grid-col anony-grid-col-sm-3">
+			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3">
 				<h2><?php esc_html_e( 'Rate this product', 'smartpage' ) ?></h2>
 				<h4><?php esc_html_e( 'Rating help others to make choices', 'smartpage' ) ?></h4>
 				<a id='go-add-review'  href="#review_form_wrapper"><?php esc_html_e( 'Add a review', 'smartpage' ) ?></a>
