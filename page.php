@@ -14,61 +14,18 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 get_header();
 
-$anony_options = ANONY_Options_Model::get_instance();
+// Check if the Elementor plugin is active
+if (is_plugin_active('elementor/elementor.php')) {
+    // Check if the current page is built with Elementor
+    if (get_post_meta(get_the_ID(), '_elementor_edit_mode', true) === 'builder') {
+        the_content();
+    } else {
+        get_template_part( 'templates/page', 'view' );
+    }
+} else {
+    // Elementor plugin is not active
+    get_template_part( 'templates/page', 'view' );
+}
 
-$sidebar = $anony_options->sidebar;
+get_footer();
 
-?>
-
-<div class="anony-grid">
-
-	<div class="anony-grid-row anony-grid-col">
-
-		<div class="anony-grid-col anony-grid-col-sm-9-5">
-
-			<div class="anony-grid-col anony-posts-wrapper">
-
-				<div class="anony-grid-container">
-
-				<?php
-				if ( have_posts() ) :
-
-					while ( have_posts() ) :
-
-						the_post();
-						?>
-
-						<div class="anony-grid-col anony-post-contents anony-single_post">
-
-							<div class="anony-post-info">
-
-								<div class="anony-single-text">
-									<?php the_content(); ?>
-								</div>
-
-							</div>
-
-						</div>
-
-						<?php
-					endwhile;
-				endif;
-				?>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<?php
-		if ( 'no-sidebar' !== $anony_options->sidebar ) {
-			get_sidebar();
-		}
-		?>
-
-	</div>
-
-</div>
-
-<?php get_footer(); ?>
