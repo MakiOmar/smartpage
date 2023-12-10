@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-get_header( 'shop' ); ?>
+get_header(); ?>
 <?php
 	/**
 	 * Hook woocommerce_before_main_content.
@@ -32,7 +32,7 @@ get_header( 'shop' ); ?>
 <div class="anony-grid">
 	<div class="anony-grid-row anony-grid-col">
 		
-		<div class="anony-grid-col-sm-9-5">
+		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
 			
 			<div class="anony-grid-col anony-posts-wrapper">
 				
@@ -60,16 +60,18 @@ get_header( 'shop' ); ?>
 		</div>
 
 		<?php
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
 			/**
 			 * Hook woocommerce_sidebar.
 			 *
 			 * @hooked woocommerce_get_sidebar - 10
 			 */
 			do_action( 'woocommerce_sidebar' );
+		}
 		?>
 	</div>
 </div>
 <?php
-get_footer( 'shop' );
+get_footer();
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
