@@ -85,6 +85,15 @@
   width: 100%;
 }
 
+.woocommerce .container-rating {
+  display: flex;
+  align-items: center;
+}
+
+.woocommerce .woocommerce-product-rating .star-rating {
+  margin: 0;
+}
+
 .woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews {
   padding: 20px;
   background-color: #fff;
