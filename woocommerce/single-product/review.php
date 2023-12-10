@@ -18,7 +18,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
@@ -27,30 +27,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="comment-text">
 			<?php
+			echo '<div class="anony-review-meta">';
 			/**
 			 * The woocommerce_review_before hook
 			 *
 			 * @hooked woocommerce_review_display_gravatar - 10
 			 */
 			do_action( 'woocommerce_review_before', $comment );
-			?>
 
-			<?php
-			
 			/**
 			 * The woocommerce_review_meta hook.
 			 *
 			 * @hooked woocommerce_review_display_meta - 10
 			 */
 			do_action( 'woocommerce_review_meta', $comment );
-			
+			echo '</div>';
+
 			/**
 			 * The woocommerce_review_before_comment_meta hook.
 			 *
 			 * @hooked woocommerce_review_display_rating - 10
 			 */
 			do_action( 'woocommerce_review_before_comment_meta', $comment );
-
 
 			do_action( 'woocommerce_review_before_comment_text', $comment );
 

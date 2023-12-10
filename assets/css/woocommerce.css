@@ -294,6 +294,11 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
   flex-direction: column;
 }
 
+.anony-review-meta {
+  position: relative;
+  display: flex;
+}
+
 .woocommerce #review_form #respond textarea {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -399,9 +404,11 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
   display: inline-block;
 }
 
-.woocommerce .comment-text img {
-  height: auto;
+.woocommerce #reviews #comments ol.commentlist li img.avatar {
+  position: relative;
+  max-height: 50px;
   max-width: 50px;
+  width: auto;
   display: inline-flex;
   margin: 10px;
 }
