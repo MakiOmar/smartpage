@@ -86,7 +86,14 @@ select{
 .anony-grid-row{
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.flex-h-center{
 	justify-content: center;
+}
+
+.flex-v-center{
+	align-items: center;
 }
 .anony-grid-row-vertical{
 	flex-direction: column;
