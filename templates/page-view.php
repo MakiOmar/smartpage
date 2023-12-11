@@ -17,13 +17,11 @@ $anony_options = ANONY_Options_Model::get_instance();
 
 <div class="anony-grid">
 
-	<div class="anony-grid-row anony-grid-col">
+	<div class="anony-grid-row anony-grid-col flex-h-center">
 
 		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
 
-			<div class="anony-grid-col anony-posts-wrapper">
-
-				<div class="anony-grid-container">
+			<div class="anony-grid-col flex-h-center">
 
 				<?php
 				if ( have_posts() ) :
@@ -33,7 +31,7 @@ $anony_options = ANONY_Options_Model::get_instance();
 						the_post();
 						?>
 
-						<div class="anony-grid-col anony-post-contents anony-single_post">
+						<div class="anony-grid-col anony-post-contents">
 
 							<div class="anony-post-info">
 
@@ -49,8 +47,6 @@ $anony_options = ANONY_Options_Model::get_instance();
 					endwhile;
 				endif;
 				?>
-
-				</div>
 
 			</div>
 

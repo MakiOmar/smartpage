@@ -22,9 +22,7 @@ get_header( 'default' );
 
 		<div class="anony-grid-col anony-grid-col-sm-9-5">
 
-			<div class="anony-grid-col anony-posts-wrapper">
-
-				<div class="anony-grid-container">
+			<div class="anony-grid-col">
 
 				<?php
 				if ( have_posts() ) :
@@ -50,8 +48,6 @@ get_header( 'default' );
 					endwhile;
 				endif;
 				?>
-
-				</div>
 
 			</div>
 

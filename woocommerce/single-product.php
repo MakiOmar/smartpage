@@ -35,7 +35,7 @@ do_action( 'woocommerce_before_main_content' );
 		
 		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
 			
-			<div class="anony-grid-col anony-posts-wrapper">
+			<div class="anony-grid-col">
 				
 				<div class="anony-grid-container">
 

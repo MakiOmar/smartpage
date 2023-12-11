@@ -8,8 +8,6 @@ wp_enqueue_script( 'anony-download' );
 	<div class="anony-skew-bg">
 		<h4 class="anony-section_title"><?php echo $sec_title; ?></h4>
 	</div>
-	 
-	<div class="anony-posts-wrapper">
 
 		<div id="anony-download">
 
@@ -58,5 +56,4 @@ wp_enqueue_script( 'anony-download' );
 			<?php endforeach ?>
 
 		</div>
-	</div>
 </div>
