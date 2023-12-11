@@ -149,11 +149,12 @@ jQuery(document).ready(function($){
 			 */
 			$("a[rel^='prettyPhoto']").prettyPhoto({social_tools : false});
 		}
-		
-		lightbox.option({
-		  'resizeDuration': 200,
-		  'wrapAround': true
-		});
+		if ( lightbox ) {
+			lightbox.option({
+				'resizeDuration': 200,
+				'wrapAround': true
+			  });
+		}
 		
 	}
 	
