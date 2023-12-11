@@ -13,9 +13,23 @@
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 get_header();
+?>
 
-if ( class_exists( 'ANONY_Woo_Help' ) ) {
-	ANONY_Woo_Help::products_loop();
-}
 
+<div class="woocommerce anony-grid-row">
+	
+		
+	<div class="anony-grid-col anony-flex-grow">
+		
+		<?php
+		if ( class_exists( 'ANONY_Woo_Help' ) ) {
+			ANONY_Woo_Help::products_loop();
+		}
+		?>
+	
+	</div>
+			
+</div>
+
+<?php
 get_footer();
