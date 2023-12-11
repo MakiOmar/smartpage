@@ -92,17 +92,6 @@ function anony_styles() {
 		$media
 	);
 
-	// Lightbox.
-	wp_enqueue_style(
-		'lightbox',
-		ANONY_THEME_URI . '/assets/css/lightbox' . $min_suffix . '.css',
-		false,
-		filemtime(
-			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/lightbox' . $min_suffix . '.css' )
-		),
-		$media
-	);
-
 	if ( is_rtl() ) {
 
 		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-main' ) : null;
@@ -122,9 +111,18 @@ function anony_styles() {
 
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		// load prettyPhoto if needed.
+		// load lightbox if needed.
 		if ( '1' !== $anony_options->disable_prettyphoto ) {
-			$styles_libs[] = 'prettyPhoto';
+			// Lightbox.
+			wp_enqueue_style(
+				'lightbox',
+				ANONY_THEME_URI . '/assets/css/lightbox' . $min_suffix . '.css',
+				false,
+				filemtime(
+					wp_normalize_path( ANONY_THEME_DIR . '/assets/css/lightbox' . $min_suffix . '.css' )
+				),
+				$media
+			);
 		}
 	}
 }
@@ -175,8 +173,9 @@ function anony_scripts() {
 			true
 		);
 	}
-
-	wp_enqueue_script( 'lightbox.min' );
+	if ( '1' !== $anony_options->disable_prettyphoto ) {
+		wp_enqueue_script( 'lightbox.min' );
+	}
 
 	wp_enqueue_script( 'anony-custom' );
 
