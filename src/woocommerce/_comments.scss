@@ -103,7 +103,10 @@
 }
 
 .woocommerce #anony-reviews-details .woocommerce-product-rating{
-	display: inline-block
+	display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
 }
 
 .woocommerce #reviews #comments ol.commentlist li img.avatar{

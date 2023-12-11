@@ -106,6 +106,10 @@ select {
   clear: both;
 }
 
+.anony-flex-grow {
+  flex-grow: 1;
+}
+
 .anony-grid-row {
   display: flex;
   flex-wrap: wrap;

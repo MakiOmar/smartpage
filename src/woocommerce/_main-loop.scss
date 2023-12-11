@@ -1,3 +1,9 @@
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+	margin: 0 3% 2.992em 0;
+}
+.woocommerce ul.products li.last, .woocommerce-page ul.products li.last {
+    margin-right: 0;
+}
 .woocommerce ul.products li.product a.button {
 	margin-top: 0;
 }
@@ -28,7 +34,7 @@
 	color: #DD3C3C;
 	font-size: 18px;
 }
-.woocommerce .products ul, .woocommerce ul.products {
+.woocommerce .products ul li, .woocommerce ul.products li {
 	text-align: center;
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
