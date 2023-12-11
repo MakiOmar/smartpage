@@ -315,7 +315,22 @@ if ( ! function_exists( 'anony_comments_number' ) ) {
 	}
 }
 
-
+/**
+ * Renders sction title
+ *
+ * @param  string $title Title text.
+ * @return string
+ */
+function anony_section_title( $title = '' ) {
+	if ( empty( $title ) ) {
+		return;
+	}
+	$html  = '<div class="anony-section-title">';
+	$html .= '<img src="https://cleo.makiomar.com/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp"/>';
+	$html .= '<h4>' . esc_html( $title ) . '</h4>';
+	$html .= '</div>';
+	return $html;
+}
 if ( ! function_exists( 'anony_common_post_data' ) ) {
 	/**
 	 * Collects common post data
