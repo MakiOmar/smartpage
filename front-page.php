@@ -22,19 +22,25 @@ $rev_slider = $anony_options->rev_slider;
 
 $home_slider = $anony_options->home_slider;
 
-$choose_slider
-	= __(
-		"You didn't choose a slider, Please select one from theme options page"
-	);
+$page_for = 'woocommerce';
+
+switch ( $page_for ) {
+	case ( 'woocommerce' ):
+		require 'page-woo-home.php';
+		break;
+
+	default:
+		$choose_slider = __( "You didn't choose a slider, Please select one from theme options page" );
 
 
-if ( function_exists( 'putRevSlider' ) && '1' === $home_slider ) {
+		if ( function_exists( 'putRevSlider' ) && '1' === $home_slider ) {
 
-	if ( '' !== $rev_slider ) {
+			if ( '' !== $rev_slider ) {
 
-		$slider = ANONY_HELP::ob_get( 'putRevSlider', array( $rev_slider ) );
+				$slider = ANONY_HELP::ob_get( 'putRevSlider', array( $rev_slider ) );
 
-	}
+			}
+		}
+
+		require locate_template( 'templates/front-page-view.php', false, false );
 }
-
-require locate_template( 'templates/front-page-view.php', false, false );
