@@ -11,7 +11,7 @@ function anony_theme_skin(){
 .anony-page-numbers a, .widgeted_title, #anony-dun-title, #submit, .anony-form_submit,
 .anony-featured-posts-title, .anony-section_title, #anony-page-scroll, .anony-button,
 .anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, #anony-main_nav_con, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after, .elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
-		  background-color: <?php echo esc_html( $primary_color ) ;?>;
+		  background-color: <?php echo esc_html( $primary_color ) ;?>!important;
 		}
 		.anony-post-info .anony-nothumb-post .anony-thumb-post-title, #anony-top-header-wrapper, #anony-page-loading-bg {
 		  border-bottom-bottom: <?php echo esc_html( $primary_color ) ;?>;
@@ -19,15 +19,19 @@ function anony_theme_skin(){
 		.anony-section, #anony-slider-wrapper {
 		  border-top-color: <?php echo esc_html( $primary_color ) ;?>;
 		}
-		.fa-calendar, .fa-comments-o, .fa-folder-open, .fa-eye, .fa-download, a, .anony-breadcrumbs li, .anony-breadcrumbs a {
-		  color: <?php echo esc_html( $primary_color ) ;?>;
+		#cancel-comment-reply-link,
+		.fa-bars, #anony-cat-list .toggle-category .fa ,
+		#anony-main-menu-con .anony-sub-menu li a,
+		.fa-calendar, .fa-comments-o, .fa-folder-open,
+		.fa-eye,
+		.fa-download,
+		.anony-breadcrumbs li,
+		.anony-breadcrumbs a,
+		.woocommerce ul.products li.product .price {
+		  color: <?php echo esc_html( $primary_color ); ?>!important;
 		}
 		#anony-main-menu-con .anony-sub-menu li a {
-		  color: <?php echo esc_html( $primary_color ) ;?>;
 		  text-shadow: none;
-		}
-		#cancel-comment-reply-link, .fa-bars, #anony-cat-list .toggle-category .fa {
-		  color: <?php echo esc_html( $primary_color ) ;?>;
 		}
 		.anony-warning {
 		  background-color: <?php echo esc_html( $primary_color ) ;?>;
@@ -48,17 +52,6 @@ function anony_theme_skin(){
 		.anony-custom-bullets ul li::before {
 		  color: <?php echo esc_html( $secondary_color ) ;?>; /* Change the color */
 		}
-		
-		<?php if ( class_exists( 'woocommerce' ) ) : ?>
-		.woocommerce ul.products li.product a.add_to_cart_button{
-			background-color: <?php echo esc_html( $secondary_color ) ;?>;
-		}
-		
-		.woocommerce ul.products li.product .price{
-			color: <?php echo esc_html( $secondary_color ) ?>;
-		}
-		
-		<?php endif; ?>
 		@media screen and (min-width: 768px) {
 		  #anony-main-menu-con li a:hover {
 			background-color: <?php echo esc_html( $primary_color ) ;?>;
