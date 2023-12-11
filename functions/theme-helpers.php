@@ -326,7 +326,7 @@ function anony_section_title( $title = '' ) {
 		return;
 	}
 	$html  = '<div class="anony-section-title">';
-	$html .= '<img src="https://cleo.makiomar.com/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp"/>';
+	$html .= '<img src="https://cleo.makiomar.com/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp" width="224" height="80"/>';
 	$html .= '<h4>' . esc_html( $title ) . '</h4>';
 	$html .= '</div>';
 	return $html;
