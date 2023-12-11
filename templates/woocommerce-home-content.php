@@ -11,23 +11,25 @@
  */
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+if ( ! class_exists( 'ANONY_Woo_Help' ) ) {
+	return;
+}
 ?>
-
-<div class="anony-spacer"></div>
+<div class="anony-spacer">
+</div>
 <div class="woocommerce anony-grid-row">
 	<?php echo anony_section_title( 'عروض الإشتراكات' ); ?>	
 	<div class="anony-grid-col anony-flex-grow">
 		
 		<?php
-		if ( class_exists( 'ANONY_Woo_Help' ) ) {
-			ANONY_Woo_Help::products_loop(
-				array(
-					'loop_args' => array(
-						'include' => array( 6431, 6430, 6429, 6418 ),
-					),
+
+		ANONY_Woo_Help::products_loop(
+			array(
+				'loop_args' => array(
+					'include' => array( 6431, 6430, 6429, 6418 ),
 				),
-			);
-		}
+			),
+		);
 		?>
 	
 	</div>
@@ -36,15 +38,13 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 	<div class="anony-grid-col anony-flex-grow">
 		
 		<?php
-		if ( class_exists( 'ANONY_Woo_Help' ) ) {
-			ANONY_Woo_Help::products_loop(
-				array(
-					'loop_args' => array(
-						'include' => array( 1400, 1400, 5994, 6052 ),
-					),
+		ANONY_Woo_Help::products_loop(
+			array(
+				'loop_args' => array(
+					'include' => array( 1400, 1400, 5994, 6052 ),
 				),
-			);
-		}
+			),
+		);
 		?>
 	
 	</div>
@@ -53,15 +53,13 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 	<div class="anony-grid-col anony-flex-grow">
 		
 		<?php
-		if ( class_exists( 'ANONY_Woo_Help' ) ) {
-			ANONY_Woo_Help::products_loop(
-				array(
-					'loop_args' => array(
-						'include' => array( 4482, 4984, 4994, 8210 ),
-					),
+		ANONY_Woo_Help::products_loop(
+			array(
+				'loop_args' => array(
+					'include' => array( 4482, 4984, 4994, 8210 ),
 				),
-			);
-		}
+			),
+		);
 		?>
 	
 	</div>
@@ -70,15 +68,13 @@ defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 	<div class="anony-grid-col anony-flex-grow">
 		
 		<?php
-		if ( class_exists( 'ANONY_Woo_Help' ) ) {
-			ANONY_Woo_Help::products_loop(
-				array(
-					'loop_args' => array(
-						'include' => array( 2767, 2860, 2979, 2987 ),
-					),
+		ANONY_Woo_Help::products_loop(
+			array(
+				'loop_args' => array(
+					'include' => array( 2767, 2860, 2979, 2987 ),
 				),
-			);
-		}
+			),
+		);
 		?>
 	
 	</div>
