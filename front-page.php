@@ -26,7 +26,9 @@ $page_for = 'woocommerce';
 
 switch ( $page_for ) {
 	case ( 'woocommerce' ):
-		require 'page-woo-home.php';
+		if ( class_exists( 'WooCommerce' ) || is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+			require 'page-woo-home.php';
+		}
 		break;
 
 	default:
