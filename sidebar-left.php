@@ -31,7 +31,11 @@ $sidebar_ad     = has_action( 'sidebar_ad' );
 		elseif ( current_user_can( 'manage_options' ) ) :
 			?>
 				
-			<strong><?php echo esc_html( $go_widget ); ?></strong>
+			<?php if( current_user_can( 'manage_options' ) ) { ?>
+			<strong>
+				<?php echo $go_widget; ?>    
+			</strong>
+			<?php } ?>
 			<a href="<?php echo esc_url( $widgets_url ); ?>"><?php echo esc_html( $link_text ); ?></a>
 				
 		<?php endif ?>

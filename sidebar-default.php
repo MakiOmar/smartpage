@@ -27,11 +27,12 @@ $sidebar_ad     = has_action( 'sidebar_ad' );
 		dynamic_sidebar( 'main-sidebar' );
 
 	elseif ( current_user_can( 'administrator' ) ) :
-	?>
-			
+		?>
+		<?php if( current_user_can( 'manage_options' ) ) { ?>
 		<strong>
 			<?php echo $go_widget; ?>    
 		</strong>
+		<?php } ?>
 		<a href="<?php echo $widgets_url; ?>">
 		<?php echo $link_text; ?>
 		</a>
