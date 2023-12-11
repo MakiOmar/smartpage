@@ -79,6 +79,23 @@ select{
     border-color: #e1e1e1;
     border-radius: 6px;
 }
+.anony-spacer{
+	height: 50px;
+	display: block;
+}
+.anony-section-title{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    clear: both;
+    width: 100%;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.anony-section-title h4{
+	position: absolute;
+}
 .anony-grid-row:after {
 	clear: both;
 }

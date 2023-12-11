@@ -21,6 +21,12 @@
     border: none;
 }
 
+.woocommerce .products ul, .woocommerce ul.products{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .woocommerce nav.woocommerce-pagination ul li {
    	float: none;
 }
