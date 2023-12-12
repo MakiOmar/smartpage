@@ -10,10 +10,6 @@
   vertical-align: text-top;
 }
 
-.anony-grid-container {
-  flex-direction: row;
-}
-
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .anony-grid-col-av-1 {
     width: 8.333%;

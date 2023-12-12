@@ -41,9 +41,9 @@ if ( ! defined( 'ANOENGINE' ) ) {
 		$preloader_img = $anony_options->preloader_img;
 	}
 
-	$preloader    = $anony_options->preloader;
-	$header_style = 'one';
-	switch ( $header_style ) {
+	$preloader = $anony_options->preloader;
+
+	switch ( ANONY_HEADER_STYLE ) {
 		case 'one':
 			require locate_template( 'templates/header-one-view.php', false, false );
 			break;

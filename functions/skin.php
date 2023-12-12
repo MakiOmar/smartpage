@@ -2,16 +2,25 @@
 function anony_theme_skin(){
 	$anony_options = ANONY_Options_Model::get_instance();
 	
-	$primary_color = $anony_options->primary_skin_color;
-	$secondary_color = $anony_options->secondary_skin_color; ?>
+	$primary_color   = $anony_options->primary_skin_color;
+	$secondary_color = $anony_options->secondary_skin_color;
+	$menu_color      = $anony_options->main_menu_color;
+	$menu_text_color = $anony_options->main_menu_text_color;
+	?>
 
 	<style type="text/css">
 
 		.anony-skew-bg::after, .anony-page-numbers li, .anony-active, .button, .anony-active-tab,
 .anony-page-numbers a, .widgeted_title, #anony-dun-title, #submit, .anony-form_submit,
 .anony-featured-posts-title, .anony-section_title, #anony-page-scroll, .anony-button,
-.anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, #anony-main_nav_con, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after, .elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
+.anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after, .elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
 		  background-color: <?php echo esc_html( $primary_color ) ;?>!important;
+		}
+		#anony-main_nav_con{
+			background-color: <?php echo esc_html( $menu_color ) ;?>!important;
+		}
+		#anony-main-menu-con li a{
+			color: <?php echo esc_html( $menu_text_color ) ;?>!important;
 		}
 		.anony-post-info .anony-nothumb-post .anony-thumb-post-title, #anony-top-header-wrapper, #anony-page-loading-bg {
 		  border-bottom-bottom: <?php echo esc_html( $primary_color ) ;?>;

@@ -226,7 +226,25 @@ if ( ! function_exists( 'anony_get_correct_sidebar' ) ) {
 		get_sidebar();
 	}
 }
+/**
+ * Get logo img markup.
+ *
+ * @param  string $color The color of theme's default logo.
+ * @return string Theme's logo img with a link to the homepage
+ */
+function anony_get_custom_logo_img( $color = 'main' ) {
+	$logo_url = ANONY_THEME_URI . '/images/logo-' . $color . '.png';
+	if ( has_custom_logo() ) {
+		$logo = get_custom_logo();
+	} else {
+		$logo = '<a href="' . ANONY_BLOG_URL . '" title="' . ANONY_BLOG_TITLE . '" data-logourl="' . esc_attr( $logo_url ) . '">';
+		$logo .= '<img alt="' . ANONY_BLOG_TITLE . '" ';
+		$logo .= 'src="' . esc_attr( $logo_url ) . '"/>';
+		$logo .= '</a>';
+	}
 
+	return apply_filters( 'anony_get_custom_logo', $logo );
+}
 if ( ! function_exists( 'anony_get_custom_logo' ) ) {
 	/**
 	 * Generates logo markup.
@@ -240,18 +258,7 @@ if ( ! function_exists( 'anony_get_custom_logo' ) ) {
 	 * @return string Theme's logo with a link to the homepage
 	 */
 	function anony_get_custom_logo( $color = 'main' ) {
-		$logo_url = ANONY_THEME_URI . '/images/logo-' . $color . '.png';
-
-		if ( has_custom_logo() ) {
-			$logo = '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3">' . get_custom_logo() . '</div>';
-		} else {
-
-			$logo  = '<div id="anony-logo" class="anony-grid-col-md-4 anony-grid-col-sm-3"><h1>';
-			$logo .= '<a href="' . ANONY_BLOG_URL . '" title="' . ANONY_BLOG_TITLE . '" data-logourl="' . $logo_url . '">';
-			$logo .= '<img alt="' . ANONY_BLOG_TITLE . '" ';
-			$logo .= 'src="' . $logo_url . '"/>';
-			$logo .= '</a></h1></div>';
-		}
+		$logo = anony_get_custom_logo_img( $color );
 		return apply_filters( 'anony_get_custom_logo', $logo );
 	}
 }

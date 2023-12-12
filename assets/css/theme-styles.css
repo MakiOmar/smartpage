@@ -211,6 +211,14 @@ header.anony-absolute-header {
   padding: 5px;
 }
 
+.header_style_one #anony-main_nav_con {
+  border-bottom: 1px solid #ebebeb;
+}
+
+#anony-main-menu-con li.anony-search-form-toggle a:hover {
+  background-color: transparent;
+}
+
 #anony-main_nav_con {
   background-color: #230005;
   height: 100%;

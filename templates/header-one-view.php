@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="anony-grid-col-">
 
-				<header class="white-bg">
+				<header class="white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ); ?>">
 					<!-- Navigation menu -->
 					<?php echo $nav; ?>
 					 

@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="anony-grid-col-">
 
-				<header class="white-bg">
+				<header class="white-bg <?php echo 'header_style_' . esc_attr( $header_style ); ?>">
 
 					<?php require locate_template( 'templates/header-top-view.php', false, false ); ?>
 					 

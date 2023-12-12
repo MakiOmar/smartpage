@@ -283,10 +283,26 @@ add_action(
 			'fields' => array(
 				array(
 					'id'       => 'main_menu_color',
-					'title'    => esc_html__( 'Main menu', 'smartpage' ),
+					'title'    => esc_html__( 'Main menu container color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
 					'default'  => '#230005',
+				),
+
+				array(
+					'id'       => 'main_menu_text_color',
+					'title'    => esc_html__( 'Main menu text color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
+				),
+				
+				array(
+					'id'       => 'main_menu_search_icon_color',
+					'title'    => esc_html__( 'Main menu searc icon color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
 				),
 			),
 		);
