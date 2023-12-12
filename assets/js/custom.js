@@ -149,7 +149,7 @@ jQuery(document).ready(function($){
 			 */
 			$("a[rel^='prettyPhoto']").prettyPhoto({social_tools : false});
 		}
-		if ( lightbox ) {
+		if ( 'undefined' !== typeof lightbox ) {
 			lightbox.option({
 				'resizeDuration': 200,
 				'wrapAround': true
