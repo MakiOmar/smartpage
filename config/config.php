@@ -122,6 +122,13 @@ define( 'ANONY_BLOG_TITLE', esc_html( get_bloginfo() ) );
  */
 define( 'ANONY_BLOG_URL', esc_url( home_url() ) );
 
+/**
+ * Header style
+ *
+ * @const
+ */
+define( 'ANONY_HEADER_STYLE', 'one' );
+
 /*
 ----------------------------------------------------------------------
 * Theme Autoloading
