@@ -15,15 +15,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!doctype html>
-<html itemscope itemtype="http://schema.org/WebPage" <?php echo esc_attr( $language_atts ); ?>>
+<?php //phpcs:disable ?>
+<html itemscope itemtype="http://schema.org/WebPage" <?php echo $language_atts; ?>>
+<?php //phpcs:enable. ?>
 <head>
 <meta http-equiv="Content-Type" content="<?php echo esc_html( $content_type ); ?>" charset="<?php echo esc_html( $content_type ); ?>"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge" >
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <?php wp_head(); ?>
 </head>
-
-<body <?php echo esc_attr( $body_class ); ?>>
+<?php //phpcs:disable ?>
+<body <?php echo $body_class; ?>>
+<?php //phpcs:enable. ?>
 	<?php wp_body_open(); ?>
 	<?php if ( '1' === $preloader ) : ?>
 		<div id="anony-preloader">
