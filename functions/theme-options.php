@@ -741,6 +741,6 @@ add_action(
 
 		$widgets = array( 'ANONY_Sidebar_Ad' );
 
-		$Anony_Options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
+		$anony_options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
 	}
 );
