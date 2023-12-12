@@ -1,6 +1,14 @@
 <?php
+/**
+ * Theme Options
+ *
+ * @package Anonymous theme
+ * @author  Makiomar
+ * @link    http://makiomar.com
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
+	exit; // Exit if accessed directly.
 }
 /**
  * Options fields and navigation
@@ -22,7 +30,6 @@ add_action(
 		}
 
 		do_action( 'wpml_multilingual_options', ANONY_OPTIONS );
-
 	},
 	1
 );
@@ -34,73 +41,65 @@ add_action(
 			$anony_options = ANONY_Options_Model::get_instance();
 		}
 
-		// Navigation elements
+		// Navigation elements.
 		$options_nav = array(
-			// General --------------------------------------------
+			// General --------------------------------------------.
 			'general'      => array(
 				'title'    => esc_html__( 'Getting started', 'smartpage' ),
 				'sections' => array( 'general', 'advertisements' ),
 			),
-			// Performance --------------------------------------------
+			// Performance --------------------------------------------.
 			'Performance'  => array(
 				'title' => esc_html__( 'Performance', 'smartpage' ),
 			),
-			// Slider --------------------------------------------
+			// Slider --------------------------------------------.
 			'slider'       => array(
 				'title' => esc_html__( 'Slider', 'smartpage' ),
 			),
-			// Layout --------------------------------------------
+			// Layout --------------------------------------------.
 			'layout'       => array(
 				'title'    => esc_html__( 'Layout', 'smartpage' ),
 				'sections' => array( 'sidebars', 'blog' ),
 			),
 
-			// Colors --------------------------------------------
+			// Colors --------------------------------------------.
 			'colors'       => array(
 				'title'    => esc_html__( 'Colors', 'smartpage' ),
 				'sections' => array( 'general-colors', 'menu-colors' ),
 			),
 
-			// Fonts --------------------------------------------
+			// Fonts --------------------------------------------.
 			'fonts'        => array(
 				'title'    => esc_html__( 'Fonts', 'smartpage' ),
 				'sections' => array( 'arabic-fonts', 'english-fonts' ),
 			),
-
-			// Translate --------------------------------------------
-			/*
-		'translate' => array(
-			'title' => esc_html__('Translate', 'smartpage'),
-			'sections' => array('translate'),
-			),
-			*/
-			// Socials --------------------------------------------
+			// Socials --------------------------------------------.
 			'socials'      => array(
-				'title' => esc_html__( 'Socials', 'smartpage' ),
-			// 'sections' => array('socials'),
+				'title'    => esc_html__( 'Socials', 'smartpage' ),
+				'sections' => array( 'socials' ),
 			),
 
-			// Miscellanous --------------------------------------------
+			// Miscellanous --------------------------------------------.
 			'miscellanous' => array(
 				'title' => esc_html__( 'Miscellanous', 'smartpage' ),
 			),
-			
-			// Modules --------------------------------------------
-			'modules'        => array(
+
+			// Modules --------------------------------------------.
+			'modules'      => array(
 				'title'    => esc_html__( 'Modules', 'smartpage' ),
 				'sections' => array( 'post-types' ),
 			),
 
 		);
-		
-		if( class_exists( 'woocommerce' ) ){
-			$options_nav[ 'woocommerce' ] = array(
-				'title' => esc_html__( 'woocommerce', 'smartpage' ),
+
+		if ( class_exists( 'woocommerce' ) ) {
+			$options_nav['woocommerce'] = array(
+				'title'    => esc_html__( 'woocommerce', 'smartpage' ),
 				'sections' => array( 'woocommerce', 'single-product' ),
 			);
 		}
 
-		// Sectoins
+		// Sectoins.
 		$sections = array();
 
 		$sliders = ANONY_Wp_Misc_Help::get_rev_sliders();
@@ -114,7 +113,8 @@ add_action(
 					'title'    => esc_html__( 'Copyright', 'smartpage' ),
 					'type'     => 'textarea',
 					'validate' => 'html',
-					'default'  => sprintf( __( 'All rights are reserved to Anonymous %s', 'smartpage' ), date( 'Y' ) ),
+					// Translators: Date string.
+					'default'  => sprintf( esc_html__( 'All rights are reserved to Anonymous %s', 'smartpage' ), gmdate( 'Y' ) ),
 				),
 
 				array(
@@ -132,7 +132,6 @@ add_action(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Choose preloader image', 'smartpage' ),
 				),
-				
 				array(
 					'id'       => 'mutinput',
 					'title'    => esc_html__( 'Test multiinput', 'smartpage' ),
@@ -145,7 +144,7 @@ add_action(
 							'validate' => 'no_html',
 							'desc'     => esc_html__( 'Enabel or disable page preloader', 'smartpage' ),
 						),
-		
+
 						array(
 							'id'       => 'multi_input_preloader_img',
 							'title'    => esc_html__( 'multi_input Preloader image', 'smartpage' ),
@@ -158,8 +157,7 @@ add_action(
 				),
 			),
 		);
-		
-		
+
 		$sections['Performance'] = array(
 			'title'  => esc_html__( 'Performance', 'smartpage' ),
 			'icon'   => 'x',
@@ -169,24 +167,22 @@ add_action(
 					'title'    => esc_html__( 'Disable responsive css', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-					'desc'     => esc_html__( 'You may need to disable theme\'s responsive css if all your pages are built with elementor, Or you think this introduces more speed', 'smartpage' ) ,
+					'desc'     => esc_html__( 'You may need to disable theme\'s responsive css if all your pages are built with elementor, Or you think this introduces more speed', 'smartpage' ),
 				),
 				array(
 					'id'       => 'disable_main_css',
 					'title'    => esc_html__( 'Disable Main css', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-					'desc'     => esc_html__( 'You may need to disable theme\'s main css if you think this introduces more speed and will not affect design', 'smartpage' ) ,
+					'desc'     => esc_html__( 'You may need to disable theme\'s main css if you think this introduces more speed and will not affect design', 'smartpage' ),
 				),
 				array(
 					'id'       => 'load_minified_styles',
 					'title'    => esc_html__( 'Load minified styles', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-					'desc'     => esc_html__( 'Speeds up page load time.', 'smartpage' ) ,
+					'desc'     => esc_html__( 'Speeds up page load time.', 'smartpage' ),
 				),
-
-				
 
 				array(
 					'id'       => 'dynamic_css_ajax',
@@ -196,7 +192,6 @@ add_action(
 					'desc'     => esc_html__( 'If your website loads slowly because of AJAX css, enable this', 'smartpage' ),
 				),
 
-
 				array(
 					'id'       => 'disable_prettyphoto',
 					'title'    => esc_html__( 'Disable prettyPhoto image light box', 'smartpage' ),
@@ -204,10 +199,9 @@ add_action(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'prettyPhoto disable may help improve performance', 'smartpage' ),
 				),
-				
+
 			),
 		);
-		
 
 		$sections['slider'] = array(
 			'title'  => esc_html__( 'Slider', 'smartpage' ),
@@ -218,7 +212,7 @@ add_action(
 					'title'    => esc_html__( 'Revolution slider', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-					'desc'     => esc_html( 'If checked, it will show revolution slider on Homepage', 'smartpage' ),
+					'desc'     => esc_html__( 'If checked, it will show revolution slider on Homepage', 'smartpage' ),
 				),
 
 				array(
@@ -227,9 +221,21 @@ add_action(
 					'type'     => 'select',
 					'validate' => 'multiple_options',
 					'options'  => ! empty( $sliders ) ? $sliders : array( '0' => 'No sliders' ),
-					'desc'     => empty( $sliders ) ? sprintf( __( 'Add slider from <a href="%s">here</a>' ), admin_url( '?page=revslider' ) ) : '',
-					'class'    => 'home_slider_' . ( isset( $anony_options ) && $anony_options->home_slider == '1' ? ' show-in-table' : '' ),
+					'desc'     => empty( $sliders ) ? sprintf(
+						wp_kses(
+							// translators: %1$s Field ID, %2$s Here text.
+							__( 'Add slider from <a href="%s">here</a>', 'smartpage' ),
+							array(
+								'a' => array(
+									'href' => array(),
+								),
+							)
+						),
+						esc_url( admin_url( '?page=revslider' ) ),
+					) : '',
+					'class'    => 'home_slider_' . ( isset( $anony_options ) && '1' === $anony_options->home_slider ? ' show-in-table' : '' ),
 				),
+
 				array(
 					'id'       => 'slider_content',
 					'title'    => esc_html__( 'Featured Posts slider content', 'smartpage' ),
@@ -255,7 +261,7 @@ add_action(
 					'validate' => 'multiple_options',
 					'options'  => get_taxonomies(),
 					'default'  => 'category',
-					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && $anony_options->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
+					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && 'featured-cat' === $anony_options->slider_content ? ' show-in-table' : '' ),
 				),
 
 				array(
@@ -264,7 +270,7 @@ add_action(
 					'type'     => 'select',
 					'validate' => 'multiple_options',
 					'options'  => isset( $anony_options ) ? ANONY_TERM_HELP::wp_term_query( $anony_options->featured_tax, 'id=>name' ) : array(),
-					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && $anony_options->slider_content == 'featured-cat' ? ' show-in-table' : '' ),
+					'class'    => 'slider_ featured-cat' . ( isset( $anony_options ) && 'featured-cat' === $anony_options->slider_content ? ' show-in-table' : '' ),
 					'note'     => ( isset( $anony_options ) && empty( $anony_options->featured_cat ) ? esc_html__( 'No category selected, you have to select one', 'smartpage' ) : '' ),
 				),
 			),
@@ -287,7 +293,7 @@ add_action(
 		$sections['general-colors'] = array(
 			'title'  => esc_html__( 'General', 'smartpage' ),
 			'icon'   => 'E',
-			'fields' => array(		
+			'fields' => array(
 				array(
 					'id'       => 'primary_skin_color',
 					'title'    => esc_html__( 'Primary color', 'smartpage' ),
@@ -295,7 +301,7 @@ add_action(
 					'validate' => 'no_html',
 					'default'  => '#230005',
 				),
-				
+
 				array(
 					'id'       => 'secondary_skin_color',
 					'title'    => esc_html__( 'secondary color', 'smartpage' ),
@@ -339,7 +345,7 @@ add_action(
 					'title'    => esc_html__( 'Single post sidebar', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-					'desc'     => esc_html( 'A single post can have two sidebars, check this to enable the secondary sidebar', 'smartpage' ),
+					'desc'     => esc_html__( 'A single post can have two sidebars, check this to enable the secondary sidebar', 'smartpage' ),
 				),
 
 			),
@@ -364,7 +370,7 @@ add_action(
 			),
 		);
 
-		$anonyAdsLocs               = array(
+		$anony_ads_loc = array(
 			'header'        => esc_html__( 'Header', 'smartpage' ),
 			'footer'        => esc_html__( 'Footer', 'smartpage' ),
 			'sidebar'       => esc_html__( 'Sidebar', 'smartpage' ),
@@ -372,6 +378,7 @@ add_action(
 			'page'          => esc_html__( 'page', 'smartpage' ),
 			'before_fotter' => esc_html__( 'Before footer', 'smartpage' ),
 		);
+
 		$sections['advertisements'] = array(
 			'title'  => esc_html__( 'Advertisements', 'smartpage' ),
 			'icon'   => 'E',
@@ -387,7 +394,7 @@ add_action(
 					'title'    => esc_html__( 'AD block one location', 'smartpage' ),
 					'type'     => 'checkbox',
 					'validate' => 'multiple_options',
-					'options'  => $anonyAdsLocs,
+					'options'  => $anony_ads_loc,
 
 				),
 				array(
@@ -401,7 +408,7 @@ add_action(
 					'title'    => esc_html__( 'AD block two location', 'smartpage' ),
 					'type'     => 'checkbox',
 					'validate' => 'multiple_options',
-					'options'  => $anonyAdsLocs,
+					'options'  => $anony_ads_loc,
 
 				),
 				array(
@@ -415,21 +422,21 @@ add_action(
 					'title'    => esc_html__( 'AD block three location', 'smartpage' ),
 					'type'     => 'checkbox',
 					'validate' => 'multiple_options',
-					'options'  => $anonyAdsLocs,
+					'options'  => $anony_ads_loc,
 
 				),
 
 			),
 		);
 
-		$arFonts = (
+		$ar_fonts = (
 		isset( $anony_options ) &&
 		is_array(
 			$anony_options->custom_ar_fonts
 		)
 		) ? $anony_options->custom_ar_fonts : array();
 
-		$defaultArFonts = array(
+		$default_ar_fonts = array(
 			'droid_arabic_kufiregular' => 'Droid kufi regular',
 			'droid_arabic_kufibold'    => 'Droid kufi bold',
 			'decotypethuluthiiregular' => 'Thuluthii regular',
@@ -443,9 +450,9 @@ add_action(
 
 		);
 
-		$enFonts = ( isset( $anony_options ) && is_array( $anony_options->custom_en_fonts ) ) ? $anony_options->custom_en_fonts : array();
+		$en_fonts = ( isset( $anony_options ) && is_array( $anony_options->custom_en_fonts ) ) ? $anony_options->custom_en_fonts : array();
 
-		$defaultEnFonts = array(
+		$default_en_fonts = array(
 			'ralewaybold'    => 'Raleway bold',
 			'ralewaylight'   => 'Raleway light',
 			'ralewayregular' => 'Raleway regular',
@@ -469,7 +476,7 @@ add_action(
 					'title'    => esc_html__( 'Arabic font for headings', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => array_merge( $defaultArFonts, $arFonts ),
+					'options'  => array_merge( $default_ar_fonts, $ar_fonts ),
 					'default'  => 'smartmanartregular',
 				),
 				array(
@@ -477,7 +484,7 @@ add_action(
 					'title'    => esc_html__( 'Arabic font for links', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => array_merge( $defaultArFonts, $arFonts ),
+					'options'  => array_merge( $default_ar_fonts, $ar_fonts ),
 					'default'  => 'smartmanartregular',
 				),
 				array(
@@ -485,7 +492,7 @@ add_action(
 					'title'    => esc_html__( 'Arabic font for paragraph', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => array_merge( $defaultArFonts, $arFonts ),
+					'options'  => array_merge( $default_ar_fonts, $ar_fonts ),
 					'default'  => 'smartmanartregular',
 				),
 
@@ -502,7 +509,7 @@ add_action(
 					'title'    => esc_html__( 'English font for headings', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => array_merge( $defaultEnFonts, $enFonts ),
+					'options'  => array_merge( $default_en_fonts, $en_fonts ),
 					'default'  => 'ralewaybold',
 				),
 
@@ -511,7 +518,7 @@ add_action(
 					'title'    => esc_html__( 'English font for links', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => array_merge( $defaultEnFonts, $enFonts ),
+					'options'  => array_merge( $default_en_fonts, $en_fonts ),
 					'default'  => 'ralewaybold',
 				),
 				array(
@@ -519,7 +526,7 @@ add_action(
 					'title'    => esc_html__( 'English font for paragraph', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'multiple_options',
-					'options'  => array_merge( $defaultEnFonts, $enFonts ),
+					'options'  => array_merge( $default_en_fonts, $en_fonts ),
 					'default'  => 'ralewaybold',
 				),
 
@@ -638,7 +645,7 @@ add_action(
 
 			),
 		);
-		
+
 		$sections['post-types'] = array(
 			'title'  => esc_html__( 'Post types', 'smartpage' ),
 			'icon'   => 'x',
@@ -649,30 +656,30 @@ add_action(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
-				
+
 				array(
 					'id'       => 'enable_news',
 					'title'    => esc_html__( 'Enable news', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
-				
+
 				array(
 					'id'       => 'enable_downloads',
 					'title'    => esc_html__( 'Enable downloads', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
-				
+
 				array(
 					'id'       => 'enable_testimonials',
 					'title'    => esc_html__( 'Enable testimonials', 'smartpage' ),
 					'type'     => 'switch',
 					'validate' => 'no_html',
-				)
-			)
+				),
+			),
 		);
-		if( class_exists( 'woocommerce' ) ){
+		if ( class_exists( 'woocommerce' ) ) {
 			$sections['woocommerce'] = array(
 				'title'  => esc_html__( 'Woocommerce', 'smartpage' ),
 				'icon'   => 'x',
@@ -688,26 +695,26 @@ add_action(
 						'title'    => esc_html__( 'Show product\'s empty rating', 'smartpage' ),
 						'type'     => 'switch',
 						'validate' => 'no_html',
-						'default'  => '1'
+						'default'  => '1',
 					),
-					
+
 					array(
 						'id'       => 'sale_badge_type',
 						'title'    => esc_html__( 'Sale badge type', 'smartpage' ),
 						'type'     => 'radio',
 						'validate' => 'multiple_options',
 						'options'  => array(
-							'text'  => array(
+							'text'       => array(
 								'title' => esc_html__( 'Text', 'smartpage' ),
 							),
-							
-							'percentage'  => array(
+
+							'percentage' => array(
 								'title' => esc_html__( 'percentage', 'smartpage' ),
-							)
+							),
 						),
-						'default'  => 'percentage'
+						'default'  => 'percentage',
 					),
-					
+
 					array(
 						'id'       => 'related_products_title',
 						'title'    => esc_html__( 'Related products title', 'smartpage' ),
@@ -715,10 +722,9 @@ add_action(
 						'validate' => 'no_html',
 						'default'  => 'Related products',
 					),
-				)
+				),
 			);
 
-			
 			$sections['single-product'] = array(
 				'title'  => esc_html__( 'Single product', 'smartpage' ),
 				'icon'   => 'x',
@@ -728,11 +734,10 @@ add_action(
 						'title'    => esc_html__( 'Disable comment\'s form\'s email\'s field', 'smartpage' ),
 						'type'     => 'switch',
 						'validate' => 'no_html',
-					)
-				)
+					),
+				),
 			);
 		}
-		
 
 		$widgets = array( 'ANONY_Sidebar_Ad' );
 
