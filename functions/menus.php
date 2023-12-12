@@ -202,7 +202,7 @@ add_filter(
 			</svg></a></li>';
 		if ( 'anony-main-menu' === $args->theme_location ) {
 			if ( 'one' === ANONY_HEADER_STYLE ) {
-				$item  = '<li>' . $logo . '</li>';
+				$item  = '<li id="header-style-one-logo">' . $logo . '</li>';
 				$item .= $main_items;
 				$item .= $search_icon;
 			} else {
