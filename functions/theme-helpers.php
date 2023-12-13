@@ -270,8 +270,12 @@ if ( ! function_exists( 'anony_get_custom_logo_url' ) ) {
 	function anony_get_custom_logo_url( $color = 'main' ) {
 		if ( has_custom_logo() ) {
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
-
-			$logo = wp_get_attachment_image_url( $custom_logo_id, 'full' );
+			if ( wp_is_mobile() ) {
+				$size = 'thumb-50-50';
+			} else {
+				$size = 'thumb-80-80';
+			}
+			$logo = wp_get_attachment_image_url( $custom_logo_id, $size );
 		} else {
 			$logo = ANONY_THEME_URI . '/images/logo-' . $color . '.png';
 		}
