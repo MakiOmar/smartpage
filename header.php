@@ -43,66 +43,70 @@ if ( ! defined( 'ANOENGINE' ) ) {
 
 	$preloader = $anony_options->preloader;
 
-	switch ( ANONY_HEADER_STYLE ) {
-		case 'one':
-			require locate_template( 'templates/header-one-view.php', false, false );
-			break;
-		default:
-			$languages_menu = anony_navigation( 'anony-languages-menu', '' );
-			$socials_follow = array(
-				array(
-					'icon'  => 'facebook',
-					'url'   => $anony_options->facebook,
-					'title' => __( 'Follow us on Facebook', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'twitter',
-					'url'   => $anony_options->twitter,
-					'title' => __( 'Follow us on Twitter', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'youtube',
-					'url'   => $anony_options->youtube,
-					'title' => __( 'Follow us on Youtube', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'pinterest',
-					'url'   => $anony_options->pinterest,
-					'title' => __( 'Follow us on Pinterest', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'linkedin',
-					'url'   => $anony_options->linkedin,
-					'title' => __( 'Follow us on Linkedin', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'instagram',
-					'url'   => $anony_options->instagram,
-					'title' => __( 'Follow us on Instagram', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'tumblr',
-					'url'   => $anony_options->tumblr,
-					'title' => __( 'Follow us on Tumblr', 'smartpage' ),
-				),
-
-				array(
-					'icon'  => 'rss',
-					'url'   => $anony_options->rss,
-					'title' => __( 'Follow us with RSS feed', 'smartpage' ),
-				),
-			);
-			$phone = $anony_options->phone;
-			$email = $anony_options->email;
-			require locate_template( 'templates/header-view.php', false, false );
+	if ( wp_is_mobile() ) {
+		require locate_template( 'templates/header-mobile-view.php', false, false );
+	} else {
+		switch ( ANONY_HEADER_STYLE ) {
+			case 'one':
+				require locate_template( 'templates/header-one-view.php', false, false );
+				break;
+			default:
+				$languages_menu = anony_navigation( 'anony-languages-menu', '' );
+				$socials_follow = array(
+					array(
+						'icon'  => 'facebook',
+						'url'   => $anony_options->facebook,
+						'title' => __( 'Follow us on Facebook', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'twitter',
+						'url'   => $anony_options->twitter,
+						'title' => __( 'Follow us on Twitter', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'youtube',
+						'url'   => $anony_options->youtube,
+						'title' => __( 'Follow us on Youtube', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'pinterest',
+						'url'   => $anony_options->pinterest,
+						'title' => __( 'Follow us on Pinterest', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'linkedin',
+						'url'   => $anony_options->linkedin,
+						'title' => __( 'Follow us on Linkedin', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'instagram',
+						'url'   => $anony_options->instagram,
+						'title' => __( 'Follow us on Instagram', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'tumblr',
+						'url'   => $anony_options->tumblr,
+						'title' => __( 'Follow us on Tumblr', 'smartpage' ),
+					),
+	
+					array(
+						'icon'  => 'rss',
+						'url'   => $anony_options->rss,
+						'title' => __( 'Follow us with RSS feed', 'smartpage' ),
+					),
+				);
+				$phone = $anony_options->phone;
+				$email = $anony_options->email;
+				require locate_template( 'templates/header-view.php', false, false );
+		}
+		// phpcs:disable
+		// anony_get_wpml_switcher();
+		// phpcs:enable.
 	}
-	// phpcs:disable
-	// anony_get_wpml_switcher();
-	// phpcs:enable.
 }
