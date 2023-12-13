@@ -2,8 +2,13 @@
     #anony-main_nav_con{
         border-bottom: 1px solid #ebebeb;
     }
-
-    #header-style-one-logo img{
-
+    #header-style-one-logo a{
+        padding: 0
+    }
+    #header-style-one-logo a:hover{
+        background-color: transparent;
+    }
+    #anony-main_nav_con{
+        height: 80px;
     }
 }

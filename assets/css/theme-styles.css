@@ -81,6 +81,7 @@ img {
   display: inline-block;
   max-width: 100%;
   max-height: 100%;
+  width: auto;
 }
 
 table {
@@ -176,9 +177,25 @@ p {
   height: 100% !important;
 }
 
+.anony-bg-banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .header_style_one #anony-main_nav_con {
   border-bottom: 1px solid #ebebeb;
 }
+.header_style_one #header-style-one-logo a {
+  padding: 0;
+}
+.header_style_one #header-style-one-logo a:hover {
+  background-color: transparent;
+}
+.header_style_one #anony-main_nav_con {
+  height: 80px;
+}
+
 header {
   margin: 0;
   width: 100%;
@@ -335,7 +352,7 @@ header.anony-absolute-header {
     top: 0;
   }
   #anony-main-menu-con li a {
-    padding: 0 20px;
+    padding: 10px 20px;
     width: 100%;
     border-right: 1px solid rgba(97, 27, 46, 0.5);
   }
