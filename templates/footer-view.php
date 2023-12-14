@@ -22,8 +22,6 @@
 	 
 </div>
 
-</div>
-
 <input type="hidden" id="anony_ajax_url" value="<?php echo $ajaxUrl; ?>" />
 
 <?php wp_footer(); ?> 
