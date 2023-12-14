@@ -5,12 +5,33 @@ window.onload = function() {
   if(loader !== null) loader.style.display = 'none';
 };
 
+
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
 	
+	/**--------------------------------------------------------------------
+	 *                     WooCommerce
+	/*--------------------------------------------------------------------*/
+	function anony_toggle_mini_cart() {
+		if ( $(".widget_shopping_cart_content").hasClass('anony-mini-cart-open') ) {
+			$(".widget_shopping_cart_content").removeClass('anony-mini-cart-open');
+		} else {
+			$(".widget_shopping_cart_content").addClass('anony-mini-cart-open')
+		}
+	}
 	var anonyAjaxUrl = anonyLoca.ajaxURL;
-	
+	$("#anony-mini-cart-widget").on('click', '#anony-mobile-cart-toggle', function(e){
+		e.preventDefault();
+		$(".widget_shopping_cart_content").toggleClass('anony-mini-cart-open');
+		//anony_toggle_mini_cart();
+	});
+
+	$(document.body).on('added_to_cart', function(){
+		if ( ! $(".widget_shopping_cart_content").hasClass('anony-mini-cart-open') ) {
+			$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+		}
+	});
 	/**------------------------------------------------------------------
 	 *                      Toggles
 	 *-------------------------------------------------------------------*/
