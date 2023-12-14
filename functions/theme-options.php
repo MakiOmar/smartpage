@@ -277,7 +277,7 @@ add_action(
 			'note'   => esc_html__( 'This options only applies to the front-page.php', 'smartpage' ),
 		);
 
-		$sections['menu-colors']    = array(
+		$sections['menu-colors'] = array(
 			'title'  => esc_html__( 'Menu Colors', 'smartpage' ),
 			'icon'   => 'E',
 			'fields' => array(
@@ -286,7 +286,7 @@ add_action(
 					'title'    => esc_html__( 'Main menu container color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
-					'default'  => '#230005',
+					'default'  => '#fff',
 				),
 
 				array(
@@ -294,15 +294,15 @@ add_action(
 					'title'    => esc_html__( 'Main menu text color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
-					'default'  => '#fff',
+					'default'  => '#000',
 				),
-				
+
 				array(
 					'id'       => 'main_menu_search_icon_color',
 					'title'    => esc_html__( 'Main menu searc icon color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
-					'default'  => '#fff',
+					'default'  => '#000',
 				),
 			),
 		);
