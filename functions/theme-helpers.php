@@ -234,6 +234,7 @@ if ( ! function_exists( 'anony_get_correct_sidebar' ) ) {
 }
 /**
  * Get logo img markup.
+ * The default WP customizer log
  *
  * @param  string $color The color of theme's default logo.
  * @return string Theme's logo img with a link to the homepage
@@ -243,13 +244,40 @@ function anony_get_custom_logo_img( $color = 'main' ) {
 	if ( has_custom_logo() ) {
 		$logo = get_custom_logo();
 	} else {
-		$logo = '<a href="' . ANONY_BLOG_URL . '" title="' . ANONY_BLOG_TITLE . '" data-logourl="' . esc_attr( $logo_url ) . '">';
+		$logo  = '<a href="' . ANONY_BLOG_URL . '" title="' . ANONY_BLOG_TITLE . '" data-logourl="' . esc_attr( $logo_url ) . '">';
 		$logo .= '<img alt="' . ANONY_BLOG_TITLE . '" ';
 		$logo .= 'src="' . esc_attr( $logo_url ) . '"/>';
 		$logo .= '</a>';
 	}
 
 	return apply_filters( 'anony_get_custom_logo', $logo );
+}
+
+/**
+ * Get logo img markup.
+ * The default WP customizer log
+ *
+ * @return string Theme's logo img with a link to the homepage
+ */
+function anony_get_theme_logo() {
+	if ( class_exists( 'ANONY_Options_Model' ) ) {
+		$anony_options = ANONY_Options_Model::get_instance();
+		if ( wp_is_mobile() ) {
+			$logo_id = $anony_options->mobile_logo;
+		} else {
+			$logo_id = $anony_options->logo;
+		}
+		if ( $logo_id && ! empty( $logo_id ) ) {
+			$logo  = '<a href="' . ANONY_BLOG_URL . '" title="' . ANONY_BLOG_TITLE . '">';
+			$logo .= wp_get_attachment_image( absint( $logo_id ), 'full' );
+			$logo .= '</a>';
+			return apply_filters( 'anony_get_theme_logo', $logo );
+		} else {
+			return anony_get_custom_logo_img( 'orange' );
+		}
+	} else {
+		return anony_get_custom_logo_img( 'orange' );
+	}
 }
 if ( ! function_exists( 'anony_get_custom_logo' ) ) {
 	/**

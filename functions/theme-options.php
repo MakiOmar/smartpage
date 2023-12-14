@@ -109,6 +109,20 @@ add_action(
 			'icon'   => 'x',
 			'fields' => array(
 				array(
+					'id'       => 'logo',
+					'title'    => esc_html__( 'Logo', 'smartpage' ),
+					'type'     => 'uploader',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'A logo that willbe displayed on desktop version', 'smartpage' ),
+				),
+				array(
+					'id'       => 'mobile_logo',
+					'title'    => esc_html__( 'Mobile Logo', 'smartpage' ),
+					'type'     => 'uploader',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'A logo that willbe displayed on mobile version', 'smartpage' ),
+				),
+				array(
 					'id'       => 'copyright',
 					'title'    => esc_html__( 'Copyright', 'smartpage' ),
 					'type'     => 'textarea',
@@ -124,7 +138,6 @@ add_action(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Enabel or disable page preloader', 'smartpage' ),
 				),
-
 				array(
 					'id'       => 'preloader_img',
 					'title'    => esc_html__( 'Preloader image', 'smartpage' ),
@@ -133,27 +146,12 @@ add_action(
 					'desc'     => esc_html__( 'Choose preloader image', 'smartpage' ),
 				),
 				array(
-					'id'       => 'mutinput',
-					'title'    => esc_html__( 'Test multiinput', 'smartpage' ),
-					'type'     => 'multi_value',
-					'fields'   => array(
-						array(
-							'id'       => 'multi_input_preloader',
-							'title'    => esc_html__( 'multi_input Enable preloader', 'smartpage' ),
-							'type'     => 'switch',
-							'validate' => 'no_html',
-							'desc'     => esc_html__( 'Enabel or disable page preloader', 'smartpage' ),
-						),
-
-						array(
-							'id'       => 'multi_input_preloader_img',
-							'title'    => esc_html__( 'multi_input Preloader image', 'smartpage' ),
-							'type'     => 'uploader',
-							'validate' => 'no_html',
-							'desc'     => esc_html__( 'Choose preloader image', 'smartpage' ),
-						),
-					),
-					'validate' => 'no_html',
+					'id'       => 'copyright',
+					'title'    => esc_html__( 'Copyright', 'smartpage' ),
+					'type'     => 'textarea',
+					'validate' => 'html',
+					// Translators: Date string.
+					'default'  => sprintf( esc_html__( 'All rights are reserved to Anonymous %s', 'smartpage' ), gmdate( 'Y' ) ),
 				),
 			),
 		);
