@@ -251,7 +251,8 @@ add_action(
 	<!-- Head styles -->
 	<style id="anony-head-styles" type="text/css">
 		<?php
-		if ( current_user_can( 'manage_options' ) ) {?>
+		if ( is_admin_bar_showing() ) {
+			?>
 			header{
 				margin-top: 46px;
 			}
