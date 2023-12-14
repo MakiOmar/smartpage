@@ -16,13 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 require 'document-head.php';
 ?>
 <header class="white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ); ?>">
-	<div id="anony-hidden-search-form">
-		
-		<a class="anony-search-form-toggle" href="#" title="Scroll page">
-			<i class="fa fa-search"></i>
-		</a>
-		<?php get_search_form(); ?>
-	</div>
 	<div class="anony-grid-row">
 		<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center flex-v-center">
 			<?php
@@ -39,6 +32,12 @@ require 'document-head.php';
 			<!-- <div id="menu-close"><a href="#"><i class="fa fa-2x fa-window-close" aria-hidden="true"></i></a></div>-->
 		</div>
 		<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center flex-v-center">
+			<div id="anony-hidden-search-form">
+				<a class="anony-search-form-toggle" href="#" title="Scroll page">
+					<i class="fa fa-search"></i>
+				</a>
+				<?php get_search_form(); ?>
+			</div>
 			<?php
 			if ( class_exists( 'ANONY_Options_Model' ) ) {
 				$anony_options     = ANONY_Options_Model::get_instance();
@@ -47,7 +46,7 @@ require 'document-head.php';
 				$search_icon_color = '#000';
 			}
 
-			$search_icon = '<div class="anony-search-form-toggle active"><a href="#" title="' . esc_attr__( 'Search', 'smartpage' ) . '"><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			echo '<div class="anony-search-form-toggle active"><a href="#" title="' . esc_attr__( 'Search', 'smartpage' ) . '"><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g clip-path="url(#clip0_15_152)">
 				<rect width="24" height="24" fill="none"/>
 				<circle cx="10.5" cy="10.5" r="6.5" stroke="' . esc_attr( $search_icon_color ) . '" stroke-linejoin="round"/>
