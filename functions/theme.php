@@ -8,10 +8,16 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
+	exit; // Exit if accessed directly.
 }
 
 if ( ! function_exists( 'anony_elementor_custom_fonts_group' ) ) {
+	/**
+	 * Add to fonts group
+	 *
+	 * @param array $font_groups Fonts group.
+	 * @return array
+	 */
 	function anony_elementor_custom_fonts_group ( $font_groups ) {
 		$font_groups['smartpage'] = esc_html__( 'SmartPage', 'smartpage' );
 		return $font_groups;
@@ -20,6 +26,12 @@ if ( ! function_exists( 'anony_elementor_custom_fonts_group' ) ) {
 add_filter( 'elementor/fonts/groups', 'anony_elementor_custom_fonts_group' , 99);
 
 if ( ! function_exists( 'anon_allow_custom_mime_types' ) ) {
+	/**
+	 * Allow fonts mime types to be uploaded
+	 *
+	 * @param array $mimes Mime types.
+	 * @return array
+	 */
 	function anon_allow_custom_mime_types( $mimes ) {
 
 		$mimes['woff']  = 'application/x-font-woff';
@@ -95,7 +107,7 @@ if ( ! function_exists( 'anony_restrict_admin_access' ) ) {
 	 * Restrict admin access for non admins
 	 */
 	function anony_restrict_admin_access() {
-		// restrict admin access
+		// restrict admin access.
 		if ( ! is_user_logged_in() ) {
 			return;
 		}
@@ -128,7 +140,9 @@ if ( ! function_exists( 'anony_add_theme_support' ) ) {
 	}
 }
 
-
+/**
+ * Add image sizes
+ */
 function anony_thumbs_sizes() {
 	add_image_size( 'category-post-thumb', 495 ); // 300 pixels wide (and unlimited height)
 	add_image_size( 'popular-post-thumb', 60, 60, true ); // 60*60 pixels and crop
@@ -141,23 +155,23 @@ add_action(
 	'after_setup_theme',
 	function () {
 
-		// Add theme support
+		// Add theme support.
 		anony_add_theme_support();
 
-		// set post thumbnail sizes
+		// set post thumbnail sizes.
 		anony_thumbs_sizes();
 
-		// Load Text Domain
+		// Load Text Domain.
 		load_theme_textdomain( 'smartpage', ANONY_LANG_DIR );
 
-		// hide admin bar for non admins
+		// hide admin bar for non admins.
 		anony_hide_admin_bar();
 
 	},
 	20
 );
 
-// Remove width|height from img
+// Remove width|height from img.
 add_filter(
 	'post_thumbnail_html',
 	function ( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
@@ -179,7 +193,7 @@ add_action(
 	200
 );
 
-// favicon
+// favicon.
 add_action(
 	'wp_head',
 	function () {
