@@ -187,9 +187,6 @@ p {
   background-position: center;
 }
 
-.header_style_one #anony-main_nav_con {
-  border-bottom: 1px solid #ebebeb;
-}
 .header_style_one #header-style-one-logo a {
   padding: 0;
 }
@@ -206,7 +203,7 @@ header {
 }
 
 header#anony-mobile-header {
-  padding: 20px 5px;
+  padding: 10px 5px;
 }
 
 header.elemetor {
