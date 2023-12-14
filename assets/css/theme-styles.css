@@ -109,7 +109,7 @@ select {
   display: block;
 }
 
-.anony-section-title {
+.anony-section-title-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,12 +119,16 @@ select {
   margin-bottom: 20px;
 }
 
-.anony-section-title h4 {
+.anony-section-title-wrapper .anony-section-title {
   position: absolute;
 }
 
 .anony-grid-row:after {
   clear: both;
+}
+
+.anony-inline-flex {
+  display: inline-flex !important;
 }
 
 .anony-flex-grow {
@@ -199,6 +203,10 @@ p {
 header {
   margin: 0;
   width: 100%;
+}
+
+header#anony-mobile-header {
+  padding: 20px 5px;
 }
 
 header.elemetor {

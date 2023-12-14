@@ -71,4 +71,8 @@
 		border-radius: 8px;
 		padding: 8px;
 	}
+
+	.woocommerce .products ul, .woocommerce ul.products {
+		justify-content: space-between;
+	}
 }
