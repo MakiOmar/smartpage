@@ -20,7 +20,7 @@ require 'document-head.php';
 		<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center flex-v-center">
 			<?php
 			// phpcs:disable
-			$logo = anony_get_custom_logo( 'orange' );
+			$logo = anony_get_theme_logo();
 			echo '<div id="header-style-one-logo">' . $logo . '</div>';
 			// phpcs:enable.
 			?>
