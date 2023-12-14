@@ -52,6 +52,12 @@ if ( ! function_exists( 'anony_get_font_family' ) ) {
 
 }
 if ( ! function_exists( 'anony_render_font_face' ) ) {
+	/**
+	 * Generate font face
+	 *
+	 * @param int $post_id Font face.
+	 * @return string
+	 */
 	function anony_render_font_face( $post_id ) {
 		$font_variations = get_post_meta( intval( $post_id ), 'anony_font_variations', true );
 		$url             = '';
@@ -105,7 +111,7 @@ if ( ! function_exists( 'anony_render_font_face' ) ) {
 						src:' . $url . ';
 						font-weight:normal;
 						font-style:normal;
-
+						font-display: swap;
 					}';
 			}
 		}
@@ -336,9 +342,9 @@ function anony_section_title( $title = '' ) {
 	if ( empty( $title ) ) {
 		return;
 	}
-	$html  = '<div class="anony-section-title">';
-	$html .= '<img src="https://cleo.makiomar.com/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp" width="224" height="80"/>';
-	$html .= '<h4>' . esc_html( $title ) . '</h4>';
+	$html  = '<div class="anony-section-title-wrapper">';
+	$html .= '<img src="https://cleo.makiomar.com/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp" alt="' . esc_attr( $title ) . '" width="224" height="80"/>';
+	$html .= '<h1 class="anony-section-title" style="font-size:18px">' . esc_html( $title ) . '</h1>';
 	$html .= '</div>';
 	return $html;
 }
