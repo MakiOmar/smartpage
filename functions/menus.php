@@ -188,7 +188,7 @@ add_filter(
 		$search_icon_color = $anony_options->main_menu_search_icon_color;
 		$logo              = anony_get_custom_logo( 'orange' );
 		$main_items        = $item;
-		$search_icon       = '<li class="anony-search-form-toggle active"><a href="#"><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		$search_icon       = '<li class="anony-search-form-toggle active"><a href="#" title="' . esc_attr__( 'Search', 'smartpage' ) . '"><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clip-path="url(#clip0_15_152)">
 			<rect width="24" height="24" fill="none"/>
 			<circle cx="10.5" cy="10.5" r="6.5" stroke="' . esc_attr( $search_icon_color ) . '" stroke-linejoin="round"/>
