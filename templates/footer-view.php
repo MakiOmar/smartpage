@@ -1,3 +1,19 @@
+<?php
+/**
+ * Main footer
+ *
+ * PHP version 7.3 Or Later
+ *
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+?>
 <footer id="anony-footer" class="anony-grid-col-md-12 anony-grid-col">
 	 
 	<?php if ( $footer_ad ) : ?>
@@ -10,29 +26,9 @@
 	 
 	<?php endif ?>
 	 
-	<p><?php echo $copyright; ?></p>
+	<p><?php echo wp_kses_post( $copyright ); ?></p>
+
+	<?php get_template_part( 'templates/partials/page', 'scroll' ); ?>
 	 
 </footer>
-
-<div id="anony-page-scroll-wrapper">
-
-	<div id="anony-page-scroll-bg"></div>
-	 
-	<a href="#" title="<?php esc_attr_e( 'Page scroll', 'smartpage' ); ?>" id="anony-page-scroll"><i class="fa fa-angle-down fa-3x"></i></a>
-	 
-</div>
-
-<input type="hidden" id="anony_ajax_url" value="<?php echo $ajaxUrl; ?>" />
-
-<?php wp_footer(); ?> 
-	 
-<?php do_action( 'anony_after_page_footer' ); ?>
-
-<?php
-if ( $anony_options->compress_html == 1 ) {
-	ob_end_flush();
-}
-?>
-</body>
-
-</html>
+<?php require 'partials/document-closing.php'; ?>
