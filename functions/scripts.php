@@ -32,18 +32,6 @@ function anony_styles() {
 		$min_suffix = '';
 	}
 
-	if ( '1' !== $anony_options->disable_main_css ) {
-		// Main theme file (Soon will be replaced with theme-styles.css).
-		wp_enqueue_style(
-			'anony-main',
-			ANONY_THEME_URI . '/assets/css/main' . $min_suffix . '.css',
-			false,
-			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/main' . $min_suffix . '.css' )
-			),
-			$media
-		);
-	}
 	if ( '1' !== $anony_options->disable_rsponsive_css ) {
 		// Responsive styles.
 		wp_enqueue_style(
@@ -94,7 +82,7 @@ function anony_styles() {
 
 	if ( is_rtl() ) {
 
-		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-main' ) : null;
+		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-theme-styles' ) : null;
 
 		wp_enqueue_style(
 			'anony-rtl',
