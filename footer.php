@@ -9,17 +9,21 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
+
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 if ( ! defined( 'ANOENGINE' ) ) {
-    require_once 'footer-default.php';
+	require_once 'footer-default.php';
 } else {
-    $anony_options = ANONY_Options_Model::get_instance();
+	$anony_options = ANONY_Options_Model::get_instance();
 
-    $copyright = esc_html( $anony_options->copyright );
+	$copyright = esc_html( $anony_options->copyright );
 
-    $footer_ad = has_action( 'footer_ad' );
+	$footer_ad = has_action( 'footer_ad' );
 
-    require locate_template( 'templates/footer-view.php', false, false );
+	if ( wp_is_mobile() ) {
+		require locate_template( 'templates/footer-mobile-view.php', false, false );
+	} else {
+		require locate_template( 'templates/footer-view.php', false, false );
+	}
 }
-
