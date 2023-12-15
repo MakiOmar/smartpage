@@ -1389,7 +1389,7 @@ body{
 
 .sticky{
 	position: fixed!important;
-	z-index: 100000!important;
+	z-index: 99999!important;
 	margin: auto;
 	left: 0!important;
 	right: 0;

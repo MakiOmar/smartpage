@@ -11,36 +11,10 @@
 
 /***/ }),
 
-/***/ "./src/vc-styles.scss":
-/*!****************************!*\
-  !*** ./src/vc-styles.scss ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./src/theme-styles.scss":
 /*!*******************************!*\
   !*** ./src/theme-styles.scss ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/main.scss":
-/*!***********************!*\
-  !*** ./src/main.scss ***!
-  \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -80,6 +54,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************!*\
   !*** ./src/woocommerce.scss ***!
   \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/vc-styles.scss":
+/*!****************************!*\
+  !*** ./src/vc-styles.scss ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -176,12 +163,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/dist/app": 0,
+/******/ 			"assets/css/vc-styles": 0,
 /******/ 			"assets/css/woocommerce": 0,
 /******/ 			"assets/css/rtl": 0,
 /******/ 			"assets/css/responsive": 0,
-/******/ 			"assets/css/main": 0,
-/******/ 			"assets/css/theme-styles": 0,
-/******/ 			"assets/css/vc-styles": 0
+/******/ 			"assets/css/theme-styles": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -231,13 +217,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/theme-styles.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/main.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/responsive.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/rtl.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/woocommerce.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/main","assets/css/theme-styles","assets/css/vc-styles"], () => (__webpack_require__("./src/vc-styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/vc-styles","assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/theme-styles"], () => (__webpack_require__("./src/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/vc-styles","assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/theme-styles"], () => (__webpack_require__("./src/theme-styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/vc-styles","assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/theme-styles"], () => (__webpack_require__("./src/responsive.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/vc-styles","assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/theme-styles"], () => (__webpack_require__("./src/rtl.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/vc-styles","assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/theme-styles"], () => (__webpack_require__("./src/woocommerce.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/vc-styles","assets/css/woocommerce","assets/css/rtl","assets/css/responsive","assets/css/theme-styles"], () => (__webpack_require__("./src/vc-styles.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
