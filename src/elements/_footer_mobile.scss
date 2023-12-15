@@ -1,0 +1,30 @@
+.anony-grid-row#anony-mobile-footer{
+    height: 100px;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    z-index: 99;
+}
+#anony-mobile-footer-bg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+#anony-mobile-footer-home > a{
+    height: 80px;
+    width: 80px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -50px;
+}
+
+#anony-mobile-footer a svg path, #anony-mobile-footer a svg circle{
+    stroke: #fff;
+}

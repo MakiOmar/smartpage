@@ -183,7 +183,7 @@
     width: 100%;
   }
 }
-@media screen and (min-width: 321px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .anony-grid-col-slg-1 {
     width: 8.333%;
   }

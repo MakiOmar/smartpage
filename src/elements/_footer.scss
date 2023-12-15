@@ -1,3 +1,4 @@
+@use './footer_mobile';
 /***Footer***/
 #anony-footer {
   background-color: rgba(0, 0, 0, 0.88);
@@ -17,7 +18,7 @@ footer p {
   right: 20px;
   width: 50px;
   height: 50px;
-  z-index: 1000;
+  z-index: 20;
 }
 
 #anony-page-scroll-bg {
