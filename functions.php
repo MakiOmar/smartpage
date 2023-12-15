@@ -146,6 +146,20 @@ Puc_v4_Factory::buildUpdateChecker(
 	'anony-smartpage'
 );
 
+add_action(
+	'wp_footer',
+	function () {
+		$anony_options = ANONY_Options_Model::get_instance();
+		if ( class_exists( 'ANONY_Wpml_Help' ) ) {
+			echo '<input type="hidden" id="anony_ajax_url" value="' . esc_url( ANONY_Wpml_Help::get_ajax_url() ) . '" />';
+		}
+
+		if ( '1' === $anony_options->compress_html ) {
+			ob_end_flush();
+		}
+	}
+);
+
 add_filter(
 	'wcfm_vendor_settings_fields_policies',
 	function ( $fields ) {

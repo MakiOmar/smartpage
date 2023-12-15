@@ -18,8 +18,6 @@ if ( ! defined( 'ANOENGINE' ) ) {
 
     $copyright = esc_html( $anony_options->copyright );
 
-    $ajaxUrl = ANONY_Wpml_Help::get_ajax_url();
-
     $footer_ad = has_action( 'footer_ad' );
 
     require locate_template( 'templates/footer-view.php', false, false );
