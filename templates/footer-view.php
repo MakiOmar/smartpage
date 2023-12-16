@@ -17,12 +17,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <footer id="anony-footer" class="anony-grid-col">
 	<div class="anony-grid-row">
 		<div class="anony-grid-col anony-grid-col-sm-4">
-			
-			<h1>Important links</h1>
-			
+			<?php anony_dynamic_sidebar( 'footer-widget-1' ); ?>
 		</div>
-		<div class="anony-grid-col anony-grid-col-sm-4"></div>
-		<div class="anony-grid-col anony-grid-col-sm-4"></div>
+		<div class="anony-grid-col anony-grid-col-sm-4">
+		<?php anony_dynamic_sidebar( 'footer-widget-2' ); ?>
+		</div>
+		<div class="anony-grid-col anony-grid-col-sm-4">
+		<?php anony_dynamic_sidebar( 'footer-widget-3' ); ?>
+		</div>
 	</div>
 	<div class="anony-grid-row anony-footer-bottom">
 		<div class="anony-grid-col anony-grid-col-sm-4"><p><?php echo wp_kses_post( $copyright ); ?></p></div>
