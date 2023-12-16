@@ -149,10 +149,8 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 				$output .= $after_widget;
 
 				echo $output;
-			} else {
-				if ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
+			} elseif ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
 					esc_html_e( 'You should select a post type', 'smartpage' );
-				}
 			}
 		}
 
@@ -173,7 +171,5 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 
 			return $instance;
 		}
-
-
 	}
 }
