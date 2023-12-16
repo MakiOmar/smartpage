@@ -21,9 +21,5 @@ if ( ! defined( 'ANOENGINE' ) ) {
 
 	$footer_ad = has_action( 'footer_ad' );
 
-	if ( wp_is_mobile() ) {
-		require locate_template( 'templates/footer-mobile-view.php', false, false );
-	} else {
-		require locate_template( 'templates/footer-view.php', false, false );
-	}
+	require locate_template( 'templates/footer-view.php', false, false );
 }
