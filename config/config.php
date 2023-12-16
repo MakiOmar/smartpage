@@ -141,6 +141,13 @@ define( 'ANONY_HEADER_STYLE', 'one' );
  */
 define( 'ANONY_CLASSES', wp_normalize_path( ANONY_THEME_DIR . '/classes/' ) );
 
+/**
+ * Holds a path to widgets classes folder
+ *
+ * @const
+ */
+define( 'ANONY_WIDGETS', wp_normalize_path( ANONY_CLASSES . 'widgets/' ) );
+
 
 /**
  * Holds a path to views classes folder
@@ -175,6 +182,7 @@ define(
 	serialize(
 		array(
 			ANONY_CLASSES,
+			ANONY_WIDGETS,
 			ANONY_CONTENTS_VIEWS,
 			ANONY_ELEMENTOR_EXTENSION,
 			ANONY_ELEMENTOR_DOCS,
