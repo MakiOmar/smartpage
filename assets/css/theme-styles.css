@@ -2652,7 +2652,7 @@ header.anony-absolute-header {
   text-align: center;
 }
 
-.anony-grid-row#anony-mobile-footer {
+.anony-grid-row#anony-mobile-footer-menu {
   height: 100px;
   position: fixed;
   width: 100vw;
@@ -2660,7 +2660,7 @@ header.anony-absolute-header {
   z-index: 99;
 }
 
-#anony-mobile-footer-bg {
+#anony-mobile-footer-menu-bg {
   position: absolute;
   top: 0;
   right: 0;
@@ -2669,7 +2669,7 @@ header.anony-absolute-header {
   margin: auto;
 }
 
-#anony-mobile-footer-home > a {
+#anony-mobile-footer-menu-home > a {
   height: 80px;
   width: 80px;
   background-color: black;
@@ -2681,8 +2681,12 @@ header.anony-absolute-header {
   top: -50px;
 }
 
-#anony-mobile-footer a svg path, #anony-mobile-footer a svg circle {
+#anony-mobile-footer-menu a svg path, #anony-mobile-footer-menu a svg circle {
   stroke: #fff;
+}
+
+.anony-is-mobile #anony-footer {
+  padding-bottom: 150px;
 }
 
 /***Footer***/
