@@ -27,8 +27,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif ?>
 	 
 	<p><?php echo wp_kses_post( $copyright ); ?></p>
+	<?php
+	if ( wp_is_mobile() ) {
+		get_template_part( 'templates/partials/mobile-footer-menu', 'view' );
+	}
 
-	<?php get_template_part( 'templates/partials/page', 'scroll' ); ?>
+	get_template_part( 'templates/partials/page', 'scroll' );
+	?>
 	 
 </footer>
 <?php require 'partials/document-closing.php'; ?>
