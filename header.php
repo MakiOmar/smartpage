@@ -21,11 +21,10 @@ if ( ! defined( 'ANOENGINE' ) ) {
 	$content_type  = get_bloginfo( 'html_type' );
 	$char_set      = get_bloginfo( 'charset' );
 	$blog_name     = get_bloginfo();
-	$body_class    = 'class="' .
-		join( ' ', get_body_class() ) .
-		' ' .
-		$anony_options->color_skin .
-		'"';
+
+	$body_class  = 'class="' . join( ' ', get_body_class() ) . ' ';
+	$body_class .= wp_is_mobile() ? 'anony-is-mobile' : '';
+	$body_class .= '"';
 
 	$logo          = anony_get_custom_logo( 'orange' );
 	$preloader_img = anony_get_custom_logo_url( 'orange' );
