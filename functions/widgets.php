@@ -44,11 +44,14 @@ add_action(
 		}
 	}
 );
-
-add_filter(
-	'dynamic_sidebar_params',
-	function ( $param ) {
-
+if ( ! function_exists( 'anony_dynamic_sidebar_params' ) ) {
+	/**
+	 * Filtr through dynamic sidebar params
+	 *
+	 * @param $param $param
+	 * @return array
+	 */
+	function anony_dynamic_sidebar_params( $param ) {
 		if ( ! is_rtl() && 'right-sidebar' === $param[0]['id'] ) {
 
 			$param[0]['name'] = esc_html__( 'Left Sidebar', 'smartpage' );
@@ -61,9 +64,10 @@ add_filter(
 
 		}
 		return $param;
-	},
-	20
-);
+	}
+}
+
+add_filter( 'dynamic_sidebar_params', 'anony_dynamic_sidebar_params', 20 );
 
 
 
