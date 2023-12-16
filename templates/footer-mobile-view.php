@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <footer id="anony-mobile-footer" class="anony-grid-row">
-	<svg id="anony-mobile-footer-bg" width="auto" height="114" viewBox="0 0 416 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<svg id="anony-mobile-footer-bg" width="100vw" height="114" viewBox="0 0 416 114" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g filter="url(#filter0_d_26_414)">
 		<path d="M134.547 26.0561C73.047 27.1659 18.055 12.11 -1.75362 4.44336L-2 114.62L418.266 115.56L418.512 5.38319C388.167 25.5839 308.489 25.9254 284.362 25.8714C260.235 25.8175 255.739 28.9256 255.719 37.7606C255.699 46.5956 260.777 70.6988 230.949 74.0846C172.58 80.7102 161.225 62.4952 160.301 51.0596C159.21 37.5448 162.041 26.1176 134.547 26.0561Z" fill="#3dcdad"/>
 		</g>
