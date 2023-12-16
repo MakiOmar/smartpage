@@ -209,13 +209,13 @@ if ( ! function_exists( 'anony_category_posts_section' ) ) {
 		include locate_template( 'templates/category-posts-section-view.php', false, false );
 	}
 }
-if ( ! function_exists( 'anony_get_sidebar' ) ) {
+if ( ! function_exists( 'anony_dynamic_sidebar' ) ) {
 	/**
 	 * Get sidebar
 	 *
 	 * @param string $id Sidebar's ID.
 	 */
-	function anony_get_sidebar( $id ) {
+	function anony_dynamic_sidebar( $id ) {
 		if ( is_active_sidebar( $id ) ) {
 
 			dynamic_sidebar( $id );
