@@ -68,10 +68,10 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" autocomplete="off">
 			<?php
-			$postType = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
-			$selected = selected( $postType, 'current', false );
+			$post_type = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
+			$selected  = selected( $post_type, 'current', false );
 			?>
-					<option value="current" <?php echo $selected; ?>><?php esc_html_e( 'Current post type', 'smartpage' ); ?></option>
+					<option value="current" <?php echo esc_attr( $selected ); ?>><?php esc_html_e( 'Current post type', 'smartpage' ); ?></option>
 			<?php
 			foreach ( get_post_types(
 				array(
@@ -79,9 +79,9 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 					'_builtin' => false,
 				)
 			) as $type ) {
-				$selected = selected( $postType, $type, false )
+				$selected = selected( $post_type, $type, false )
 				?>
-							<option value="<?php echo esc_attr( $postType ); ?>" <?php echo $selected; ?>><?php echo esc_html( $type ); ?></option>
+							<option value="<?php echo esc_attr( $post_type ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $type ); ?></option>
 				<?php
 			}
 
@@ -105,12 +105,10 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 		 */
 		public function widget( $parms, $instance ) {
 
-			extract( $instance );
-
-			if ( $instance['post_type'] == 'current' && ! is_single() ) {
+			if ( 'current' === $instance['post_type'] && ! is_single() ) {
 				$post_type = 'post';
 			} else {
-				$post_type = ( $instance['post_type'] == 'current' ) ? get_post_type() : $instance['post_type'];
+				$post_type = ( 'current' === $instance['post_type'] ) ? get_post_type() : $instance['post_type'];
 			}
 			$title = $instance['title'];
 
@@ -124,15 +122,15 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 
 				$post_type_object = get_post_type_object( $post_type );
 
-				if ( $instance['post_type'] == 'current' ) {
+				if ( 'current' === $instance['post_type'] ) {
 					$title = $post_type_object->label;
 				}
 
 				$output = '';
 
-				$output .= $before_widget;
+				$output .= $parms['before_widget'];
 
-				$output .= $before_title . esc_html( $title ) . $after_title;
+				$output .= $parms['before_title'] . esc_html( $title ) . $parms['after_title'];
 
 				$output .= '<ul class="artr_terms_list">';
 
@@ -146,11 +144,13 @@ if ( ! class_exists( 'ANONY_Posts_Widget' ) ) {
 
 				$output .= '</ul>';
 
-				$output .= $after_widget;
+				$output .= $parms['after_widget'];
 
+				//phpcs:disable
 				echo $output;
+				//phpcs:enable.
 			} elseif ( ! isset( $instance['post_type'] ) || empty( $instance['post_type'] ) ) {
-					esc_html_e( 'You should select a post type', 'smartpage' );
+					esc_html_e( 'Anonymous posts widget: You should select a post type', 'smartpage' );
 			}
 		}
 
