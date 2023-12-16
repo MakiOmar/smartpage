@@ -209,6 +209,31 @@ if ( ! function_exists( 'anony_category_posts_section' ) ) {
 		include locate_template( 'templates/category-posts-section-view.php', false, false );
 	}
 }
+if ( ! function_exists( 'anony_get_sidebar' ) ) {
+	/**
+	 * Get sidebar
+	 *
+	 * @param string $id Sidebar's ID.
+	 */
+	function anony_get_sidebar( $id ) {
+		if ( is_active_sidebar( $id ) ) {
+
+			dynamic_sidebar( $id );
+
+		} elseif ( current_user_can( 'manage_options' ) ) {
+			?>
+				
+			<?php if ( current_user_can( 'manage_options' ) ) { ?>
+			<strong>
+				<?php esc_html_e( 'Please add some widgets. ', 'smartpage' ); ?>    
+			</strong>
+			<?php } ?>
+			<a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>"><?php esc_html_e( 'Add Here', 'smartpage' ); ?></a>
+				
+			<?php
+		}
+	}
+}
 
 if ( ! function_exists( 'anony_get_correct_sidebar' ) ) {
 	/**
