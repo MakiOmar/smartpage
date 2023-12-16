@@ -1,16 +1,20 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
 /**
- * Widgets functions
+ * Theme widgets
  *
- * @package Anonymous theme
- * @author  Makiomar
- * @link    http://makiomar.com
+ * PHP version 7.3 Or Later
+ *
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
  */
 
-// Register Sidebars
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+// Register Sidebars.
 add_action(
 	'widgets_init',
 	function () {
@@ -45,19 +49,17 @@ add_filter(
 	'dynamic_sidebar_params',
 	function ( $param ) {
 
-		if ( ! is_rtl() && $param[0]['id'] == 'right-sidebar' ) {
+		if ( ! is_rtl() && 'right-sidebar' === $param[0]['id'] ) {
 
 			$param[0]['name'] = esc_html__( 'Left Sidebar', 'smartpage' );
 
 		}
 
-		if ( ! is_rtl() && $param[0]['id'] == 'left-sidebar' ) {
+		if ( ! is_rtl() && 'left-sidebar' === $param[0]['id'] ) {
 
 			$param[0]['name'] = esc_html__( 'Right Sidebar', 'smartpage' );
 
 		}
-
-		// nvd($param);
 		return $param;
 	},
 	20
@@ -81,6 +83,5 @@ add_action(
 		foreach ( $reg_widgets as $reg_widget ) {
 			register_widget( $reg_widget );
 		}
-
 	}
 );
