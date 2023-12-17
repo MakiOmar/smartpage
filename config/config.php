@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
 /**
  * Theme/Options confugurations
  *
@@ -10,11 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link    http://makiomar.com
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 require_once 'required-plugins.php';
-/*
----------------------------------------------------------------
+/**
+ * ---------------------------------------------------------------
  * Define main constants
- *-------------------------------------------------------------*/
+ * ---------------------------------------------------------------
+ */
 /**
  * Just no data text
  *
@@ -88,13 +89,6 @@ define( 'ANONY_CORE_HOOKS_DIR', wp_normalize_path( ANONY_THEME_DIR . '/core-hook
 define( 'ANONY_CLASSES_URI', get_template_directory_uri() . '/functions/class' );
 
 /**
- * Holds a URI to Custom fields classes folder
- *
- * @const
- */
-// define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (ANONY_THEME_URI . '/input-fields/'));
-
-/**
  * Holds languages folder URI
  *
  * @const
@@ -129,10 +123,11 @@ define( 'ANONY_BLOG_URL', esc_url( home_url() ) );
  */
 define( 'ANONY_HEADER_STYLE', 'one' );
 
-/*
-----------------------------------------------------------------------
-* Theme Autoloading
-*---------------------------------------------------------------------*/
+/**
+ * ----------------------------------------------------------------------
+ * Theme Autoloading
+ * ---------------------------------------------------------------------
+ */
 
 /**
  * Holds a path to main classes folder
