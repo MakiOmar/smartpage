@@ -123,15 +123,6 @@ add_action(
 					'desc'     => esc_html__( 'A logo that willbe displayed on mobile version', 'smartpage' ),
 				),
 				array(
-					'id'       => 'copyright',
-					'title'    => esc_html__( 'Copyright', 'smartpage' ),
-					'type'     => 'textarea',
-					'validate' => 'html',
-					// Translators: Date string.
-					'default'  => sprintf( esc_html__( 'All rights are reserved to Anonymous %s', 'smartpage' ), gmdate( 'Y' ) ),
-				),
-
-				array(
 					'id'       => 'preloader',
 					'title'    => esc_html__( 'Enable preloader', 'smartpage' ),
 					'type'     => 'switch',
