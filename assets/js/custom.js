@@ -40,21 +40,7 @@ jQuery(document).ready(function($){
 	
 	$(".anony-search-form-toggle").on('click', function(e){
 		e.preventDefault();
-		var target = $("#anony-hidden-search-form");
-		var icon = target.find('.anony-search-form-toggle > .fa');
-		if (!target.hasClass('anony-show-search-form')){
-			target.addClass('anony-show-search-form');
-
-			icon.removeClass('fa-search').addClass('fa-window-close fa-2x');
-
-		}else{
-			target.removeClass('anony-show-search-form');
-			setTimeout(function(){
-				icon.removeClass('fa-window-close fa-2x').addClass('fa-search');
-			}, 1000);
-			
-		}
-		
+		$("#anony-hidden-search-form").toggleClass( 'anony-show-search-form' );
 	});
 	
 	/**--------------------------------------------------------------------
@@ -62,15 +48,10 @@ jQuery(document).ready(function($){
 	/*--------------------------------------------------------------------*/
 
 	$(window).scroll(function() {
-		
-		var target = $("#anony-page-scroll").find('.fa');
-		
 		if ($(window).scrollTop() > 100){	
-			target.removeClass('fa-angle-down');
-			target.addClass('fa-angle-up');				
+			$("#anony-page-scroll").addClass('anony-rotate-180');
 		}else{	
-			target.removeClass('fa-angle-up');
-			target.addClass('fa-angle-down');	
+			$("#anony-page-scroll").removeClass('anony-rotate-180');	
 		}
 	});
 	

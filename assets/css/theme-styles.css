@@ -2066,6 +2066,10 @@ p {
   height: 100% !important;
 }
 
+.anony-rotate-180 {
+  transform: rotate(180deg);
+}
+
 .anony-bg-banner {
   background-repeat: no-repeat;
   background-size: cover;
