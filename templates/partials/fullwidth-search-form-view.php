@@ -29,7 +29,7 @@ if ( class_exists( 'ANONY_Options_Model' ) ) {
 }
 ?>
 <div class="anony-search-form-toggle active">
-	<a href="#" title="' . esc_attr__( 'Search', 'smartpage' ) . '">
+	<a href="#" class="anony-inline-flex flex-h-center flex-v-center" title="' . esc_attr__( 'Search', 'smartpage' ) . '">
 		<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clip-path="url(#clip0_15_152)">
 			<rect width="24" height="24" fill="none"/>
