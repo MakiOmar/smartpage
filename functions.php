@@ -70,6 +70,7 @@ if ( class_exists( 'woocommerce' ) ) {
 	 * WooCommerce.
 	 */
 	require_once wp_normalize_path( ANONY_LIBS_DIR . 'woocommerce.php' );
+	require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax-add-to-cart.php' );
 }
 
 
