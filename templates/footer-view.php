@@ -15,7 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <footer id="anony-footer" class="anony-grid-col">
-	<div class="anony-grid-row">
+	<div id="anony-top-footer" class="anony-grid-row">
+		<div class="anony-grid-col anony-grid-col-sm-4"></div>
+		<div class="anony-grid-col anony-grid-col-sm-4"></div>
+		<div class="anony-grid-col anony-grid-col-sm-4"></div>
+	</div>
+	<div id="anony-main-footer" class="anony-grid-row">
 		<div class="anony-grid-col anony-grid-col-sm-2">
 			<?php anony_dynamic_sidebar( 'footer-widget-1' ); ?>
 		</div>
@@ -29,8 +34,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php anony_dynamic_sidebar( 'footer-widget-4' ); ?>
 		</div>
 	</div>
-	<div class="anony-grid-row anony-footer-bottom">
+	<div id="anony-bottom-footer" class="anony-grid-row">
 		<div class="anony-grid-col anony-grid-col-sm-4"><p><?php echo wp_kses_post( $copyright ); ?></p></div>
+		<div class="anony-grid-col anony-grid-col-sm-4"></div>
+		<div class="anony-grid-col anony-grid-col-sm-4"></div>
 	</div>
 	<?php
 	if ( wp_is_mobile() ) {
