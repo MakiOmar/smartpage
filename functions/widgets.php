@@ -88,6 +88,7 @@ add_action(
 			'ANONY_Cats_Widget',
 			'ANONY_Related_Posts_Widget',
 			'ANONY_Posts_Widget',
+			'ANONY_Copyright',
 		);
 
 		foreach ( $reg_widgets as $reg_widget ) {
