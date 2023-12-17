@@ -1505,57 +1505,6 @@ li .current::after {
   cursor: pointer;
 }
 
-#anony-menu-toggle {
-  display: inline-block;
-  color: #333333;
-  left: 0;
-}
-
-#menu-close {
-  display: none;
-  position: absolute !important;
-  top: 5px !important;
-  right: 5px;
-  border: none !important;
-  height: 34px;
-  width: 34px;
-  z-index: 999999;
-}
-
-#menu-close:before {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  background-color: #fff;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
-}
-
-#menu-close a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 2;
-}
-
-.anony-search-form-toggle, #anony-main-menu-con li .anony-search-form-toggle {
-  display: none;
-  border: none;
-}
-
-#anony-main-menu-con .anony-search-form-toggle {
-  position: absolute;
-}
-
 /***End togglers***/
 .sticky {
   position: fixed !important;
@@ -1763,10 +1712,6 @@ li .current::after {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-  }
-  .anony-search-form-toggle {
-    right: 0;
-    display: block;
   }
   #anony-logo {
     margin: auto;
@@ -2267,7 +2212,66 @@ header.anony-absolute-header {
   opacity: 1 !important;
 }
 
+#anony-menu-toggle {
+  display: inline-block;
+  color: #333333;
+  left: 0;
+}
+
+#menu-close {
+  display: none;
+  position: absolute !important;
+  top: 5px !important;
+  right: 5px;
+  border: none !important;
+  height: 34px;
+  width: 34px;
+  z-index: 999999;
+}
+
+#menu-close:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+#menu-close a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 2;
+}
+
+.anony-search-form-toggle, #anony-main-menu-con li .anony-search-form-toggle {
+  display: none;
+  border: none;
+}
+
+.header_style_one .anony-search-form-toggle {
+  display: flex;
+}
+
+#anony-main-menu-con .anony-search-form-toggle {
+  position: absolute;
+}
+
 @media screen and (min-width: 768px) {
+  .anony-search-form-toggle {
+    right: 0;
+    display: block;
+  }
   #anony-main_nav_con {
     position: relative;
     display: block;
@@ -2714,7 +2718,7 @@ footer ul {
   list-style-type: none;
 }
 
-.footer-widget a, p, h1, h3, h4, h5, h6 {
+.footer-widget a, .footer-widget p, .footer-widget h1, .footer-widget h3, .footer-widget h4, .footer-widget h5, .footer-widget h6 {
   color: #ffffff;
 }
 

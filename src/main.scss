@@ -1322,51 +1322,7 @@ body{
 		z-index: 41;
 		cursor: pointer;
 	}
-	#anony-menu-toggle {
-			display: inline-block;
-			color: #333333;
-			left: 0;
-		}
-	#menu-close{
-		display: none;
-		position: absolute!important;
-		top: 5px!important;
-		right: 5px;
-		border: none!important;
-		height: 34px;
-		width: 34px;
-		z-index: 999999;
-	}
-	#menu-close:before{
-		content: '';
-		display: block;
-		width: 20px;
-		height: 20px;
-		position: absolute;
-		background-color: #fff;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		margin: auto;
-		z-index: 1;
-	}
-	#menu-close a{
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		margin: auto;
-		z-index: 2;
-	}
-.anony-search-form-toggle, #anony-main-menu-con li .anony-search-form-toggle{
-		display: none;
-		border: none;
-	}
-#anony-main-menu-con .anony-search-form-toggle{
-	position: absolute;
-}
+	
 /***End togglers***/
 
 .sticky{
@@ -1560,10 +1516,6 @@ body{
 		display: table-cell;
 		vertical-align: middle;
 		text-align: center;
-	}
-	.anony-search-form-toggle{
-		right: 0;
-		display: block;
 	}
 
 	#anony-logo {

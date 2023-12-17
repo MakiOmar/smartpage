@@ -23,9 +23,12 @@ footer p {
 footer ul{
   list-style-type: none;
 }
-.footer-widget a, p, h1,h3,h4,h5,h6{
-  color: #ffffff;
+.footer-widget{
+  a,p,h1,h3,h4,h5,h6{
+    color: #ffffff;
+  }
 }
+
 
 #anony-page-scroll-bg {
   position: absolute;
