@@ -51,10 +51,16 @@ function anony_create_product_attributes_metaboxes() {
 	);
 }
 
+/**
+ * Hide products without price
+ *
+ * @param object $query Query object.
+ * @return void
+ */
 function anony_hide_products_without_price( $query ) {
 	$anony_options = ANONY_Options_Model::get_instance();
 
-	if ( '1' === $anony_options->hide_no_price_products && ! is_admin() && in_array( $query->get( 'post_type' ), array( 'product' ) ) ) {
+	if ( '1' === $anony_options->hide_no_price_products && ! is_admin() && in_array( $query->get( 'post_type' ), array( 'product' ), true ) ) {
 		$meta_query = $query->get( 'meta_query' );
 
 		if ( is_array( $meta_query ) ) {
@@ -82,7 +88,7 @@ function anony_replace_product_rating() {
 	$label = sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating_count );
 	$html  = '<div class="star-rating" role="img" aria-label="' . esc_attr( $label ) . '">' . wc_get_star_rating_html( $average, $rating_count ) . '</div>';
 
-	echo $html;
+	echo wp_kses_post( $html );
 }
 
 /**
@@ -98,11 +104,17 @@ function anony_rating_after_shop_loop_item_title() {
 	}
 }
 
+/**
+ * Override single product ratings hooks
+ */
 function anony_change_single_product_ratings() {
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
 	add_action( 'woocommerce_single_product_summary', 'anony_wc_single_product_ratings', 10 );
 }
 
+/**
+ * Override single product ratings cb
+ */
 function anony_wc_single_product_ratings() {
 	global $product;
 
@@ -116,11 +128,23 @@ function anony_wc_single_product_ratings() {
 			<div class="container-rating">
 				
 				<div class="star-rating">
-					<?php echo wc_get_rating_html( $average, $rating_count ); ?>
+					<?php echo wp_kses_post( wc_get_rating_html( $average, $rating_count ) ); ?>
 				</div>
 				
 					<?php if ( comments_open() ) : ?>
-						<a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'woocommerce' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a>
+						<a href="#reviews" class="woocommerce-review-link" rel="nofollow">
+							(
+							<?php
+								printf(
+									wp_kses_post(
+										// Translators: Reviews count.
+										_n( '%s customer review', '%s customer reviews', $review_count, 'woocommerce' )
+									),
+									'<span class="count">' . esc_html( $review_count ) . '</span>'
+								);
+							?>
+							)
+						</a>
 					<?php endif ?>
 				</div>
 		</div>
@@ -128,6 +152,14 @@ function anony_wc_single_product_ratings() {
 	}
 }
 if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
+	/**
+	 * Customsale badge
+	 *
+	 * @param string     $html Badge html.
+	 * @param WP_Post    $post Post object.
+	 * @param WC_Product $product Product object.
+	 * @return string
+	 */
 	function anony_custom_sale_badge( $html, $post, $product ) {
 
 		$custom_sale_badge = get_post_meta( $post->ID, 'custom-sale-badge', true );
@@ -142,14 +174,14 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 			$percentages    = array();
 			$regular_prices = array();
 
-			// Get all variation prices
-			$prices = $product->get_variation_prices();
+			// Get all variation prices.
+			$prices = $product->get_variations_prices();
 
-			// Loop through variation prices
+			// Loop through variation prices.
 			foreach ( $prices['price'] as $key => $price ) {
-				// Only on sale variations
+				// Only on sale variations.
 				if ( $prices['regular_price'][ $key ] !== $price ) {
-					// Calculate and set in the array the percentage for each variation on sale
+					// Calculate and set in the array the percentage for each variation on sale.
 					$percentages[] = round( 100 - ( floatval( $prices['sale_price'][ $key ] ) / floatval( $prices['regular_price'][ $key ] ) * 100 ) );
 
 					$sale_prices[] = floatval( $prices['sale_price'][ $key ] );
@@ -157,7 +189,7 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 					$regular_prices[] = floatval( $prices['regular_price'][ $key ] );
 				}
 			}
-			// We keep the highest value
+			// We keep the highest value.
 			$percentage    = max( $percentages ) . '%';
 			$regular_price = max( $regular_prices );
 			$sale_price    = max( $sale_prices );
@@ -168,25 +200,25 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 				$percentages    = array();
 				$regular_prices = array();
 
-				// Get all variation prices
+				// Get all variation prices.
 				$children_ids = $product->get_children();
 
-				// Loop through variation prices
+				// Loop through variation prices.
 			foreach ( $children_ids as $child_id ) {
 				$child_product = wc_get_product( $child_id );
 
 				$regular_price = (float) $child_product->get_regular_price();
 				$sale_price    = (float) $child_product->get_sale_price();
 
-				if ( $sale_price != 0 || ! empty( $sale_price ) ) {
-					// Calculate and set in the array the percentage for each child on sale
+				if ( 0 !== $sale_price || ! empty( $sale_price ) ) {
+					// Calculate and set in the array the percentage for each child on sale.
 					$percentages[] = round( 100 - ( $sale_price / $regular_price * 100 ) );
 
 					$regular_prices[] = $regular_price;
 					$sale_prices[]    = $sale_price;
 				}
 			}
-				// We keep the highest value
+				// We keep the highest value.
 				$percentage = max( $percentages ) . '%';
 
 				$regular_price = max( $regular_prices );
@@ -199,7 +231,7 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 			$regular_price = (float) $product->get_regular_price();
 			$sale_price    = (float) $product->get_sale_price();
 
-			if ( $sale_price != 0 || ! empty( $sale_price ) ) {
+			if ( 0 !== $sale_price || ! empty( $sale_price ) ) {
 					$percentage = round( 100 - ( $sale_price / $regular_price * 100 ) ) . '%';
 
 					$saved = $regular_price - $sale_price;
@@ -215,6 +247,7 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 			$class = 'on-sale-percent';
 
 		if ( 'text' === $anony_options->sale_badge_type ) {
+			// Translators: %1$s for saved amount and %2$s for currncy.
 			$sale_badge_text = sprintf( esc_html__( 'Save %1$s %2$s', 'smartpage' ), round( $saved ), get_woocommerce_currency_symbol() );
 
 			$class = 'on-sale-text';
@@ -225,9 +258,16 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 
 }
 
-
+/**
+ * Related products title filter callback
+ *
+ * @param string $new_text The new text.
+ * @param string $related_text The old text.
+ * @param string $source Text source.
+ * @return string
+ */
 function anony_change_related_products_text( $new_text, $related_text, $source ) {
-	if ( $related_text === 'Related products' && $source === 'woocommerce' ) {
+	if ( 'Related products' === $related_text && 'woocommerce' === $source ) {
 		$anony_options = ANONY_Options_Model::get_instance();
 		if ( ! empty( $anony_options->related_products_title ) ) {
 			$new_text = $anony_options->related_products_title;
@@ -236,7 +276,12 @@ function anony_change_related_products_text( $new_text, $related_text, $source )
 	return $new_text;
 }
 
-
+/**
+ * Remove Email from woocommerce comments' form
+ *
+ * @param array $fields Comment form fields array.
+ * @return array
+ */
 function anony_wc_comment_form_fields( $fields ) {
 	global $post;
 
