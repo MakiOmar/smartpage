@@ -19,7 +19,8 @@ jQuery(document).ready(function($){
 		$(".widget_shopping_cart_content").toggleClass('anony-mini-cart-open');
 	});
 
-	$(".widget_shopping_cart_content").on('click', '.anony-close-mini-cart', function(){
+	$(document.body).on('click', '.anony-close-mini-cart', function(){
+		console.log('text');
 		$( '#anony-mobile-cart-toggle' ).trigger('click');
 	});
 
