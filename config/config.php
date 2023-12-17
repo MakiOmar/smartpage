@@ -173,13 +173,13 @@ define( 'ANONY_ELEMENTOR_EXTENSION', wp_normalize_path( ANONY_THEME_DIR . '/elem
 define( 'ANONY_ELEMENTOR_DOCS', wp_normalize_path( ANONY_ELEMENTOR_EXTENSION . 'documents/' ) );
 
 /**
- * Holds a serialized array of all pathes to classes folders
+ * Holds a json encoded array of all pathes to classes folders
  *
  * @const
  */
 define(
 	'ANONY_THEME_AUTOLOADS',
-	serialize(
+	wp_json_encode(
 		array(
 			ANONY_CLASSES,
 			ANONY_WIDGETS,
@@ -196,25 +196,32 @@ define(
 spl_autoload_register(
 	function ( $class_name ) {
 		if ( strpos( $class_name, '\\' ) !== false ) {
-			  $parts      = explode( '\\', $class_name );
-			  $class_name = end( $parts );
+			$parts      = explode( '\\', $class_name );
+			$class_name = end( $parts );
 		}
 		if ( false !== strpos( $class_name, ANONY_PREFIX ) ) {
 			$class_name = strtolower( preg_replace( '/' . ANONY_PREFIX . '/', '', $class_name ) );
 
 			$class_name = str_replace( '_', '-', $class_name );
-
-			foreach ( unserialize( ANONY_THEME_AUTOLOADS ) as $path ) {
+			foreach ( json_decode( ANONY_THEME_AUTOLOADS ) as $path ) {
 
 				$class_file = wp_normalize_path( $path ) . $class_name . '.php';
+				if ( file_exists( $class_file ) ) {
+					include_once $class_file;
+					return;
+				}
+
+				$class_file = wp_normalize_path( $path ) . 'class-anony-' . $class_name . '.php';
+				if ( file_exists( $class_file ) ) {
+					include_once $class_file;
+					return;
+				}
+
+				$class_file = wp_normalize_path( $path ) . $class_name . '/' . $class_name . '.php';
 
 				if ( file_exists( $class_file ) ) {
 					include_once $class_file;
-				} else {
-					$class_file = wp_normalize_path( $path ) . $class_name . '/' . $class_name . '.php';
-					if ( file_exists( $class_file ) ) {
-						include_once $class_file;
-					}
+					return;
 				}
 			}
 		}
