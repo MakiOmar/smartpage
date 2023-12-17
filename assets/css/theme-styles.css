@@ -1105,26 +1105,6 @@ body {
   background-color: #222222;
 }
 
-.widgeted_title {
-  position: relative;
-  margin: 0;
-  background-color: #fc2a2a;
-  color: #ffffff;
-  padding: 5px;
-  line-height: 30px;
-  margin-bottom: 5px;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.widgeted_title a {
-  color: #ffffff;
-}
-
-.widgeted a {
-  color: #444;
-}
-
 .anony-single-sidebar {
   height: 0;
   opacity: 0;
@@ -2598,6 +2578,25 @@ header.anony-absolute-header {
   border-bottom: none;
 }
 
+.widgeted_title {
+  position: relative;
+  margin: 0;
+  background-color: #fc2a2a;
+  color: #ffffff;
+  padding: 5px;
+  line-height: 30px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.widgeted_title a {
+  color: #ffffff;
+}
+
+.widgeted a {
+  color: #444;
+}
+
 /*-----Categories dropdown widget-----*/
 #anony-cat-list li, #anony-cat-list li ul li {
   position: relative;
@@ -2711,6 +2710,14 @@ footer p {
   z-index: 20;
 }
 
+footer ul {
+  list-style-type: none;
+}
+
+.footer-widget a, p, h1, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
 #anony-page-scroll-bg {
   position: absolute;
   width: 50px;
@@ -2723,6 +2730,15 @@ footer p {
   -moz-animation: Rotate 1s infinite linear;
   -ms-animation: Rotate 1s infinite linear;
   z-index: -100;
+}
+
+@keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 #anony-page-scroll {
   display: flex;

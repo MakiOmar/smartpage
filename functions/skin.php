@@ -16,6 +16,9 @@ function anony_theme_skin(){
 .anony-post-image-wrapper h4, .f-post-title, .reply, .dun_text:after, .single-download, .anony-toggle-sidebar, .anony-popular-tabs span:not(.anony-active-tab):nth-child(2), li .current::after, .elementor-wc-products ul.products li.product span.onsale, .woocommerce span.onsale, .woocommerce ul.products li.product .onsale {
 		  background-color: <?php echo esc_html( $primary_color ) ;?>!important;
 		}
+		footer .widgeted_title{
+			background-color: transparent!important;
+		}
 		#anony-main_nav_con{
 			background-color: <?php echo esc_html( $menu_color ) ;?>!important;
 		}

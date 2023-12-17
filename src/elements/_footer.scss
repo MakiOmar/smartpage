@@ -20,6 +20,12 @@ footer p {
   height: 50px;
   z-index: 20;
 }
+footer ul{
+  list-style-type: none;
+}
+.footer-widget a, p, h1,h3,h4,h5,h6{
+  color: #ffffff;
+}
 
 #anony-page-scroll-bg {
   position: absolute;
@@ -34,7 +40,22 @@ footer p {
   -ms-animation: Rotate 1s infinite linear;
   z-index: -100;
 }
-
+@keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
 @-webkit-keyframes Rotate {
   from {
     -webkit-transform: rotate(0deg);
