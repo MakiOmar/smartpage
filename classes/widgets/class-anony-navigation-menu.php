@@ -13,7 +13,6 @@
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
-
 	/**
 	 * Navigation menu widget class
 	 *
@@ -23,11 +22,9 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 	 * @link       https://makiomar.com
 	 */
 	class ANONY_Navigation_Menu extends WP_Widget {
-
+		
 		/**
 		 * Class constructor
-		 *
-		 * @since 1.0.0
 		 *
 		 * @return void
 		 */
@@ -47,16 +44,8 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 		 * @return void
 		 */
 		public function form( $instance ) {
-			$title       = ( isset( $instance['title'] ) && ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Menu', 'smartpage' );
-			$field_title = $this->get_field_id( 'title' );
-			$field_name  = $this->get_field_name( 'title' );
-			?>
-			<p>
-				<label for="<?php echo esc_attr( $field_title ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
-				<input type="text" class="widefat" id="<?php echo esc_attr( $field_title ); ?>" name="<?php echo esc_attr( $field_name ); ?>"  value="<?php echo esc_attr( $title ); ?>">
-			</p>
 
-			<?php
+			
 		}
 
 		/**
@@ -76,23 +65,36 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 
 			$output .= $parms['before_title'] . $title . $parms['after_title'];
 
-			$output .= '<ul id="anony-cat-list">';
-
-			$output .= wp_list_categories(
+			$output .= wp_nav_menu(
 				array(
-					'hide_empty' => 0,
-					'title_li'   => '',
-					'order'      => 'DESC',
-					'echo'       => false,
-					'walker'     => new ANONY_Cats_Walk(),
-				)
-			);
-
-			$output .= '</ul>';
+						'depth'          => 0,
+						'menu'           => 75,
+						'container'      => 'div',
+						'echo'           => false,
+					)
+				);
 			$output .= $parms['after_widget'];
 			//phpcs:disable
 			echo $output;
 			//phpcs:enable.
+		}
+
+		/**
+		 * Sanitize widget form values as they are saved.
+		 *
+		 * @see WP_Widget::update()
+		 *
+		 * @param array $new_instance Values just sent to be saved.
+		 * @param array $old_instance Previously saved values from database.
+		 *
+		 * @return array Updated safe values to be saved.
+		 */
+		public function update( $new_instance, $old_instance ) {
+			/*$instance              = array();
+			$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+			$instance['post_type'] = ( ! empty( $new_instance['post_type'] ) ) ? sanitize_text_field( $new_instance['post_type'] ) : 'place';
+*/
+			return $new_instance;
 		}
 	}
 }
