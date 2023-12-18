@@ -59,7 +59,7 @@ add_action(
 			// Layout --------------------------------------------.
 			'layout'       => array(
 				'title'    => esc_html__( 'Layout', 'smartpage' ),
-				'sections' => array( 'sidebars', 'blog' ),
+				'sections' => array( 'header', 'sidebars', 'blog' ),
 			),
 
 			// Colors --------------------------------------------.
@@ -314,6 +314,25 @@ add_action(
 					'validate' => 'no_html',
 					'default'  => '#e2e2e2',
 				),
+			),
+		);
+
+		$sections['header'] = array(
+			'title'  => esc_html__( 'Header', 'smartpage' ),
+			'icon'   => 'y',
+			'fields' => array(
+				array(
+					'id'       => 'header_style',
+					'title'    => esc_html__( 'Header style', 'smartpage' ),
+					'type'     => 'select',
+					'validate' => 'no_html',
+					'options'  => array(
+						'default' => esc_html__( 'Default', 'smartpage' ),
+						'one'     => esc_html__( 'Style one', 'smartpage' ),
+					),
+					'default'  => 'default',
+				),
+
 			),
 		);
 
