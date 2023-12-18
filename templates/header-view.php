@@ -30,7 +30,7 @@ require 'document-head.php';
 
 		<div class="anony-grid-col-">
 
-			<header class="white-bg <?php echo 'header_style_' . esc_attr( $header_style ); ?>">
+			<header class="white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ); ?>">
 
 				<?php require locate_template( 'templates/header-top-view.php', false, false ); ?>
 					
