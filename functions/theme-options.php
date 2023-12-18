@@ -333,6 +333,18 @@ add_action(
 					'default'  => 'default',
 				),
 
+				array(
+					'id'       => 'mobile_header_behavior',
+					'title'    => esc_html__( 'Mobile header position', 'smartpage' ),
+					'type'     => 'select',
+					'validate' => 'no_html',
+					'options'  => array(
+						'default' => esc_html__( 'Default', 'smartpage' ),
+						'sticky'  => esc_html__( 'sticky', 'smartpage' ),
+					),
+					'default'  => 'default',
+				),
+
 			),
 		);
 

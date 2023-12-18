@@ -253,6 +253,19 @@ add_action(
 			.anony-grid-row#anony-mobile-footer-menu{
 				height: <?php echo esc_html( $anony_options->mobile_footer_sticky_menu_height ); ?>px;
 			}
+			<?php
+			if ( 'sticky' === $anony_options->mobile_header_behavior ) {
+				?>
+				#anony-mobile-header{
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					z-index: 100;
+				}
+				<?php
+			}
+			?>
 			#anony-hidden-search-form{
 				display: flex;
 				align-items: center;
