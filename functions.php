@@ -125,6 +125,7 @@ require_once wp_normalize_path( ANONY_LIBS_DIR . 'mce/tinymce-editor-btns.php' )
  * Custom shortcodes.
  */
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'shortcodes/statistics/statistics.php' );
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'shortcodes.php' );
 
 /**
  * Visual composer includes
