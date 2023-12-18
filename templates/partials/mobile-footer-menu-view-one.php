@@ -13,9 +13,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
 ?>
-<div id="anony-mobile-footer-menu" class="anony-grid-row footer-sticky-menu-one">
+<div id="anony-mobile-footer-menu" class="anony-grid-row footer-sticky-menu footer-sticky-menu-one">
 	<div class="anony-grid-col anony-grid-10-col-slg-2 anony-inline-flex flex-h-center flex-v-center">
 		<a id="anony-mobile-footer-menu-categories" class="anony-inline-flex" href="#" title="Categories">
 			<svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
