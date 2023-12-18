@@ -74,7 +74,7 @@ function anony_products_loop_shcode( $atts ) {
 		'anony_products_loop'
 	);
 	// Get the comma-separated IDs and convert them into an array.
-	$ids = explode( ',', $atts['ids'] );
+	$ids = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
 	ob_start();
 	echo '<div class="woocommerce anony-flex-grow">';
 	ANONY_Woo_Help::products_loop(
