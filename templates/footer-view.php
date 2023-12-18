@@ -41,7 +41,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	<?php
 	if ( wp_is_mobile() ) {
-		get_template_part( 'templates/partials/mobile-footer-menu', 'view' );
+		switch ( ANONY_FOOTER_STICKY_MENU_STYLE ) {
+			case ( 'one' ):
+				get_template_part( 'templates/partials/mobile-footer-menu-view', 'one' );
+				break;
+			default:
+				get_template_part( 'templates/partials/mobile-footer-menu', 'view' );
+
+		}
 	}
 
 	get_template_part( 'templates/partials/page', 'scroll' );

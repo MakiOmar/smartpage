@@ -126,6 +126,13 @@ $anony_options = ANONY_Options_Model::get_instance();
 define( 'ANONY_HEADER_STYLE', $anony_options->header_style );
 
 /**
+ * Mobile footer sticky menu style
+ *
+ * @const
+ */
+define( 'ANONY_FOOTER_STICKY_MENU_STYLE', $anony_options->mobile_footer_sticky_menu_style );
+
+/**
  * ----------------------------------------------------------------------
  * Theme Autoloading
  * ---------------------------------------------------------------------

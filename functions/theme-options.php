@@ -59,7 +59,7 @@ add_action(
 			// Layout --------------------------------------------.
 			'layout'       => array(
 				'title'    => esc_html__( 'Layout', 'smartpage' ),
-				'sections' => array( 'header', 'sidebars', 'blog' ),
+				'sections' => array( 'header', 'footer', 'sidebars', 'blog' ),
 			),
 
 			// Colors --------------------------------------------.
@@ -370,6 +370,25 @@ add_action(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'A single post can have two sidebars, check this to enable the secondary sidebar', 'smartpage' ),
+				),
+
+			),
+		);
+
+		$sections['footer'] = array(
+			'title'  => esc_html__( 'Footer', 'smartpage' ),
+			'icon'   => 'y',
+			'fields' => array(
+				array(
+					'id'       => 'mobile_footer_sticky_menu_style',
+					'title'    => esc_html__( 'Stick menu in the footer', 'smartpage' ),
+					'type'     => 'select',
+					'validate' => 'no_html',
+					'options'  => array(
+						'default' => esc_html__( 'Default', 'smartpage' ),
+						'one'     => esc_html__( 'Style one', 'smartpage' ),
+					),
+					'default'  => 'default',
 				),
 
 			),
