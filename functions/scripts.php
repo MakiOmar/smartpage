@@ -254,7 +254,7 @@ add_action(
 				height: <?php echo esc_html( $anony_options->mobile_footer_sticky_menu_height ); ?>px;
 			}
 			<?php
-			if ( 'sticky' === $anony_options->mobile_header_behavior ) {
+			if ( 'sticky' === $anony_options->mobile_header_behavior && wp_is_mobile() ) {
 				?>
 				#anony-mobile-header{
 					position: fixed;
