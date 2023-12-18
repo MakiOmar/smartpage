@@ -116,12 +116,14 @@ define( 'ANONY_BLOG_TITLE', esc_html( get_bloginfo() ) );
  */
 define( 'ANONY_BLOG_URL', esc_url( home_url() ) );
 
+$anony_options = ANONY_Options_Model::get_instance();
+
 /**
  * Header style
  *
  * @const
  */
-define( 'ANONY_HEADER_STYLE', 'one' );
+define( 'ANONY_HEADER_STYLE', $anony_options->header_style );
 
 /**
  * ----------------------------------------------------------------------
