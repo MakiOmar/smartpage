@@ -263,6 +263,9 @@ add_action(
 					width: 100%;
 					z-index: 100;
 				}
+				body{
+					padding-top: 100px;
+				}
 				<?php
 			}
 			?>
