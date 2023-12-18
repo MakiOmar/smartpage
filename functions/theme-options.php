@@ -407,6 +407,14 @@ add_action(
 					'default'  => '#fff',
 				),
 
+				array(
+					'id'       => 'mobile_footer_sticky_menu_height',
+					'title'    => esc_html__( 'Sticky menu height (px)', 'smartpage' ),
+					'type'     => 'number',
+					'validate' => 'no_html',
+					'default'  => '100',
+				),
+
 			),
 		);
 		$sections['blog'] = array(

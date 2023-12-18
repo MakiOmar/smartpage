@@ -234,72 +234,77 @@ add_action(
 );
 add_action(
 	'wp_head',
-	function () { ?>
+	function () {
+		$anony_options = ANONY_Options_Model::get_instance();
+		?>
 	
-	<!-- Head styles -->
-	<style id="anony-head-styles" type="text/css">
-		body{
-			background-color: #ecf0f0;
-			overflow-x: hidden;
-			font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
-			font-size: 16px;
-		}
-		[class*="anony-grid-col-"] {
-			display: inline-block;
-			vertical-align: top;
-		}
-		#anony-hidden-search-form{
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: fixed;
-			height: 100%;
-			width: 100%;
-			visibility: hidden;
-			opacity: 0;
-			top: 0;
-			left:0;
-			background-color: rgba(0,0,0,0.9);
-			z-index: 1000000;
-		}
-		#anony-preloader p{
-			font-size: 18px;
-		}
-		#anony-preloader{
-			position: fixed;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			width: 100%;
-			height: 100%;
-			background: #fff;
-			z-index: 9999;
-			background-color: rgb(249, 249, 249)
-		}
-		#anony-loading {
-			position: fixed;
-			display: none;
-			justify-content: center;
-			width: 100%;
-			height: 100vh;
-			top: 0;
-			z-index: 10000;
-			align-items: center;
-			background: rgb(93, 93, 92, 0.5);
-		}
-		.anony-loader-img{
-			margin: 20px;
-			height: 150px;
-		}
-		@keyframes heartbeat {
-			0% { transform: scale(1); }
-			25% { transform: scale(1.05); }
-			50% { transform: scale(1); }
-			75% { transform: scale(1.05); }
-			100% { transform: scale(1); }
-		}
-	</style>
+		<!-- Head styles -->
+		<style id="anony-head-styles" type="text/css">
+			body{
+				background-color: #ecf0f0;
+				overflow-x: hidden;
+				font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
+				font-size: 16px;
+			}
+			[class*="anony-grid-col-"] {
+				display: inline-block;
+				vertical-align: top;
+			}
+			.anony-grid-row#anony-mobile-footer-menu{
+				height: <?php echo esc_html( $anony_options->mobile_footer_sticky_menu_height ); ?>px;
+			}
+			#anony-hidden-search-form{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: fixed;
+				height: 100%;
+				width: 100%;
+				visibility: hidden;
+				opacity: 0;
+				top: 0;
+				left:0;
+				background-color: rgba(0,0,0,0.9);
+				z-index: 1000000;
+			}
+			#anony-preloader p{
+				font-size: 18px;
+			}
+			#anony-preloader{
+				position: fixed;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				z-index: 9999;
+				background-color: rgb(249, 249, 249)
+			}
+			#anony-loading {
+				position: fixed;
+				display: none;
+				justify-content: center;
+				width: 100%;
+				height: 100vh;
+				top: 0;
+				z-index: 10000;
+				align-items: center;
+				background: rgb(93, 93, 92, 0.5);
+			}
+			.anony-loader-img{
+				margin: 20px;
+				height: 150px;
+			}
+			@keyframes heartbeat {
+				0% { transform: scale(1); }
+				25% { transform: scale(1.05); }
+				50% { transform: scale(1); }
+				75% { transform: scale(1.05); }
+				100% { transform: scale(1); }
+			}
+		</style>
 	
 		<?php
 	}

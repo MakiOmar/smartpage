@@ -65,7 +65,7 @@ function anony_theme_skin(){
 		  color: <?php echo esc_html( $secondary_color ) ;?>; /* Change the color */
 		}
 		.footer-sticky-menu {
-			background-color: <?php echo esc_html( $anony_options->mobile_footer_sticky_menu_bg_color ) ;?>;
+			background-color: <?php echo !empty( $anony_options->mobile_footer_sticky_menu_bg_color ) ? esc_html( $anony_options->mobile_footer_sticky_menu_bg_color ) : 'transparent';?>;
 		}
 		.footer-sticky-menu svg path,.footer-sticky-menu svg circle{
 				stroke:<?php echo esc_html( $anony_options->mobile_footer_sticky_menu_icons_color ) ;?>!important;
