@@ -67,7 +67,7 @@ function anony_theme_skin(){
 		.footer-sticky-menu {
 			background-color: <?php echo esc_html( $anony_options->mobile_footer_sticky_menu_bg_color ) ;?>;
 		}
-		.footer-sticky-menu-one svg path,.footer-sticky-menu-one svg circle{
+		.footer-sticky-menu svg path,.footer-sticky-menu svg circle{
 				stroke:<?php echo esc_html( $anony_options->mobile_footer_sticky_menu_icons_color ) ;?>!important;
 		}
 		@media screen and (min-width: 768px) {
