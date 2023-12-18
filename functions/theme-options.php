@@ -381,7 +381,7 @@ add_action(
 			'fields' => array(
 				array(
 					'id'       => 'mobile_footer_sticky_menu_style',
-					'title'    => esc_html__( 'Stick menu in the footer', 'smartpage' ),
+					'title'    => esc_html__( 'Sticky menu style', 'smartpage' ),
 					'type'     => 'select',
 					'validate' => 'no_html',
 					'options'  => array(
@@ -389,6 +389,22 @@ add_action(
 						'one'     => esc_html__( 'Style one', 'smartpage' ),
 					),
 					'default'  => 'default',
+				),
+
+				array(
+					'id'       => 'mobile_footer_sticky_menu_bg_color',
+					'title'    => esc_html__( 'Sticky menu background color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
+				),
+
+				array(
+					'id'       => 'mobile_footer_sticky_menu_icons_color',
+					'title'    => esc_html__( 'Sticky menu icons color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
 				),
 
 			),
