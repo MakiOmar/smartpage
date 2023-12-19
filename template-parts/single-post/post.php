@@ -81,7 +81,7 @@ $anony_options = ANONY_Options_Model::get_instance();
 				 
 				<div class="anony-post-info">
 					 
-				  <div class="anony-single-text white-bg"><?php echo $content; ?></div>
+				  <div class="anony-content white-bg"><?php echo $content; ?></div>
 				   
 				</div>
 
