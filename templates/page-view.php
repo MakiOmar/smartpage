@@ -13,12 +13,10 @@
 defined( 'ABSPATH' ) || die();
 
 $anony_options = ANONY_Options_Model::get_instance();
-?>
-
-<div class="anony-grid-row flex-h-center">
-
-	<div class="anony-content<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col anony-grid-col-sm-9-5' : ''; ?>">
-
+// Check if built with elementor or gutenburg blocks.
+if ( have_posts() && ( is_plugin_active( 'elementor/elementor.php' ) && get_post_meta( get_the_ID(), '_elementor_edit_mode', true ) === 'builder' || has_blocks() ) ) {
+	?>
+	<main class="anony-content">
 		<?php
 		if ( have_posts() ) :
 
@@ -29,12 +27,33 @@ $anony_options = ANONY_Options_Model::get_instance();
 			endwhile;
 		endif;
 		?>
-	</div>
-
+	</main>
 	<?php
-	if ( 'no-sidebar' !== $anony_options->sidebar ) {
-		get_sidebar();
-	}
+} else {
 	?>
+	<main class="anony-grid-row flex-h-center">
 
-</div>
+		<div class="anony-content<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col anony-grid-col-sm-9-5' : ''; ?>">
+
+			<?php
+			if ( have_posts() ) :
+
+				while ( have_posts() ) :
+
+					the_post();
+					the_content();
+				endwhile;
+			endif;
+			?>
+		</div>
+
+		<?php
+		if ( 'no-sidebar' !== $anony_options->sidebar ) {
+			get_sidebar();
+		}
+		?>
+
+	</main>
+	<?php
+}
+
