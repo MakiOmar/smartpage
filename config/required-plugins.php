@@ -9,6 +9,7 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
+
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 require_once get_template_directory() . '/classes/class-tgm-plugin-activation.php';
@@ -43,19 +44,18 @@ function anony__register_required_plugins() {
 		// This presumes that the plugin code is based in the root of the GitHub repository
 		// and not in a subdirectory ('/src') of the repository.
 		array(
-			'name'      => 'AnonyEngine',
-			'slug'      => 'anonyengine',
-			'source'    => 'https://github.com/MakiOmar/AnonyEngine/archive/refs/heads/master.zip',
-			'required'     => true
+			'name'     => 'AnonyEngine',
+			'slug'     => 'anonyengine',
+			'source'   => 'https://github.com/MakiOmar/AnonyEngine/archive/refs/heads/master.zip',
+			'required' => true,
 		),
 
-      array(
-               'name'      => 'AnonyEngine Flash WP',
-               'slug'      => 'flash-wp',
-               'source'    => 'https://github.com/MakiOmar/AnonyEngine-Flash-WP/archive/refs/heads/master.zip',
-               'required'  => false
-        )
-
+		array(
+			'name'     => 'AnonyEngine Flash WP',
+			'slug'     => 'anony-flash-wp',
+			'source'   => 'https://github.com/MakiOmar/AnonyEngine-Flash-WP/archive/refs/heads/master.zip',
+			'required' => false,
+		),
 
 	);
 
@@ -128,7 +128,7 @@ function anony__register_required_plugins() {
 				'Begin installing plugins',
 				'smartpage'
 			),
-			'update_link' 					  => _n_noop(
+			'update_link'                     => _n_noop(
 				'Begin updating plugin',
 				'Begin updating plugins',
 				'smartpage'
@@ -161,7 +161,6 @@ function anony__register_required_plugins() {
 
 
 add_action(
-
 	'init',
 	function () {
 		return;
