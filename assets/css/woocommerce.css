@@ -319,6 +319,10 @@ table.woocommerce-table--order-details tr:hover {
   z-index: 99999;
 }
 
+a.added_to_cart {
+  display: none;
+}
+
 .anony-mini-cart-title {
   text-align: center;
   font-size: 16px;

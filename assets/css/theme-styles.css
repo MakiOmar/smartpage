@@ -2069,6 +2069,11 @@ p {
   transform: rotate(180deg);
 }
 
+.wp-block-group__inner-container, .wp-block-group.wp-block-group-is-layout-flex {
+  position: relative;
+  padding: 20px;
+}
+
 .anony-bg-banner {
   background-repeat: no-repeat;
   background-size: cover;
@@ -2704,6 +2709,7 @@ header.anony-absolute-header {
 /***Footer***/
 #anony-footer {
   background-color: rgba(0, 0, 0, 0.88);
+  margin-top: 20px;
 }
 
 footer p {
