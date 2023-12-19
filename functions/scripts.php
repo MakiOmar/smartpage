@@ -68,18 +68,6 @@ function anony_styles() {
 		),
 		$media
 	);
-
-	// FontAwesome.
-	wp_enqueue_style(
-		'font-awesome',
-		ANONY_THEME_URI . '/assets/css/font-awesome' . $min_suffix . '.css',
-		false,
-		filemtime(
-			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/font-awesome' . $min_suffix . '.css' )
-		),
-		$media
-	);
-
 	if ( is_rtl() ) {
 
 		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-theme-styles' ) : null;
