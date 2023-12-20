@@ -429,7 +429,7 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 		$temp['gravatar']     = get_avatar( get_the_author_meta( 'ID' ), 32 );
 		// Translators: Author's name.
 		$temp['author']          = sprintf( esc_html__( 'By %s', 'smartpage' ), get_the_author() );
-		$temp['read_more']       = esc_html__( 'Read more', 'smartpage' );
+		$temp['read_more']       = __( 'Read more', 'smartpage' );
 		$temp['grid']            = $grid;
 		$temp['views']           = anony_get_post_views( $p_id );
 		$temp['comments_open']   = comments_open();
