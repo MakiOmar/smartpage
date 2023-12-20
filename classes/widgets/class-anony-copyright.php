@@ -32,6 +32,7 @@ if ( ! class_exists( 'ANONY_Copyright' ) ) {
 			$parms = array(
 				'description' => esc_html__( 'Displays a dynamic copyright text', 'smartpage' ),
 				'name'        => esc_html__( 'Anonymous copyright', 'smartpage' ),
+				'name'        => esc_html__( 'Anonymous copyright', 'smartpage' ),
 			);
 			parent::__construct( 'ANONY_Copyright', '', $parms );
 		}
@@ -70,7 +71,7 @@ if ( ! class_exists( 'ANONY_Copyright' ) ) {
 		public function widget( $parms, $instance ) {
 
 			?>
-			<p>©&nbsp;<?php echo wp_kses_post( $instance['copyright_text'] ); ?>&nbsp;<span id="anony-copyright-year"></span></p>
+			<p>©&nbsp;<?php echo ! empty( $instance['copyright_text'] ) ? wp_kses_post( $instance['copyright_text'] ) : esc_attr__( 'All copyrights are reserved', 'smartpage' ); ?>&nbsp;<span id="anony-copyright-year"></span></p>
 			<script>
 			var date = new Date().getFullYear();
 			document.getElementById("anony-copyright-year").innerHTML = date;
