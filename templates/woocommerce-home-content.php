@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: WooCommerce Home content
+ * WooCommerce Home content
  *
  * PHP version 7.3 Or Later
  *
