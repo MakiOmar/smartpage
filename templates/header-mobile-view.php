@@ -29,6 +29,10 @@ require 'document-head.php';
 		?>
 	</div>
 	<div class="anony-grid-col anony-grid-col-4 anony-inline-flex flex-h-center flex-v-center">
-		<?php require 'partials/mini-cart.php'; ?>
+		<?php
+		if ( class_exists( 'WooCommerce' ) ) {
+			require 'partials/mini-cart.php';
+		}
+		?>
 	</div>
 </header>

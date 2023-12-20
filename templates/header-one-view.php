@@ -33,7 +33,9 @@ require 'document-head.php';
 		<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center flex-v-center">
 			<?php
 			require 'partials/fullwidth-search-form-view.php';
-			require 'partials/mini-cart.php';
+			if ( class_exists( 'WooCommerce' ) ) {
+				require 'partials/mini-cart.php';
+			}
 			?>
 		</div>
 	</div>
