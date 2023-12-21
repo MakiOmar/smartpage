@@ -22,10 +22,23 @@ $shcods = array(
 	'anony_shape_divider',
 	'anony_posts_slider',
 	'anony_images_slider',
+	'anony_testimonials',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+/**
+ * Renders Images slider
+ *
+ * @return string
+ */
+function anony_testimonials_shcode() {
+	$output = '';
+	ob_start();
+	require locate_template( 'models/testimonials.php', false, false );
+	$output .= ob_get_clean();
+	return $output;
 }
 
 /**

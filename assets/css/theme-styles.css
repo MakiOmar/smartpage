@@ -2009,6 +2009,10 @@ select {
   clear: both;
 }
 
+.anony-flex {
+  display: flex !important;
+}
+
 .anony-inline-flex {
   display: inline-flex !important;
 }
@@ -2026,6 +2030,10 @@ select {
 
 .flex-h-center {
   justify-content: center;
+}
+
+.anony-flex-column {
+  flex-direction: column;
 }
 
 .flex-v-center {
