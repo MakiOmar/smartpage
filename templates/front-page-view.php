@@ -40,7 +40,7 @@ get_header(); ?>
 
 					<?php get_template_part( 'models/news' ); ?>
 					 
-					<?php get_template_part( 'models/featured' ); ?>
+					<?php echo do_shortcode( '[anony_posts_slider]' ); ?>
 					 
 				</div>   
 			</div>
