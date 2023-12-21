@@ -103,25 +103,25 @@ add_action(
 		// Sectoins.
 		$sections = array();
 
-		$sections['general']     = json_decode( ANONY_GENERAL_OPTIONS, true );
-		$sections['Performance'] = json_decode( ANONY_PERFORMANCE_OPTIONS, true );
-		$sections['slider']      = json_decode( ANONY_SLIDER_OPTIONS, true );
-		$sections['menu-colors'] = json_decode( ANONY_MENU_COLORS_OPTIONS, true );
+		$sections['general']        = json_decode( ANONY_GENERAL_OPTIONS, true );
+		$sections['Performance']    = json_decode( ANONY_PERFORMANCE_OPTIONS, true );
+		$sections['slider']         = json_decode( ANONY_SLIDER_OPTIONS, true );
+		$sections['menu-colors']    = json_decode( ANONY_MENU_COLORS_OPTIONS, true );
 		$sections['general-colors'] = json_decode( ANONY_GENERAL_COLORS_OPTIONS, true );
-		$sections['header'] = json_decode( ANONY_HEADER_OPTIONS, true );
-		$sections['sidebars'] = json_decode( ANONY_SIDEBARS_OPTIONS, true );
-		$sections['footer'] = json_decode( ANONY_FOOTER_OPTIONS, true );
-		$sections['blog'] = json_decode( ANONY_BLOG_OPTIONS, true );
+		$sections['header']         = json_decode( ANONY_HEADER_OPTIONS, true );
+		$sections['sidebars']       = json_decode( ANONY_SIDEBARS_OPTIONS, true );
+		$sections['footer']         = json_decode( ANONY_FOOTER_OPTIONS, true );
+		$sections['blog']           = json_decode( ANONY_BLOG_OPTIONS, true );
 		$sections['advertisements'] = json_decode( ANONY_ADS_OPTIONS, true );
-		$sections['arabic-fonts'] = json_decode( ANONY_AR_FONTS_OPTIONS, true );
-		$sections['english-fonts'] = json_decode( ANONY_EN_FONTS_OPTIONS, true );
-		$sections['socials'] = json_decode( ANONY_SOCIALS_OPTIONS, true );
-		$sections['miscellanous'] = json_decode( ANONY_MISCELLANOUS_OPTIONS, true );
-		$sections['post-types'] = json_decode( ANONY_POST_TYPES_OPTIONS, true );
+		$sections['arabic-fonts']   = json_decode( ANONY_AR_FONTS_OPTIONS, true );
+		$sections['english-fonts']  = json_decode( ANONY_EN_FONTS_OPTIONS, true );
+		$sections['socials']        = json_decode( ANONY_SOCIALS_OPTIONS, true );
+		$sections['miscellanous']   = json_decode( ANONY_MISCELLANOUS_OPTIONS, true );
+		$sections['post-types']     = json_decode( ANONY_POST_TYPES_OPTIONS, true );
 		if ( class_exists( 'woocommerce' ) ) {
 			require_once 'options/woocommerce.php';
 			require_once 'options/single-product.php';
-			$sections['woocommerce'] = json_decode( ANONY_WOOCOMMERCE_OPTIONS, true );
+			$sections['woocommerce']    = json_decode( ANONY_WOOCOMMERCE_OPTIONS, true );
 			$sections['single-product'] = json_decode( ANONY_SINGLE_PRODUCT_OPTIONS, true );
 
 			$options_nav['woocommerce'] = array(
