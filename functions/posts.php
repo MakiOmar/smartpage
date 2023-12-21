@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
 /**
  * Posts Functions
  *
@@ -10,10 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link    http://makiomar.com
  */
 
-/*
--------------------------------------------------------------
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+/**
+ * -------------------------------------------------------------
  * Posts hooks
- *-----------------------------------------------------------*/
+ * -------------------------------------------------------------
+ */
 
 /**
  * Extend custom post types
@@ -26,39 +28,36 @@ add_filter(
 		$custom_posts = array();
 		if ( class_exists( 'ANONY_Options_Model' ) && get_option( ANONY_OPTIONS ) ) {
 			$anony_options = ANONY_Options_Model::get_instance();
-			
-			if( '1' === $anony_options->enable_portfolio ){
-				$custom_posts [ 'portfolio' ] = array(
+
+			if ( '1' === $anony_options->enable_portfolio ) {
+				$custom_posts ['portfolio'] = array(
 					esc_html__( 'portfolio', 'smartpage' ),
 					esc_html__( 'Portfolios', 'smartpage' ),
 				);
 			}
-			
-			
-			if( '1' === $anony_options->enable_downloads ){
-				$custom_posts [ 'anony_download' ] = array(
+
+			if ( '1' === $anony_options->enable_downloads ) {
+				$custom_posts ['anony_download'] = array(
 					esc_html__( 'Download', 'smartpage' ),
 					esc_html__( 'Downloads', 'smartpage' ),
 				);
 			}
-			
-			
-			if( '1' === $anony_options->enable_testimonials ){
-				$custom_posts [ 'testimonial' ] = array(
+
+			if ( '1' === $anony_options->enable_testimonials ) {
+				$custom_posts ['anony_testimonial'] = array(
 					esc_html__( 'Testimonial', 'smartpage' ),
 					esc_html__( 'Testimonials', 'smartpage' ),
 				);
 			}
-			
-			
-			if( '1' === $anony_options->enable_news ){
-				$custom_posts [ 'anony_news' ] = array(
+
+			if ( '1' === $anony_options->enable_news ) {
+				$custom_posts ['anony_news'] = array(
 					esc_html__( 'New', 'smartpage' ),
 					esc_html__( 'News', 'smartpage' ),
 				);
 			}
-			
-			$custom_posts [ 'anony_fonts' ] = array(
+
+			$custom_posts ['anony_fonts'] = array(
 				esc_html__( 'Font', 'smartpage' ),
 				esc_html__( 'Fonts', 'smartpage' ),
 			);
@@ -124,20 +123,20 @@ add_filter(
 
 
 /**
- * change news post type support
+ * Change news post type support
  *
  * @return array
  */
 add_filter(
 	'anony_anony_news_supports',
-	function ( $support ) {
+	function () {
 		return array( 'editor' );
 	}
 );
 
 
 /**
- * change anony_fonts post type args
+ * Change anony_fonts post type args
  *
  * @return array
  */
@@ -148,7 +147,7 @@ add_filter(
 		$args['supports']            = array( 'title' );
 		$args['has_archive']         = false;
 		$args['exclude_from_search'] = true;
-		
+
 		return $args;
 	}
 );
@@ -159,7 +158,7 @@ add_filter(
  */
 add_action( 'after_switch_theme', 'flush_rewrite_rules' );
 
-// Filter reply link
+// Filter reply link.
 add_filter(
 	'comment_reply_link',
 	function ( $link, $args, $comment, $post ) {
@@ -209,17 +208,18 @@ add_filter(
 		}
 
 		return $link;
-
 	},
 	'',
 	4
 );
 
-// Filter commet classes
+// Filter commet classes.
 add_filter(
 	'comment_class',
-	function ( $classes, $class, $comment_id, $comment, $post_id ) {
-		if ( intval( $comment->comment_parent ) != 0 ) {
+	// phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	function ( $classes, $comment_class, $comment_id, $comment, $post_id ) {
+		// phpcs:enable.
+		if ( 0 !== intval( $comment->comment_parent ) ) {
 
 			$classes[] = 'child';
 
@@ -232,14 +232,14 @@ add_filter(
 	5
 );
 
-// Add tinymce to the comment form
+// Add tinymce to the comment form.
 add_filter(
 	'comment_form_defaults',
 	function ( $args ) {
 
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( $anony_options->tinymce_comments != '1' ) {
+		if ( '1' !== $anony_options->tinymce_comments ) {
 			return $args;
 		}
 
@@ -250,11 +250,9 @@ add_filter(
 			'comment',
 			array(
 
-				// 'media_buttons' => true, // show insert/upload button(s) to users with permission
+				'textarea_rows' => '10', // re-size text area.
 
-				'textarea_rows' => '10', // re-size text area
-
-				'dfw'           => true, // replace the default full screen with DFW (WordPress 3.4+)
+				'dfw'           => true, // replace the default full screen with DFW (WordPress 3.4+).
 
 				'tinymce'       => array(
 
@@ -274,11 +272,10 @@ add_filter(
 		$args['comment_field'] = ob_get_clean();
 
 		return $args;
-
 	}
 );
 
-// remove width and height atrr from img
+// remove width and height atrr from img.
 add_filter(
 	'post_thumbnail_html',
 	function ( $html ) {
@@ -287,7 +284,7 @@ add_filter(
 	}
 );
 
-// Chenge excerpt length
+// Chenge excerpt length.
 add_filter(
 	'excerpt_length',
 	function () {
@@ -296,10 +293,10 @@ add_filter(
 	999
 );
 
-// Remove issues with prefetching adding extra views
+// Remove issues with prefetching adding extra views.
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
-// Set post views count
+// Set post views count.
 add_action(
 	'template_redirect',
 	function () {
