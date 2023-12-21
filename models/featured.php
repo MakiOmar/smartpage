@@ -94,17 +94,16 @@ if ( $slider_settings['show_pagination'] ) {
 
 	foreach ( $data as $index => $p ) :
 
-		$slider_nav_temp['permalink']     = get_the_permalink();
-		$slider_nav_temp['id']            = get_the_ID();
-		$slider_nav_temp['title']         = get_the_title();
+		$slider_nav_temp['permalink']     = $p['permalink'];
+		$slider_nav_temp['id']            = $p['id'];
+		$slider_nav_temp['title']         = $p['title'];
 		$slider_nav_temp['class']         = 0 === $index ? 'anony-active-slide ' : '';
-		$slider_nav_temp['thumbnail_img'] = get_the_post_thumbnail( get_the_ID(), 'full' );
+		$slider_nav_temp['thumbnail_img'] = get_the_post_thumbnail( $p['id'], 'full' );
 
 		$slider_nav[] = $slider_nav_temp;
 
 	endforeach;
 }
-
 
 $title_link = isset( $args['cat'] ) ? get_category_link( $args['cat'] ) : '#';
 

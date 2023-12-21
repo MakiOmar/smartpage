@@ -21,14 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 
 	<?php if ( array() !== $data ) : ?>    
 		 
-		<div id="anony-featured" class="anony-full-height" data-slider='<?php echo wp_json_encode( $slider_settings['slider_data'] ); ?>'>
+		<div id="anony-featured" class="anony-featured anony-full-height" data-slider='<?php echo wp_json_encode( $slider_settings['slider_data'] ); ?>'>
 		 
-			<div id="anony-active-slide" class="anony-full-height">
+			<div class="anony-full-height">
 			<?php
 			foreach ( $data as $index => $p ) :
 				?>
 
-				<div id="anony-item-<?php echo esc_attr( $p['id'] ); ?>" class="anony-view anony-full-height">
+				<div id="anony-item-<?php echo esc_attr( $p['id'] ); ?>" class="<?php echo 0 === $index ? 'anony-active-slide ' : ''; ?>anony-view anony-full-height">
 
 				<?php echo get_the_post_thumbnail( $p['id'], 'full' ); ?>
 
