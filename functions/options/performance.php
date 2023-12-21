@@ -26,6 +26,18 @@ define(
 					'desc'     => esc_html__( 'You may need to disable theme\'s responsive css if all your pages are built with elementor, Or you think this introduces more speed', 'smartpage' ),
 				),
 				array(
+					'id'       => 'use_fontawesome4',
+					'title'    => esc_html__( 'Use fontawesome 4', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
+					'id'       => 'inline_fontawesome4',
+					'title'    => esc_html__( 'Inline fontawesome 4', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
 					'id'       => 'disable_main_css',
 					'title'    => esc_html__( 'Disable Main css', 'smartpage' ),
 					'type'     => 'switch',

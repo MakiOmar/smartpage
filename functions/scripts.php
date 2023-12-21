@@ -36,7 +36,7 @@ function anony_styles() {
 		// Responsive styles.
 		wp_enqueue_style(
 			'anony-responsive',
-			ANONY_THEME_URI . '/assets/css/responsive' . $min_suffix . '.css',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/responsive' . $min_suffix . '.css',
 			false,
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/responsive' . $min_suffix . '.css' )
@@ -49,7 +49,7 @@ function anony_styles() {
 		// WooCommerce styles.
 		wp_enqueue_style(
 			'anony-woocommerce',
-			ANONY_THEME_URI . '/assets/css/woocommerce' . $min_suffix . '.css',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/woocommerce' . $min_suffix . '.css',
 			false,
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/woocommerce' . $min_suffix . '.css' )
@@ -61,20 +61,32 @@ function anony_styles() {
 	// Theme styles. (Soon will replace main.css).
 	wp_enqueue_style(
 		'anony-theme-styles',
-		ANONY_THEME_URI . '/assets/css/theme-styles' . $min_suffix . '.css',
+		esc_url( ANONY_THEME_URI ) . '/assets/css/theme-styles' . $min_suffix . '.css',
 		false,
 		filemtime(
 			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/theme-styles' . $min_suffix . '.css' )
 		),
 		$media
 	);
+	if ( '1' === $anony_options->use_fontawesome4 && '1' !== $anony_options->inline_fontawesome4 ) {
+		// FontAwesome.
+		wp_enqueue_style(
+			'font-awesome',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/font-awesome' . $min_suffix . '.css',
+			false,
+			filemtime(
+				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/font-awesome' . $min_suffix . '.css' )
+			),
+			$media
+		);
+	}
 	if ( is_rtl() ) {
 
 		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-theme-styles' ) : null;
 
 		wp_enqueue_style(
 			'anony-rtl',
-			ANONY_THEME_URI . '/assets/css/rtl' . $min_suffix . '.css',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/rtl' . $min_suffix . '.css',
 			$rtl_dep,
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/rtl' . $min_suffix . '.css' )
@@ -92,7 +104,7 @@ function anony_styles() {
 			// Lightbox.
 			wp_enqueue_style(
 				'lightbox',
-				ANONY_THEME_URI . '/assets/css/lightbox' . $min_suffix . '.css',
+				esc_url( ANONY_THEME_URI ) . '/assets/css/lightbox' . $min_suffix . '.css',
 				false,
 				filemtime(
 					wp_normalize_path( ANONY_THEME_DIR . '/assets/css/lightbox' . $min_suffix . '.css' )
@@ -141,7 +153,7 @@ function anony_scripts() {
 
 		wp_register_script(
 			$handle,
-			ANONY_THEME_URI . '/assets/js/' . $script . '.js',
+			esc_url( ANONY_THEME_URI ) . '/assets/js/' . $script . '.js',
 			array( 'jquery' ),
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/js/' . $script . '.js' )
@@ -166,7 +178,7 @@ function anony_scripts() {
 	foreach ( $scripts as $script ) {
 		wp_register_script(
 			$script,
-			ANONY_THEME_URI . '/assets/js/' . $script . '.js',
+			esc_url( ANONY_THEME_URI ) . '/assets/js/' . $script . '.js',
 			array( 'jquery' ),
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/js/' . $script . '.js' )
@@ -228,6 +240,50 @@ add_action(
 	
 		<!-- Head styles -->
 		<style id="anony-head-styles" type="text/css">
+			<?php if ( '1' === $anony_options->use_fontawesome4 && '1' === $anony_options->inline_fontawesome4 ) { ?>
+			@font-face {
+				font-family: 'FontAwesome';
+				src:url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.eot?v=4.7.0');
+				src:url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+			.fa {
+				display: inline-block;
+				font: normal normal normal 14px/1 FontAwesome;
+				font-size: inherit;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			.fa-star:before {
+				content: "\f005";
+			}
+			.fa-star-o:before {
+				content: "\f006";
+			}
+			.fa-eye:before {
+				content: "\f06e";
+			}
+			.fa-eye-slash:before {
+				content: "\f070";
+			}
+			.fa-calendar:before {
+				content: "\f073";
+			}
+			.fa-random:before {
+				content: "\f074";
+			}
+			.fa-comment:before {
+				content: "\f075";
+			}
+			.fa-comments-o:before {
+				content: "\f0e6";
+			}
+			.fa-folder-open:before {
+				content: "\f07c";
+			}
+			<?php } ?>
 			body{
 				background-color: #ecf0f0;
 				overflow-x: hidden;
