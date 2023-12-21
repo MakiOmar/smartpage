@@ -10,10 +10,8 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
-defined( 'ABSPATH' ) || die(); // Exit if accessed direct.ly
 
-$popular_title         = esc_html__( 'Popular', 'smartpage' );
-$recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );
+defined( 'ABSPATH' ) || die(); // Exit if accessed directly.
 ?>
 <div class="anony-secondary-sidebar anony-grid-col-md-4 anony-grid-col">
 	
@@ -24,10 +22,10 @@ $recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );
 			<span 
 			class="anony-active-tab anony-grid-col-6 anony-popular" 
 			rel-id="anony-popular">
-				  <?php echo $popular_title; ?>
+				<?php esc_html_e( 'Popular', 'smartpage' ); ?>
 			</span>
 			<span class="anony-grid-col-6 comments" rel-id="anony-comments">
-				<?php echo $recent_comments_title; ?>
+				<?php esc_html_e( 'Recent comments', 'smartpage' ); ?>
 			</span>
 		  
 		</div>
