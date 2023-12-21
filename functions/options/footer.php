@@ -19,6 +19,18 @@ define(
 			'icon'   => 'y',
 			'fields' => array(
 				array(
+					'id'       => 'enable_footer_top',
+					'title'    => esc_html__( 'Enable footer top', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
+					'id'       => 'enable_footer_bottom',
+					'title'    => esc_html__( 'Enable footer bottom', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
 					'id'       => 'enable_mobile_footer_sticky',
 					'title'    => esc_html__( 'Enable Sticky menu style', 'smartpage' ),
 					'type'     => 'switch',
