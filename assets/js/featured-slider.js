@@ -89,7 +89,7 @@ jQuery(document).ready(function($){
 			
 		 }
 	});
-	
+
 	$('.anony-view, .anony-slide-title, .anony-featured-button, .anony-slide-item').on({
 		mouseover : function(){
 			$(this).addClass('anony-pause-slider');

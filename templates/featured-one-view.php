@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			foreach ( $data as $index => $p ) :
 				?>
 
-				<div id="anony-item-<?php echo esc_attr( $p['id'] ); ?>" class="<?php echo 0 === $index ? 'anony-active-slide ' : ''; ?>anony-view anony-full-height">
+				<div id="anony-item-<?php echo esc_attr( $p['id'] ); ?>" class="anony-view anony-full-height">
 
 				<?php echo get_the_post_thumbnail( $p['id'], 'full' ); ?>
 
@@ -55,25 +55,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 			 
 		<?php if ( $slider_settings['show_pagination'] ) : ?>
-				<div id="anony-slides-list">
+			<div id="anony-slides-list">
 
 			<?php
 			foreach ( $slider_nav as $item ) :
 				?>
-						 
 				<?php if ( 'thumbnails' === $slider_settings['pagination_type'] ) : ?>
 
-							<a href="<?php echo esc_url( $item['permalink'] ); ?>" data-id="anony-item-<?php echo esc_attr( $item['id'] ); ?>" class="anony-slide-item">
+							<a href="<?php echo esc_url( $item['permalink'] ); ?>" data-id="anony-item-<?php echo esc_attr( $item['id'] ); ?>" class="<?php echo esc_attr( $item['class'] ); ?>anony-slide-item">
 
 								<img class="anony-slide-thumb" src="<?php echo esc_url( get_the_post_thumbnail_url( $item['id'], 'thumbnail' ) ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>"/>
 
 							</a>
 						<?php else : ?>
-							<div data-id="anony-item-<?php echo esc_attr( $item['id'] ); ?>" class="anony-slide-item anony-pagination-dot"></div>
+							<div data-id="anony-item-<?php echo esc_attr( $item['id'] ); ?>" class="<?php echo esc_attr( $item['class'] ); ?>anony-slide-item anony-pagination-dot"></div>
 						<?php endif ?>
 			<?php endforeach ?>
 
-				</div>
+			</div>
 		<?php endif ?>
 		</div>
 	 
