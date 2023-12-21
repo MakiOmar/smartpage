@@ -2065,6 +2065,10 @@ p {
   height: 100% !important;
 }
 
+.anony-full-width {
+  width: 100% !important;
+}
+
 .anony-rotate-180 {
   transform: rotate(180deg);
 }
@@ -2452,6 +2456,15 @@ header.anony-absolute-header {
   height: 355px;
 }
 
+.anony-images-slider .anony-view img {
+  width: auto;
+  height: auto;
+}
+
+.anony-images-slider #anony-slides-list {
+  bottom: -25px;
+}
+
 .anony-slide-title a {
   height: 100px;
   display: flex;
@@ -2524,7 +2537,7 @@ header.anony-absolute-header {
   height: 100%;
 }
 
-.anony-featured {
+.anony-slider {
   position: relative;
 }
 
@@ -2585,6 +2598,7 @@ header.anony-absolute-header {
   border-top-width: 5px;
   border-top-style: solid;
   border-top-color: #fc2a2a;
+  width: 100%;
 }
 
 /* End slider css*/

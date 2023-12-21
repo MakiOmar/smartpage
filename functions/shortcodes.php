@@ -21,12 +21,76 @@ $shcods = array(
 	'anony_column',
 	'anony_shape_divider',
 	'anony_posts_slider',
+	'anony_images_slider',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
 }
 
+/**
+ * Renders Images slider
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_images_slider_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'ids' => '',
+		),
+		$atts,
+		'anony_images_slider'
+	);
+
+	$slider_settings = array(
+
+		'style'           => 'one',
+		'show_read_more'  => false,
+		'show_pagination' => true,
+		'pagination_type' => 'dots', // Accepts (thumbnails or dots).
+		'slider_data'     => array(
+			'transition' => 5000,
+			'animation'  => 1500,
+		),
+	);
+
+	// Get the comma-separated IDs and convert them into an array.
+	$ids  = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	$data = array();
+	if ( ! empty( $ids ) ) {
+		foreach ( $ids as $key => $id ) {
+			$temp['id']        = absint( $id );
+			$temp['permalink'] = wp_get_original_image_url( absint( $id ) );
+			$data[]            = $temp;
+		}
+	}
+
+	if ( empty( $data ) ) {
+		return '';
+	}
+
+	if ( $slider_settings['show_pagination'] ) {
+
+		$slider_nav = array();
+
+		foreach ( $data as $index => $p ) :
+
+			$slider_nav_temp['permalink']     = $p['permalink'];
+			$slider_nav_temp['id']            = $p['id'];
+			$slider_nav_temp['class']         = 0 === $index ? 'anony-active-slide ' : '';
+			$slider_nav_temp['thumbnail_img'] = get_the_post_thumbnail( $p['id'], 'full' );
+			$slider_nav[]                     = $slider_nav_temp;
+
+		endforeach;
+	}
+	$output = '';
+	ob_start();
+	require locate_template( 'templates/images-slider.php', false, false );
+	$output .= ob_get_clean();
+	wp_enqueue_script( 'anony-featured-slider' );
+	return $output;
+}
 /**
  * Renders posts slider
  *
@@ -106,8 +170,6 @@ function anony_posts_slider_shcode( $atts ) {
 
 		wp_reset_postdata();
 	}
-
-	$count = count( $data );
 
 	if ( $slider_settings['show_pagination'] ) {
 

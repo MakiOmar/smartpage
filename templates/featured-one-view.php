@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 
 	<?php if ( array() !== $data ) : ?>    
 		 
-		<div id="anony-featured" class="anony-posts-slider anony-fade-slider anony-full-height" data-slider='<?php echo wp_json_encode( $slider_settings['slider_data'] ); ?>'>
+		<div id="anony-featured" class="anony-slider anony-posts-slider anony-fade-slider anony-full-height" data-slider='<?php echo wp_json_encode( $slider_settings['slider_data'] ); ?>'>
 		 
 			<div class="anony-full-height">
 			<?php
