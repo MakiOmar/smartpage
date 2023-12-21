@@ -19,6 +19,12 @@ define(
 			'icon'   => 'y',
 			'fields' => array(
 				array(
+					'id'       => 'enable_mobile_footer_sticky',
+					'title'    => esc_html__( 'Enable Sticky menu style', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
 					'id'       => 'mobile_footer_sticky_menu_style',
 					'title'    => esc_html__( 'Sticky menu style', 'smartpage' ),
 					'type'     => 'select',

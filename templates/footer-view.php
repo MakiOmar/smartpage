@@ -40,7 +40,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="anony-grid-col anony-grid-col-sm-4"><?php anony_dynamic_sidebar( 'bottom-footer-widget-3' ); ?></div>
 	</div>
 	<?php
-	if ( wp_is_mobile() ) {
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( wp_is_mobile() && '1' === $anony_options->enable_mobile_footer_sticky ) {
 		switch ( ANONY_FOOTER_STICKY_MENU_STYLE ) {
 			case ( 'one' ):
 				get_template_part( 'templates/partials/mobile-footer-menu-view', 'one' );
