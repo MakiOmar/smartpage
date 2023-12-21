@@ -38,13 +38,6 @@ define(
 					'validate' => 'no_html',
 				),
 				array(
-					'id'       => 'disable_main_css',
-					'title'    => esc_html__( 'Disable Main css', 'smartpage' ),
-					'type'     => 'switch',
-					'validate' => 'no_html',
-					'desc'     => esc_html__( 'You may need to disable theme\'s main css if you think this introduces more speed and will not affect design', 'smartpage' ),
-				),
-				array(
 					'id'       => 'load_minified_styles',
 					'title'    => esc_html__( 'Load minified styles', 'smartpage' ),
 					'type'     => 'switch',
