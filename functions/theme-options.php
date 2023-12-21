@@ -45,10 +45,6 @@ add_action(
 add_action(
 	'init',
 	function () {
-		if ( get_option( ANONY_OPTIONS ) ) {
-			$anony_options = ANONY_Options_Model::get_instance();
-		}
-
 		// Navigation elements.
 		$options_nav = array(
 			// General --------------------------------------------.
