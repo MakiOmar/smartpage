@@ -32,6 +32,26 @@ add_filter(
 							'title'    => esc_html__( 'Download file', 'smartpage' ),
 							'type'     => 'file_upload',
 							'validate' => 'no_html',
+							'default'  => 5,
+						),
+					),
+		);
+
+		$metaboxes[] = array(
+			'id'            => 'anony_testimonial_data', // Meta box ID.
+			'title'         => esc_html__( 'Testimonial data', 'smartpage' ),
+			'context'       => 'normal',
+			'priority'      => 'high', // high|low.
+			'hook_priority' => '10', // Default 10.
+			'post_type'     => array( 'anony_testimonial' ),
+			'tapped'        => true,
+			'fields'        =>
+					array(
+						array(
+							'id'       => 'anony_testimonial_rating',
+							'title'    => esc_html__( 'rating', 'smartpage' ),
+							'type'     => 'number',
+							'validate' => 'no_html',
 						),
 					),
 		);
