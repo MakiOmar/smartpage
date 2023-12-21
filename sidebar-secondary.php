@@ -19,7 +19,7 @@ $recent_comments_title = esc_html__( 'Recent comments', 'smartpage' );
 	
 	<div class="white-bg">
 		  
-		<div class="anony-popular-tabs">
+		<div class="anony-popular-tabs anony-grid-row">
 			
 			<span 
 			class="anony-active-tab anony-grid-col-6 anony-popular" 

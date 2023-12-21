@@ -32,7 +32,7 @@ get_header(); ?>
 
 		<div class="anony-grid-row anony-grid-col">
 		<div class="anony-grid-col-sm-9-5">
-			<div class="anony-content-wrapper">
+			<div class="anony-grid-row">
 				 
 				<?php get_sidebar( 'secondary' ); ?>
 			   
