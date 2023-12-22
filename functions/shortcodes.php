@@ -41,6 +41,7 @@ function anony_terms_listing_shcode( $atts ) {
 		array(
 			'taxonomy'          => 'category',
 			'ids'               => '',
+			'number'            => '',
 			'desktop_columns'   => 4,
 			'mobile_columns'    => 2,
 			'image_id_meta_key' => 'thumbnail_id',
@@ -51,6 +52,7 @@ function anony_terms_listing_shcode( $atts ) {
 
 	$args = array(
 		'taxonomy'   => $atts['taxonomy'],
+		'number'     => $atts['number'],
 		'fields'     => 'id=>name',
 		'hide_empty' => false,
 		'parent'     => 0,
