@@ -24,10 +24,52 @@ $shcods = array(
 	'anony_images_slider',
 	'anony_testimonials',
 	'anony_terms_listing',
+	'anony_post_listing',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders terms listings
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_post_listing_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'post_type'       => 'post',
+			'ids'             => '',
+			'number'          => 3,
+			'desktop_columns' => 3,
+			'mobile_columns'  => 1,
+		),
+		$atts,
+		'anony_post_listing'
+	);
+
+	$args = array(
+		'post_type'      => $atts['post_type'],
+		'posts_per_page' => $atts['number'],
+		'post_status'    => 'publish',
+	);
+
+	if ( ! empty( $atts['ids'] ) ) {
+		$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	}
+	$thumb_size      = wp_is_mobile() ? 'category-post-thumb-mobile' : 'category-post-thumb';
+	$desktop_columns = 12 / absint( $atts['desktop_columns'] );
+	$mobile_columns  = 12 / absint( $atts['mobile_columns'] );
+	$output          = '';
+	$query           = new WP_Query( $args );
+	if ( $query->have_posts() ) {
+		ob_start();
+		require locate_template( 'templates/listings/post/post-listing-one.php', false, false );
+		$output .= ob_get_clean();
+	}
+	return $output;
 }
 
 /**
@@ -47,7 +89,7 @@ function anony_terms_listing_shcode( $atts ) {
 			'image_id_meta_key' => 'thumbnail_id',
 		),
 		$atts,
-		'anony_images_slider'
+		'anony_terms_listing'
 	);
 
 	$args = array(

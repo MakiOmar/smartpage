@@ -2097,6 +2097,20 @@ p {
   width: 100%;
 }
 
+.anony-posts-listing h1 {
+  font-size: 18px;
+}
+
+.anony-posts-listing {
+  border: 1px solid #bcbcbc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.anony-posts-listing-content {
+  padding: 10px;
+}
+
 .header_style_one #header-style-one-logo a {
   padding: 0;
 }
