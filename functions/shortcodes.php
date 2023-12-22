@@ -40,6 +40,7 @@ function anony_terms_listing_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'taxonomy'          => 'category',
+			'ids'               => '',
 			'desktop_columns'   => 4,
 			'mobile_columns'    => 2,
 			'image_id_meta_key' => 'thumbnail_id',
@@ -48,17 +49,26 @@ function anony_terms_listing_shcode( $atts ) {
 		'anony_images_slider'
 	);
 
+	$args = array(
+		'taxonomy'   => $atts['taxonomy'],
+		'fields'     => 'id=>name',
+		'hide_empty' => false,
+		'parent'     => 0,
+	);
+
+	if ( ! empty( $atts['ids'] ) ) {
+		$args['include'] = str_replace( ' ', '', $atts['ids'] );
+	}
+
 	$desktop_columns = 12 / absint( $atts['desktop_columns'] );
 	$mobile_columns  = 12 / absint( $atts['mobile_columns'] );
 
 	$output = '';
-	if ( class_exists( 'ANONY_TERM_HELP' ) ) {
-		$terms = ANONY_TERM_HELP::wp_top_level_term_query( $atts['taxonomy'], 'id=>name' );
-		if ( $terms && ! empty( $terms ) ) {
-			ob_start();
-			require locate_template( 'templates/listings/term/term-listing-one.php', false, false );
-			$output .= ob_get_clean();
-		}
+	$terms  = get_terms( $args );
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+		ob_start();
+		require locate_template( 'templates/listings/term/term-listing-one.php', false, false );
+		$output .= ob_get_clean();
 	}
 	return $output;
 }
