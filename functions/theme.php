@@ -144,10 +144,11 @@ if ( ! function_exists( 'anony_add_theme_support' ) ) {
  * Add image sizes
  */
 function anony_thumbs_sizes() {
-	add_image_size( 'category-post-thumb', 495 ); // 300 pixels wide (and unlimited height)
-	add_image_size( 'popular-post-thumb', 60, 60, true ); // 60*60 pixels and crop
-	add_image_size( 'download-thumb', 195, 250, true ); // 195*250 pixels and crop
-	add_image_size( 'mini-cart', 80, 80, true ); // 195*250 pixels and crop
+	add_image_size( 'category-post-thumb', 495 ); // 300 pixels wide (and unlimited height).
+	add_image_size( 'category-post-thumb-mobile', 350, 200 ); // 350*200 pixels wide* height and crop.
+	add_image_size( 'popular-post-thumb', 60, 60, true ); // 60*60 pixels and crop.
+	add_image_size( 'download-thumb', 195, 250, true ); // 195*250 pixels and crop.
+	add_image_size( 'mini-cart', 80, 80, true ); // 195*250 pixels and crop.
 }
 
 add_action(
