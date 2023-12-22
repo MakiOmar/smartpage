@@ -144,17 +144,12 @@ jQuery(document).ready(function($){
 	if ($(window).width() >= 768) {
 		
 		if(anonyLoca.anonyUsePrettyPhoto == '1'){
-			/**
-			 * apply prettyPhoto.
-			 * http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/documentation
-			 */
-			$("a[rel^='prettyPhoto']").prettyPhoto({social_tools : false});
-		}
-		if ( 'undefined' !== typeof lightbox ) {
-			lightbox.option({
-				'resizeDuration': 200,
-				'wrapAround': true
-			  });
+			if ( 'undefined' !== typeof lightbox ) {
+				lightbox.option({
+					'resizeDuration': 200,
+					'wrapAround': true
+				  });
+			}
 		}
 		
 	}

@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<div id="anony-item-<?php echo esc_attr( $p['id'] ); ?>" class="anony-view anony-full-height">
-		<a href="<?php echo esc_url( $p['permalink_full'] ); ?>" target="_blank" title="Slide">
+		<a href="<?php echo esc_url( $p['permalink_full'] ); ?>" data-lightbox="images-slider" target="_blank" title="Slide">
 			<img src="<?php echo esc_url( $p['permalink'] ); ?>" alt="slide item"/>
 		</a>
 		</div>
