@@ -2474,6 +2474,7 @@ header.anony-absolute-header {
 .anony-images-slider .anony-view img {
   width: auto;
   height: auto;
+  border-radius: 10px;
 }
 
 .anony-images-slider #anony-slides-list {
