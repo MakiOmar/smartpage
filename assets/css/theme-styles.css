@@ -2477,10 +2477,6 @@ header.anony-absolute-header {
   border-radius: 10px;
 }
 
-.anony-images-slider #anony-slides-list {
-  bottom: -25px;
-}
-
 .anony-slide-title a {
   height: 100px;
   display: flex;
@@ -2576,6 +2572,11 @@ header.anony-absolute-header {
   height: 100%;
 }
 
+@media screen and (max-width: 480px) {
+  .anony-images-slider #anony-slides-list {
+    bottom: -25px;
+  }
+}
 /* End slider css*/
 /* CSS Featured */
 .anony-featured-col {
