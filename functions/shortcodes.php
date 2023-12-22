@@ -36,7 +36,7 @@ foreach ( $shcods as $code ) {
 function anony_testimonials_shcode() {
 	$output = '';
 	ob_start();
-	require locate_template( 'models/testimonials.php', false, false );
+	require locate_template( 'templates/testimonials.php', false, false );
 	$output .= ob_get_clean();
 	return $output;
 }
@@ -59,7 +59,6 @@ function anony_images_slider_shcode( $atts ) {
 	$slider_settings = array(
 
 		'style'           => 'one',
-		'show_read_more'  => false,
 		'show_pagination' => true,
 		'pagination_type' => 'dots', // Accepts (thumbnails or dots).
 		'slider_data'     => array(
@@ -68,13 +67,16 @@ function anony_images_slider_shcode( $atts ) {
 		),
 	);
 
+	$image_size = wp_is_mobile() ? 'medium' : 'woocommerce_single';
+
 	// Get the comma-separated IDs and convert them into an array.
 	$ids  = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
 	$data = array();
 	if ( ! empty( $ids ) ) {
 		foreach ( $ids as $key => $id ) {
 			$temp['id']        = absint( $id );
-			$temp['permalink'] = wp_get_original_image_url( absint( $id ) );
+			$temp['permalink_full'] = wp_get_original_image_url( absint( $id ) );
+			$temp['permalink'] = wp_get_attachment_image_url( absint( $id ), $image_size );
 			$data[]            = $temp;
 		}
 	}
@@ -97,6 +99,7 @@ function anony_images_slider_shcode( $atts ) {
 
 		endforeach;
 	}
+
 	$output = '';
 	ob_start();
 	require locate_template( 'templates/images-slider.php', false, false );
