@@ -419,10 +419,10 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 		$p_id                 = get_the_ID();
 		$temp['id']           = $p_id;
 		$temp['permalink']    = esc_url( get_the_permalink() );
-		$temp['title']        = esc_html( get_the_title() );
+		$temp['title']        = get_the_title();
 		$temp['title_attr']   = the_title_attribute( array( 'echo' => false ) );
 		$temp['content']      = apply_filters( 'the_content', get_the_content() );
-		$temp['excerpt']      = wp_trim_words( esc_html( get_the_excerpt() ), 25 );
+		$temp['excerpt']      = wp_trim_words( get_the_excerpt(), 25 );
 		$temp['thumb']        = has_post_thumbnail();
 		$temp['thumb_exists'] = true;
 		$temp['date']         = get_the_date();
