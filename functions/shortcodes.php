@@ -74,10 +74,10 @@ function anony_images_slider_shcode( $atts ) {
 	$data = array();
 	if ( ! empty( $ids ) ) {
 		foreach ( $ids as $key => $id ) {
-			$temp['id']        = absint( $id );
+			$temp['id']             = absint( $id );
 			$temp['permalink_full'] = wp_get_original_image_url( absint( $id ) );
-			$temp['permalink'] = wp_get_attachment_image_url( absint( $id ), $image_size );
-			$data[]            = $temp;
+			$temp['permalink']      = wp_get_attachment_image_url( absint( $id ), $image_size );
+			$data[]                 = $temp;
 		}
 	}
 
