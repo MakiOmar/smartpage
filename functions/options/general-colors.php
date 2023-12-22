@@ -33,6 +33,13 @@ define(
 					'validate' => 'no_html',
 					'default'  => '#e2e2e2',
 				),
+				array(
+					'id'       => 'links_color',
+					'title'    => esc_html__( 'Linkscolor', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#000',
+				),
 			),
 		)
 	)
