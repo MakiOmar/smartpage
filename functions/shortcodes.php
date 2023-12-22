@@ -23,11 +23,46 @@ $shcods = array(
 	'anony_posts_slider',
 	'anony_images_slider',
 	'anony_testimonials',
+	'anony_terms_listing',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
 }
+
+/**
+ * Renders terms listings
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_terms_listing_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'taxonomy'          => 'category',
+			'desktop_columns'   => 4,
+			'mobile_columns'    => 2,
+			'image_id_meta_key' => 'thumbnail_id',
+		),
+		$atts,
+		'anony_images_slider'
+	);
+
+	$desktop_columns = 12 / absint( $atts['desktop_columns'] );
+	$mobile_columns  = 12 / absint( $atts['mobile_columns'] );
+
+	$output = '';
+	if ( class_exists( 'ANONY_TERM_HELP' ) ) {
+		$terms = ANONY_TERM_HELP::wp_top_level_term_query( $atts['taxonomy'], 'id=>name' );
+		if ( $terms && ! empty( $terms ) ) {
+			ob_start();
+			require locate_template( 'templates/listings/term/term-listing-one.php', false, false );
+			$output .= ob_get_clean();
+		}
+	}
+	return $output;
+}
+
 /**
  * Renders Images slider
  *
