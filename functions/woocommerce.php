@@ -295,27 +295,31 @@ function anony_wc_comment_form_fields( $fields ) {
 	}
 	return $fields;
 }
+/**
+ * Show add to cart if not is mobile
+ *
+ * @return void
+ */
+function anony_woocommerce_template_single_add_to_cart() {
+	global $product;
+	if ( ! wp_is_mobile() || ( wp_is_mobile() && ! $product->is_type( 'simple' ) ) ) {
+		do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' );
+	}
+}
 
-// Remove actions.
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-
-
-// Add actions.
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+add_action( 'woocommerce_single_product_summary', 'anony_woocommerce_template_single_add_to_cart', 30 );
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
 add_action( 'init', 'anony_create_product_attributes' );
 add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
 add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
-
 add_action( 'woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
-
 add_filter( 'woocommerce_sale_flash', 'anony_custom_sale_badge', 20, 3 );
-
 add_filter( 'woocommerce_product_description_heading', '__return_false' );
 add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
 add_filter( 'woocommerce_product_reviews_heading', '__return_false' );
-
 add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
-
 add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
