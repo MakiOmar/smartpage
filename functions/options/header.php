@@ -41,6 +41,13 @@ define(
 					),
 					'default'  => 'default',
 				),
+				array(
+					'id'       => 'title_bar',
+					'title'    => esc_html__( 'Title bar', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Enable/disable title bar', 'smartpage' ),
+				),
 
 			),
 		)
