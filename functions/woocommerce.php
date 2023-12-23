@@ -476,29 +476,23 @@ function anony_sales_counter() {
 	global $product;
 	$custom_sales_counter = get_post_meta( $product->get_id(), 'custom-sales-counter', true );
 	// Translators: Count of sales.
-	$counter_text = __( 'Sold %s time', 'smartpage' );
+	$counter_text      = sprintf( __( 'Sold %s time', 'smartpage' ), esc_html( $custom_sales_counter ) );
+	$pointer_direction = is_rtl() ? 'right' : 'left';
 	if ( $custom_sales_counter && ! empty( $custom_sales_counter ) ) {
-		echo sprintf(
-			'<div class="anony-inline-flex flex-v-center"><svg width="30px" height="30px" viewBox="-5 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		echo '<div class="anony-inline-flex flex-v-center"><svg width="30px" height="30px" viewBox="-5 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<g id="Vivid.JS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 					<g id="Vivid-Icons" transform="translate(-829.000000, -644.000000)">
 						<g id="Icons" transform="translate(37.000000, 169.000000)">
 							<g id="flame" transform="translate(780.000000, 468.000000)">
 								<g transform="translate(11.000000, 7.000000)" id="Shape">
-									<path d="M24.555,25.1 C23.0016934,30.9449043 17.3352812,34.7152461 11.3440153,33.8903819 C5.35274935,33.0655178 0.916028269,27.9041991 1,21.857 C0.976535234,20.8605193 1.14107319,19.868542 1.485,18.933 C2.643,11.595 9.785,11.063 5.8,7.10542736e-15 C5.8,7.10542736e-15 12.45,1.727 13.8,12.143 C13.8,12.143 18.719,11.98 15.4,4.857 C20.6710017,8.24748606 24.1823552,13.7862803 25,20 C25.0272045,21.7107711 24.8780839,23.4197933 24.555,25.1 Z" fill="#FF6E6E">
-			
-			</path>
-									<path d="M20,26.5 C19.9377343,30.5021395 16.7437199,33.7501147 12.743185,33.8794141 C8.74265019,34.0087135 5.34556836,30.9737661 5.025,26.984 L5,27 C5,27 4.925,23.728 5,23 C5.684,16.389 7.6,13.437 10,9 C10.067,6.361 8.885,16.273 15,19 C18.0165975,20.2750836 19.9832296,23.2250317 20,26.5 Z" fill="#0C0058">
-			
-			</path>
+									<path d="M24.555,25.1 C23.0016934,30.9449043 17.3352812,34.7152461 11.3440153,33.8903819 C5.35274935,33.0655178 0.916028269,27.9041991 1,21.857 C0.976535234,20.8605193 1.14107319,19.868542 1.485,18.933 C2.643,11.595 9.785,11.063 5.8,7.10542736e-15 C5.8,7.10542736e-15 12.45,1.727 13.8,12.143 C13.8,12.143 18.719,11.98 15.4,4.857 C20.6710017,8.24748606 24.1823552,13.7862803 25,20 C25.0272045,21.7107711 24.8780839,23.4197933 24.555,25.1 Z" fill="#FF6E6E"></path>
+									<path d="M20,26.5 C19.9377343,30.5021395 16.7437199,33.7501147 12.743185,33.8794141 C8.74265019,34.0087135 5.34556836,30.9737661 5.025,26.984 L5,27 C5,27 4.925,23.728 5,23 C5.684,16.389 7.6,13.437 10,9 C10.067,6.361 8.885,16.273 15,19 C18.0165975,20.2750836 19.9832296,23.2250317 20,26.5 Z" fill="#0C0058"></path>
 								</g>
 							</g>
 						</g>
 					</g>
 				</g>
-			</svg>&nbsp;<span class="custom-sales-counter anony-pointing-triangle-left">' . esc_html( $counter_text ) . '</span></div>',
-			esc_html( $custom_sales_counter )
-		);
+			</svg>&nbsp;<span class="custom-sales-counter anony-pointing-triangle-' . esc_attr( $pointer_direction ) . '">' . esc_html( $counter_text ) . '</span></div>';
 	}
 }
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );

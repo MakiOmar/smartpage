@@ -116,15 +116,24 @@
   background-color: #ff6e6e;
   color: #fff;
   font-size: 14px;
-  line-height: 25px;
+  line-height: 24px;
   padding: 0 10px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  margin-left: 10px;
   position: relative;
 }
 
-.custom-sales-counter::before, .custom-sales-counter::after {
+.anony-pointing-triangle-right {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  margin-right: 5px;
+}
+
+.anony-pointing-triangle-left {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  margin-left: 10px;
+}
+
+.anony-pointing-triangle-right::before, .anony-pointing-triangle-left::before {
   content: "";
   position: absolute;
   top: 0;
@@ -138,7 +147,7 @@
 }
 
 .anony-pointing-triangle-right::before {
-  right: -16px; /* Adjust this value to position the triangle */
+  right: -10px; /* Adjust this value to position the triangle */
   border-left: 10px solid #ff6e6e; /* Adjust color as needed */
 }
 
