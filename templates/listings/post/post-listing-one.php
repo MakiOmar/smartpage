@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							
 						</div>
 						<h1><?php echo esc_html( $data['title'] ); ?></h1>
-						<p><?php echo wp_kses_post( $excerpt ); ?></p>
+						<p><?php echo wp_kses_post( $data['excerpt'] ); ?></p>
 
 						<a class="button anony-button" href="<?php echo esc_url( $data['permalink'] ); ?>"><?php echo esc_html( $data['read_more'] ); ?></a>
 					</div>
