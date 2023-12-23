@@ -316,14 +316,18 @@ function anony_woocommerce_template_single_add_to_cart() {
 function anony_add_custom_sale_badge_field() {
 	global $post;
 
-	// Get the current value of the meta field.
-	$custom_sale_badge = get_post_meta( $post->ID, 'custom-sale-badge', true );
+	$custom_sale_badge    = get_post_meta( $post->ID, 'custom-sale-badge', true );
+	$custom_sales_counter = get_post_meta( $post->ID, 'custom-sales-counter', true );
 
 	// Output the field HTML.
 	echo '<div class="options_group">';
 	echo '<p class="form-field">';
-	echo '<label for="custom-sale-badge">' . esc_html__( 'Custom Sale Badge', 'text-domain' ) . '</label>';
+	echo '<label for="custom-sale-badge">' . esc_html__( 'Custom Sale Badge', 'smartpage' ) . '</label>';
 	echo '<input type="text" class="short" name="custom-sale-badge" id="custom-sale-badge" value="' . esc_attr( $custom_sale_badge ) . '"/>';
+	echo '</p>';
+	echo '<p class="form-field">';
+	echo '<label for="custom-sales-counter">' . esc_html__( 'Custom Sales counter', 'smartpage' ) . '</label>';
+	echo '<input type="number" class="short" name="custom-sales-counter" id="custom-sales-counter" value="' . esc_attr( $custom_sales_counter ) . '"/>';
 	echo '</p>';
 	echo '</div>';
 }
@@ -341,7 +345,7 @@ function anony_save_custom_sale_badge_field( $post_id ) {
 	$request = $_POST;
 	//phpcs:enable.
 	// Verify the nonce.
-	if ( ! isset( $_POST['woocommerce_meta_nonce'] ) || ! wp_verify_nonce( $request['woocommerce_meta_nonce'], 'woocommerce_save_data' ) ) {
+	if ( ! isset( $request['woocommerce_meta_nonce'] ) || ! wp_verify_nonce( $request['woocommerce_meta_nonce'], 'woocommerce_save_data' ) ) {
 		return;
 	}
 
@@ -350,10 +354,14 @@ function anony_save_custom_sale_badge_field( $post_id ) {
 		return;
 	}
 
-	// Sanitize and save the meta field value.
-	if ( isset( $_POST['custom-sale-badge'] ) ) {
+	if ( isset( $request['custom-sale-badge'] ) ) {
 		$custom_sale_badge = sanitize_text_field( $request['custom-sale-badge'] );
 		update_post_meta( $post_id, 'custom-sale-badge', $custom_sale_badge );
+	}
+
+	if ( isset( $request['custom-sales-counter'] ) ) {
+		$custom_sales_counter = sanitize_text_field( $request['custom-sales-counter'] );
+		update_post_meta( $post_id, 'custom-sales-counter', $custom_sales_counter );
 	}
 }
 add_action( 'woocommerce_process_product_meta', 'anony_save_custom_sale_badge_field' );
@@ -459,11 +467,45 @@ function anony_custom_sale_badge( $html, $post, $product ) {
 
 	return sprintf( '<span class="onsale %1$s">%2$s</span>', $class, $sale_badge_text );
 }
-
+/**
+ * Print sales counter
+ *
+ * @return void
+ */
+function anony_sales_counter() {
+	global $product;
+	$custom_sales_counter = get_post_meta( $product->get_id(), 'custom-sales-counter', true );
+	// Translators: Count of sales.
+	$counter_text = __( 'Sold %s time', 'smartpage' );
+	if ( $custom_sales_counter && ! empty( $custom_sales_counter ) ) {
+		echo sprintf(
+			'<div class="anony-inline-flex flex-v-center"><svg width="30px" height="30px" viewBox="-5 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<g id="Vivid.JS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					<g id="Vivid-Icons" transform="translate(-829.000000, -644.000000)">
+						<g id="Icons" transform="translate(37.000000, 169.000000)">
+							<g id="flame" transform="translate(780.000000, 468.000000)">
+								<g transform="translate(11.000000, 7.000000)" id="Shape">
+									<path d="M24.555,25.1 C23.0016934,30.9449043 17.3352812,34.7152461 11.3440153,33.8903819 C5.35274935,33.0655178 0.916028269,27.9041991 1,21.857 C0.976535234,20.8605193 1.14107319,19.868542 1.485,18.933 C2.643,11.595 9.785,11.063 5.8,7.10542736e-15 C5.8,7.10542736e-15 12.45,1.727 13.8,12.143 C13.8,12.143 18.719,11.98 15.4,4.857 C20.6710017,8.24748606 24.1823552,13.7862803 25,20 C25.0272045,21.7107711 24.8780839,23.4197933 24.555,25.1 Z" fill="#FF6E6E">
+			
+			</path>
+									<path d="M20,26.5 C19.9377343,30.5021395 16.7437199,33.7501147 12.743185,33.8794141 C8.74265019,34.0087135 5.34556836,30.9737661 5.025,26.984 L5,27 C5,27 4.925,23.728 5,23 C5.684,16.389 7.6,13.437 10,9 C10.067,6.361 8.885,16.273 15,19 C18.0165975,20.2750836 19.9832296,23.2250317 20,26.5 Z" fill="#0C0058">
+			
+			</path>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</svg>&nbsp;<span class="custom-sales-counter anony-pointing-triangle-left">' . esc_html( $counter_text ) . '</span></div>',
+			esc_html( $custom_sales_counter )
+		);
+	}
+}
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 add_action( 'woocommerce_single_product_summary', 'anony_woocommerce_template_single_add_to_cart', 30 );
+add_action( 'woocommerce_single_product_summary', 'anony_sales_counter', 11 );
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
 add_action( 'init', 'anony_create_product_attributes' );
 add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
