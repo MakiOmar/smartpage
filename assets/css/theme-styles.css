@@ -2107,6 +2107,10 @@ p {
   overflow: hidden;
 }
 
+.anony-posts-listing img {
+  width: 100%;
+}
+
 .anony-posts-listing-content {
   padding: 10px;
 }
