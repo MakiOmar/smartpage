@@ -55,3 +55,7 @@ span.required{
 	position: initial;
 	display: block
 }
+
+.woocommerce div.product p.price del, .woocommerce div.product span.price del {
+    color: #cf5656;
+}
