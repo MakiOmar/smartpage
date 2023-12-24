@@ -131,6 +131,11 @@ select{
 .flex-v-center{
 	align-items: center;
 }
+
+.anony-flex-column.flex-v-center{
+	align-items: initial;
+	justify-content: center;
+}
 .anony-grid-row-vertical{
 	flex-direction: column;
 	justify-content: initial;

@@ -1965,6 +1965,11 @@ select {
   align-items: center;
 }
 
+.anony-flex-column.flex-v-center {
+  align-items: initial;
+  justify-content: center;
+}
+
 .anony-grid-row-vertical {
   flex-direction: column;
   justify-content: initial;
@@ -2727,6 +2732,7 @@ footer ul {
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-left: 2px solid #fc2a2a;
+  animation: Rotate 1s infinite linear;
   -webkit-animation: Rotate 1s infinite linear;
   -moz-animation: Rotate 1s infinite linear;
   -ms-animation: Rotate 1s infinite linear;
