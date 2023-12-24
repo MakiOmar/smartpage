@@ -23,11 +23,12 @@ function anony_theme_skin() {
 	$menu_text_color   = $anony_options->main_menu_text_color;
 	$links_color       = $anony_options->links_color;
 	$footer_text_color = $anony_options->footer_text_color;
+	$footer_links_color = $anony_options->footer_links_color;
 	?>
 
 	<style type="text/css">
 		a {
-			color: <?php echo esc_html( $links_color ); ?>!important;
+			color: <?php echo esc_html( $links_color ); ?>;
 		}
 		.anony-skew-bg::after,
 		.anony-page-numbers li,
@@ -61,6 +62,10 @@ function anony_theme_skin() {
 		}
 		#anony-footer *{
 			color: <?php echo esc_html( $footer_text_color ); ?>;
+		}
+		
+		#anony-footer a{
+			color: <?php echo esc_html( $footer_links_color ); ?>;
 		}
 		#anony-main_nav_con{
 			background-color: <?php echo esc_html( $menu_color ); ?>!important;
