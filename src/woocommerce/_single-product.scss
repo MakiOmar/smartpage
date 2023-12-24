@@ -56,7 +56,6 @@
 	margin: 0;
 }
 .woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews{
-	padding: 20px;
 	background-color: #fff;
 	
 }
@@ -103,8 +102,8 @@ section.related.products{
 	margin-top: 30px;
 }
 .woocommerce div.product p.price del bdi, .woocommerce div.product span.price del bdi{
-	color:#c62020;
-	font-size: 22px;
+	color:#c1c1c1;
+	font-size: 16px;
 }
 .product_meta{
 	display: flex;
@@ -128,14 +127,10 @@ section.related.products{
 	vertical-align: middle;
 }
 
-.woocommerce div.product div.images .flex-control-thumbs{
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 10px;
-	margin: auto;
+.woocommerce div.product div.images .flex-control-thumbs {
+	position: relative;
 	text-align: center;
-	z-index: 100;
+	margin: auto;
 }
 
 .woocommerce div.product div.images .flex-control-thumbs li {
@@ -156,6 +151,19 @@ section.related.products{
 .woocommerce div.product .woocommerce-tabs .panel {
 	padding: 0 10px;
 }
+@media screen and ( min-width:768px ){
+	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images,.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
+		width: 48%;
+	}
+	
+	.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
+		padding-left: 5px;
+	}
+
+	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images{
+		padding-right: 5px;
+	}
+}
 
 @media screen and ( max-width:480px ){
 	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
@@ -164,15 +172,6 @@ section.related.products{
 	.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
 		padding: 5px;
 		margin: 0
-	}
-	.woocommerce div.product div.images .flex-control-thumbs {
-		position: relative!important;
-		left: auto;
-		right: auto;
-		bottom: 0px;
-		margin: auto;
-		z-index: auto;
-		margin-top: 15px;
 	}
 	.woocommerce div.product div.images .flex-control-thumbs li {
 			width: calc(25% - 6px);

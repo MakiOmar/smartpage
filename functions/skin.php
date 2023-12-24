@@ -17,16 +17,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 function anony_theme_skin() {
 	$anony_options = ANONY_Options_Model::get_instance();
 
-	$primary_color     = $anony_options->primary_skin_color;
-	$secondary_color   = $anony_options->secondary_skin_color;
-	$menu_color        = $anony_options->main_menu_color;
-	$menu_text_color   = $anony_options->main_menu_text_color;
-	$links_color       = $anony_options->links_color;
-	$footer_text_color = $anony_options->footer_text_color;
+	$primary_color      = $anony_options->primary_skin_color;
+	$secondary_color    = $anony_options->secondary_skin_color;
+	$menu_color         = $anony_options->main_menu_color;
+	$menu_text_color    = $anony_options->main_menu_text_color;
+	$links_color        = $anony_options->links_color;
+	$footer_text_color  = $anony_options->footer_text_color;
 	$footer_links_color = $anony_options->footer_links_color;
 	?>
 
 	<style type="text/css">
+		<?php
+		if ( class_exists( 'WooCommerce' ) ) {
+			?>
+				.elementor-wc-products ul.products li.product span.onsale,
+				.woocommerce span.onsale,
+				.woocommerce ul.products li.product .onsale {
+					background-color: <?php echo esc_html( $primary_color ); ?>!important;
+				}
+				.woocommerce div.product p.price, .woocommerce div.product span.price{
+					color: <?php echo esc_html( $primary_color ); ?>!important;
+				}
+				<?php
+
+		}
+		?>
 		a {
 			color: <?php echo esc_html( $links_color ); ?>;
 		}
@@ -51,10 +66,7 @@ function anony_theme_skin() {
 		.single-download,
 		.anony-toggle-sidebar,
 		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2),
-		li .current::after,
-		.elementor-wc-products ul.products li.product span.onsale,
-		.woocommerce span.onsale,
-		.woocommerce ul.products li.product .onsale {
+		li .current::after{
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
 		}
 		#anony-footer .widgeted_title{
@@ -90,6 +102,7 @@ function anony_theme_skin() {
 		.woocommerce ul.products li.product .price {
 			color: <?php echo esc_html( $primary_color ); ?>!important;
 		}
+		
 		#anony-main-menu-con .anony-sub-menu li a {
 			text-shadow: none;
 		}

@@ -55,26 +55,3 @@ span.required{
 	position: initial;
 	display: block
 }
-
-@media screen and ( min-width:768px ){
-	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images,.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
-		width: 48%;
-	}
-	
-	.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
-		padding-left: 5px;
-	}
-
-	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images{
-		padding-right: 5px;
-	}
-}
-
-@media screen and ( max-width:480px ){
-	
-	.woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews {
-		padding: 20px 10px;	
-	}
-
-
-}

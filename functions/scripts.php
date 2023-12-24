@@ -284,7 +284,7 @@ add_action(
 				content: "\f07c";
 			}
 			<?php } ?>
-			body{
+			body, button{
 				background-color: #ecf0f0;
 				overflow-x: hidden;
 				font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
