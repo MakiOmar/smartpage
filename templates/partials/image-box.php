@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="anony-grid-row anony-inline-flex">
 		<div class="anony-grid-col anony-grid-col-4 anony-inline-flex flex-v-center">
 		<?php if ( $image_url && ! empty( $image_url ) ) { ?>
-			<img src="<?php echo esc_url( $image_url ); ?>"/>
+			<img width="55" height="68" src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $image_box_title ); ?>"/>
 		<?php } ?>
 		</div>
 		<div class="anony-grid-col anony-grid-col-8 anony-inline-flex flex-v-center anony-flex-column">
