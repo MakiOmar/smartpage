@@ -42,7 +42,14 @@ define(
 				),
 				array(
 					'id'       => 'footer_text_color',
-					'title'    => esc_html__( 'Footer color', 'smartpage' ),
+					'title'    => esc_html__( 'Footer text color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
+				),
+				array(
+					'id'       => 'footer_links_color',
+					'title'    => esc_html__( 'Footer links color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
 					'default'  => '#fff',
