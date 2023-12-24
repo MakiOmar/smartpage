@@ -2720,10 +2720,6 @@ footer ul {
   list-style-type: none;
 }
 
-.footer-widget a, .footer-widget p, .footer-widget h1, .footer-widget h3, .footer-widget h4, .footer-widget h5, .footer-widget h6 {
-  color: #ffffff;
-}
-
 #anony-page-scroll-bg {
   position: absolute;
   width: 50px;
