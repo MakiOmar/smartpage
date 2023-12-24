@@ -35,10 +35,17 @@ define(
 				),
 				array(
 					'id'       => 'links_color',
-					'title'    => esc_html__( 'Linkscolor', 'smartpage' ),
+					'title'    => esc_html__( 'Links color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
 					'default'  => '#000',
+				),
+				array(
+					'id'       => 'footer_text_color',
+					'title'    => esc_html__( 'Footer color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
 				),
 			),
 		)
