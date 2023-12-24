@@ -2695,7 +2695,7 @@ header.anony-absolute-header {
 }
 
 #anony-footer p {
-  padding: 20px;
+  padding-top: 10px;
   color: #ffffff;
 }
 

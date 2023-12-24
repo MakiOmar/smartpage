@@ -89,6 +89,7 @@ add_action(
 			'ANONY_Related_Posts_Widget',
 			'ANONY_Posts_Widget',
 			'ANONY_Copyright',
+			'ANONY_Image_Box',
 		);
 
 		foreach ( $reg_widgets as $reg_widget ) {

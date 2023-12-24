@@ -5,7 +5,7 @@
   margin-top: 20px;
 }
 #anony-footer p{
-  padding: 20px;
+  padding-top: 10px;
   color: #ffffff;
 }
 
@@ -38,6 +38,7 @@ footer ul{
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-left: 2px solid #fc2a2a;
+  animation: Rotate 1s infinite linear;
   -webkit-animation: Rotate 1s infinite linear;
   -moz-animation: Rotate 1s infinite linear;
   -ms-animation: Rotate 1s infinite linear;

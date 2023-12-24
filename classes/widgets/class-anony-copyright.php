@@ -32,7 +32,6 @@ if ( ! class_exists( 'ANONY_Copyright' ) ) {
 			$parms = array(
 				'description' => esc_html__( 'Displays a dynamic copyright text', 'smartpage' ),
 				'name'        => esc_html__( 'Anonymous copyright', 'smartpage' ),
-				'name'        => esc_html__( 'Anonymous copyright', 'smartpage' ),
 			);
 			parent::__construct( 'ANONY_Copyright', '', $parms );
 		}
