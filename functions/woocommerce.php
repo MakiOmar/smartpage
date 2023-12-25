@@ -113,6 +113,25 @@ function anony_change_single_product_ratings() {
 }
 
 /**
+ * Replace username used as comment author
+ *
+ * @param string $comment_author Comment author.
+ * @return string
+ */
+function anony_comment_author( $comment_author ){
+	$user = get_user_by( 'login', $comment_author );
+	error_log(print_r($user, true));
+	if ( $user ) {
+		if ( empty( $user->display_name ) ) {
+			return $comment_author;
+		}
+		return $user->display_name;
+	}
+	return $comment_author;
+}
+add_filter( 'comment_author', 'anony_comment_author' );
+
+/**
  * Override single product ratings cb
  */
 function anony_wc_single_product_ratings() {
