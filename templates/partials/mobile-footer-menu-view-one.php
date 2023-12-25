@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			define( 'FOOTER_ADD_TO_CART', true );
 			?>
 			<div class="anony-grid-row">
-				<?php do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' ); ?>
+				<?php require locate_template( 'templates/partials/sticky-footer-add-to-cart.php', false, false ); ?>
 			</div>
 			<?php
 		}
