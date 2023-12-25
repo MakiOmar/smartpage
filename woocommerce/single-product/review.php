@@ -20,6 +20,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+global $product;
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 
@@ -41,6 +42,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * @hooked woocommerce_review_display_meta - 10
 			 */
 			do_action( 'woocommerce_review_meta', $comment );
+			if ( wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) {
+				echo '<span class="anony-has-bought">' . esc_html__( 'Has already bought', 'smartpage' ) . '</span>';
+			}
 			/**
 			 * The woocommerce_review_before_comment_meta hook.
 			 *
