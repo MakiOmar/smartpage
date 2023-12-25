@@ -495,9 +495,132 @@ function anony_sales_counter() {
 			</svg>&nbsp;<span class="custom-sales-counter anony-pointing-triangle-' . esc_attr( $pointer_direction ) . '">' . esc_html( $counter_text ) . '</span></div>';
 	}
 }
+
+/**
+ * Fancy quantity before
+ *
+ * @return void
+ */
+function anony_fancy_quantity_before() {
+	?>
+	<style type="text/css">
+		#anony-mobile-footer-menu form.cart{
+			display: flex;
+		}
+		.anony-quantity {
+			display: flex;
+			align-items: center;
+		}
+
+		.anony-quantity input {
+			border: 1px solid #ccc;
+			padding: 5px;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			font-size: 16px;
+			line-height: 1;
+			border-radius: 50%;
+		}
+
+		.anony-quantity input.anony-plus,
+		.anony-quantity input.anony-minus {
+			cursor: pointer;
+		}
+
+		.anony-quantity input.anony-plus:hover,
+		.anony-quantity input.anony-minus:hover {
+			background-color: #f9f9f9;
+		}
+	</style>
+	<div class="anony-quantity">
+		<input type="button" value="-" class="anony-minus">
+	<?php
+}
+
+/**
+ * Fancy quantity after
+ *
+ * @return void
+ */
+function anony_fancy_quantity_after(){
+	?>
+	<input type="button" value="+" class="anony-plus">
+	</div>
+	<?php
+}
+/**
+ * Fancy quantity script
+ *
+ * @return void
+ */
+function anony_fancy_quantity_script() {
+	?>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		
+		$('.anony-quantity').on('click', '.anony-plus, .anony-minus', function(e) {
+
+		e.preventDefault();
+
+		var quantityInput = $(this).parent().find('input.qty');
+
+		var step = quantityInput.attr('step');
+
+		step = typeof step !== 'undefined' && step !== '' ? parseFloat(step) : 1;
+
+		var min = quantityInput.attr('min');
+
+		min = typeof min !== 'undefined' && min !== '' ? parseFloat(min) : 1;
+
+		var max = quantityInput.attr('max');
+
+		max = typeof max !== 'undefined' && max !== '' ? parseFloat(max) : '';
+
+		var currentVal = parseFloat(quantityInput.val());
+
+		if (!isNaN(currentVal)) {
+
+			if ($(this).hasClass('anony-plus')) {
+
+			if (max && (currentVal + step) > max) {
+
+				quantityInput.val(max);
+
+			} else {
+
+				quantityInput.val(currentVal + step);
+
+			}
+			} else {
+
+			if (min && (currentVal - step) < min) {
+
+
+				quantityInput.val(min);
+			} else if (currentVal > 1) {
+
+				quantityInput.val(currentVal - step);
+
+			}
+			}
+		}
+		// Trigger change event for WooCommerce
+		quantityInput.trigger('change');
+		});
+	});
+	</script>
+	<?php
+}
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+
+add_action( 'woocommerce_before_add_to_cart_quantity', 'anony_fancy_quantity_before' );
+add_action( 'woocommerce_after_add_to_cart_quantity', 'anony_fancy_quantity_after' );
+add_action( 'wp_footer', 'anony_fancy_quantity_script' );
+
 add_action( 'woocommerce_single_product_summary', 'anony_woocommerce_template_single_add_to_cart', 30 );
 add_action( 'woocommerce_single_product_summary', 'anony_sales_counter', 11 );
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
