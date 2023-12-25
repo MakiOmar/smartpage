@@ -38,6 +38,10 @@ function anony_theme_skin() {
 				.woocommerce div.product p.price, .woocommerce div.product span.price{
 					color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
+				.anony-quantity input.anony-plus,
+				.anony-quantity input.anony-minus{
+					background-color: <?php echo esc_html( $primary_color ); ?>!important;
+				}
 				<?php
 
 		}
@@ -72,7 +76,7 @@ function anony_theme_skin() {
 		#anony-footer .widgeted_title{
 			background-color: transparent!important;
 		}
-		#anony-footer *{
+		#anony-footer p, #anony-footer h1, #anony-footer h2,#anony-footer h3,#anony-footer h4,#anony-footer h5,#anony-footer li,#anony-footer div, #anony-footer span{
 			color: <?php echo esc_html( $footer_text_color ); ?>;
 		}
 		
