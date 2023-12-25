@@ -24,6 +24,13 @@ define(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
+
+				array(
+					'id'       => 'disable_woo_comment_avatar',
+					'title'    => esc_html__( 'Disable woo comment avatar', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
 			),
 		)
 	)
