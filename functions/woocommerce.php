@@ -112,15 +112,19 @@ function anony_change_single_product_ratings() {
 	add_action( 'woocommerce_single_product_summary', 'anony_wc_single_product_ratings', 10 );
 }
 
+$anony_options = ANONY_Options_Model::get_instance();
+if ( '1' === $anony_options->disable_woo_comment_avatar ) {
+	remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
+}
+
 /**
  * Replace username used as comment author
  *
  * @param string $comment_author Comment author.
  * @return string
  */
-function anony_comment_author( $comment_author ){
+function anony_comment_author( $comment_author ) {
 	$user = get_user_by( 'login', $comment_author );
-	error_log(print_r($user, true));
 	if ( $user ) {
 		if ( empty( $user->display_name ) ) {
 			return $comment_author;
@@ -562,7 +566,7 @@ function anony_fancy_quantity_before() {
  *
  * @return void
  */
-function anony_fancy_quantity_after(){
+function anony_fancy_quantity_after() {
 	?>
 	<input type="button" value="+" class="anony-plus">
 	</div>
