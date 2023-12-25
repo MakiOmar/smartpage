@@ -103,7 +103,7 @@ function anony_theme_skin() {
 		.fa-download,
 		.anony-breadcrumbs li,
 		.anony-breadcrumbs a,
-		.woocommerce ul.products li.product .price {
+		.woocommerce ul.products li.product .price,.comment-text .woocommerce-review__author {
 			color: <?php echo esc_html( $primary_color ); ?>!important;
 		}
 		
