@@ -10,6 +10,9 @@
 .woocommerce .star-rating span::before, .woocommerce p.stars a::before {
 	color: #ffb62b;
 }
+.woocommerce a.added_to_cart{
+	display: none;
+}
 .woocommerce .woocommerce-product-rating .star-rating {
 	display: flex;
 	align-items: center;

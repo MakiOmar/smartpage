@@ -179,4 +179,8 @@ section.related.products{
 			float: none;
 			margin: 0 3px;
 	}
+	.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs ,section.related.products{
+		padding: 5px;
+		margin: 0 5px;
+	}
 }

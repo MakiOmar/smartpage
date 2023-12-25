@@ -289,6 +289,10 @@ section.related.products {
     float: none;
     margin: 0 3px;
   }
+  .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs, section.related.products {
+    padding: 5px;
+    margin: 0 5px;
+  }
 }
 div.elementor-widget-woocommerce-checkout-page {
   background-color: #fff;
@@ -589,6 +593,7 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
   height: 25px;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
 }
 
 .woocommerce .comment-text .star-rating, .woocommerce .comment-text .description {
@@ -704,6 +709,10 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
 
 .woocommerce .star-rating span::before, .woocommerce p.stars a::before {
   color: #ffb62b;
+}
+
+.woocommerce a.added_to_cart {
+  display: none;
 }
 
 .woocommerce .woocommerce-product-rating .star-rating {
