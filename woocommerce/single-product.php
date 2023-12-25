@@ -30,48 +30,42 @@ $anony_options = ANONY_Options_Model::get_instance();
  */
 do_action( 'woocommerce_before_main_content' );
 ?>
-<div class="anony-grid">
-	<div class="anony-grid-row anony-grid-col">
-		
-		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
+
+<div class="anony-grid-row">
+	<div class="anony-grid-col<?php echo ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
 			
-			<div class="anony-grid-col">
-				
-				<div class="anony-grid-container">
+			<div class="anony-grid-container">
 
-					<?php while ( have_posts() ) : ?>
-						<?php the_post(); ?>
+				<?php while ( have_posts() ) : ?>
+					<?php the_post(); ?>
 
-						<?php wc_get_template_part( 'content', 'single-product' ); ?>
+					<?php wc_get_template_part( 'content', 'single-product' ); ?>
 
-					<?php endwhile; // end of the loop. ?>
+				<?php endwhile; // end of the loop. ?>
 
-					<?php
-						/**
-						 * Hook woocommerce_after_main_content
-						 *
-						 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-						 */
-						do_action( 'woocommerce_after_main_content' );
-					?>
-				</div>
-					
+				<?php
+					/**
+					 * Hook woocommerce_after_main_content
+					 *
+					 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+					 */
+					do_action( 'woocommerce_after_main_content' );
+				?>
 			</div>
-			
-		</div>
-
-		<?php
-		if ( 'no-sidebar' !== $anony_options->sidebar ) {
-			/**
-			 * Hook woocommerce_sidebar.
-			 *
-			 * @hooked woocommerce_get_sidebar - 10
-			 */
-			do_action( 'woocommerce_sidebar' );
-		}
-		?>
 	</div>
+
+	<?php
+	if ( 'no-sidebar' !== $anony_options->sidebar ) {
+		/**
+		 * Hook woocommerce_sidebar.
+		 *
+		 * @hooked woocommerce_get_sidebar - 10
+		 */
+		do_action( 'woocommerce_sidebar' );
+	}
+	?>
 </div>
+
 <?php
 get_footer();
 
