@@ -55,12 +55,14 @@
 .woocommerce .woocommerce-product-rating .star-rating{
 	margin: 0;
 }
-.woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews{
+.woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews, .woocommerce-tabs, .woocommerce  .up-sells, .woocommerce .related.products{
 	background-color: #fff;
+	padding:10px;
+	border-radius: 10px;
 	
 }
 .anony-wc-reviews{
-	margin: 20px 10px;
+	margin: 20px 0;
 }
 /*
 .woocommerce div.product-type-variable div.anony-entry-summary, .woocommerce div.product-type-variable .woocommerce-product-gallery .flex-viewport, .woocommerce div.product-type-variable div.images.woocommerce-product-gallery{
@@ -95,7 +97,6 @@
 .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs ,section.related.products{
 	padding: 20px;
 	background-color: #fff;
-	margin: 0 10px;
 }
 
 section.related.products{
@@ -170,7 +171,7 @@ section.related.products{
 	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
 		padding: 0;
 	}
-	.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
+	.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs,section.related.products {
 		padding: 5px;
 		margin: 0
 	}
@@ -178,9 +179,5 @@ section.related.products{
 			width: calc(25% - 6px);
 			float: none;
 			margin: 0 3px;
-	}
-	.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs ,section.related.products{
-		padding: 5px;
-		margin: 0 5px;
 	}
 }
