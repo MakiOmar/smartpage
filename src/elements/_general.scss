@@ -15,6 +15,7 @@ a{
 ul.list-style-none{
 	list-style-type: none;
 }
+
 i{
 	padding: 3px;
 vertical-align: middle;
@@ -141,7 +142,8 @@ select{
 	justify-content: initial;
 }
 .anony-custom-bullets ul{
-	list-style: none
+	list-style: none;
+	padding: 10px 20px;
 }
 
 .anony-custom-bullets ul li::before {
