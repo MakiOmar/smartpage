@@ -27,12 +27,14 @@ global $product;
 do_action( 'woocommerce_before_single_product' );
 
 if ( post_password_required() ) {
+	// phpcs:disable
 	echo get_the_password_form(); // WPCS: XSS ok.
+	// phpcs:enable.
 	return;
 }
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
-	<div>
+	<div class="anony-grid-row">
 		<?php
 		/**
 		 * Hook: woocommerce_before_single_product_summary.
