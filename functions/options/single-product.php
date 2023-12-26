@@ -31,6 +31,14 @@ define(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
+
+				array(
+					'id'       => 'enable_woo_comments_load_more',
+					'title'    => esc_html__( 'Enable woo comments load more', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Replace pagination with a load more button', 'smartpage' ),
+				),
 			),
 		)
 	)
