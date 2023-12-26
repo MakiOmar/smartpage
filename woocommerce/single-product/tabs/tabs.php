@@ -28,13 +28,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
-if ( ! empty( $product_tabs ) ) : 
-	
+if ( ! empty( $product_tabs ) ) :
+
 	$reviews['reviews'] = $product_tabs['reviews'];
-	
+
 	unset( $product_tabs['reviews'] );
 
-?>
+	?>
 
 	<div class="woocommerce-tabs wc-tabs-wrapper">
 		<ul class="tabs wc-tabs" role="tablist">
@@ -46,7 +46,7 @@ if ( ! empty( $product_tabs ) ) :
 				</li>
 			<?php endforeach; ?>
 		</ul>
-		<?php foreach ( $product_tabs as $key => $product_tab ) :?>
+		<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 			<!-- HTML class anony-custom-bullets for custom ul bullets style -->
 			<div class="woocommerce-Tabs-panel anony-custom-bullets woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
 				<?php
@@ -66,8 +66,7 @@ if ( ! empty( $product_tabs ) ) :
 			<h3>
 				<a><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></a>
 			</h3>
-			<!-- HTML class anony-custom-bullets for custom ul bullets style -->
-			<div class="anony-custom-bullets woocommerce-panel--<?php echo esc_attr( $key ); ?> entry-content">
+			<div class="woocommerce-panel--<?php echo esc_attr( $key ); ?> entry-content">
 				<?php
 				if ( isset( $product_tab['callback'] ) ) {
 
