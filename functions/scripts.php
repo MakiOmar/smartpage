@@ -130,6 +130,7 @@ function anony_scripts() {
 		'custom',
 		'featured-slider',
 		'cats-menu',
+		'single-product',
 	);
 	if ( class_exists( 'ANONY_Options_Model' ) ) {
 		$anony_options = ANONY_Options_Model::get_instance();
@@ -163,6 +164,10 @@ function anony_scripts() {
 	}
 	if ( '1' !== $anony_options->disable_prettyphoto ) {
 		wp_enqueue_script( 'lightbox.min' );
+	}
+
+	if ( is_singular( 'product' ) ) {
+		wp_enqueue_script( 'anony-single-product' );
 	}
 
 	wp_enqueue_script( 'anony-custom' );
