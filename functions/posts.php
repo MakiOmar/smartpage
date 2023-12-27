@@ -57,6 +57,13 @@ add_filter(
 				);
 			}
 
+			if ( '1' === $anony_options->enable_faqs ) {
+				$custom_posts ['anony_faqs'] = array(
+					esc_html__( 'FAQ', 'smartpage' ),
+					esc_html__( 'FAQs', 'smartpage' ),
+				);
+			}
+
 			$custom_posts ['anony_fonts'] = array(
 				esc_html__( 'Font', 'smartpage' ),
 				esc_html__( 'Fonts', 'smartpage' ),
@@ -134,6 +141,17 @@ add_filter(
 	}
 );
 
+/**
+ * Change news post type support
+ *
+ * @return array
+ */
+add_filter(
+	'anony_anony_faqs_supports',
+	function () {
+		return array( 'title', 'editor' );
+	}
+);
 
 /**
  * Change anony_fonts post type args

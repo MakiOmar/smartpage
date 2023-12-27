@@ -45,6 +45,12 @@ define(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
+				array(
+					'id'       => 'enable_faqs',
+					'title'    => esc_html__( 'Enable faqs', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
 			),
 		)
 	)
