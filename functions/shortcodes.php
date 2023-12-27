@@ -23,6 +23,7 @@ $shcods = array(
 	'anony_posts_slider',
 	'anony_images_slider',
 	'anony_testimonials',
+	'anony_faqs',
 	'anony_terms_listing',
 	'anony_post_listing',
 );
@@ -118,7 +119,7 @@ function anony_terms_listing_shcode( $atts ) {
 }
 
 /**
- * Renders Images slider
+ * Renders testimonials
  *
  * @return string
  */
@@ -127,6 +128,57 @@ function anony_testimonials_shcode() {
 	ob_start();
 	require locate_template( 'templates/testimonials.php', false, false );
 	$output .= ob_get_clean();
+	return $output;
+}
+
+/**
+ * Renders FAQs
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_faqs_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'ids'    => '',
+			'number' => 3,
+		),
+		$atts,
+		'anony_faqs'
+	);
+
+	$args = array(
+		'post_type'      => 'anony_faqs',
+		'posts_per_page' => $atts['number'],
+		'post_status'    => 'publish',
+	);
+
+	if ( ! empty( $atts['ids'] ) ) {
+		$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	}
+
+	$query = new WP_Query( $args );
+
+	$output = '';
+	$data   = array();
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+
+			$temp['title']   = get_the_title();
+			$temp['content'] = get_the_content();
+
+			$data[] = $temp;
+		}
+		wp_reset_postdata();
+	}
+
+	if ( ! empty( $data ) ) {
+		ob_start();
+		require locate_template( 'templates/partials/accordion.php', false, false );
+		$output .= ob_get_clean();
+	}
+
 	return $output;
 }
 
