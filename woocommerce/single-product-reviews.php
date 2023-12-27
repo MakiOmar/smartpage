@@ -72,7 +72,7 @@ if ( ! comments_open() ) {
 							<span class="review-rating-value">
 								<?php
 								// Translators: Rating value.
-								printf( esc_html( _nx( '%1$s Star', '%1$s Stars', $i, 'Stars rating title', 'smartpage' ), $i ) );
+								printf( esc_html( _nx( '%1$s Star', '%1$s Stars', $i, 'Stars rating title', 'smartpage' ) ), esc_html( $i ) );
 								?>
 							</span>
 
