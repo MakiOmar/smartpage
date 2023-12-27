@@ -66,6 +66,13 @@ if ( post_password_required() ) {
 		</div>
 	</div>
 	<?php
+	add_action(
+		'woocommerce_after_single_product_summary',
+		function () {
+			echo do_shortcode( '[anony_faqs]' );
+		},
+		9
+	);
 	/**
 	 * Hook: woocommerce_after_single_product_summary.
 	 *
