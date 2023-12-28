@@ -26,6 +26,7 @@ $shcods = array(
 	'anony_faqs',
 	'anony_terms_listing',
 	'anony_post_listing',
+	'anony_popup',
 );
 
 foreach ( $shcods as $code ) {
@@ -129,6 +130,51 @@ function anony_testimonials_shcode() {
 	require locate_template( 'templates/testimonials.php', false, false );
 	$output .= ob_get_clean();
 	return $output;
+}
+
+/**
+ * Renders popup
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_popup_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'id'               => '',
+			'callback'         => '',
+			'width'            => '300px',
+			'height'           => '100%',
+			'border_width'     => '0',
+			'border_style'     => 'solid',
+			'border_color'     => '#000',
+			'border_radius'    => '10px',
+			'background_color' => '#fff',
+			'zindex'           => '100',
+		),
+		$atts,
+		'anony_popup'
+	);
+
+	if ( empty( $atts['id'] ) && current_user_can( 'manage_options' ) ) {
+		return esc_html__( 'Popup id is missing', 'smartpage' );
+	}
+	$content = '';
+	if ( ! empty( $atts['callback'] ) ) {
+		$content = call_user_func( $atts['callback'] );
+	}
+	$id               = $atts['id'];
+	$width            = $atts['width'];
+	$height           = $atts['height'];
+	$border_width     = $atts['border_width'];
+	$border_style     = $atts['border_style'];
+	$border_color     = $atts['border_color'];
+	$border_radius    = $atts['border_radius'];
+	$background_color = $atts['background_color'];
+	$zindex           = $atts['zindex'];
+	ob_start();
+	require locate_template( 'templates/partials/popup.php', false, false );
+	return ob_get_clean();
 }
 
 /**
