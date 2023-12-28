@@ -11,6 +11,15 @@ jQuery(document).ready(function($){
 	"use strict";
 	
 	/**--------------------------------------------------------------------
+	 *                     Popup
+	/*--------------------------------------------------------------------*/
+	$(document.body).on( 'click', '.anony-popup-toggle', function(e){
+		e.preventDefault();
+		var popupTargetId = $( this ).data('target');
+		console.log(popupTargetId);
+		$( '#' + popupTargetId ).toggleClass( 'anony-popup-open' );
+	} );
+	/**--------------------------------------------------------------------
 	 *                     WooCommerce
 	/*--------------------------------------------------------------------*/
 	var anonyAjaxUrl = anonyLoca.ajaxURL;
