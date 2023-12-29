@@ -12,6 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Mobile navigation menu
+ *
+ * @return string
+ */
+function anony_mobile_menu() {
+	return '<div id="anony-mobile-menu-container">' . anony_navigation( 'anony-main-menu' ) . '</div>';
+}
+/**
  * Gets navigation menu.
  *
  * **Description: ** If the location of main-menu has menu, it will use wp_nav_menu else,
