@@ -162,6 +162,10 @@ jQuery(document).ready(function($){
 		}
 		
 	}
+
+	if ( $('#wpadminbar').length > 0 ) {
+		$('header').css('padding-top', '46px');
+	}
 	
 	/**--------------------------------------------------------------------
 	 *                     Blog post
