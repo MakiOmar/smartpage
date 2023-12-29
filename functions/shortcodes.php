@@ -142,13 +142,13 @@ function anony_popup_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'id'               => '',
-			'callback'         => '',
+			'callback'         => 'anony_mobile_menu',
 			'width'            => '300px',
 			'height'           => '100%',
 			'border_width'     => '0',
 			'border_style'     => 'solid',
 			'border_color'     => '#000',
-			'border_radius'    => '10px',
+			'border_radius'    => '20px',
 			'background_color' => '#fff',
 			'zindex'           => '100',
 		),
