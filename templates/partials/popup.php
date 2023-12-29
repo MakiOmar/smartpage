@@ -22,10 +22,12 @@ $style = sprintf(
 		%4$s:-%3$s;
 		background-color:%5$s;
 		border: %6$s;
-		border-radius: %7$s;
+		border-top-%10$s-radius: %7$s;
+		border-bottom-%10$s-radius: %7$s;
 		%8$s;
 		z-index:%9$s;
 		transition:%4$s 1s ease-in-out;
+		overflow:hidden;
 	}
 	#%1$s.anony-popup-open{%4$s:0}',
 	esc_attr( $id ),
@@ -39,6 +41,7 @@ $style = sprintf(
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(106,106,106,0.75);
 	-moz-box-shadow: 0px 0px 5px 0px rgba(106,106,106,0.75);',
 	esc_attr( $zindex ),
+	is_rtl() ? 'left' : 'right',
 );
 ?>
 <style>
