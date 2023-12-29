@@ -1,9 +1,25 @@
 <?php
+/**
+ * Theme helpers
+ *
+ * PHP version 7.3 Or Later
+ *
+ * @package  SmartPage
+ * @author   Makiomar <info@makior.com>
+ * @license  https://makiomar.com SmartPage Licence
+ * @link     https://makiomar.com
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
+	exit; // Exit if accessed directly.
 }
 
 if ( ! function_exists( 'anony_elementor_editor_custom_fonts' ) ) {
+	/**
+	 * Add custom fonts to elementor'd editor head
+	 *
+	 * @return void
+	 */
 	function anony_elementor_editor_custom_fonts() {
 
 		$custom_fonts = ANONY_Post_Help::queryPostTypeSimple( 'anony_fonts' );
@@ -18,7 +34,11 @@ if ( ! function_exists( 'anony_elementor_editor_custom_fonts' ) ) {
 
 		if ( ! empty( $font_faces ) ) : ?>
 			<style id="anony-editor-custom-fonts">
-				<?php echo $font_faces; ?>
+				<?php
+				//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $font_faces;
+				//phpcs:enable.
+				?>
 			</style>
 			<?php
 		endif;
@@ -29,6 +49,11 @@ add_action( 'elementor/editor/wp_head', 'anony_elementor_editor_custom_fonts' );
 
 
 if ( ! function_exists( 'anony_get_font_family' ) ) {
+	/**
+	 * Get font family
+	 *
+	 * @return string
+	 */
 	function anony_get_font_family() {
 		$anony_options = ANONY_Options_Model::get_instance();
 
@@ -121,6 +146,12 @@ if ( ! function_exists( 'anony_render_font_face' ) ) {
 }
 
 if ( ! function_exists( 'anony_elementor_custom_fonts' ) ) {
+	/**
+	 * Add fonts to elementor
+	 *
+	 * @param array $fonts Fonts' array.
+	 * @return array
+	 */
 	function anony_elementor_custom_fonts( $fonts ) {
 
 		$custom_fonts = ANONY_Post_Help::queryPostTypeSimple( 'anony_fonts' );
@@ -136,6 +167,11 @@ if ( ! function_exists( 'anony_elementor_custom_fonts' ) ) {
 add_filter( 'elementor/fonts/additional_fonts', 'anony_elementor_custom_fonts', 999 );
 
 if ( ! function_exists( 'anony_insert_font_face' ) ) {
+	/**
+	 * Add font face to head
+	 *
+	 * @return void
+	 */
 	function anony_insert_font_face() {
 		$anony_options = ANONY_Options_Model::get_instance();
 
@@ -146,7 +182,11 @@ if ( ! function_exists( 'anony_insert_font_face' ) ) {
 			if ( $font_face ) :
 				?>
 				<style id="anony-custom-font">
-					<?php echo $font_face; ?>
+					<?php
+					//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $font_face;
+					//phpcs:enable.
+					?>
 				</style>
 				<?php
 			endif;
@@ -154,9 +194,6 @@ if ( ! function_exists( 'anony_insert_font_face' ) ) {
 	}
 }
 add_action( 'wp_head', 'anony_insert_font_face' );
-
-
-
 
 /**
  * Load default templates.
@@ -176,11 +213,14 @@ function anony_load_defaults( $template ) {
 
 if ( ! function_exists( 'anony_category_posts_section' ) ) {
 	/**
-	 * @param $args  array Loop args
-	 * @param $title string Section title
+	 * Render category's posts' section
+	 *
+	 * @param array  $args Loop args.
+	 * @param string $title Section title.
 	 */
 	function anony_category_posts_section( $args, $title = '' ) {
-		$grid = 'standard';
+		$title = $title;
+		$grid  = 'standard';
 		if ( class_exists( 'ANONY_Options_Model' ) ) {
 
 			$anony_options = ANONY_Options_Model::get_instance();
@@ -244,11 +284,11 @@ if ( ! function_exists( 'anony_get_correct_sidebar' ) ) {
 		if ( class_exists( 'ANONY_Options_Model' ) ) {
 			$anony_options = ANONY_Options_Model::get_instance();
 
-			if ( $anony_options->sidebar == 'left-sidebar' ) {
+			if ( 'left-sidebar' === $anony_options->sidebar ) {
 				get_sidebar();
 
 				return;
-			} elseif ( $anony_options->single_sidebar == '1' ) {
+			} elseif ( '1' === $anony_options->single_sidebar ) {
 				get_sidebar( 'left' );
 				return;
 			}
@@ -324,7 +364,10 @@ if ( ! function_exists( 'anony_get_custom_logo' ) ) {
 
 if ( ! function_exists( 'anony_get_custom_logo_url' ) ) {
 	/**
-	 * get custom logo url.
+	 * Get custom logo url.
+	 *
+	 * @param string $color Logo color.
+	 * @return string
 	 */
 	function anony_get_custom_logo_url( $color = 'main' ) {
 		if ( has_custom_logo() ) {
@@ -343,21 +386,6 @@ if ( ! function_exists( 'anony_get_custom_logo_url' ) ) {
 	}
 }
 
-if ( ! function_exists( 'anony_remove_type_attr' ) ) {
-	/**
-	 * Remove type attribute from styles/scripts.
-	 *
-	 * **Description: ** It is recommended to remove type attribute from styles/scripts that has a link|src attribute.
-	 *
-	 * @param  $tag    string style|script tag
-	 * @param  $handle string style|script handle defined with wp_register_style|wp_register_script
-	 * @return string styles/scripts tags with no type attribute.
-	 */
-	function anony_remove_type_attr( $tag, $handle ) {
-		return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
-	}
-}
-
 if ( ! function_exists( 'anony_comments_number' ) ) {
 	/**
 	 * Generates comments number markup.
@@ -365,13 +393,13 @@ if ( ! function_exists( 'anony_comments_number' ) ) {
 	 * @return string HTML of comments number.
 	 */
 	function anony_comments_number() {
-		$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
+		$num_comments = get_comments_number(); // get_comments_number returns only a numeric value.
 
 		if ( comments_open() ) {
 
 			$comment_text = esc_html__( 'comment', 'smartpage' );
 
-			if ( $num_comments != 1 ) {
+			if ( 1 !== $num_comments ) {
 
 				$comment_text = esc_html__( 'comments', 'smartpage' );
 
@@ -405,9 +433,11 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 	/**
 	 * Collects common post data
 	 *
+	 * @param string $post_type Post type.
+	 * @param mixed  $taxonomy Post type taxonomy.
 	 * @return array
 	 */
-	function anony_common_post_data( $post_type = 'post' ) {
+	function anony_common_post_data( $post_type = 'post', $taxonomy = false ) {
 		$grid = 'standard';
 		if ( class_exists( 'ANONY_Options_Model' ) ) {
 
@@ -436,22 +466,26 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 		$temp['comments_number'] = anony_comments_number();
 		$temp['has_category']    = has_category();
 
-		if ( $post_type === 'post' ) {
+		if ( 'post' === $post_type ) {
 			if ( has_category() ) {
-				$_1st_category              = get_the_category()[0];
-				$temp['categories']         = get_the_category();
-				$temp['_1st_category_id']   = $_1st_category->cat_ID;
-				$temp['_1st_category_name'] = esc_html( $_1st_category->name );
-				$temp['_1st_category_url']  = esc_url( get_category_link( $_1st_category->cat_ID ) );
+				$temp['categories'] = get_the_category();
+				if ( ! empty( $temp['categories'] ) ) {
+					$_1st_category              = $temp['categories'][0];
+					$temp['_1st_category_id']   = $_1st_category->cat_ID;
+					$temp['_1st_category_name'] = esc_html( $_1st_category->name );
+					$temp['_1st_category_url']  = esc_url( get_category_link( $_1st_category->cat_ID ) );
+				}
 			}
-		} else {
+		} elseif ( $taxonomy ) {
 			$temp['terms'] = array();
 			if ( has_term() ) {
-				$_1st_category              = get_the_term()[0];
-				$temp['categories']         = get_the_term();
-				$temp['_1st_category_id']   = $_1st_term->term_id;
-				$temp['_1st_category_name'] = esc_html( $_1st_term->name );
-				$temp['_1st_category_url']  = esc_url( get_term_link( $_1st_term->term_id ) );
+				$temp['categories'] = get_the_terms( get_the_ID(), $taxonomy );
+				if ( $temp['categories'] && ! is_wp_error( $temp['categories'] ) ) {
+					$_1st_category              = $temp['categories'][0];
+					$temp['_1st_category_id']   = $_1st_category->term_id;
+					$temp['_1st_category_name'] = esc_html( $_1st_category->name );
+					$temp['_1st_category_url']  = esc_url( get_term_link( $_1st_category->term_id ) );
+				}
 			}
 		}
 
@@ -461,7 +495,7 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 
 if ( ! function_exists( 'anony_pagination' ) ) {
 	/**
-	 * render posts pagination
+	 * Render posts pagination
 	 *
 	 * @return string Markup for pagination links.
 	 */
@@ -483,24 +517,25 @@ if ( ! function_exists( 'anony_pagination' ) ) {
 		return $pagination;
 	}
 }
-/*
--------------------------------------------------------------
+/**
+ *-------------------------------------------------------------
  * Posts functions
- *-----------------------------------------------------------*/
+ *-----------------------------------------------------------
+ */
 
 if ( ! function_exists( 'anony_get_post_views' ) ) {
 	/**
 	 * Gets post views count.
 	 *
-	 * @param  string $postID The post ID to get views count for
-	 * @return string post views count
+	 * @param  string $post_id The post ID to get views count for.
+	 * @return string post views count.
 	 */
-	function anony_get_post_views( $postID ) {
+	function anony_get_post_views( $post_id ) {
 		$count_key = 'post_views_count';
-		$count     = get_post_meta( $postID, $count_key, true );
-		if ( $count == '' ) {
-			delete_post_meta( $postID, $count_key );
-			add_post_meta( $postID, $count_key, '0' );
+		$count     = get_post_meta( $post_id, $count_key, true );
+		if ( '' === $count ) {
+			delete_post_meta( $post_id, $count_key );
+			add_post_meta( $post_id, $count_key, '0' );
 			return '0';
 		}
 		return $count;
@@ -511,19 +546,19 @@ if ( ! function_exists( 'anony_set_post_views' ) ) {
 	/**
 	 * Sets post views count.
 	 *
-	 * @param  string $postID The post ID to set views count for
+	 * @param  string $post_id The post ID to set views count for.
 	 * @return void
 	 */
-	function anony_set_post_views( $postID ) {
+	function anony_set_post_views( $post_id ) {
 		$count_key = 'post_views_count';
-		$count     = get_post_meta( $postID, $count_key, true );
-		if ( $count == '' ) {
+		$count     = get_post_meta( $post_id, $count_key, true );
+		if ( '' === $count ) {
 			$count = 0;
-			delete_post_meta( $postID, $count_key );
-			add_post_meta( $postID, $count_key, '0' );
+			delete_post_meta( $post_id, $count_key );
+			add_post_meta( $post_id, $count_key, '0' );
 		} else {
 			++$count;
-			update_post_meta( $postID, $count_key, $count );
+			update_post_meta( $post_id, $count_key, $count );
 		}
 	}
 }
@@ -532,13 +567,12 @@ if ( ! function_exists( 'anony_cat_posts_count' ) ) {
 	/**
 	 * Gets number of posts per category.
 	 *
-	 * @param  int $idcat The category ID to get posts count for
+	 * @param  int $idcat The category ID to get posts count for.
 	 * @return int posts count
 	 */
 	function anony_cat_posts_count( $idcat ) {
 		global $wpdb;
-		$query = "SELECT count FROM $wpdb->term_taxonomy WHERE term_id = $idcat";
-		$num   = $wpdb->get_col( $query );
+		$num = ANONY_Wp_Db_Help::get_col( $wpdb->prepare( "SELECT count FROM $wpdb->term_taxonomy WHERE term_id = %s", $idcat ), 'anony_cat_posts_count_' . $idcat );
 		if ( is_array( $num ) && ! empty( $num ) ) {
 			return $num[0];
 		}
@@ -569,13 +603,16 @@ if ( ! function_exists( 'anony_latest_comments' ) ) {
 
 					<div  class="anony-recent-comment-wrapper">
 
-						<h3><?php echo '<i class="fa fa-user"></i> ' . $comment->comment_author . ' ' . __( 'Commented', 'smartpage' ); ?></h3>
+						<h3><?php echo '<i class="fa fa-user"></i> ' . wp_kses_post( $comment->comment_author ) . ' ' . esc_html__( 'Commented', 'smartpage' ); ?></h3>
 
 						<p class='recent-comment'>
-							<?php echo $comment->comment_content; ?>
+							<?php echo wp_kses_post( $comment->comment_content ); ?>
 
-							<?php if ( get_the_permalink( $comment->comment_post_ID ) ) : ?>
-								<a href="<?php echo get_the_permalink( $comment->comment_post_ID ); ?>"><?php esc_html_e( 'View Post', 'smartpage' ); ?></a>
+							<?php
+							$comment_permalink = get_the_permalink( $comment->comment_post_ID );
+							if ( $comment_permalink ) :
+								?>
+								<a href="<?php echo esc_url( $comment_permalink ); ?>"><?php esc_html_e( 'View Post', 'smartpage' ); ?></a>
 							<?php endif ?>
 
 						</p>
