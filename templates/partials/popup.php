@@ -35,7 +35,9 @@ $style = sprintf(
 	$background_color,
 	$border_width . ' ' . $border_style . ' ' . $border_color,
 	$border_radius,
-	'-webkit-box-shadow: 0px 0px 14px 3px rgba(219,219,219,1);-moz-box-shadow: 0px 0px 14px 3px rgba(219,219,219,1);box-shadow: 0px 0px 14px 3px rgba(219,219,219,1)',
+	'box-shadow: 0px 0px 5px 0px rgba(106,106,106,0.75);
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(106,106,106,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(106,106,106,0.75);',
 	esc_attr( $zindex ),
 );
 ?>
