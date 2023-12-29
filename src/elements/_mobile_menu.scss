@@ -12,4 +12,18 @@
     #anony-main_nav_con li a {
         color: #000;
     }
+
+    #anony-mobile-menu-container{
+        margin-top: 30px;
+    }
+    #anony-main-menu-con li{
+        border-bottom: 1px solid #e9e9e9;
+    }
+    #anony-main-menu-con li a{
+        justify-content: flex-start;
+    }
+    #anony-main-menu-con li:hover, #anony-main-menu-con li:hover > a{
+        background-color: #000;
+        color: #fff!important;
+    }
 }

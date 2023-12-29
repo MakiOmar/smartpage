@@ -2099,6 +2099,9 @@ header.anony-absolute-header {
   padding: 5px;
 }
 
+#anony-mobile-menu {
+  margin-top: 30px;
+}
 #anony-mobile-menu #anony-main_nav_con {
   background-color: transparent;
   opacity: 1;
