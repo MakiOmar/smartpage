@@ -143,7 +143,7 @@ function anony_popup_shcode( $atts ) {
 		array(
 			'id'               => '',
 			'callback'         => 'anony_mobile_menu',
-			'width'            => '300px',
+			'width'            => '200px',
 			'height'           => '100%',
 			'border_width'     => '0',
 			'border_style'     => 'solid',
