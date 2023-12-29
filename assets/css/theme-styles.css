@@ -178,6 +178,16 @@ body {
   margin: 10px;
 }
 
+#anony-ads {
+  height: 100px;
+}
+
+#anony-ads img {
+  vertical-align: bottom;
+  margin: auto;
+  display: block;
+}
+
 #anony-logo {
   position: relative;
   margin-top: 15px;
@@ -519,6 +529,10 @@ body {
 
 #anony-masonry .anony-post-wrapper {
   width: 100%;
+}
+
+.anony-post-wrapper {
+  /*max-width: 540px;*/
 }
 
 .anony-nothumb-post {
@@ -1104,6 +1118,14 @@ body {
 }
 
 /***End sidebars***/
+#fixed-body-bg {
+  /*background: url(../../images/pattern-2.png) repeat fixed;
+  overflow: hidden;
+  z-index: 0;
+  min-height: 100%;
+  min-width: 100%;*/
+}
+
 #search-wrapper {
   position: relative;
 }
@@ -2075,6 +2097,19 @@ header.anony-absolute-header {
   font-size: 16px;
   text-align: center;
   padding: 5px;
+}
+
+#anony-mobile-menu #anony-main_nav_con {
+  background-color: transparent;
+  opacity: 1;
+  position: relative;
+  top: 0;
+  transition: all 0.7s ease-in-out;
+  visibility: visible;
+  width: auto;
+}
+#anony-mobile-menu #anony-main_nav_con li a {
+  color: #000;
 }
 
 #anony-main-menu-con li.anony-search-form-toggle a:hover {
