@@ -288,6 +288,9 @@ add_action(
 			.fa-folder-open:before {
 				content: "\f07c";
 			}
+			.fa-search:before{
+				content: "\f002";
+			}
 			<?php } ?>
 			body, button{
 				background-color: #ecf0f0;
