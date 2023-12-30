@@ -16,9 +16,17 @@ jQuery(document).ready(function($){
 	$(document.body).on( 'click', '.anony-popup-toggle', function(e){
 		e.preventDefault();
 		var popupTargetId = $( this ).data('target');
-		console.log(popupTargetId);
 		$( '#' + popupTargetId ).toggleClass( 'anony-popup-open' );
+		$('.anony-close-popup').css('opacity', '1');
 	} );
+	
+	$(document.body).on( 'click', '.anony-close-popup', function(e){
+		e.preventDefault();
+		$( this ).closest('.anony-popup-wrapper').removeClass( 'anony-popup-open' );
+		$('.anony-close-popup').css('opacity', '0');
+	} );
+
+
 	/**--------------------------------------------------------------------
 	 *                     WooCommerce
 	/*--------------------------------------------------------------------*/
