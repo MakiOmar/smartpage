@@ -11,6 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// Initialize menu item custom field.
+ANONY_Menu_Custom_Fields::init();
+
 /**
  * Mobile navigation menu
  *
