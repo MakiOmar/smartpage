@@ -26,6 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<path d="M16 12C16.4142 12 16.75 12.3358 16.75 12.75V16.75C16.75 17.1642 16.4142 17.5 16 17.5C15.5858 17.5 15.25 17.1642 15.25 16.75V12.75C15.25 12.3358 15.5858 12 16 12Z" fill="#1C274C"/>
 		<path d="M12.75 12.75C12.75 12.3358 12.4142 12 12 12C11.5858 12 11.25 12.3358 11.25 12.75V16.75C11.25 17.1642 11.5858 17.5 12 17.5C12.4142 17.5 12.75 17.1642 12.75 16.75V12.75Z" fill="#1C274C"/>
 		</svg>
+		<span class="anony-cart-counter"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
 	</a>
 	<div class="widget_shopping_cart_content"><?php woocommerce_mini_cart(); ?></div>
 </div>

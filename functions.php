@@ -116,6 +116,11 @@ require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-download.php' );
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-rate.php' );
 
 /**
+ * Cart counter AJAX.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-cart-counter.php' );
+
+/**
  * TinyMCE buttons.
  */
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'mce/tinymce-editor-btns.php' );
