@@ -182,3 +182,18 @@ p{
 .anony-popup-wrapper{
 	position: relative;
 }
+.anony-close-popup{
+	position: absolute;
+	top: 20px;
+	left: -50px;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	background-color: #000;
+	color: #fff;
+	font-size: 18px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+}
