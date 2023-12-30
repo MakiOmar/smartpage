@@ -27,7 +27,6 @@ $style = sprintf(
 		%8$s;
 		z-index:%9$s;
 		transition:%4$s 1s ease-in-out;
-		overflow:hidden;
 	}
 	#%1$s.anony-popup-open{%4$s:0}',
 	esc_attr( $id ),
@@ -52,6 +51,7 @@ $style = sprintf(
 	?>
 </style>
 <div class="anony-popup-wrapper"  id="<?php echo esc_attr( $id ); ?>">
+	<a href="#" class="anony-close-popup">x</a>
 	<div class="anony-popup-overlay"></div>
 	<div class="anony-popup-content">
 		<?php
