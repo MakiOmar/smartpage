@@ -134,6 +134,9 @@ add_shortcode( 'anony_custom_orders', 'anony_custom_app_orders' );
  * @return string
  */
 function anony_custom_app_orders() {
+	if ( ! is_user_logged_in() ) {
+		return '<div class="anony-grid-row flex-h-center flex-v-center">' . esc_html__( 'Please, Login first!', 'smartpage' ) . '</div>';
+	}
 	$statuses  = array(
 		'wc-processing' => esc_html__( 'Processing', 'woocommerce' ),
 		'wc-completed'  => esc_html__( 'Completed', 'woocommerce' ),
