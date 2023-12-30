@@ -28,6 +28,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 	endif;
 
+	// Add custom nonce field to comment form.
+	add_action(
+		'comment_form',
+		function () {
+			wp_nonce_field('anony_comment', 'anony_comment_nonce');
+		}
+	);
+
 	comment_form(
 		array(
 			'class_form' => 'anony-grid-col white-bg',
