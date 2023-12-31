@@ -13,6 +13,21 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+/**
+ * Get menus
+ *
+ * @return array
+ */
+function anony_get_menus() {
+	$menus       = get_terms( 'nav_menu' );
+	$menus_array = array();
+
+	foreach ( $menus as $menu ) {
+		$menus_array[ $menu->term_id ] = $menu->name;
+	}
+
+	return $menus_array;
+}
 
 if ( ! function_exists( 'anony_elementor_editor_custom_fonts' ) ) {
 	/**
