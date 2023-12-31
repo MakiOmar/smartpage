@@ -147,7 +147,30 @@
 #anony-main-menu-con .anony-search-form-toggle {
 	position: absolute;
 }
+.anony-menu li a{
+	display: block;
+	height: 100%;
+	width:100%;
+	padding: 5px;
+	position: relative;
+}
+.anony-vertical-menu li a ::after{
+	font-family: FontAwesome;
+	position: absolute;
+	top: 10px;
+}
+.anony-vertical-menu.to-right li a ::after{
+	content: "\f054";
+	right: 15px;
+}
 
+.anony-vertical-menu.to-left li a ::after{
+	content: "\f053";
+	left: 15px;
+}
+.anony-divided-menu li {
+	border-bottom: 1px solid #d1d1d1;
+}
 @media screen and (min-width:768px) {
 	.anony-search-form-toggle {
 		right: 0;
