@@ -27,10 +27,41 @@ $shcods = array(
 	'anony_terms_listing',
 	'anony_post_listing',
 	'anony_popup',
+	'anony_navigation',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders navigation menu by title
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_navigation_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'title' => '',
+		),
+		$atts,
+		'anony_navigation'
+	);
+
+	if ( empty( $atts['title'] ) ) {
+		return;
+	}
+	$direction = is_rtl() ? 'to-left' : 'to-right';
+	$menu_args = array(
+		'menu'            => $atts['title'],
+		'container'       => 'nav',
+		'container_class' => 'menu-container',
+		'menu_class'      => "menu anony-menu anony-divided-menu anony-vertical-menu {$direction}",
+		'echo'            => false,
+		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+	);
+	return wp_nav_menu( $menu_args );
 }
 
 /**
