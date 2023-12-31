@@ -26,6 +26,7 @@ require_once 'options/socials.php';
 require_once 'options/miscellanous.php';
 require_once 'options/post-types.php';
 require_once 'options/orders.php';
+require_once 'options/my-account.php';
 
 /**
  * Multilingual options
@@ -120,11 +121,12 @@ add_action(
 			require_once 'options/single-product.php';
 			$sections['woocommerce']    = json_decode( ANONY_WOOCOMMERCE_OPTIONS, true );
 			$sections['single-product'] = json_decode( ANONY_SINGLE_PRODUCT_OPTIONS, true );
+			$sections['my-account']     = json_decode( ANONY_WOO_MY_ACCOUNT_OPTIONS, true );
 			$sections['orders']         = json_decode( ANONY_ORDERS_OPTIONS, true );
 
 			$options_nav['woocommerce'] = array(
 				'title'    => esc_html__( 'woocommerce', 'smartpage' ),
-				'sections' => array( 'woocommerce', 'single-product', 'orders' ),
+				'sections' => array( 'woocommerce', 'single-product', 'my-account', 'orders' ),
 			);
 		}
 
