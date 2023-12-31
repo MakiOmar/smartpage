@@ -132,13 +132,24 @@ final class ANONY_Menu_Custom_Fields {
 		}
 	}
 	/**
-	 * Get svg by name.
+	 * Get svg by id.
 	 *
-	 * @param string $svg_name SVG namè.
+	 * @param string $svg_id SVG ID.
 	 * @return string
 	 */
-	public static function get_svg( $svg_name ) {
-		return $svg_name;
+	public static function get_svg( $svg_id ) {
+
+		$svg_url = wp_get_attachment_url( $svg_id );
+
+		if ( $svg_url ) {
+			$response = wp_remote_get( $svg_url );
+
+			if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+				return wp_remote_retrieve_body( $response );
+			}
+		}
+
+		return '';
 	}
 	/**
 	 * Filter menu item start el.
@@ -151,7 +162,7 @@ final class ANONY_Menu_Custom_Fields {
 
 		$svg = $post->_menu_item_svg_icon ? $post->_menu_item_svg_icon : '';
 		if ( $svg ) {
-			$svg = self::get_svg( $svg );
+			$svg = '<span style="width:25px;height:25px;display:inline-flex;justify-content:center;align-items:center">&nbsp;' . self::get_svg( $svg ) . '</span>';
 		}
 
 		return str_replace( '{SVG}', $svg, $item_output );
