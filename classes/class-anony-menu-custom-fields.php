@@ -27,8 +27,7 @@ final class ANONY_Menu_Custom_Fields {
 	public static array $field_keys = array(
 
 		'_menu_item_svg_icon' => array(
-			'title' => 'SVG Icon Name',
-			'desc'  => 'Set svg icon name (not url)',
+			'title' => 'Choose an SVG icon',
 		),
 
 	);
@@ -62,20 +61,36 @@ final class ANONY_Menu_Custom_Fields {
 			$title = $data['title'];
 			$type  = $data['type'] ?? 'text';
 			$size  = $data['size'] ?? 'wide';
-
-			$desc = empty( $data['desc'] ) ? '' : '<span class="description">' . $data['desc'] . '</span>';
+			$desc  = empty( $data['desc'] ) ? '' : '<span class="description">' . $data['desc'] . '</span>';
 			?>
-			<p class="field-<?php echo esc_attr( $meta_key ); ?> description description-<?php echo esc_attr( $size ); ?>">
-				<?php echo esc_html( $title ); ?>
+			<div class="field-<?php echo esc_attr( $meta_key ); ?> description description-<?php echo esc_attr( $size ); ?>">
 				<br/>
-				<input class="widefat edit-menu-item-<?php echo esc_attr( $meta_key ); ?>"
-						type="<?php echo esc_attr( $type ); ?>"
-						name="<?php printf( '%s[%s]', esc_attr( $meta_key ), esc_attr( $item_id ) ); ?>"
-						id="menu-item-<?php echo esc_attr( $item_id ); ?>"
-						value="<?php echo esc_attr( $value ); ?>"/>
+				<?php
+				$field = array(
+					'id'       => sprintf( '%s-%s', esc_attr( $meta_key ), esc_attr( $item_id ) ),
+					'name'     => sprintf( '%s[%s]', esc_attr( $meta_key ), esc_attr( $item_id ) ),
+					'title'    => $title,
+					'type'     => 'uploader',
+					'validate' => 'no_html',
+					'desc'     => wp_kses( $desc, array( 'span' => array( 'class' => array() ) ) ),
+				);
 
-				<?php echo wp_kses( $desc, array( 'span' => array( 'class' => array() ) ) ); ?>
-			</p>
+				$args = array(
+					'field'       => $field,
+					'form_id'     => '',
+					'object_id'   => $item_id,
+					'field_value' => esc_attr( $value ),
+					'context'     => 'meta',
+				);
+				if ( class_exists( 'ANONY_Input_Base' ) ) {
+					$render_field = new ANONY_Input_Base( $args );
+					//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $render_field->field_init();
+					//phpcs:enable.
+					new ANONY_Fields_Scripts( array( $field ) );
+				}
+				?>
+			</div>
 			<?php
 		}
 	}
