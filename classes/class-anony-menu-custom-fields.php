@@ -162,7 +162,7 @@ final class ANONY_Menu_Custom_Fields {
 
 		$svg = $post->_menu_item_svg_icon ? $post->_menu_item_svg_icon : '';
 		if ( $svg ) {
-			$svg = '<span style="width:25px;height:25px;display:inline-flex;justify-content:center;align-items:center">&nbsp;' . self::get_svg( $svg ) . '</span>';
+			$svg = '<span style="width:25px;height:25px;display:inline-flex;justify-content:center;align-items:center;margin:0 3px">&nbsp;' . self::get_svg( $svg ) . '</span>';
 		}
 
 		return str_replace( '{SVG}', $svg, $item_output );
