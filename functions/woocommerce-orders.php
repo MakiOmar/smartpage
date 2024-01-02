@@ -39,7 +39,7 @@ function anony_app_render_orders( $status, $current_page = 1 ) {
 	<style>
 			.order-container {
 				border: 1px dashed green;
-				margin: 10px 0;
+				margin: 10px;
 				border-radius: 8px;
 			}
 			.status-indicator{
@@ -76,7 +76,8 @@ function anony_app_render_orders( $status, $current_page = 1 ) {
 				font-weight: bold;
 			}
 			.order-tab-content{
-				display:none
+				display:none;
+				width: 100%;
 			}
 			.order-tab-content.active-tab{
 				display:block
@@ -113,6 +114,7 @@ function anony_app_render_orders( $status, $current_page = 1 ) {
 			$orders = $customer_orders;
 		}
 		foreach ( $orders as $order ) {
+			echo '<div class="anony-grid-col-sm-6">';
 			echo '<div class="order-container">';
 			echo '<div class="order-row">';
 			echo '<div class="order-number">' . esc_html__( 'Order number:', 'woocommerce' ) . ' #' . esc_html( $order->get_order_number() ) . '</div>';
@@ -137,6 +139,7 @@ function anony_app_render_orders( $status, $current_page = 1 ) {
 				echo '</div>';
 			}
 
+			echo '</div>';
 			echo '</div>';
 
 		}
@@ -224,7 +227,7 @@ function anony_custom_app_orders( $atts ) {
 	do_action( 'woocommerce_after_account_orders', $has_orders );
 	$after_orders = ob_get_clean();
 
-	$output = $before_orders . $tabs . '<div id="anony-orders-content" class="anony-grid-col">' . $content . '</div>' . $after_orders;
+	$output = $before_orders . $tabs . '<div id="anony-orders-content" class="anony-grid-row anony-grid-col">' . $content . '</div>' . $after_orders;
 
 	return $output;
 }
