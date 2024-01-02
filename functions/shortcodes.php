@@ -43,18 +43,18 @@ foreach ( $shcods as $code ) {
 function anony_navigation_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'title' => '',
+			'menu' => '',
 		),
 		$atts,
 		'anony_navigation'
 	);
 
-	if ( empty( $atts['title'] ) ) {
+	if ( empty( $atts['menu'] ) ) {
 		return;
 	}
 	$direction = is_rtl() ? 'to-left' : 'to-right';
 	$menu_args = array(
-		'menu'            => $atts['title'],
+		'menu'            => $atts['menu'],
 		'container'       => 'nav',
 		'container_class' => 'menu-container',
 		'menu_class'      => "woocommerce-MyAccount-navigation menu anony-menu anony-divided-menu anony-vertical-menu {$direction}",
