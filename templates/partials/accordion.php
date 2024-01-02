@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <style>
 	.anony-accordion-container {
-		width: 80%;
+		max-width: 450px;
 		max-width: 600px;
 	}
 
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		font-size: 18px;
 		border: none;
 		width: 100%;
-		text-align: left;
+		text-align: inherit;
 		cursor: pointer;
 		outline: none;
 		display: flex;
@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </style>
 <div id="anony-accordion-wrapper">
 	<div class="anony-grid-row flex-h-center">
-		<div class="anony-accordion-container">
+		<div class="anony-accordion-container anony-grid-col">
 			<?php
 			foreach ( $data as $item ) {
 				?>
