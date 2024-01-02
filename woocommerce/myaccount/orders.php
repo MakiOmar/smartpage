@@ -18,11 +18,16 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
 $anony_options = ANONY_Options_Model::get_instance();
-
 if ( '1' === $anony_options->enable_custom_orders_page ) {
-	echo do_shortcode( '[anony_custom_orders]' );
+	switch ( $has_orders ) {
+		case true:
+			$_has_orders = 'yes';
+			break;
+		default:
+			$_has_orders = 'no';
+	}
+	echo do_shortcode( "[anony_custom_orders has_orders='{$_has_orders}' current_page='{$current_page}']" );
 	return;
 }
 

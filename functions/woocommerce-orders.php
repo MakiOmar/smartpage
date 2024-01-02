@@ -18,16 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Render orders function
  *
  * @param string $status Order status.
+ * @param int    $current_page Current page.
  * @return void
  */
-function anony_app_render_orders( $status ) {
-	$user_id = get_current_user_id();
-
-	$orders = wc_get_orders(
+function anony_app_render_orders( $status, $current_page = 1 ) {
+	$current_page    = empty( $current_page ) ? 1 : absint( $current_page );
+	$wp_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+	$customer_orders = wc_get_orders(
 		array(
-			'status'      => array( $status ),
-			'limit'       => -1,
-			'customer_id' => $user_id,
+			'status'         => array( $status ),
+			'page'           => $current_page,
+			'posts_per_page' => -1,
+			'paginate'       => true,
+			'customer_id'    => get_current_user_id(),
 		)
 	);
 
@@ -103,7 +106,12 @@ function anony_app_render_orders( $status ) {
 		}
 		</style>
 	<?php
-	if ( $orders && ! empty( $orders ) ) {
+	if ( $customer_orders && ! empty( $customer_orders ) ) {
+		if ( ! is_array( $customer_orders ) && isset( $customer_orders->orders ) ) {
+			$orders = $customer_orders->orders;
+		} else {
+			$orders = $customer_orders;
+		}
 		foreach ( $orders as $order ) {
 			echo '<div class="order-container">';
 			echo '<div class="order-row">';
@@ -124,7 +132,7 @@ function anony_app_render_orders( $status ) {
 			if ( ! empty( $actions ) ) {
 				echo '<div class="anony-flex anony-flex-end anony-order-actions">';
 				foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-					echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
+					echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button' . esc_attr( $wp_button_class ) . ' button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
 				}
 				echo '</div>';
 			}
@@ -132,6 +140,22 @@ function anony_app_render_orders( $status ) {
 			echo '</div>';
 
 		}
+
+		do_action( 'woocommerce_before_account_orders_pagination' );
+
+		if ( 1 < $customer_orders->max_num_pages ) :
+			?>
+			<div class="woocommerce-pagination woocommerce-pagination--without-numbers woocommerce-Pagination">
+				<?php if ( 1 !== $current_page ) : ?>
+					<a class="woocommerce-button woocommerce-button--previous woocommerce-Button woocommerce-Button--previous button<?php echo esc_attr( $wp_button_class ); ?>" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page - 1 ) ); ?>"><?php esc_html_e( 'Previous', 'woocommerce' ); ?></a>
+				<?php endif; ?>
+
+				<?php if ( intval( $customer_orders->max_num_pages ) !== $current_page ) : ?>
+					<a class="woocommerce-button woocommerce-button--next woocommerce-Button woocommerce-Button--next button<?php echo esc_attr( $wp_button_class ); ?>" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page + 1 ) ); ?>"><?php esc_html_e( 'Next', 'woocommerce' ); ?></a>
+				<?php endif; ?>
+			</div>
+			<?php
+		endif;
 	} else {
 		echo '<p class="notfound">' . esc_html__( 'No orders found', 'woocommerce' ) . '</p>';
 	}
@@ -141,11 +165,33 @@ add_shortcode( 'anony_custom_orders', 'anony_custom_app_orders' );
 /**
  * Custom orders template
  *
+ * @param  string $atts the shortcode attributes.
  * @return string
  */
-function anony_custom_app_orders() {
+function anony_custom_app_orders( $atts ) {
 	if ( ! is_user_logged_in() ) {
 		return '<div class="anony-grid-row flex-h-center flex-v-center">' . esc_html__( 'Please, Login first!', 'smartpage' ) . '</div>';
+	}
+
+	$atts = shortcode_atts(
+		array(
+			'has_orders'   => 'no',
+			'current_page' => 1,
+		),
+		$atts,
+		'anony_custom_orders'
+	);
+
+	$wp_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+	$has_orders      = false;
+
+	if ( 'yes' === $atts['has_orders'] ) {
+		$has_orders = true;
+	}
+	if ( ! $has_orders ) {
+		ob_start();
+		wc_print_notice( esc_html__( 'No order has been made yet.', 'woocommerce' ) . ' <a class="woocommerce-Button button' . esc_attr( $wp_button_class ) . '" href="' . esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ) . '">' . esc_html__( 'Browse products', 'woocommerce' ) . '</a>', 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		return ob_get_clean();
 	}
 	$statuses  = array(
 		'wc-processing' => esc_html__( 'Processing', 'woocommerce' ),
@@ -163,14 +209,24 @@ function anony_custom_app_orders() {
         //phpcs:disable
 		echo '<div class="order-tab-content' . $active . '" id="' . esc_attr( $status ) . '-tab">';
         //phpcs:enable
-		anony_app_render_orders( $status );
+		anony_app_render_orders( $status, absint( $atts['current_page'] ) );
 		echo '</div>';
 		$content .= ob_get_clean();
 	}
 	$tabs  = '<ul id="anony-orders-page-tabs" class="horizontal-fancy-tabs">';
 	$tabs .= $tab_items;
 	$tabs .= '</ul>';
-	return $tabs . '<div id="anony-orders-content" class="anony-grid-col">' . $content . '</div>';
+	ob_start();
+	do_action( 'woocommerce_before_account_orders', $has_orders );
+	$before_orders = ob_get_clean();
+
+	ob_start();
+	do_action( 'woocommerce_after_account_orders', $has_orders );
+	$after_orders = ob_get_clean();
+
+	$output = $before_orders . $tabs . '<div id="anony-orders-content" class="anony-grid-col">' . $content . '</div>' . $after_orders;
+
+	return $output;
 }
 add_action(
 	'wp_footer',
