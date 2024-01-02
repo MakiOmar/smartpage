@@ -110,6 +110,32 @@ select{
 .anony-inline-flex{
     display: inline-flex!important;
 }
+.anony-space-between{
+	justify-content: space-between;
+}
+.anony-flex-end{
+	justify-content: flex-end;
+}
+.anony-flex-start{
+	justify-content: flex-start;
+}
+.anony-space-around{
+	justify-content: space-around;
+}
+.anony-flex-align-center{
+	align-items: center;
+}
+
+.anony-align-flex-start{
+	align-items: flex-start;
+}
+.anony-align-flex-end{
+	align-items: flex-end;
+}
+
+.anony-align-stretch{
+	align-items: stretch;
+}
 .anony-flex-grow{
 	flex-grow: 1;
 	width: 100%;
