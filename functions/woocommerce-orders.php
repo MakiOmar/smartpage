@@ -75,7 +75,7 @@ function anony_app_render_orders( $status ) {
 			.order-tab-content{
 				display:none
 			}
-			.order-tab-content.active{
+			.order-tab-content.active-tab{
 				display:block
 			}
 			.horizontal-fancy-tabs{
@@ -91,7 +91,7 @@ function anony_app_render_orders( $status ) {
 				padding:10px;
 				color: #b9b9b9;
 			}
-			a.order-tab-trigger.active{
+			a.order-tab-trigger.active-tab{
 				color:#000
 			}
 			.notfound{
@@ -119,6 +119,16 @@ function anony_app_render_orders( $status ) {
 			echo '<div class="order-total-value">' . $money_icon . ' ' . wp_kses_post( $order->get_formatted_order_total() ) . '</div>';
             // phpcs:enable
 			echo '</div>';
+			$actions = wc_get_account_orders_actions( $order );
+
+			if ( ! empty( $actions ) ) {
+				echo '<div class="anony-flex anony-flex-end anony-order-actions">';
+				foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
+				}
+				echo '</div>';
+			}
+
 			echo '</div>';
 
 		}
@@ -146,7 +156,7 @@ function anony_custom_app_orders() {
 	$content   = '';
 	foreach ( $statuses as $status => $label ) {
 		$label      = trim( $label, '()' );
-		$active     = ( 'wc-processing' === $status ) ? ' active' : '';
+		$active     = ( 'wc-processing' === $status ) ? ' active-tab' : '';
 		$tab_items .= '<li><a class="order-tab-trigger' . $active . '" href="#" data-target="' . esc_attr( $status ) . '-tab">' . esc_attr( $label ) . '</a></li>';
 
 		ob_start();
@@ -160,7 +170,7 @@ function anony_custom_app_orders() {
 	$tabs  = '<ul id="anony-orders-page-tabs" class="horizontal-fancy-tabs">';
 	$tabs .= $tab_items;
 	$tabs .= '</ul>';
-	return $tabs . '<div id="anony-orders-content">' . $content . '</div>';
+	return $tabs . '<div id="anony-orders-content" class="anony-grid-col">' . $content . '</div>';
 }
 add_action(
 	'wp_footer',
@@ -170,11 +180,11 @@ add_action(
 		jQuery(document).ready(function($) {
 			$(".order-tab-trigger").click(function(e) {
 				e.preventDefault();
-				$('.order-tab-trigger').removeClass("active");
-				$(this).addClass("active");
+				$('.order-tab-trigger').removeClass("active-tab");
+				$(this).addClass("active-tab");
 				var tab_id = $(this).attr("data-target");
-				$(".order-tab-content").removeClass("active");
-				$("#"+tab_id).addClass("active");
+				$(".order-tab-content").removeClass("active-tab");
+				$("#"+tab_id).addClass("active-tab");
 			});
 		});
 	</script>
