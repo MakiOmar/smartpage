@@ -1,12 +1,23 @@
+@charset "UTF-8";
 *{
 	margin: 0;
 	padding:0;
 	box-sizing: border-box;
 }
-html{scroll-behavior:smooth}
+html, body {
+	box-sizing: border-box;
+	min-height: 100vh;
+
+	}
 body{
+	font-style: italic;
+	font-size: 16px;
+	color: #444444;
+	box-sizing: border-box;
+	background-color: #ecf0f0;
 	line-height: 2em
 }
+
 a{
 	 text-decoration: none;
 	 cursor: pointer;

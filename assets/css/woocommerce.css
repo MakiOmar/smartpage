@@ -718,6 +718,11 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
 
 .anony-order-actions a.button {
   margin: 5px;
+  color: #fff;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  list-style: none;
 }
 
 .woocommerce .star-rating span::before, .woocommerce p.stars a::before {
