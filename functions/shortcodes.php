@@ -57,7 +57,7 @@ function anony_navigation_shcode( $atts ) {
 		'menu'            => $atts['title'],
 		'container'       => 'nav',
 		'container_class' => 'menu-container',
-		'menu_class'      => "menu anony-menu anony-divided-menu anony-vertical-menu {$direction}",
+		'menu_class'      => "woocommerce-MyAccount-navigation menu anony-menu anony-divided-menu anony-vertical-menu {$direction}",
 		'echo'            => false,
 		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 	);
