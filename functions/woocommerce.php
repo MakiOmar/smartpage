@@ -536,6 +536,10 @@ function anony_fancy_quantity_before() {
 			align-items: center;
 		}
 
+		li.product .anony-quantity{
+			justify-content: center;
+		}
+
 		.anony-quantity input {
 			border: 1px solid #ccc;
 			padding: 5px;
@@ -637,6 +641,49 @@ function anony_fancy_quantity_script() {
 	<?php
 }
 
+/**
+ * Woocommerce quantity selector for loop pages.
+ *
+ * @param string     $html Add to cart link html.
+ * @param WC_Product $product WooCommerce Product object.
+ * @return string
+ */
+function anony_loop_qty_selector( $html, $product ) {
+	if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
+		ob_start();
+		do_action( 'woocommerce_before_add_to_cart_quantity' );
+		woocommerce_quantity_input(
+			array(
+				'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+				'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+				//phpcs:disable
+				'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+				//phpcs:enable.
+			),
+			$product
+		);
+		do_action( 'woocommerce_after_add_to_cart_quantity' );
+		$qty  = ob_get_clean();
+		$html = $qty . $html;
+	}
+	return $html;
+}
+
+/**
+ * Loop quantity selector
+ */
+function anony_loop_qty_selector_script() {
+	?>
+	<script>
+		jQuery(document).ready( function($) {
+			$( 'li.product' ).on( 'input, change', 'input[name=quantity]', function(){
+				$( this ).closest('li.product').find('.ajax_add_to_cart').attr('data-quantity', $(this).val() );
+			} );
+		} );
+	</script>
+	<?php
+}
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
@@ -644,6 +691,7 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action( 'woocommerce_before_add_to_cart_quantity', 'anony_fancy_quantity_before' );
 add_action( 'woocommerce_after_add_to_cart_quantity', 'anony_fancy_quantity_after' );
 add_action( 'wp_footer', 'anony_fancy_quantity_script' );
+add_action( 'wp_footer', 'anony_loop_qty_selector_script' );
 
 add_action( 'woocommerce_single_product_summary', 'anony_woocommerce_template_single_add_to_cart', 30 );
 add_action( 'woocommerce_single_product_summary', 'anony_sales_counter', 11 );
@@ -659,3 +707,4 @@ add_filter( 'woocommerce_product_additional_information_heading', '__return_fals
 add_filter( 'woocommerce_product_reviews_heading', '__return_false' );
 add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
 add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
+add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 2 );
