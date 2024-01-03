@@ -37,7 +37,6 @@ jQuery(document).ready(function($){
 	});
 
 	$(document.body).on('click', '.anony-close-mini-cart', function(){
-		console.log('text');
 		$( '#anony-mobile-cart-toggle' ).trigger('click');
 	});
 
@@ -49,9 +48,9 @@ jQuery(document).ready(function($){
 		}, 200);
 	});
 
-	// Listen for the 'added_to_cart' event triggered by WooCommerce
-    $('body').on('added_to_cart', function(event, fragments, cart_hash) {
-		// Make an AJAX request to get the updated cart count
+	// Listen for the 'added_to_cart' event triggered by WooCommerce.
+    $('body').on('added_to_cart, removed_from_cart', function(event, fragments, cart_hash) {
+		// Make an AJAX request to get the updated cart count.
 		$.ajax({
 			url: anonyAjaxUrl,
 			type: 'POST',
@@ -59,11 +58,12 @@ jQuery(document).ready(function($){
 				action: 'get_cart_count'
 			},
 			success: function(response) {
-				// Update the cart counter element with the new count
+				// Update the cart counter element with the new count.
 				$('.anony-cart-counter').text(response.count);
 			}
 		});
 	});
+
 	/**------------------------------------------------------------------
 	 *                      Toggles
 	 *-------------------------------------------------------------------*/
