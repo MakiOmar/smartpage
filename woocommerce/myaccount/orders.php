@@ -18,6 +18,9 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+do_action( 'woocommerce_before_account_orders', $has_orders );
+
 $anony_options = ANONY_Options_Model::get_instance();
 if ( '1' === $anony_options->enable_custom_orders_page ) {
 	switch ( $has_orders ) {
@@ -28,10 +31,12 @@ if ( '1' === $anony_options->enable_custom_orders_page ) {
 			$_has_orders = 'no';
 	}
 	echo do_shortcode( "[anony_custom_orders has_orders='{$_has_orders}' current_page='{$current_page}']" );
+
+	do_action( 'woocommerce_after_account_orders', $has_orders );
+
 	return;
 }
-
-do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
+?>
 
 <?php if ( $has_orders ) : ?>
 
