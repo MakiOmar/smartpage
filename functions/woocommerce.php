@@ -13,6 +13,7 @@
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
 require_once 'woocommerce-orders.php';
+
 /**
  * Add theme support for WooCommerce gallery features
  */
