@@ -16,15 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $my_account_url = class_exists( 'WooCommerce' ) ? get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) : '#';
 ?>
-<div id="anony-mobile-footer-menu" class="anony-grid-row footer-sticky-menu footer-sticky-menu-one anony-flex-column">
+<div id="anony-mobile-footer-menu" class="anony-grid-row footer-sticky-menu footer-sticky-menu-one anony-flex-column anony-box-shadow">
 	<?php
 	if ( is_singular( 'product' ) ) {
 		global $product;
-		if ( wp_is_mobile() && ( $product->is_type( 'simple' ) ) ) {
+		if ( wp_is_mobile() ) {
 			define( 'FOOTER_ADD_TO_CART', true );
 			?>
-			<div class="anony-grid-row">
-				<?php require locate_template( 'templates/partials/sticky-footer-add-to-cart.php', false, false ); ?>
+			<div class="anony-grid-row anony-footer-add-to-cart">
+				<?php woocommerce_template_single_add_to_cart(); ?>
 			</div>
 			<?php
 		}
