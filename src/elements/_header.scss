@@ -7,8 +7,9 @@ header {
 header#anony-mobile-header{
 	padding: 10px 5px;
 	padding: 10px 5px;
-    height: 100px;
     background-color: #fff;
+	border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 header.elemetor{
 	margin: initial;

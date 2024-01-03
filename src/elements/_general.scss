@@ -234,3 +234,9 @@ p{
 	align-items: center;
 	opacity: 0;
 }
+
+.anony-box-shadow{
+	box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
+}

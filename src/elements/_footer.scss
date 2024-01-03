@@ -107,7 +107,7 @@ footer ul{
   display: flex;
 }
 
-#anony-footer form.cart{
+#anony-footer form.cart, #anony-footer .single_variation_wrap, #anony-footer .woocommerce-variation-add-to-cart{
   display: flex;
   width: 100%;
   justify-content: space-around;
