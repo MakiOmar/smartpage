@@ -24,6 +24,13 @@ define(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
+				array(
+					'id'       => 'orders_per_page',
+					'title'    => esc_html__( 'Orders per page', 'smartpage' ),
+					'type'     => 'number',
+					'default'  => 20,
+					'validate' => 'no_html',
+				),
 			),
 		)
 	)
