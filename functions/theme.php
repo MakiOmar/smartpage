@@ -10,6 +10,20 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+/**
+ * Filter body classes
+ *
+ * @param array $classes Body classes.
+ * @return array
+ */
+function anony_body_classes( $classes ) {
+	global $post;
+	if ( wp_is_mobile() ) {
+		$classes[] = 'anony-is-mobile';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'anony_body_classes' );
 
 if ( ! function_exists( 'anony_elementor_custom_fonts_group' ) ) {
 	/**
@@ -18,12 +32,12 @@ if ( ! function_exists( 'anony_elementor_custom_fonts_group' ) ) {
 	 * @param array $font_groups Fonts group.
 	 * @return array
 	 */
-	function anony_elementor_custom_fonts_group ( $font_groups ) {
+	function anony_elementor_custom_fonts_group( $font_groups ) {
 		$font_groups['smartpage'] = esc_html__( 'SmartPage', 'smartpage' );
 		return $font_groups;
 	}
 }
-add_filter( 'elementor/fonts/groups', 'anony_elementor_custom_fonts_group' , 99);
+add_filter( 'elementor/fonts/groups', 'anony_elementor_custom_fonts_group', 99 );
 
 if ( ! function_exists( 'anon_allow_custom_mime_types' ) ) {
 	/**
@@ -59,7 +73,6 @@ if ( ! function_exists( 'anony_hide_admin_bar' ) ) {
 			show_admin_bar( false );
 
 		}
-
 	}
 }
 
@@ -97,7 +110,6 @@ if ( ! function_exists( 'anony_display_ads' ) ) {
 				}
 			}
 		}
-
 	}
 }
 
@@ -166,7 +178,6 @@ add_action(
 
 		// hide admin bar for non admins.
 		anony_hide_admin_bar();
-
 	},
 	20
 );
