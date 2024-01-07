@@ -650,6 +650,10 @@ function anony_fancy_quantity_script() {
  * @return string
  */
 function anony_loop_qty_selector( $html, $product ) {
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( ! is_singular( 'product' ) && '1' !== $anony_options->in_loop_quantity ) {
+		return $html;
+	}
 	if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
 		ob_start();
 		do_action( 'woocommerce_before_add_to_cart_quantity' );
