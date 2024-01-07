@@ -14,7 +14,6 @@
 
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper{
 	overflow: hidden;
-	max-height: 350px;
 }
 
 .woocommerce .container-rating{
@@ -92,9 +91,10 @@
 .woocommerce div.product p.price, .woocommerce div.product span.price {
 	font-size: 29px;
 }
+/*
 .woocommerce div.product div.images img{
 	max-width: 380px
-}
+}*/
 .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs ,section.related.products{
 	padding: 20px;
 	background-color: #fff;

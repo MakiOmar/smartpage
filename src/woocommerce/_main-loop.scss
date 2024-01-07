@@ -10,12 +10,14 @@
 .elementor-page .elementor-products-grid ul.products.elementor-grid li.product, .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
 	background-color: #fff;
 	border-radius: 15px;
-	padding: 20px;
+	overflow: hidden;
 }
 
 .elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3{
-	height: 60px;
-	color:#000
+	color:#000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .woocommerce nav.woocommerce-pagination ul {
     border: none;
@@ -62,6 +64,7 @@
 .woocommerce ul.products li.product a img {
 	width: auto;
 	display: inline-block;
+	margin: 0;
 }
 .woocommerce ul.products li.product .star-rating{
 	margin-top: 10px;

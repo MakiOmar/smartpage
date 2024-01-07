@@ -13,12 +13,14 @@
 .elementor-page .elementor-products-grid ul.products.elementor-grid li.product, .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
   background-color: #fff;
   border-radius: 15px;
-  padding: 20px;
+  overflow: hidden;
 }
 
 .elementor-widget-woocommerce-products.elementor-wc-products ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3 {
-  height: 60px;
   color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .woocommerce nav.woocommerce-pagination ul {
@@ -74,6 +76,7 @@
 .woocommerce ul.products li.product a img {
   width: auto;
   display: inline-block;
+  margin: 0;
 }
 
 .woocommerce ul.products li.product .star-rating {
@@ -93,6 +96,10 @@
   text-align: center;
 }
 
+.anony-is-mobile .entry-summary form.cart .single_variation_wrap {
+  display: none !important;
+}
+
 .woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
   float: none;
   display: inline-block;
@@ -104,7 +111,6 @@
 
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
   overflow: hidden;
-  max-height: 350px;
 }
 
 .woocommerce .container-rating {
@@ -157,7 +163,6 @@
 
 .woocommerce div.product div.anony-entry-summary, .woocommerce-product-gallery .flex-viewport, .woocommerce div.product div.images.woocommerce-product-gallery, .anony-wc-reviews, .woocommerce-tabs, .woocommerce .up-sells, .woocommerce .related.products {
   background-color: #fff;
-  padding: 10px;
   border-radius: 10px;
 }
 
@@ -198,10 +203,10 @@
   font-size: 29px;
 }
 
-.woocommerce div.product div.images img {
-  max-width: 380px;
-}
-
+/*
+.woocommerce div.product div.images img{
+	max-width: 380px
+}*/
 .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs, section.related.products {
   padding: 20px;
   background-color: #fff;
@@ -334,6 +339,10 @@ table.woocommerce-table--order-details tr:hover {
   outline: none;
   border: 1px solid #c8c7c7;
   border-radius: 5px;
+}
+
+.woocommerce li.product .quantity .qty {
+  width: 56px;
 }
 
 #anony-mobile-cart-toggle {
