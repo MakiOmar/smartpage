@@ -685,6 +685,22 @@ function anony_loop_qty_selector_script() {
 	<?php
 }
 
+/**
+ * Product loop thumbnail
+ *
+ * @param string $size Thumbnail size.
+ * @return string
+ */
+function anony_woo_loop_thumb_size( $size ) {
+	if ( wp_is_mobile() ) {
+		$size = 'product-loop-mobile';
+	} else {
+		$size = 'product-loop-desktop';
+	}
+
+	return $size;
+}
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
@@ -709,3 +725,4 @@ add_filter( 'woocommerce_product_reviews_heading', '__return_false' );
 add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
 add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
 add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 2 );
+add_filter( 'single_product_archive_thumbnail_size', 'anony_woo_loop_thumb_size' );
