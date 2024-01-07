@@ -56,6 +56,12 @@ define(
 					'validate' => 'no_html',
 					'default'  => 'Related products',
 				),
+				array(
+					'id'       => 'in_loop_quantity',
+					'title'    => esc_html__( 'Show quantity selector in products\' loop', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
 			),
 		)
 	)
