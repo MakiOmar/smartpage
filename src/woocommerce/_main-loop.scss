@@ -37,6 +37,7 @@
 }
 .woocommerce ul.products li.product a.add_to_cart_button{
 	color: #FFFFFF;
+	margin-bottom: 10px;
 }
 .woocommerce ul.products li.product .price del {
 	color:#c1c1c1;
@@ -48,6 +49,9 @@
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
 	float: none;
 	display: inline-block;
+}
+.woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product{
+	margin: 0 0.8em 0.8em 0;
 }
 .woocommerce .products li .woocommerce-Price-amount bdi{
 	display: flex;
@@ -69,6 +73,12 @@
 .woocommerce ul.products li.product .star-rating{
 	margin-top: 10px;
 }
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	width: 24%;
+}
+.woocommerce .products ul, .woocommerce ul.products {
+    margin: 0;
+}
 @media screen and ( max-width: 480px ){
 	.elementor-page .elementor-products-grid ul.products.elementor-grid li.product {
 		border-radius: 8px;
@@ -76,6 +86,9 @@
 	}
 
 	.woocommerce .products ul, .woocommerce ul.products {
-		justify-content: space-between;
+		justify-content: flex-start;
+	}
+	.woocommerce .products ul, .woocommerce ul.products li {
+		margin: 5px 2px!important;
 	}
 }

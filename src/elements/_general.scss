@@ -42,7 +42,10 @@ div{
 	margin:0;
 	padding:0;
 }
-input[type = "search"],input[type = "tel"],input[type = "text"],input[type = "email"],input[type = "password"],input[type = "url"], textarea{
+.anony-default-padding{
+	padding: 10px;
+}
+input[type=search],input[type=tel],input[type=text],input[type=email],input[type=password],input[type=url], input[type=number],textarea{
 	outline: none;
 	padding: 10px;
 	margin: 5px;
