@@ -80,15 +80,20 @@ function anony_hide_products_without_price( $query ) {
  * Replaces product rating. Shows rating even if no ratings (Will show empty stars).
  */
 function anony_replace_product_rating() {
-	global $product;
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( ! is_singular( 'product' ) && '1' !== $anony_options->loop_rating ) {
+		$html = '';
+	} else {
+		global $product;
 
-	$rating_count = $product->get_rating_count();
-	$review_count = $product->get_review_count();
-	$average      = $product->get_average_rating();
+		$rating_count = $product->get_rating_count();
+		$review_count = $product->get_review_count();
+		$average      = $product->get_average_rating();
 
-	/* translators: %s: rating */
-	$label = sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating_count );
-	$html  = '<div class="star-rating" role="img" aria-label="' . esc_attr( $label ) . '">' . wc_get_star_rating_html( $average, $rating_count ) . '</div>';
+		/* translators: %s: rating */
+		$label = sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating_count );
+		$html  = '<div class="star-rating" role="img" aria-label="' . esc_attr( $label ) . '">' . wc_get_star_rating_html( $average, $rating_count ) . '</div>';
+	}
 
 	echo wp_kses_post( $html );
 }
@@ -100,7 +105,6 @@ function anony_rating_after_shop_loop_item_title() {
 
 	$anony_options = ANONY_Options_Model::get_instance();
 	if ( '1' === $anony_options->show_empty_rating ) {
-		global $product;
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 		add_action( 'woocommerce_after_shop_loop_item_title', 'anony_replace_product_rating', 5 );
 	}
