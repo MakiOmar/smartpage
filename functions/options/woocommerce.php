@@ -62,6 +62,13 @@ define(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
+
+				array(
+					'id'       => 'loop_rating',
+					'title'    => esc_html__( 'Show rating in products\' loop', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
 			),
 		)
 	)
