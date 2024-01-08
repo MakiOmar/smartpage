@@ -31,8 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 					?>
-					<div><strong><?php echo esc_html( $name ); ?></strong></div>
-				</a>
+					<strong style="text-align:<?php echo esc_attr( $name_align ); ?>"><?php echo esc_html( $name ); ?></strong>
 			</div>
 			<?php
 
