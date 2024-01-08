@@ -432,14 +432,18 @@ if ( ! function_exists( 'anony_comments_number' ) ) {
  * Renders sction title
  *
  * @param  string $title Title text.
+ * @param  string $style Title style.
  * @return string
  */
-function anony_section_title( $title = '' ) {
+function anony_section_title( $title = '', $style = 'default' ) {
 	if ( empty( $title ) ) {
 		return;
 	}
-	$html  = '<div class="anony-section-title-wrapper">';
-	$html .= '<img src="https://cleo.makiomar.com/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp" alt="' . esc_attr( $title ) . '" width="224" height="80"/>';
+	$html = "<div class='anony-section-title-wrapper anony-section-title-{$style}'>";
+
+	if ( 'one' === $style ) {
+		$html .= '<img src="/wp-content/uploads/2022/08/ezgif.com-gif-maker-6.webp" alt="' . esc_attr( $title ) . '" width="224" height="80"/>';
+	}
 	$html .= '<h1 class="anony-section-title" style="font-size:18px">' . esc_html( $title ) . '</h1>';
 	$html .= '</div>';
 	return $html;
