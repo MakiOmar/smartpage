@@ -120,6 +120,7 @@ function anony_terms_listing_shcode( $atts ) {
 			'desktop_columns'   => 4,
 			'mobile_columns'    => 2,
 			'image_id_meta_key' => 'thumbnail_id',
+			'name_align'        => 'center',
 		),
 		$atts,
 		'anony_terms_listing'
@@ -139,6 +140,7 @@ function anony_terms_listing_shcode( $atts ) {
 
 	$desktop_columns = 12 / absint( $atts['desktop_columns'] );
 	$mobile_columns  = 12 / absint( $atts['mobile_columns'] );
+	$name_align      = $atts['name_align'];
 
 	$output = '';
 	$terms  = get_terms( $args );
@@ -589,16 +591,7 @@ function anony_section_title_shcode( $atts ) {
 		$atts,
 		'anony_section_title'
 	);
-	switch ( $atts['style'] ) {
-		case 'one':
-			$output = anony_section_title( esc_html( $atts['title'] ) );
-			break;
-		default:
-			$output = anony_section_title( esc_html( $atts['title'] ) );
-			break;
-	}
-
-	return $output;
+	return anony_section_title( $atts['title'], $atts['style'] );
 }
 
 /**
