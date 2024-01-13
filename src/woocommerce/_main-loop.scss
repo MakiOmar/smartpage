@@ -1,5 +1,8 @@
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
 	margin: 0 3% 2.992em 0;
+	float: none;
+	display: inline-block;
+	width: 23.4%;
 }
 .woocommerce ul.products li.last, .woocommerce-page ul.products li.last {
     margin-right: 0;
@@ -46,10 +49,7 @@
 .woocommerce .products ul li, .woocommerce ul.products li {
 	text-align: center;
 }
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-	float: none;
-	display: inline-block;
-}
+
 .woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product{
 	margin: 0 0.8em 0.8em 0;
 }
@@ -72,9 +72,6 @@
 }
 .woocommerce ul.products li.product .star-rating{
 	margin-top: 10px;
-}
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-	width: 24%;
 }
 .woocommerce .products ul, .woocommerce ul.products {
     margin: 0;
