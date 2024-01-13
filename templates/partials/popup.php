@@ -55,8 +55,9 @@ $style = sprintf(
 	<div class="anony-popup-overlay"></div>
 	<div class="anony-popup-content">
 		<?php
+		do_action( 'anony_before_popup_' . str_replace( '-', '_', $id ) );
 		echo wp_kses_post( $content );
-		do_action( 'after_popup_' . str_replace( '-', '_', $id ) );
+		do_action( 'anony_after_popup_' . str_replace( '-', '_', $id ) );
 		?>
 	</div>
 </div>
