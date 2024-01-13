@@ -167,6 +167,44 @@ function anony_thumbs_sizes() {
 	}
 }
 
+/**
+ * Hook to mobile header first column
+ *
+ * @return void
+ */
+function anony_mobile_header_first_cb() {
+	?>
+	<a class="anony-mobile-menu-button anony-inline-flex anony-popup-toggle" href="#" data-target="anony-mobile-menu" title="Menu"><svg width="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><g> <rect y="312.5" width="455" height="30"></rect> <rect y="212.5" width="455" height="30"></rect> <rect y="112.5" width="455" height="30"></rect></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></a>
+	<?php
+	echo do_shortcode( '[anony_popup id="anony-mobile-menu" callback="anony_mobile_menu"]' );
+}
+add_action( 'anony_mobile_header_first', 'anony_mobile_header_first_cb', 10 );
+
+/**
+ * Hook to mobile header second column
+ *
+ * @return void
+ */
+function anony_mobile_header_second_cb() {
+	// phpcs:disable
+	echo anony_get_theme_logo();
+	// phpcs:enable.
+}
+add_action( 'anony_mobile_header_second', 'anony_mobile_header_second_cb', 10 );
+
+/**
+ * Hook to mobile header third column
+ *
+ * @return void
+ */
+function anony_mobile_header_third_cb() {
+	require locate_template( 'templates/partials/fullwidth-search-form-view.php', false, false );
+	if ( class_exists( 'WooCommerce' ) ) {
+		require locate_template( 'templates/partials/mini-cart.php', false, false );
+	}
+}
+add_action( 'anony_mobile_header_third', 'anony_mobile_header_third_cb', 10 );
+
 add_action(
 	'after_setup_theme',
 	function () {
