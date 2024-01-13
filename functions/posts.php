@@ -90,6 +90,11 @@ add_filter(
 					esc_html__( 'Download type', 'smartpage' ),
 					esc_html__( 'Download type', 'smartpage' ),
 				),
+			'anony_faqs_cats' =>
+				array(
+					esc_html__( 'FAQs categories', 'smartpage' ),
+					esc_html__( 'FAQs category', 'smartpage' ),
+				),
 
 		);
 
@@ -107,8 +112,9 @@ add_filter(
 	'anony_post_taxonomies',
 	function ( $anony_post_taxonomies ) {
 
-		$post_taxs = array( 'anony_download' => array( 'anony_download_type' ) );
-
+		$post_taxs = array(
+			'anony_download' => array( 'anony_download_type' ),
+		);
 		return array_merge( $anony_post_taxonomies, $post_taxs );
 	}
 );
@@ -122,7 +128,10 @@ add_filter(
 	'anony_taxonomy_posts',
 	function ( $anony_tax_posts ) {
 
-		$tax_posts = array( 'anony_download_type' => array( 'anony_download' ) );
+		$tax_posts = array(
+			'anony_download_type' => array( 'anony_download' ),
+			'anony_faqs_cats'     => array( 'anony_faqs' ),
+		);
 
 		return array_merge( $anony_tax_posts, $tax_posts );
 	}
