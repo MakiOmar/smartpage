@@ -39,6 +39,14 @@ define(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Replace pagination with a load more button', 'smartpage' ),
 				),
+
+				array(
+					'id'       => 'enable_direct_checkout',
+					'title'    => esc_html__( 'Enable direct checkout', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Adds a direct checkout button to single product.', 'smartpage' ),
+				),
 			),
 		)
 	)
