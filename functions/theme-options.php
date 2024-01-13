@@ -25,8 +25,6 @@ require_once 'options/en-fonts.php';
 require_once 'options/socials.php';
 require_once 'options/miscellanous.php';
 require_once 'options/post-types.php';
-require_once 'options/orders.php';
-require_once 'options/my-account.php';
 
 /**
  * Multilingual options
@@ -116,8 +114,10 @@ add_action(
 		$sections['socials']        = json_decode( ANONY_SOCIALS_OPTIONS, true );
 		$sections['miscellanous']   = json_decode( ANONY_MISCELLANOUS_OPTIONS, true );
 		$sections['post-types']     = json_decode( ANONY_POST_TYPES_OPTIONS, true );
-		if ( class_exists( 'woocommerce' ) ) {
+		if ( class_exists( 'WooCommerce' ) ) {
 			require_once 'options/woocommerce.php';
+			require_once 'options/orders.php';
+			require_once 'options/my-account.php';
 			require_once 'options/single-product.php';
 			$sections['woocommerce']    = json_decode( ANONY_WOOCOMMERCE_OPTIONS, true );
 			$sections['single-product'] = json_decode( ANONY_SINGLE_PRODUCT_OPTIONS, true );
@@ -125,7 +125,7 @@ add_action(
 			$sections['orders']         = json_decode( ANONY_ORDERS_OPTIONS, true );
 
 			$options_nav['woocommerce'] = array(
-				'title'    => esc_html__( 'woocommerce', 'smartpage' ),
+				'title'    => esc_html__( 'Woocommerce', 'smartpage' ),
 				'sections' => array( 'woocommerce', 'single-product', 'my-account', 'orders' ),
 			);
 		}
