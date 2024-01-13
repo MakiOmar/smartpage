@@ -81,7 +81,7 @@ function anony_hide_products_without_price( $query ) {
  */
 function anony_replace_product_rating() {
 	$anony_options = ANONY_Options_Model::get_instance();
-	if ( ! is_singular( 'product' ) && '1' !== $anony_options->loop_rating ) {
+	if ( ! is_singular( 'product' ) && '1' !== $anony_options->loop_rating || did_action( 'woocommerce_single_product_summary' ) ) {
 		$html = '';
 	} else {
 		global $product;
@@ -323,17 +323,6 @@ function anony_wc_comment_form_fields( $fields ) {
 		unset( $fields['email'] );
 	}
 	return $fields;
-}
-/**
- * Show add to cart if not is mobile
- *
- * @return void
- */
-function anony_woocommerce_template_single_add_to_cart() {
-	global $product;
-	if ( ! wp_is_mobile() || ( wp_is_mobile() && ! $product->is_type( 'simple' ) ) ) {
-		do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' );
-	}
 }
 
 
@@ -709,16 +698,64 @@ function anony_woo_loop_thumb_size( $size ) {
 	return $size;
 }
 
+/**
+ * Direct add to cart form
+ *
+ * @return void
+ */
+function anony_direct_add_to_cart_form() {
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( '1' !== $anony_options->enable_direct_checkout ) {
+		return;
+	}
+	global $product;
+
+	echo '<input type="hidden" name="direct_add_to_cart" value="' . esc_attr( $product->get_id() ) . '">';
+	wp_nonce_field( 'anony-direct-add-to-cart', 'direct-add-to-cart-nonce' );
+	//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo '<button type="submit" class="button anony-button alt direct-checkout-button"><span>' . apply_filters( 'anony_direct_checkout_icon', '' ) . '</span>' . esc_html__( 'Direct Checkout', 'smartpage' ) . '</button>';
+	//phpcs:enable.
+}
+
+/**
+ * Now add to cart.
+ */
+function anony_direct_add_to_cart() {
+	global $woocommerce;
+
+	if ( ! $woocommerce ) {
+		return;
+	}
+	// phpcs:disable
+	$req = $_POST;
+	if ( empty( $req['direct_add_to_cart'] ) || ! isset( $req['direct_add_to_cart'] ) || wp_verify_nonce( wp_unslash( $req['direct_add_to_cart'] ), 'anony-direct-add-to-cart' ) ) {
+		return;
+	}
+	// phpcs:enable.
+
+	WC()->cart->empty_cart();
+
+	$product_id = absint( wp_unslash( $req['direct_add_to_cart'] ) );
+
+	// This adds the product with the ID; we can also add a second variable which will be the variation ID.
+	WC()->cart->add_to_cart( $product_id );
+
+	// Redirects to the checkout page.
+	wp_safe_redirect( wc_get_checkout_url() );
+
+	// Safely closes the function.
+	exit();
+}
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 
 add_action( 'woocommerce_before_add_to_cart_quantity', 'anony_fancy_quantity_before' );
 add_action( 'woocommerce_after_add_to_cart_quantity', 'anony_fancy_quantity_after' );
 add_action( 'wp_footer', 'anony_fancy_quantity_script' );
 add_action( 'wp_footer', 'anony_loop_qty_selector_script' );
-
-add_action( 'woocommerce_single_product_summary', 'anony_woocommerce_template_single_add_to_cart', 30 );
+add_action( 'woocommerce_after_add_to_cart_button', 'anony_direct_add_to_cart_form' );
+add_action( 'template_redirect', 'anony_direct_add_to_cart' );
 add_action( 'woocommerce_single_product_summary', 'anony_sales_counter', 11 );
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
 add_action( 'init', 'anony_create_product_attributes' );
@@ -726,6 +763,7 @@ add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
 add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
 add_action( 'woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
+
 add_filter( 'woocommerce_sale_flash', 'anony_custom_sale_badge', 20, 3 );
 add_filter( 'woocommerce_product_description_heading', '__return_false' );
 add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
@@ -734,3 +772,4 @@ add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
 add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
 add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 2 );
 add_filter( 'single_product_archive_thumbnail_size', 'anony_woo_loop_thumb_size' );
+
