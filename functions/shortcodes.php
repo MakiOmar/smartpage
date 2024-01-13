@@ -20,6 +20,7 @@ $shcods = array(
 	'anony_row',
 	'anony_column',
 	'anony_shape_divider',
+	'anony_divider',
 	'anony_posts_slider',
 	'anony_images_slider',
 	'anony_testimonials',
@@ -32,6 +33,40 @@ $shcods = array(
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders divider
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_divider_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'style'        => 'default',
+			'thickness'    => '1px',
+			'width'        => '100%',
+			'color'        => '#000000',
+			'border-style' => 'solid',
+			'height'       => '20px',
+			'align'        => 'center',
+		),
+		$atts,
+		'anony_divider'
+	);
+
+	return sprintf(
+		'<div style="width:%1$s;height:%2$s;display:flex;align-items:%6$s">
+		<span style="display:block; border-bottom:%3$s %4$s %5$s;width:%1$s"></span>
+		</div>',
+		$atts['width'],
+		$atts['height'],
+		$atts['thickness'],
+		$atts['border-style'],
+		$atts['color'],
+		$atts['align'],
+	);
 }
 
 /**
@@ -175,7 +210,7 @@ function anony_popup_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'id'               => '',
-			'callback'         => 'anony_mobile_menu',
+			'callback'         => '',
 			'width'            => '200px',
 			'height'           => '100%',
 			'border_width'     => '0',
