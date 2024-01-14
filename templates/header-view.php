@@ -31,9 +31,8 @@ require 'document-head.php';
 		<div class="anony-grid-col-">
 
 			<header class="white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ); ?>">
-
 				<?php require locate_template( 'templates/header-top-view.php', false, false ); ?>
-					
+				<?php do_action( 'anony_before_header_content' ); ?>
 				<div id="anony-sub-top-wrapper">
 					
 					<div id="anony-toggles-wrapper">
@@ -63,7 +62,7 @@ require 'document-head.php';
 					
 				<!-- Mobile Navigation menu toggle -->
 				<div id="menu-close"><a href="#"><i class="fa fa-2x fa-window-close" aria-hidden="true"></i></a></div>
-
+				<?php do_action( 'anony_after_header_content' ); ?>
 			</header>
 		</div>
 	</div>
