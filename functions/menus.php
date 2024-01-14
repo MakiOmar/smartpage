@@ -83,6 +83,10 @@ function anony_breadcrumbs() {
 	$page_link = home_url( $wp->request );
 	$time_y    = get_the_time( 'Y' );
 	$time_f    = get_the_time( 'F' );
+	if ( is_woocommerce() ) {
+		woocommerce_breadcrumb();
+		return;
+	}
 	echo '<ul class="anony-breadcrumbs">';
 	echo '<li class="home"><i class="fa fa-home"></i> <a href="' . esc_url( home_url() ) . '">' . esc_html__( 'Home', 'smartpage' ) . '</a> <span>/</span></li>';
 
@@ -137,7 +141,7 @@ function anony_breadcrumbs() {
 		}
 
 		// Taxonomy.
-	} elseif ( get_post_taxonomies() ) {
+	} elseif ( is_tax() ) {
 		echo '';
 		// Page with parent.
 	} elseif ( is_page() && $post->post_parent ) {
@@ -156,7 +160,7 @@ function anony_breadcrumbs() {
 		echo '<li><a href="' . esc_url( $page_link ) . '">' . esc_html( get_the_title() ) . '</a></li>';
 
 		// Default.
-	} elseif ( get_the_title() !== 'Home' ) {
+	} elseif ( ! is_front_page() ) {
 		echo '<li><a href="' . esc_url( $page_link ) . '">' . esc_html( get_the_title() ) . '</a></li>';
 	}
 
