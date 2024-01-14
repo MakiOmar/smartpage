@@ -168,6 +168,26 @@ function anony_thumbs_sizes() {
 }
 
 /**
+ * Render page title
+ *
+ * @return void
+ */
+function anony_page_title() {
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( '1' === $anony_options->title_bar && ! is_front_page() ) {
+
+		$background_id = $anony_options->title_bar_bg;
+		$background = false;
+		if ( ! empty( $background_id ) ) {
+			$background = wp_get_attachment_image_url( absint( $background_id ), 'full' );
+		}
+		require locate_template( 'templates/partials/page-title.php', false, false );
+	}
+
+}
+
+add_action( 'anony_after_header_content', 'anony_page_title' );
+/**
  * Hook to mobile header first column
  *
  * @return void
