@@ -46,22 +46,20 @@ require 'document-head.php';
 						</a>
 					</div>
 
-						<?php echo $logo; ?>
-
-						<?php if ( has_action( 'header_ad' ) ) : ?>
-
-						<div id="anony-ads" class="anony-grid-col-md-6 anony-grid-col-sm-6">
-
-							<?php do_action( 'header_ad' ); ?>
-
-						</div>
-
-						<?php endif; ?>
+					<?php
+					//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $logo;
+					//phpcs:enable.
+					?>
 
 
 				</div>
 				<!-- Navigation menu -->
-				<?php echo $nav; ?>
+				<?php
+				//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $nav;
+				//phpcs:enable.
+				?>
 					
 				<!-- Mobile Navigation menu toggle -->
 				<div id="menu-close"><a href="#"><i class="fa fa-2x fa-window-close" aria-hidden="true"></i></a></div>
