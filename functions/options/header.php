@@ -48,6 +48,12 @@ define(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Enable/disable title bar', 'smartpage' ),
 				),
+				array(
+					'id'       => 'title_bar_bg',
+					'title'    => esc_html__( 'Title bar background', 'smartpage' ),
+					'type'     => 'uploader',
+					'validate' => 'no_html',
+				),
 
 			),
 		)
