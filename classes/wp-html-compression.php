@@ -18,7 +18,7 @@ class ANONY_Wp_Html_Compression {
 		return $this->html;
 	}
 	protected function bottomComment( $raw, $compressed ) {
-		 $raw       = strlen( $raw );
+		$raw        = strlen( $raw );
 		$compressed = strlen( $compressed );
 
 		$savings = ( $raw - $compressed ) / $raw * 100;
@@ -55,26 +55,22 @@ class ANONY_Wp_Html_Compression {
 						$content = preg_replace( '/<!--(?!\s*(?:\[if [^\]]+]|<!|>))(?:(?!-->).)*-->/s', '', $content );
 					}
 				}
-			} else {
-				if ( $tag == 'pre' || $tag == 'textarea' ) {
+			} elseif ( $tag == 'pre' || $tag == 'textarea' ) {
 					$raw_tag = $tag;
-				} elseif ( $tag == '/pre' || $tag == '/textarea' ) {
-					$raw_tag = false;
-				} else {
-					if ( $raw_tag || $overriding ) {
-						$strip = false;
-					} else {
-						$strip = true;
+			} elseif ( $tag == '/pre' || $tag == '/textarea' ) {
+				$raw_tag = false;
+			} elseif ( $raw_tag || $overriding ) {
+					$strip = false;
+			} else {
+				$strip = true;
 
-						// Remove any empty attributes, except:
-						// action, alt, content, src
-						$content = preg_replace( '/(\s+)(\w++(?<!\baction|\balt|\bcontent|\bsrc)="")/', '$1', $content );
+				// Remove any empty attributes, except:
+				// action, alt, content, src
+				$content = preg_replace( '/(\s+)(\w++(?<!\baction|\balt|\bcontent|\bsrc)="")/', '$1', $content );
 
-						// Remove any space before the end of self-closing XHTML tags
-						// JavaScript excluded
-						$content = str_replace( ' />', '/>', $content );
-					}
-				}
+				// Remove any space before the end of self-closing XHTML tags
+				// JavaScript excluded
+				$content = str_replace( ' />', '/>', $content );
 			}
 
 			if ( $strip ) {

@@ -90,7 +90,7 @@ add_filter(
 					esc_html__( 'Download type', 'smartpage' ),
 					esc_html__( 'Download type', 'smartpage' ),
 				),
-			'anony_faqs_cats' =>
+			'anony_faqs_cats'     =>
 				array(
 					esc_html__( 'FAQs categories', 'smartpage' ),
 					esc_html__( 'FAQs category', 'smartpage' ),

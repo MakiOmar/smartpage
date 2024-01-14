@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="prev-next next">
 
-				  <a href="#"><i class="fa fa-arrow-circle-o-left"></i></a>
+					<a href="#"><i class="fa fa-arrow-circle-o-left"></i></a>
 
 				</div>
 

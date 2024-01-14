@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 add_action(
 	'anony_before_inculde_single',
-	function( $data, $post_type ) {
+	function ( $data, $post_type ) {
 		switch ( $post_type ) {
 			case 'anony_download':
 				wp_enqueue_script( 'anony-download' );
@@ -20,9 +20,9 @@ add_action(
 
 add_filter(
 	'anony_download_loop_data',
-	function( $temp, $ID ) {
+	function ( $temp, $ID ) {
 
-		$temp['date']      = explode( ' ', get_the_date() );
+		$temp['date'] = explode( ' ', get_the_date() );
 
 		$curr_download_meta = get_post_meta( $ID, 'anony_download', true );
 
@@ -76,7 +76,6 @@ add_filter(
 		$temp['comments_template'] = ob_get_clean();
 
 		return $temp;
-
 	},
 	10,
 	2

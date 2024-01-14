@@ -56,5 +56,3 @@ add_action(
 		wp_localize_script( 'anony-admin', 'adminLoc', $adminLoc );
 	}
 );
-
-

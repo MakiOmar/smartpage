@@ -28,9 +28,9 @@ final class DocumentsManager {
 	 */
 	const GLOBAL_FOOTER_META_KEY = 'anony_use_as_global_footer';
 
-	 /**
-	  * Constructor
-	  */
+	/**
+	 * Constructor
+	 */
 	function __construct() {
 		$current_theme = wp_get_theme();
 
@@ -43,11 +43,10 @@ final class DocumentsManager {
 		add_action( 'elementor/documents/register', array( $this, '_registerCustomDocTypes' ) );
 		add_action( 'elementor/documents/register_controls', array( $this, '_addControls' ), PHP_INT_MAX );
 		add_action( 'elementor/editor/after_save', array( $this, '_maybeSetDefaultHeaderFooter' ), 10, 2 );
-
 	}
-	 /**
-	  * @internal Callback
-	  */
+	/**
+	 * @internal Callback
+	 */
 	function _includeDocTemplate( $template ) {
 		if ( is_singular() ) {
 			$document = Elementor::$instance->documents->get_doc_for_frontend( get_the_ID() );
@@ -91,7 +90,7 @@ final class DocumentsManager {
 		);
 
 		if ( ! $header_name || 'inherit' === $header_name || $header_name == '' ) { // Means the global will be used
-			$headers         = get_posts(
+			$headers        = get_posts(
 				array(
 					'fields'              => 'ids',
 					'post_type'           => 'elementor_library',
@@ -103,7 +102,7 @@ final class DocumentsManager {
 					'posts_per_page'      => 1,
 				)
 			);
-			 $site_header_id = ! empty( $headers[0] ) ? $headers[0] : false;
+			$site_header_id = ! empty( $headers[0] ) ? $headers[0] : false;
 		} else {
 			$header = get_page_by_path( $header_name, OBJECT, 'elementor_library' );
 			if ( $header ) {
@@ -215,9 +214,9 @@ final class DocumentsManager {
 			$document->end_injection();
 		}
 	}
-	   /**
-		* @internal Used as a callback
-		*/
+		/**
+		 * @internal Used as a callback
+		 */
 	function _maybeSetDefaultHeaderFooter( $post_id, $editor_data ) {
 		$post     = get_post( $post_id );
 		$type     = get_post_meta( $post_id, '_elementor_template_type', true );

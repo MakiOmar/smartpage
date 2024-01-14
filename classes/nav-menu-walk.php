@@ -140,6 +140,4 @@ class ANONY_Nav_Menu_Walk extends Walker_Nav_Menu {
 		}
 		$output .= "</li>{$n}";
 	}
-
 }
-

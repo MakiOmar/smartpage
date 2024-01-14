@@ -95,7 +95,6 @@ if ( ! class_exists( 'ANONY_Generate_Posts_View' ) ) {
 			$this->resetLoop = $reset;
 
 			$this->post = new WP_Query( $args );
-
 		}
 
 		/**
@@ -132,6 +131,5 @@ if ( ! class_exists( 'ANONY_Generate_Posts_View' ) ) {
 				echo $this->IfNot;
 			}
 		}
-
 	}
 }

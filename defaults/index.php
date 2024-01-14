@@ -53,7 +53,7 @@ if ( have_posts() ) {
 
 			</div>
 	  
-			  <?php get_sidebar( 'default' ); ?>
+				<?php get_sidebar( 'default' ); ?>
 	 
 		</div>
 	
