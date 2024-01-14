@@ -29,10 +29,71 @@ $shcods = array(
 	'anony_post_listing',
 	'anony_popup',
 	'anony_navigation',
+	'anony_price_tables',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders price tables
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_price_tables_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'ids'    => '',
+			'number' => 69,
+		),
+		$atts,
+		'anony_price_tables'
+	);
+
+	$args = array(
+		'post_type'      => 'anony_price_tables',
+		'posts_per_page' => $atts['number'],
+		'post_status'    => 'publish',
+	);
+
+	if ( ! empty( $atts['ids'] ) ) {
+		$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	}
+
+	$query = new WP_Query( $args );
+
+	$output = '';
+	$data   = array();
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$price_table_meta = get_post_meta( get_the_ID(), 'anony_price_table', true );
+			if ( $price_table_meta && ! empty( $price_table_meta ) ) {
+				$temp['title']          = get_the_title();
+				$temp['content']        = get_the_content();
+				$temp['icon']           = get_the_post_thumbnail( get_the_ID(), 'full' );
+				$temp['price']          = $price_table_meta['price'];
+				$temp['title_bg_color'] = $price_table_meta['title_bg_color'];
+				$temp['price_per']      = $price_table_meta['price_per'];
+				$temp['subtitle']       = $price_table_meta['subtitle'];
+				$temp['button_link']    = $price_table_meta['button_link'];
+				$temp['button_text']    = $price_table_meta['button_text'];
+
+				$data[] = $temp;
+			}
+		}
+		wp_reset_postdata();
+	}
+
+	if ( ! empty( $data ) ) {
+		ob_start();
+		require locate_template( 'templates/partials/price-table.php', false, false );
+		$output .= ob_get_clean();
+	}
+
+	return $output;
 }
 
 /**
