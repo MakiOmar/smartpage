@@ -155,17 +155,17 @@ jQuery(document).ready(function($){
 			$('.menu-item-home').removeClass('active');
 		}
 		
-		var headrHeight = $('header').height();
+		var headrHeight = $('.anony-header').height();
 
 		$(window).scroll(function() {
 			//sticky menu
 			if ($(window).scrollTop() > headrHeight) {
-				$('header').css('height' , headrHeight);
+				$('.anony-header').css('height' , headrHeight);
 				
 				$('#anony-main_nav_con').addClass('sticky');
 				
 			} else {
-				$('header').css('height' , 'auto');
+				$('anony-header').css('height' , 'auto');
 				$('#anony-main_nav_con').removeClass('sticky');
 			}
 		});
