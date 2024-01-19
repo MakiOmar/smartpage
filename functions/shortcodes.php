@@ -753,14 +753,22 @@ function anony_banner_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'style'          => 'default',
-			'desktop-image'  => '/wp-content/uploads/2023/12/fit.webp',
+			'desktop-image'  => '',
 			'desktop-height' => '450',
-			'mobile-image'   => '/wp-content/uploads/2023/12/fit-mobile.webp',
+			'mobile-image'   => '',
 			'mobile-height'  => '200',
 		),
 		$atts,
 		'anony_banner'
 	);
+
+	if ( empty( $atts['desktop-image'] ) ) {
+		return anony_admin_hint( 'Please add the desctop image url' );
+	}
+	// Defaults to desktop image.
+	if ( empty( $atts['mobile-image'] ) ) {
+		$atts['mobile-image'] = $atts['desktop-image'];
+	}
 
 	if ( wp_is_mobile() ) {
 		$banner_bg = $atts['mobile-image'];
