@@ -183,7 +183,6 @@ function anony_page_title() {
 		}
 		require locate_template( 'templates/partials/page-title.php', false, false );
 	}
-
 }
 
 add_action( 'anony_after_header_content', 'anony_page_title' );
