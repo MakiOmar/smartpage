@@ -52,7 +52,6 @@ function anony_theme_skin() {
 		.anony-skew-bg::after,
 		.anony-page-numbers li,
 		.anony-active,
-		.button,
 		.anony-active-tab,
 		.anony-page-numbers a, 
 		.widgeted_title, 
