@@ -32,6 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					}
 					?>
 					<strong style="text-align:<?php echo esc_attr( $name_align ); ?>"><?php echo esc_html( $name ); ?></strong>
+				</a>
 			</div>
 			<?php
 
