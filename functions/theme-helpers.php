@@ -13,7 +13,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
+/**
+ * Display a hint for administrator if he missd somthing.
+ *
+ * @param string $hint The hint.
+ * @return string
+ */
+function anony_admin_hint( $hint ) {
+	if ( current_user_can( 'manage_options' ) ) {
+		return '<p>' . esc_html( $hint ) . '</p>';
+	}
+}
 /**
  * Get current object title
  *
