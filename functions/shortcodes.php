@@ -30,12 +30,103 @@ $shcods = array(
 	'anony_popup',
 	'anony_navigation',
 	'anony_price_tables',
+	'anony_facy_list',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
 }
 
+/**
+ * Renders a fancy list
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_facy_list_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'style'             => 'one',
+			'target_class'      => 'wrapper',
+			'item_width'        => '100%',
+			'content_direction' => 'horizontal',
+		),
+		$atts,
+		'anony_facy_list'
+	);
+
+	$content_direction = 'vertical' === $atts['content_direction'] ? 'column' : 'row';
+	ob_start();
+	?>
+	<style>
+		.___ ol {
+			list-style: none;
+			padding: 0;
+		}
+		.___ li {
+			position: relative;
+			display: flex;
+			flex-direction: <?php echo esc_html( $content_direction ); ?>;
+			align-items: center;
+			gap: 1rem;
+			background: aliceblue;
+			padding: 1.5rem;
+			border-radius: 1rem;
+			width: calc(100% - 2rem);
+			box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.1);
+		}
+		.___ li::before {
+			counter-increment: list-item;
+			content: counter(list-item);
+			font-size: 30px;
+			font-weight: 700;
+			width: 40px;
+			height: 40px;
+			background: #2b2059;
+			flex: 0 0 auto;
+			border-radius: 50%;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.___ li + li {
+			margin-top: 1rem;
+		}
+
+		.___ li:nth-child(even) {
+			flex-direction: row-reverse;
+			background: lavender;
+			margin-right: -2rem;
+			margin-left: 2rem;
+		}
+
+		@media screen and (min-width:768px){
+			.___ li {
+				width: <?php echo esc_html( $atts['item_width'] ); ?>;
+				display: inline-flex;
+			}
+			.___ li::before {
+				font-size: 3rem;
+				width: 2em;
+				height: 2em;
+			}
+		}
+		@media screen and (max-width:480px){
+			.___ li {
+				width: auto;
+				display: inline-flex;
+			}
+			.___ li:nth-child(2n) {
+				margin-right: -0.5rem;
+				margin-left: 1rem;
+			}
+		}
+	</style>
+	<?php
+	$styles = ob_get_clean();
+	return str_replace( '___', $atts['target_class'], $styles );
+}
 /**
  * Renders price tables
  *
@@ -112,14 +203,15 @@ function anony_divider_shcode( $atts ) {
 			'border-style' => 'solid',
 			'height'       => '20px',
 			'align'        => 'center',
+			'justify'      => 'flex-start',
 		),
 		$atts,
 		'anony_divider'
 	);
 
 	return sprintf(
-		'<div style="width:%1$s;height:%2$s;display:flex;align-items:%6$s">
-		<span style="display:block; border-bottom:%3$s %4$s %5$s;width:%1$s"></span>
+		'<div style="height:%2$s;display:flex;align-items:%6$s;justify-content:%7$s">
+		<span style="display:block; border-bottom:%3$s %4$s %5$s;width:%1$s;"></span>
 		</div>',
 		$atts['width'],
 		$atts['height'],
@@ -127,6 +219,7 @@ function anony_divider_shcode( $atts ) {
 		$atts['border-style'],
 		$atts['color'],
 		$atts['align'],
+		$atts['justify']
 	);
 }
 
@@ -317,6 +410,7 @@ function anony_faqs_shcode( $atts ) {
 		array(
 			'ids'    => '',
 			'number' => 3,
+			'cat'    => false,
 		),
 		$atts,
 		'anony_faqs'
@@ -330,6 +424,16 @@ function anony_faqs_shcode( $atts ) {
 
 	if ( ! empty( $atts['ids'] ) ) {
 		$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	}
+
+	if ( $atts['cat'] && ! empty( $atts['cat'] ) ) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'anony_faqs_cats',
+				'field'    => 'id',
+				'terms'    => explode( ',', str_replace( ' ', '', $atts['cat'] ) ),
+			),
+		);
 	}
 
 	$query = new WP_Query( $args );
