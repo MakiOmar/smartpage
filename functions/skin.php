@@ -35,11 +35,17 @@ function anony_theme_skin() {
 				.woocommerce ul.products li.product .onsale {
 					background-color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
-				.woocommerce div.product p.price, .woocommerce div.product span.price{
+				.woocommerce div.product p.price,
+				.woocommerce div.product span.price,
+				.woocommerce ul.products li.product .price
+				.comment-text .woocommerce-review__author{
 					color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
 				.anony-quantity input.anony-plus,
 				.anony-quantity input.anony-minus{
+					background-color: <?php echo esc_html( $primary_color ); ?>!important;
+				}
+				.add_to_cart_button{
 					background-color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
 				<?php
@@ -101,8 +107,7 @@ function anony_theme_skin() {
 		.fa-eye,
 		.fa-download,
 		.anony-breadcrumbs li,
-		.anony-breadcrumbs a,
-		.woocommerce ul.products li.product .price,.comment-text .woocommerce-review__author {
+		.anony-breadcrumbs a{
 			color: <?php echo esc_html( $primary_color ); ?>!important;
 		}
 		
