@@ -154,21 +154,6 @@ jQuery(document).ready(function($){
 		if($('.current-menu-item').hasClass('menu-item-home') === false){
 			$('.menu-item-home').removeClass('active');
 		}
-		
-		var headrHeight = $('.anony-header').height();
-
-		$(window).scroll(function() {
-			//sticky menu
-			if ($(window).scrollTop() > headrHeight) {
-				$('.anony-header').css('height' , headrHeight);
-				
-				$('#anony-main_nav_con').addClass('sticky');
-				
-			} else {
-				$('anony-header').css('height' , 'auto');
-				$('#anony-main_nav_con').removeClass('sticky');
-			}
-		});
 	}
 	
 	/**--------------------------------------------------------------------
