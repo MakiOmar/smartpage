@@ -68,9 +68,81 @@ add_filter(
 				esc_html__( 'Font', 'smartpage' ),
 				esc_html__( 'Fonts', 'smartpage' ),
 			);
+
+			$custom_posts ['anony_blocks'] = array(
+				esc_html__( 'Block', 'smartpage' ),
+				esc_html__( 'Blocks', 'smartpage' ),
+			);
 		}
 
 		return array_merge( $custom_post_types, $custom_posts );
+	}
+);
+
+/**
+ * Enable block editor and Disable public access for blocks post type
+ */
+add_filter(
+	'anony_anony_blocks_args',
+	function ( $args ) {
+		$args['show_in_rest']       = true;
+		$args['publicly_queryable'] = false;
+		return $args;
+	}
+);
+
+/**
+ * Disable public access for FAQs
+ */
+add_filter(
+	'anony_anony_faqs_args',
+	function ( $args ) {
+		$args['publicly_queryable'] = false;
+		return $args;
+	}
+);
+
+/**
+ * Disable public access for fonts
+ */
+add_filter(
+	'anony_anony_fonts_args',
+	function ( $args ) {
+		$args['publicly_queryable'] = false;
+		return $args;
+	}
+);
+
+/**
+ * Disable public access for testimonial
+ */
+add_filter(
+	'anony_anony_testimonial_args',
+	function ( $args ) {
+		$args['publicly_queryable'] = false;
+		return $args;
+	}
+);
+
+/**
+ * Disable public access for news
+ */
+add_filter(
+	'anony_anony_news_args',
+	function ( $args ) {
+		$args['publicly_queryable'] = false;
+		return $args;
+	}
+);
+
+/**
+ * Blocks post type supported features
+ */
+add_filter(
+	'anony_anony_blocks_supports',
+	function ( $supports ) {
+		$supports = array( 'title', 'editor' );
+		return $supports;
 	}
 );
 
