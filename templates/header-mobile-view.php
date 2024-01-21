@@ -28,3 +28,4 @@ require 'document-head.php';
 		<?php do_action( 'anony_mobile_header_third' ); ?>
 	</div>
 </header>
+<?php do_action( 'anony_after_header_content' ); ?>
