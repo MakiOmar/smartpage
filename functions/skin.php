@@ -48,6 +48,11 @@ function anony_theme_skin() {
 				.add_to_cart_button{
 					background-color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
+				.elementor-page .elementor-products-grid ul.products.elementor-grid li.product, .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+					background-color: #fff;
+					border-radius: 15px;
+					border: 1px solid <?php echo esc_html( $primary_color ); ?>;
+				}
 				<?php
 
 		}
