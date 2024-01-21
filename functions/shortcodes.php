@@ -23,6 +23,7 @@ $shcods = array(
 	'anony_divider',
 	'anony_posts_slider',
 	'anony_images_slider',
+	'anony_content_slider',
 	'anony_testimonials',
 	'anony_faqs',
 	'anony_terms_listing',
@@ -320,8 +321,11 @@ function anony_terms_listing_shcode( $atts ) {
 		'number'     => $atts['number'],
 		'fields'     => 'id=>name',
 		'hide_empty' => false,
-		'parent'     => 0,
 	);
+
+	if ( isset( $atts['parent'] ) ) {
+		$args['parent'] = absint( $atts['parent'] );
+	}
 
 	if ( ! empty( $atts['ids'] ) ) {
 		$args['include'] = str_replace( ' ', '', $atts['ids'] );
@@ -460,7 +464,63 @@ function anony_faqs_shcode( $atts ) {
 
 	return $output;
 }
+/**
+ * Renders content slider
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_content_slider_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'ids'    => '',
+			'number' => 3,
+			'cat'    => false,
+			'height' => 'auto',
+		),
+		$atts,
+		'anony_faqs'
+	);
 
+	$args = array(
+		'post_type'      => 'anony_blocks',
+		'posts_per_page' => $atts['number'],
+		'post_status'    => 'publish',
+	);
+
+	if ( ! empty( $atts['ids'] ) ) {
+		$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	}
+
+	if ( $atts['cat'] && ! empty( $atts['cat'] ) ) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'anony_faqs_cats',
+				'field'    => 'id',
+				'terms'    => explode( ',', str_replace( ' ', '', $atts['cat'] ) ),
+			),
+		);
+	}
+	$height = $atts['height'];
+	$query  = new WP_Query( $args );
+	$output = '';
+	$data   = array();
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$temp['content'] = get_the_content();
+
+			$data[] = $temp;
+		}
+		wp_reset_postdata();
+	}
+	if ( ! empty( $data ) ) {
+		ob_start();
+		require locate_template( 'templates/partials/content-slider.php', false, false );
+		$output .= ob_get_clean();
+	}
+	return $output;
+}
 /**
  * Renders Images slider
  *
@@ -811,21 +871,29 @@ function anony_section_title_shcode( $atts ) {
 function anony_products_loop_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'ids' => '',
+			'ids'    => '',
+			'author' => '',
 		),
 		$atts,
 		'anony_products_loop'
 	);
 	// Get the comma-separated IDs and convert them into an array.
-	$ids = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
+	$ids = ! empty( $atts['ids'] ) ? explode( ',', str_replace( ' ', '', $atts['ids'] ) ) : '';
+
+	$products_loop_args = array();
+	if ( ! empty( $ids ) ) {
+		$products_loop_args['include'] = $ids;
+	}
+
+	if ( ! empty( $atts['author'] ) ) {
+		$products_loop_args['post_author'] = absint( $atts['author'] );
+	}
 	ob_start();
 	echo '<div class="woocommerce anony-flex-grow">';
 	ANONY_Woo_Help::products_loop(
 		array(
-			'loop_args' => array(
-				'include' => $ids,
-			),
-		),
+			'loop_args' => $products_loop_args,
+		)
 	);
 	echo '</div>';
 	return ob_get_clean();
