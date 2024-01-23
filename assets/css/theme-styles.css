@@ -1784,7 +1784,11 @@ div {
   padding: 0;
 }
 
-input[type=search], input[type=tel], input[type=text], input[type=email], input[type=password], input[type=url], textarea {
+.anony-default-padding {
+  padding: 10px;
+}
+
+input[type=search], input[type=tel], input[type=text], input[type=email], input[type=password], input[type=url], input[type=number], textarea {
   outline: none;
   padding: 10px;
   margin: 5px;
@@ -2018,11 +2022,20 @@ p {
   -moz-box-shadow: 0px 0px 14px 0px rgba(160, 160, 160, 0.75);
 }
 
-.wp-block-group__inner-container, .wp-block-group.wp-block-group-is-layout-flex {
+main.anony-content {
+  padding: 0 20px;
+}
+
+.wp-block-group__inner-container, .wp-block-group.wp-block-group-is-layout-flex, .anony-block-section {
   position: relative;
   padding: 20px;
 }
 
+@media screen and (max-width: 480px) {
+  .wp-block-group__inner-container, .wp-block-group.wp-block-group-is-layout-flex, .anony-block-section {
+    padding: 10px 8px;
+  }
+}
 .anony-bg-banner {
   background-repeat: no-repeat;
   background-size: cover;
@@ -2058,6 +2071,32 @@ p {
   height: 80px;
 }
 
+.anony-page-title-wrapper {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.anony-page-title-wrapper * {
+  z-index: 10;
+}
+
+.anony-page-title-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
 header {
   margin: 0;
   width: 100%;
@@ -2069,6 +2108,7 @@ header#anony-mobile-header {
   background-color: #fff;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  width: 100vw;
 }
 
 header.elemetor {
@@ -2162,7 +2202,6 @@ header.anony-absolute-header {
   padding: 6px;
   width: 100%;
   height: 100%;
-  text-shadow: 0 1px 1px #333131;
 }
 
 #anony-main-menu-con .anony-sub-menu li a {
@@ -2338,7 +2377,6 @@ header.anony-absolute-header {
   #anony-main-menu-con li a {
     padding: 10px 20px;
     width: 100%;
-    border-right: 1px solid rgba(97, 27, 46, 0.5);
   }
   #anony-main-menu-con li ul li ul {
     position: absolute;

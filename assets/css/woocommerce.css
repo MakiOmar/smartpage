@@ -1,5 +1,8 @@
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
   margin: 0 3% 2.992em 0;
+  float: none;
+  display: inline-block;
+  width: 23.4%;
 }
 
 .woocommerce ul.products li.last, .woocommerce-page ul.products li.last {
@@ -43,6 +46,7 @@
 
 .woocommerce ul.products li.product a.add_to_cart_button {
   color: #FFFFFF;
+  margin-bottom: 10px;
 }
 
 .woocommerce ul.products li.product .price del {
@@ -54,9 +58,8 @@
   text-align: center;
 }
 
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-  float: none;
-  display: inline-block;
+.woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
+  margin: 0 0.8em 0.8em 0;
 }
 
 .woocommerce .products li .woocommerce-Price-amount bdi {
@@ -83,13 +86,17 @@
   margin-top: 10px;
 }
 
+.woocommerce .products ul, .woocommerce ul.products {
+  margin: 0;
+}
+
 @media screen and (max-width: 480px) {
   .elementor-page .elementor-products-grid ul.products.elementor-grid li.product {
     border-radius: 8px;
     padding: 8px;
   }
-  .woocommerce .products ul, .woocommerce ul.products {
-    justify-content: space-between;
+  .woocommerce .products ul, .woocommerce ul.products li {
+    margin: 5px 2px !important;
   }
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
@@ -109,13 +116,30 @@
   width: 100%;
 }
 
+.woocommerce div.product form.cart .button.direct-checkout-button {
+  float: none;
+  padding: 0.618em 25px;
+}
+
+.woocommerce div.product form.cart .button.direct-checkout-button span {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 2px;
+}
+
+body.rtl.woocommerce div.product form.cart .button.direct-checkout-button span {
+  right: 2px;
+  left: auto;
+}
+
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
   overflow: hidden;
 }
 
 .woocommerce .container-rating {
+  align-items: flex-start;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .custom-sales-counter {
@@ -168,14 +192,6 @@
 
 .anony-wc-reviews {
   margin: 20px 0;
-}
-
-/*
-.woocommerce div.product-type-variable div.anony-entry-summary, .woocommerce div.product-type-variable .woocommerce-product-gallery .flex-viewport, .woocommerce div.product-type-variable div.images.woocommerce-product-gallery{
-	height: 550px!important;
-}*/
-.anony-entry-summary {
-  height: 100%;
 }
 
 .woocommerce div.product div.images img {
@@ -349,7 +365,7 @@ table.woocommerce-table--order-details tr:hover {
   vertical-align: middle;
 }
 
-.widget_shopping_cart_content {
+#anony-mini-cart-widget .widget_shopping_cart_content {
   position: fixed;
   top: 0;
   left: -300px;
@@ -376,7 +392,7 @@ a.added_to_cart {
   color: #7b7b7b;
 }
 
-.widget_shopping_cart_content.anony-mini-cart-open {
+#anony-mini-cart-widget .widget_shopping_cart_content.anony-mini-cart-open {
   left: 0;
 }
 
@@ -457,11 +473,6 @@ body.rtl .elementor-widget-woocommerce-checkout-page {
     padding-left: 5px;
   }
 }
-.woocommerce .woocommerce-breadcrumb {
-  padding: 10px;
-  background-color: #fff;
-}
-
 .woocommerce #review_form #respond p.comment-form-comment, .woocommerce #review_form #respond p.comment-form-author, .woocommerce #review_form #respond p.comment-form-email {
   display: flex;
   flex-direction: column;
