@@ -520,6 +520,23 @@ function anony_sales_counter() {
  * @return void
  */
 function anony_fancy_quantity_before() {
+	global $product;
+	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() ) {
+		return;
+	}
+	define( 'HAS_FANCY_QUANTITY', '' );
+	$style = 'default';
+	switch ( $style ) {
+		case 'one':
+			$class = ' anony-quantity-style-one';
+			break;
+		case 'two':
+			$class = ' anony-quantity-style-two';
+			break;
+		default:
+			$class = '';
+			break;
+	}
 	?>
 	<style type="text/css">
 		#anony-mobile-footer-menu form.cart{
@@ -554,9 +571,33 @@ function anony_fancy_quantity_before() {
 		.anony-quantity input.anony-minus:hover {
 			background-color: #f9f9f9;
 		}
+		/* Chrome, Safari, Edge, Opera */
+		.anony-quantity input::-webkit-outer-spin-button,
+		.anony-quantity input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		/* Firefox */
+		.anony-quantity input[type=number] {
+			-moz-appearance: textfield;
+		}
+
+		.anony-quantity-style-one {
+			background-color: #F5F5F5;
+			padding: 2px 3px;
+			border-radius: 8px;
+		}
+		
+		.anony-quantity.anony-quantity-style-one input.anony-plus,
+		.anony-quantity.anony-quantity-style-one input.anony-minus {
+			background-color: #fff!important;
+			border-radius:8px;
+			border-color:#CACACA;
+		}
 	</style>
-	<div class="anony-quantity">
-		<input type="button" value="-" class="anony-minus">
+	<div class="anony-quantity<?php echo esc_attr( $class ); ?>">
+		<input type="button" value="-" class="anony-minus"/>
 	<?php
 }
 
@@ -566,8 +607,12 @@ function anony_fancy_quantity_before() {
  * @return void
  */
 function anony_fancy_quantity_after() {
+	global $product;
+	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() || ! defined( 'HAS_FANCY_QUANTITY' ) ) {
+		return;
+	}
 	?>
-	<input type="button" value="+" class="anony-plus">
+	<input type="button" value="+" class="anony-plus"/>
 	</div>
 	<?php
 }
@@ -703,7 +748,7 @@ function anony_woo_loop_thumb_size( $size ) {
  *
  * @return void
  */
-function anony_direct_add_to_cart_form() {
+function anony_direct_checkout_form() {
 	$anony_options = ANONY_Options_Model::get_instance();
 	if ( '1' !== $anony_options->enable_direct_checkout ) {
 		return;
@@ -720,7 +765,7 @@ function anony_direct_add_to_cart_form() {
 /**
  * Now add to cart.
  */
-function anony_direct_add_to_cart() {
+function anony_direct_checkout() {
 	global $woocommerce;
 
 	if ( ! $woocommerce ) {
@@ -754,8 +799,8 @@ add_action( 'woocommerce_before_add_to_cart_quantity', 'anony_fancy_quantity_bef
 add_action( 'woocommerce_after_add_to_cart_quantity', 'anony_fancy_quantity_after' );
 add_action( 'wp_footer', 'anony_fancy_quantity_script' );
 add_action( 'wp_footer', 'anony_loop_qty_selector_script' );
-add_action( 'woocommerce_after_add_to_cart_button', 'anony_direct_add_to_cart_form' );
-add_action( 'template_redirect', 'anony_direct_add_to_cart' );
+add_action( 'woocommerce_after_add_to_cart_button', 'anony_direct_checkout_form' );
+add_action( 'template_redirect', 'anony_direct_checkout' );
 add_action( 'woocommerce_single_product_summary', 'anony_sales_counter', 11 );
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
 add_action( 'init', 'anony_create_product_attributes' );
@@ -772,4 +817,3 @@ add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
 add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
 add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 2 );
 add_filter( 'single_product_archive_thumbnail_size', 'anony_woo_loop_thumb_size' );
-
