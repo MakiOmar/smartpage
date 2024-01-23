@@ -21,6 +21,10 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		position: relative;
 		overflow: hidden;
 		height: <?php echo esc_html( $height ); ?>;
+		margin: auto;
+	}
+	.anony-slider div{
+		max-width: 100vw;
 	}
 	.anony-slider-container img{
 		max-height: <?php echo esc_html( $height ); ?>;
@@ -138,6 +142,7 @@ add_action(
 			jQuery(document).ready(function($) {
 				var slideWidth = $('.anony-slide').outerWidth();
 				var slider     = $('.anony-slider');
+				$('.anony-slider-container').css( 'width' , ( parseInt( $('.anony-slide').width() ) ) + 'px' );
 
 				// Clone the first and last slide.
 				var firstSlide = $('.anony-slide:first-child').clone();
