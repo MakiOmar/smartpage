@@ -204,7 +204,7 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 			$regular_prices = array();
 
 			// Get all variation prices.
-			$prices = $product->get_variations_prices();
+			$prices = $product->get_variation_prices();
 
 			// Loop through variation prices.
 			foreach ( $prices['price'] as $key => $price ) {
@@ -269,11 +269,11 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 			}
 		}
 
-			$sale_badge_type = 'percentage';
+			$sale_badge_type  = 'percentage';
+			$sale_badge_text  = $percentage;
+			$sale_flash_style = 'default';
 
-			$sale_badge_text = $percentage;
-
-			$class = 'on-sale-percent';
+			$class = 'on-sale-percent anony-onsale-' . $sale_flash_style;
 
 		if ( 'text' === $anony_options->sale_badge_type ) {
 			// Translators: %1$s for saved amount and %2$s for currncy.
@@ -384,107 +384,7 @@ function anony_save_custom_sale_badge_field( $post_id ) {
 }
 add_action( 'woocommerce_process_product_meta', 'anony_save_custom_sale_badge_field' );
 
-/**
- * Function for `woocommerce_sale_flash` filter-hook.
- *
- * @param string     $html The output.
- * @param WP_Post    $post Post object.
- * @param  WC_Product $product Product object.
- *
- * @return string
- */
-function anony_custom_sale_badge( $html, $post, $product ) {
 
-	$anony_options     = ANONY_Options_Model::get_instance();
-	$custom_sale_badge = get_post_meta( $post->ID, 'custom-sale-badge', true );
-	if ( $custom_sale_badge && ! empty( $custom_sale_badge ) ) {
-		return sprintf( '<span class="onsale on-sale-text">%s</span>', $custom_sale_badge );
-	}
-	if ( $product->is_type( 'variable' ) ) {
-		$percentages    = array();
-		$regular_prices = array();
-
-		// Get all variation prices.
-		$prices = $product->get_variation_prices();
-
-		// Loop through variation prices.
-		foreach ( $prices['price'] as $key => $price ) {
-			// Only on sale variations.
-			if ( $prices['regular_price'][ $key ] !== $price ) {
-				// Calculate and set in the array the percentage for each variation on sale.
-				$percentages[] = round( 100 - ( floatval( $prices['sale_price'][ $key ] ) / floatval( $prices['regular_price'][ $key ] ) * 100 ) );
-
-				$sale_prices[] = floatval( $prices['sale_price'][ $key ] );
-
-				$regular_prices[] = floatval( $prices['regular_price'][ $key ] );
-			}
-		}
-		// We keep the highest value.
-		$percentage    = max( $percentages ) . '%';
-		$regular_price = max( $regular_prices );
-		$sale_price    = max( $sale_prices );
-
-		$saved = $regular_price - $sale_price;
-
-	} elseif ( $product->is_type( 'grouped' ) ) {
-		$percentages    = array();
-		$regular_prices = array();
-
-		// Get all variation prices.
-		$children_ids = $product->get_children();
-
-		// Loop through variation prices.
-		foreach ( $children_ids as $child_id ) {
-			$child_product = wc_get_product( $child_id );
-
-			$regular_price = (float) $child_product->get_regular_price();
-			$sale_price    = (float) $child_product->get_sale_price();
-
-			if ( 0 !== $sale_price || ! empty( $sale_price ) ) {
-				// Calculate and set in the array the percentage for each child on sale.
-				$percentages[] = round( 100 - ( $sale_price / $regular_price * 100 ) );
-
-				$regular_prices[] = $regular_price;
-				$sale_prices[]    = $sale_price;
-			}
-		}
-		// We keep the highest value.
-		$percentage = max( $percentages ) . '%';
-
-		$regular_price = max( $regular_prices );
-
-		$sale_price = max( $sale_prices );
-
-		$saved = $regular_price - $sale_price;
-
-	} else {
-		$regular_price = (float) $product->get_regular_price();
-		$sale_price    = (float) $product->get_sale_price();
-
-		if ( 0 !== $sale_price || ! empty( $sale_price ) ) {
-			$percentage = round( 100 - ( $sale_price / $regular_price * 100 ) ) . '%';
-
-			$saved = $regular_price - $sale_price;
-		} else {
-			return $html;
-		}
-	}
-
-	$sale_badge_type = 'percentage';
-
-	$sale_badge_text = $percentage;
-
-	$class = 'on-sale-percent';
-
-	if ( 'text' === $anony_options->sale_badge_type ) {
-		// Translators: %1$s is for the amount and %2$s is for the currency.
-		$sale_badge_text = sprintf( esc_html__( 'Save %1$s %2$s', 'smartpage' ), round( $saved ), get_woocommerce_currency_symbol() );
-
-		$class = 'on-sale-text';
-	}
-
-	return sprintf( '<span class="onsale %1$s">%2$s</span>', $class, $sale_badge_text );
-}
 /**
  * Print sales counter
  *
@@ -792,6 +692,16 @@ function anony_direct_checkout() {
 	exit();
 }
 
+/**
+ * Filter product's thumbnail.
+ *
+ * @param string $image Product's thumbnail HTML.
+ * @return string
+ */
+function anony_woocommerce_product_get_image( $image ) {
+	return '<div class="anony-woo-product-image">' . $image . '</div>';
+}
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
@@ -809,6 +719,7 @@ add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
 add_action( 'woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
 
+add_filter( 'woocommerce_product_get_image', 'anony_woocommerce_product_get_image' );
 add_filter( 'woocommerce_sale_flash', 'anony_custom_sale_badge', 20, 3 );
 add_filter( 'woocommerce_product_description_heading', '__return_false' );
 add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
