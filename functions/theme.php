@@ -21,6 +21,10 @@ function anony_body_classes( $classes ) {
 	if ( wp_is_mobile() ) {
 		$classes[] = 'anony-is-mobile';
 	}
+
+	if ( class_exists( 'WooCommerce' ) ) {
+		$classes[] = 'anony-woocommerce';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'anony_body_classes' );
