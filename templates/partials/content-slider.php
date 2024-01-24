@@ -55,8 +55,9 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 	}
 
 	.anony-slide {
-		float: <?php echo ! is_rtl() ? 'left' : 'right'; ?>;
-	} 
+		display: inline-block;
+		vertical-align: top;
+	}
 
 	
 	.anony-slider-nav .top, .anony-slider-nav .bottom {
@@ -108,6 +109,14 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		justify-content: center;
 		align-items: center;
 	}
+	@media screen and (max-width:480px) {
+		.anony-slider div{
+			max-width: calc(100vw - 40px);
+		}
+		.anony-slide .wp-block-columns{
+			flex-direction: column;
+		}
+	}
 </style>
 <div class="anony-slider-container">
 	<div class="anony-slider">
@@ -152,8 +161,14 @@ add_action(
 				slider.append(firstSlide);
 				slider.prepend(lastSlide);
 
+				var margins = 0
+				$('.anony-slide').each( function() {
+					margins = margins + parseFloat( $(this).css("marginRight").replace('px', '' ) );
+				} );
+				var itemsLength = $('.anony-slide').length;
+
 				// Adjust the slider width.
-				var sliderWidth = slideWidth * $('.anony-slide').length;
+				var sliderWidth = slideWidth * itemsLength + margins + ( 10 * itemsLength );
 				slider.width(sliderWidth);
 				// Set initial position.
 				<?php if ( ! is_rtl() ) { ?>
