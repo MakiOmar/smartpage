@@ -873,6 +873,11 @@ function anony_products_loop_shcode( $atts ) {
 		array(
 			'ids'    => '',
 			'author' => '',
+			'slider' => 'off',
+			'height' => '500px',
+			'width'  => '100vw',
+			'item-width-desktop'  => '320px',
+			'item-width-mobile'  => '150px',
 		),
 		$atts,
 		'anony_products_loop'
@@ -888,13 +893,224 @@ function anony_products_loop_shcode( $atts ) {
 	if ( ! empty( $atts['author'] ) ) {
 		$products_loop_args['post_author'] = absint( $atts['author'] );
 	}
+
+	if ( 'on' === $atts['slider'] ) {
+		$slider_class = ' anony-woocommerce-loop-slider';
+	} else {
+		$slider_class = '';
+	}
+	$container_id = uniqid( 'anony-products-loop-' );
+
+	if ( wp_is_mobile() ) {
+		$item_width = $atts['item-width-mobile'];
+	} else {
+		$item_width = $atts['item-width-desktop'];
+	}
 	ob_start();
-	echo '<div class="woocommerce anony-flex-grow">';
+	if ( 'on' === $atts['slider'] ) {
+		?>
+		<style>
+			.anony-woocommerce-loop-slider.anony-woocommerce-loop{
+				position:relative;
+				max-width: <?php echo esc_html( $atts['width'] ); ?>;
+				overflow:hidden;
+				/*height:<?php echo esc_html( $atts['height'] ); ?>;*/
+				margin:auto;
+			}
+			.anony-woocommerce-loop-slider.anony-woocommerce-loop ul.products  li{
+				width:<?php echo esc_html( $item_width ); ?>!important;
+				display:inline-block;
+				vertical-align: top;
+				float: none !important;
+				clear: none !important;
+			}
+			.anony-woocommerce-loop-slider.anony-woocommerce-loop ul.products{
+				position:relative;
+				display:block;
+				width:9999999px;
+				transition: transform 2s ease-in-out;
+				-webkit-transition: transform 2s ease-in-out;
+				-moz-transition: transform 2s ease-in-out;
+				-ms-transition: transform 2s ease-in-out;
+				-o-transition: transform 2s ease-in-out;
+			}
+			
+			/* -------------*/
+			.anony-woocommerce-loop-slider .anony-slider-control{
+				margin: auto;
+				text-align: center;
+				position: relative;
+				bottom: auto;
+			}
+			body.rtl .anony-woocommerce-loop-slider .anony-slider-control{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: row-reverse;
+			}
+			.anony-woocommerce-loop-slider .anony-slider-nav .top, .anony-slider-nav .bottom {
+				display: block;
+				width: 10px;
+				height: 1px;
+				height: 1px;
+				background-color: #fff;
+			}
+		
+			.anony-woocommerce-loop-slider .anony-greater-than .top {
+				transform: rotate(45deg);
+				top: 8px;
+				position: relative;
+			}
+		
+			.anony-woocommerce-loop-slider .anony-greater-than .bottom {
+				transform: rotate(-45deg);
+			}
+		
+			.anony-woocommerce-loop-slider .anony-smaller-than .top {
+				transform: rotate(-45deg);
+				top: 8px;
+				position: relative;
+			}
+		
+			.anony-woocommerce-loop-slider .anony-smaller-than .bottom {
+				transform: rotate(45deg);
+			}
+			.anony-woocommerce-loop-slider .anony-slider-control button{
+				height: 35px;
+				width: 35px;
+				margin: 0 3px;
+				background-color: rgb(0,0,0,0.5);
+				color: #fff;
+				outline: none;
+				border-radius: 50%;
+				border: none;
+				cursor: pointer;
+			}
+			.anony-woocommerce-loop-slider .anony-slider-control button:hover{
+				background-color: rgb(0,0,0,1);
+			}
+			.anony-woocommerce-loop-slider .anony-slider-nav{
+				position: relative;
+				top: -3px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			@media screen and (max-width:480px) {
+				.anony-woocommerce-loop-slider .anony-slider div{
+					max-width: calc(100vw - 40px);
+				}
+				.anony-woocommerce-loop-slider .anony-slide .wp-block-columns{
+					flex-direction: column;
+				}
+			}
+		</style>
+
+		<?php
+	}
+	echo '<div id="' . esc_html( $container_id ) . '" class="woocommerce anony-woocommerce-loop anony-flex-grow' . esc_html( $slider_class ) . '">';
+
 	ANONY_Woo_Help::products_loop(
 		array(
 			'loop_args' => $products_loop_args,
+			'slider'    => $atts['slider'],
+			'id'        => $container_id,
 		)
 	);
+
+	if ( 'on' === $atts['slider'] ) {
+		?>
+		<div class="anony-slider-control" data-slider="<?php echo esc_html( $container_id ); ?>">
+			<button class="anony-slider-prev">
+				<span class="anony-greater-than anony-slider-nav">
+					<span class="top"></span><span class="bottom"></span>
+				</span>
+			</button>
+			<button class="anony-slider-next">
+				<span class="anony-smaller-than anony-slider-nav">
+					<span class="top"></span><span class="bottom"></span>
+				</span>
+			</button>
+		</div>
+		<?php
+	}
 	echo '</div>';
+
+	if ( 'on' === $atts['slider'] ) {
+
+		add_action(
+			'wp_footer',
+			function () use( $container_id ) {
+				?>
+		<script>
+		jQuery(document).ready(function($) {
+			var containerID = '<?php echo esc_html( $container_id ); ?>';
+
+			var slideWidth = $('ul.products li', $( '#' + containerID )).outerWidth();
+			
+			var slider     = $('ul.products', $( '#' + containerID ));
+			// Clone the first and last slide.
+			var firstSlide = $('ul.products li:first-child', $( '#' + containerID )).clone();
+			var lastSlide = $('ul.products li:last-child', $( '#' + containerID )).clone();
+		
+			// Append cloned slides to the slider.
+			slider.append(firstSlide);
+			slider.prepend(lastSlide);
+			
+			var margins = 0
+			$('li.product', $( '#' + containerID )).each( function() {
+				margins = margins + parseFloat( $(this).css("marginRight").replace('px', '' ) );
+			} );
+			var itemsLength = $('ul.products li', $( '#' + containerID )).length;
+			// Adjust the slider width.
+			var sliderWidth = slideWidth * itemsLength + ( 10 * itemsLength ) + margins ;
+		
+			slider.width( sliderWidth );
+			// Set initial position.
+				<?php if ( ! is_rtl() ) { ?>
+			var initialPosition = -slideWidth;
+			<?php } else { ?>
+				var initialPosition = slideWidth;
+			<?php } ?>
+			if ( 3 > $('ul.products li', $( '#' + containerID )).length ) {
+				
+			}
+			slider.css('transform', 'translateX(' + initialPosition + 'px)');
+			
+			// Slide to the next slide.
+			$( '#' + containerID ).on('click','.anony-slider-next', function() {
+		
+		
+				$( '#' + containerID ).find( 'ul.products' ).animate(
+				{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '-=' + slideWidth },
+				300,
+				function() {
+					slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
+					slider.append($('ul.products li:first-child', $( '#' + containerID )));
+				}
+				);
+			});
+		
+			// Slide to the previous slide.
+			$( '#' + containerID ).on('click','.anony-slider-prev', function() {
+		
+				$( '#' + containerID ).find( 'ul.products' ).animate(
+				{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '+=' + slideWidth },
+				300,
+				function() {
+					slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
+					slider.prepend($('ul.products li:last-child', $( '#' + containerID )));
+				}
+				);
+			});
+		
+			
+		});
+		</script>
+				<?php
+			}
+		);
+	}
 	return ob_get_clean();
 }
