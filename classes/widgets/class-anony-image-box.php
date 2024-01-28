@@ -94,6 +94,14 @@ if ( ! class_exists( 'ANONY_Image_Box' ) ) {
 			$image_box_title       = $instance['image_box_title'];
 			$image_box_description = $instance['image_box_description'];
 			$image_url             = $instance['image_url'];
+			$layout                = 'vertical';
+
+			if ( 'vertical' !== $layout ) {
+				$classes = ' anony-grid-col-4 anony-inline-flex flex-v-center';
+			} else {
+				$classes = '';
+			}
+
 			include locate_template( 'templates/partials/image-box.php', false, false );
 		}
 
