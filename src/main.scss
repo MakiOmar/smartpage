@@ -486,7 +486,7 @@
 		height: 250px;
 		width: 100%;
 	}
-	.anony-post-image-wrapper,.anony-post_meta{
+	.anony-post-image-wrapper{
 			display: flex;
 			align-items: center;
 	}
@@ -602,9 +602,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.anony-single_post_meta .anony-post_meta{
-		box-shadow: none;
-	}
+	
 	.anony-table-of-content{
 		max-width: 33.33%;
 		float: left;
@@ -854,11 +852,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-	}
-	.single-download-title .anony-post_meta{
-		flex-direction: row;
-		box-shadow: none;
-		padding: 0;
 	}
 	.anony-download-counter{
 		/*height: 0;*/
@@ -1552,10 +1545,6 @@
 	}
 	.anony-inside-thumb .meta-text{
 		font-size: 14px;
-	}
-	.anony-post_meta{
-		flex-direction: column;
-		align-items: flex-start;
 	}
 	.anony-post_meta div{
 		margin-bottom: 5px;
