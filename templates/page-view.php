@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || die();
 
 $anony_options = ANONY_Options_Model::get_instance();
 // Check if built with elementor or gutenburg blocks.
-if ( have_posts() && ( is_plugin_active( 'elementor/elementor.php' ) && get_post_meta( get_the_ID(), '_elementor_edit_mode', true ) === 'builder' || has_blocks() ) ) {
+if ( have_posts() && ( defined( 'ELEMENTOR_PATH' ) && get_post_meta( get_the_ID(), '_elementor_edit_mode', true ) === 'builder' || has_blocks() ) ) {
 	?>
 	<main class="anony-content">
 		<?php
