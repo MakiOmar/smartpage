@@ -10,7 +10,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
 require_once 'options/general.php';
+require_once 'options/icons.php';
 require_once 'options/performance.php';
 require_once 'options/slider.php';
 require_once 'options/menu-colors.php';
@@ -50,7 +52,7 @@ add_action(
 			// General --------------------------------------------.
 			'general'      => array(
 				'title'    => esc_html__( 'Getting started', 'smartpage' ),
-				'sections' => array( 'general', 'advertisements' ),
+				'sections' => array( 'general', 'advertisements', 'icons' ),
 			),
 			// Performance --------------------------------------------.
 			'Performance'  => array(
@@ -100,6 +102,7 @@ add_action(
 		$sections = array();
 
 		$sections['general']        = json_decode( ANONY_GENERAL_OPTIONS, true );
+		$sections['icons']          = json_decode( ANONY_ICONS_OPTIONS, true );
 		$sections['Performance']    = json_decode( ANONY_PERFORMANCE_OPTIONS, true );
 		$sections['slider']         = json_decode( ANONY_SLIDER_OPTIONS, true );
 		$sections['menu-colors']    = json_decode( ANONY_MENU_COLORS_OPTIONS, true );
