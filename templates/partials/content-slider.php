@@ -30,14 +30,13 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		max-height: <?php echo esc_html( $height ); ?>;
 	}
 
-
 	.anony-slider {
 		width: 9999999px;
-		transition: transform 0.3s ease-in-out;
-		-webkit-transition: transform 0.3s ease-in-out;
-		-moz-transition: transform 0.3s ease-in-out;
-		-ms-transition: transform 0.3s ease-in-out;
-		-o-transition: transform 0.3s ease-in-out;
+		transition: transform 1.7s ease-in-out;
+		-webkit-transition: transform 1.7s ease-in-out;
+		-moz-transition: transform 1.7s ease-in-out;
+		-ms-transition: transform 1.7s ease-in-out;
+		-o-transition: transform 1.7s ease-in-out;
 	}
 	.anony-slider-control{
 		position: absolute;
@@ -116,6 +115,21 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		.anony-slide .wp-block-columns{
 			flex-direction: column;
 		}
+		.anony-slider-control{
+			position: static;
+		}
+		.anony-slider-control button{
+			position: absolute;
+			top: 50%;
+		}
+
+		.anony-slider-control button.anony-slider-next{
+			right: 15px;
+		}
+
+		.anony-slider-control button.anony-slider-prev{
+			left: 15px;
+		}
 	}
 </style>
 <div class="anony-slider-container">
@@ -151,6 +165,7 @@ add_action(
 			jQuery(document).ready(function($) {
 				var slideWidth = $('.anony-slide').outerWidth();
 				var slider     = $('.anony-slider');
+				var contentSliderInterval;
 				$('.anony-slider-container').css( 'width' , ( parseInt( $('.anony-slide').width() ) ) + 'px' );
 
 				// Clone the first and last slide.
@@ -183,7 +198,7 @@ add_action(
 				$('.anony-slider-container').on('click','.anony-slider-next', function() {
 					slider.animate(
 					{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '-=' + slideWidth },
-					300,
+					1700,
 					function() {
 						slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
 						slider.append($('.anony-slide:first-child'));
@@ -195,15 +210,100 @@ add_action(
 				$('.anony-slider-container').on('click','.anony-slider-prev', function() {
 					slider.animate(
 					{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '+=' + slideWidth },
-					300,
+					1700,
 					function() {
 						slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
 						slider.prepend($('.anony-slide:last-child'));
 					}
 					);
 				});
+				$('.anony-slider-container').hover(
+					function(){
+						$(this).addClass('paused');
+					},
+					function(){
+						$(this).removeClass('paused');
+					}
+				);
+				
+				contentSliderInterval = setInterval(
+					function(){
+						if ( $('.paused').length === 0 ) {
+							$('.anony-slider-container').find('.anony-slider-next').click();
+						}
+					},
+					5000
+				);
+				
+				let xDown = null;
+				let yDown = null;
+
+				// We use the touchstart event to capture the initial touch position (xDown and yDown variables).
+				function handleTouchStart(event) {
+					var element = event.target;
+					var container = element.closest('.anony-slider-container');
+					if (container) {
+						$('.paused').removeClass('paused');
+						clearInterval(contentSliderInterval);
+						xDown = event.touches[0].clientX;
+						yDown = event.touches[0].clientY;
+					} else {
+						xDown = null;
+						yDown = null;
+					}
+				}
+
+				// Calculate the horizontal distance (xDiff) and vertical distance (yDiff) between the initial touch position and the current touch position.
+				function handleTouchMove(event) {
+					if (!xDown || !yDown) {
+						return;
+					}
+
+					const xUp = event.touches[0].clientX;
+					const yUp = event.touches[0].clientY;
+
+					const xDiff = xDown - xUp;
+					const yDiff = yDown - yUp;
+
+					/**
+					 * If the horizontal distance (xDiff) is greater than the vertical distance (yDiff),
+					 * We determine whether it's a swipe to the left or right based on the sign of xDiff.
+					 * A negative xDiff indicates a swipe to the left, while a positive xDiff indicates a swipe to the right.
+					 */
+					if (Math.abs(xDiff) > Math.abs(yDiff)) {
+						if (xDiff > 0) {
+						// Swipe to the left
+						$('.anony-slider-container').find('.anony-slider-prev').click();
+						} else {
+						// Swipe to the right
+						$('.anony-slider-container').find('.anony-slider-next').click();
+						}
+					}
+
+					// Reset values
+					xDown = null;
+					yDown = null;
+				}
+
+				document.addEventListener("touchstart", handleTouchStart, false);
+				document.addEventListener("touchmove", handleTouchMove, false);
+				document.addEventListener(
+					"touchend",
+					function(){
+						contentSliderInterval = setInterval(
+							function(){
+								if ( $('.paused').length === 0 ) {
+									$('.anony-slider-container').find('.anony-slider-next').click();
+								}
+							},
+							5000
+						);
+					},
+					false
+				);
+
 			});
-			</script>
+		</script>
 		<?php
 	}
 );
