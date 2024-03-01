@@ -424,7 +424,7 @@ function anony_fancy_quantity_before() {
 	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() ) {
 		return;
 	}
-	define( 'HAS_FANCY_QUANTITY', '' );
+	defined( 'HAS_FANCY_QUANTITY' ) ?? define( 'HAS_FANCY_QUANTITY', '' );
 	$style = 'default';
 	switch ( $style ) {
 		case 'one':
