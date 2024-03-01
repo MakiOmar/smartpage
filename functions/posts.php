@@ -167,6 +167,11 @@ add_filter(
 					esc_html__( 'FAQs categories', 'smartpage' ),
 					esc_html__( 'FAQs category', 'smartpage' ),
 				),
+			'anony_blocks_cats'   =>
+				array(
+					esc_html__( 'Blocks categories', 'smartpage' ),
+					esc_html__( 'Blocks category', 'smartpage' ),
+				),
 
 		);
 
@@ -203,6 +208,7 @@ add_filter(
 		$tax_posts = array(
 			'anony_download_type' => array( 'anony_download' ),
 			'anony_faqs_cats'     => array( 'anony_faqs' ),
+			'anony_blocks_cats'   => array( 'anony_blocks' ),
 		);
 
 		return array_merge( $anony_tax_posts, $tax_posts );
