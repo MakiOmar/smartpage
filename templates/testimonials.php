@@ -20,6 +20,8 @@ $args = array(
 
 $query = new WP_Query( $args );
 
+$anony_options = ANONY_Options_Model::get_instance();
+
 if ( $query->have_posts() ) {
 	echo '<div class="anony-grid-row flex-h-center">';
 	while ( $query->have_posts() ) {
@@ -32,10 +34,15 @@ if ( $query->have_posts() ) {
 		}
 		echo '<div class="anony-testimonial-item anony-grid-col anony-grid-col-sm-3 anony-inline-flex anony-flex-column">';
 		echo '<div class="anony-grid-row">';
-			echo '<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center">';
-			echo '<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs id="defs3051">  </defs><path style="fill:currentColor;fill-opacity:1;stroke:none" d="M 11 3 A 3.9999902 4.0000296 0 0 0 7 7 A 3.9999902 4.0000296 0 0 0 11 11 A 3.9999902 4.0000296 0 0 0 15 7 A 3.9999902 4.0000296 0 0 0 11 3 z M 11 4 A 3 3.0000296 0 0 1 14 7 A 3 3.0000296 0 0 1 11 10 A 3 3.0000296 0 0 1 8 7 A 3 3.0000296 0 0 1 11 4 z M 11 12 A 7.9999504 8.0000296 0 0 0 3.0722656 19 L 4.0800781 19 A 6.9999604 7.0000296 0 0 1 11 13 A 6.9999604 7.0000296 0 0 1 17.921875 19 L 18.929688 19 A 7.9999504 8.0000296 0 0 0 11 12 z " class="ColorScheme-Text"></path></svg>';
+			echo '<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center flex-v-center">';
+			//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo ! empty( $anony_options->testimonials_icon ) ? $anony_options->testimonials_icon : '<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs id="defs3051">  </defs><path style="fill:currentColor;fill-opacity:1;stroke:none" d="M 11 3 A 3.9999902 4.0000296 0 0 0 7 7 A 3.9999902 4.0000296 0 0 0 11 11 A 3.9999902 4.0000296 0 0 0 15 7 A 3.9999902 4.0000296 0 0 0 11 3 z M 11 4 A 3 3.0000296 0 0 1 14 7 A 3 3.0000296 0 0 1 11 10 A 3 3.0000296 0 0 1 8 7 A 3 3.0000296 0 0 1 11 4 z M 11 12 A 7.9999504 8.0000296 0 0 0 3.0722656 19 L 4.0800781 19 A 6.9999604 7.0000296 0 0 1 11 13 A 6.9999604 7.0000296 0 0 1 17.921875 19 L 18.929688 19 A 7.9999504 8.0000296 0 0 0 11 12 z " class="ColorScheme-Text"></path></svg>';
+			//phpcs:enable
 			echo '</div>';
 			echo '<div class="anony-grid-col anony-grid-col-10 anony-inline-flex anony-flex-column">';
+				echo '<p style="line-height:initial"><strong>';
+				the_title();
+				echo '</strong></p>';
 				echo '<span>';
 		for ( $r = 1; $r <= 5; $r++ ) {
 
@@ -48,9 +55,6 @@ if ( $query->have_posts() ) {
 					<?php
 		}
 				echo '</span>';
-				echo '<p><strong>';
-				the_title();
-				echo '</strong></p>';
 			echo '</div>';
 		echo '</div>';
 		the_content();
