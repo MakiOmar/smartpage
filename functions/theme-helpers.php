@@ -13,6 +13,22 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+/**
+ * Helper that require all files in a folder/subfolders once.
+ *
+ * @param string $dir Directory path.
+ * @return void
+ */
+function smpg_require_all_files( $dir ) {
+	foreach ( glob( "$dir/*" ) as $path ) {
+		if ( preg_match( '/\.php$/', $path ) ) {
+			require_once $path; // It's a PHP file, so just require it.
+		} elseif ( is_dir( $path ) ) {
+			atrn_require_all_files( $path ); // It's a subdir, so call the same function for this subdir.
+		}
+	}
+}
 /**
  * Display a hint for administrator if he missd somthing.
  *
