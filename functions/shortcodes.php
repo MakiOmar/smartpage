@@ -479,7 +479,7 @@ function anony_content_slider_shcode( $atts ) {
 			'height' => 'auto',
 		),
 		$atts,
-		'anony_faqs'
+		'anony_content_slider'
 	);
 
 	$args = array(
@@ -495,7 +495,7 @@ function anony_content_slider_shcode( $atts ) {
 	if ( $atts['cat'] && ! empty( $atts['cat'] ) ) {
 		$args['tax_query'] = array(
 			array(
-				'taxonomy' => 'anony_faqs_cats',
+				'taxonomy' => 'anony_blocks_cats',
 				'field'    => 'id',
 				'terms'    => explode( ',', str_replace( ' ', '', $atts['cat'] ) ),
 			),
@@ -871,12 +871,12 @@ function anony_section_title_shcode( $atts ) {
 function anony_products_loop_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'ids'    => '',
-			'author' => '',
-			'slider' => 'off',
-			'height' => '500px',
-			'width'  => '100vw',
-			'item-width-desktop'  => '320px',
+			'ids'                => '',
+			'author'             => '',
+			'slider'             => 'off',
+			'height'             => '500px',
+			'width'              => '100vw',
+			'item-width-desktop' => '320px',
 			'item-width-mobile'  => '150px',
 		),
 		$atts,
