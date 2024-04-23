@@ -40,12 +40,6 @@ jQuery(document).ready(function($){
 		$(".widget_shopping_cart_content").removeClass('anony-mini-cart-open');
 		$("#widget_shopping_cart_content_overlay").hide();
 	});
-	document.addEventListener('click', function( event ) {	
-		return;
-		if (event.target.parentElement.id !== 'anony-mini-cart-widget') {
-			$(".widget_shopping_cart_content").removeClass('anony-mini-cart-open');
-		}
-	});
 	$(document.body).on('added_to_cart', function(){
 		setTimeout(function(){
 			if ( ! $(".widget_shopping_cart_content").hasClass('anony-mini-cart-open') ) {
