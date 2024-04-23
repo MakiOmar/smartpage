@@ -1,7 +1,5 @@
 @use './related-products';
-.anony-is-mobile .entry-summary form.cart .single_variation_wrap{
-	display: none !important;
-}
+@use './flex-slider';
 .woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images,.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
 	float: none;
 	display: inline-block;
@@ -11,9 +9,18 @@
 	width: 100%;
 	
 }
+.single-product .anony-grid-row#anony-mobile-footer-menu {
+    height: 120px;
+}
+.woocommerce .woocommerce-breadcrumb {
+    padding: 10px;
+}
 .woocommerce div.product form.cart .button.direct-checkout-button{
 	float: none;
 	padding: .618em 25px;
+}
+.anony-review-meta{
+	vertical-align: text-bottom;
 }
 .woocommerce div.product form.cart .button.direct-checkout-button span {
 	position: absolute;
@@ -27,7 +34,33 @@ body.rtl.woocommerce div.product form.cart .button.direct-checkout-button span {
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper{
 	overflow: hidden;
 }
-
+.woocommerce div.product .sale-counter-rating .woocommerce-product-rating, .custom_sales_counter {
+	padding: 5px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	box-shadow: 2px 2px 0 #000;
+	width:160px;
+	position: relative;
+}
+.woocommerce-product-rating .anony-rating-average{
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 14px;
+}
+.custom-sales-counter strong{
+	font-size: 16px;
+}
+.sale-counter-rating .woocommerce-review-link{
+	width: 100%;
+	font-weight: bold;
+}
+body.rtl .woocommerce-product-rating .anony-rating-average{
+	right: auto;
+	left: 10px;
+}
 .woocommerce .container-rating{
 	align-items: flex-start;
 	display: flex;
@@ -103,7 +136,6 @@ body.rtl.woocommerce div.product form.cart .button.direct-checkout-button span {
 	max-width: 380px
 }*/
 .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs ,section.related.products{
-	padding: 20px;
 	background-color: #fff;
 }
 

@@ -170,6 +170,9 @@
 .anony-divided-menu li {
 	border-bottom: 1px solid #d1d1d1;
 }
+.anony-divided-menu li:last-child{
+	border:none
+}
 @media screen and (min-width:768px) {
 	.anony-search-form-toggle {
 		right: 0;

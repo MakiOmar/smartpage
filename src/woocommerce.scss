@@ -49,6 +49,7 @@
 .elementor-wc-products .woocommerce ul.products li.product span.onsale.on-sale-text, .woocommerce ul.products li.product .onsale.on-sale-text, .woocommerce span.onsale.on-sale-text {
 	width: auto;
 	height: auto;
+	max-width: 110px;
 	min-height: auto;
 	border-radius: 0;
 	line-height: normal;
@@ -56,6 +57,7 @@
 	display: flex!important;
 	align-items: center;
 	justify-content: center;
+	border-radius: 5px;
 }
 span.required{
 	color: #dd3c3c;

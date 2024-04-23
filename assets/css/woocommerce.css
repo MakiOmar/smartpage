@@ -77,7 +77,6 @@
 }
 
 .woocommerce ul.products li.product a img {
-  width: auto;
   display: inline-block;
   margin: 0;
 }
@@ -101,10 +100,6 @@
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
   text-align: center;
-}
-
-.anony-is-mobile .entry-summary form.cart .single_variation_wrap {
-  display: none !important;
 }
 
 .woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
