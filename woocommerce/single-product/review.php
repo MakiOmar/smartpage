@@ -28,6 +28,7 @@ global $product;
 
 		<div class="comment-text">
 			<?php
+			echo '<div>';
 			/**
 			 * The woocommerce_review_before hook
 			 *
@@ -42,9 +43,6 @@ global $product;
 			 * @hooked woocommerce_review_display_meta - 10
 			 */
 			do_action( 'woocommerce_review_meta', $comment );
-			if ( wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) {
-				echo '<span class="anony-has-bought">' . esc_html__( 'Has already bought', 'smartpage' ) . '</span>';
-			}
 			/**
 			 * The woocommerce_review_before_comment_meta hook.
 			 *
@@ -52,6 +50,7 @@ global $product;
 			 */
 			do_action( 'woocommerce_review_before_comment_meta', $comment );
 
+			echo '</div>';
 			echo '</div>';
 			do_action( 'woocommerce_review_before_comment_text', $comment );
 
