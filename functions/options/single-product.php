@@ -47,6 +47,19 @@ define(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Adds a direct checkout button to single product.', 'smartpage' ),
 				),
+				array(
+					'id'       => 'reply_avatar',
+					'title'    => esc_html__( 'Replay avatar', 'smartpage' ),
+					'type'     => 'textarea',
+					'validate' => 'no_html',
+				),
+				array(
+					'id'       => 'slider_dots',
+					'title'    => esc_html__( 'Slider Dots', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Use dots instead of thumbnails of gallery slider', 'smartpage' ),
+				),
 			),
 		)
 	)
