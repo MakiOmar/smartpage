@@ -17,20 +17,20 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 ?>
 
 <style>
-	.anony-slider-container {
+	.anony-content-slider-container {
 		position: relative;
 		overflow: hidden;
 		height: <?php echo esc_html( $height ); ?>;
 		margin: auto;
 	}
-	.anony-slider div{
+	.anony-content-slider div{
 		max-width: 100vw;
 	}
-	.anony-slider-container img{
+	.anony-content-slider-container img{
 		max-height: <?php echo esc_html( $height ); ?>;
 	}
 
-	.anony-slider {
+	.anony-content-slider {
 		width: 9999999px;
 		transition: transform 1.7s ease-in-out;
 		-webkit-transition: transform 1.7s ease-in-out;
@@ -38,7 +38,7 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		-ms-transition: transform 1.7s ease-in-out;
 		-o-transition: transform 1.7s ease-in-out;
 	}
-	.anony-slider-control{
+	.anony-content-slider-control{
 		position: absolute;
 		bottom:10px;
 		left:0;
@@ -46,20 +46,20 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		margin: auto;
 		text-align: center;
 	}
-	body.rtl .anony-slider-control{
+	body.rtl .anony-content-slider-control{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: row-reverse;
 	}
 
-	.anony-slide {
+	.anony-content-slide {
 		display: inline-block;
 		vertical-align: top;
 	}
 
 	
-	.anony-slider-nav .top, .anony-slider-nav .bottom {
+	.anony-content-slider-nav .top, .anony-content-slider-nav .bottom {
 		display: block;
 		width: 10px;
 		height: 1px;
@@ -86,7 +86,7 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 	.anony-smaller-than .bottom {
 		transform: rotate(45deg);
 	}
-	.anony-slider-control button{
+	.anony-content-slider-control button{
 		height: 35px;
 		width: 35px;
 		margin: 0 3px;
@@ -97,10 +97,10 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		border: none;
 		cursor: pointer;
 	}
-	.anony-slider-control button:hover{
+	.anony-content-slider-control button:hover{
 		background-color: rgb(0,0,0,1);
 	}
-	.anony-slider-nav{
+	.anony-content-slider-nav{
 		position: relative;
 		top: -3px;
 		display: flex;
@@ -109,48 +109,48 @@ if ( empty( $data ) || ! is_array( $data ) ) {
 		align-items: center;
 	}
 	@media screen and (max-width:480px) {
-		.anony-slider div{
+		.anony-content-slider div{
 			max-width: calc(100vw - 40px);
 		}
-		.anony-slide .wp-block-columns{
+		.anony-content-slide .wp-block-columns{
 			flex-direction: column;
 		}
-		.anony-slider-control{
+		.anony-content-slider-control{
 			position: static;
 		}
-		.anony-slider-control button{
+		.anony-content-slider-control button{
 			position: absolute;
 			top: 50%;
 		}
 
-		.anony-slider-control button.anony-slider-next{
+		.anony-content-slider-control button.anony-content-slider-next{
 			right: 15px;
 		}
 
-		.anony-slider-control button.anony-slider-prev{
+		.anony-content-slider-control button.anony-content-slider-prev{
 			left: 15px;
 		}
 	}
 </style>
-<div class="anony-slider-container">
-	<div class="anony-slider">
+<div id="<?php echo esc_attr( $container_id ); ?>" class="anony-content-slider-container">
+	<div class="anony-content-slider">
 		<?php
 		foreach ( $data as $item ) {
 			?>
-			<div class="anony-slide"><?php echo wp_kses_post( $item['content'] ); ?></div>
+			<div class="anony-content-slide"><?php echo wp_kses_post( $item['content'] ); ?></div>
 			<?php
 		}
 		?>
 		<!-- Add more slides as needed -->
 	</div>
-	<div class="anony-slider-control">
-		<button class="anony-slider-prev">
-			<span class="anony-greater-than anony-slider-nav">
+	<div class="anony-content-slider-control">
+		<button class="anony-content-slider-prev">
+			<span class="anony-greater-than anony-content-slider-nav">
 				<span class="top"></span><span class="bottom"></span>
 			</span>
 		</button>
-		<button class="anony-slider-next">
-			<span class="anony-smaller-than anony-slider-nav">
+		<button class="anony-content-slider-next">
+			<span class="anony-smaller-than anony-content-slider-nav">
 				<span class="top"></span><span class="bottom"></span>
 			</span>
 		</button>
@@ -162,25 +162,38 @@ add_action(
 	function () {
 		?>
 		<script>
+			function anonyTouchedInside( event, className ) {
+				var targetElement     = event.target;
+				var isInsideContainer = false;
+				while (targetElement) {
+					if (targetElement.classList.contains( className )) {
+					isInsideContainer = true;
+					break;
+					}
+					targetElement = targetElement.parentElement;
+				}
+
+				return isInsideContainer
+			};
 			jQuery(document).ready(function($) {
-				var slideWidth = $('.anony-slide').outerWidth();
-				var slider     = $('.anony-slider');
+				var slideWidth = $('.anony-content-slide').outerWidth();
+				var slider     = $('.anony-content-slider');
 				var contentSliderInterval;
-				$('.anony-slider-container').css( 'width' , ( parseInt( $('.anony-slide').width() ) ) + 'px' );
+				$('.anony-content-slider-container').css( 'width' , ( parseInt( $('.anony-content-slide').width() ) ) + 'px' );
 
 				// Clone the first and last slide.
-				var firstSlide = $('.anony-slide:first-child').clone();
-				var lastSlide = $('.anony-slide:last-child').clone();
+				var firstSlide = $('.anony-content-slide:first-child').clone();
+				var lastSlide = $('.anony-content-slide:last-child').clone();
 
 				// Append cloned slides to the slider.
 				slider.append(firstSlide);
 				slider.prepend(lastSlide);
 
 				var margins = 0
-				$('.anony-slide').each( function() {
+				$('.anony-content-slide').each( function() {
 					margins = margins + parseFloat( $(this).css("marginRight").replace('px', '' ) );
 				} );
-				var itemsLength = $('.anony-slide').length;
+				var itemsLength = $('.anony-content-slide').length;
 
 				// Adjust the slider width.
 				var sliderWidth = slideWidth * itemsLength + margins + ( 10 * itemsLength );
@@ -195,29 +208,29 @@ add_action(
 				slider.css('transform', 'translateX(' + initialPosition + 'px)');
 
 				// Slide to the next slide.
-				$('.anony-slider-container').on('click','.anony-slider-next', function() {
+				$('.anony-content-slider-container').on('click','.anony-content-slider-next', function() {
 					slider.animate(
 					{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '-=' + slideWidth },
 					1700,
 					function() {
 						slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
-						slider.append($('.anony-slide:first-child'));
+						slider.append($('.anony-content-slide:first-child'));
 					}
 					);
 				});
 
 				// Slide to the previous slide.
-				$('.anony-slider-container').on('click','.anony-slider-prev', function() {
+				$('.anony-content-slider-container').on('click','.anony-content-slider-prev', function() {
 					slider.animate(
 					{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '+=' + slideWidth },
 					1700,
 					function() {
 						slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
-						slider.prepend($('.anony-slide:last-child'));
+						slider.prepend($('.anony-content-slide:last-child'));
 					}
 					);
 				});
-				$('.anony-slider-container').hover(
+				$('.anony-content-slider-container').hover(
 					function(){
 						$(this).addClass('paused');
 					},
@@ -229,7 +242,7 @@ add_action(
 				contentSliderInterval = setInterval(
 					function(){
 						if ( $('.paused').length === 0 ) {
-							$('.anony-slider-container').find('.anony-slider-next').click();
+							$('.anony-content-slider-container').find('.anony-content-slider-next').click();
 						}
 					},
 					5000
@@ -241,7 +254,7 @@ add_action(
 				// We use the touchstart event to capture the initial touch position (xDown and yDown variables).
 				function handleTouchStart(event) {
 					var element = event.target;
-					var container = element.closest('.anony-slider-container');
+					var container = element.closest('.anony-content-slider-container');
 					if (container) {
 						$('.paused').removeClass('paused');
 						clearInterval(contentSliderInterval);
@@ -273,10 +286,10 @@ add_action(
 					if (Math.abs(xDiff) > Math.abs(yDiff)) {
 						if (xDiff > 0) {
 						// Swipe to the left
-						$('.anony-slider-container').find('.anony-slider-prev').click();
+						$('.anony-content-slider-container').find('.anony-content-slider-prev').click();
 						} else {
 						// Swipe to the right
-						$('.anony-slider-container').find('.anony-slider-next').click();
+						$('.anony-content-slider-container').find('.anony-content-slider-next').click();
 						}
 					}
 
@@ -285,23 +298,23 @@ add_action(
 					yDown = null;
 				}
 
+				function handleTouchEnd( event ) {
+					if (!xDown || !yDown) {
+						return;
+					}
+					contentSliderInterval = setInterval(
+						function(){
+							if ( $('.paused').length === 0 ) {
+								$('.anony-content-slider-container').find('.anony-content-slider-next').click();
+							}
+						},
+						5000
+					);
+				}
+
 				document.addEventListener("touchstart", handleTouchStart, false);
 				document.addEventListener("touchmove", handleTouchMove, false);
-				document.addEventListener(
-					"touchend",
-					function(){
-						contentSliderInterval = setInterval(
-							function(){
-								if ( $('.paused').length === 0 ) {
-									$('.anony-slider-container').find('.anony-slider-next').click();
-								}
-							},
-							5000
-						);
-					},
-					false
-				);
-
+				document.addEventListener("touchend", handleTouchEnd, false);
 			});
 		</script>
 		<?php
