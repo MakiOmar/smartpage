@@ -113,4 +113,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			});
 		});
 	});
+	const elements = document.querySelectorAll('.anony-accordion-header');
+	if (elements.length > 0) {
+		elements[0].click();
+	}
 </script>
