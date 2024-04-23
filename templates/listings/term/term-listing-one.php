@@ -15,23 +15,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	foreach ( $terms as $term_id => $name ) {
 		?>
-			<div class="anony-grid-col anony-grid-col-sm-<?php echo esc_attr( $desktop_columns ); ?> anony-grid-col-slg-<?php echo esc_attr( $mobile_columns ); ?> anony-circle-image anony-inline-flex flex-h-center">
-				<a href="<?php echo esc_url( get_term_link( $term_id ) ); ?>" title="<?php echo esc_attr( $name ); ?>" class="anony-grid-row flex-h-center anony-flex-column">
+			<div class="anony-grid-col anony-grid-col-sm-<?php echo esc_attr( $desktop_columns ); ?> anony-grid-col-slg-<?php echo esc_attr( $mobile_columns ); ?> anony-circle-image anony-inline-flex flex-h-center anony-align-flex-start">
+				<a href="<?php echo esc_url( get_term_link( $term_id ) ); ?>" title="<?php echo esc_attr( $name ); ?>" class="anony-grid-row flex-h-center anony-flex-column anony-align-flex-start">
 					<?php
 					$image_id = get_term_meta( $term_id, $atts['image_id_meta_key'], true );
 
 					if ( ! empty( $image_id ) && is_numeric( $image_id ) ) {
 						$image_url = wp_get_attachment_image_url( absint( $image_id ), 'thumbnail' );
 						?>
-						<img style="width:80px;height:80px" src="<?php echo esc_url( $image_url ); ?>"/>
+						<img style="width:100px;height:100px" src="<?php echo esc_url( $image_url ); ?>"/>
 						<?php
 					} else {
 						?>
-						<img style="width:80px;height:80px" src="<?php echo esc_url( ANONY_THEME_URI . '/images/placeholder_150x150.webp' ); ?>"/>
+						<img style="width:100px;height:100px" src="<?php echo esc_url( ANONY_THEME_URI . '/images/placeholder_150x150.webp' ); ?>"/>
 						<?php
 					}
 					?>
-					<strong style="text-align:<?php echo esc_attr( $name_align ); ?>"><?php echo esc_html( $name ); ?></strong>
+					<strong style="text-align:<?php echo esc_attr( $name_align ); ?>;font-size:<?php echo esc_attr( $font_size ); ?>"><?php echo esc_html( $name ); ?></strong>
 				</a>
 			</div>
 			<?php
