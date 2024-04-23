@@ -17,14 +17,16 @@ define(
 		array(
 			'title'  => esc_html__( 'Icons', 'smartpage' ),
 			'icon'   => 'n',
-			'fields' => array(
+			'fields' => apply_filters(
+				'anony_icons_options',
 				array(
-					'id'       => 'testimonials_icon',
-					'title'    => esc_html__( 'Testimonials', 'smartpage' ),
-					'type'     => 'textarea',
-					'validate' => 'html',
-				),
-
+					array(
+						'id'       => 'testimonials_icon',
+						'title'    => esc_html__( 'Testimonials', 'smartpage' ),
+						'type'     => 'textarea',
+						'validate' => 'html',
+					),
+				)
 			),
 		)
 	)
