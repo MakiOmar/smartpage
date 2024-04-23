@@ -84,9 +84,9 @@ if ( ! comments_open() ) {
 				?>
 			</div>
 
-			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3">
-				<h2><?php esc_html_e( 'Rate this product', 'smartpage' ); ?></h2>
-				<h4><?php esc_html_e( 'Rating help others to make choices', 'smartpage' ); ?></h4>
+			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3 anony-reviews-button">
+				<h2 class="anony-reviews-title"><?php esc_html_e( 'Rate this product', 'smartpage' ); ?></h2>
+				<h4 class="anony-reviews-subtitle"><?php esc_html_e( 'Rating help others to make choices', 'smartpage' ); ?></h4>
 				<a id='go-add-review'  href="#review_form_wrapper"><?php esc_html_e( 'Add a review', 'smartpage' ); ?></a>
 			</div>
 		</div>

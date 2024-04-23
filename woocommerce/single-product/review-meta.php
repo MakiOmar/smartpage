@@ -38,7 +38,7 @@ if ( '0' === $comment->comment_approved ) { ?>
 		}
 
 		?>
-		<span class="woocommerce-review__dash">&ndash;</span> <time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>"><?php printf( esc_html_x( '%s ago', '%s = human-readable time difference', 'woocommerce' ), esc_html( human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ) ); ?></time>
+		<span class="woocommerce-review__dash"></span> <time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>"><?php printf( esc_html_x( '%s ago', '%s = human-readable time difference', 'woocommerce' ), esc_html( human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ) ); ?></time>
 	</p>
 
 	<?php
