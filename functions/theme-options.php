@@ -101,7 +101,7 @@ add_action(
 		// Sectoins.
 		$sections = array();
 
-		$sections['general']        = json_decode( ANONY_GENERAL_OPTIONS, true );
+		$sections['general']        = apply_filters( 'anony_theme_general_options', json_decode( ANONY_GENERAL_OPTIONS, true ) );
 		$sections['icons']          = json_decode( ANONY_ICONS_OPTIONS, true );
 		$sections['Performance']    = json_decode( ANONY_PERFORMANCE_OPTIONS, true );
 		$sections['slider']         = json_decode( ANONY_SLIDER_OPTIONS, true );
@@ -133,8 +133,15 @@ add_action(
 			);
 		}
 
+		$options_nav = apply_filters( 'anony_theme_options_navigation', $options_nav );
+		$sections    = apply_filters( 'anony_theme_options_settings', $sections );
+
 		$widgets = array( 'ANONY_Sidebar_Ad' );
 
-		$anony_options = new ANONY_Theme_Settings( $options_nav, $sections, $widgets );
+		$anony_options = new ANONY_Theme_Settings(
+			$options_nav,
+			$sections,
+			$widgets
+		);
 	}
 );
