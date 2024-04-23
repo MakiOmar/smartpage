@@ -28,5 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</svg>
 		<span class="anony-cart-counter"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
 	</a>
+	<div id="widget_shopping_cart_content_overlay"></div>
 	<div class="widget_shopping_cart_content"><?php woocommerce_mini_cart(); ?></div>
 </div>

@@ -5,11 +5,9 @@ window.onload = function() {
   if(loader !== null) loader.style.display = 'none';
 };
 
-
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
-	
 	/**--------------------------------------------------------------------
 	 *                     Popup
 	/*--------------------------------------------------------------------*/
@@ -33,23 +31,32 @@ jQuery(document).ready(function($){
 	var anonyAjaxUrl = anonyLoca.ajaxURL;
 	$("#anony-mini-cart-widget").on('click', '#anony-mobile-cart-toggle', function(e){
 		e.preventDefault();
-		$(".widget_shopping_cart_content").toggleClass('anony-mini-cart-open');
+		$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+		$("#widget_shopping_cart_content_overlay").show();
 	});
-
-	$(document.body).on('click', '.anony-close-mini-cart', function(){
-		$( '#anony-mobile-cart-toggle' ).trigger('click');
+	
+	$(document.body).on('click', '.anony-close-mini-cart, #widget_shopping_cart_content_overlay', function(e){
+		e.preventDefault();
+		$(".widget_shopping_cart_content").removeClass('anony-mini-cart-open');
+		$("#widget_shopping_cart_content_overlay").hide();
 	});
-
+	document.addEventListener('click', function( event ) {	
+		return;
+		if (event.target.parentElement.id !== 'anony-mini-cart-widget') {
+			$(".widget_shopping_cart_content").removeClass('anony-mini-cart-open');
+		}
+	});
 	$(document.body).on('added_to_cart', function(){
 		setTimeout(function(){
 			if ( ! $(".widget_shopping_cart_content").hasClass('anony-mini-cart-open') ) {
 				$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+				$("#widget_shopping_cart_content_overlay").show();
 			}
 		}, 200);
 	});
-
 	// Listen for the 'added_to_cart' event triggered by WooCommerce.
-    $('body').on('added_to_cart, removed_from_cart', function(event, fragments, cart_hash) {
+    $('body').on('added_to_cart removed_from_cart', function( e ) {
+		console.log(e.type);
 		// Make an AJAX request to get the updated cart count.
 		$.ajax({
 			url: anonyAjaxUrl,
@@ -57,13 +64,17 @@ jQuery(document).ready(function($){
 			data: {
 				action: 'get_cart_count'
 			},
+			complete: function() {
+				if ( 'added_to_cart' === e.type && $('.anony-mini-cart-open').length > 0  ) {
+					$("#widget_shopping_cart_content_overlay").show();
+				}
+			},
 			success: function(response) {
 				// Update the cart counter element with the new count.
 				$('.anony-cart-counter').text(response.count);
 			}
 		});
 	});
-
 	/**------------------------------------------------------------------
 	 *                      Toggles
 	 *-------------------------------------------------------------------*/
