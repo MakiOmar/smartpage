@@ -127,19 +127,25 @@ if ( '1' === $anony_options->disable_woo_comment_avatar ) {
  * Replace username used as comment author
  *
  * @param string $comment_author Comment author.
+ * @param string $comment_id Comment ID.
  * @return string
  */
-function anony_comment_author( $comment_author ) {
-	$user = get_user_by( 'login', $comment_author );
+function anony_comment_author( $comment_author, $comment_id ) {
+	$user_id = get_comment( $comment_id )->user_id;
+	$user    = get_user_by( 'id', $user_id );
+	$output  = $comment_author;
+	$class   = 'anony-comment-author-display-name';
 	if ( $user ) {
-		if ( empty( $user->display_name ) ) {
-			return $comment_author;
+		if ( in_array( 'administrator', $user->roles, true ) ) {
+			$class .= ' is-us';
 		}
-		return $user->display_name;
+		if ( ! empty( $user->display_name ) ) {
+			$output = $user->display_name;
+		}
 	}
-	return $comment_author;
+	return '<span class="' . $class . '">' . $output . '</span>';
 }
-add_filter( 'comment_author', 'anony_comment_author' );
+add_filter( 'comment_author', 'anony_comment_author', 10, 2 );
 
 /**
  * Override single product ratings cb
@@ -148,10 +154,17 @@ function anony_wc_single_product_ratings() {
 	global $product;
 
 	$rating_count = $product->get_rating_count();
-
+	$class        = '';
+	if ( wp_is_mobile() ) {
+		$class = ' flex-h-center';
+	}
+	//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo '<div class="sale-counter-rating anony-flex' . $class . '">';
+	anony_sales_counter();
 	if ( $rating_count >= 0 ) {
 		$review_count = $product->get_review_count();
 		$average      = $product->get_average_rating();
+		do_action( 'anony_before_wc_single_product_ratings' );
 		?>
 		<div class="woocommerce-product-rating">
 			<div class="container-rating">
@@ -161,7 +174,7 @@ function anony_wc_single_product_ratings() {
 				</div>
 				
 					<?php if ( comments_open() ) : ?>
-						<a href="#reviews" class="woocommerce-review-link" rel="nofollow">
+						<a href="#reviews" class="woocommerce-review-link anony-flex flex-h-center" rel="nofollow">
 							(
 							<?php
 								printf(
@@ -176,9 +189,12 @@ function anony_wc_single_product_ratings() {
 						</a>
 					<?php endif ?>
 				</div>
+			<strong class="anony-rating-average">(<?php echo esc_html( $average ); ?>)</strong>
 		</div>
 		<?php
+		do_action( 'anony_after_wc_single_product_ratings' );
 	}
+	echo '</div>';
 }
 if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 	/**
@@ -192,9 +208,7 @@ if ( ! function_exists( 'anony_custom_sale_badge' ) ) {
 	function anony_custom_sale_badge( $html, $post, $product ) {
 
 		$custom_sale_badge = get_post_meta( $post->ID, 'custom-sale-badge', true );
-
 		if ( $custom_sale_badge && ! empty( $custom_sale_badge ) ) {
-
 			return sprintf( '<span class="onsale on-sale-text">%s</span>', $custom_sale_badge );
 		}
 
@@ -392,25 +406,16 @@ add_action( 'woocommerce_process_product_meta', 'anony_save_custom_sale_badge_fi
  */
 function anony_sales_counter() {
 	global $product;
+	$anony_options        = ANONY_Options_Model::get_instance();
 	$custom_sales_counter = get_post_meta( $product->get_id(), 'custom-sales-counter', true );
 	// Translators: Count of sales.
-	$counter_text      = sprintf( __( 'Sold %s time', 'smartpage' ), esc_html( $custom_sales_counter ) );
+	$counter_text      = sprintf( __( 'Sold <strong>%s</strong> times', 'smartpage' ), esc_html( $custom_sales_counter ) );
 	$pointer_direction = is_rtl() ? 'right' : 'left';
 	if ( $custom_sales_counter && ! empty( $custom_sales_counter ) ) {
-		echo '<div class="anony-inline-flex flex-v-center"><svg width="30px" height="30px" viewBox="-5 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-				<g id="Vivid.JS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-					<g id="Vivid-Icons" transform="translate(-829.000000, -644.000000)">
-						<g id="Icons" transform="translate(37.000000, 169.000000)">
-							<g id="flame" transform="translate(780.000000, 468.000000)">
-								<g transform="translate(11.000000, 7.000000)" id="Shape">
-									<path d="M24.555,25.1 C23.0016934,30.9449043 17.3352812,34.7152461 11.3440153,33.8903819 C5.35274935,33.0655178 0.916028269,27.9041991 1,21.857 C0.976535234,20.8605193 1.14107319,19.868542 1.485,18.933 C2.643,11.595 9.785,11.063 5.8,7.10542736e-15 C5.8,7.10542736e-15 12.45,1.727 13.8,12.143 C13.8,12.143 18.719,11.98 15.4,4.857 C20.6710017,8.24748606 24.1823552,13.7862803 25,20 C25.0272045,21.7107711 24.8780839,23.4197933 24.555,25.1 Z" fill="#FF6E6E"></path>
-									<path d="M20,26.5 C19.9377343,30.5021395 16.7437199,33.7501147 12.743185,33.8794141 C8.74265019,34.0087135 5.34556836,30.9737661 5.025,26.984 L5,27 C5,27 4.925,23.728 5,23 C5.684,16.389 7.6,13.437 10,9 C10.067,6.361 8.885,16.273 15,19 C18.0165975,20.2750836 19.9832296,23.2250317 20,26.5 Z" fill="#0C0058"></path>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</svg>&nbsp;<span class="custom-sales-counter anony-pointing-triangle-' . esc_attr( $pointer_direction ) . '">' . esc_html( $counter_text ) . '</span></div>';
+		do_action( 'anony_before_sales_counter' );
+		//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<div class="anony-inline-flex custom_sales_counter flex-v-center">' . $anony_options->offers_icon . '&nbsp;<span class="custom-sales-counter anony-pointing-triangle-' . esc_attr( $pointer_direction ) . '">' . wp_kses_post( $counter_text ) . '</span></div>';
+			do_action( 'anony_after_sales_counter' );
 	}
 }
 
@@ -424,7 +429,9 @@ function anony_fancy_quantity_before() {
 	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() ) {
 		return;
 	}
-	defined( 'HAS_FANCY_QUANTITY' ) ?? define( 'HAS_FANCY_QUANTITY', '' );
+	if ( ! defined( 'HAS_FANCY_QUANTITY' ) ) {
+		define( 'HAS_FANCY_QUANTITY', '' );
+	}
 	$style = 'default';
 	switch ( $style ) {
 		case 'one':
@@ -480,6 +487,7 @@ function anony_fancy_quantity_before() {
 
 		/* Firefox */
 		.anony-quantity input[type=number] {
+			appearance: textfield;
 			-moz-appearance: textfield;
 		}
 
@@ -693,6 +701,32 @@ function anony_direct_checkout() {
 }
 
 /**
+ * Filer WooCommerce Flexslider options - Add Dot Pagination Instead of Thumbnails.
+ *
+ * @param array $options Flex slider options.
+ * @return array
+ */
+function anony_update_woo_flexslider_options( $options ) {
+	$anony_options = ANONY_Options_Model::get_instance();
+	if ( '1' === $anony_options->slider_dots ) {
+		$options['controlNav'] = true;
+	}
+	$options['rtl'] = is_rtl();
+	return $options;
+}
+
+/**
+ * Filter cart fagments
+ *
+ * @param array $fragments Cart fagments.
+ * @return array
+ */
+function anony_woocommerce_add_to_cart_fragments( $fragments ) {
+	$fragments['div.widget_shopping_cart_content'] = str_replace( 'widget_shopping_cart_content', 'widget_shopping_cart_content anony-mini-cart-open', $fragments['div.widget_shopping_cart_content'] );
+	return $fragments;
+} 
+add_filter( 'woocommerce_add_to_cart_fragments', 'anony_woocommerce_add_to_cart_fragments');
+/**
  * Filter product's thumbnail.
  *
  * @param string $image Product's thumbnail HTML.
@@ -711,14 +745,12 @@ add_action( 'wp_footer', 'anony_fancy_quantity_script' );
 add_action( 'wp_footer', 'anony_loop_qty_selector_script' );
 add_action( 'woocommerce_after_add_to_cart_button', 'anony_direct_checkout_form' );
 add_action( 'template_redirect', 'anony_direct_checkout' );
-add_action( 'woocommerce_single_product_summary', 'anony_sales_counter', 11 );
 add_action( 'init', 'anony_create_product_attributes_metaboxes' );
 add_action( 'init', 'anony_create_product_attributes' );
 add_action( 'after_setup_theme', 'anony_woo_add_theme_support' );
 add_action( 'pre_get_posts', 'anony_hide_products_without_price' );
 add_action( 'woocommerce_after_shop_loop_item_title', 'anony_rating_after_shop_loop_item_title', 4 );
 add_action( 'woocommerce_single_product_summary', 'anony_change_single_product_ratings', 2 );
-
 add_filter( 'woocommerce_product_get_image', 'anony_woocommerce_product_get_image' );
 add_filter( 'woocommerce_sale_flash', 'anony_custom_sale_badge', 20, 3 );
 add_filter( 'woocommerce_product_description_heading', '__return_false' );
@@ -728,3 +760,4 @@ add_filter( 'gettext', 'anony_change_related_products_text', 10, 3 );
 add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
 add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 2 );
 add_filter( 'single_product_archive_thumbnail_size', 'anony_woo_loop_thumb_size' );
+add_filter( 'woocommerce_single_product_carousel_options', 'anony_update_woo_flexslider_options' );
