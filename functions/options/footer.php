@@ -44,6 +44,7 @@ define(
 					'options'  => array(
 						'default' => esc_html__( 'Default', 'smartpage' ),
 						'one'     => esc_html__( 'Style one', 'smartpage' ),
+						'custom'  => esc_html__( 'Custom', 'smartpage' ),
 					),
 					'default'  => 'default',
 				),

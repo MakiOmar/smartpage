@@ -50,6 +50,9 @@ $anony_options = ANONY_Options_Model::get_instance();
 			case ( 'one' ):
 				get_template_part( 'templates/partials/mobile-footer-menu-view', 'one' );
 				break;
+			case ( 'custom' ):
+				get_template_part( 'templates/partials/mobile-footer-menu-view', 'custom' );
+				break;
 			default:
 				get_template_part( 'templates/partials/mobile-footer-menu', 'view' );
 
