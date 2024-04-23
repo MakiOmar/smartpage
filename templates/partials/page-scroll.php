@@ -13,6 +13,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+$anoy_options = ANONY_Options_Model::get_instance();
+if ( '1' !== $anoy_options->page_scroll ) {
+	return;
+}
 ?>
 <div id="anony-page-scroll-wrapper">
 	<div id="anony-page-scroll-bg"></div>
