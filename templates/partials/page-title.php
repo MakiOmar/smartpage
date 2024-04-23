@@ -13,6 +13,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+if ( wp_is_mobile() ) {
+	return;
+}
 ?>
 <style>
 	.anony-page-title-wrapper a {
