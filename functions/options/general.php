@@ -54,6 +54,14 @@ define(
 					// Translators: Date string.
 					'default'  => sprintf( esc_html__( 'All rights are reserved to Anonymous %s', 'smartpage' ), gmdate( 'Y' ) ),
 				),
+				array(
+					'id'       => 'page_scroll',
+					'title'    => esc_html__( 'Page scroll button', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					// Translators: Date string.
+					'default'  => sprintf( esc_html__( 'Show/hide page scroll button', 'smartpage' ), gmdate( 'Y' ) ),
+				),
 			),
 		)
 	)
