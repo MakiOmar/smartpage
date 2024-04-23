@@ -10,6 +10,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+add_action(
+	'admin_head',
+	function () {
+		?>
+			<style>
+				.blocks-shortcode__textarea{
+					direction:ltr;
+					text-align: left;
+				}
+			</style>
+		<?php
+	}
+);
 /**
  * Filter body classes
  *
@@ -72,7 +85,7 @@ if ( ! function_exists( 'anony_hide_admin_bar' ) ) {
 	function anony_hide_admin_bar() {
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( $anony_options->admin_bar != '0' && ! current_user_can( 'administrator' ) && ! is_admin() ) {
+		if ( '0' != $anony_options->admin_bar && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
 
 			show_admin_bar( false );
 
@@ -93,21 +106,21 @@ if ( ! function_exists( 'anony_display_ads' ) ) {
 	function anony_display_ads() {
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		$anonyADs = array( 'one', 'two', 'three' );
+		$anony_ads = array( 'one', 'two', 'three' );
 
-		foreach ( $anonyADs as $adBlock ) {
+		foreach ( $anony_ads as $ad_block ) {
 
-			$block    = 'ad_block_' . $adBlock;
-			$blockLoc = $block . '_location';
+			$block     = 'ad_block_' . $ad_block;
+			$block_loc = $block . '_location';
 
-			if ( isset( $anony_options->$blockLoc ) && ! empty( $anony_options->$blockLoc ) ) {
+			if ( isset( $anony_options->$block_loc ) && ! empty( $anony_options->$block_loc ) ) {
 
-				foreach ( $anony_options->$blockLoc as $loc ) {
+				foreach ( $anony_options->$block_loc as $loc ) {
 
 					add_action(
 						$loc . '_ad',
 						function () use ( $anony_options, $block ) {
-							echo $anony_options->$block;
+							echo wp_kses_post( $anony_options->$block );
 						}
 					);
 
@@ -130,9 +143,9 @@ if ( ! function_exists( 'anony_restrict_admin_access' ) ) {
 
 		$anony_options = ANONY_Options_Model::get_instance();
 
-		if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && $anony_options->not_admin_restricted != '0' ) {
+		if ( is_admin() && ! current_user_can( 'manage_options' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && '0' != $anony_options->not_admin_restricted ) {
 
-			wp_redirect( home_url() );
+			wp_safe_redirect( home_url() );
 
 			exit;
 
@@ -161,7 +174,7 @@ if ( ! function_exists( 'anony_add_theme_support' ) ) {
  */
 function anony_thumbs_sizes() {
 	add_image_size( 'category-post-thumb', 495 ); // 300 pixels wide (and unlimited height).
-	add_image_size( 'category-post-thumb-mobile', 350, 200 ); // 350*200 pixels wide* height and crop.
+	add_image_size( 'category-post-thumb-mobile', 350, 200, true ); // 350*200 pixels wide* height and crop.
 	add_image_size( 'popular-post-thumb', 60, 60, true ); // 60*60 pixels and crop.
 	add_image_size( 'download-thumb', 195, 250, true ); // 195*250 pixels and crop.
 	if ( class_exists( 'WooCommerce' ) ) {
@@ -181,7 +194,7 @@ function anony_page_title() {
 	if ( '1' === $anony_options->title_bar && ! is_front_page() ) {
 
 		$background_id = $anony_options->title_bar_bg;
-		$background = false;
+		$background    = false;
 		if ( ! empty( $background_id ) ) {
 			$background = wp_get_attachment_image_url( absint( $background_id ), 'full' );
 		}
@@ -247,17 +260,6 @@ add_action(
 	20
 );
 
-// Remove width|height from img.
-add_filter(
-	'post_thumbnail_html',
-	function ( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-		$html = preg_replace( '/(width|height)=\"\d*\"\s/', '', $html );
-		return $html;
-	},
-	10,
-	5
-);
-
 add_action(
 	'init',
 	function () {
@@ -275,14 +277,14 @@ add_action(
 	function () {
 		$site_icon = get_option( 'site_icon' );
 
-		if ( $site_icon && $site_icon != '0' ) {
+		if ( $site_icon && '0' != $site_icon ) {
 			return;
 		}
 		?>
 	<!-- Custom Favicons -->
-	<link rel="shortcut icon" href="<?php echo ANONY_THEME_URI; ?>/images/favicon.ico"/>
-	<link rel="icon" href="<?php echo ANONY_THEME_URI; ?>/images/favicon.ico" />
-	<link rel="apple-touch-icon" href="<?php echo ANONY_THEME_URI; ?>/images/favicon.ico">
+	<link rel="shortcut icon" href="<?php echo esc_url( ANONY_THEME_URI ); ?>/images/favicon.ico"/>
+	<link rel="icon" href="<?php echo esc_url( ANONY_THEME_URI ); ?>/images/favicon.ico" />
+	<link rel="apple-touch-icon" href="<?php echo esc_url( ANONY_THEME_URI ); ?>/images/favicon.ico">
 		<?php
 	}
 );

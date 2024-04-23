@@ -380,15 +380,6 @@ add_filter(
 	}
 );
 
-// remove width and height atrr from img.
-add_filter(
-	'post_thumbnail_html',
-	function ( $html ) {
-
-		return preg_replace( '/(width|height)="\d+"\s/', '', $html );
-	}
-);
-
 // Chenge excerpt length.
 add_filter(
 	'excerpt_length',
