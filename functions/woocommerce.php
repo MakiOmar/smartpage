@@ -724,8 +724,8 @@ function anony_update_woo_flexslider_options( $options ) {
 function anony_woocommerce_add_to_cart_fragments( $fragments ) {
 	$fragments['div.widget_shopping_cart_content'] = str_replace( 'widget_shopping_cart_content', 'widget_shopping_cart_content anony-mini-cart-open', $fragments['div.widget_shopping_cart_content'] );
 	return $fragments;
-} 
-add_filter( 'woocommerce_add_to_cart_fragments', 'anony_woocommerce_add_to_cart_fragments');
+}
+
 /**
  * Filter product's thumbnail.
  *
@@ -761,3 +761,4 @@ add_filter( 'comment_form_fields', 'anony_wc_comment_form_fields' );
 add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 2 );
 add_filter( 'single_product_archive_thumbnail_size', 'anony_woo_loop_thumb_size' );
 add_filter( 'woocommerce_single_product_carousel_options', 'anony_update_woo_flexslider_options' );
+add_filter( 'woocommerce_add_to_cart_fragments', 'anony_woocommerce_add_to_cart_fragments' );
