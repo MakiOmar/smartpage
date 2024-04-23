@@ -32,12 +32,53 @@ $shcods = array(
 	'anony_navigation',
 	'anony_price_tables',
 	'anony_facy_list',
+	'anony_get_block',
+	'anony_spacer',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
 }
 
+/**
+ * Renders a spacer
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_spacer_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'height' => '50px',
+		),
+		$atts,
+		'anony_spacer'
+	);
+	return '<div style="width:100%;height:' . esc_attr( $atts['height'] ) . '"></div>';
+}
+
+/**
+ * Renders a block
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_get_block_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'id' => '',
+		),
+		$atts,
+		'anony_get_block'
+	);
+	if ( ! empty( $atts['id'] ) ) {
+		$_post = get_post( absint( $atts['id'] ) );
+		if ( $_post ) {
+			return '<div class="anony_get_block">' . $_post->post_content . '</div>';
+		}
+	}
+	return '';
+}
 /**
  * Renders a fancy list
  *
@@ -311,6 +352,8 @@ function anony_terms_listing_shcode( $atts ) {
 			'mobile_columns'    => 2,
 			'image_id_meta_key' => 'thumbnail_id',
 			'name_align'        => 'center',
+			'desktop_font_size' => '18px',
+			'mobile_font_size'  => '14px',
 		),
 		$atts,
 		'anony_terms_listing'
@@ -334,6 +377,7 @@ function anony_terms_listing_shcode( $atts ) {
 	$desktop_columns = 12 / absint( $atts['desktop_columns'] );
 	$mobile_columns  = 12 / absint( $atts['mobile_columns'] );
 	$name_align      = $atts['name_align'];
+	$font_size       = wp_is_mobile() ? $atts['mobile_font_size'] : $atts['desktop_font_size'];
 
 	$output = '';
 	$terms  = get_terms( $args );
@@ -501,10 +545,11 @@ function anony_content_slider_shcode( $atts ) {
 			),
 		);
 	}
-	$height = $atts['height'];
-	$query  = new WP_Query( $args );
-	$output = '';
-	$data   = array();
+	$height       = $atts['height'];
+	$container_id = 'content-slider-' . time();
+	$query        = new WP_Query( $args );
+	$output       = '';
+	$data         = array();
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
 			$query->the_post();
@@ -530,7 +575,9 @@ function anony_content_slider_shcode( $atts ) {
 function anony_images_slider_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'ids' => '',
+			'ids'        => '',
+			'transition' => '5000',
+			'animation'  => '1500',
 		),
 		$atts,
 		'anony_images_slider'
@@ -542,8 +589,8 @@ function anony_images_slider_shcode( $atts ) {
 		'show_pagination' => true,
 		'pagination_type' => 'dots', // Accepts (thumbnails or dots).
 		'slider_data'     => array(
-			'transition' => 5000,
-			'animation'  => 1500,
+			'transition' => $atts['transition'],
+			'animation'  => $atts['animation'],
 		),
 	);
 
