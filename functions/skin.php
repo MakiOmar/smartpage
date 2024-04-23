@@ -38,7 +38,8 @@ function anony_theme_skin() {
 				.woocommerce div.product p.price,
 				.woocommerce div.product span.price,
 				.woocommerce ul.products li.product .price
-				.comment-text .woocommerce-review__author{
+				.comment-text .woocommerce-review__author,
+				.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price{
 					color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
 				.anony-quantity input.anony-plus,
@@ -52,6 +53,10 @@ function anony_theme_skin() {
 					background-color: #fff;
 					border-radius: 15px;
 					border: 1px solid <?php echo esc_html( $primary_color ); ?>;
+				}
+				.woocommerce div.product .sale-counter-rating .woocommerce-product-rating, .custom_sales_counter{
+					border-color: <?php echo esc_html( $primary_color ); ?>;
+					box-shadow: 2px 2px 0 <?php echo esc_html( $primary_color ); ?>;
 				}
 				<?php
 
@@ -80,7 +85,7 @@ function anony_theme_skin() {
 		.single-download,
 		.anony-toggle-sidebar,
 		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2),
-		li .current::after{
+		li .current::after, .button{
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
 		}
 		#anony-footer .widgeted_title{
@@ -100,7 +105,7 @@ function anony_theme_skin() {
 			color: <?php echo esc_html( $menu_text_color ); ?>!important;
 		}
 		.anony-post-info .anony-nothumb-post .anony-thumb-post-title, #anony-top-header-wrapper, #anony-page-loading-bg {
-			border-bottom-bottom: <?php echo esc_html( $primary_color ); ?>;
+			border-bottom-color: <?php echo esc_html( $primary_color ); ?>;
 		}
 		.anony-section, #anony-slider-wrapper {
 			border-top-color: <?php echo esc_html( $primary_color ); ?>;
