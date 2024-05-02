@@ -182,10 +182,12 @@ section.related.products{
 }
 
 .woocommerce div.product div.images .flex-control-thumbs li img{
-	max-width: 80px;
-	margin: 0 10px;
-	border: 2px solid #D3D3D3
+	max-width: 60px;
+	margin: 0 4px;
+	border: 2px solid #D3D3D3;
+	border-radius: 5px;
 }
+
 .woocommerce #review_form #respond textarea {
 	padding: 15px;
 }
@@ -216,7 +218,7 @@ section.related.products{
 		margin: 0
 	}
 	.woocommerce div.product div.images .flex-control-thumbs li {
-			width: calc(25% - 6px);
+			width: auto;
 			float: none;
 			margin: 0 3px;
 	}
