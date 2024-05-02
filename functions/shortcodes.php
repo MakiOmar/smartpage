@@ -34,10 +34,42 @@ $shcods = array(
 	'anony_facy_list',
 	'anony_get_block',
 	'anony_spacer',
+	'anony_timeline',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders a timeline
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_timeline_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'id'                    => '',
+			'line-color'            => '#000',
+			'bullets-in-view-color' => '#777',
+			'background-color'      => '#f3f3f3',
+		),
+		$atts,
+		'anony_timeline'
+	);
+
+	if ( empty( $atts['id'] ) ) {
+		return;
+	}
+
+	$line_color           = $atts['line-color'];
+	$bullets_inview_color = $atts['bullets-in-view-color'];
+	$backgrond_color      = $atts['background-color'];
+	$id                   = absint( $atts['id'] );
+	ob_start();
+	require locate_template( 'templates/partials/timeline.php', false, false );
+	return ob_get_clean();
 }
 
 /**
