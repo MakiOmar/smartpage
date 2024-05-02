@@ -35,6 +35,9 @@ function anony_theme_skin() {
 				.woocommerce ul.products li.product .onsale {
 					background-color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
+				.woocommerce div.product div.images .flex-control-thumbs li img.flex-active, .woocommerce div.product div.images .flex-control-thumbs li img:hover {
+					border-color: <?php echo esc_html( $primary_color ); ?>!important;
+				}
 				.woocommerce div.product p.price,
 				.woocommerce div.product span.price,
 				.woocommerce ul.products li.product .price
