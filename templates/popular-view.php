@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( $thumb && $thumb_exists && ! $hide_thumb ) : ?>
 			 
 				<div class="anony-posts-list-thumb">
-					<?php echo get_the_post_thumbnail( $id, 'popular-post-thumb', array( 'class' => 'post-thumb') ); ?>   
+					<?php echo get_the_post_thumbnail( $id, 'popular-post-thumb', array( 'class' => 'post-thumb' ) ); ?>   
 				</div>
 				 
 		<?php endif ?>
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div class="anony-posts-list">
 				 
 					<div>
-						  <h3><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3> 
+							<h3><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3> 
 					</div>
 					 
 		<?php if ( ! $hide_date ) : ?>

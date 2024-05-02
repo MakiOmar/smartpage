@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
 	
 	var imageSliderTime;
 	
-	var sliderSettings = $('#anony-featured').data('slider');
+	var sliderSettings = $('.anony-posts-slider').data('slider');
 	
 	function startAnimation(){
 		
@@ -89,7 +89,7 @@ jQuery(document).ready(function($){
 			
 		 }
 	});
-	
+
 	$('.anony-view, .anony-slide-title, .anony-featured-button, .anony-slide-item').on({
 		mouseover : function(){
 			$(this).addClass('anony-pause-slider');

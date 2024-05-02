@@ -7,7 +7,12 @@
 	margin-bottom: 20px;
 }
   
-  
+.woocommerce-account:not( .anony-is-mobile ) .anony-content .woocommerce {
+	padding: 20px;
+	border: 1px solid #d1d1d1;
+  	border-radius: 20px;
+	min-width: 960px;
+}
 
 /* Style the links */
 
@@ -99,4 +104,13 @@
 
   .woocommerce-MyAccount-navigation ul li a:hover {
 	background-color: #f9f9f9;
+}
+
+.anony-order-actions a.button{
+margin: 5px;
+color: #fff;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+	list-style: none;
 }

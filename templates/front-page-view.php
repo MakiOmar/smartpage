@@ -32,7 +32,7 @@ get_header(); ?>
 
 		<div class="anony-grid-row anony-grid-col">
 		<div class="anony-grid-col-sm-9-5">
-			<div class="anony-content-wrapper">
+			<div class="anony-grid-row">
 				 
 				<?php get_sidebar( 'secondary' ); ?>
 			   
@@ -40,7 +40,7 @@ get_header(); ?>
 
 					<?php get_template_part( 'models/news' ); ?>
 					 
-					<?php get_template_part( 'models/featured' ); ?>
+					<?php echo do_shortcode( '[anony_posts_slider]' ); ?>
 					 
 				</div>   
 			</div>

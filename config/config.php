@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
-}
 /**
  * Theme/Options confugurations
  *
@@ -10,11 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link    http://makiomar.com
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 require_once 'required-plugins.php';
-/*
----------------------------------------------------------------
+/**
+ * ---------------------------------------------------------------
  * Define main constants
- *-------------------------------------------------------------*/
+ * ---------------------------------------------------------------
+ */
 /**
  * Just no data text
  *
@@ -88,13 +89,6 @@ define( 'ANONY_CORE_HOOKS_DIR', wp_normalize_path( ANONY_THEME_DIR . '/core-hook
 define( 'ANONY_CLASSES_URI', get_template_directory_uri() . '/functions/class' );
 
 /**
- * Holds a URI to Custom fields classes folder
- *
- * @const
- */
-// define( 'ANONY_INPUT_FIELDS_URI', wp_normalize_path (ANONY_THEME_URI . '/input-fields/'));
-
-/**
  * Holds languages folder URI
  *
  * @const
@@ -122,10 +116,27 @@ define( 'ANONY_BLOG_TITLE', esc_html( get_bloginfo() ) );
  */
 define( 'ANONY_BLOG_URL', esc_url( home_url() ) );
 
-/*
-----------------------------------------------------------------------
-* Theme Autoloading
-*---------------------------------------------------------------------*/
+$anony_options = ANONY_Options_Model::get_instance();
+
+/**
+ * Header style
+ *
+ * @const
+ */
+define( 'ANONY_HEADER_STYLE', $anony_options->header_style );
+
+/**
+ * Mobile footer sticky menu style
+ *
+ * @const
+ */
+define( 'ANONY_FOOTER_STICKY_MENU_STYLE', $anony_options->mobile_footer_sticky_menu_style );
+
+/**
+ * ----------------------------------------------------------------------
+ * Theme Autoloading
+ * ---------------------------------------------------------------------
+ */
 
 /**
  * Holds a path to main classes folder
@@ -133,6 +144,13 @@ define( 'ANONY_BLOG_URL', esc_url( home_url() ) );
  * @const
  */
 define( 'ANONY_CLASSES', wp_normalize_path( ANONY_THEME_DIR . '/classes/' ) );
+
+/**
+ * Holds a path to widgets classes folder
+ *
+ * @const
+ */
+define( 'ANONY_WIDGETS', wp_normalize_path( ANONY_CLASSES . 'widgets/' ) );
 
 
 /**
@@ -159,15 +177,16 @@ define( 'ANONY_ELEMENTOR_EXTENSION', wp_normalize_path( ANONY_THEME_DIR . '/elem
 define( 'ANONY_ELEMENTOR_DOCS', wp_normalize_path( ANONY_ELEMENTOR_EXTENSION . 'documents/' ) );
 
 /**
- * Holds a serialized array of all pathes to classes folders
+ * Holds a json encoded array of all pathes to classes folders
  *
  * @const
  */
 define(
 	'ANONY_THEME_AUTOLOADS',
-	serialize(
+	wp_json_encode(
 		array(
 			ANONY_CLASSES,
+			ANONY_WIDGETS,
 			ANONY_CONTENTS_VIEWS,
 			ANONY_ELEMENTOR_EXTENSION,
 			ANONY_ELEMENTOR_DOCS,
@@ -181,25 +200,32 @@ define(
 spl_autoload_register(
 	function ( $class_name ) {
 		if ( strpos( $class_name, '\\' ) !== false ) {
-			  $parts      = explode( '\\', $class_name );
-			  $class_name = end( $parts );
+			$parts      = explode( '\\', $class_name );
+			$class_name = end( $parts );
 		}
 		if ( false !== strpos( $class_name, ANONY_PREFIX ) ) {
 			$class_name = strtolower( preg_replace( '/' . ANONY_PREFIX . '/', '', $class_name ) );
 
 			$class_name = str_replace( '_', '-', $class_name );
-
-			foreach ( unserialize( ANONY_THEME_AUTOLOADS ) as $path ) {
+			foreach ( json_decode( ANONY_THEME_AUTOLOADS ) as $path ) {
 
 				$class_file = wp_normalize_path( $path ) . $class_name . '.php';
+				if ( file_exists( $class_file ) ) {
+					include_once $class_file;
+					return;
+				}
+
+				$class_file = wp_normalize_path( $path ) . 'class-anony-' . $class_name . '.php';
+				if ( file_exists( $class_file ) ) {
+					include_once $class_file;
+					return;
+				}
+
+				$class_file = wp_normalize_path( $path ) . $class_name . '/' . $class_name . '.php';
 
 				if ( file_exists( $class_file ) ) {
 					include_once $class_file;
-				} else {
-					$class_file = wp_normalize_path( $path ) . $class_name . '/' . $class_name . '.php';
-					if ( file_exists( $class_file ) ) {
-						include_once $class_file;
-					}
+					return;
 				}
 			}
 		}

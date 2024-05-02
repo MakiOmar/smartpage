@@ -30,50 +30,64 @@ if ( ! comments_open() ) {
 			
 		<div class="anony-grid-row">
 			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3">
-				<h3 id="anony-average-rating"><?php echo $product->get_average_rating() ?></h3>
+				<h3 id="anony-average-rating">
+					<?php
+					//phpcs:disable
+					echo $product->get_average_rating();
+					//phpcs:enable.
+					?>
+				</h3>
 				<?php
-					if ( 0 == $product->get_average_rating() ) {?>
+				if ( 0 === $product->get_average_rating() ) {
+					?>
 
-						<h2><?php esc_html_e( 'No Rating yet', 'smartpage' ) ?></h2>
+						<h2><?php esc_html_e( 'No Rating yet', 'smartpage' ); ?></h2>
 
-					<?php } else {
+					<?php
+				} else {
 
-						woocommerce_template_single_rating(); 
-					}
+					woocommerce_template_single_rating();
+				}
 
 				?>
 			</div>
 			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-6">
 				<?php
-					$total_count   = $product->get_rating_count();
-					$counts        = $product->get_rating_counts();
+					$total_count = $product->get_rating_count();
+					$counts      = $product->get_rating_counts();
 
-					for ( $i = 5; $i >= 1 ; $i-- ) { 
-						if( isset( $counts [ $i ] ) ){
-							$width = ($counts [ $i ] / $total_count) * 100 ;
-						}else{
-							$width = 0;
-						}
+				for ( $i = 5; $i >= 1; $i-- ) {
+					if ( isset( $counts [ $i ] ) ) {
+						$width = ( $counts [ $i ] / $total_count ) * 100;
+					} else {
+						$width = 0;
+					}
 
 
 					?>
 						<div class="review-rating-bars">
 							<span class="review-rating-bg">
-								<span class="review-rating-fg" style="width: <?php echo $width ?>%"></span>
+								<span class="review-rating-fg" style="width: <?php echo esc_attr( $width ); ?>%"></span>
 							</span>
-							<span class="review-rating-value"><?php echo sprintf( _nx( 'One Star', '%1$s Stars', $i, 'Stars rating title', 'smartpage' ), $i ) ?></span>
+							<span class="review-rating-value">
+								<?php
+								// Translators: Rating value.
+								printf( esc_html( _nx( '%1$s Star', '%1$s Stars', $i, 'Stars rating title', 'smartpage' ) ), esc_html( $i ) );
+								?>
+							</span>
 
 						</div>
-					<?php }
+					<?php
+				}
 
 
 				?>
 			</div>
 
-			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3">
-				<h2><?php esc_html_e( 'Rate this product', 'smartpage' ) ?></h2>
-				<h4><?php esc_html_e( 'Rating help others to make choices', 'smartpage' ) ?></h4>
-				<a id='go-add-review'  href="#review_form_wrapper"><?php esc_html_e( 'Add a review', 'smartpage' ) ?></a>
+			<div class="anony-grid-col anony-grid-col-max-480-12 anony-grid-col-sm-3 anony-reviews-button">
+				<h2 class="anony-reviews-title"><?php esc_html_e( 'Rate this product', 'smartpage' ); ?></h2>
+				<h4 class="anony-reviews-subtitle"><?php esc_html_e( 'Rating help others to make choices', 'smartpage' ); ?></h4>
+				<a id='go-add-review'  href="#review_form_wrapper"><?php esc_html_e( 'Add a review', 'smartpage' ); ?></a>
 			</div>
 		</div>
 			
@@ -89,7 +103,9 @@ if ( ! comments_open() ) {
 				if ( $count && wc_review_ratings_enabled() ) {
 					/* translators: 1: reviews count 2: product name */
 					$reviews_title = sprintf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', $count, 'woocommerce' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
+					//phpcs:disable
 					echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
+					//phpcs:enable.
 				}
 				?>
 			</h2>
@@ -102,6 +118,18 @@ if ( ! comments_open() ) {
 
 			<?php
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+				$anony_options = ANONY_Options_Model::get_instance();
+				if ( '1' === $anony_options->enable_woo_comments_load_more ) {
+					$load_more = __( 'Load more', 'smartpage' );
+					?>
+					<div class="anony-grid-row flex-h-center"><a class="button anony-button load-more-comments" href="#" title="<?php echo esc_attr( $load_more ); ?>"><?php echo esc_html( $load_more ); ?></a></div>
+					<style>
+						.woocommerce-pagination{
+							display: none;
+						}
+					</style>
+					<?php
+				}
 				echo '<nav class="woocommerce-pagination">';
 				paginate_comments_links(
 					apply_filters(

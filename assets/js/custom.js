@@ -8,9 +8,62 @@ window.onload = function() {
 //Start Jquery for wordpress
 jQuery(document).ready(function($){
 	"use strict";
+	/**--------------------------------------------------------------------
+	 *                     Popup
+	/*--------------------------------------------------------------------*/
+	$(document.body).on( 'click', '.anony-popup-toggle', function(e){
+		e.preventDefault();
+		var popupTargetId = $( this ).data('target');
+		$( '#' + popupTargetId ).toggleClass( 'anony-popup-open' );
+		$('.anony-close-popup').css('opacity', '1');
+	} );
 	
+	$(document.body).on( 'click', '.anony-close-popup', function(e){
+		e.preventDefault();
+		$( this ).closest('.anony-popup-wrapper').removeClass( 'anony-popup-open' );
+		$('.anony-close-popup').css('opacity', '0');
+	} );
+
+
+	/**--------------------------------------------------------------------
+	 *                     WooCommerce
+	/*--------------------------------------------------------------------*/
 	var anonyAjaxUrl = anonyLoca.ajaxURL;
+	$("#anony-mini-cart-widget").on('click', '#anony-mobile-cart-toggle', function(e){
+		e.preventDefault();
+		$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+		$("#widget_shopping_cart_content_overlay").show();
+	});
 	
+	$(document.body).on('click', '.anony-close-mini-cart, #widget_shopping_cart_content_overlay', function(e){
+		e.preventDefault();
+		$(".widget_shopping_cart_content").removeClass('anony-mini-cart-open');
+		$("#widget_shopping_cart_content_overlay").hide();
+	});
+	$(document.body).on('added_to_cart', function(){
+		setTimeout(function(){
+			if ( ! $(".widget_shopping_cart_content").hasClass('anony-mini-cart-open') ) {
+				$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+				$("#widget_shopping_cart_content_overlay").show();
+			}
+		}, 200);
+	});
+	// Listen for the 'added_to_cart' event triggered by WooCommerce.
+    $('body').on('added_to_cart removed_from_cart', function( e ) {
+		$("#widget_shopping_cart_content_overlay").show();
+		// Make an AJAX request to get the updated cart count.
+		$.ajax({
+			url: anonyAjaxUrl,
+			type: 'POST',
+			data: {
+				action: 'get_cart_count'
+			},
+			success: function(response) {
+				// Update the cart counter element with the new count.
+				$('.anony-cart-counter').text(response.count);
+			}
+		});
+	});
 	/**------------------------------------------------------------------
 	 *                      Toggles
 	 *-------------------------------------------------------------------*/
@@ -21,21 +74,7 @@ jQuery(document).ready(function($){
 	
 	$(".anony-search-form-toggle").on('click', function(e){
 		e.preventDefault();
-		var target = $("#anony-hidden-search-form");
-		var icon = target.find('.anony-search-form-toggle > .fa');
-		if (!target.hasClass('anony-show-search-form')){
-			target.addClass('anony-show-search-form');
-
-			icon.removeClass('fa-search').addClass('fa-window-close fa-2x');
-
-		}else{
-			target.removeClass('anony-show-search-form');
-			setTimeout(function(){
-				icon.removeClass('fa-window-close fa-2x').addClass('fa-search');
-			}, 1000);
-			
-		}
-		
+		$("#anony-hidden-search-form").toggleClass( 'anony-show-search-form' );
 	});
 	
 	/**--------------------------------------------------------------------
@@ -43,15 +82,10 @@ jQuery(document).ready(function($){
 	/*--------------------------------------------------------------------*/
 
 	$(window).scroll(function() {
-		
-		var target = $("#anony-page-scroll").find('.fa');
-		
 		if ($(window).scrollTop() > 100){	
-			target.removeClass('fa-angle-down');
-			target.addClass('fa-angle-up');				
+			$("#anony-page-scroll").addClass('anony-rotate-180');
 		}else{	
-			target.removeClass('fa-angle-up');
-			target.addClass('fa-angle-down');	
+			$("#anony-page-scroll").removeClass('anony-rotate-180');	
 		}
 	});
 	
@@ -120,21 +154,6 @@ jQuery(document).ready(function($){
 		if($('.current-menu-item').hasClass('menu-item-home') === false){
 			$('.menu-item-home').removeClass('active');
 		}
-		
-		var headrHeight = $('header').height();
-
-		$(window).scroll(function() {
-			//sticky menu
-			if ($(window).scrollTop() > headrHeight) {
-				$('header').css('height' , headrHeight);
-				
-				$('#anony-main_nav_con').addClass('sticky');
-				
-			} else {
-				$('header').css('height' , 'auto');
-				$('#anony-main_nav_con').removeClass('sticky');
-			}
-		});
 	}
 	
 	/**--------------------------------------------------------------------
@@ -143,17 +162,12 @@ jQuery(document).ready(function($){
 	if ($(window).width() >= 768) {
 		
 		if(anonyLoca.anonyUsePrettyPhoto == '1'){
-			/**
-			 * apply prettyPhoto.
-			 * http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/documentation
-			 */
-			$("a[rel^='prettyPhoto']").prettyPhoto({social_tools : false});
-		}
-		if ( lightbox ) {
-			lightbox.option({
-				'resizeDuration': 200,
-				'wrapAround': true
-			  });
+			if ( 'undefined' !== typeof lightbox ) {
+				lightbox.option({
+					'resizeDuration': 200,
+					'wrapAround': true
+				  });
+			}
 		}
 		
 	}

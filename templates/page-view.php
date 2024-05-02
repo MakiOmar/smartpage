@@ -13,43 +13,38 @@
 defined( 'ABSPATH' ) || die();
 
 $anony_options = ANONY_Options_Model::get_instance();
-?>
+// Check if built with elementor or gutenburg blocks.
+if ( have_posts() && ( defined( 'ELEMENTOR_PATH' ) && get_post_meta( get_the_ID(), '_elementor_edit_mode', true ) === 'builder' || has_blocks() ) ) {
+	?>
+	<main class="anony-content">
+		<?php
+		if ( have_posts() ) :
 
-<div class="anony-grid">
+			while ( have_posts() ) :
 
-	<div class="anony-grid-row anony-grid-col flex-h-center">
+				the_post();
+				the_content();
+			endwhile;
+		endif;
+		?>
+	</main>
+	<?php
+} else {
+	?>
+	<main class="anony-grid-row flex-h-center">
 
-		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
+		<div class="anony-content<?php echo ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col anony-grid-col-sm-9-5' : ''; ?>">
 
-			<div class="anony-grid-col flex-h-center">
+			<?php
+			if ( have_posts() ) :
 
-				<?php
-				if ( have_posts() ) :
+				while ( have_posts() ) :
 
-					while ( have_posts() ) :
-
-						the_post();
-						?>
-
-						<div class="anony-grid-col anony-post-contents">
-
-							<div class="anony-post-info">
-
-								<div class="anony-single-text">
-									<?php the_content(); ?>
-								</div>
-
-							</div>
-
-						</div>
-
-						<?php
-					endwhile;
-				endif;
-				?>
-
-			</div>
-
+					the_post();
+					the_content();
+				endwhile;
+			endif;
+			?>
 		</div>
 
 		<?php
@@ -58,6 +53,7 @@ $anony_options = ANONY_Options_Model::get_instance();
 		}
 		?>
 
-	</div>
+	</main>
+	<?php
+}
 
-</div>

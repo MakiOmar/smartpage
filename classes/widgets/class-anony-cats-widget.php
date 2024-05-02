@@ -62,35 +62,37 @@ if ( ! class_exists( 'ANONY_Cats_Widget' ) ) {
 		/**
 		 * Echoes the widget content.
 		 *
-		 *
 		 * @param array $parms    Display arguments including 'before_title', 'after_title',
 		 *                        'before_widget', and 'after_widget'.
 		 * @param array $instance The settings for the particular instance of the widget.
-		 *
 		 *
 		 * @return void
 		 */
 		public function widget( $parms, $instance ) {
 
-			$title = empty( $instance['title'] ) ? __( 'Categories', 'smartpage' ) : $instance['title'];
+			$title = empty( $instance['title'] ) ? esc_html__( 'Categories', 'smartpage' ) : $instance['title'];
 
-			echo $parms['before_widget'];
+			$output = $parms['before_widget'];
 
-			echo $parms['before_title'] . esc_html( $title ) . $parms['after_title'];
+			$output .= $parms['before_title'] . $title . $parms['after_title'];
 
-			echo '<ul id="anony-cat-list">';
+			$output .= '<ul id="anony-cat-list">';
 
-			wp_list_categories(
+			$output .= wp_list_categories(
 				array(
 					'hide_empty' => 0,
 					'title_li'   => '',
 					'order'      => 'DESC',
+					'echo'       => false,
 					'walker'     => new ANONY_Cats_Walk(),
 				)
 			);
 
-			echo '</ul>';
-			echo $parms['after_widget'] ;
+			$output .= '</ul>';
+			$output .= $parms['after_widget'];
+			//phpcs:disable
+			echo $output;
+			//phpcs:enable.
 			wp_enqueue_script( 'anony-cats-menu' );
 		}
 	}

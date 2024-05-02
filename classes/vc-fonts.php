@@ -71,7 +71,6 @@ if ( ! class_exists( 'ANONY_VC_Fonts' ) ) {
 			add_action( 'vc_frontend_editor_enqueue_js_css', array( $this, 'enqueue_vc_icon_styles' ) );
 
 			add_action( 'vc_enqueue_font_icon_element', array( $this, 'enqueue_vc_icon_styles_on_request' ), 10 );
-
 		}
 
 		/**
@@ -144,8 +143,6 @@ if ( ! class_exists( 'ANONY_VC_Fonts' ) ) {
 				wp_enqueue_style( $this->font_library, $this->fonts_lib_meta['fonts_css_uri'] );
 			}
 		}
-
-
 	}
 }
 

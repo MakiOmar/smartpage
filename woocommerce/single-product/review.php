@@ -20,6 +20,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+global $product;
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 
@@ -27,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="comment-text">
 			<?php
-			echo '<div class="anony-review-meta">';
+			echo '<div>';
 			/**
 			 * The woocommerce_review_before hook
 			 *
@@ -35,14 +36,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 */
 			do_action( 'woocommerce_review_before', $comment );
 
+			echo '<div class="anony-review-meta anony-inline-flex anony-flex-column flex-v-center">';
 			/**
 			 * The woocommerce_review_meta hook.
 			 *
 			 * @hooked woocommerce_review_display_meta - 10
 			 */
 			do_action( 'woocommerce_review_meta', $comment );
-			echo '</div>';
-
 			/**
 			 * The woocommerce_review_before_comment_meta hook.
 			 *
@@ -50,6 +50,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 */
 			do_action( 'woocommerce_review_before_comment_meta', $comment );
 
+			echo '</div>';
+			echo '</div>';
 			do_action( 'woocommerce_review_before_comment_text', $comment );
 
 			/**

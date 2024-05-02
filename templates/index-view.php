@@ -18,7 +18,7 @@ get_header();
 $anony_options = ANONY_Options_Model::get_instance();
 ?>
 
-<div class="anony-grid">
+<main class="anony-content">
   
 	<div class="anony-grid-row">
 	 
@@ -63,6 +63,6 @@ $anony_options = ANONY_Options_Model::get_instance();
 	
 	</div>
 	 
-</div>
+</main>
 
 <?php get_footer(); ?>

@@ -4,3 +4,17 @@
     text-align: center;
     padding: 5px;
 }
+
+.anony-post_meta{
+    display: flex;
+    align-items: flex-start;
+}
+.anony-single_post_meta .anony-post_meta{
+    box-shadow: none;
+}
+
+.single-download-title .anony-post_meta{
+    flex-direction: row;
+    box-shadow: none;
+    padding: 0;
+}

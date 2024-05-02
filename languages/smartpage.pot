@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Smart Page\n"
-"POT-Creation-Date: 2023-11-27 09:51+0200\n"
+"POT-Creation-Date: 2024-03-23 00:02+0200\n"
 "PO-Revision-Date: 2018-04-16 14:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,6 +21,10 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#: blog-front-page.php:25
+msgid "You didn't choose a slider, Please select one from theme options page"
+msgstr ""
+
 #: category.php:28 taxonomy-download_category.php:44
 msgid "sub categories"
 msgstr ""
@@ -33,7 +37,7 @@ msgstr ""
 msgid "Category posts"
 msgstr ""
 
-#: category.php:82 functions/theme-helpers.php:349
+#: category.php:82 functions/theme-helpers.php:549
 msgid "Read more"
 msgstr ""
 
@@ -41,23 +45,6 @@ msgstr ""
 #: classes/cats-walk.php:122
 #, php-format
 msgid "Feed for all posts filed under %s"
-msgstr ""
-
-#: classes/cats-widget.php:36
-msgid "Displays an organized dropdown list of your categories"
-msgstr ""
-
-#: classes/cats-widget.php:37
-msgid "Anonymous categories"
-msgstr ""
-
-#: classes/cats-widget.php:50 classes/cats-widget.php:75
-msgid "Categories"
-msgstr ""
-
-#: classes/cats-widget.php:55 classes/posts-widget.php:54
-#: classes/related-posts-widget.php:20
-msgid "Title:"
 msgstr ""
 
 #: classes/class-tgm-plugin-activation.php:334
@@ -161,18 +148,18 @@ msgstr ""
 
 #: classes/class-tgm-plugin-activation.php:393
 #: classes/class-tgm-plugin-activation.php:912
-#: classes/class-tgm-plugin-activation.php:2618
-#: classes/class-tgm-plugin-activation.php:3665
+#: classes/class-tgm-plugin-activation.php:2634
+#: classes/class-tgm-plugin-activation.php:3685
 msgid "Return to the Dashboard"
 msgstr ""
 
 #: classes/class-tgm-plugin-activation.php:394
-#: classes/class-tgm-plugin-activation.php:3244
+#: classes/class-tgm-plugin-activation.php:3260
 msgid "Plugin activated successfully."
 msgstr ""
 
 #: classes/class-tgm-plugin-activation.php:395
-#: classes/class-tgm-plugin-activation.php:3037
+#: classes/class-tgm-plugin-activation.php:3053
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
 msgstr[0] ""
@@ -220,90 +207,90 @@ msgstr ""
 msgid "Update Required"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:1019
+#: classes/class-tgm-plugin-activation.php:1021
 msgid ""
 "The remote plugin package does not contain a folder with the desired slug "
 "and renaming did not work."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:1019
-#: classes/class-tgm-plugin-activation.php:1022
+#: classes/class-tgm-plugin-activation.php:1021
+#: classes/class-tgm-plugin-activation.php:1031
 msgid ""
 "Please contact the plugin provider and ask them to package their plugin "
 "according to the WordPress guidelines."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:1022
+#: classes/class-tgm-plugin-activation.php:1031
 msgid ""
 "The remote plugin package consists of more than one file, but the files "
 "are not packaged in a folder."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:1206
-#: classes/class-tgm-plugin-activation.php:3033
+#: classes/class-tgm-plugin-activation.php:1218
+#: classes/class-tgm-plugin-activation.php:3049
 msgctxt "plugin A *and* plugin B"
 msgid "and"
 msgstr ""
 
 #. translators: %s: version number
-#: classes/class-tgm-plugin-activation.php:2067
+#: classes/class-tgm-plugin-activation.php:2083
 #, php-format
 msgid "TGMPA v%s"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2358
+#: classes/class-tgm-plugin-activation.php:2374
 msgid "Required"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2361
+#: classes/class-tgm-plugin-activation.php:2377
 msgid "Recommended"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2377
+#: classes/class-tgm-plugin-activation.php:2393
 msgid "WordPress Repository"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2380
+#: classes/class-tgm-plugin-activation.php:2396
 msgid "External Source"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2383
+#: classes/class-tgm-plugin-activation.php:2399
 msgid "Pre-Packaged"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2400
+#: classes/class-tgm-plugin-activation.php:2416
 msgid "Not Installed"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2404
+#: classes/class-tgm-plugin-activation.php:2420
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2406
+#: classes/class-tgm-plugin-activation.php:2422
 msgid "Active"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2412
+#: classes/class-tgm-plugin-activation.php:2428
 msgid "Required Update not Available"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2415
+#: classes/class-tgm-plugin-activation.php:2431
 msgid "Requires Update"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2418
+#: classes/class-tgm-plugin-activation.php:2434
 msgid "Update recommended"
 msgstr ""
 
 #. translators: 1: install status, 2: update status
-#: classes/class-tgm-plugin-activation.php:2427
+#: classes/class-tgm-plugin-activation.php:2443
 #, php-format
 msgctxt "Install/Update Status"
 msgid "%1$s, %2$s"
 msgstr ""
 
 #. translators: 1: number of plugins.
-#: classes/class-tgm-plugin-activation.php:2473
+#: classes/class-tgm-plugin-activation.php:2489
 #, php-format
 msgctxt "plugins"
 msgid "All <span class=\"count\">(%s)</span>"
@@ -312,7 +299,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of plugins.
-#: classes/class-tgm-plugin-activation.php:2477
+#: classes/class-tgm-plugin-activation.php:2493
 #, php-format
 msgid "To Install <span class=\"count\">(%s)</span>"
 msgid_plural "To Install <span class=\"count\">(%s)</span>"
@@ -320,7 +307,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of plugins.
-#: classes/class-tgm-plugin-activation.php:2481
+#: classes/class-tgm-plugin-activation.php:2497
 #, php-format
 msgid "Update Available <span class=\"count\">(%s)</span>"
 msgid_plural "Update Available <span class=\"count\">(%s)</span>"
@@ -328,266 +315,337 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of plugins.
-#: classes/class-tgm-plugin-activation.php:2485
+#: classes/class-tgm-plugin-activation.php:2501
 #, php-format
 msgid "To Activate <span class=\"count\">(%s)</span>"
 msgid_plural "To Activate <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/class-tgm-plugin-activation.php:2567
+#: classes/class-tgm-plugin-activation.php:2583
 msgctxt "as in: \"version nr unknown\""
 msgid "unknown"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2575
+#: classes/class-tgm-plugin-activation.php:2591
 msgid "Installed version:"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2583
+#: classes/class-tgm-plugin-activation.php:2599
 msgid "Minimum required version:"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2595
+#: classes/class-tgm-plugin-activation.php:2611
 msgid "Available version:"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2618
+#: classes/class-tgm-plugin-activation.php:2634
 msgid "No plugins to install, update or activate."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2632
+#: classes/class-tgm-plugin-activation.php:2648
 msgid "Plugin"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2633
+#: classes/class-tgm-plugin-activation.php:2649
 msgid "Source"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2634
+#: classes/class-tgm-plugin-activation.php:2650
 msgid "Type"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2638
+#: classes/class-tgm-plugin-activation.php:2654
 msgid "Version"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2639
+#: classes/class-tgm-plugin-activation.php:2655
 msgid "Status"
 msgstr ""
 
 #. translators: %2$s: plugin name in screen reader markup
-#: classes/class-tgm-plugin-activation.php:2688
+#: classes/class-tgm-plugin-activation.php:2704
 #, php-format
 msgid "Install %2$s"
 msgstr ""
 
 #. translators: %2$s: plugin name in screen reader markup
-#: classes/class-tgm-plugin-activation.php:2693
+#: classes/class-tgm-plugin-activation.php:2709
 #, php-format
 msgid "Update %2$s"
 msgstr ""
 
 #. translators: %2$s: plugin name in screen reader markup
-#: classes/class-tgm-plugin-activation.php:2699
+#: classes/class-tgm-plugin-activation.php:2715
 #, php-format
 msgid "Activate %2$s"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2769
+#: classes/class-tgm-plugin-activation.php:2785
 msgid "Upgrade message from the plugin author:"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2802
+#: classes/class-tgm-plugin-activation.php:2818
 msgid "Install"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2808
+#: classes/class-tgm-plugin-activation.php:2824
 msgid "Update"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2811
+#: classes/class-tgm-plugin-activation.php:2827
 msgid "Activate"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2842
+#: classes/class-tgm-plugin-activation.php:2858
 msgid "No plugins were selected to be installed. No action taken."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2844
+#: classes/class-tgm-plugin-activation.php:2860
 msgid "No plugins were selected to be updated. No action taken."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2885
+#: classes/class-tgm-plugin-activation.php:2901
 msgid "No plugins are available to be installed at this time."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2887
+#: classes/class-tgm-plugin-activation.php:2903
 msgid "No plugins are available to be updated at this time."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:2993
+#: classes/class-tgm-plugin-activation.php:3009
 msgid "No plugins were selected to be activated. No action taken."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3019
+#: classes/class-tgm-plugin-activation.php:3035
 msgid "No plugins are available to be activated at this time."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3243
+#: classes/class-tgm-plugin-activation.php:3259
 msgid "Plugin activation failed."
 msgstr ""
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
-#: classes/class-tgm-plugin-activation.php:3583
+#: classes/class-tgm-plugin-activation.php:3603
 #, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
 #. translators: 1: plugin name, 2: error message.
-#: classes/class-tgm-plugin-activation.php:3586
+#: classes/class-tgm-plugin-activation.php:3606
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: classes/class-tgm-plugin-activation.php:3588
+#: classes/class-tgm-plugin-activation.php:3608
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3592
+#: classes/class-tgm-plugin-activation.php:3612
 msgid ""
 "The installation and activation process is starting. This process may take "
 "a while on some hosts, so please be patient."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: classes/class-tgm-plugin-activation.php:3594
+#: classes/class-tgm-plugin-activation.php:3614
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3594
-#: classes/class-tgm-plugin-activation.php:3602
+#: classes/class-tgm-plugin-activation.php:3614
+#: classes/class-tgm-plugin-activation.php:3622
 msgid "Show Details"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3594
-#: classes/class-tgm-plugin-activation.php:3602
+#: classes/class-tgm-plugin-activation.php:3614
+#: classes/class-tgm-plugin-activation.php:3622
 msgid "Hide Details"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3595
+#: classes/class-tgm-plugin-activation.php:3615
 msgid "All installations and activations have been completed."
 msgstr ""
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
-#: classes/class-tgm-plugin-activation.php:3597
+#: classes/class-tgm-plugin-activation.php:3617
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3600
+#: classes/class-tgm-plugin-activation.php:3620
 msgid ""
 "The installation process is starting. This process may take a while on "
 "some hosts, so please be patient."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: classes/class-tgm-plugin-activation.php:3602
+#: classes/class-tgm-plugin-activation.php:3622
 #, php-format
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: classes/class-tgm-plugin-activation.php:3603
+#: classes/class-tgm-plugin-activation.php:3623
 msgid "All installations have been completed."
 msgstr ""
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
-#: classes/class-tgm-plugin-activation.php:3605
+#: classes/class-tgm-plugin-activation.php:3625
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: classes/posts-widget.php:33
-msgid "Displays posts by post type"
-msgstr ""
-
-#: classes/posts-widget.php:34
-msgid "Anonymous posts"
-msgstr ""
-
-#: classes/posts-widget.php:49 classes/posts-widget.php:154
-msgid "You should select a post type"
-msgstr ""
-
-#: classes/posts-widget.php:61
-msgid "Top places"
-msgstr ""
-
-#: classes/posts-widget.php:67
-msgid "Post Type:"
-msgstr ""
-
-#: classes/posts-widget.php:74
-msgid "Current post type"
-msgstr ""
-
-#: classes/related-posts-widget.php:11
-msgid "Displays list of posts within the same category"
-msgstr ""
-
-#: classes/related-posts-widget.php:12
-msgid "Anonymous related posts"
-msgstr ""
-
-#: classes/related-posts-widget.php:22 classes/related-posts-widget.php:36
-msgid "Related posts"
-msgstr ""
-
-#: classes/related-posts-widget.php:88
-msgid "No more posts in this category"
-msgstr ""
-
-#: classes/user.php:142
+#: classes/user.php:141
 msgid "You didn't choose your password"
 msgstr ""
 
-#: classes/user.php:264
+#: classes/user.php:262
 msgid "User"
 msgstr ""
 
-#: classes/user.php:323
+#: classes/user.php:321
 #, php-format
 msgid "Your login credintals for %s"
 msgstr ""
 
-#: classes/user.php:328
+#: classes/user.php:326
 #, php-format
 msgid "Thank you %1$s for registering to our blog %2$s"
 msgstr ""
 
-#: classes/user.php:333
+#: classes/user.php:331
 msgid "You login information is:"
 msgstr ""
 
-#: classes/user.php:336
+#: classes/user.php:334
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: classes/user.php:341
+#: classes/user.php:339
 #, php-format
 msgid "Password: %s"
 msgstr ""
 
-#: classes/user.php:345
+#: classes/user.php:343
 msgid "To log into the admin area please us the following address "
 msgstr ""
 
 #: classes/vc-fonts.php:51
 msgid "Custom font"
+msgstr ""
+
+#: classes/widgets/class-anony-cats-widget.php:36
+msgid "Displays an organized dropdown list of your categories"
+msgstr ""
+
+#: classes/widgets/class-anony-cats-widget.php:37
+msgid "Anonymous categories"
+msgstr ""
+
+#: classes/widgets/class-anony-cats-widget.php:50
+#: classes/widgets/class-anony-cats-widget.php:73
+#: templates/partials/mobile-footer-menu-view-one.php:35
+msgid "Categories"
+msgstr ""
+
+#: classes/widgets/class-anony-cats-widget.php:55
+#: classes/widgets/class-anony-image-box.php:60
+#: classes/widgets/class-anony-posts-widget.php:54
+#: classes/widgets/class-anony-related-posts-widget.php:20
+msgid "Title:"
+msgstr ""
+
+#: classes/widgets/class-anony-copyright.php:33
+msgid "Displays a dynamic copyright text"
+msgstr ""
+
+#: classes/widgets/class-anony-copyright.php:34
+msgid "Anonymous copyright"
+msgstr ""
+
+#: classes/widgets/class-anony-copyright.php:49
+msgid "Copyright text:"
+msgstr ""
+
+#: classes/widgets/class-anony-copyright.php:56
+#: classes/widgets/class-anony-copyright.php:73
+msgid "All copyrights are reserved"
+msgstr ""
+
+#: classes/widgets/class-anony-image-box.php:33
+msgid "Displays an image box"
+msgstr ""
+
+#: classes/widgets/class-anony-image-box.php:34
+msgid "Anonymous image box"
+msgstr ""
+
+#: classes/widgets/class-anony-image-box.php:49
+msgid "Image URL:"
+msgstr ""
+
+#: classes/widgets/class-anony-image-box.php:72
+msgid "Description:"
+msgstr ""
+
+#: classes/widgets/class-anony-navigation-menu.php:33
+msgid "Displays a navigation menu created with menu admin screen"
+msgstr ""
+
+#: classes/widgets/class-anony-navigation-menu.php:34
+msgid "Anonymous Navigation Menu"
+msgstr ""
+
+#: classes/widgets/class-anony-navigation-menu.php:62
+msgid "Menu"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:33
+msgid "Displays posts by post type"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:34
+msgid "Anonymous posts"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:49
+msgid "You should select a post type"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:61
+msgid "Top places"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:67
+msgid "Post Type:"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:74
+msgid "Current post type"
+msgstr ""
+
+#: classes/widgets/class-anony-posts-widget.php:153
+msgid "Anonymous posts widget: You should select a post type"
+msgstr ""
+
+#: classes/widgets/class-anony-related-posts-widget.php:11
+msgid "Displays list of posts within the same category"
+msgstr ""
+
+#: classes/widgets/class-anony-related-posts-widget.php:12
+msgid "Anonymous related posts"
+msgstr ""
+
+#: classes/widgets/class-anony-related-posts-widget.php:22
+#: classes/widgets/class-anony-related-posts-widget.php:36
+msgid "Related posts"
+msgstr ""
+
+#: classes/widgets/class-anony-related-posts-widget.php:88
+msgid "No more posts in this category"
 msgstr ""
 
 #: comments.php:21
@@ -602,11 +660,11 @@ msgstr[1] ""
 msgid "Comments off"
 msgstr ""
 
-#: config/config.php:23
+#: config/config.php:24
 msgid "No data found"
 msgstr ""
 
-#: config/required-plugins.php:186
+#: config/required-plugins.php:185
 msgid ""
 "Please activate/install AnonyEngine plugin, for User AnonyEngine theme can "
 "work properly"
@@ -624,11 +682,11 @@ msgstr ""
 msgid "Absolute Header"
 msgstr ""
 
-#: elementor/elementor-incl.php:208
+#: elementor/elementor-incl.php:207
 msgid "Use as default"
 msgstr ""
 
-#: elementor/elementor-incl.php:212
+#: elementor/elementor-incl.php:211
 #, php-format
 msgid ""
 "If multiple %ss being set as default, the last one marked as default will "
@@ -639,123 +697,676 @@ msgstr ""
 msgid "Freen Smart Page theme"
 msgstr ""
 
-#: front-page.php:27
-msgid "You didn't choose a slider, Please select one from theme options page"
-msgstr ""
-
-#: functions.php:158
-msgid "Accept return"
-msgstr ""
-
-#: functions.php:170
-msgid "Return within"
-msgstr ""
-
-#: functions.php:175
-msgid "Allowed to reteun within x days"
-msgstr ""
-
-#: functions.php:181
-msgid "FAQs"
-msgstr ""
-
-#: functions.php:191
-msgid "Question"
-msgstr ""
-
-#: functions.php:198
-msgid "Answer"
-msgstr ""
-
-#: functions.php:373
-msgid "gallery"
-msgstr ""
-
-#: functions/ajax/ajax-comments.php:37
+#: functions/ajax/ajax-comments.php:38
 msgid "Comment Submission Failure"
 msgstr ""
 
-#: functions/ajax/ajax-comments.php:84
+#: functions/ajax/ajax-comments.php:88
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: functions/ajax/ajax-comments.php:86
+#: functions/ajax/ajax-comments.php:90
 msgid "Edit"
 msgstr ""
 
-#: functions/ajax/ajax-comments.php:88
+#: functions/ajax/ajax-comments.php:92
 msgid "Your comment is awaiting moderation"
 msgstr ""
 
-#: functions/ajax/ajax-comments.php:98
+#: functions/ajax/ajax-comments.php:103
 #, php-format
 msgid "A Max number of %s threads has been reached"
 msgstr ""
 
-#: functions/ajax/ajax-comments.php:99
+#: functions/ajax/ajax-comments.php:104
 msgid "says:"
 msgstr ""
 
-#: functions/custom-fields.php:21 functions/posts.php:41
-#: models/downloads.php:71
+#: functions/custom-fields.php:22 functions/posts.php:42
+#: models/downloads.php:74
 msgid "Downloads"
 msgstr ""
 
-#: functions/custom-fields.php:31
+#: functions/custom-fields.php:32
 msgid "Download file"
 msgstr ""
 
-#: functions/custom-fields.php:49
+#: functions/custom-fields.php:42
+msgid "Testimonial data"
+msgstr ""
+
+#: functions/custom-fields.php:52
+msgid "rating"
+msgstr ""
+
+#: functions/custom-fields.php:70
 msgid "Page/Post settings"
 msgstr ""
 
-#: functions/custom-fields.php:58
+#: functions/custom-fields.php:79
 msgid "Header overlaps content?"
 msgstr ""
 
-#: functions/custom-fields.php:65
-msgid "test_gallery"
-msgstr ""
-
-#: functions/custom-fields.php:80
+#: functions/custom-fields.php:100
 msgid "Font variations"
 msgstr ""
 
-#: functions/custom-fields.php:92
+#: functions/custom-fields.php:112
 msgid ""
 "If left empty, slug will be used as font family. Input will be sanitized"
 msgstr ""
 
-#: functions/data-hooks.php:65 functions/posts.php:40
+#: functions/data-hooks.php:64 functions/posts.php:41
 msgid "Download"
 msgstr ""
 
-#: functions/menus.php:75
+#: functions/menus.php:91
+#: templates/partials/mobile-footer-menu-view-one.php:57
 msgid "Home"
 msgstr ""
 
-#: functions/menus.php:158
+#: functions/menus.php:180
 msgid "Main menu. Shows on the main navigation"
 msgstr ""
 
-#: functions/menus.php:159
+#: functions/menus.php:181
 msgid "Footer menu. Shows on the footer"
 msgstr ""
 
-#: functions/menus.php:160
+#: functions/menus.php:182
 msgid "Languages menu. Shows on the top header"
 msgstr ""
 
-#: functions/menus.php:273
+#: functions/menus.php:280
 msgid "<i class=\"fa fa-home\"></i>"
 msgstr ""
 
-#: functions/posts.php:32
+#: functions/options/advertisements.php:15 functions/options/header.php:18
+msgid "Header"
+msgstr ""
+
+#: functions/options/advertisements.php:16 functions/options/footer.php:18
+msgid "Footer"
+msgstr ""
+
+#: functions/options/advertisements.php:17 functions/options/sidebars.php:23
+msgid "Sidebar"
+msgstr ""
+
+#: functions/options/advertisements.php:18
+msgid "Single post"
+msgstr ""
+
+#: functions/options/advertisements.php:19
+msgid "page"
+msgstr ""
+
+#: functions/options/advertisements.php:20
+msgid "Before footer"
+msgstr ""
+
+#: functions/options/advertisements.php:27
+msgid "Advertisements"
+msgstr ""
+
+#: functions/options/advertisements.php:32
+msgid "AD block one"
+msgstr ""
+
+#: functions/options/advertisements.php:38
+msgid "AD block one location"
+msgstr ""
+
+#: functions/options/advertisements.php:46
+msgid "AD block two"
+msgstr ""
+
+#: functions/options/advertisements.php:52
+msgid "AD block two location"
+msgstr ""
+
+#: functions/options/advertisements.php:60
+msgid "AD block three"
+msgstr ""
+
+#: functions/options/advertisements.php:66
+msgid "AD block three location"
+msgstr ""
+
+#: functions/options/ar-fonts.php:35
+msgid "Arabic fonts"
+msgstr ""
+
+#: functions/options/ar-fonts.php:40
+msgid "General font"
+msgstr ""
+
+#: functions/options/ar-fonts.php:47
+msgid "Arabic font for headings"
+msgstr ""
+
+#: functions/options/ar-fonts.php:55
+msgid "Arabic font for links"
+msgstr ""
+
+#: functions/options/ar-fonts.php:63
+msgid "Arabic font for paragraph"
+msgstr ""
+
+#: functions/options/blog.php:18
+msgid "Blog"
+msgstr ""
+
+#: functions/options/blog.php:23
+msgid "Posts grid"
+msgstr ""
+
+#: functions/options/blog.php:27
+msgid "Standard"
+msgstr ""
+
+#: functions/options/blog.php:28
+msgid "Masonry"
+msgstr ""
+
+#: functions/options/en-fonts.php:30
+msgid "English fonts"
+msgstr ""
+
+#: functions/options/en-fonts.php:36
+msgid "English font for headings"
+msgstr ""
+
+#: functions/options/en-fonts.php:45
+msgid "English font for links"
+msgstr ""
+
+#: functions/options/en-fonts.php:53
+msgid "English font for paragraph"
+msgstr ""
+
+#: functions/options/footer.php:23
+msgid "Enable footer top"
+msgstr ""
+
+#: functions/options/footer.php:29
+msgid "Enable footer bottom"
+msgstr ""
+
+#: functions/options/footer.php:35
+msgid "Enable Sticky menu style"
+msgstr ""
+
+#: functions/options/footer.php:41
+msgid "Sticky menu style"
+msgstr ""
+
+#: functions/options/footer.php:45 functions/options/header.php:27
+#: functions/options/header.php:39
+msgid "Default"
+msgstr ""
+
+#: functions/options/footer.php:46 functions/options/header.php:28
+msgid "Style one"
+msgstr ""
+
+#: functions/options/footer.php:47
+msgid "Custom"
+msgstr ""
+
+#: functions/options/footer.php:54
+msgid "Sticky menu background color"
+msgstr ""
+
+#: functions/options/footer.php:62
+msgid "Sticky menu icons color"
+msgstr ""
+
+#: functions/options/general-colors.php:18 functions/options/general.php:18
+msgid "General"
+msgstr ""
+
+#: functions/options/general-colors.php:23
+msgid "Primary color"
+msgstr ""
+
+#: functions/options/general-colors.php:31
+msgid "secondary color"
+msgstr ""
+
+#: functions/options/general-colors.php:38
+msgid "Links color"
+msgstr ""
+
+#: functions/options/general-colors.php:45
+msgid "Footer text color"
+msgstr ""
+
+#: functions/options/general-colors.php:52
+msgid "Footer links color"
+msgstr ""
+
+#: functions/options/general.php:23
+msgid "Logo"
+msgstr ""
+
+#: functions/options/general.php:26
+msgid "A logo that willbe displayed on desktop version"
+msgstr ""
+
+#: functions/options/general.php:30
+msgid "Mobile Logo"
+msgstr ""
+
+#: functions/options/general.php:33
+msgid "A logo that willbe displayed on mobile version"
+msgstr ""
+
+#: functions/options/general.php:37
+msgid "Enable preloader"
+msgstr ""
+
+#: functions/options/general.php:40
+msgid "Enabel or disable page preloader"
+msgstr ""
+
+#: functions/options/general.php:44
+msgid "Preloader image"
+msgstr ""
+
+#: functions/options/general.php:47
+msgid "Choose preloader image"
+msgstr ""
+
+#: functions/options/general.php:51
+msgid "Copyright"
+msgstr ""
+
+#: functions/options/general.php:55
+#, php-format
+msgid "All rights are reserved to Anonymous %s"
+msgstr ""
+
+#: functions/options/header.php:23
+msgid "Header style"
+msgstr ""
+
+#: functions/options/header.php:35
+msgid "Mobile header position"
+msgstr ""
+
+#: functions/options/header.php:40
+msgid "sticky"
+msgstr ""
+
+#: functions/options/header.php:46
+msgid "Title bar"
+msgstr ""
+
+#: functions/options/header.php:49
+msgid "Enable/disable title bar"
+msgstr ""
+
+#: functions/options/header.php:53
+msgid "Title bar background"
+msgstr ""
+
+#: functions/options/icons.php:18
+msgid "Icons"
+msgstr ""
+
+#: functions/options/icons.php:25 functions/posts.php:49
+msgid "Testimonials"
+msgstr ""
+
+#: functions/options/menu-colors.php:18
+msgid "Menu Colors"
+msgstr ""
+
+#: functions/options/menu-colors.php:23
+msgid "Main menu container color"
+msgstr ""
+
+#: functions/options/menu-colors.php:31
+msgid "Main menu text color"
+msgstr ""
+
+#: functions/options/menu-colors.php:39
+msgid "Main menu searc icon color"
+msgstr ""
+
+#: functions/options/miscellanous.php:18 functions/theme-options.php:90
+msgid "Miscellanous"
+msgstr ""
+
+#: functions/options/miscellanous.php:23
+msgid "Hide admin bar"
+msgstr ""
+
+#: functions/options/miscellanous.php:26
+msgid "Shows admin bar only for admins"
+msgstr ""
+
+#: functions/options/miscellanous.php:30
+msgid "Restrict access to admin"
+msgstr ""
+
+#: functions/options/miscellanous.php:33
+msgid "Restricts non-admins from accessing the dashboard"
+msgstr ""
+
+#: functions/options/miscellanous.php:37
+msgid "Change login header title"
+msgstr ""
+
+#: functions/options/miscellanous.php:40
+msgid ""
+"Changes the default header title in WordPress login page to be your site "
+"title"
+msgstr ""
+
+#: functions/options/miscellanous.php:44
+msgid "Add categories to Navigation"
+msgstr ""
+
+#: functions/options/miscellanous.php:47
+msgid ""
+"Adds categories menu to the main navigation menu (Show only if on mobile "
+"device)"
+msgstr ""
+
+#: functions/options/miscellanous.php:52
+msgid "Enable tinymce for comment form"
+msgstr ""
+
+#: functions/options/my-account.php:18
+#: templates/partials/mobile-footer-menu-view-one.php:70
+msgid "My account"
+msgstr ""
+
+#: functions/options/my-account.php:23
+msgid "My account menu"
+msgstr ""
+
+#: functions/options/orders.php:18
+msgid "Orders"
+msgstr ""
+
+#: functions/options/orders.php:23
+msgid "Enable custom orders page"
+msgstr ""
+
+#: functions/options/orders.php:29
+msgid "Orders per page"
+msgstr ""
+
+#: functions/options/performance.php:18 functions/theme-options.php:59
+msgid "Performance"
+msgstr ""
+
+#: functions/options/performance.php:23
+msgid "Disable responsive css"
+msgstr ""
+
+#: functions/options/performance.php:26
+msgid ""
+"You may need to disable theme's responsive css if all your pages are built "
+"with elementor, Or you think this introduces more speed"
+msgstr ""
+
+#: functions/options/performance.php:30
+msgid "Use fontawesome 4"
+msgstr ""
+
+#: functions/options/performance.php:36
+msgid "Inline fontawesome 4"
+msgstr ""
+
+#: functions/options/performance.php:42
+msgid "Load minified styles"
+msgstr ""
+
+#: functions/options/performance.php:45
+msgid "Speeds up page load time."
+msgstr ""
+
+#: functions/options/performance.php:50
+msgid "Disable dynamic AJAX css"
+msgstr ""
+
+#: functions/options/performance.php:53
+msgid "If your website loads slowly because of AJAX css, enable this"
+msgstr ""
+
+#: functions/options/performance.php:58
+msgid "Disable prettyPhoto image light box"
+msgstr ""
+
+#: functions/options/performance.php:61
+msgid "prettyPhoto disable may help improve performance"
+msgstr ""
+
+#: functions/options/post-types.php:18
+msgid "Post types"
+msgstr ""
+
+#: functions/options/post-types.php:23
+msgid "Enable portfolio"
+msgstr ""
+
+#: functions/options/post-types.php:30
+msgid "Enable news"
+msgstr ""
+
+#: functions/options/post-types.php:37
+msgid "Enable downloads"
+msgstr ""
+
+#: functions/options/post-types.php:44
+msgid "Enable testimonials"
+msgstr ""
+
+#: functions/options/post-types.php:50
+msgid "Enable faqs"
+msgstr ""
+
+#: functions/options/sidebars.php:18
+msgid "Sidebars"
+msgstr ""
+
+#: functions/options/sidebars.php:28 functions/widgets.php:26
+#: functions/widgets.php:63
+msgid "Left Sidebar"
+msgstr ""
+
+#: functions/options/sidebars.php:33 functions/widgets.php:25
+#: functions/widgets.php:69
+msgid "Right Sidebar"
+msgstr ""
+
+#: functions/options/sidebars.php:38
+msgid "Full width"
+msgstr ""
+
+#: functions/options/sidebars.php:43
+msgid "This controls the direction of the main sidebar"
+msgstr ""
+
+#: functions/options/sidebars.php:47
+msgid "Single post sidebar"
+msgstr ""
+
+#: functions/options/sidebars.php:50
+msgid ""
+"A single post can have two sidebars, check this to enable the secondary "
+"sidebar"
+msgstr ""
+
+#: functions/options/single-product.php:18
+msgid "Single product"
+msgstr ""
+
+#: functions/options/single-product.php:23
+msgid "Disable comment's form's email's field"
+msgstr ""
+
+#: functions/options/single-product.php:30
+msgid "Disable woo comment avatar"
+msgstr ""
+
+#: functions/options/single-product.php:37
+msgid "Enable woo comments load more"
+msgstr ""
+
+#: functions/options/single-product.php:40
+msgid "Replace pagination with a load more button"
+msgstr ""
+
+#: functions/options/single-product.php:45
+msgid "Enable direct checkout"
+msgstr ""
+
+#: functions/options/single-product.php:48
+msgid "Adds a direct checkout button to single product."
+msgstr ""
+
+#: functions/options/single-product.php:52
+msgid "Replay avatar"
+msgstr ""
+
+#: functions/options/slider.php:22 functions/theme-options.php:63
+msgid "Slider"
+msgstr ""
+
+#: functions/options/slider.php:27
+msgid "Revolution slider"
+msgstr ""
+
+#: functions/options/slider.php:30
+msgid "If checked, it will show revolution slider on Homepage"
+msgstr ""
+
+#: functions/options/slider.php:35
+msgid "Select a slider"
+msgstr ""
+
+#. translators: %1$s Field ID, %2$s Here text.
+#: functions/options/slider.php:42
+#, php-format
+msgid "Add slider from <a href=\"%s\">here</a>"
+msgstr ""
+
+#: functions/options/slider.php:56
+msgid "Featured Posts slider content"
+msgstr ""
+
+#: functions/options/slider.php:61
+msgid "Featured category"
+msgstr ""
+
+#: functions/options/slider.php:66
+msgid "Featured posts"
+msgstr ""
+
+#: functions/options/slider.php:74
+msgid "Select featured taxonomy"
+msgstr ""
+
+#: functions/options/slider.php:84
+msgid "Select featured category"
+msgstr ""
+
+#: functions/options/slider.php:89
+msgid "No category selected, you have to select one"
+msgstr ""
+
+#: functions/options/slider.php:92
+msgid "This options only applies to the front-page.php"
+msgstr ""
+
+#: functions/options/socials.php:18
+msgid "Social Media"
+msgstr ""
+
+#: functions/options/socials.php:23
+msgid "Facebook account link"
+msgstr ""
+
+#: functions/options/socials.php:30
+msgid "Twitter account link"
+msgstr ""
+
+#: functions/options/socials.php:37
+msgid "Linkedin account link"
+msgstr ""
+
+#: functions/options/socials.php:44
+msgid "Instagram account link"
+msgstr ""
+
+#: functions/options/socials.php:51
+msgid "Tumbler account link"
+msgstr ""
+
+#: functions/options/socials.php:58
+msgid "Youtube channel"
+msgstr ""
+
+#: functions/options/socials.php:65
+msgid "RSS feed"
+msgstr ""
+
+#: functions/options/socials.php:72
+#: woocommerce/myaccount/form-edit-account.php:43
+msgid "Email address"
+msgstr ""
+
+#: functions/options/socials.php:79
+msgid "Phone number"
+msgstr ""
+
+#: functions/options/woocommerce.php:18 functions/theme-options.php:131
+msgid "Woocommerce"
+msgstr ""
+
+#: functions/options/woocommerce.php:23
+msgid "Hide products without prices"
+msgstr ""
+
+#: functions/options/woocommerce.php:29
+msgid "Show product's empty rating"
+msgstr ""
+
+#: functions/options/woocommerce.php:37
+msgid "Sale badge type"
+msgstr ""
+
+#: functions/options/woocommerce.php:42
+msgid "Text"
+msgstr ""
+
+#: functions/options/woocommerce.php:46
+msgid "percentage"
+msgstr ""
+
+#: functions/options/woocommerce.php:54
+msgid "Related products title"
+msgstr ""
+
+#: functions/options/woocommerce.php:61
+msgid "Show quantity selector in products' loop"
+msgstr ""
+
+#: functions/options/woocommerce.php:68
+msgid "Show rating in products' loop"
+msgstr ""
+
+#: functions/posts.php:34
 msgid "portfolio"
 msgstr ""
 
-#: functions/posts.php:33
+#: functions/posts.php:35
 msgid "Portfolios"
 msgstr ""
 
@@ -763,48 +1374,94 @@ msgstr ""
 msgid "Testimonial"
 msgstr ""
 
-#: functions/posts.php:49
-msgid "Testimonials"
-msgstr ""
-
-#: functions/posts.php:56
+#: functions/posts.php:55
 msgid "New"
 msgstr ""
 
-#: functions/posts.php:57
+#: functions/posts.php:56
 msgid "News"
 msgstr ""
 
 #: functions/posts.php:62
+msgid "FAQ"
+msgstr ""
+
+#: functions/posts.php:63
+msgid "FAQs"
+msgstr ""
+
+#: functions/posts.php:68
 msgid "Font"
 msgstr ""
 
-#: functions/posts.php:63 functions/theme-options.php:66
+#: functions/posts.php:69 functions/theme-options.php:79
 msgid "Fonts"
 msgstr ""
 
-#: functions/posts.php:84 functions/posts.php:85
+#: functions/posts.php:73
+msgid "Block"
+msgstr ""
+
+#: functions/posts.php:74
+msgid "Blocks"
+msgstr ""
+
+#: functions/posts.php:162 functions/posts.php:163
 msgid "Download type"
 msgstr ""
 
-#: functions/scripts.php:208
+#: functions/posts.php:167
+msgid "FAQs categories"
+msgstr ""
+
+#: functions/posts.php:168
+msgid "FAQs category"
+msgstr ""
+
+#: functions/posts.php:172
+msgid "Blocks categories"
+msgstr ""
+
+#: functions/posts.php:173
+msgid "Blocks category"
+msgstr ""
+
+#: functions/scripts.php:200
 msgid "Please enter a valid name"
 msgstr ""
 
-#: functions/scripts.php:209
+#: functions/scripts.php:201
 msgid "Please enter a valid email"
 msgstr ""
 
-#: functions/scripts.php:210
+#: functions/scripts.php:202
 msgid "Please use a valid website address"
 msgstr ""
 
-#: functions/scripts.php:211
+#: functions/scripts.php:203
 msgid "Comment must be at least 20 characters"
 msgstr ""
 
 #: functions/security.php:40
 msgid "No feed available!"
+msgstr ""
+
+#: functions/shortcodes.php:386
+msgid "Popup id is missing"
+msgstr ""
+
+#: functions/shortcodes.php:651
+msgid ""
+"Please make sure you select a category and its corresponding taxonomy from "
+"theme options->slider"
+msgstr ""
+
+#: functions/shortcodes.php:692
+msgid "Featured Posts"
+msgstr ""
+
+#: functions/shortcodes.php:860
+msgid "Section title"
 msgstr ""
 
 #: functions/shortcodes/statistics/statistics.php:18
@@ -944,13 +1601,13 @@ msgstr ""
 
 #: functions/shortcodes/visual-composer/vc-popular-2.php:85
 #: functions/shortcodes/visual-composer/vc-popular.php:154
-#: sidebar-secondary.php:15
+#: sidebar-secondary.php:25
 msgid "Popular"
 msgstr ""
 
 #: functions/shortcodes/visual-composer/vc-popular-2.php:86
 #: functions/shortcodes/visual-composer/vc-popular.php:156
-#: sidebar-secondary.php:16
+#: sidebar-secondary.php:28
 msgid "Recent comments"
 msgstr ""
 
@@ -986,586 +1643,239 @@ msgstr ""
 msgid "Background for tabs bar"
 msgstr ""
 
-#: functions/theme-helpers.php:302
+#: functions/theme-helpers.php:351 sidebar-default.php:16 sidebar.php:16
+msgid "Please add some widgets. "
+msgstr ""
+
+#: functions/theme-helpers.php:354 sidebar-default.php:17 sidebar.php:17
+msgid "Add Here"
+msgstr ""
+
+#: functions/theme-helpers.php:483
 msgid "comment"
 msgstr ""
 
-#: functions/theme-helpers.php:306 models/recent-posts.php:27
+#: functions/theme-helpers.php:487 models/recent-posts.php:27
 msgid "comments"
 msgstr ""
 
-#: functions/theme-helpers.php:312
+#: functions/theme-helpers.php:493
 msgid "Comments-off"
 msgstr ""
 
-#: functions/theme-helpers.php:348
+#: functions/theme-helpers.php:548
 #, php-format
 msgid "By %s"
 msgstr ""
 
-#: functions/theme-helpers.php:489
+#: functions/theme-helpers.php:693
 msgid "Commented"
 msgstr ""
 
-#: functions/theme-helpers.php:495
+#: functions/theme-helpers.php:702
 msgid "View Post"
 msgstr ""
 
-#: functions/theme-helpers.php:507
+#: functions/theme-helpers.php:714
 msgid "No comments yet"
 msgstr ""
 
-#: functions/theme-options.php:41
+#: functions/theme-options.php:54
 msgid "Getting started"
 msgstr ""
 
-#: functions/theme-options.php:46 functions/theme-options.php:164
-msgid "Performance"
-msgstr ""
-
-#: functions/theme-options.php:50 functions/theme-options.php:213
-msgid "Slider"
-msgstr ""
-
-#: functions/theme-options.php:54
+#: functions/theme-options.php:67
 msgid "Layout"
 msgstr ""
 
-#: functions/theme-options.php:60
+#: functions/theme-options.php:73
 msgid "Colors"
 msgstr ""
 
-#: functions/theme-options.php:79
+#: functions/theme-options.php:84
 msgid "Socials"
 msgstr ""
 
-#: functions/theme-options.php:85 functions/theme-options.php:600
-msgid "Miscellanous"
-msgstr ""
-
-#: functions/theme-options.php:90
+#: functions/theme-options.php:95
 msgid "Modules"
 msgstr ""
 
-#: functions/theme-options.php:98
-msgid "woocommerce"
-msgstr ""
-
-#: functions/theme-options.php:109 functions/theme-options.php:288
-msgid "General"
-msgstr ""
-
-#: functions/theme-options.php:114
-msgid "Copyright"
-msgstr ""
-
-#: functions/theme-options.php:117
-#, php-format
-msgid "All rights are reserved to Anonymous %s"
-msgstr ""
-
-#: functions/theme-options.php:122
-msgid "Enable preloader"
-msgstr ""
-
-#: functions/theme-options.php:125 functions/theme-options.php:146
-msgid "Enabel or disable page preloader"
-msgstr ""
-
-#: functions/theme-options.php:130
-msgid "Preloader image"
-msgstr ""
-
-#: functions/theme-options.php:133 functions/theme-options.php:154
-msgid "Choose preloader image"
-msgstr ""
-
-#: functions/theme-options.php:138
-msgid "Test multiinput"
-msgstr ""
-
-#: functions/theme-options.php:143
-msgid "multi_input Enable preloader"
-msgstr ""
-
-#: functions/theme-options.php:151
-msgid "multi_input Preloader image"
-msgstr ""
-
-#: functions/theme-options.php:169
-msgid "Disable responsive css"
-msgstr ""
-
-#: functions/theme-options.php:172
-msgid ""
-"You may need to disable theme's responsive css if all your pages are built "
-"with elementor, Or you think this introduces more speed"
-msgstr ""
-
-#: functions/theme-options.php:176
-msgid "Disable Main css"
-msgstr ""
-
-#: functions/theme-options.php:179
-msgid ""
-"You may need to disable theme's main css if you think this introduces more "
-"speed and will not affect design"
-msgstr ""
-
-#: functions/theme-options.php:183
-msgid "Load minified styles"
-msgstr ""
-
-#: functions/theme-options.php:186
-msgid "Speeds up page load time."
-msgstr ""
-
-#: functions/theme-options.php:193
-msgid "Disable dynamic AJAX css"
-msgstr ""
-
-#: functions/theme-options.php:196
-msgid "If your website loads slowly because of AJAX css, enable this"
-msgstr ""
-
-#: functions/theme-options.php:202
-msgid "Disable prettyPhoto image light box"
-msgstr ""
-
-#: functions/theme-options.php:205
-msgid "prettyPhoto disable may help improve performance"
-msgstr ""
-
-#: functions/theme-options.php:218
-msgid "Revolution slider"
-msgstr ""
-
-#: functions/theme-options.php:226
-msgid "Select a slider"
-msgstr ""
-
-#: functions/theme-options.php:230
-#, php-format
-msgid "Add slider from <a href=\"%s\">here</a>"
-msgstr ""
-
-#: functions/theme-options.php:235
-msgid "Featured Posts slider content"
-msgstr ""
-
-#: functions/theme-options.php:240
-msgid "Featured category"
-msgstr ""
-
-#: functions/theme-options.php:245
-msgid "Featured posts"
-msgstr ""
-
-#: functions/theme-options.php:253
-msgid "Select featured taxonomy"
-msgstr ""
-
-#: functions/theme-options.php:263
-msgid "Select featured category"
-msgstr ""
-
-#: functions/theme-options.php:268
-msgid "No category selected, you have to select one"
-msgstr ""
-
-#: functions/theme-options.php:271
-msgid "This options only applies to the front-page.php"
-msgstr ""
-
-#: functions/theme-options.php:275
-msgid "Menu Colors"
-msgstr ""
-
-#: functions/theme-options.php:280
-msgid "Main menu"
-msgstr ""
-
-#: functions/theme-options.php:293
-msgid "Primary color"
-msgstr ""
-
-#: functions/theme-options.php:301
-msgid "secondary color"
-msgstr ""
-
-#: functions/theme-options.php:310
-msgid "Sidebars"
-msgstr ""
-
-#: functions/theme-options.php:315 functions/theme-options.php:370
-msgid "Sidebar"
-msgstr ""
-
-#: functions/theme-options.php:320 functions/widgets.php:22
-#: functions/widgets.php:50
-msgid "Left Sidebar"
-msgstr ""
-
-#: functions/theme-options.php:325 functions/widgets.php:21
-#: functions/widgets.php:56
-msgid "Right Sidebar"
-msgstr ""
-
-#: functions/theme-options.php:330
-msgid "Full width"
-msgstr ""
-
-#: functions/theme-options.php:335
-msgid "This controls the direction of the main sidebar"
-msgstr ""
-
-#: functions/theme-options.php:339
-msgid "Single post sidebar"
-msgstr ""
-
-#: functions/theme-options.php:348
-msgid "Blog"
-msgstr ""
-
-#: functions/theme-options.php:353
-msgid "Posts grid"
-msgstr ""
-
-#: functions/theme-options.php:357
-msgid "Standard"
-msgstr ""
-
-#: functions/theme-options.php:358
-msgid "Masonry"
-msgstr ""
-
-#: functions/theme-options.php:368
-msgid "Header"
-msgstr ""
-
-#: functions/theme-options.php:369
-msgid "Footer"
-msgstr ""
-
-#: functions/theme-options.php:371
-msgid "Single post"
-msgstr ""
-
-#: functions/theme-options.php:372
-msgid "page"
-msgstr ""
-
-#: functions/theme-options.php:373
-msgid "Before footer"
-msgstr ""
-
-#: functions/theme-options.php:376
-msgid "Advertisements"
-msgstr ""
-
-#: functions/theme-options.php:381
-msgid "AD block one"
-msgstr ""
-
-#: functions/theme-options.php:387
-msgid "AD block one location"
-msgstr ""
-
-#: functions/theme-options.php:395
-msgid "AD block two"
-msgstr ""
-
-#: functions/theme-options.php:401
-msgid "AD block two location"
-msgstr ""
-
-#: functions/theme-options.php:409
-msgid "AD block three"
-msgstr ""
-
-#: functions/theme-options.php:415
-msgid "AD block three location"
-msgstr ""
-
-#: functions/theme-options.php:457
-msgid "Arabic fonts"
-msgstr ""
-
-#: functions/theme-options.php:462
-msgid "General font"
-msgstr ""
-
-#: functions/theme-options.php:469
-msgid "Arabic font for headings"
-msgstr ""
-
-#: functions/theme-options.php:477
-msgid "Arabic font for links"
-msgstr ""
-
-#: functions/theme-options.php:485
-msgid "Arabic font for paragraph"
-msgstr ""
-
-#: functions/theme-options.php:496
-msgid "English fonts"
-msgstr ""
-
-#: functions/theme-options.php:502
-msgid "English font for headings"
-msgstr ""
-
-#: functions/theme-options.php:511
-msgid "English font for links"
-msgstr ""
-
-#: functions/theme-options.php:519
-msgid "English font for paragraph"
-msgstr ""
-
-#: functions/theme-options.php:529
-msgid "Social Media"
-msgstr ""
-
-#: functions/theme-options.php:534
-msgid "Facebook account link"
-msgstr ""
-
-#: functions/theme-options.php:541
-msgid "Twitter account link"
-msgstr ""
-
-#: functions/theme-options.php:548
-msgid "Linkedin account link"
-msgstr ""
-
-#: functions/theme-options.php:555
-msgid "Instagram account link"
-msgstr ""
-
-#: functions/theme-options.php:562
-msgid "Tumbler account link"
-msgstr ""
-
-#: functions/theme-options.php:569
-msgid "Youtube channel"
-msgstr ""
-
-#: functions/theme-options.php:576
-msgid "RSS feed"
-msgstr ""
-
-#: functions/theme-options.php:583
-msgid "Email address"
-msgstr ""
-
-#: functions/theme-options.php:590
-msgid "Phone number"
-msgstr ""
-
-#: functions/theme-options.php:605
-msgid "Hide admin bar"
-msgstr ""
-
-#: functions/theme-options.php:608
-msgid "Shows admin bar only for admins"
-msgstr ""
-
-#: functions/theme-options.php:612
-msgid "Restrict access to admin"
-msgstr ""
-
-#: functions/theme-options.php:615
-msgid "Restricts non-admins from accessing the dashboard"
-msgstr ""
-
-#: functions/theme-options.php:619
-msgid "Change login header title"
-msgstr ""
-
-#: functions/theme-options.php:622
-msgid ""
-"Changes the default header title in WordPress login page to be your site "
-"title"
-msgstr ""
-
-#: functions/theme-options.php:626
-msgid "Add categories to Navigation"
-msgstr ""
-
-#: functions/theme-options.php:629
-msgid ""
-"Adds categories menu to the main navigation menu (Show only if on mobile "
-"device)"
-msgstr ""
-
-#: functions/theme-options.php:634
-msgid "Enable tinymce for comment form"
-msgstr ""
-
-#: functions/theme-options.php:643
-msgid "Post types"
-msgstr ""
-
-#: functions/theme-options.php:648
-msgid "Enable portfolio"
-msgstr ""
-
-#: functions/theme-options.php:655
-msgid "Enable news"
-msgstr ""
-
-#: functions/theme-options.php:662
-msgid "Enable downloads"
-msgstr ""
-
-#: functions/theme-options.php:669
-msgid "Enable testimonials"
-msgstr ""
-
-#: functions/theme-options.php:677
-msgid "Woocommerce"
-msgstr ""
-
-#: functions/theme-options.php:682
-msgid "Hide products without prices"
-msgstr ""
-
-#: functions/theme-options.php:688
-msgid "Show product's empty rating"
-msgstr ""
-
-#: functions/theme-options.php:696
-msgid "Sale badge type"
-msgstr ""
-
-#: functions/theme-options.php:701
-msgid "Text"
-msgstr ""
-
-#: functions/theme-options.php:705
-msgid "percentage"
-msgstr ""
-
-#: functions/theme-options.php:713
-msgid "Related products title"
-msgstr ""
-
-#: functions/theme-options.php:723
-msgid "Single product"
-msgstr ""
-
-#: functions/theme-options.php:728
-msgid "Disable comment's form's email's field"
-msgstr ""
-
-#: functions/theme.php:16
+#: functions/theme.php:53
 msgid "SmartPage"
 msgstr ""
 
-#: functions/widgets.php:20
+#: functions/widgets.php:24
 msgid "Main Sidebar"
 msgstr ""
 
-#: functions/widgets.php:23
+#: functions/widgets.php:27
 msgid "Secondary Sidebar"
 msgstr ""
 
-#: functions/widgets.php:24
-msgid "Footer Widget 1"
+#: functions/widgets.php:28
+msgid "Footer one"
 msgstr ""
 
-#: functions/widgets.php:25
-msgid "Footer Widget 2"
+#: functions/widgets.php:29
+msgid "Footer two"
 msgstr ""
 
-#: functions/widgets.php:26
-msgid "Footer Widget 3"
+#: functions/widgets.php:30
+msgid "Footer three"
 msgstr ""
 
-#: functions/widgets.php:27
-msgid "Footer Widget 4"
+#: functions/widgets.php:31
+msgid "Footer four"
 msgstr ""
 
-#: functions/woocommerce.php:46
+#: functions/widgets.php:32
+msgid "Top footer one"
+msgstr ""
+
+#: functions/widgets.php:33
+msgid "Top footer two"
+msgstr ""
+
+#: functions/widgets.php:34
+msgid "Top footer three"
+msgstr ""
+
+#: functions/widgets.php:35
+msgid "Bottom footer one"
+msgstr ""
+
+#: functions/widgets.php:36
+msgid "Bottom footer two"
+msgstr ""
+
+#: functions/widgets.php:37
+msgid "Bottom footer three"
+msgstr ""
+
+#: functions/woocommerce-orders.php:32
+msgid "Order number:"
+msgstr ""
+
+#: functions/woocommerce-orders.php:39
+msgid "Total:"
+msgstr ""
+
+#: functions/woocommerce-orders.php:200 woocommerce/myaccount/orders.php:106
+msgid "Previous"
+msgstr ""
+
+#: functions/woocommerce-orders.php:204 woocommerce/myaccount/orders.php:110
+msgid "Next"
+msgstr ""
+
+#: functions/woocommerce-orders.php:210
+msgid "No orders found"
+msgstr ""
+
+#: functions/woocommerce-orders.php:223
+msgid "Please, Login first!"
+msgstr ""
+
+#: functions/woocommerce-orders.php:239
+msgid "Processing"
+msgstr ""
+
+#: functions/woocommerce-orders.php:240
+msgid "Completed"
+msgstr ""
+
+#: functions/woocommerce-orders.php:241
+msgid "Cancel"
+msgstr ""
+
+#: functions/woocommerce-orders.php:248 woocommerce/myaccount/orders.php:117
+msgid "No order has been made yet."
+msgstr ""
+
+#: functions/woocommerce-orders.php:248 woocommerce/myaccount/orders.php:117
+msgid "Browse products"
+msgstr ""
+
+#: functions/woocommerce.php:48
 msgid "Brand logo"
 msgstr ""
 
 #. translators: %s: rating
-#: functions/woocommerce.php:84
+#: functions/woocommerce.php:94
 #, php-format
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: functions/woocommerce.php:126
+#: functions/woocommerce.php:177
 #, php-format
 msgid "%s customer review"
 msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/woocommerce.php:221
+#: functions/woocommerce.php:290
 #, php-format
 msgid "Save %1$s %2$s"
 msgstr ""
 
-#: header.php:53
+#: functions/woocommerce.php:353
+msgid "Custom Sale Badge"
+msgstr ""
+
+#: functions/woocommerce.php:357
+msgid "Custom Sales counter"
+msgstr ""
+
+#: functions/woocommerce.php:408
+#, php-format
+msgid "Sold <strong>%s</strong> times"
+msgstr ""
+
+#: functions/woocommerce.php:676
+msgid "Direct Checkout"
+msgstr ""
+
+#: header.php:58
 msgid "Follow us on Facebook"
 msgstr ""
 
-#: header.php:59
+#: header.php:64
 msgid "Follow us on Twitter"
 msgstr ""
 
-#: header.php:65
+#: header.php:70
 msgid "Follow us on Youtube"
 msgstr ""
 
-#: header.php:71
+#: header.php:76
 msgid "Follow us on Pinterest"
 msgstr ""
 
-#: header.php:77
+#: header.php:82
 msgid "Follow us on Linkedin"
 msgstr ""
 
-#: header.php:83
+#: header.php:88
 msgid "Follow us on Instagram"
 msgstr ""
 
-#: header.php:89
+#: header.php:94
 msgid "Follow us on Tumblr"
 msgstr ""
 
-#: header.php:95
+#: header.php:100
 msgid "Follow us with RSS feed"
 msgstr ""
 
-#: models/category-posts-section.php:54
+#: models/category-posts-section.php:50
 msgid "Recent Posts"
 msgstr ""
 
-#: models/downloads.php:70
+#: models/downloads.php:73
 msgid "Suggested downloads"
 msgstr ""
 
-#: models/featured.php:51
-msgid ""
-"Please make sure you select a category and its corresponding taxonomy from "
-"theme options->slider"
-msgstr ""
-
-#: models/featured.php:83
-msgid ""
-"Sorry! but we can't find any post with available thumbnail to show in "
-"slider"
-msgstr ""
-
-#: models/featured.php:112
-msgid "Featured Posts"
-msgstr ""
-
-#: models/news.php:9
+#: models/news.php:14
 msgid "Simple Info"
 msgstr ""
 
@@ -1585,7 +1895,7 @@ msgstr ""
 msgid "SUBSCRIBE"
 msgstr ""
 
-#: models/popular.php:87
+#: models/popular.php:85
 msgid "No popular posts"
 msgstr ""
 
@@ -1653,22 +1963,36 @@ msgstr ""
 msgid "There is no changelog available."
 msgstr ""
 
-#: searchform.php:15
+#: searchform.php:16 templates/partials/fullwidth-search-form-view.php:35
 msgid "Search"
 msgstr ""
 
-#: sidebar-default.php:16 sidebar-left.php:17 sidebar-right.php:18
-#: sidebar.php:16
-msgid "Please add some widgets. "
-msgstr ""
-
-#: sidebar-default.php:17 sidebar-left.php:18 sidebar-right.php:19
-#: sidebar.php:17
-msgid "Add Here"
-msgstr ""
-
-#: templates/header-view.php:30
+#: templates/document-head.php:33
 msgid "Loading..."
+msgstr ""
+
+#: templates/header-one-view.php:41
+msgid "Account"
+msgstr ""
+
+#: templates/partials/fullwidth-search-form-view.php:18
+msgid "Close search form"
+msgstr ""
+
+#: templates/partials/mini-cart.php:19 woocommerce/cart/mini-cart.php:23
+msgid "Cart"
+msgstr ""
+
+#: templates/partials/mobile-footer-menu-view-one.php:52
+msgid "My orders"
+msgstr ""
+
+#: templates/partials/mobile-footer-menu-view-one.php:65
+msgid "My wishlist"
+msgstr ""
+
+#: templates/partials/page-scroll.php:19
+msgid "Page scroll"
 msgstr ""
 
 #: templates/post-layout/post-with-thumb.php:39
@@ -1676,121 +2000,221 @@ msgstr ""
 msgid "%s Shares"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:26
-msgid "You must be logged in to checkout."
+#: woocommerce/cart/mini-cart.php:24
+msgid "Close cart"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:87
-msgid "Your order"
+#. translators: %s is the product name
+#: woocommerce/cart/mini-cart.php:62
+#, php-format
+msgid "Remove %s from cart"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:37
+#: woocommerce/cart/mini-cart.php:107
+msgid "No products in the cart."
+msgstr ""
+
+#: woocommerce/loop/sale-flash.php:27
+msgid "Sale!"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:27
+msgid "First name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:31
+msgid "Last name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:37
+msgid "Display name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:38
+msgid ""
+"This will be how your name will be displayed in the account section and in "
+"reviews"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:48
+msgid "Password change"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:51
+msgid "Current password (leave blank to leave unchanged)"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:55
+msgid "New password (leave blank to leave unchanged)"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:59
+msgid "Confirm new password"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:69
+msgid "Save changes"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:66
+msgctxt "hash before order number"
+msgid "#"
+msgstr ""
+
+#. translators: 1: formatted order total 2: total order items
+#: woocommerce/myaccount/orders.php:78
+#, php-format
+msgid "%1$s for %2$s item"
+msgid_plural "%1$s for %2$s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product-reviews.php:44
 msgid "No Rating yet"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:64
+#: woocommerce/single-product-reviews.php:75
 #, php-format
 msgctxt "Stars rating title"
-msgid "One Star"
+msgid "%1$s Star"
 msgid_plural "%1$s Stars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: woocommerce/single-product-reviews.php:74
+#: woocommerce/single-product-reviews.php:88
 msgid "Rate this product"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:75
+#: woocommerce/single-product-reviews.php:89
 msgid "Rating help others to make choices"
 msgstr ""
 
 #. translators: %s is product title
-#: woocommerce/single-product-reviews.php:76
-#: woocommerce/single-product-reviews.php:131
+#: woocommerce/single-product-reviews.php:90
+#: woocommerce/single-product-reviews.php:159
 msgid "Add a review"
 msgstr ""
 
 #. translators: 1: reviews count 2: product name
-#: woocommerce/single-product-reviews.php:91
+#: woocommerce/single-product-reviews.php:105
 #, php-format
 msgid "%1$s review for %2$s"
 msgid_plural "%1$s reviews for %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: woocommerce/single-product-reviews.php:120
+#: woocommerce/single-product-reviews.php:123
+msgid "Load more"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:148
 msgid "There are no reviews yet."
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:131
+#: woocommerce/single-product-reviews.php:159
 #, php-format
 msgid "Be the first to review &ldquo;%s&rdquo;"
 msgstr ""
 
 #. translators: %s is product title
-#: woocommerce/single-product-reviews.php:133
+#: woocommerce/single-product-reviews.php:161
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:137
+#: woocommerce/single-product-reviews.php:165
 msgid "Submit"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:145
+#: woocommerce/single-product-reviews.php:173
 msgid "Name"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:151
+#: woocommerce/single-product-reviews.php:179
 msgid "Email"
 msgstr ""
 
 #. translators: %s opening and closing link tags respectively
-#: woocommerce/single-product-reviews.php:176
+#: woocommerce/single-product-reviews.php:204
 #, php-format
 msgid "You must be %1$slogged in%2$s to post a review."
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:180
+#: woocommerce/single-product-reviews.php:208
 msgid "Your rating"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:181
+#: woocommerce/single-product-reviews.php:209
 msgid "Rate&hellip;"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:182
+#: woocommerce/single-product-reviews.php:210
 msgid "Perfect"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:183
+#: woocommerce/single-product-reviews.php:211
 msgid "Good"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:184
+#: woocommerce/single-product-reviews.php:212
 msgid "Average"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:185
+#: woocommerce/single-product-reviews.php:213
 msgid "Not that bad"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:186
+#: woocommerce/single-product-reviews.php:214
 msgid "Very poor"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:190
+#: woocommerce/single-product-reviews.php:218
 msgid "Your review"
 msgstr ""
 
-#: woocommerce/single-product-reviews.php:197
+#: woocommerce/single-product-reviews.php:225
 msgid ""
 "Only logged in customers who have purchased this product may leave a "
 "review."
 msgstr ""
 
+#: woocommerce/single-product/add-to-cart/grouped.php:67
+msgid "Buy one of this item"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:40
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:64
+msgid "Clear"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variation.php:22
+msgid ""
+"Sorry, this product is unavailable. Please choose a different combination."
+msgstr ""
+
 #: woocommerce/single-product/product-image.php:46
 msgid "Awaiting product image"
+msgstr ""
+
+#: woocommerce/single-product/review-meta.php:27
+msgid "Your review is awaiting approval"
+msgstr ""
+
+#: woocommerce/single-product/review-meta.php:37
+msgid "verified owner"
+msgstr ""
+
+#: woocommerce/single-product/review-meta.php:41
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid "%s ago"
+msgstr ""
+
+#: woocommerce/single-product/review.php:47
+msgid "Has already bought"
 msgstr ""
 
 #: woocommerce/single-product/tabs/additional-information.php:22
@@ -1818,4 +2242,16 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Makiomar"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Blog fornt page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Fullwidth page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "WooCommerce Home"
 msgstr ""

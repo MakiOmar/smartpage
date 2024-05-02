@@ -30,12 +30,9 @@ $anony_options = ANONY_Options_Model::get_instance();
  */
 do_action( 'woocommerce_before_main_content' );
 ?>
-<div class="anony-grid">
-	<div class="anony-grid-row anony-grid-col">
-		
-		<div class="anony-grid-col<?php ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ''; ?>">
-			
-			<div class="anony-grid-col">
+<main class="anony-content">
+	<div class="anony-grid-row">
+		<div class="anony-grid-col<?php echo ( 'no-sidebar' !== $anony_options->sidebar ) ? ' anony-grid-col-sm-9-5' : ' no-sidebar'; ?>">
 				
 				<div class="anony-grid-container">
 
@@ -55,9 +52,6 @@ do_action( 'woocommerce_before_main_content' );
 						do_action( 'woocommerce_after_main_content' );
 					?>
 				</div>
-					
-			</div>
-			
 		</div>
 
 		<?php
@@ -71,7 +65,7 @@ do_action( 'woocommerce_before_main_content' );
 		}
 		?>
 	</div>
-</div>
+</main>
 <?php
 get_footer();
 

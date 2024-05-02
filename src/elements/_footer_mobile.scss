@@ -1,0 +1,43 @@
+.anony-grid-row#anony-mobile-footer-menu{
+    height: 100px;
+    position: fixed;
+    width: 100vw;
+    margin: auto;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    justify-content: space-around;
+    
+}
+#anony-mobile-footer-menu.footer-sticky-menu-one{
+    padding-top: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+#anony-mobile-footer-menu-bg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+#anony-mobile-footer-menu-home > a{
+    height: 80px;
+    width: 80px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -50px;
+}
+
+#anony-mobile-footer-menu a svg path, #anony-mobile-footer-menu a svg circle{
+    stroke: #fff;
+}
+
+.anony-is-mobile #anony-footer{
+    padding-bottom: 150px;
+}

@@ -1,0 +1,10 @@
+.wp-block-group__inner-container, .wp-block-group.wp-block-group-is-layout-flex, .anony-block-section{
+    position: relative;
+    padding: 20px;
+}
+
+@media screen and ( max-width:480px ) {
+    .wp-block-group__inner-container, .wp-block-group.wp-block-group-is-layout-flex, .anony-block-section{
+        padding: 10px 8px;
+    }
+}

@@ -56,7 +56,7 @@ get_header();?>
 								</div>
 							</div>
 			<?php endforeach ?>
-					   </div>
+						</div>
 				</div>
 			</div>
  
@@ -96,7 +96,7 @@ get_header();?>
 		 
 		</div>
 
-	   <?php get_sidebar(); ?>
+		<?php get_sidebar(); ?>
 
 	</div>
 </div>

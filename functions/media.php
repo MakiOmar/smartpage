@@ -11,4 +11,3 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 // Ready for later use
-

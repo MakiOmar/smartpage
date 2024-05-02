@@ -32,36 +32,11 @@ function anony_styles() {
 		$min_suffix = '';
 	}
 
-	if ( '1' !== $anony_options->disable_main_css ) {
-		// Main theme file (Soon will be replaced with theme-styles.css).
-		wp_enqueue_style(
-			'anony-main',
-			ANONY_THEME_URI . '/assets/css/main' . $min_suffix . '.css',
-			false,
-			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/main' . $min_suffix . '.css' )
-			),
-			$media
-		);
-	}
-	if ( '1' !== $anony_options->disable_rsponsive_css ) {
-		// Responsive styles.
-		wp_enqueue_style(
-			'anony-responsive',
-			ANONY_THEME_URI . '/assets/css/responsive' . $min_suffix . '.css',
-			false,
-			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/responsive' . $min_suffix . '.css' )
-			),
-			$media
-		);
-	}
-
 	if ( class_exists( 'woocommerce' ) ) {
 		// WooCommerce styles.
 		wp_enqueue_style(
 			'anony-woocommerce',
-			ANONY_THEME_URI . '/assets/css/woocommerce' . $min_suffix . '.css',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/woocommerce' . $min_suffix . '.css',
 			false,
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/woocommerce' . $min_suffix . '.css' )
@@ -73,32 +48,32 @@ function anony_styles() {
 	// Theme styles. (Soon will replace main.css).
 	wp_enqueue_style(
 		'anony-theme-styles',
-		ANONY_THEME_URI . '/assets/css/theme-styles' . $min_suffix . '.css',
+		esc_url( ANONY_THEME_URI ) . '/assets/css/theme-styles' . $min_suffix . '.css',
 		false,
 		filemtime(
 			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/theme-styles' . $min_suffix . '.css' )
 		),
 		$media
 	);
-
-	// FontAwesome.
-	wp_enqueue_style(
-		'font-awesome',
-		ANONY_THEME_URI . '/assets/css/font-awesome' . $min_suffix . '.css',
-		false,
-		filemtime(
-			wp_normalize_path( ANONY_THEME_DIR . '/assets/css/font-awesome' . $min_suffix . '.css' )
-		),
-		$media
-	);
-
+	if ( '1' === $anony_options->use_fontawesome4 && '1' !== $anony_options->inline_fontawesome4 ) {
+		// FontAwesome.
+		wp_enqueue_style(
+			'font-awesome',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/font-awesome' . $min_suffix . '.css',
+			false,
+			filemtime(
+				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/font-awesome' . $min_suffix . '.css' )
+			),
+			$media
+		);
+	}
 	if ( is_rtl() ) {
 
-		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-main' ) : null;
+		$rtl_dep = '1' !== $anony_options->disable_main_css ? array( 'anony-theme-styles' ) : null;
 
 		wp_enqueue_style(
 			'anony-rtl',
-			ANONY_THEME_URI . '/assets/css/rtl' . $min_suffix . '.css',
+			esc_url( ANONY_THEME_URI ) . '/assets/css/rtl' . $min_suffix . '.css',
 			$rtl_dep,
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/rtl' . $min_suffix . '.css' )
@@ -116,7 +91,7 @@ function anony_styles() {
 			// Lightbox.
 			wp_enqueue_style(
 				'lightbox',
-				ANONY_THEME_URI . '/assets/css/lightbox' . $min_suffix . '.css',
+				esc_url( ANONY_THEME_URI ) . '/assets/css/lightbox' . $min_suffix . '.css',
 				false,
 				filemtime(
 					wp_normalize_path( ANONY_THEME_DIR . '/assets/css/lightbox' . $min_suffix . '.css' )
@@ -142,6 +117,7 @@ function anony_scripts() {
 		'custom',
 		'featured-slider',
 		'cats-menu',
+		'single-product',
 	);
 	if ( class_exists( 'ANONY_Options_Model' ) ) {
 		$anony_options = ANONY_Options_Model::get_instance();
@@ -165,7 +141,7 @@ function anony_scripts() {
 
 		wp_register_script(
 			$handle,
-			ANONY_THEME_URI . '/assets/js/' . $script . '.js',
+			esc_url( ANONY_THEME_URI ) . '/assets/js/' . $script . '.js',
 			array( 'jquery' ),
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/js/' . $script . '.js' )
@@ -175,6 +151,10 @@ function anony_scripts() {
 	}
 	if ( '1' !== $anony_options->disable_prettyphoto ) {
 		wp_enqueue_script( 'lightbox.min' );
+	}
+
+	if ( is_singular( 'product' ) ) {
+		wp_enqueue_script( 'anony-single-product' );
 	}
 
 	wp_enqueue_script( 'anony-custom' );
@@ -190,7 +170,7 @@ function anony_scripts() {
 	foreach ( $scripts as $script ) {
 		wp_register_script(
 			$script,
-			ANONY_THEME_URI . '/assets/js/' . $script . '.js',
+			esc_url( ANONY_THEME_URI ) . '/assets/js/' . $script . '.js',
 			array( 'jquery' ),
 			filemtime(
 				wp_normalize_path( ANONY_THEME_DIR . '/assets/js/' . $script . '.js' )
@@ -246,71 +226,137 @@ add_action(
 );
 add_action(
 	'wp_head',
-	function () { ?>
+	function () {
+		$anony_options = ANONY_Options_Model::get_instance();
+		?>
 	
-	<!-- Head styles -->
-	<style id="anony-head-styles" type="text/css">
-		body{
-			background-color: #ecf0f0;
-			overflow-x: hidden;
-			font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
-			font-size: 16px;
-		}
-		[class*="anony-grid-col-"] {
-			display: inline-block;
-			vertical-align: top;
-		}
-		#anony-hidden-search-form{
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: fixed;
-			height: 100%;
-			width: 100%;
-			visibility: hidden;
-			opacity: 0;
-			top: 0;
-			background-color: rgba(0,0,0,0.9);
-			z-index: 1000000;
-		}
-		#anony-preloader p{
-			font-size: 18px;
-		}
-		#anony-preloader{
-			position: fixed;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			width: 100%;
-			height: 100%;
-			background: #fff;
-			z-index: 9999;
-			background-color: rgb(249, 249, 249)
-		}
-		#anony-loading {
-			position: fixed;
-			display: none;
-			justify-content: center;
-			width: 100%;
-			height: 100vh;
-			top: 0;
-			z-index: 10000;
-			align-items: center;
-			background: rgb(93, 93, 92, 0.5);
-		}
-		.anony-loader-img{
-			margin: 20px;
-			height: 150px;
-		}
-		@keyframes heartbeat {
-			0% { transform: scale(1); }
-			25% { transform: scale(1.05); }
-			50% { transform: scale(1); }
-			75% { transform: scale(1.05); }
-			100% { transform: scale(1); }
-		}
-	</style>
+		<!-- Head styles -->
+		<style id="anony-head-styles" type="text/css">
+			<?php if ( '1' === $anony_options->use_fontawesome4 && '1' === $anony_options->inline_fontawesome4 ) { ?>
+			@font-face {
+				font-family: 'FontAwesome';
+				src:url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.eot?v=4.7.0');
+				src:url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('<?php echo esc_url( ANONY_THEME_URI ); ?>/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+			.fa {
+				display: inline-block;
+				font: normal normal normal 14px/1 FontAwesome;
+				font-size: inherit;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			.fa-star:before {
+				content: "\f005";
+			}
+			.fa-star-o:before {
+				content: "\f006";
+			}
+			.fa-eye:before {
+				content: "\f06e";
+			}
+			.fa-eye-slash:before {
+				content: "\f070";
+			}
+			.fa-calendar:before {
+				content: "\f073";
+			}
+			.fa-random:before {
+				content: "\f074";
+			}
+			.fa-comment:before {
+				content: "\f075";
+			}
+			.fa-comments-o:before {
+				content: "\f0e6";
+			}
+			.fa-folder-open:before {
+				content: "\f07c";
+			}
+			.fa-search:before{
+				content: "\f002";
+			}
+			<?php } ?>
+			body, button{
+				background-color: #ecf0f0;
+				overflow-x: hidden;
+				font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
+				font-size: 16px;
+			}
+			[class*="anony-grid-col-"] {
+				display: inline-block;
+				vertical-align: top;
+			}
+			<?php
+			if ( 'sticky' === $anony_options->mobile_header_behavior && wp_is_mobile() ) {
+				?>
+				#anony-mobile-header{
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					z-index: 100;
+				}
+				body{
+					padding-top: 100px;
+				}
+				<?php
+			}
+			?>
+			#anony-hidden-search-form{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: fixed;
+				height: 100%;
+				width: 100%;
+				visibility: hidden;
+				opacity: 0;
+				top: 0;
+				left:0;
+				background-color: rgba(0,0,0,0.9);
+				z-index: 1000000;
+			}
+			#anony-preloader p{
+				font-size: 18px;
+			}
+			#anony-preloader{
+				position: fixed;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				z-index: 9999;
+				background-color: rgb(249, 249, 249)
+			}
+			#anony-loading {
+				position: fixed;
+				display: none;
+				justify-content: center;
+				width: 100%;
+				height: 100vh;
+				top: 0;
+				z-index: 10000;
+				align-items: center;
+				background: rgb(93, 93, 92, 0.5);
+			}
+			.anony-loader-img{
+				margin: 20px;
+				height: 150px;
+			}
+			@keyframes heartbeat {
+				0% { transform: scale(1); }
+				25% { transform: scale(1.05); }
+				50% { transform: scale(1); }
+				75% { transform: scale(1.05); }
+				100% { transform: scale(1); }
+			}
+		</style>
 	
 		<?php
 	}

@@ -36,7 +36,7 @@ get_header( 'default' );
 
 							<div class="anony-post-info">
 
-								<div class="anony-single-text">
+								<div class="anony-content">
 									<?php the_content(); ?>
 								</div>
 

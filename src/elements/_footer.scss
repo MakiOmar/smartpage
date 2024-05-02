@@ -1,10 +1,11 @@
+@use './footer_mobile';
 /***Footer***/
 #anony-footer {
   background-color: rgba(0, 0, 0, 0.88);
+  margin-top: 20px;
 }
-
-footer p {
-  padding: 20px;
+#anony-footer p{
+  padding-top: 10px;
   color: #ffffff;
 }
 
@@ -17,8 +18,12 @@ footer p {
   right: 20px;
   width: 50px;
   height: 50px;
-  z-index: 1000;
+  z-index: 20;
 }
+footer ul{
+  list-style-type: none;
+}
+
 
 #anony-page-scroll-bg {
   position: absolute;
@@ -28,12 +33,28 @@ footer p {
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-left: 2px solid #fc2a2a;
+  animation: Rotate 1s infinite linear;
   -webkit-animation: Rotate 1s infinite linear;
   -moz-animation: Rotate 1s infinite linear;
   -ms-animation: Rotate 1s infinite linear;
   z-index: -100;
 }
-
+@keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
 @-webkit-keyframes Rotate {
   from {
     -webkit-transform: rotate(0deg);
@@ -69,7 +90,7 @@ footer p {
 }
 
 #anony-hidden-search-form #anony-searchform .anony-form_submit {
-  padding: 20px;
+  padding: 19px;
   border-radius: 0px 10px 10px 0px;
 }
 
@@ -84,6 +105,12 @@ footer p {
   opacity: 100 !important;
   visibility: visible !important;
   display: flex;
+}
+
+#anony-footer form.cart, #anony-footer .single_variation_wrap, #anony-footer .woocommerce-variation-add-to-cart{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 
 /***End footer***/

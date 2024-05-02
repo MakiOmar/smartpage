@@ -6,3 +6,20 @@
 .widgeted ul li:last-child{
 	border-bottom: none;
 }
+.widgeted_title{
+	position: relative;
+	margin: 0;
+	background-color: #fc2a2a;
+	color: #ffffff;
+	padding: 5px;
+	line-height: 30px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+.widgeted_title a{
+	color: #ffffff;
+}
+
+.widgeted a{
+	color: #444;
+}

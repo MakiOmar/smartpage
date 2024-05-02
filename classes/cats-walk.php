@@ -28,10 +28,10 @@ if ( ! class_exists( 'ANONY_Cats_Walk' ) ) {
 
 		/**
 		 * Dropdown settings
-		 * 
+		 *
 		 * @var array
-		 */ 
-		public $dropdown_settings = [];
+		 */
+		public $dropdown_settings = array();
 
 		/**
 		 * Tree type
