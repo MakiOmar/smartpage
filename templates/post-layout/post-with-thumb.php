@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	 
 	<div class="anony-post_meta anony-inside-thumb">
-	  <div class="date">
+		<div class="date">
 		<i class="fa fa-calendar meta-text"></i>
 		<span class="meta-text"><?php echo $date; ?></span>
 		</div>
@@ -43,10 +43,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	   
 	<div class="anony-post-title-cover">
 		<a href="<?php echo $permalink; ?>" title="<?php echo $title_attr; ?>">.</a>    
-	   </div>
+		</div>
 		
-	   <div class="anony-thumb">
-		   <?php echo get_the_post_thumbnail( $id, 'full' ); ?>
-	   </div>
+		<div class="anony-thumb">
+			<?php echo get_the_post_thumbnail( $id, 'full' ); ?>
+		</div>
 	 
 </div>
