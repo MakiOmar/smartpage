@@ -32,19 +32,6 @@ function anony_styles() {
 		$min_suffix = '';
 	}
 
-	if ( '1' !== $anony_options->disable_rsponsive_css ) {
-		// Responsive styles.
-		wp_enqueue_style(
-			'anony-responsive',
-			esc_url( ANONY_THEME_URI ) . '/assets/css/responsive' . $min_suffix . '.css',
-			false,
-			filemtime(
-				wp_normalize_path( ANONY_THEME_DIR . '/assets/css/responsive' . $min_suffix . '.css' )
-			),
-			$media
-		);
-	}
-
 	if ( class_exists( 'woocommerce' ) ) {
 		// WooCommerce styles.
 		wp_enqueue_style(
