@@ -25,6 +25,7 @@ add_action(
 			'right-sidebar'          => esc_html__( 'Right Sidebar', 'smartpage' ),
 			'left-sidebar'           => esc_html__( 'Left Sidebar', 'smartpage' ),
 			'secondary-sidebar'      => esc_html__( 'Secondary Sidebar', 'smartpage' ),
+			'footer-one-col'         => esc_html__( 'One column footer', 'smartpage' ),
 			'footer-widget-1'        => esc_html__( 'Footer one', 'smartpage' ),
 			'footer-widget-2'        => esc_html__( 'Footer two', 'smartpage' ),
 			'footer-widget-3'        => esc_html__( 'Footer three', 'smartpage' ),
