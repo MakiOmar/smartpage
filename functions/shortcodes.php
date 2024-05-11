@@ -31,14 +31,73 @@ $shcods = array(
 	'anony_popup',
 	'anony_navigation',
 	'anony_price_tables',
-	'anony_facy_list',
+	'anony_fancy_list',
 	'anony_get_block',
 	'anony_spacer',
 	'anony_timeline',
+	'anony_svg_icon',
+	'anony_block',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders a block
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_block_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'id' => '',
+		),
+		$atts,
+		'anony_block'
+	);
+
+	if ( empty( $atts['id'] ) ) {
+		return;
+	}
+	$_post = get_post( absint( $atts['id'] ) );
+	if ( $_post ) {
+		return $_post->post_content;
+	}
+}
+
+/**
+ * Renders a timeline
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_svg_icon_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'name'          => '',
+			'border-width'  => '1px',
+			'border-radius' => '0',
+			'border-color'  => '#000',
+			'border-style'  => 'solid',
+			'height'        => '100px',
+			'width'         => '100px',
+		),
+		$atts,
+		'anony_svg_icon'
+	);
+
+	if ( empty( $atts['name'] ) ) {
+		return;
+	}
+	$border = $atts['border-width'] . ' ' . $atts['border-style'] . ' ' . $atts['border-color'];
+
+	$icon = anony_option_svg_icon( $atts['name'] );
+	if ( ! empty( $icon ) ) {
+		return '<span class="anony-icon anony-svg-icon" style="display:flex;justify-content:center;align-items:center;margin:auto;border:' . $border . ';border-radius:' . $atts['border-radius'] . ';height:' . $atts['height'] . ';width:' . $atts['width'] . '">' . $icon . '</span>';
+	}
+	return '';
 }
 
 /**
@@ -117,7 +176,7 @@ function anony_get_block_shcode( $atts ) {
  * @param  string $atts The shortcode attributes.
  * @return string
  */
-function anony_facy_list_shcode( $atts ) {
+function anony_fancy_list_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'style'             => 'one',
@@ -126,78 +185,12 @@ function anony_facy_list_shcode( $atts ) {
 			'content_direction' => 'horizontal',
 		),
 		$atts,
-		'anony_facy_list'
+		'anony_fancy_list'
 	);
 
 	$content_direction = 'vertical' === $atts['content_direction'] ? 'column' : 'row';
 	ob_start();
-	?>
-	<style>
-		.___ ol {
-			list-style: none;
-			padding: 0;
-		}
-		.___ li {
-			position: relative;
-			display: flex;
-			flex-direction: <?php echo esc_html( $content_direction ); ?>;
-			align-items: center;
-			gap: 1rem;
-			background: aliceblue;
-			padding: 1.5rem;
-			border-radius: 1rem;
-			width: calc(100% - 2rem);
-			box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.1);
-		}
-		.___ li::before {
-			counter-increment: list-item;
-			content: counter(list-item);
-			font-size: 30px;
-			font-weight: 700;
-			width: 40px;
-			height: 40px;
-			background: #2b2059;
-			flex: 0 0 auto;
-			border-radius: 50%;
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.___ li + li {
-			margin-top: 1rem;
-		}
-
-		.___ li:nth-child(even) {
-			flex-direction: row-reverse;
-			background: lavender;
-			margin-right: -2rem;
-			margin-left: 2rem;
-		}
-
-		@media screen and (min-width:768px){
-			.___ li {
-				width: <?php echo esc_html( $atts['item_width'] ); ?>;
-				display: inline-flex;
-			}
-			.___ li::before {
-				font-size: 3rem;
-				width: 2em;
-				height: 2em;
-			}
-		}
-		@media screen and (max-width:480px){
-			.___ li {
-				width: auto;
-				display: inline-flex;
-			}
-			.___ li:nth-child(2n) {
-				margin-right: -0.5rem;
-				margin-left: 1rem;
-			}
-		}
-	</style>
-	<?php
+	include locate_template( 'templates/partials/fancy-list/' . $atts['style'] . '.php', false, false );
 	$styles = ob_get_clean();
 	return str_replace( '___', $atts['target_class'], $styles );
 }
@@ -306,12 +299,19 @@ function anony_divider_shcode( $atts ) {
 function anony_navigation_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'menu' => '',
+			'menu'     => '',
+			'vertical' => 'yes',
+			'divided'  => 'yes',
+			'class'    => '',
 		),
 		$atts,
 		'anony_navigation'
 	);
 
+	$classes  = '';
+	$classes .= 'yes' === $atts['vertical'] ? ' anony-vertical-menu' : ' anony-horizontal-menu';
+	$classes .= 'yes' === $atts['divided'] ? ' anony-divided-menu' : '';
+	$classes .= ! empty( $atts['class'] ) ? ' ' . $atts['class'] : '';
 	if ( empty( $atts['menu'] ) ) {
 		return;
 	}
@@ -320,7 +320,7 @@ function anony_navigation_shcode( $atts ) {
 		'menu'            => $atts['menu'],
 		'container'       => 'nav',
 		'container_class' => 'menu-container',
-		'menu_class'      => "woocommerce-MyAccount-navigation menu anony-menu anony-divided-menu anony-vertical-menu {$direction}",
+		'menu_class'      => "woocommerce-MyAccount-navigation menu anony-menu {$direction}{$classes}",
 		'echo'            => false,
 		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 	);
@@ -386,6 +386,12 @@ function anony_terms_listing_shcode( $atts ) {
 			'name_align'        => 'center',
 			'desktop_font_size' => '18px',
 			'mobile_font_size'  => '14px',
+			'columns_base'      => 12,
+			'show_title'        => 'no',
+			'thumbnail_size'    => 'thumbnail',
+			'height'            => '100px',
+			'width'             => '100px',
+			'layout'            => 'circle',
 		),
 		$atts,
 		'anony_terms_listing'
@@ -406,10 +412,23 @@ function anony_terms_listing_shcode( $atts ) {
 		$args['include'] = str_replace( ' ', '', $atts['ids'] );
 	}
 
-	$desktop_columns = 12 / absint( $atts['desktop_columns'] );
-	$mobile_columns  = 12 / absint( $atts['mobile_columns'] );
+	$desktop_columns = absint( $atts['columns_base'] ) / absint( $atts['desktop_columns'] );
+	$mobile_columns  = absint( $atts['columns_base'] ) / absint( $atts['mobile_columns'] );
 	$name_align      = $atts['name_align'];
 	$font_size       = wp_is_mobile() ? $atts['mobile_font_size'] : $atts['desktop_font_size'];
+	$height          = $atts['height'];
+	$width           = $atts['width'];
+	$thumb_size      = $atts['thumbnail_size'];
+	$show_title      = $atts['show_title'];
+	$layout          = 'anony-' . $atts['layout'] . '-image';
+
+	$image_id_meta_key = $atts['image_id_meta_key'];
+
+	if ( '10' === $atts['columns_base'] ) {
+		$class_prefix = 'anony-grid-10-col';
+	} else {
+		$class_prefix = 'anony-grid-col';
+	}
 
 	$output = '';
 	$terms  = get_terms( $args );
@@ -424,13 +443,70 @@ function anony_terms_listing_shcode( $atts ) {
 /**
  * Renders testimonials
  *
+ * @param array $atts The shortcode attributes.
  * @return string
  */
-function anony_testimonials_shcode() {
-	$output = '';
-	ob_start();
-	require locate_template( 'templates/testimonials.php', false, false );
-	$output .= ob_get_clean();
+function anony_testimonials_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'id'         => '',
+			'slider'     => 'off',
+			'item-width' => '320px',
+			'height'     => 'auto',
+			'per-page'   => '1',
+		),
+		$atts,
+		'anony_testimonials'
+	);
+	$args = array(
+		'post_type'      => 'anony_testimonial',
+		'posts_per_page' => 5,
+		'order'          => 'ASC',
+	);
+
+	$container_id = 'content-slider-' . uniqid();
+	$item_width   = $atts['item-width'];
+	$height       = $atts['height'];
+	$slider_class = '';
+	$output       = '';
+	$query        = new WP_Query( $args );
+	$data         = array();
+	if ( $query->have_posts() ) {
+		$output .= '<div class="anony-grid-row flex-h-center">';
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			if ( 'off' === $atts['slider'] ) {
+				ob_start();
+				require locate_template( 'templates/testimonials.php', false, false );
+				$output .= ob_get_clean();
+			} else {
+				$slider_class .= 'anony-content-slide ';
+				ob_start();
+				require locate_template( 'templates/testimonials.php', false, false );
+				$temp['content'] = ob_get_clean();
+				$data[]          = $temp;
+			}
+		}
+		wp_reset_postdata();
+		if ( ! empty( $data ) ) {
+			if ( absint( $atts['per-page'] ) > count( $data ) ) {
+				$per_page = count( $data );
+			} else {
+				$per_page = absint( $atts['per-page'] );
+			}
+			if ( wp_is_mobile() ) {
+				$per_page = 1;
+			}
+			$slider_settings = array(
+				'per_page' => $per_page,
+			);
+			ob_start();
+			require locate_template( 'templates/partials/content-slider.php', false, false );
+			$output .= ob_get_clean();
+		}
+		$output .= '</div>';
+	}
+
 	return $output;
 }
 
@@ -540,63 +616,76 @@ function anony_faqs_shcode( $atts ) {
 
 	return $output;
 }
-/**
- * Renders content slider
- *
- * @param  string $atts the shortcode attributes.
- * @return string
- */
-function anony_content_slider_shcode( $atts ) {
-	$atts = shortcode_atts(
-		array(
-			'ids'    => '',
-			'number' => 3,
-			'cat'    => false,
-			'height' => 'auto',
-		),
-		$atts,
-		'anony_content_slider'
-	);
-
-	$args = array(
-		'post_type'      => 'anony_blocks',
-		'posts_per_page' => $atts['number'],
-		'post_status'    => 'publish',
-	);
-
-	if ( ! empty( $atts['ids'] ) ) {
-		$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
-	}
-
-	if ( $atts['cat'] && ! empty( $atts['cat'] ) ) {
-		$args['tax_query'] = array(
+if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
+	/**
+	 * Renders content slider
+	 *
+	 * @param  string $atts the shortcode attributes.
+	 * @return string
+	 */
+	function anony_content_slider_shcode( $atts ) {
+		$atts = shortcode_atts(
 			array(
-				'taxonomy' => 'anony_blocks_cats',
-				'field'    => 'id',
-				'terms'    => explode( ',', str_replace( ' ', '', $atts['cat'] ) ),
+				'ids'        => '',
+				'number'     => 3,
+				'cat'        => false,
+				'height'     => 'auto',
+				'item-width' => '100vw',
+				'per-page'   => 1,
+				'style'      => 'default',
 			),
+			$atts,
+			'anony_content_slider'
 		);
-	}
-	$height       = $atts['height'];
-	$container_id = 'content-slider-' . time();
-	$query        = new WP_Query( $args );
-	$output       = '';
-	$data         = array();
-	if ( $query->have_posts() ) {
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			$temp['content'] = get_the_content();
 
-			$data[] = $temp;
+		$item_width = $atts['item-width'];
+
+		$slider_settings = array(
+			'per_page' => $atts['per-page'],
+		);
+
+		$args = array(
+			'post_type'      => 'anony_blocks',
+			'posts_per_page' => $atts['number'],
+			'post_status'    => 'publish',
+		);
+
+		if ( ! empty( $atts['ids'] ) ) {
+			$args['post__in'] = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
 		}
-		wp_reset_postdata();
+
+		if ( $atts['cat'] && ! empty( $atts['cat'] ) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'anony_blocks_cats',
+					'field'    => 'id',
+					'terms'    => explode( ',', str_replace( ' ', '', $atts['cat'] ) ),
+				),
+			);
+		}
+		$style        = $atts['style'];
+		$height       = $atts['height'];
+		$per_page     = $atts['per-page'];
+		$container_id = 'content-slider-' . uniqid();
+		$query        = new WP_Query( $args );
+		$output       = '';
+		$data         = array();
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				$temp['content'] = get_the_content();
+
+				$data[] = $temp;
+			}
+			wp_reset_postdata();
+		}
+		if ( ! empty( $data ) ) {
+			ob_start();
+			require locate_template( 'templates/partials/content-slider.php', false, false );
+			$output .= ob_get_clean();
+		}
+		return $output;
 	}
-	if ( ! empty( $data ) ) {
-		ob_start();
-		require locate_template( 'templates/partials/content-slider.php', false, false );
-		$output .= ob_get_clean();
-	}
-	return $output;
 }
 /**
  * Renders Images slider
@@ -607,9 +696,11 @@ function anony_content_slider_shcode( $atts ) {
 function anony_images_slider_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'ids'        => '',
-			'transition' => '5000',
-			'animation'  => '1500',
+			'ids'                => '',
+			'transition'         => '5000',
+			'animation'          => '1500',
+			'image_size_desktop' => 'medium', // Accepts (thumbnails or dots).
+			'image_size_mobile'  => 'medium', // Accepts (thumbnails or dots).
 		),
 		$atts,
 		'anony_images_slider'
@@ -626,7 +717,7 @@ function anony_images_slider_shcode( $atts ) {
 		),
 	);
 
-	$image_size = wp_is_mobile() ? 'medium' : 'woocommerce_single';
+	$image_size = wp_is_mobile() ? $atts['image_size_mobile'] : $atts['image_size_desktop'];
 
 	// Get the comma-separated IDs and convert them into an array.
 	$ids  = explode( ',', str_replace( ' ', '', $atts['ids'] ) );
