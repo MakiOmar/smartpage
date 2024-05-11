@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /*
- ----------------------------------------------------------------------------------- *
- *	WordPress uses TinyMCE 4 since 3.9
- *	For safety reasons no support for TinyMCE 3 ( WordPress 3.8 )
+----------------------------------------------------------------------------------- *
+ *  WordPress uses TinyMCE 4 since 3.9
+ *  For safety reasons no support for TinyMCE 3 ( WordPress 3.8 )
  * ----------------------------------------------------------------------------------- */
 $anony_wp_version = floatval( get_bloginfo( 'version' ) );
 
@@ -26,7 +26,7 @@ if ( $anony_wp_version >= 3.9 ) {
 	 * @return void
 	 */
 	function anony_mce_init() {
-		 global $page_handle;
+		global $page_handle;
 		if ( ! current_user_can( 'edit_posts' ) || ! current_user_can( 'edit_pages' ) ) {
 			return;
 		}
@@ -46,7 +46,7 @@ if ( $anony_wp_version >= 3.9 ) {
 	 * @return array
 	 */
 	function anony_mce_plugin( $plugins ) {
-		 $plugins ['cbtnmce'] = ANONY_LIBS_URI . '/mce/cmce-plugin.js';
+		$plugins ['cbtnmce'] = ANONY_LIBS_URI . '/mce/cmce-plugin.js';
 		return $plugins;
 	}
 
@@ -62,4 +62,3 @@ if ( $anony_wp_version >= 3.9 ) {
 		return $buttons;
 	}
 }
-

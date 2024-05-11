@@ -20,15 +20,15 @@
 										onclick : function () {
 											editor.insertContent( '[ltrtext][/ltrtext]' );
 										}
-									},
+								},
 									{
 										text : 'Neat quote',
 										onclick : function () {
 											editor.insertContent( '[quoteit][/quoteit]' );
 										}
-									}
+								}
 								]
-							},
+						},
 							{
 
 								text : 'Layout',
@@ -38,16 +38,16 @@
 										onclick : function () {
 											editor.insertContent( '[anony_row][/anony_row]' );
 										}
-									},
-									
+								},
+
 									{
 										text : 'column',
 										onclick : function () {
 											editor.insertContent( '[anony_column classes=""][/anony_column]' );
 										}
-									},
+								},
 								]
-							}
+						}
 						]
 
 					}

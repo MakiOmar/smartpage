@@ -106,13 +106,11 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
 
 			add_action( 'vc_before_init', array( $this, 'create_shortcode' ), 999 );
 			add_shortcode( $this->settings['base'], array( $this, 'render_shortcode' ) );
-
 		}
 
 		// Map Component
 		public function create_shortcode() {
-			 vc_map( $this->settings );
-
+			vc_map( $this->settings );
 		}
 
 		// Render Component
@@ -140,7 +138,6 @@ if ( ! class_exists( 'AnonyNewsBar' ) ) {
 
 			return ob_get_clean();
 		}
-
 	}
 
 

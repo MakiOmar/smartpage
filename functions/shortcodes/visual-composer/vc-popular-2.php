@@ -60,7 +60,6 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 		// Map Component
 		public function create_shortcode() {
 			vc_map( $this->params() );
-
 		}
 
 		// Render Component
@@ -90,8 +89,8 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 			<div class="anony-secondary-sidebar <?php echo esc_attr( $css_class ); ?>">
 				<ul class="tabs">
 					
-				  <li class="anony-active-tab anony-grid-col-6 anony-popular" rel-id="anony-popular"><?php echo $popular_title; ?></li>
-				  <li class="anony-grid-col-6 comments" rel-id="anony-comments"><?php echo $recent_comments_title; ?></li>
+					<li class="anony-active-tab anony-grid-col-6 anony-popular" rel-id="anony-popular"><?php echo $popular_title; ?></li>
+					<li class="anony-grid-col-6 comments" rel-id="anony-comments"><?php echo $recent_comments_title; ?></li>
 				   
 				</ul>
 				
@@ -105,7 +104,6 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 			<?php
 			return ob_get_clean();
 		}
-
 	}
 }
 

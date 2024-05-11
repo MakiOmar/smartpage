@@ -135,7 +135,6 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 		// Map Component
 		public function create_shortcode() {
 			vc_map( $this->settings );
-
 		}
 
 		// Render Component
@@ -171,11 +170,11 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 				<ul class="anony-popular-tabs"<?php echo $tabs_bar_style; ?>>
 				
 				<?php if ( $hide_most_popular != 'true' ) : ?>
-				  <li class="anony-active-tab anony-grid-col-6 anony-popular" rel-id="anony-popular"><?php echo $popular_title; ?></li>
+					<li class="anony-active-tab anony-grid-col-6 anony-popular" rel-id="anony-popular"><?php echo $popular_title; ?></li>
 				<?php endif; ?>
 				
 				<?php if ( $hide_recent_comments != 'true' ) : ?>
-				  <li class="anony-grid-col-6 comments" rel-id="anony-comments"><?php echo $recent_comments_title; ?></li>
+					<li class="anony-grid-col-6 comments" rel-id="anony-comments"><?php echo $recent_comments_title; ?></li>
 				<?php endif; ?>
 				</ul>
 				
@@ -197,7 +196,6 @@ if ( ! class_exists( 'AnonyMostPopular' ) ) {
 			<?php
 			return ob_get_clean();
 		}
-
 	}
 }
 
