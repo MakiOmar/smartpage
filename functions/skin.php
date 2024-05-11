@@ -21,9 +21,11 @@ function anony_theme_skin() {
 	$secondary_color    = $anony_options->secondary_skin_color;
 	$menu_color         = $anony_options->main_menu_color;
 	$menu_text_color    = $anony_options->main_menu_text_color;
+	$menu_hover_color   = $anony_options->main_menu_text_hover_color;
 	$links_color        = $anony_options->links_color;
 	$footer_text_color  = $anony_options->footer_text_color;
 	$footer_links_color = $anony_options->footer_links_color;
+	$footer_bg_color    = $anony_options->footer_background_color;
 	?>
 
 	<style type="text/css">
@@ -88,8 +90,9 @@ function anony_theme_skin() {
 		.single-download,
 		.anony-toggle-sidebar,
 		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2),
-		li .current::after, .button{
+		li .current::after, .button, a.button, body.woocommerce a.button, .woocommerce .shop_table .order-total, .woocommerce .shop_table thead{
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
+			color: #fff
 		}
 		#anony-footer .widgeted_title{
 			background-color: transparent!important;
@@ -105,7 +108,7 @@ function anony_theme_skin() {
 			background-color: <?php echo esc_html( $menu_color ); ?>!important;
 		}
 		#anony-main-menu-con li a{
-			color: <?php echo esc_html( $menu_text_color ); ?>!important;
+			color: <?php echo esc_html( $menu_text_color ); ?>;
 		}
 		.anony-post-info .anony-nothumb-post .anony-thumb-post-title, #anony-top-header-wrapper, #anony-page-loading-bg {
 			border-bottom-color: <?php echo esc_html( $primary_color ); ?>;
@@ -146,8 +149,14 @@ function anony_theme_skin() {
 		.anony-custom-bullets ul li::before {
 			color: <?php echo esc_html( $secondary_color ); ?>; /* Change the color */
 		}
+		#anony-footer{
+			background-color: <?php echo esc_html( $footer_bg_color ); ?>;
+		}
 		.footer-sticky-menu {
 			background-color: <?php echo ! empty( $anony_options->mobile_footer_sticky_menu_bg_color ) ? esc_html( $anony_options->mobile_footer_sticky_menu_bg_color ) : 'transparent'; ?>;
+		}
+		#anony-footer svg path, #anony-footer svg circle{
+			stroke:<?php echo esc_html( $anony_options->footer_svg_icons_color ); ?>!important;
 		}
 		.footer-sticky-menu svg path,.footer-sticky-menu svg circle{
 				stroke:<?php echo esc_html( $anony_options->mobile_footer_sticky_menu_icons_color ); ?>!important;
@@ -155,6 +164,7 @@ function anony_theme_skin() {
 		@media screen and (min-width: 768px) {
 			#anony-main-menu-con li a:hover {
 			background-color: <?php echo esc_html( $primary_color ); ?>;
+			color: <?php echo esc_html( $menu_hover_color ); ?>;
 			font-size: 16px;
 			}
 		}
