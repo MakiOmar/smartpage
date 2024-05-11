@@ -285,6 +285,9 @@ add_action(
 				font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
 				font-size: 16px;
 			}
+			input,select,textarea, select option{
+				font-family: '<?php echo esc_html( anony_get_font_family() ); ?>';
+			}
 			[class*="anony-grid-col-"] {
 				display: inline-block;
 				vertical-align: top;
