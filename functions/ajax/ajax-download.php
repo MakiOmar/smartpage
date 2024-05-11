@@ -40,7 +40,6 @@ function anony_download_times() {
 
 	wp_send_json( $return );
 	die();
-
 }
 add_action( 'wp_ajax_anony_download_times', 'anony_download_times' );
 add_action( 'wp_ajax_nopriv_anony_download_times', 'anony_download_times' );// for users that are not logged in.
