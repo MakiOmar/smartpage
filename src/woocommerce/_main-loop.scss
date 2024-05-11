@@ -59,6 +59,12 @@
 	align-items: center;
 }
 .woocommerce ul.products li.product .onsale{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: normal;
+}
+.woocommerce ul.products li.product .onsale{
 	top: 10px;
 	right: 10px;
 }

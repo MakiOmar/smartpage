@@ -96,6 +96,8 @@ select{
 	padding: 10px;
     border-color: #e1e1e1;
     border-radius: 6px;
+	background-color: #fff;
+  	border: 1px solid #cecece;
 }
 .anony-spacer{
 	height: 50px;
@@ -158,6 +160,7 @@ select{
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
+	flex-grow: 1;
 }
 
 .flex-h-center{
@@ -243,9 +246,31 @@ p{
 	-webkit-box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
 	-moz-box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
 }
+.anony-curved-5{
+	border-radius: 5px;
+}
+.anony-curved-10{
+	border-radius: 10px;
+}
+.anony-curved-15{
+	border-radius: 15px;
+}
+.anony-curved-20{
+	border-radius: 20px;
+}
 main.anony-content{
 	padding: 0 20px;
 }
 .anony-center-text{
 	text-align:center
+}
+.anony-horizontal-menu li{
+	display: inline-flex;
+}
+main.anony-grid-row{
+	padding: 0 10px;
+}
+main .anony-content{
+	flex-grow: 1;
+	max-width: 1200px;
 }
