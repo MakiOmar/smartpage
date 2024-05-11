@@ -365,6 +365,27 @@ function anony_add_custom_sale_badge_field() {
 }
 add_action( 'woocommerce_product_options_general_product_data', 'anony_add_custom_sale_badge_field' );
 
+/**
+ * Add the custom promotional text meta field to the product page
+ *
+ * @return void
+ */
+function anony_product_promotional_text_field() {
+	global $post;
+
+	$custom_promo_text = get_post_meta( $post->ID, 'custom-promotional-text', true );
+
+	// Output the field HTML.
+	echo '<div class="options_group">';
+	echo '<p class="form-field">';
+	echo '<label for="custom-promotional-text">' . esc_html__( 'Promotional text', 'smartpage' ) . '</label>';
+	echo '<input type="text" class="short" name="custom-promotional-text" id="custom-promotional-text" value="' . esc_attr( $custom_promo_text ) . '"/>';
+	echo '</p>';
+	echo '</div>';
+}
+
+add_action( 'woocommerce_product_options_general_product_data', 'anony_product_promotional_text_field' );
+
 
 /**
  * Save the custom meta field with security measures.
@@ -372,7 +393,7 @@ add_action( 'woocommerce_product_options_general_product_data', 'anony_add_custo
  * @param int $post_id Product ID.
  * @return void
  */
-function anony_save_custom_sale_badge_field( $post_id ) {
+function anony_save_product_meta( $post_id ) {
 	//phpcs:disable
 	$request = $_POST;
 	//phpcs:enable.
@@ -387,16 +408,18 @@ function anony_save_custom_sale_badge_field( $post_id ) {
 	}
 
 	if ( isset( $request['custom-sale-badge'] ) ) {
-		$custom_sale_badge = sanitize_text_field( $request['custom-sale-badge'] );
-		update_post_meta( $post_id, 'custom-sale-badge', $custom_sale_badge );
+		update_post_meta( $post_id, 'custom-sale-badge', sanitize_text_field( $request['custom-sale-badge'] ) );
 	}
 
 	if ( isset( $request['custom-sales-counter'] ) ) {
-		$custom_sales_counter = sanitize_text_field( $request['custom-sales-counter'] );
-		update_post_meta( $post_id, 'custom-sales-counter', $custom_sales_counter );
+		update_post_meta( $post_id, 'custom-sales-counter', sanitize_text_field( $request['custom-sales-counter'] ) );
+	}
+
+	if ( isset( $request['custom-promotional-text'] ) ) {
+		update_post_meta( $post_id, 'custom-promotional-text', sanitize_text_field( $request['custom-promotional-text'] ) );
 	}
 }
-add_action( 'woocommerce_process_product_meta', 'anony_save_custom_sale_badge_field' );
+add_action( 'woocommerce_process_product_meta', 'anony_save_product_meta' );
 
 
 /**
