@@ -41,6 +41,13 @@ define(
 					'default'  => '#000',
 				),
 				array(
+					'id'       => 'footer_background_color',
+					'title'    => esc_html__( 'Footer background color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#000',
+				),
+				array(
 					'id'       => 'footer_text_color',
 					'title'    => esc_html__( 'Footer text color', 'smartpage' ),
 					'type'     => 'color',

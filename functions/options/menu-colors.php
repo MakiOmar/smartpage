@@ -35,6 +35,14 @@ define(
 				),
 
 				array(
+					'id'       => 'main_menu_text_hover_color',
+					'title'    => esc_html__( 'Main menu text hover color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#000',
+				),
+
+				array(
 					'id'       => 'main_menu_search_icon_color',
 					'title'    => esc_html__( 'Main menu searc icon color', 'smartpage' ),
 					'type'     => 'color',
