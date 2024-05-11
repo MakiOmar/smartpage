@@ -30,9 +30,9 @@ add_action(
 
 					if ( $post_ratings[ $user_id ] != $therate ) {
 
-						 $post_ratings[ $user_id ] = $therate;
+						$post_ratings[ $user_id ] = $therate;
 
-						 update_post_meta( $post_id, 'anony_post_rating', $post_ratings );
+						update_post_meta( $post_id, 'anony_post_rating', $post_ratings );
 					}
 				} else {
 
