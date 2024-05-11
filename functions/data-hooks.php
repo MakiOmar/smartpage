@@ -80,3 +80,17 @@ add_filter(
 	10,
 	2
 );
+/**
+ * Filter content to render device specific content only.
+ *
+ * @param string $content Page content.
+ * @return string
+ */
+function anony_blocks_device_based_render( $content ) {
+	$remove  = wp_is_mobile() ? 'desktop' : 'mobile';
+	$pattern = '/<!--\s*wp:' . $remove . '\s*-->(.*?)<!--\s*\/wp:' . $remove . '\s*-->/is';
+	$content = preg_replace( $pattern, '', $content );
+
+	return $content;
+}
+add_filter( 'the_content', 'anony_blocks_device_based_render' );
