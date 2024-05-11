@@ -19,6 +19,13 @@ define(
 			'icon'   => 'y',
 			'fields' => array(
 				array(
+					'id'       => 'only_one_col_footer',
+					'title'    => esc_html__( 'Footer one column only', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'can be enabled to allow building custom footer using widgets block editor', 'smartpage' ),
+				),
+				array(
 					'id'       => 'enable_footer_top',
 					'title'    => esc_html__( 'Enable footer top', 'smartpage' ),
 					'type'     => 'switch',
@@ -52,6 +59,14 @@ define(
 				array(
 					'id'       => 'mobile_footer_sticky_menu_bg_color',
 					'title'    => esc_html__( 'Sticky menu background color', 'smartpage' ),
+					'type'     => 'color',
+					'validate' => 'no_html',
+					'default'  => '#fff',
+				),
+
+				array(
+					'id'       => 'footer_svg_icons_color',
+					'title'    => esc_html__( 'Footer svg icons color', 'smartpage' ),
 					'type'     => 'color',
 					'validate' => 'no_html',
 					'default'  => '#fff',
