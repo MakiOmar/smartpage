@@ -288,3 +288,12 @@ add_action(
 		<?php
 	}
 );
+
+add_filter(
+	'upload_mimes',
+	function ( $mime_types ) {
+		$mime_types['woff']  = 'font/woff';
+		$mime_types['woff2'] = 'font/woff2';
+		return $mime_types;
+	}
+);
