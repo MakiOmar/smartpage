@@ -717,3 +717,21 @@ if ( ! function_exists( 'anony_latest_comments' ) ) {
 		}
 	}
 }
+if ( ! function_exists( 'anony_option_svg_icon' ) ) {
+	/**
+	 * Get svg icon stored in an option filed.
+	 *
+	 * @param array $field_name Option field name.
+	 * @return string
+	 */
+	function anony_option_svg_icon( $field_name ) {
+
+		$anony_options = ANONY_Options_Model::get_instance();
+		$icon          = $anony_options->$field_name;
+
+		if ( ! empty( $icon ) ) {
+			return $icon;
+		}
+		return '';
+	}
+}
