@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
-<div id="anony-image-box-wrapper">
+<div class="anony-image-box-wrapper">
 	<div class="anony-grid-row anony-inline-flex">
 		<div class="anony-grid-col<?php echo esc_html( $classes ); ?>">
 		<?php
