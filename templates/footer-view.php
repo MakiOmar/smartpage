@@ -77,6 +77,6 @@ $anony_options = ANONY_Options_Model::get_instance();
 
 	get_template_part( 'templates/partials/page', 'scroll' );
 	?>
-	 
+	<?php do_action( 'anony_before_footer_closing' ); ?>
 </footer>
 <?php require 'partials/document-closing.php'; ?>
