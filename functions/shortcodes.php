@@ -37,12 +37,33 @@ $shcods = array(
 	'anony_timeline',
 	'anony_svg_icon',
 	'anony_block',
+	'anony_image',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
 }
 
+/**
+ * Renders a block
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_image_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'id' => '',
+		),
+		$atts,
+		'anony_image'
+	);
+
+	if ( empty( $atts['id'] ) ) {
+		return;
+	}
+	return '';
+}
 /**
  * Renders a block
  *
@@ -83,6 +104,8 @@ function anony_svg_icon_shcode( $atts ) {
 			'border-style'  => 'solid',
 			'height'        => '100px',
 			'width'         => '100px',
+			'link'          => '',
+			'link-bg'       => '#fff',
 		),
 		$atts,
 		'anony_svg_icon'
@@ -95,7 +118,12 @@ function anony_svg_icon_shcode( $atts ) {
 
 	$icon = anony_option_svg_icon( $atts['name'] );
 	if ( ! empty( $icon ) ) {
-		return '<span class="anony-icon anony-svg-icon" style="display:flex;justify-content:center;align-items:center;margin:auto;border:' . $border . ';border-radius:' . $atts['border-radius'] . ';height:' . $atts['height'] . ';width:' . $atts['width'] . '">' . $icon . '</span>';
+		$svg = '<span class="anony-icon anony-svg-icon" style="background-color:' . $atts['link-bg'] . ';display:flex;justify-content:center;align-items:center;margin:auto;border:' . $border . ';border-radius:' . $atts['border-radius'] . ';height:' . $atts['height'] . ';width:' . $atts['width'] . '">' . $icon . '</span>';
+		if ( '' === $atts['link'] ) {
+			return $svg;
+		} else {
+			return '<a class="anony-svg-icon-link" href="' . $atts['link'] . '">' . $svg . '</a>';
+		}
 	}
 	return '';
 }
@@ -303,6 +331,7 @@ function anony_navigation_shcode( $atts ) {
 			'vertical' => 'yes',
 			'divided'  => 'yes',
 			'class'    => '',
+			'align'    => 'center',
 		),
 		$atts,
 		'anony_navigation'
@@ -322,7 +351,7 @@ function anony_navigation_shcode( $atts ) {
 		'container_class' => 'menu-container',
 		'menu_class'      => "woocommerce-MyAccount-navigation menu anony-menu {$direction}{$classes}",
 		'echo'            => false,
-		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		'items_wrap'      => '<ul id="%1$s" style="align-items:' . $atts['align'] . '" class="%2$s">%3$s</ul>',
 	);
 	return wp_nav_menu( $menu_args );
 }
@@ -454,6 +483,7 @@ function anony_testimonials_shcode( $atts ) {
 			'item-width' => '320px',
 			'height'     => 'auto',
 			'per-page'   => '1',
+			'style'      => 'default',
 		),
 		$atts,
 		'anony_testimonials'
@@ -471,8 +501,9 @@ function anony_testimonials_shcode( $atts ) {
 	$output       = '';
 	$query        = new WP_Query( $args );
 	$data         = array();
+	$style        = $atts['style'];
 	if ( $query->have_posts() ) {
-		$output .= '<div class="anony-grid-row flex-h-center">';
+		$output .= '<div class="anony-testimonials anony-grid-row flex-h-center ' . $style . '">';
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			if ( 'off' === $atts['slider'] ) {
@@ -626,13 +657,14 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 	function anony_content_slider_shcode( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'ids'        => '',
-				'number'     => 3,
-				'cat'        => false,
-				'height'     => 'auto',
-				'item-width' => '100vw',
-				'per-page'   => 1,
-				'style'      => 'default',
+				'ids'           => '',
+				'number'        => 3,
+				'cat'           => false,
+				'height'        => 'auto',
+				'height-mobile' => 'auto',
+				'item-width'    => '100vw',
+				'per-page'      => 1,
+				'style'         => 'default',
 			),
 			$atts,
 			'anony_content_slider'
@@ -664,7 +696,7 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 			);
 		}
 		$style        = $atts['style'];
-		$height       = $atts['height'];
+		$height       = wp_is_mobile() ? $atts['height-mobile'] : $atts['height'];
 		$per_page     = $atts['per-page'];
 		$container_id = 'content-slider-' . uniqid();
 		$query        = new WP_Query( $args );
