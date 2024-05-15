@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 $style = sprintf(
-	'#%1$s{
+	'.anony-popup-content{overflow:scroll;}#%1$s{
 		position:fixed;
 		top:0;
 		height:%2$s;
