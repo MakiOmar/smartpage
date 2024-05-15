@@ -3,23 +3,23 @@
  * Header template
  *
  * PHP version 7.3 Or Later
- * 
+ *
  * @package  SmartPage
  * @author   Makiomar <info@makior.com>
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
- 
-defined('ABSPATH') || die(); // Exit if accessed direct.
 
-$language_atts    = get_language_attributes();
-$contentType = get_bloginfo('html_type');
-$charSet     = get_bloginfo('charset');
-$blogname    = get_bloginfo();
-$bodyClass   = 'class="' . join(' ', get_body_class()) . '"';
-$logo        = anony_get_custom_logo('orange');
-$preloader_img = anony_get_custom_logo_url('orange');
-$nav         = anony_navigation('anony-main-menu');
+defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
+
+$language_atts = get_language_attributes();
+$contentType   = get_bloginfo( 'html_type' );
+$charSet       = get_bloginfo( 'charset' );
+$blogname      = get_bloginfo();
+$bodyClass     = 'class="' . join( ' ', get_body_class() ) . '"';
+$logo          = anony_get_custom_logo( 'orange' );
+$preloader_img = anony_get_custom_logo_url( 'orange' );
+$nav           = anony_navigation( 'anony-main-menu' );
 
 ?>
 
@@ -62,7 +62,7 @@ $nav         = anony_navigation('anony-main-menu');
 							</a>
 						</div>
 
-						 <?php echo $logo; ?>
+						<?php echo $logo; ?>
 
 					</div>
 					<!-- Navigation menu -->
