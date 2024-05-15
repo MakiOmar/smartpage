@@ -82,16 +82,15 @@ final class ANONY_Site_Header extends Library_Document {
 			'data-elementor-id'   => $id,
 			'class'               => 'elementor elementor-' . $id . ' anony-site-header',
 		);
-			
+
 		global $post;
 
 		$anony_template_settings = get_post_meta( $post->ID, 'anony_template_settings', true );
 
-		if( is_array($anony_template_settings) && !empty($anony_template_settings['is_absolute_header']) && '1' === $anony_template_settings['is_absolute_header'] )
-		{
+		if ( is_array( $anony_template_settings ) && ! empty( $anony_template_settings['is_absolute_header'] ) && '1' === $anony_template_settings['is_absolute_header'] ) {
 			$attributes['class'] .= ' anony-absolute-header';
 		}
-		
+
 		return $attributes;
 	}
 

@@ -29,13 +29,13 @@ $data = array(
 
 	'comments'          => wp_list_comments(
 		array(
-			'echo'        => false,
-			'avatar_size' => '64',
-			'format'      => 'xhtml',
-			'reverse_top_level' => true, //Newest first
-			'type'        => 'comment', //Don't output pingbacks & trackbacks
-			'style'       => 'div',
-			//'callback'    => 'anony_better_comments'
+			'echo'              => false,
+			'avatar_size'       => '64',
+			'format'            => 'xhtml',
+			'reverse_top_level' => true, // Newest first
+			'type'              => 'comment', // Don't output pingbacks & trackbacks
+			'style'             => 'div',
+			// 'callback'    => 'anony_better_comments'
 		)
 	),
 
@@ -48,4 +48,3 @@ extract( $data );
 wp_enqueue_script( 'jquery.validate.min' );
 wp_enqueue_script( 'anony-ajax_comment' );
 require locate_template( 'templates/comments-single-view.php', false, false );
-

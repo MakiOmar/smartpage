@@ -7,14 +7,14 @@ if ( ! class_exists( 'ANONY_Related_Posts_Widget' ) ) {
 	class ANONY_Related_Posts_Widget extends WP_Widget {
 
 		public function __construct() {
-			 $parms = array(
-				 'description' => esc_html__( 'Displays list of posts within the same category', 'smartpage' ),
-				 'name'        => esc_html__( 'Anonymous related posts', 'smartpage' ),
-			 );
-			 parent::__construct( 'ANONY_Related_Posts_Widget', '', $parms );
+			$parms = array(
+				'description' => esc_html__( 'Displays list of posts within the same category', 'smartpage' ),
+				'name'        => esc_html__( 'Anonymous related posts', 'smartpage' ),
+			);
+			parent::__construct( 'ANONY_Related_Posts_Widget', '', $parms );
 		}
 		public function form( $instance ) {
-			 extract( $instance );?>
+			extract( $instance );?>
 			
 			<p>
 				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'smartpage' ); ?></label>
@@ -68,18 +68,18 @@ if ( ! class_exists( 'ANONY_Related_Posts_Widget' ) ) {
 
 
 
-											 <?php
+											<?php
 												/*echo '<h3 class="widgeted_title"><a href="'.get_category_link( $first_cat ).'">'.get_cat_name( $first_cat ).'</a></h3>';*/
-												while ( $same_cat_posts->have_posts() ) :
-													$same_cat_posts->the_post();
-													?>
+											while ( $same_cat_posts->have_posts() ) :
+												$same_cat_posts->the_post();
+												?>
 
 										<li class="anony-same_cat_post"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
 
 													<?php
 												endwhile;
 												wp_reset_postdata();  // Restore global post data stomped by the_post().
-												?>
+											?>
 
 
 							<?php
@@ -93,7 +93,6 @@ if ( ! class_exists( 'ANONY_Related_Posts_Widget' ) ) {
 				<?php
 				echo $after_widget;
 			}
-
 		}
 	}
 }

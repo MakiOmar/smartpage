@@ -22,7 +22,7 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 	 * @link       https://makiomar.com
 	 */
 	class ANONY_Navigation_Menu extends WP_Widget {
-		
+
 		/**
 		 * Class constructor
 		 *
@@ -44,8 +44,6 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 		 * @return void
 		 */
 		public function form( $instance ) {
-
-			
 		}
 
 		/**
@@ -67,12 +65,12 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 
 			$output .= wp_nav_menu(
 				array(
-						'depth'          => 0,
-						'menu'           => 75,
-						'container'      => 'div',
-						'echo'           => false,
-					)
-				);
+					'depth'     => 0,
+					'menu'      => 75,
+					'container' => 'div',
+					'echo'      => false,
+				)
+			);
 			$output .= $parms['after_widget'];
 			//phpcs:disable
 			echo $output;
@@ -90,10 +88,11 @@ if ( ! class_exists( 'ANONY_Navigation_Menu' ) ) {
 		 * @return array Updated safe values to be saved.
 		 */
 		public function update( $new_instance, $old_instance ) {
-			/*$instance              = array();
+			/*
+			$instance              = array();
 			$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 			$instance['post_type'] = ( ! empty( $new_instance['post_type'] ) ) ? sanitize_text_field( $new_instance['post_type'] ) : 'place';
-*/
+			*/
 			return $new_instance;
 		}
 	}

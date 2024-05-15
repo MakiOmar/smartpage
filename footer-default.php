@@ -9,13 +9,13 @@
  * @license  https://makiomar.com SmartPage Licence
  * @link     https://makiomar.com
  */
- 
+
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 ?>
 <footer class="anony-grid-col-md-12 anony-grid-col">
 	 
 	 
-	<p><?php esc_html_e( 'Freen Smart Page theme' ) ?></p>
+	<p><?php esc_html_e( 'Freen Smart Page theme' ); ?></p>
 	 
 </footer>
 
