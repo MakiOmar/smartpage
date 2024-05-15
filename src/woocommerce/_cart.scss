@@ -3,6 +3,7 @@
 }
 #anony-mini-cart-widget{
     z-index: 999999;
+    position: relative;
 }
 #widget_shopping_cart_content_overlay{
     position: fixed;
@@ -122,4 +123,18 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
 }
 .woocommerce-cart td.product-name{
     width: 60%;
+}
+.anony-cart-counter{
+    align-items: center;
+    background-color: #da1818;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    height: 17px;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    width: 17px;
+    left: -5px;
+    font-size: 14px;
 }

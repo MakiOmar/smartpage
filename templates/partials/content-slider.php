@@ -33,6 +33,10 @@ if ( ! $content_slider_styles ) {
 			.anony-content-slide {
 				box-sizing: border-box;
 				height: 100%;
+				display: inline-flex;
+				vertical-align: middle;
+				justify-content: center;
+  				align-items: center;
 			}
 			.anony-content-slider {
 				width: 9999999px;
@@ -57,13 +61,6 @@ if ( ! $content_slider_styles ) {
 				align-items: center;
 				flex-direction: row-reverse;
 			}
-		
-			.anony-content-slide {
-				display: inline-block;
-				vertical-align: top;
-			}
-		
-			
 			.anony-content-slider-nav .top, .anony-content-slider-nav .bottom {
 				display: block;
 				width: 10px;
