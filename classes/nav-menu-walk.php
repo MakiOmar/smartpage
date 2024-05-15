@@ -113,9 +113,6 @@ class ANONY_Nav_Menu_Walk extends Walker_Nav_Menu {
 		$item_output .= '<a' . $attributes . '>';
 		$item_output .= $args->link_before . $title . $args->link_after;
 		$item_output .= '</a>';
-		if ( $this->has_children ) {
-			$item_output .= "<span class='toggle-category' rel-id='anony-menu-dropdown-" . $item->ID . "'><i class='fa fa-plus'></i></span>";
-		}
 		$item_output .= $args->after;
 		$output      .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
