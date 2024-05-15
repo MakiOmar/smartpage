@@ -14,13 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Initialize menu item custom field.
 ANONY_Menu_Custom_Fields::init();
 
-/**
- * Mobile navigation menu
- *
- * @return string
- */
-function anony_mobile_menu() {
-	return '<div id="anony-mobile-menu-container">' . anony_navigation( 'anony-main-menu' ) . '</div>';
+if ( ! function_exists( 'anony_mobile_menu' ) ) {
+	/**
+	 * Mobile navigation menu
+	 *
+	 * @return string
+	 */
+	function anony_mobile_menu() {
+		return '<div id="anony-mobile-menu-container">' . apply_filters( 'anony_mobile_menu', anony_navigation( 'anony-main-menu' ) ) . '</div>';
+	}
 }
 /**
  * Gets navigation menu.
