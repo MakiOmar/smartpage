@@ -92,3 +92,34 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
     position: absolute;
     z-index: 20;
 }
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals {
+	float: none;
+	width: auto;
+}
+.woocommerce-cart .cart-collaterals .cart_totals  h2{
+    margin: 20px 0;
+}
+.woocommerce-cart table.shop_table td.product-remove{
+    width: 20px;
+    padding: 0;
+}
+.woocommerce-cart table.shop_table td.product-thumbnail {
+	max-width: 90px;
+	min-width: 60px;
+	width: 90px;
+    padding: 0;
+    text-align: center;
+}
+.woocommerce-cart table.shop_table td.product-price,
+.woocommerce-cart table.shop_table td.product-subtotal{
+	font-weight: bold;
+    color:#000
+}
+.woocommerce .cart-collaterals, .woocommerce-page .cart-collaterals {
+	padding: 10px;
+	background-color: #f4f4f4;
+	border-radius: 10px;
+}
+.woocommerce-cart td.product-name{
+    width: 60%;
+}

@@ -87,6 +87,7 @@ table {
 td, th {
   border: 1px solid #dddddd;
   padding: 8px;
+  box-sizing: border-box;
 }
 th{
 	font-size: 20px;
@@ -201,6 +202,9 @@ select{
 
 p{
 	padding-bottom: 5px;
+}
+a{
+	display: inline-block;
 }
 
 .anony-active, .anony-active-tab{

@@ -32,3 +32,23 @@ table.woocommerce-table--order-details tr:hover {background-color: #ddd;}
 	display: flex;
 	align-items: center;
 }
+.woocommerce table.shop_table th, .woocommerce table.shop_table td {
+	border: none;
+}
+.woocommerce-shipping-totals td, td.actions {
+	width: 100% !important;
+	box-sizing: border-box;
+	clear: both;
+}
+.woocommerce table.shop_table thead th {
+	border-bottom: 1px solid #ccc;
+}
+.woocommerce-cart-form__contents tbody tr:last-child td{
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+@media screen and (min-width: 768px) {
+	.woocommerce-checkout table.shop_table th:nth-child(2n+1), .woocommerce-checkout table.shop_table td:nth-child(2n+1) {
+		width: 70%;
+	}
+}
