@@ -28,9 +28,11 @@ if ( ! $content_slider_styles ) {
 				position: relative;
 				overflow: hidden;
 				margin: auto;
+				max-width: calc(100vw - 20px);
 			}
 			.anony-content-slide {
 				box-sizing: border-box;
+				height: 100%;
 			}
 			.anony-content-slider {
 				width: 9999999px;
@@ -39,6 +41,7 @@ if ( ! $content_slider_styles ) {
 				-moz-transition: transform 1.7s ease-in-out;
 				-ms-transition: transform 1.7s ease-in-out;
 				-o-transition: transform 1.7s ease-in-out;
+				height: 100%;
 			}
 			.anony-content-slider-control{
 				position: absolute;
@@ -110,27 +113,27 @@ if ( ! $content_slider_styles ) {
 				justify-content: center;
 				align-items: center;
 			}
+			.anony-content-slider-control{
+				position: static;
+			}
+			.anony-content-slider-control button{
+				position: absolute;
+				top: 50%;
+			}
+	
+			.anony-content-slider-control button.anony-content-slider-next{
+				right: 15px;
+			}
+	
+			.anony-content-slider-control button.anony-content-slider-prev{
+				left: 15px;
+			}
 			@media screen and (max-width:480px) {
 				.anony-content-slider > div{
 					max-width: calc(100vw - 40px);
 				}
 				.anony-content-slide .wp-block-columns{
 					flex-direction: column;
-				}
-				.anony-content-slider-control{
-					position: static;
-				}
-				.anony-content-slider-control button{
-					position: absolute;
-					top: 50%;
-				}
-		
-				.anony-content-slider-control button.anony-content-slider-next{
-					right: 15px;
-				}
-		
-				.anony-content-slider-control button.anony-content-slider-prev{
-					left: 15px;
 				}
 			}
 		</style>
@@ -142,7 +145,8 @@ if ( ! $content_slider_styles ) {
 		height: <?php echo esc_html( $height ); ?>;
 	}
 	#<?php echo esc_html( $container_id ); ?> .anony-content-slide {
-		max-width: <?php echo esc_html( $item_width ); ?>!important;
+		max-width: 100vw;
+		width: <?php echo esc_html( $item_width ); ?>!important;
 	}
 	#<?php echo esc_html( $container_id ); ?> img{
 		max-height: <?php echo esc_html( $height ); ?>;
@@ -318,7 +322,7 @@ add_action(
 						contentSliderInterval = setInterval(
 							function(){
 								if ( $('.paused').length === 0 ) {
-									//theContainer.find('.anony-content-slider-next').click();
+									theContainer.find('.anony-content-slider-next').click();
 								}
 							},
 							5000
@@ -390,9 +394,9 @@ add_action(
 					);
 				}
 
-				//document.addEventListener("touchstart", handleTouchStart, false);
-				//document.addEventListener("touchmove", handleTouchMove, false);
-				//document.addEventListener("touchend", handleTouchEnd, false);
+				document.addEventListener("touchstart", handleTouchStart, false);
+				document.addEventListener("touchmove", handleTouchMove, false);
+				document.addEventListener("touchend", handleTouchEnd, false);
 			});
 		</script>
 		<?php
