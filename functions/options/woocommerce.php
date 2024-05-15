@@ -69,6 +69,17 @@ define(
 					'type'     => 'switch',
 					'validate' => 'no_html',
 				),
+				array(
+					'id'       => 'checkout_style',
+					'title'    => esc_html__( 'Checkout layout', 'smartpage' ),
+					'type'     => 'select',
+					'validate' => 'no_html',
+					'options'  => array(
+						'default'   => esc_html__( 'Default', 'smartpage' ),
+						'style-one' => esc_html__( 'Style one', 'smartpage' ),
+					),
+					'default'  => 'default',
+				),
 			),
 		)
 	)
