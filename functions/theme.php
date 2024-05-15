@@ -38,6 +38,9 @@ function anony_body_classes( $classes ) {
 	if ( class_exists( 'WooCommerce' ) ) {
 		$classes[] = 'anony-woocommerce';
 	}
+	if ( is_front_page() ) {
+		$classes[] = 'anony-frontpage';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'anony_body_classes' );
