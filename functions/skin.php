@@ -63,6 +63,20 @@ function anony_theme_skin() {
 					border-color: <?php echo esc_html( $primary_color ); ?>;
 					box-shadow: 2px 2px 0 <?php echo esc_html( $primary_color ); ?>;
 				}
+				.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button{
+					background-color: <?php echo esc_html( $primary_color ); ?>;
+					color: #fff;
+				}
+				a.icon-circle:hover, a.remove:hover {
+					color: <?php echo esc_html( $primary_color ); ?>!important;
+					background-color: transparent;
+				}
+				.anony-woocommerce div.woocommerce a.remove:hover {
+					color: <?php echo esc_html( $secondary_color ); ?>!important;
+					border-color: <?php echo esc_html( $secondary_color ); ?>!important;
+					background-color: transparent;
+				}
+
 				<?php
 
 		}
@@ -90,12 +104,15 @@ function anony_theme_skin() {
 		.single-download,
 		.anony-toggle-sidebar,
 		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2),
-		li .current::after, .button, a.button, body.woocommerce a.button, .woocommerce .shop_table .order-total, .woocommerce .shop_table thead{
+		li .current::after, .button, a.button, body.woocommerce a.button, .woocommerce.woocommerce-checkout .shop_table .order-total, .woocommerce .shop_table thead{
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
 			color: #fff
 		}
 		#anony-footer .widgeted_title{
 			background-color: transparent!important;
+		}
+		.anony-multi-col-menu.menu-item-has-children:hover:after{
+			border-top: 5px solid <?php echo esc_html( $secondary_color ); ?>;
 		}
 		#anony-footer p, #anony-footer h1, #anony-footer h2,#anony-footer h3,#anony-footer h4,#anony-footer h5,#anony-footer li,#anony-footer div, #anony-footer span{
 			color: <?php echo esc_html( $footer_text_color ); ?>;
@@ -118,7 +135,6 @@ function anony_theme_skin() {
 		}
 		#cancel-comment-reply-link,
 		.fa-bars, #anony-cat-list .toggle-category .fa ,
-		#anony-main-menu-con .anony-sub-menu li a,
 		.fa-calendar, .fa-comments-o, .fa-folder-open,
 		.fa-eye,
 		.fa-download,
@@ -138,15 +154,14 @@ function anony_theme_skin() {
 		#anony-page-scroll-bg{
 			border-left: 2px solid <?php echo esc_html( $primary_color ); ?>;
 		}
-		.anony-page-numbers, #anony-main-menu-con .anony-sub-menu li a, .widgeted_title, .anony-slide-title a, .anony-featured-button, .anony-featured-posts-title a, .anony-section_title, .anony-button, .anony-single_post_title a {
+		.anony-page-numbers, .widgeted_title, .anony-slide-title a, .anony-featured-button, .anony-featured-posts-title a, .anony-section_title, .anony-button, .anony-single_post_title a {
 			color: #fff;
 		}
 		#anony-main-menu-con .anony-sub-menu li {
 			border-bottom: 1px solid <?php echo esc_html( $primary_color ); ?>;
-			background-color: <?php echo esc_html( $primary_color ); ?>;
 		}
 		
-		.anony-custom-bullets ul li::before {
+		.anony-custom-bullets ul li::before, .anony-sub-menu li a {
 			color: <?php echo esc_html( $secondary_color ); ?>; /* Change the color */
 		}
 		#anony-footer{
