@@ -86,7 +86,7 @@ span.required{
 	color: #ccc!important;
 	border: 1px solid #ccc;
 }
-.anony-woocommerce .anony-content{
+.anony-woocommerce:not(.anony-frontpage) .anony-content{
 	margin-top: 50px;
 }
 @media screen and ( max-width:480px ) {
