@@ -28,7 +28,7 @@ if ( ! $content_slider_styles ) {
 				position: relative;
 				overflow: hidden;
 				margin: auto;
-				max-width: calc(100vw - 20px);
+				/*max-width: calc(100vw - 40px);*/
 			}
 			.anony-content-slide {
 				box-sizing: border-box;
@@ -36,7 +36,7 @@ if ( ! $content_slider_styles ) {
 				display: inline-flex;
 				vertical-align: middle;
 				justify-content: center;
-  				align-items: center;
+				align-items: center;
 			}
 			.anony-content-slider {
 				width: 9999999px;
@@ -142,8 +142,7 @@ if ( ! $content_slider_styles ) {
 		height: <?php echo esc_html( $height ); ?>;
 	}
 	#<?php echo esc_html( $container_id ); ?> .anony-content-slide {
-		max-width: 100vw;
-		width: <?php echo esc_html( $item_width ); ?>!important;
+		max-width: <?php echo esc_html( $item_width ); ?>!important;
 	}
 	#<?php echo esc_html( $container_id ); ?> img{
 		max-height: <?php echo esc_html( $height ); ?>;
@@ -258,6 +257,7 @@ add_action(
 						<?php } else { ?>
 							var initialPosition = totalSlideWidth
 						<?php } ?>
+
 						if ( infiniteLoop ) {
 							slider.css('transform', 'translateX(' + initialPosition + 'px)');
 						}
@@ -318,7 +318,7 @@ add_action(
 						
 						contentSliderInterval = setInterval(
 							function(){
-								if ( $('.paused').length === 0 ) {
+								if ( 'yes' === sliderSettings.autoplay && $('.paused').length === 0 ) {
 									theContainer.find('.anony-content-slider-next').click();
 								}
 							},

@@ -665,6 +665,7 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 				'item-width'    => '100vw',
 				'per-page'      => 1,
 				'style'         => 'default',
+				'autoplay'      => 'no',
 			),
 			$atts,
 			'anony_content_slider'
@@ -674,6 +675,7 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 
 		$slider_settings = array(
 			'per_page' => $atts['per-page'],
+			'autoplay' => $atts['autoplay'],
 		);
 
 		$args = array(
