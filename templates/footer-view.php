@@ -79,4 +79,5 @@ $anony_options = ANONY_Options_Model::get_instance();
 	?>
 	<?php do_action( 'anony_before_footer_closing' ); ?>
 </footer>
+<?php do_action( 'anony_after_footer_closing' ); ?>
 <?php require 'partials/document-closing.php'; ?>
