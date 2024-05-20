@@ -545,7 +545,7 @@ if ( ! function_exists( 'anony_common_post_data' ) ) {
 		$temp['date']         = get_the_date();
 		$temp['gravatar']     = get_avatar( get_the_author_meta( 'ID' ), 32 );
 		// Translators: Author's name.
-		$temp['author']          = sprintf( esc_html__( 'By %s', 'smartpage' ), get_the_author() );
+		$temp['author']          = sprintf( 'By %s', get_the_author() );
 		$temp['read_more']       = __( 'Read more', 'smartpage' );
 		$temp['grid']            = $grid;
 		$temp['views']           = anony_get_post_views( $p_id );
