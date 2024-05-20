@@ -20,15 +20,22 @@ $anony_options = ANONY_Options_Model::get_instance();
 
 <main class="anony-content">
   
-	<div class="anony-grid-row">
+	<div class="anony-grid-row anony-blog-posts">
 	 
 			<?php
 			if ( 'left-sidebar' === $anony_options->sidebar ) {
 				get_sidebar();
 			}
+			$content_width = 'no-sidebar' !== $anony_options->sidebar ? 'anony-grid-col-sm-9-5 ' : '';
 			?>
 	  
-			<div class="anony-grid-col-sm-9-5 anony-grid-col">
+			<div class="
+			<?php
+			//phpcs:disable
+			echo $content_width;
+			//phpcs:enable
+			?>
+			anony-grid-col">
 
 				<div id="anony-<?php echo esc_attr( $grid ); ?>">
 
@@ -36,9 +43,8 @@ $anony_options = ANONY_Options_Model::get_instance();
 
 						<?php
 						foreach ( $data as $p ) :
-							extract( $p );
 
-							include locate_template( 'templates/blog-post-view.php', false, false );
+							include locate_template( 'templates/listings/post/post-with-thumb.php', false, false );
 
 						endforeach;
 						?>
