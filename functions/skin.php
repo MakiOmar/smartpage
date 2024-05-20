@@ -170,9 +170,6 @@ function anony_theme_skin() {
 		.footer-sticky-menu {
 			background-color: <?php echo ! empty( $anony_options->mobile_footer_sticky_menu_bg_color ) ? esc_html( $anony_options->mobile_footer_sticky_menu_bg_color ) : 'transparent'; ?>;
 		}
-		#anony-footer svg path, #anony-footer svg circle{
-			stroke:<?php echo esc_html( $anony_options->footer_svg_icons_color ); ?>!important;
-		}
 		.footer-sticky-menu svg path,.footer-sticky-menu svg circle{
 				stroke:<?php echo esc_html( $anony_options->mobile_footer_sticky_menu_icons_color ); ?>!important;
 		}

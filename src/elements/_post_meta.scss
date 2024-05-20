@@ -1,13 +1,14 @@
-.rated-text {
+.single-post p.rated-text {
     margin: 5px;
     font-size: 16px;
     text-align: center;
     padding: 5px;
+    line-height: 14px;
 }
 
 .anony-post_meta{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 .anony-single_post_meta .anony-post_meta{
     box-shadow: none;
@@ -17,4 +18,11 @@
     flex-direction: row;
     box-shadow: none;
     padding: 0;
+}
+
+@media  screen and (max-width:480px) {
+    .anony-post_meta{
+        padding: 5px;
+        margin: 0;
+    }
 }
