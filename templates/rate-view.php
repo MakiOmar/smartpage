@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 ?>
-<div id="rating-<?php echo esc_attr( $id ); ?>" class="anony-metadata">
+<div id="rating-<?php echo esc_attr( $id ); ?>" class="anony-rating anony-flex flex-v-center">
 
 	<?php
 	for ( $r = 1; $r <= 5; $r++ ) {
