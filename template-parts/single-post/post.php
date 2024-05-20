@@ -38,6 +38,7 @@ $anony_options = ANONY_Options_Model::get_instance();
 			<?php endif ?>
 
 			<div class="anony-post_meta meta white-bg">
+				
 				<div class="date">
 					<i class="fa fa-calendar"></i>
 					<span class="single-meta-text"><?php echo $date; ?></span>
@@ -73,9 +74,10 @@ $anony_options = ANONY_Options_Model::get_instance();
 				 
 				<?php endif ?>
 				 
-				<?php require locate_template( 'models/rate.php', false, false ); ?>
+				
 				 
 			</div>
+			<?php require locate_template( 'models/rate.php', false, false ); ?>
 
 			<div class="anony-grid-col anony-post-contents anony-single_post">
 				 
