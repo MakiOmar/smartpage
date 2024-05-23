@@ -484,6 +484,8 @@ function anony_testimonials_shcode( $atts ) {
 			'height'     => 'auto',
 			'per-page'   => '1',
 			'style'      => 'default',
+			'autoplay'   => 'no',
+			'animation_speed' => '500',
 		),
 		$atts,
 		'anony_testimonials'
@@ -530,6 +532,8 @@ function anony_testimonials_shcode( $atts ) {
 			}
 			$slider_settings = array(
 				'per_page' => $per_page,
+				'autoplay' => $atts['autoplay'],
+				'animation_speed' => $atts['animation_speed'],
 			);
 			ob_start();
 			require locate_template( 'templates/partials/content-slider.php', false, false );
@@ -666,6 +670,7 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 				'per-page'      => 1,
 				'style'         => 'default',
 				'autoplay'      => 'no',
+				'animation_speed' => '500',
 			),
 			$atts,
 			'anony_content_slider'
@@ -676,6 +681,7 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 		$slider_settings = array(
 			'per_page' => $atts['per-page'],
 			'autoplay' => $atts['autoplay'],
+			'animation_speed' => $atts['animation_speed'],
 		);
 
 		$args = array(
