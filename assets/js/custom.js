@@ -51,7 +51,7 @@ jQuery( document ).ready(
 
 		$( document.body ).on(
 			'click',
-			'.anony-close-mini-cart, #widget_shopping_cart_content_overlay',
+			'.anony-close-mini-cart, #widget_shopping_cart_content_overlay,.anony-mini-cart-close-cart',
 			function (e) {
 				e.preventDefault();
 				$( ".widget_shopping_cart_content" ).removeClass( 'anony-mini-cart-open' );
