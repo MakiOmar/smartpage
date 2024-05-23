@@ -79,6 +79,38 @@ if ( ! class_exists( 'ANONY_Image_Box' ) ) {
 				value="<?php echo ( isset( $instance['image_box_description'] ) && ! empty( $instance['image_box_description'] ) ) ? esc_attr( $instance['image_box_description'] ) : ''; ?>">
 				
 			</p>
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'image_width' ) ); ?>"><?php esc_html_e( 'Image width:', 'smartpage' ); ?></label>
+				
+				<input 
+				type="text" 
+				class="widefat" 
+				id="<?php echo esc_attr( $this->get_field_id( 'image_width' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'image_width' ) ); ?>"  
+				value="<?php echo ( isset( $instance['image_width'] ) && ! empty( $instance['image_width'] ) ) ? esc_attr( $instance['image_width'] ) : ''; ?>">
+				
+			</p>
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'image_box_link' ) ); ?>"><?php esc_html_e( 'Link:', 'smartpage' ); ?></label>
+				
+				<input 
+				type="text" 
+				class="widefat" 
+				id="<?php echo esc_attr( $this->get_field_id( 'image_box_link' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'image_box_link' ) ); ?>"  
+				value="<?php echo ( isset( $instance['image_box_link'] ) && ! empty( $instance['image_box_link'] ) ) ? esc_attr( $instance['image_box_link'] ) : '#'; ?>">
+				
+			</p>
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'image_box_layout' ) ); ?>"><?php esc_html_e( 'Layout:', 'smartpage' ); ?></label>
+				<select
+				class="widefat" 
+				id="<?php echo esc_attr( $this->get_field_id( 'image_box_layout' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'image_box_layout' ) ); ?>" >
+					<option value="vertical"<?php selected( $instance['image_box_layout'], 'vertical' ); ?>><?php esc_html_e( 'Vertical', 'smartpage' ); ?></option>
+					<option value="horizontal"<?php selected( $instance['image_box_layout'], 'horizontal' ); ?>><?php esc_html_e( 'Horizontal', 'smartpage' ); ?></option>
+				</select>
+			</p>
 			<?php
 		}
 		/**
@@ -94,12 +126,14 @@ if ( ! class_exists( 'ANONY_Image_Box' ) ) {
 			$image_box_title       = $instance['image_box_title'];
 			$image_box_description = $instance['image_box_description'];
 			$image_url             = $instance['image_url'];
-			$layout                = 'vertical';
+			$layout                = ! empty( $instance['image_box_layout'] ) ? $instance['image_box_layout'] : 'vertical';
+			$image_width           = ! empty( $instance['image_width'] ) ? $instance['image_width'] : '150';
+			$image_box_link        = ! empty( $instance['image_box_link'] ) ? $instance['image_box_link'] : '#';
 
-			if ( 'vertical' !== $layout ) {
-				$classes = ' anony-grid-col-4 anony-inline-flex flex-v-center';
-			} else {
-				$classes = '';
+			$classes = '';
+
+			if ( 'vertical' === $layout ) {
+				$classes = ' anony-flex-column';
 			}
 
 			include locate_template( 'templates/partials/image-box.php', false, false );
@@ -120,6 +154,7 @@ if ( ! class_exists( 'ANONY_Image_Box' ) ) {
 			$instance['image_box_title']       = ( ! empty( $new_instance['image_box_title'] ) ) ? $new_instance['image_box_title'] : '';
 			$instance['image_box_description'] = ( ! empty( $new_instance['image_box_description'] ) ) ? $new_instance['image_box_description'] : '';
 			$instance['image_url']             = ( ! empty( $new_instance['image_url'] ) ) ? $new_instance['image_url'] : '';
+			$instance['image_box_layout']      = ( ! empty( $new_instance['image_box_layout'] ) ) ? $new_instance['image_box_layout'] : '';
 			return $new_instance;
 		}
 	}
