@@ -5,7 +5,9 @@
 		'.single_add_to_cart_button',
 		function (e) {
 			e.preventDefault();
-
+			if ( $( this ).hasClass( 'disabled' ) ) {
+				return;
+			}
 			var $thisbutton  = $( this ),
 				$form        = $thisbutton.closest( 'form.cart' ),
 				id           = $thisbutton.val(),
@@ -50,4 +52,37 @@
 			return false;
 		}
 	);
+	if ( $( '.single_add_to_cart_button' ).length > 1 && $( '.single-product' ).length > 0 ) {
+		$('.variations_form').on(
+			'show_variation',
+			function() {
+				$( '.single_add_to_cart_button' ).removeClass( 'disabled wc-variation-selection-needed wc-variation-is-unavailable' );
+			}
+		)
+		$('.variations_form').on(
+			'hide_variation',
+			function() {
+				$( '.single_add_to_cart_button' ).addClass( 'disabled wc-variation-selection-needed wc-variation-is-unavailable' );
+			}
+		)
+		$('.variations_form').on(
+			'reset_variations',
+			function() {
+				$( '.woo-variation-raw-select' ).val('').trigger('change');
+			}
+		)
+		$('.variations_form select').on(
+			'change',
+			function () {
+				var selectedVariation = $(this);
+				$( '.woo-variation-raw-select' ).each(
+					function() {
+						if ( $(this).attr('id') == selectedVariation.attr('id') && selectedVariation.val() !== $(this).val() ) {
+							$( this ).val( selectedVariation.val() ).trigger('change');
+						}
+					}
+				);
+			}
+		);
+	}
 })( jQuery );
