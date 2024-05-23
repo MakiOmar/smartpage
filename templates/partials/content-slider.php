@@ -205,6 +205,12 @@ add_action(
 
 				return isInsideContainer
 			};
+			function isWithinElement( elementRect, touchX, touchY ) {
+				return  touchX >= elementRect.left &&
+						touchX <= elementRect.right &&
+						touchY >= elementRect.top &&
+						touchY <= elementRect.bottom
+			}
 			jQuery(document).ready(function($) {
 				$('.anony-content-slider-container').each(
 					function() {
@@ -274,7 +280,7 @@ add_action(
 							}
 							slider.animate(
 							{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '-=' + totalSlideWidth },
-							1700,
+							sliderSettings.animation_speed,
 							function() {
 								if ( infiniteLoop ) {
 									slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
@@ -298,7 +304,7 @@ add_action(
 							}
 							slider.animate(
 							{ 'margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>': '+=' + totalSlideWidth },
-							1700,
+							sliderSettings.animation_speed,
 							function() {
 								if ( infiniteLoop ) {
 									slider.css('margin-<?php echo ! is_rtl() ? 'left' : 'right'; ?>', 0);
@@ -319,81 +325,95 @@ add_action(
 						contentSliderInterval = setInterval(
 							function(){
 								if ( 'yes' === sliderSettings.autoplay && $('.paused').length === 0 ) {
+									
 									theContainer.find('.anony-content-slider-next').click();
 								}
 							},
-							5000
+							3000
+						);
+						let xDown = null;
+						let yDown = null;
+						console.log(theContainer);
+						var element = document.getElementById( containerId );
+						element.addEventListener(
+							"touchstart",
+							function( event ) {
+								const touchX = event.touches[0].clientX;
+								const touchY = event.touches[0].clientY;
+								const elementRect = element.getBoundingClientRect();
+								if ( isWithinElement( elementRect, touchX, touchY ) ) {
+									$('.paused').removeClass('paused');
+									clearInterval(contentSliderInterval);
+									xDown = event.touches[0].clientX;
+									yDown = event.touches[0].clientY;
+								} else {
+									xDown = null;
+									yDown = null;
+								}
+							},
+							false
+						);
+
+						element.addEventListener(
+							"touchmove",
+							function( event ) {
+								if (!xDown || !yDown) {
+									return;
+								}
+								const xUp = event.touches[0].clientX;
+								const yUp = event.touches[0].clientY;
+
+								const xDiff = xDown - xUp;
+								const yDiff = yDown - yUp;
+								/**
+								* If the horizontal distance (xDiff) is greater than the vertical distance (yDiff),
+								* We determine whether it's a swipe to the left or right based on the sign of xDiff.
+								* A negative xDiff indicates a swipe to the left, while a positive xDiff indicates a swipe to the right.
+								*/
+								if (Math.abs(xDiff) > Math.abs(yDiff)) {
+									if (xDiff > 0) {
+										var prevButton = element.querySelector('.anony-content-slider-prev');
+										// Swipe to the left
+										if (prevButton) {
+											prevButton.click();
+										}
+									} else {
+										// Swipe to the right
+										var nextButton = element.querySelector('.anony-content-slider-next');
+										if (nextButton) {
+											nextButton.click();
+										}
+									}
+								}
+								// Reset values
+								xDown = null;
+								yDown = null;
+							},
+							false
+						);
+
+						element.addEventListener(
+							"touchend",
+							function( event ) {
+								if (!xDown || !yDown) {
+									return;
+								}
+								contentSliderInterval = setInterval(
+									function(){
+										if ( $('.paused').length === 0 ) {
+											var nextButton = element.querySelector('.anony-content-slider-next');
+											if (nextButton) {
+												nextButton.click();
+											}
+										}
+									},
+									3000
+								);
+							},
+							false
 						);
 					}
 				);
-				
-				let xDown = null;
-				let yDown = null;
-
-				// We use the touchstart event to capture the initial touch position (xDown and yDown variables).
-				function handleTouchStart(event) {
-					var element = event.target;
-					var container = element.closest('.anony-content-slider-container');
-					if (container) {
-						$('.paused').removeClass('paused');
-						clearInterval(contentSliderInterval);
-						xDown = event.touches[0].clientX;
-						yDown = event.touches[0].clientY;
-					} else {
-						xDown = null;
-						yDown = null;
-					}
-				}
-
-				// Calculate the horizontal distance (xDiff) and vertical distance (yDiff) between the initial touch position and the current touch position.
-				function handleTouchMove(event) {
-					if (!xDown || !yDown) {
-						return;
-					}
-
-					const xUp = event.touches[0].clientX;
-					const yUp = event.touches[0].clientY;
-
-					const xDiff = xDown - xUp;
-					const yDiff = yDown - yUp;
-
-					/**
-					 * If the horizontal distance (xDiff) is greater than the vertical distance (yDiff),
-					 * We determine whether it's a swipe to the left or right based on the sign of xDiff.
-					 * A negative xDiff indicates a swipe to the left, while a positive xDiff indicates a swipe to the right.
-					 */
-					if (Math.abs(xDiff) > Math.abs(yDiff)) {
-						if (xDiff > 0) {
-						// Swipe to the left
-						$('.anony-content-slider-container').find('.anony-content-slider-prev').click();
-						} else {
-						// Swipe to the right
-						$('.anony-content-slider-container').find('.anony-content-slider-next').click();
-						}
-					}
-
-					// Reset values
-					xDown = null;
-					yDown = null;
-				}
-
-				function handleTouchEnd( event ) {
-					if (!xDown || !yDown) {
-						return;
-					}
-					contentSliderInterval = setInterval(
-						function(){
-							if ( $('.paused').length === 0 ) {
-								$('.anony-content-slider-container').find('.anony-content-slider-next').click();
-							}
-						},
-						5000
-					);
-				}
-
-				document.addEventListener("touchstart", handleTouchStart, false);
-				document.addEventListener("touchmove", handleTouchMove, false);
-				document.addEventListener("touchend", handleTouchEnd, false);
 			});
 		</script>
 		<?php
