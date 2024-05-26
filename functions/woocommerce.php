@@ -445,11 +445,12 @@ function anony_sales_counter() {
 /**
  * Fancy quantity before
  *
+ * @param bool $with_products_only Flag to decide weather to add to products quantity only or not.
  * @return void
  */
-function anony_fancy_quantity_before() {
+function anony_fancy_quantity_before( $with_products_only = true ) {
 	global $product;
-	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() ) {
+	if ( $with_products_only && ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() ) ) {
 		return;
 	}
 	if ( ! defined( 'HAS_FANCY_QUANTITY' ) ) {
@@ -535,11 +536,12 @@ function anony_fancy_quantity_before() {
 /**
  * Fancy quantity after
  *
+ * @param bool $with_products_only Flag to decide weather to add to products quantity only or not.
  * @return void
  */
-function anony_fancy_quantity_after() {
+function anony_fancy_quantity_after( $with_products_only = true ) {
 	global $product;
-	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() || ! defined( 'HAS_FANCY_QUANTITY' ) ) {
+	if ( $with_products_only && ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() || $product->is_sold_individually() || ! defined( 'HAS_FANCY_QUANTITY' ) ) ) {
 		return;
 	}
 	?>
@@ -547,6 +549,34 @@ function anony_fancy_quantity_after() {
 	</div>
 	<?php
 }
+add_filter(
+	'woocommerce_checkout_cart_item_quantity',
+	function ( $output ) {
+		ob_start();
+		anony_fancy_quantity_before( false );
+		$before = ob_get_clean();
+
+		ob_start();
+		anony_fancy_quantity_after( false );
+		$after = ob_get_clean();
+
+		return $before . $output . $after;
+	}
+);
+add_filter(
+	'woocommerce_cart_item_quantity',
+	function ( $output ) {
+		ob_start();
+		anony_fancy_quantity_before( false );
+		$before = ob_get_clean();
+
+		ob_start();
+		anony_fancy_quantity_after( false );
+		$after = ob_get_clean();
+
+		return $before . $output . $after;
+	}
+);
 /**
  * Fancy quantity script
  *
@@ -557,7 +587,7 @@ function anony_fancy_quantity_script() {
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		
-		$('.anony-quantity').on('click', '.anony-plus, .anony-minus', function(e) {
+		$('body').on('click', '.anony-plus, .anony-minus', function(e) {
 
 		e.preventDefault();
 
