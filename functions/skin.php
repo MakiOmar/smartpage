@@ -108,6 +108,9 @@ function anony_theme_skin() {
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
 			color: #fff
 		}
+		.woocommerce table.shop_table{
+			border-color: <?php echo esc_html( $primary_color ); ?>!important;
+		}
 		#anony-footer .widgeted_title{
 			background-color: transparent!important;
 		}

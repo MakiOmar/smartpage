@@ -45,7 +45,7 @@ div{
 .anony-default-padding{
 	padding: 10px;
 }
-input[type=search],input[type=tel],input[type=text],input[type=email],input[type=password],input[type=url], input[type=number],textarea{
+input[type=search],input[type=tel],input[type=text],input[type=email],input[type=password],input[type=url], input[type=number],textarea, select{
 	outline: none;
 	padding: 10px;
 	margin: 5px;
@@ -53,6 +53,7 @@ input[type=search],input[type=tel],input[type=text],input[type=email],input[type
 	color:#222222;
 	border-radius: 6px;
 	border: 1px solid #d7d7d7;
+	min-height: 37px;
 }
 input[type='submit']{
 	background-color: #fc2a2a;

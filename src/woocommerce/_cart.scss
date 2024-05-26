@@ -110,11 +110,14 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
 	width: 90px;
     padding: 0;
     text-align: center;
+    justify-content: center;
 }
 .woocommerce-cart table.shop_table td.product-price,
 .woocommerce-cart table.shop_table td.product-subtotal{
 	font-weight: bold;
-    color:#000
+}
+.woocommerce-cart table.shop_table td.product-subtotal{
+    color:#ffa700
 }
 .woocommerce .cart-collaterals, .woocommerce-page .cart-collaterals {
 	padding: 10px;
@@ -145,4 +148,55 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
     font-weight: bold;
     border-bottom: 1px solid #d4d4d4;
     margin-bottom: 20px;
+}
+#add_payment_method table.cart img, .woocommerce-cart table.cart img, .woocommerce-checkout table.cart img {
+	width: 60px;
+    border-radius: 5px;
+}
+.woocommerce a.remove {
+	height: 19px;
+	width: 19px;
+}
+@media only screen and (max-width: 768px) {
+    .woocommerce #content table.cart td.actions .coupon, .woocommerce table.cart td.actions .coupon, .woocommerce-page #content table.cart td.actions .coupon, .woocommerce-page table.cart td.actions .coupon {
+        width: 100%;
+    }
+    .woocommerce table.shop_table_responsive tr td, .woocommerce-page table.shop_table_responsive tr td, .woocommerce #content table.cart .product-thumbnail, .woocommerce table.cart .product-thumbnail, .woocommerce-page #content table.cart .product-thumbnail, .woocommerce-page table.cart .product-thumbnail {
+        display: inline-flex;
+        flex-wrap: wrap;
+    }
+    body.rtl .woocommerce table.shop_table_responsive tr td, body.rtl .woocommerce-page table.shop_table_responsive tr td {
+        text-align: right !important;
+    }
+    .woocommerce table.shop_table_responsive tr td.product-name::before, .woocommerce-page table.shop_table_responsive tr td.product-name::before,
+    .woocommerce table.shop_table_responsive tr td.product-quantity::before, .woocommerce-page table.shop_table_responsive tr td.product-quantity::before , 
+    .woocommerce table.shop_table_responsive tr td.product-thumbnail::before, .woocommerce-page table.shop_table_responsive tr td.product-thumbnail::before {
+        display: none;
+    }
+    .woocommerce table.shop_table_responsive tr:nth-child(2n) td, .woocommerce-page table.shop_table_responsive tr:nth-child(2n) td {
+        background-color: transparent;
+    }
+    .woocommerce table.shop_table_responsive tr, .woocommerce-page table.shop_table_responsive tr {
+        padding: 5px;
+    }
+    .woocommerce table.shop_table_responsive tr td.product-subtotal,.woocommerce table.shop_table_responsive tr td.product-quantity { 
+        padding: 10px;
+        position: relative;
+        width: 49%;
+        box-sizing: border-box;
+    }
+    .woocommerce table.shop_table_responsive tr td.product-subtotal{
+        justify-content: flex-end;
+    }
+    .woocommerce table.shop_table_responsive tr td.product-price { 
+        display:none;
+    }
+
+    .woocommerce table.shop_table_responsive tr td.product-subtotal:before{
+        content: "المجموع:";
+
+    }
+    .woocommerce #content table.cart td.actions .coupon .button, .woocommerce #content table.cart td.actions .coupon .input-text, .woocommerce #content table.cart td.actions .coupon input, .woocommerce table.cart td.actions .coupon .button, .woocommerce table.cart td.actions .coupon .input-text, .woocommerce table.cart td.actions .coupon input, .woocommerce-page #content table.cart td.actions .coupon .button, .woocommerce-page #content table.cart td.actions .coupon .input-text, .woocommerce-page #content table.cart td.actions .coupon input, .woocommerce-page table.cart td.actions .coupon .button, .woocommerce-page table.cart td.actions .coupon .input-text, .woocommerce-page table.cart td.actions .coupon input {
+        min-height: 40px;
+    }
 }

@@ -127,7 +127,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	#anony-price-table-wrapper li::before{
 		content: "\2713";
-		opacity: 0.5;
 		display: inline-flex;
 		width: 10px;
 		height: 10px;
@@ -147,14 +146,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	#anony-price-table-wrapper .price-table-button button{
 		height: 40px;
 		width: 250px;
-		font-size: 0.7em;
 		font-weight: bold;
 		letter-spacing: 0.5px;
 		color: #7D7C7C;
-		border: 2px solid var(--dark-gray);
 		border-radius: 50px;
-
 		background: transparent;
+		color:#fff;
+		border: none;
+		font-size: 18px;
 	}
 
 	#anony-price-table-wrapper .price-table-button button:hover{
@@ -185,7 +184,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<form action="<?php echo esc_url( $price_table['button_link'] ); ?>" method="post">
 			<div class="basic box">
-				
+					<style>
+						#anony-price-table-wrapper ul li::before {
+							border-color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>;
+							color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>;
+						}
+					</style>
 					<h2 class="title" style="background-color:<?php echo esc_html( $price_table['title_bg_color'] ); ?>"><?php echo esc_html( $price_table['title'] ); ?></h2>
 					<div class="view">
 						<div class="icon">
@@ -203,7 +207,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo wp_kses_post( $price_table['content'] ); ?>
 					</div>
 					<div class="price-table-button">
-						<button type="submit" ><?php echo esc_html( $price_table['button_text'] ); ?></button>
+						<button type="submit" style="color:#fff;background-color:<?php echo esc_html( $price_table['title_bg_color'] ); ?>"><?php echo esc_html( $price_table['button_text'] ); ?></button>
 					</div>
 				
 			</div>
