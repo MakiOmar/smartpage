@@ -32,7 +32,7 @@ if ( ! function_exists( 'anony_mobile_menu' ) ) {
  *
  * **Note: ** This is to keep the main navigation always has items
  *
- * @param  string $location_slug The slug of manu.
+ * @param  string $location_slug The slug of manu location.
  * @param  string $container     The HTML container of manu.
  * @return string Menu list
  */
@@ -72,7 +72,30 @@ function anony_navigation( $location_slug, $container = 'nav' ) {
 	}
 }
 
+/**
+ * Gets navigation menu by menu ID, slug, name or object.
+ *
+ * @param  string $menu The slug of manu.
+ * @param  string $container     The HTML container of manu.
+ * @return string Menu list
+ */
+function anony_navigation_by( $menu, $container = 'nav' ) {
+	$walker  = apply_filters( "anony_{$menu}_walker", false );
+	$menu_id = $menu . '-con';
 
+	$args = array(
+		'menu'         => $menu,
+		'depth'        => 0,
+		'menu_id'      => $menu_id,
+		'container'    => $container,
+		'container_id' => $menu,
+		'echo'         => false,
+	);
+	if ( $walker ) {
+		$args['walker'] = $walker;
+	}
+	return wp_nav_menu( $args );
+}
 /**
  * Generates anony-breadcrumbs menu
  *
