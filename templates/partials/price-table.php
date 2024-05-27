@@ -37,10 +37,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		display: flex;
 		justify-content: space-between;
 		width: 1200px;
-		margin: 100px;
 	}
 
 	#anony-price-table-wrapper .box{
+		position: relative;
+		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 		width: 300px;
@@ -78,7 +79,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		display: block;
 		width: 100%;
 		padding: 30px 0 20px;
-
 		background: var(--white-smoke);
 	}
 
@@ -162,17 +162,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 		border: none;
 		background: #039e8c;
 	}
-
+	
+	.anony-top-selling-text{
+		background: #ff0000;
+		background: linear-gradient(
+			to right,
+			#ff0000,#fdcf58
+		);
+		color: #fff;
+		position: absolute;
+		width: 150px;
+		left: -40px;
+		transform: rotate(-45deg);
+		top: 20px;
+	}
 	/* Responsiveness:Start */
 	@media screen and (max-width:970px) {
 		#anony-price-table-wrapper .content{
 			display: flex;
 			align-items: center;
 			flex-direction: column;
-			margin: 50px auto;
 		}
 		#anony-price-table-wrapper .standard, .business{
 			margin-top: 25px;
+		}
+	}
+	@media screen and (min-width:481px) {
+		#anony-price-table-wrapper .box.anony-top-selling{
+			top: -30px;
 		}
 	}
 /* Responsiveness:End */
@@ -183,13 +200,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 		foreach ( $data as $price_table ) {
 			?>
 			<form action="<?php echo esc_url( $price_table['button_link'] ); ?>" method="post">
-			<div id="price-table-<?php echo esc_attr( $price_table['id'] ); ?>" class="basic box">
+			<div id="price-table-<?php echo esc_attr( $price_table['id'] ); ?>" class="basic box<?php echo '1' === $price_table['top_selling'] ? ' anony-top-selling' : ''; ?>">
 					<style>
 						#price-table-<?php echo esc_attr( $price_table['id'] ); ?> ul li::before {
 							border-color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>!important;
 							color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>!important;
 						}
 					</style>
+					<?php
+					if ( '1' === $price_table['top_selling'] ) {
+						$top_selling_text = ! empty( $price_table['top_selling_text'] ) ? $price_table['top_selling_text'] : __( 'Recommended', 'smartpage' );
+						?>
+						<span class='anony-top-selling-text anony-inline-flex flex-h-center flex-v-center'><?php echo esc_html( $top_selling_text ); ?></span>
+						<?php
+					}
+					?>
 					<h2 class="title" style="background-color:<?php echo esc_html( $price_table['title_bg_color'] ); ?>"><?php echo esc_html( $price_table['title'] ); ?></h2>
 					<div class="view">
 						<div class="icon">

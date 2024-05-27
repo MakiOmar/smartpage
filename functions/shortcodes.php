@@ -257,16 +257,18 @@ function anony_price_tables_shcode( $atts ) {
 			$query->the_post();
 			$price_table_meta = get_post_meta( get_the_ID(), 'anony_price_table', true );
 			if ( $price_table_meta && ! empty( $price_table_meta ) ) {
-				$temp['id']             = get_the_ID();
-				$temp['title']          = get_the_title();
-				$temp['content']        = get_the_content();
-				$temp['icon']           = get_the_post_thumbnail( get_the_ID(), 'full' );
-				$temp['price']          = $price_table_meta['price'];
-				$temp['title_bg_color'] = $price_table_meta['title_bg_color'];
-				$temp['price_per']      = $price_table_meta['price_per'];
-				$temp['subtitle']       = $price_table_meta['subtitle'];
-				$temp['button_link']    = $price_table_meta['button_link'];
-				$temp['button_text']    = $price_table_meta['button_text'];
+				$temp['id']               = get_the_ID();
+				$temp['title']            = get_the_title();
+				$temp['content']          = get_the_content();
+				$temp['icon']             = get_the_post_thumbnail( get_the_ID(), 'full' );
+				$temp['price']            = $price_table_meta['price'];
+				$temp['title_bg_color']   = $price_table_meta['title_bg_color'];
+				$temp['price_per']        = $price_table_meta['price_per'];
+				$temp['subtitle']         = $price_table_meta['subtitle'];
+				$temp['button_link']      = $price_table_meta['button_link'];
+				$temp['button_text']      = $price_table_meta['button_text'];
+				$temp['top_selling']      = $price_table_meta['top_selling'];
+				$temp['top_selling_text'] = $price_table_meta['top_selling_text'];
 
 				$data[] = $temp;
 			}
@@ -479,13 +481,13 @@ function anony_terms_listing_shcode( $atts ) {
 function anony_testimonials_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'id'         => '',
-			'slider'     => 'off',
-			'item-width' => '320px',
-			'height'     => 'auto',
-			'per-page'   => '1',
-			'style'      => 'default',
-			'autoplay'   => 'no',
+			'id'              => '',
+			'slider'          => 'off',
+			'item-width'      => '320px',
+			'height'          => 'auto',
+			'per-page'        => '1',
+			'style'           => 'default',
+			'autoplay'        => 'no',
 			'animation_speed' => '500',
 		),
 		$atts,
@@ -532,8 +534,8 @@ function anony_testimonials_shcode( $atts ) {
 				$per_page = 1;
 			}
 			$slider_settings = array(
-				'per_page' => $per_page,
-				'autoplay' => $atts['autoplay'],
+				'per_page'        => $per_page,
+				'autoplay'        => $atts['autoplay'],
 				'animation_speed' => $atts['animation_speed'],
 			);
 			ob_start();
@@ -662,15 +664,15 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 	function anony_content_slider_shcode( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'ids'           => '',
-				'number'        => 3,
-				'cat'           => false,
-				'height'        => 'auto',
-				'height-mobile' => 'auto',
-				'item-width'    => '100vw',
-				'per-page'      => 1,
-				'style'         => 'default',
-				'autoplay'      => 'no',
+				'ids'             => '',
+				'number'          => 3,
+				'cat'             => false,
+				'height'          => 'auto',
+				'height-mobile'   => 'auto',
+				'item-width'      => '100vw',
+				'per-page'        => 1,
+				'style'           => 'default',
+				'autoplay'        => 'no',
 				'animation_speed' => '500',
 			),
 			$atts,
@@ -680,8 +682,8 @@ if ( ! function_exists( 'anony_content_slider_shcode' ) ) {
 		$item_width = $atts['item-width'];
 
 		$slider_settings = array(
-			'per_page' => $atts['per-page'],
-			'autoplay' => $atts['autoplay'],
+			'per_page'        => $atts['per-page'],
+			'autoplay'        => $atts['autoplay'],
 			'animation_speed' => $atts['animation_speed'],
 		);
 

@@ -65,6 +65,9 @@ input[type='submit']{
 	min-width: 100px;
 	cursor: pointer;
 }
+button{
+	cursor: pointer;
+}
 input:focus{
 	color: #222222;
 	font-weight: bold;
