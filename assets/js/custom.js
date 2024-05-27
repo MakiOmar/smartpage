@@ -96,6 +96,27 @@ jQuery( document ).ready(
 		/**------------------------------------------------------------------
 		 *                      Toggles
 		 *-------------------------------------------------------------------*/
+		$( '.menu-item-has-children a' ).on(
+			'click',
+			function(e){
+				e.preventDefault();
+				var subMenu = $(this).next('ul');
+				$(this).closest('li').toggleClass('show-sub-menu');
+				if ( $(this).closest('li').hasClass( 'show-sub-menu' ) ) {
+					subMenu.slideDown();
+				} else {
+					subMenu.slideUp();
+				}
+			}
+		);
+		$( ".menu-item-has-children" ).hover(
+			function () {
+				$(this).find('.sub-menu, .anony-sub-menu').slideDown();
+			},
+			function () {
+				$(this).find('.sub-menu, .anony-sub-menu').slideUp();
+			}
+		);
 		$( "#anony-lang-toggle" ).on(
 			'click',
 			function (e) {
