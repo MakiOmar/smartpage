@@ -257,6 +257,7 @@ function anony_price_tables_shcode( $atts ) {
 			$query->the_post();
 			$price_table_meta = get_post_meta( get_the_ID(), 'anony_price_table', true );
 			if ( $price_table_meta && ! empty( $price_table_meta ) ) {
+				$temp['id']             = get_the_ID();
 				$temp['title']          = get_the_title();
 				$temp['content']        = get_the_content();
 				$temp['icon']           = get_the_post_thumbnail( get_the_ID(), 'full' );
