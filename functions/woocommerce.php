@@ -549,20 +549,7 @@ function anony_fancy_quantity_after( $with_products_only = true ) {
 	</div>
 	<?php
 }
-add_filter(
-	'woocommerce_checkout_cart_item_quantity',
-	function ( $output ) {
-		ob_start();
-		anony_fancy_quantity_before( false );
-		$before = ob_get_clean();
 
-		ob_start();
-		anony_fancy_quantity_after( false );
-		$after = ob_get_clean();
-
-		return $before . $output . $after;
-	}
-);
 add_filter(
 	'woocommerce_cart_item_quantity',
 	function ( $output ) {
