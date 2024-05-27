@@ -194,7 +194,22 @@
 	top:50%;
 	left:5px
 }
+.sub-menu{
+	display: none;
+}
+.sticky #anony-main-menu-con .menu-item{
+	height: auto;
+	top: auto;
+}
+.sticky #anony-main-menu-con li a:hover{
+	font-size: 12px;
+}
 @media screen and (min-width:768px) {
+	#anony-main-menu-con > li > a:hover {
+		background-color: #000;
+		color: #fff;
+		font-size: 16px;
+	}
 	.anony-search-form-toggle {
 		right: 0;
 		display: block;

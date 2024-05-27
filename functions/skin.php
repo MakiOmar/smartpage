@@ -177,7 +177,7 @@ function anony_theme_skin() {
 				stroke:<?php echo esc_html( $anony_options->mobile_footer_sticky_menu_icons_color ); ?>!important;
 		}
 		@media screen and (min-width: 768px) {
-			#anony-main-menu-con li a:hover {
+			#anony-main-menu-con > li > a:hover {
 			background-color: <?php echo esc_html( $primary_color ); ?>;
 			color: <?php echo esc_html( $menu_hover_color ); ?>;
 			font-size: 16px;

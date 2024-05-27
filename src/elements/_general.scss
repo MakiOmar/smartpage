@@ -96,7 +96,14 @@ td, th {
 th{
 	font-size: 20px;
 }
-
+li,.menu li a{
+	position: relative;
+}
+ul li a{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
 select{
 	padding: 10px;
     border-color: #e1e1e1;

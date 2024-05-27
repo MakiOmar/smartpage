@@ -1196,13 +1196,7 @@
 	left: 0!important;
 	right: 0;
 }
-.sticky #anony-main-menu-con .menu-item{
-	height: auto;
-	top: auto;
-}
-.sticky #anony-main-menu-con li a:hover{
-	font-size: 12px;
-}
+
 .button {
 	display: inline-block;
 	min-width: 80px;
@@ -1342,13 +1336,6 @@
 	justify-content: center;
 }
 /*-----------contact form 7----------*/
-
-@media screen and (min-width: 768px){
-	#anony-main-menu-con li a:hover {
-		background-color: #14a845;
-		font-size: 16px;
-	}
-}
 
 @media screen and (min-width:960px){
 
