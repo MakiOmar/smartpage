@@ -157,6 +157,10 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
 	height: 19px;
 	width: 19px;
 }
+.woocommerce-page table.shop_table .quantity .qty {
+	width: 70px;
+	margin: 0 3px;
+}
 @media only screen and (max-width: 768px) {
     .woocommerce #content table.cart td.actions .coupon, .woocommerce table.cart td.actions .coupon, .woocommerce-page #content table.cart td.actions .coupon, .woocommerce-page table.cart td.actions .coupon {
         width: 100%;
@@ -165,7 +169,7 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
         display: inline-flex;
         flex-wrap: wrap;
     }
-    body.rtl .woocommerce table.shop_table_responsive tr td, body.rtl .woocommerce-page table.shop_table_responsive tr td {
+    body.rtl .woocommerce table.shop_table_responsive tr td.product-name, body.rtl .woocommerce-page table.shop_table_responsive tr td.product-name {
         text-align: right !important;
     }
     .woocommerce table.shop_table_responsive tr td.product-name::before, .woocommerce-page table.shop_table_responsive tr td.product-name::before,
@@ -188,8 +192,18 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
     .woocommerce table.shop_table_responsive tr td.product-subtotal{
         justify-content: flex-end;
     }
+    .woocommerce table.shop_table_responsive tr.order-total td{
+        justify-content: center;
+        font-size: 20px;
+        background-color: #000;
+        color: #fff;
+        border-radius: 10px;
+    }
     .woocommerce table.shop_table_responsive tr td.product-price { 
         display:none;
+    }
+    .woocommerce table.shop_table_responsive tr.cart-subtotal td, .woocommerce table.shop_table_responsive tr.order-total td { 
+        width:100%
     }
 
     .woocommerce table.shop_table_responsive tr td.product-subtotal:before{
@@ -198,5 +212,8 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
     }
     .woocommerce #content table.cart td.actions .coupon .button, .woocommerce #content table.cart td.actions .coupon .input-text, .woocommerce #content table.cart td.actions .coupon input, .woocommerce table.cart td.actions .coupon .button, .woocommerce table.cart td.actions .coupon .input-text, .woocommerce table.cart td.actions .coupon input, .woocommerce-page #content table.cart td.actions .coupon .button, .woocommerce-page #content table.cart td.actions .coupon .input-text, .woocommerce-page #content table.cart td.actions .coupon input, .woocommerce-page table.cart td.actions .coupon .button, .woocommerce-page table.cart td.actions .coupon .input-text, .woocommerce-page table.cart td.actions .coupon input {
         min-height: 40px;
+    }
+    .anony-cart-collaterals{
+        width: 100%;
     }
 }

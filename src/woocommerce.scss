@@ -89,8 +89,16 @@ span.required{
 .anony-woocommerce:not(.anony-frontpage) .anony-content{
 	margin-top: 50px;
 }
+.woocommerce-checkout .order-total td{
+	font-size: 25px;
+	font-weight: bold;
+}
 @media screen and ( max-width:480px ) {
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button {
 		font-size: 13px;
+	}
+	.woocommerce #content table.cart td.actions .button, .woocommerce table.cart td.actions .button, .woocommerce-page #content table.cart td.actions .button, .woocommerce-page table.cart td.actions .button {
+		padding: 12px 5px;
+		font-size: 18px;
 	}	
 }

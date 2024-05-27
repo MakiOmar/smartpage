@@ -44,7 +44,7 @@ function anony_theme_skin() {
 				.woocommerce div.product span.price,
 				.woocommerce ul.products li.product .price
 				.comment-text .woocommerce-review__author,
-				.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price{
+				.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price, .woocommerce-checkout .order-total td{
 					color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
 				.anony-quantity input.anony-plus,
