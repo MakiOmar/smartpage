@@ -28,7 +28,10 @@ $style = sprintf(
 		z-index:%9$s;
 		transition:%4$s 1s ease-in-out;
 	}
-	#%1$s.anony-popup-open{%4$s:0}',
+	#%1$s.anony-popup-open{%4$s:0}
+	#%1$s.anony-popup-wrapper a{
+		color:#000
+	}',
 	esc_attr( $id ),
 	esc_attr( $height ),
 	esc_attr( $width ),
