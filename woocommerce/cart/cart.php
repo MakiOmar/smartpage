@@ -179,7 +179,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<?php do_action( 'woocommerce_after_cart_table' ); ?>
 		</form>
 	</div>
-	<div class="anony-grid-col anony-grid-col-lg-4">
+	<div class="anony-cart-collaterals anony-grid-col anony-grid-col-lg-4">
 		<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
 		<div class="cart-collaterals">
