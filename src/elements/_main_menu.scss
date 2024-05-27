@@ -42,10 +42,22 @@
 	flex-direction: column;
 }
 
+#anony-main-menu-con .anony-sub-menu{
+	display: none;
+}
 #anony-main-menu-con .anony-sub-menu li a {
 	color: #444;
 }
 
+#anony-main-menu-con .anony-sub-menu li {
+	background-color: #fff;
+	display: block!important;
+	border-right: none;
+	border-bottom: 1px solid #808080;
+}
+.menu-item-has-children .anony-sub-menu.anony-opened{
+	display:block
+}
 .anony-show-main-nav li a {
 	justify-content: flex-start!important;
 	font-size: 13px!important;
@@ -63,30 +75,12 @@
 	background-color: transparent;
 }
 
-#anony-main-menu-con .anony-sub-menu li {
-	background-color: #fff;
-	display: block!important;
-	border-right: none;
-	border-bottom: 1px solid #808080;
-}
 
 .anony-main-menu-toggle {
 	cursor: pointer;
 	right: 15px;
 	color: #ffffff;
 	position: absolute;
-}
-
-.anony-dropdown {
-	position: relative!important;
-	padding: 0;
-	width: 100%;
-	display: none;
-	overflow: hidden;
-}
-
-.anony-dropdown li {
-	background-color: #fff;
 }
 
 .anony-show-main-nav {
@@ -177,9 +171,7 @@
 .anony-divided-menu li:last-child{
 	border:none
 }
-.menu-item-has-children .anony-sub-menu.anony-opened{
-	display:block
-}
+
 .menu-item-has-children > a:after{
 	content:'';
 	display: inline-block;
@@ -204,11 +196,13 @@
 .sticky #anony-main-menu-con li a:hover{
 	font-size: 12px;
 }
+.menu-item a{
+	padding: 10px 20px;
+}
 @media screen and (min-width:768px) {
 	#anony-main-menu-con > li > a:hover {
 		background-color: #000;
 		color: #fff;
-		font-size: 16px;
 	}
 	.anony-search-form-toggle {
 		right: 0;
@@ -236,6 +230,7 @@
 		position: relative;
 		height: inherit;
 		margin: auto;
+		flex-wrap: wrap;
 	}
 
 	#anony-main-menu-con li {
@@ -266,10 +261,8 @@
 		border-right: none!important;
 	}
 
-	#anony-main-menu-con li:hover > .anony-sub-menu {
-		position: absolute;
-		opacity: 1;
-		visibility: visible;
+	.anony-sub-menu li {
+		background-color: #fff;
 	}
 	.anony-multi-col-menu .anony-sub-menu{
 		position: absolute !important;

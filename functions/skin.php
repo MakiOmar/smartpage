@@ -180,7 +180,6 @@ function anony_theme_skin() {
 			#anony-main-menu-con > li > a:hover {
 			background-color: <?php echo esc_html( $primary_color ); ?>;
 			color: <?php echo esc_html( $menu_hover_color ); ?>;
-			font-size: 16px;
 			}
 		}
 		

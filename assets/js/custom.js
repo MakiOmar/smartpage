@@ -21,7 +21,7 @@ jQuery( document ).ready(
 				e.preventDefault();
 				var popupTargetId = $( this ).data( 'target' );
 				$( '#' + popupTargetId ).toggleClass( 'anony-popup-open' );
-				$( '.anony-close-popup' ).css( 'opacity', '1' );
+				$( '#' + popupTargetId ).find( '.anony-close-popup' ).css( 'opacity', '1' );
 			}
 		);
 
@@ -31,7 +31,7 @@ jQuery( document ).ready(
 			function (e) {
 				e.preventDefault();
 				$( this ).closest( '.anony-popup-wrapper' ).removeClass( 'anony-popup-open' );
-				$( '.anony-close-popup' ).css( 'opacity', '0' );
+				$( this ).closest( '.anony-popup-wrapper' ).find( '.anony-close-popup' ).css( 'opacity', '0' );
 			}
 		);
 
