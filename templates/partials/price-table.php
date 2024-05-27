@@ -183,11 +183,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		foreach ( $data as $price_table ) {
 			?>
 			<form action="<?php echo esc_url( $price_table['button_link'] ); ?>" method="post">
-			<div class="basic box">
+			<div id="price-table-<?php echo esc_attr( $price_table['id'] ); ?>" class="basic box">
 					<style>
-						#anony-price-table-wrapper ul li::before {
-							border-color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>;
-							color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>;
+						#price-table-<?php echo esc_attr( $price_table['id'] ); ?> ul li::before {
+							border-color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>!important;
+							color: <?php echo esc_html( $price_table['title_bg_color'] ); ?>!important;
 						}
 					</style>
 					<h2 class="title" style="background-color:<?php echo esc_html( $price_table['title_bg_color'] ); ?>"><?php echo esc_html( $price_table['title'] ); ?></h2>
