@@ -557,16 +557,19 @@ function anony_testimonials_shcode( $atts ) {
 function anony_popup_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'id'               => '',
-			'callback'         => '',
-			'width'            => '200px',
-			'height'           => '100%',
-			'border_width'     => '0',
-			'border_style'     => 'solid',
-			'border_color'     => '#000',
-			'border_radius'    => '20px',
-			'background_color' => '#fff',
-			'zindex'           => '100',
+			'id'                  => '',
+			'callback'            => '',
+			'width'               => '200px',
+			'height'              => '100vh',
+			'border_width'        => '0',
+			'border_style'        => 'solid',
+			'border_color'        => '#000',
+			'border_radius'       => '0',
+			'background_color'    => '#fff',
+			'zindex'              => '100',
+			'animation_type'      => 'slide',
+			'animation_direction' => 'right-left',
+			'trigger_selector'    => '',
 		),
 		$atts,
 		'anony_popup'
@@ -588,6 +591,9 @@ function anony_popup_shcode( $atts ) {
 	$border_radius    = $atts['border_radius'];
 	$background_color = $atts['background_color'];
 	$zindex           = $atts['zindex'];
+	$trigger_selector = $atts['trigger_selector'];
+	$animation_type   = $atts['animation_type'];
+	$settings         = $atts;
 	ob_start();
 	require locate_template( 'templates/partials/popup.php', false, false );
 	return ob_get_clean();

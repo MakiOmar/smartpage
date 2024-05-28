@@ -20,7 +20,8 @@ jQuery( document ).ready(
 			function (e) {
 				e.preventDefault();
 				var popupTargetId = $( this ).data( 'target' );
-				$( '#' + popupTargetId ).toggleClass( 'anony-popup-open' );
+				$( '#' + popupTargetId ).find( '.anony-popup-content' ).toggleClass( 'anony-popup-open' );
+				$( '#' + popupTargetId ).toggleClass( 'anony-popup-active' );
 				$( '#' + popupTargetId ).find( '.anony-close-popup' ).css( 'opacity', '1' );
 			}
 		);
@@ -30,8 +31,9 @@ jQuery( document ).ready(
 			'.anony-close-popup',
 			function (e) {
 				e.preventDefault();
-				$( this ).closest( '.anony-popup-wrapper' ).removeClass( 'anony-popup-open' );
-				$( this ).closest( '.anony-popup-wrapper' ).find( '.anony-close-popup' ).css( 'opacity', '0' );
+				$( this ).closest( '.anony-popup-content' ).removeClass( 'anony-popup-open' );
+				$( this ).closest( '.anony-popup-content' ).find( '.anony-close-popup' ).css( 'opacity', '0' );
+				$( this ).closest( '.anony-popup-wrapper' ).removeClass( 'anony-popup-active' );
 			}
 		);
 

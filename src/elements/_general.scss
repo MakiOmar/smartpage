@@ -237,24 +237,6 @@ a{
 .anony-circle-image img{
 	border-radius: 50%;
 }
-.anony-popup-wrapper{
-	position: relative;
-}
-.anony-close-popup{
-	position: absolute;
-	top: 20px;
-	left: -50px;
-	height: 30px;
-	width: 30px;
-	border-radius: 50%;
-	background-color: #000;
-	color: #fff;
-	font-size: 18px;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	opacity: 0;
-}
 
 .anony-box-shadow{
 	box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
