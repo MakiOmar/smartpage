@@ -23,6 +23,11 @@ jQuery( document ).ready(
 				$( '#' + popupTargetId ).find( '.anony-popup-content' ).toggleClass( 'anony-popup-open' );
 				$( '#' + popupTargetId ).toggleClass( 'anony-popup-active' );
 				$( '#' + popupTargetId ).find( '.anony-close-popup' ).css( 'opacity', '1' );
+				if ( $( '#' + popupTargetId ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
+					document.body.style.overflow = 'hidden';
+				} else {
+					document.body.style.overflow = '';
+				}
 			}
 		);
 
@@ -31,9 +36,21 @@ jQuery( document ).ready(
 			'.anony-close-popup',
 			function (e) {
 				e.preventDefault();
-				$( this ).closest( '.anony-popup-content' ).removeClass( 'anony-popup-open' );
-				$( this ).closest( '.anony-popup-content' ).find( '.anony-close-popup' ).css( 'opacity', '0' );
+				$( this ).closest( '.anony-popup-wrapper' ).find( '.anony-popup-content' ).removeClass( 'anony-popup-open' );
+				$( '.anony-close-popup' ).css( 'opacity', '0' );
 				$( this ).closest( '.anony-popup-wrapper' ).removeClass( 'anony-popup-active' );
+				document.body.style.overflow = '';
+			}
+		);
+		$( document.body ).on(
+			'click',
+			'.anony-popup-overlay',
+			function (e) {
+				e.preventDefault();
+				$( this ).next( '.anony-popup-content' ).removeClass( 'anony-popup-open' );
+				$( this ).find( '.anony-close-popup' ).css( 'opacity', '0' );
+				$( this ).closest( '.anony-popup-wrapper' ).removeClass( 'anony-popup-active' );
+				document.body.style.overflow = '';
 			}
 		);
 

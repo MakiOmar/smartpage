@@ -561,6 +561,8 @@ function anony_popup_shcode( $atts ) {
 			'callback'            => '',
 			'width'               => '200px',
 			'height'              => '100vh',
+			'padding'             => '0',
+			'margin'              => '0',
 			'border_width'        => '0',
 			'border_style'        => 'solid',
 			'border_color'        => '#000',

@@ -19,6 +19,8 @@ if ( empty( $settings ) ) {
 		'callback'            => '',
 		'width'               => '200px',
 		'height'              => '100vh',
+		'padding'             => '0',
+		'margin'              => '0',
 		'border_width'        => '0',
 		'border_style'        => 'solid',
 		'border_color'        => '#000',
@@ -42,7 +44,7 @@ if ( 'slide' === $settings['animation_type'] ) {
 				%2$s:-%3$s;
 			}
 			#%1$s .anony-popup-content.anony-popup-open{%2$s:0}
-			#%1$s .anony-close-popup{top: 20px;%4$s: -50px;}',
+			#%1$s .anony-close-popup{top: 20px;%4$s: 20px;}',
 			esc_attr( $settings['id'] ),
 			is_rtl() ? 'right' : 'left',
 			esc_attr( $settings['width'] ),
@@ -56,10 +58,10 @@ if ( 'slide' === $settings['animation_type'] ) {
 				bottom:-%2$s;
 			}
 			#%1$s .anony-popup-content.anony-popup-open{bottom:0}
-			#%1$s .anony-close-popup{top: -20px;%3$s: 20px;}',
+			#%1$s .anony-close-popup{top: 20px;%3$s: 20px;}',
 			esc_attr( $settings['id'] ),
 			esc_attr( $settings['height'] ),
-			is_rtl() ? 'right' : 'left',
+			is_rtl() ? 'left' : 'right',
 		);
 	} elseif ( 'top-bottom' === $settings['animation_direction'] ) {
 		$position = 'top';
@@ -67,13 +69,13 @@ if ( 'slide' === $settings['animation_type'] ) {
 		$style = sprintf(
 			'#%1$s .anony-popup-content{
 				top:-%2$s;
-				padding-top:20px
+				padding-top:30px
 			}
 			#%1$s .anony-popup-content.anony-popup-open{top:0}
-			#%1$s .anony-close-popup{top: 20px;%3$s: 20px;}',
+			#%1$s .anony-close-popup{bottom: 20px;%3$s: 20px;}',
 			esc_attr( $settings['id'] ),
 			esc_attr( $settings['height'] ),
-			is_rtl() ? 'right' : 'left',
+			is_rtl() ? 'left' : 'right',
 		);
 	}
 }
@@ -86,6 +88,8 @@ $global_style = sprintf(
 		border: %5$s;
 		border-radius: %6$s;
 		z-index:%7$s;
+		padding:%8$s;
+		margin:%9$s;
 	}#%1$s.anony-popup-wrapper a:not(.anony-close-popup){
 		color:#000
 	}',
@@ -96,6 +100,8 @@ $global_style = sprintf(
 	$settings['border_width'] . ' ' . $settings['border_style'] . ' ' . $settings['border_color'],
 	$settings['border_radius'],
 	esc_attr( $settings['zindex'] ),
+	esc_attr( $settings['padding'] ),
+	esc_attr( $settings['margin'] ),
 );
 ?>
 <style>
@@ -104,12 +110,11 @@ $global_style = sprintf(
 	if ( ! $popup_scripts ) {
 		$popup_scripts = true;
 		?>
-		.anony-popup-wrapper{
-			overflow: scroll;
-		}
+
 		.anony-popup-content{
 			position:fixed;
 			transition:all 1s ease-in-out;
+			overflow-y: scroll;
 		}
 		.anony-close-popup{
 			position: absolute;
@@ -146,9 +151,10 @@ $global_style = sprintf(
 	?>
 </style>
 <div class="anony-popup-wrapper anony-box-shadow"  id="<?php echo esc_attr( $id ); ?>" data-settings='<?php echo wp_json_encode( $settings ); ?>'>
-	<div class="anony-popup-overlay"></div>
-	<div class="anony-popup-content">
+	<div class="anony-popup-overlay">
 		<a href="#" class="anony-close-popup">x</a>
+	</div>
+	<div class="anony-popup-content">
 		<?php
 		do_action( 'anony_before_popup_' . str_replace( '-', '_', $id ) );
 		echo wp_kses_post( $content );
@@ -184,6 +190,11 @@ add_action(
 									$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).toggleClass( 'anony-popup-open' );
 									$( '#' + popUpSettings.id ).toggleClass( 'anony-popup-active' );
 									$( '#' + popUpSettings.id ).find( '.anony-close-popup' ).css( 'opacity', '1' );
+									if ( $( '#' + popUpSettings.id ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
+										document.body.style.overflow = 'hidden';
+									} else {
+										document.body.style.overflow = '';
+									}
 								}
 							);
 
