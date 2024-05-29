@@ -300,7 +300,7 @@ add_action(
 					top: 0;
 					left: 0;
 					width: 100%;
-					z-index: 100;
+					z-index: 95;
 				}
 				body{
 					padding-top: 100px;

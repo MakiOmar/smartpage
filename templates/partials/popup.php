@@ -137,7 +137,7 @@ $global_style = sprintf(
 			height: 100%;
 			width: 100%;
 			background-color: rgb(0,0,0,0.5);
-			z-index: 20;
+			z-index: 99;
 		}
 		<?php
 	}

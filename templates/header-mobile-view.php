@@ -18,6 +18,7 @@ require 'document-head.php';
 ?>
 
 <header id="anony-mobile-header" class="anony-grid-row anony-box-shadow">
+	<?php do_action( 'anony_after_header_prepend' ); ?>
 	<div class="anony-grid-col anony-grid-col-4 anony-inline-flex flex-h-center flex-v-center">
 		<?php do_action( 'anony_mobile_header_first' ); ?>
 	</div>
@@ -27,5 +28,6 @@ require 'document-head.php';
 	<div class="anony-grid-col anony-grid-col-4 anony-inline-flex flex-h-center flex-v-center">
 		<?php do_action( 'anony_mobile_header_third' ); ?>
 	</div>
+	<?php do_action( 'anony_after_header_append' ); ?>
 </header>
 <?php do_action( 'anony_after_header_content' ); ?>
