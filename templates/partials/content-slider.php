@@ -28,7 +28,7 @@ if ( ! $content_slider_styles ) {
 				position: relative;
 				overflow: hidden;
 				margin: auto;
-				/*max-width: calc(100vw - 40px);*/
+				max-width: 100%
 			}
 			.anony-content-slide {
 				box-sizing: border-box;
