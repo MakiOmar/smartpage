@@ -115,7 +115,7 @@ jQuery( document ).ready(
 		/**------------------------------------------------------------------
 		 *                      Toggles
 		 *-------------------------------------------------------------------*/
-		$( '.menu-item-has-children a' ).on(
+		$( '.menu-item-has-children > a' ).on(
 			'click',
 			function(e){
 				e.preventDefault();
@@ -131,6 +131,7 @@ jQuery( document ).ready(
 		$( ".menu-item-has-children" ).hover(
 			function () {
 				$(this).find('.sub-menu, .anony-sub-menu').slideDown();
+				$(this).find('.sub-menu, .anony-sub-menu').css('display', 'flex');
 			},
 			function () {
 				$(this).find('.sub-menu, .anony-sub-menu').slideUp();
