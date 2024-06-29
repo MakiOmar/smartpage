@@ -108,7 +108,7 @@ function anony_breadcrumbs() {
 	$page_link = home_url( $wp->request );
 	$time_y    = get_the_time( 'Y' );
 	$time_f    = get_the_time( 'F' );
-	if ( is_woocommerce() ) {
+	if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
 		woocommerce_breadcrumb();
 		return;
 	}

@@ -23,6 +23,7 @@
 .anony-grid-col{
 	position: relative;
 	padding: 5px;
+	flex-grow: 1;
 }
 @media screen and (min-width:480px) and (max-width:768px){
 	.anony-grid-col-av-1 { width: 8.333%; }

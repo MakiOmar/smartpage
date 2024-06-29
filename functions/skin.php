@@ -103,8 +103,7 @@ function anony_theme_skin() {
 		.dun_text:after,
 		.single-download,
 		.anony-toggle-sidebar,
-		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2),
-		li .current::after, .button, a.button, body.woocommerce a.button, .woocommerce.woocommerce-checkout .shop_table .order-total, .woocommerce .shop_table thead{
+		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2), .woocommerce.woocommerce-checkout .shop_table .order-total, .woocommerce .shop_table thead{
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
 			color: #fff
 		}

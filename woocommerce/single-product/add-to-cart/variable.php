@@ -26,6 +26,7 @@ $variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_j
 if ( ! defined( 'FOOTER_ADD_TO_CART' ) ) {
 	do_action( 'woocommerce_before_add_to_cart_form' );
 }
+
 //phpcs:disable
 ?>
 <form class="variations_form cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
@@ -82,7 +83,6 @@ if ( ! defined( 'FOOTER_ADD_TO_CART' ) ) {
 			if ( ! defined( 'FOOTER_ADD_TO_CART' ) ) {
 				do_action( 'woocommerce_before_single_variation' );
 			}
-
 			/**
 			 * Hook: woocommerce_single_variation. Used to output the cart button and placeholder for variation data.
 			 *

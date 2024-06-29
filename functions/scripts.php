@@ -242,7 +242,7 @@ add_action(
 			}
 			.fa {
 				display: inline-block;
-				font: normal normal normal 14px/1 FontAwesome;
+				font: normal normal normal 14px/1 FontAwesome!important;
 				font-size: inherit;
 				text-rendering: auto;
 				-webkit-font-smoothing: antialiased;
@@ -277,6 +277,12 @@ add_action(
 			}
 			.fa-search:before{
 				content: "\f002";
+			}
+			.fa-plus::before {
+				content: "\f067";
+			}
+			.fa-minus::before {
+				content: "\f068";
 			}
 			<?php } ?>
 			body, button{

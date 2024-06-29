@@ -107,8 +107,8 @@ $global_style = sprintf(
 <style>
 	<?php
 	global $popup_styles;
-	if ( ! $popup_scripts ) {
-		$popup_scripts = true;
+	if ( ! $popup_styles ) {
+		$popup_styles = true;
 		?>
 
 		.anony-popup-content{
