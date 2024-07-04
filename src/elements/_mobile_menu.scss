@@ -1,3 +1,14 @@
+.anony-menu-icon-bar{
+    display: inline-block;
+    margin-bottom: 4px;
+    width: 24px;
+    height: 1.6px;
+    background-color: hsla(0,0%,40%,.85);
+    border-radius: 23px;
+}
+.anony-menu-icon-bar:nth-child(2){
+    height: 2px;
+}
 #anony-mobile-menu {
     #anony-main_nav_con {
         background-color: transparent!important;

@@ -73,46 +73,6 @@ footer ul{
   color: #ffffff;
   border-radius: 50%;
 }
-#anony-hidden-search-form #anony-searchform *{
-  box-sizing: border-box;
-}
-#anony-hidden-search-form #anony-searchform {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  overflow: hidden;
-}
-
-#anony-hidden-search-form #anony-searchform .anony-search-input {
-  width: 80%;
-  height: 100%;
-  margin: 0;
-  border-radius: 0;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-#anony-hidden-search-form #anony-searchform .anony-form_submit {
-  padding: 19px;
-  height: 100%;
-  border-radius: 0px 10px 10px 0px;
-}
-
-#anony-hidden-search-form > .anony-search-form-toggle {
-  top: 20px;
-  right: 20px;
-  position: absolute;
-  display: block;
-}
-
-.anony-show-search-form {
-  opacity: 100 !important;
-  visibility: visible !important;
-  display: flex;
-}
-
 #anony-footer form.cart, #anony-footer .single_variation_wrap, #anony-footer .woocommerce-variation-add-to-cart{
   display: flex;
   width: 100%;
