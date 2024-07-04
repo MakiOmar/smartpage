@@ -63,7 +63,7 @@ function anony_theme_skin() {
 					border-color: <?php echo esc_html( $primary_color ); ?>;
 					box-shadow: 2px 2px 0 <?php echo esc_html( $primary_color ); ?>;
 				}
-				.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button{
+				.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt{
 					background-color: <?php echo esc_html( $primary_color ); ?>;
 					color: #fff;
 				}
@@ -105,6 +105,10 @@ function anony_theme_skin() {
 		.anony-toggle-sidebar,
 		.anony-popular-tabs span:not(.anony-active-tab):nth-child(2), .woocommerce.woocommerce-checkout .shop_table .order-total, .woocommerce .shop_table thead{
 			background-color: <?php echo esc_html( $primary_color ); ?>!important;
+			color: #fff
+		}
+		a.button{
+			background-color: <?php echo esc_html( $primary_color ); ?>;
 			color: #fff
 		}
 		.woocommerce table.shop_table{

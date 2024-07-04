@@ -47,6 +47,7 @@ a.added_to_cart{
 .anony-mini-cart-thumb-link{
     display: flex;
     padding: 10px;
+    align-items: center;
 }
 .anony-mini-cart-thumb-link img{
     margin-right:5px;
@@ -126,6 +127,8 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
 }
 .woocommerce-cart td.product-name{
     width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 .anony-cart-counter{
     align-items: center;
