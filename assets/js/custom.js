@@ -128,15 +128,17 @@ jQuery( document ).ready(
 				}
 			}
 		);
-		$( ".menu-item-has-children" ).hover(
-			function () {
-				$(this).find('.sub-menu, .anony-sub-menu').slideDown();
-				$(this).find('.sub-menu, .anony-sub-menu').css('display', 'flex');
-			},
-			function () {
-				$(this).find('.sub-menu, .anony-sub-menu').slideUp();
-			}
-		);
+		if ($( window ).width() >= 768) {
+			$( ".menu-item-has-children" ).hover(
+				function () {
+					$(this).find('.sub-menu, .anony-sub-menu').slideDown();
+					$(this).find('.sub-menu, .anony-sub-menu').css('display', 'flex');
+				},
+				function () {
+					$(this).find('.sub-menu, .anony-sub-menu').slideUp();
+				}
+			);
+		}
 		$( "#anony-lang-toggle" ).on(
 			'click',
 			function (e) {
