@@ -23,7 +23,7 @@
 		border-radius: 10px;
 		margin-bottom: 10px;
 	}
-	#anony-slides-list {
+	.anony-slides-list {
 		margin-top: 5px;
 		display: flex;
 		justify-content: center;
@@ -93,7 +93,7 @@
 		height: 100%;
 	}
 	@media screen and (max-width:480px) {
-		.anony-images-slider #anony-slides-list {
+		.anony-images-slider .anony-slides-list {
 
 		}
 	}

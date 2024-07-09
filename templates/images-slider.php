@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endforeach ?>
 
 	<?php if ( $slider_settings['show_pagination'] ) : ?>
-		<div id="anony-slides-list">
+		<div class="anony-slides-list">
 		<?php
 		foreach ( $slider_nav as $item ) :
 			?>
