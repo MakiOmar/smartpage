@@ -79,7 +79,18 @@ if ( 'slide' === $settings['animation_type'] ) {
 		);
 	}
 }
-
+if ( 'zoom-in' === $settings['animation_type'] ) {
+	$style = sprintf(
+		'#%1$s.anony-popup-zoom-in .anony-popup-content{
+			top:0;
+			left:0;
+			opacity:0;
+		}#%1$s.anony-popup-zoom-in .anony-popup-content.anony-popup-open{opacity:1;visibility:visible;}
+		#%1$s .anony-close-popup{top: 20px;%2$s: 20px;}',
+		esc_attr( $settings['id'] ),
+		is_rtl() ? 'left' : 'right',
+	);
+}
 $global_style = sprintf(
 	'#%1$s .anony-popup-content{
 		height:%2$s;
@@ -87,9 +98,8 @@ $global_style = sprintf(
 		background-color:%4$s;
 		border: %5$s;
 		border-radius: %6$s;
-		z-index:%7$s;
-		padding:%8$s;
-		margin:%9$s;
+		padding:%7$s;
+		margin:%8$s;
 	}#%1$s.anony-popup-wrapper a:not(.anony-close-popup){
 		color:#000
 	}',
@@ -99,24 +109,36 @@ $global_style = sprintf(
 	$settings['background_color'],
 	$settings['border_width'] . ' ' . $settings['border_style'] . ' ' . $settings['border_color'],
 	$settings['border_radius'],
-	esc_attr( $settings['zindex'] ),
 	esc_attr( $settings['padding'] ),
 	esc_attr( $settings['margin'] ),
 );
 ?>
-<style>
+<style data-style="anony-popup">
 	<?php
-	global $popup_styles;
-	if ( ! $popup_styles ) {
-		$popup_styles = true;
+	if ( ! $anony_popup_styles ) {
+		$anony_popup_styles = true;
 		?>
-
+		.anony-popup-wrapper{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			z-index: -10;
+			visibility: hidden;
+			opacity:0;
+		}
+		.anony-popup-wrapper.anony-popup-active{
+			z-index: 999;
+			visibility: visible;
+			opacity: 1;
+		}
 		.anony-popup-content{
-			position:fixed;
-			transition:all 1s ease-in-out;
+			position:absolute;
+			transition:all 1s ease-in;
 			overflow-y: scroll;
 		}
-		.anony-close-popup{
+		#anony-footer a.anony-close-popup{
 			position: absolute;
 			height: 30px;
 			width: 30px;
@@ -131,15 +153,16 @@ $global_style = sprintf(
 			z-index: 999;
 		}
 		.anony-popup-active .anony-popup-overlay{
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
 			height: 100%;
 			width: 100%;
 			background-color: rgb(0,0,0,0.5);
-			z-index: 99;
 		}
 		<?php
+		global $anony_popup_styles;
+		$anony_popup_styles = true;
 	}
 	?>
 	
@@ -150,10 +173,8 @@ $global_style = sprintf(
 	//phpcs:enable.
 	?>
 </style>
-<div class="anony-popup-wrapper anony-box-shadow"  id="<?php echo esc_attr( $id ); ?>" data-settings='<?php echo wp_json_encode( $settings ); ?>'>
-	<div class="anony-popup-overlay">
-		<a href="#" class="anony-close-popup">x</a>
-	</div>
+<div class="anony-popup-wrapper anony-box-shadow anony-popup-<?php echo esc_attr( $settings['animation_type'] ); ?>"  id="<?php echo esc_attr( $id ); ?>" data-settings='<?php echo wp_json_encode( $settings ); ?>'>
+	<div class="anony-popup-overlay"></div>
 	<div class="anony-popup-content">
 		<?php
 		do_action( 'anony_before_popup_' . str_replace( '-', '_', $id ) );
@@ -161,48 +182,48 @@ $global_style = sprintf(
 		do_action( 'anony_after_popup_' . str_replace( '-', '_', $id ) );
 		?>
 	</div>
+	<a href="#" class="anony-close-popup"><?php echo wp_kses( $close_icon, smpg_kses_extended_ruleset() ); ?></a>
 </div>
 <?php
 add_action(
 	'wp_footer',
 	function () {
-		global $popup_scripts;
-		if ( $popup_scripts ) {
-			return;
-		}
-		$popup_scripts = true;
-		?>
-		<script>
-			jQuery( document ).ready(
-				function($) {
-					$( '.anony-popup-wrapper' ).each(
-						function () {
-							var popUpSettings   = $( this ).data( 'settings' );
-							var triggerSelector =  popUpSettings.trigger_selector;
-							if ( triggerSelector === '' ) {
-								return;
-							}
-							$( document.body ).on(
-								'click',
-								triggerSelector,
-								function (e) {
-									e.preventDefault();
-									$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).toggleClass( 'anony-popup-open' );
-									$( '#' + popUpSettings.id ).toggleClass( 'anony-popup-active' );
-									$( '#' + popUpSettings.id ).find( '.anony-close-popup' ).css( 'opacity', '1' );
-									if ( $( '#' + popUpSettings.id ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
-										document.body.style.overflow = 'hidden';
-									} else {
-										document.body.style.overflow = '';
-									}
+		if ( is_null( $anony_popup_scripts ) ) {
+			?>
+			<script data-script="anony-popup">
+				jQuery( document ).ready(
+					function($) {
+						$( '.anony-popup-wrapper' ).each(
+							function () {
+								var popUpSettings   = $( this ).data( 'settings' );
+								var triggerSelector =  popUpSettings.trigger_selector;
+								if ( triggerSelector === '' ) {
+									return;
 								}
-							);
+								$( document.body ).on(
+									'click',
+									triggerSelector,
+									function (e) {
+										e.preventDefault();
+										$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).toggleClass( 'anony-popup-open' );
+										$( '#' + popUpSettings.id ).toggleClass( 'anony-popup-active' );
+										$( '#' + popUpSettings.id ).find( '.anony-close-popup' ).css( 'opacity', '1' );
+										if ( $( '#' + popUpSettings.id ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
+											document.body.style.overflow = 'hidden';
+										} else {
+											document.body.style.overflow = '';
+										}
+									}
+								);
 
-						}
-					);
-				}
-			);
-		</script>
-		<?php
+							}
+						);
+					}
+				);
+			</script>
+			<?php
+			global $anony_popup_scripts;
+			$anony_popup_scripts = true;
+		}
 	}
 );
