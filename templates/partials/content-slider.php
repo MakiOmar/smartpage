@@ -115,7 +115,7 @@ if ( ! $content_slider_styles ) {
 			}
 			.anony-content-slider-control button{
 				position: absolute;
-				top: 50%;
+				top: calc(50% - 17.5px);
 			}
 	
 			.anony-content-slider-control button.anony-content-slider-next{
