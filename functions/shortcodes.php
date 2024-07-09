@@ -38,12 +38,44 @@ $shcods = array(
 	'anony_svg_icon',
 	'anony_block',
 	'anony_image',
+	'anony_device_content',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
 }
 
+/**
+ * Renders specific content for device
+ *
+ * @param  string $atts The shortcode attributes.
+ * @return string
+ */
+function anony_device_content_shcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'desktop-content' => '',
+			'mobile-content'  => '',
+		),
+		$atts,
+		'anony_image'
+	);
+
+	if ( empty( $atts['desktop-content'] ) && empty( $atts['mobile-content'] ) ) {
+		return;
+	}
+	if ( wp_is_mobile() && ! empty( $atts['mobile-content'] ) ) {
+		$_post = get_post( absint( $atts['mobile-content'] ) );
+		if ( $_post ) {
+			return apply_filters( 'the_content', $_post->post_content );
+		}
+	} elseif ( ! empty( $atts['desktop-content'] ) ) {
+		$_post = get_post( absint( $atts['desktop-content'] ) );
+		if ( $_post ) {
+			return apply_filters( 'the_content', $_post->post_content );
+		}
+	}
+}
 /**
  * Renders a block
  *
@@ -572,6 +604,7 @@ function anony_popup_shcode( $atts ) {
 			'animation_type'      => 'slide',
 			'animation_direction' => 'right-left',
 			'trigger_selector'    => '',
+			'close-icon'          => 'x',
 		),
 		$atts,
 		'anony_popup'
@@ -595,6 +628,7 @@ function anony_popup_shcode( $atts ) {
 	$zindex           = $atts['zindex'];
 	$trigger_selector = $atts['trigger_selector'];
 	$animation_type   = $atts['animation_type'];
+	$close_icon       = apply_filters( 'anony_popup_close_icon', $atts['close-icon'] );
 	$settings         = $atts;
 	ob_start();
 	require locate_template( 'templates/partials/popup.php', false, false );
@@ -750,6 +784,7 @@ function anony_images_slider_shcode( $atts ) {
 			'ids'                => '',
 			'transition'         => '5000',
 			'animation'          => '1500',
+			'height'             => '350px',
 			'image_size_desktop' => 'medium', // Accepts (thumbnails or dots).
 			'image_size_mobile'  => 'medium', // Accepts (thumbnails or dots).
 		),
@@ -760,6 +795,7 @@ function anony_images_slider_shcode( $atts ) {
 	$slider_settings = array(
 
 		'style'           => 'one',
+		'height'          => $atts['height'],
 		'show_pagination' => true,
 		'pagination_type' => 'dots', // Accepts (thumbnails or dots).
 		'slider_data'     => array(
@@ -781,7 +817,6 @@ function anony_images_slider_shcode( $atts ) {
 			$data[]                 = $temp;
 		}
 	}
-
 	if ( empty( $data ) ) {
 		return '';
 	}
