@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 		 
-<div style="height:355px" class="anony-slider anony-posts-slider anony-images-slider anony-fade-slider anony-full-width white-bg" data-slider='<?php echo wp_json_encode( $slider_settings['slider_data'] ); ?>'>
+<div style="height:<?php echo esc_attr( $slider_settings['height'] ); ?>" class="anony-slider anony-posts-slider anony-images-slider anony-fade-slider anony-full-width white-bg" data-slider='<?php echo wp_json_encode( $slider_settings['slider_data'] ); ?>'>
 	
 	<?php
 	foreach ( $data as $index => $p ) :
