@@ -2,24 +2,19 @@
 jQuery( document ).ready(
 	function ($) {
 		"use strict";
-
-		var imageSliderTime;
-
-		var sliderSettings = $( '.anony-posts-slider' ).data( 'slider' );
-
-		function startAnimation(){
-
-			var activeNavSlide = $( '.anony-active-slide' );
+		function startAnimation( sliderObject ){
+			var sliderSettings = sliderObject.data( 'slider' );
+			var activeNavSlide = $( '.anony-active-slide', sliderObject );
 			var activeSlide    = activeNavSlide.data( 'id' );
 
-			$( '.anony-view' ).animate(
+			$( '.anony-view', sliderObject ).animate(
 				{
 					"opacity": "0",
 					"z-index": "0",
 				}
 			);
 
-			$( '#' + activeSlide ).animate(
+			$( '#' + activeSlide, sliderObject ).animate(
 				{
 					"opacity": "1",
 					"z-index": "10",
@@ -30,27 +25,28 @@ jQuery( document ).ready(
 			);
 		}
 
-		function resetImageSlider(){
+		function resetImageSlider( sliderObject ){
+			var sliderSettings = sliderObject.data( 'slider' );
 
-			startAnimation();
+			startAnimation( sliderObject );
 
-			imageSlider( sliderSettings.animation );
+			imageSlider( sliderSettings.animation, sliderObject );
 
 		}
-		function imageSlider(t){
-
-			var activeNavSlide = $( '.anony-active-slide' );
+		function imageSlider(t, sliderObject){
+			var sliderSettings = sliderObject.data( 'slider' );
+			var activeNavSlide = $( '.anony-active-slide', sliderObject );
 			var activeSlide    = activeNavSlide.data( 'id' );
 
 			imageSliderTime = setTimeout(
 				function () {
-					$( '#' + activeSlide ).animate(
+					$( '#' + activeSlide, sliderObject ).animate(
 						{
 							"opacity": "0",
 						},
 						{
 							start : function () {
-								if ($( '.anony-pause-slider' ).length !== 0) {
+								if ($( '.anony-pause-slider', sliderObject ).length !== 0) {
 									return;
 								}
 								activeNavSlide.removeClass( 'anony-active-slide' );
@@ -58,10 +54,10 @@ jQuery( document ).ready(
 								if (activeNavSlide.next().length !== 0) {
 									activeNavSlide.next().addClass( 'anony-active-slide' );
 								} else {
-									$( '.anony-slide-item' ).first().addClass( 'anony-active-slide' );
+									$( '.anony-slide-item', sliderObject ).first().addClass( 'anony-active-slide' );
 								}
 
-								resetImageSlider();
+								resetImageSlider( sliderObject );
 							},
 							duration: t,
 						}
@@ -71,46 +67,51 @@ jQuery( document ).ready(
 			);
 
 		}
-
-		$( '.anony-slide-item' ).on(
-			{
-				click: function (e) {
-					e.preventDefault();
-
-					$( '.anony-pause-slider' ).each(
-						function () {
+		var imageSliderTime;
+		$( '.anony-posts-slider' ).each(
+			function () {
+				var sliderObject = $( this );
+				var sliderSettings = sliderObject.data( 'slider' );
+				// Slider init
+				imageSlider( sliderSettings.animation, sliderObject );
+				$( '.anony-slide-item', sliderObject ).on(
+					{
+						click: function (e) {
+							e.preventDefault();
+		
+							$( '.anony-pause-slider', sliderObject ).each(
+								function () {
+									$( this ).removeClass( 'anony-pause-slider' );
+								}
+							);
+							$( '.anony-active-slide', sliderObject ).each(
+								function () {
+									$( this ).removeClass( 'anony-active-slide' );
+								}
+							);
+		
+							$( this ).addClass( 'anony-active-slide' );
+		
+							startAnimation( sliderObject );
+		
+						}
+					}
+				);
+		
+				$( '.anony-view, .anony-slide-title, .anony-featured-button, .anony-slide-item', sliderObject ).on(
+					{
+						mouseover : function () {
+							$( this ).addClass( 'anony-pause-slider' );
+							clearTimeout( imageSliderTime );
+						},
+		
+						mouseleave : function () {
 							$( this ).removeClass( 'anony-pause-slider' );
+							imageSlider( sliderSettings.animation, sliderObject );
 						}
-					);
-					$( '.anony-active-slide' ).each(
-						function () {
-							$( this ).removeClass( 'anony-active-slide' );
-						}
-					);
-
-					$( this ).addClass( 'anony-active-slide' );
-
-					startAnimation();
-
-				}
+					}
+				);
 			}
 		);
-
-		$( '.anony-view, .anony-slide-title, .anony-featured-button, .anony-slide-item' ).on(
-			{
-				mouseover : function () {
-					$( this ).addClass( 'anony-pause-slider' );
-					clearTimeout( imageSliderTime );
-				},
-
-				mouseleave : function () {
-					$( this ).removeClass( 'anony-pause-slider' );
-					imageSlider( sliderSettings.animation );
-				}
-			}
-		);
-
-		// Slider init
-		imageSlider( sliderSettings.animation );
 	}
 );
