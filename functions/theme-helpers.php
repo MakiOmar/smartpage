@@ -30,6 +30,45 @@ function smpg_require_all_files( $dir ) {
 	}
 }
 /**
+ * Extend kses for SVG
+ *
+ * @return array
+ */
+function smpg_kses_extended_ruleset() {
+	$kses_defaults = wp_kses_allowed_html( 'post' );
+
+	$svg_args = array(
+		'svg'   => array(
+			'class'           => true,
+			'aria-hidden'     => true,
+			'aria-labelledby' => true,
+			'role'            => true,
+			'xmlns'           => true,
+			'width'           => true,
+			'height'          => true,
+			'fill'            => true,
+			'stroke'          => true,
+			'stroke-width'    => true,
+			'stroke-linecap'  => true,
+			'stroke-linejoin' => true,
+			'viewbox'         => true, // <= Must be lower case!
+		),
+		'g'     => array( 'fill' => true ),
+		'title' => array( 'title' => true ),
+		'path'  => array(
+			'd'    => true,
+			'fill' => true,
+		),
+		'line'  => array(
+			'x1' => true,
+			'x2' => true,
+			'y1' => true,
+			'y2' => true,
+		),
+	);
+	return array_merge( $kses_defaults, $svg_args );
+}
+/**
  * Display a hint for administrator if he missd somthing.
  *
  * @param string $hint The hint.
