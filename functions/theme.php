@@ -224,7 +224,10 @@ add_action( 'anony_mobile_header_first', 'anony_mobile_header_first_cb', 10 );
  * @return void
  */
 function anony_menu_popup() {
-	echo do_shortcode( '[anony_popup id="anony-mobile-menu" callback="anony_mobile_menu"]' );
+	$menu = do_shortcode( '[anony_popup id="anony-mobile-menu" callback="anony_mobile_menu"]' );
+	//phpcs:disable
+	echo apply_filters( 'anony_menu_popup', $menu );
+	//phpcs:enable
 }
 add_action( 'anony_before_footer_closing', 'anony_menu_popup' );
 
