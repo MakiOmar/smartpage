@@ -12,6 +12,19 @@ jQuery( document ).ready(
 	function ($) {
 		"use strict";
 		/**--------------------------------------------------------------------
+		 *                     Header
+		/*--------------------------------------------------------------------*/
+		var headerheight = $('#anony-header-wrapper').height();
+		$( window ).scroll(
+			function () {
+				if ($( window ).scrollTop() > headerheight ) {
+					$( '.anony-has-sticky' ).find('.anony-header-content').addClass( 'anony-sticky-header' );
+				} else {
+					$( '.anony-has-sticky' ).find('.anony-header-content').removeClass( 'anony-sticky-header' );
+				}
+			}
+		);
+		/**--------------------------------------------------------------------
 		 *                     Popup
 		/*--------------------------------------------------------------------*/
 		$( document.body ).on(
@@ -128,17 +141,6 @@ jQuery( document ).ready(
 				}
 			}
 		);
-		if ($( window ).width() >= 768) {
-			$( ".menu-item-has-children" ).hover(
-				function () {
-					$(this).find('.sub-menu, .anony-sub-menu').slideDown();
-					$(this).find('.sub-menu, .anony-sub-menu').css('display', 'flex');
-				},
-				function () {
-					$(this).find('.sub-menu, .anony-sub-menu').slideUp();
-				}
-			);
-		}
 		$( "#anony-lang-toggle" ).on(
 			'click',
 			function (e) {
