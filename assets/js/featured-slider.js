@@ -24,54 +24,42 @@ jQuery( document ).ready(
 				}
 			);
 		}
-
-		function resetImageSlider( sliderObject ){
-			var sliderSettings = sliderObject.data( 'slider' );
-
-			startAnimation( sliderObject );
-
-			imageSlider( sliderSettings.animation, sliderObject );
-
-		}
 		function imageSlider(t, sliderObject){
-			var sliderSettings = sliderObject.data( 'slider' );
 			var activeNavSlide = $( '.anony-active-slide', sliderObject );
 			var activeSlide    = activeNavSlide.data( 'id' );
-
-			imageSliderTime = setTimeout(
-				function () {
-					$( '#' + activeSlide, sliderObject ).animate(
-						{
-							"opacity": "0",
-						},
-						{
-							start : function () {
-								if ($( '.anony-pause-slider', sliderObject ).length !== 0) {
-									return;
-								}
-								activeNavSlide.removeClass( 'anony-active-slide' );
-
-								if (activeNavSlide.next().length !== 0) {
-									activeNavSlide.next().addClass( 'anony-active-slide' );
-								} else {
-									$( '.anony-slide-item', sliderObject ).first().addClass( 'anony-active-slide' );
-								}
-
-								resetImageSlider( sliderObject );
-							},
-							duration: t,
-						}
-					);
+			$( '#' + activeSlide, sliderObject ).animate(
+				{
+					//"opacity": "0",
 				},
-				sliderSettings.transition
+				{
+					start : function () {
+						if ($( '.anony-pause-slider', sliderObject ).length !== 0) {
+							return;
+						}
+						activeNavSlide.removeClass( 'anony-active-slide' );
+
+						if (activeNavSlide.next().length !== 0) {
+							activeNavSlide.next().addClass( 'anony-active-slide' );
+						} else {
+							$( '.anony-slide-item', sliderObject ).first().addClass( 'anony-active-slide' );
+						}
+					},
+					duration: t,
+				}
 			);
 
+
 		}
-		var imageSliderTime;
 		$( '.anony-posts-slider' ).each(
 			function () {
 				var sliderObject = $( this );
 				var sliderSettings = sliderObject.data( 'slider' );
+				var slideHeight    = $('.anony-view', sliderObject).outerHeight();
+				var slideNavHeight    = $('.anony-images-slider-navigation', sliderObject).outerHeight();
+				$('.anony-images-slides-container', sliderObject).height( slideHeight + 'px' );
+				$('.anony-angle-wrapper', sliderObject).css( 'top', ( ( slideHeight / 2 ) + ( slideNavHeight ) / 2 ) + 'px' );
+				$('.anony-images-slider-navigation', sliderObject).show();
+				var autoplayInterval;
 				// Slider init
 				imageSlider( sliderSettings.animation, sliderObject );
 				$( '.anony-slide-item', sliderObject ).on(
@@ -97,20 +85,62 @@ jQuery( document ).ready(
 						}
 					}
 				);
-		
-				$( '.anony-view, .anony-slide-title, .anony-featured-button, .anony-slide-item', sliderObject ).on(
+				var navigation = $( '.anony-images-slider-navigation', sliderObject );
+				function navigateToNextSlide () {
+					if( $('.anony-active-slide', sliderObject).next().length > 0 ) {
+						$( '.anony-next-wrapper', navigation ).click();
+					} else {
+						$( '.anony-pagination-dot:first-child', sliderObject ).click();
+					}
+					
+				}
+
+				
+				function startAutoplay() {
+					autoplayInterval = setInterval(navigateToNextSlide, sliderSettings.transition);
+				} 
+
+				function stopAutoplay() {
+					clearInterval(autoplayInterval);
+				}		
+				//startAutoplay();
+				$( '.anony-prev-wrapper', navigation ).on(
+					'click',
+					function(e) {
+						e.preventDefault();
+						stopAutoplay();
+						navigateToNextSlide ();
+						startAutoplay();
+					}
+				);
+
+				$( '.anony-next-wrapper', navigation ).on(
+					'click',
+					function(e) {
+						e.preventDefault();
+						stopAutoplay();
+						if( $('.anony-active-slide', sliderObject).next().length > 0 ) {
+							$('.anony-active-slide', sliderObject).next().click();
+						}
+						startAutoplay();
+					}
+				);
+				
+				$( '.anony-view', sliderObject ).on(
 					{
-						mouseover : function () {
+						mouseenter : function () {
 							$( this ).addClass( 'anony-pause-slider' );
-							clearTimeout( imageSliderTime );
+							console.log('czxc');
+							//stopAutoplay();
 						},
 		
 						mouseleave : function () {
 							$( this ).removeClass( 'anony-pause-slider' );
-							imageSlider( sliderSettings.animation, sliderObject );
+							//startAutoplay();
 						}
 					}
 				);
+
 			}
 		);
 	}
