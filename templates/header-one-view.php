@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require 'document-head.php';
 $my_account_url = class_exists( 'WooCommerce' ) ? get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) : '#';
 ?>
-<header class="anony-header white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ); ?>">
+<header class="anony-header white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ) . esc_attr( $sticky_class ); ?>">
 	<?php do_action( 'anony_before_header_content' ); ?>
 	<div class="anony-grid-row">
 		<div class="anony-grid-col anony-grid-col-2 anony-inline-flex flex-h-center flex-v-center">

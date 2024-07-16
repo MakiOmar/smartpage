@@ -23,7 +23,7 @@ require 'document-head.php';
 	</a>
 	<?php get_search_form(); ?>
 </div>
-<header class="anony-header white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ); ?>">
+<header class="anony-header white-bg <?php echo 'header_style_' . esc_attr( ANONY_HEADER_STYLE ) . esc_attr( $sticky_class ); ?>">
 	<?php require locate_template( 'templates/header-top-view.php', false, false ); ?>
 	<?php do_action( 'anony_before_header_content' ); ?>
 	<div id="anony-sub-top-wrapper">
