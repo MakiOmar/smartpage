@@ -23,11 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					if ( ! empty( $image_id ) && is_numeric( $image_id ) ) {
 						$image_url = wp_get_attachment_image_url( absint( $image_id ), $thumb_size );
 						?>
-						<img width="<?php echo esc_html( $width ); ?>" height="<?php echo esc_html( $height ); ?>" width="<?php echo esc_html( $width ); ?>" height="<?php echo esc_html( $height ); ?>" style="width:<?php echo esc_html( $width ); ?>;height:<?php echo esc_html( $height ); ?>" src="<?php echo esc_url( $image_url ); ?>"/>
+						<img width="<?php echo esc_html( $width ); ?>" height="<?php echo esc_html( $height ); ?>" style="max-width:<?php echo esc_html( $width ); ?>;height:<?php echo esc_html( $height ); ?>" src="<?php echo esc_url( $image_url ); ?>"/>
 						<?php
 					} else {
 						?>
-						<img width="<?php echo esc_html( $width ); ?>" height="<?php echo esc_html( $height ); ?>" style="width:<?php echo esc_html( $width ); ?>;height:<?php echo esc_html( $height ); ?>" src="<?php echo esc_url( ANONY_THEME_URI . '/images/placeholder_150x150.webp' ); ?>"/>
+						<img width="<?php echo esc_html( $width ); ?>" height="<?php echo esc_html( $height ); ?>" style="max-width:<?php echo esc_html( $width ); ?>;height:<?php echo esc_html( $height ); ?>" src="<?php echo esc_url( ANONY_THEME_URI . '/images/placeholder_150x150.webp' ); ?>"/>
 						<?php
 					}
 					?>
