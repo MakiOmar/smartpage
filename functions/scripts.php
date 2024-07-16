@@ -298,22 +298,15 @@ add_action(
 				display: inline-block;
 				vertical-align: top;
 			}
-			<?php
-			if ( 'sticky' === $anony_options->mobile_header_behavior && wp_is_mobile() ) {
-				?>
-				#anony-mobile-header{
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100%;
-					z-index: 95;
-				}
-				body{
-					padding-top: 100px;
-				}
-				<?php
+	
+			.anony-sticky-header{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 95;
 			}
-			?>
+	
 			#anony-hidden-search-form{
 				display: flex;
 				align-items: center;
