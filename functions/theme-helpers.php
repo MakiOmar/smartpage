@@ -68,6 +68,97 @@ function smpg_kses_extended_ruleset() {
 	);
 	return array_merge( $kses_defaults, $svg_args );
 }
+
+/**
+ * Display social media follow us
+ *
+ * @return void
+ */
+function anony_socials_follow() {
+	$anony_options  = ANONY_Options_Model::get_instance();
+	$languages_menu = anony_navigation( 'anony-languages-menu', '' );
+	$socials_follow = array(
+		array(
+			'icon'  => 'facebook',
+			'url'   => $anony_options->facebook,
+			'title' => __( 'Follow us on Facebook', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'twitter',
+			'url'   => $anony_options->twitter,
+			'title' => __( 'Follow us on Twitter', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'youtube',
+			'url'   => $anony_options->youtube,
+			'title' => __( 'Follow us on Youtube', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'pinterest',
+			'url'   => $anony_options->pinterest,
+			'title' => __( 'Follow us on Pinterest', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'linkedin',
+			'url'   => $anony_options->linkedin,
+			'title' => __( 'Follow us on Linkedin', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'instagram',
+			'url'   => $anony_options->instagram,
+			'title' => __( 'Follow us on Instagram', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'tumblr',
+			'url'   => $anony_options->tumblr,
+			'title' => __( 'Follow us on Tumblr', 'smartpage' ),
+		),
+
+		array(
+			'icon'  => 'rss',
+			'url'   => $anony_options->rss,
+			'title' => __( 'Follow us with RSS feed', 'smartpage' ),
+		),
+	);
+	$phone = $anony_options->phone;
+	$email = $anony_options->email;
+	?>
+	<nav id="anony-follow-contact">
+	<?php do_action( 'anony_before_follow_links' ); ?>
+
+	<ul id="anony-follow" class="list-style-none">
+	<?php
+	foreach ( $socials_follow as $data ) {
+		echo '<li>';
+		echo '<a class="icon" href="' . esc_url( $data['url'] ) . '" title="' . esc_attr( $data['title'] ) . '" target="_blank"><i class="fa fa-' . esc_attr( $data['icon'] ) . '"></i></a>';
+		echo '</li>';
+	}
+	?>
+
+	<li>
+		<a href="tel:<?php echo esc_attr( $phone ); ?>" class="phone-call"><i class="fa fa-phone"></i></a>
+	</li>
+	
+	<li>
+		<a href="mailto:<?php echo esc_attr( $email ); ?>" class="email-me"><i class="fa fa-envelope"></i></a>
+	</li>
+	
+	</ul>
+
+	<?php
+	//phpcs:disable
+	echo $languages_menu;
+	//phpcs:enable
+	?>
+	</nav>
+	<?php
+}
 /**
  * Display a hint for administrator if he missd somthing.
  *
@@ -154,7 +245,8 @@ if ( ! function_exists( 'anony_elementor_editor_custom_fonts' ) ) {
 			}
 		}
 
-		if ( ! empty( $font_faces ) ) : ?>
+		if ( ! empty( $font_faces ) ) :
+			?>
 			<style id="anony-editor-custom-fonts">
 				<?php
 				//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
