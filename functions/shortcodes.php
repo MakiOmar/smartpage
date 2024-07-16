@@ -785,6 +785,8 @@ function anony_images_slider_shcode( $atts ) {
 			'transition'         => '5000',
 			'animation'          => '1500',
 			'height'             => '350px',
+			'show_pagination'    => 'on',
+			'show_navigation'    => 'on',
 			'image_size_desktop' => 'medium', // Accepts (thumbnails or dots).
 			'image_size_mobile'  => 'medium', // Accepts (thumbnails or dots).
 		),
@@ -796,7 +798,8 @@ function anony_images_slider_shcode( $atts ) {
 
 		'style'           => 'one',
 		'height'          => $atts['height'],
-		'show_pagination' => true,
+		'show_pagination' => 'on' === $atts['show_pagination'] ? true : false,
+		'show_navigation' => 'on' === $atts['show_navigation'] ? true : false,
 		'pagination_type' => 'dots', // Accepts (thumbnails or dots).
 		'slider_data'     => array(
 			'transition' => $atts['transition'],
@@ -852,21 +855,23 @@ function anony_images_slider_shcode( $atts ) {
 function anony_posts_slider_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'slider_content' => '', // Accepts (featured-cat or featured-post).
-			'featured_cat'   => '0',
-			'taxonomy'       => 'category',
-			'post_type'      => 'post',
+			'slider_content'  => '', // Accepts (featured-cat or featured-post).
+			'featured_cat'    => '0',
+			'taxonomy'        => 'category',
+			'post_type'       => 'post',
+			'show_pagination' => 'on',
+			'show_navigation' => 'on',
 		),
 		$atts,
 		'anony_posts_slider'
 	);
-
 	$anony_options   = ANONY_Options_Model::get_instance();
 	$slider_settings = array(
 
 		'style'           => 'one',
 		'show_read_more'  => false,
-		'show_pagination' => true,
+		'show_pagination' => 'on' === $atts['show_pagination'] ? true : false,
+		'show_navigation' => 'on' === $atts['show_navigation'] ? true : false,
 		'pagination_type' => 'dots', // Accepts (thumbnails or dots).
 		'slider_data'     => array(
 			'transition' => 5000,
