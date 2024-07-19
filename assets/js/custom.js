@@ -14,13 +14,21 @@ jQuery( document ).ready(
 		/**--------------------------------------------------------------------
 		 *                     Header
 		/*--------------------------------------------------------------------*/
-		var headerheight = $('#anony-header-wrapper').height();
+		var headerheight = $('#anony-header-wrapper').outerHeight();
+		$('#anony-header-wrapper').height( headerheight );
+		var headerContentHeight = $('.anony-header-content').outerHeight();
+		var headerContent = $( '.anony-has-sticky' ).find('.anony-header-content');
 		$( window ).scroll(
 			function () {
 				if ($( window ).scrollTop() > headerheight ) {
-					$( '.anony-has-sticky' ).find('.anony-header-content').addClass( 'anony-sticky-header' );
+					headerContent.addClass( 'anony-sticky-header' );
+					if ( $( window ).scrollTop() - headerheight > 85 ) {
+						headerContent.addClass('anony-sticky-header-in');
+					} else {
+						headerContent.removeClass( 'anony-sticky-header-in' );
+					}
 				} else {
-					$( '.anony-has-sticky' ).find('.anony-header-content').removeClass( 'anony-sticky-header' );
+					headerContent.removeClass( 'anony-sticky-header' );
 				}
 			}
 		);
@@ -70,6 +78,13 @@ jQuery( document ).ready(
 		/**--------------------------------------------------------------------
 		 *                     WooCommerce
 		/*--------------------------------------------------------------------*/
+		$('body').on(
+			'click',
+			'.zoomImg',
+			function () {
+				$('.woocommerce-product-gallery__trigger').click();
+			}
+		);
 		var anonyAjaxUrl = anonyLoca.ajaxURL;
 		$( "#anony-mini-cart-widget" ).on(
 			'click',

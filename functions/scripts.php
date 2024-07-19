@@ -301,10 +301,18 @@ add_action(
 	
 			.anony-sticky-header{
 				position: fixed;
-				top: 0;
+				top: -82px;
 				left: 0;
 				width: 100%;
+				opacity: 0;
+			}
+			.anony-sticky-header-in{
+				top: 0;
 				z-index: 95;
+				opacity: 0.95;
+			}
+			.anony-header-content{
+				transition: top 1s ease-in;
 			}
 	
 			#anony-hidden-search-form{
