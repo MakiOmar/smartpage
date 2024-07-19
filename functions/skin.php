@@ -32,6 +32,9 @@ function anony_theme_skin() {
 		<?php
 		if ( class_exists( 'WooCommerce' ) ) {
 			?>
+				.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt:hover, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt:hover, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt:hover, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt:hover{
+					background-color: <?php echo esc_html( $secondary_color ); ?>!important;
+				}
 				.elementor-wc-products ul.products li.product span.onsale,
 				.woocommerce span.onsale,
 				.woocommerce ul.products li.product .onsale {
@@ -51,7 +54,7 @@ function anony_theme_skin() {
 				.anony-quantity input.anony-minus{
 					background-color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
-				.add_to_cart_button{
+				.add_to_cart_button, .woocommerce div.product form.cart .single_add_to_cart_button{
 					background-color: <?php echo esc_html( $primary_color ); ?>!important;
 				}
 				.elementor-page .elementor-products-grid ul.products.elementor-grid li.product, .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {

@@ -1,0 +1,57 @@
+#anony-mobile-footer-menu form.cart{
+    display: flex;
+}
+.anony-quantity {
+    display: flex;
+    align-items: center;
+}
+
+li.product .anony-quantity{
+    justify-content: center;
+}
+
+.anony-quantity input {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    border-radius: 50%;
+}
+
+.anony-quantity input.anony-plus,
+.anony-quantity input.anony-minus {
+    cursor: pointer;
+}
+
+.anony-quantity input.anony-plus:hover,
+.anony-quantity input.anony-minus:hover {
+    background-color: #f9f9f9;
+}
+/* Chrome, Safari, Edge, Opera */
+.anony-quantity input::-webkit-outer-spin-button,
+.anony-quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.anony-quantity input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.anony-quantity-style-one {
+    background-color: #F5F5F5;
+    padding: 2px 3px;
+    border-radius: 8px;
+}
+
+.anony-quantity.anony-quantity-style-one input.anony-plus,
+.anony-quantity.anony-quantity-style-one input.anony-minus {
+    background-color: #fff!important;
+    border-radius:8px;
+    border-color:#CACACA;
+}
