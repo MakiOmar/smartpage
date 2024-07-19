@@ -10,6 +10,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+add_filter(
+	'embed_defaults',
+	function () {
+		return array(
+			'width'  => 350,
+			'height' => 300,
+		);
+	}
+);
+
 add_action(
 	'admin_head',
 	function () {
