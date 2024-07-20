@@ -21,7 +21,7 @@ if ( ! function_exists( 'anony_mobile_menu' ) ) {
 	 * @return string
 	 */
 	function anony_mobile_menu() {
-		return '<div id="anony-mobile-menu-container">' . apply_filters( 'anony_mobile_menu', anony_navigation( 'anony-main-menu' ) ) . '</div>';
+		return '<div id="anony-mobile-menu-container">' . apply_filters( 'anony_mobile_menu', anony_navigation( 'anony-mobile-menu' ) ) . '</div>';
 	}
 }
 /**
@@ -205,6 +205,7 @@ add_action(
 			'anony-main-menu'      => esc_html__( 'Main menu. Shows on the main navigation', 'smartpage' ),
 			'anonyfooter-menu'     => esc_html__( 'Footer menu. Shows on the footer', 'smartpage' ),
 			'anony-languages-menu' => esc_html__( 'Languages menu. Shows on the top header', 'smartpage' ),
+			'anony-mobile-menu'    => esc_html__( 'Mobile menu. Shows on mobile', 'smartpage' ),
 		);
 
 		foreach ( $menus as $name => $description ) {
