@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direct.ly
+	exit; // Exit if accessed directly.
 }
 
 get_header();
 $anony_options = ANONY_Options_Model::get_instance();
 ?>
-
+<main class="anony-content">
 <div class="anony-grid">
 
 	<div class="anony-grid-row"><?php anony_breadcrumbs(); ?></div>
@@ -106,6 +106,6 @@ $anony_options = ANONY_Options_Model::get_instance();
 	</div>
 	 
 </div>
-
+</main>
 
 <?php get_footer(); ?>

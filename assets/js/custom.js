@@ -171,6 +171,11 @@ jQuery( document ).ready(
 				$( "#anony-hidden-search-form" ).toggleClass( 'anony-show-search-form' );
 			}
 		);
+		$(document).on('click', function(event) {
+			if ($(event.target).closest('#anony-hidden-search-form').length > 0 && $(event.target).closest('#anony-hidden-search-form form').length === 0) {
+			  $( '.anony-search-form-toggle' ).click();
+			}
+		  });
 
 		/**--------------------------------------------------------------------
 		 *                     Page scroll
