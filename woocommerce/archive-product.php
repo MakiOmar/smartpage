@@ -119,7 +119,7 @@ do_action( 'woocommerce_before_main_content' );
 				
 			</div>
 			<?php
-			if ( 'no-sidebar' === $anony_options->sidebar ) {
+			if ( 'no-sidebar' !== $anony_options->sidebar ) {
 				/**
 				 * Hook: woocommerce_sidebar.
 				 *
