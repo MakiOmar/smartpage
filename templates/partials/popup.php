@@ -115,8 +115,7 @@ $global_style = sprintf(
 ?>
 <style data-style="anony-popup">
 	<?php
-	if ( ! $anony_popup_styles ) {
-		$anony_popup_styles = true;
+	if ( ! defined( 'ANONY_POPUP_STYLES' ) ) {
 		?>
 		.anony-popup-wrapper{
 			position: fixed;
@@ -161,8 +160,7 @@ $global_style = sprintf(
 			background-color: rgb(0,0,0,0.5);
 		}
 		<?php
-		global $anony_popup_styles;
-		$anony_popup_styles = true;
+		defined( 'ANONY_POPUP_STYLES', true );
 	}
 	?>
 	
@@ -188,7 +186,7 @@ $global_style = sprintf(
 add_action(
 	'wp_footer',
 	function () {
-		if ( is_null( $anony_popup_scripts ) ) {
+		if ( ! defined( 'ANONY_POPUP_SCRIPT' ) ) {
 			?>
 			<script data-script="anony-popup">
 				jQuery( document ).ready(
@@ -205,8 +203,8 @@ add_action(
 									triggerSelector,
 									function (e) {
 										e.preventDefault();
-										$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).toggleClass( 'anony-popup-open' );
-										$( '#' + popUpSettings.id ).toggleClass( 'anony-popup-active' );
+										$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).addClass( 'anony-popup-open' );
+										$( '#' + popUpSettings.id ).addClass( 'anony-popup-active' );
 										$( '#' + popUpSettings.id ).find( '.anony-close-popup' ).css( 'opacity', '1' );
 										if ( $( '#' + popUpSettings.id ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
 											document.body.style.overflow = 'hidden';
@@ -222,8 +220,7 @@ add_action(
 				);
 			</script>
 			<?php
-			global $anony_popup_scripts;
-			$anony_popup_scripts = true;
+			define( 'ANONY_POPUP_SCRIPT', true );
 		}
 	}
 );
