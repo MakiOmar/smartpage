@@ -231,9 +231,6 @@ add_action(
 							var slider          = $('.anony-content-slider', theContainer);
 							var contentSliderInterval;
 							theContainer.css( 'width' , ( parseInt( totalSlideWidth ) * slidesPerPage ) + 'px' );
-							if ( recalculate ) {
-								theContainer.css( 'height', $('.anony-content-slide', theContainer).height() );
-							}
 							if ( infiniteLoop && ! slider.hasClass( 'anony-content-slider-init' ) ) {
 								// Clone the first and last slide.
 								var firstSlide = $('.anony-content-slide:first-child', theContainer).clone();
@@ -266,6 +263,18 @@ add_action(
 							// Adjust the slider width.
 							var sliderWidth = totalSlideWidth * itemsLength + ( 10 * itemsLength );
 							slider.width(sliderWidth);
+							if ( recalculate ) {
+								var maxHeight = 0;
+
+								$('.anony-content-slide', theContainer).each(function() {
+									var slideHeight = $(this).height();
+									if (slideHeight > maxHeight) {
+									maxHeight = slideHeight;
+									}
+								});
+
+								theContainer.css( 'height', $('.anony-content-slide', theContainer).height( maxHeight ) );
+							}
 							// Set initial position.
 							<?php if ( ! is_rtl() ) { ?>
 							var initialPosition = -totalSlideWidth ;
@@ -330,16 +339,17 @@ add_action(
 									$(this).removeClass('paused');
 								}
 							);
-							
-							contentSliderInterval = setInterval(
-								function(){
-									if ( 'yes' === sliderSettings.autoplay && $('.paused').length === 0 ) {
-										
-										theContainer.find('.anony-content-slider-next').click();
-									}
-								},
-								3000
-							);
+							if ( ! recalculate ) {
+								contentSliderInterval = setInterval(
+									function(){
+										if ( 'yes' === sliderSettings.autoplay && $('.paused').length === 0 ) {
+											
+											theContainer.find('.anony-content-slider-next').click();
+										}
+									},
+									3000
+								);
+							}
 							let xDown = null;
 							let yDown = null;
 
@@ -426,7 +436,7 @@ add_action(
 				}
 				$.fn.initContentSlider();
 				$( window ).on( "resize", function() {
-					$.fn.initContentSlider( true );
+					//$.fn.initContentSlider( true );
 				});
 			});
 		</script>
