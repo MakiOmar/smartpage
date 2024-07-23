@@ -25,6 +25,12 @@ define(
 					'validate' => 'no_html',
 				),
 				array(
+					'id'       => 'disable_wc_breadcrumbs',
+					'title'    => esc_html__( 'Disable wc breadcrumbs', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
 					'id'       => 'show_empty_rating',
 					'title'    => esc_html__( 'Show product\'s empty rating', 'smartpage' ),
 					'type'     => 'switch',

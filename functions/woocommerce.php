@@ -12,6 +12,11 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed direct.
 
+$anony_options = ANONY_Options_Model::get_instance();
+
+if ( '1' === $anony_options->disable_wc_breadcrumbs ) {
+	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+}
 require_once 'woocommerce-orders.php';
 
 /**
@@ -743,3 +748,4 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'anony_loop_qty_selector', 10, 
 add_filter( 'single_product_archive_thumbnail_size', 'anony_woo_loop_thumb_size' );
 add_filter( 'woocommerce_single_product_carousel_options', 'anony_update_woo_flexslider_options' );
 add_filter( 'woocommerce_add_to_cart_fragments', 'anony_woocommerce_add_to_cart_fragments' );
+
