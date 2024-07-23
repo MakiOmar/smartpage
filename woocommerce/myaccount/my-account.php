@@ -26,7 +26,7 @@ if ( empty( $anony_options->custom_woo_account_menu ) ) {
 	 */
 	do_action( 'woocommerce_account_navigation' );
 } else {
-	echo do_shortcode( "[anony_navigation menu={$anony_options->custom_woo_account_menu}]" );
+	echo do_shortcode( "[anony_navigation class='woocommerce-MyAccount-navigation' menu={$anony_options->custom_woo_account_menu}]" );
 }
 ?>
 
