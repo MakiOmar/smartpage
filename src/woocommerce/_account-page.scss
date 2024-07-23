@@ -6,7 +6,7 @@
 	font-weight: bold;
 	margin-bottom: 20px;
 }
-  
+
 .woocommerce-account:not( .anony-is-mobile ) .anony-content .woocommerce {
 	padding: 20px;
 	border: 1px solid #d1d1d1;
@@ -113,4 +113,21 @@ color: #fff;
 
 .woocommerce-account .woocommerce-MyAccount-navigation {
 	list-style: none;
+}
+@media screen and ( max-width:480px ) {
+	.woocommerce-orders-table th, .woocommerce-orders-table__row td{
+		width:20%;
+		text-align: center;
+	}
+	.woocommerce-orders-table__row td, .woocommerce-orders-table__row td span.amount{
+		font-size: 12px;
+	}
+	.woocommerce-orders-table__row td::before{
+		display: none;
+	}
+	.woocommerce table.my_account_orders .button {
+		padding: 3px;
+		width: 50px;
+		min-width: auto;
+	}
 }
