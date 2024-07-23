@@ -2,7 +2,7 @@
     vertical-align: middle;
 }
 #anony-mini-cart-widget{
-    z-index: 99;
+    z-index: 9999;
     position: relative;
 }
 #widget_shopping_cart_content_overlay{
@@ -218,5 +218,9 @@ body.rtl .woocommerce-mini-cart-item .remove_from_cart_button{
     }
     .anony-cart-collaterals{
         width: 100%;
+    }
+    .woocommerce-mini-cart.cart_list{
+        overflow: scroll;
+        max-height: calc(100vh - 350px);
     }
 }
