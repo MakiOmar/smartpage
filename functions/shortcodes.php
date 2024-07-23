@@ -384,7 +384,7 @@ function anony_navigation_shcode( $atts ) {
 		'menu'            => $atts['menu'],
 		'container'       => 'nav',
 		'container_class' => 'menu-container',
-		'menu_class'      => "woocommerce-MyAccount-navigation menu anony-menu {$direction}{$classes}",
+		'menu_class'      => "menu anony-menu {$direction}{$classes}",
 		'echo'            => false,
 		'items_wrap'      => '<ul id="%1$s" style="align-items:' . $atts['align'] . '" class="%2$s">%3$s</ul>',
 	);
@@ -392,7 +392,7 @@ function anony_navigation_shcode( $atts ) {
 }
 
 /**
- * Renders terms listings
+ * Renders posts listings
  *
  * @param  string $atts the shortcode attributes.
  * @return string
@@ -405,6 +405,7 @@ function anony_post_listing_shcode( $atts ) {
 			'number'          => 3,
 			'desktop_columns' => 3,
 			'mobile_columns'  => 1,
+			'order'           => 'ASC',
 		),
 		$atts,
 		'anony_post_listing'
@@ -456,6 +457,8 @@ function anony_terms_listing_shcode( $atts ) {
 			'height'            => '100px',
 			'width'             => '100px',
 			'layout'            => 'circle',
+			'order'             => 'ASC',
+			'orderby'           => 'id',
 		),
 		$atts,
 		'anony_terms_listing'
@@ -466,6 +469,8 @@ function anony_terms_listing_shcode( $atts ) {
 		'number'     => $atts['number'],
 		'fields'     => 'id=>name',
 		'hide_empty' => false,
+		'order'      => 'ASC',
+		'orderby'    => 'id',
 	);
 
 	if ( isset( $atts['parent'] ) ) {
