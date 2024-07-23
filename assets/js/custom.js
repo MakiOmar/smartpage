@@ -173,7 +173,7 @@ jQuery( document ).ready(
 		);
 		$(document).on('click', function(event) {
 			if ($(event.target).closest('#anony-hidden-search-form').length > 0 && $(event.target).closest('#anony-hidden-search-form form').length === 0) {
-			  $( '.anony-search-form-toggle' ).click();
+				$( "#anony-hidden-search-form" ).removeClass( 'anony-show-search-form' );
 			}
 		  });
 
