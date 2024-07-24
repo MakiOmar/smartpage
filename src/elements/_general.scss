@@ -168,6 +168,9 @@ select{
 	flex-grow: 1;
 	width: 100%;
 }
+.anony-flex-grow-initial{
+	flex-grow: initial!important;
+}
 .anony-grid-row{
 	position: relative;
 	display: flex;

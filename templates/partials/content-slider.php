@@ -138,10 +138,11 @@ if ( ! $content_slider_styles ) {
 ?>
 <style>
 	#<?php echo esc_html( $container_id ); ?> {
-		height: <?php echo esc_html( $height ); ?>;
+		height: calc(<?php echo esc_html( $height ); ?> + 60px);
 	}
 	#<?php echo esc_html( $container_id ); ?> .anony-content-slide {
-		max-width: <?php echo esc_html( $item_width ); ?>!important;
+		width: <?php echo esc_html( $item_width ); ?>!important;
+		height: <?php echo esc_html( $height ); ?>!important;
 	}
 	#<?php echo esc_html( $container_id ); ?> img{
 		max-height: <?php echo esc_html( $height ); ?>;
@@ -340,6 +341,7 @@ add_action(
 								}
 							);
 							if ( ! recalculate ) {
+								/*
 								contentSliderInterval = setInterval(
 									function(){
 										if ( 'yes' === sliderSettings.autoplay && $('.paused').length === 0 ) {
@@ -348,7 +350,7 @@ add_action(
 										}
 									},
 									3000
-								);
+								);*/
 							}
 							let xDown = null;
 							let yDown = null;

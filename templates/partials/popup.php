@@ -134,7 +134,7 @@ $global_style = sprintf(
 		}
 		.anony-popup-content{
 			position:absolute;
-			transition:all 1s ease-in;
+			transition:all 0.3s ease-in;
 			overflow-y: scroll;
 		}
 		#anony-footer a.anony-close-popup{
