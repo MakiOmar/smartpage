@@ -51,4 +51,8 @@ table.woocommerce-table--order-details tr:hover {background-color: #ddd;}
 	.woocommerce-checkout table.shop_table th:nth-child(2n+1), .woocommerce-checkout table.shop_table td:nth-child(2n+1) {
 		width: 70%;
 	}
+	.woocommerce-checkout #customer_details{
+		display: flex;
+  		flex-direction: column-reverse;
+	}
 }

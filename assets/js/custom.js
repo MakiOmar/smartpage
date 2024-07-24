@@ -14,15 +14,22 @@ jQuery( document ).ready(
 		/**--------------------------------------------------------------------
 		 *                     Header
 		/*--------------------------------------------------------------------*/
-		var headerheight = $('#anony-header-wrapper').outerHeight();
-		$('#anony-header-wrapper').height( headerheight );
-		var headerContentHeight = $('.anony-header-content').outerHeight();
+		if ( $('#anony-mobile-header').length > 0 ) {
+			var headerID = '#anony-mobile-header';
+		} else {
+			var headerID = '#anony-header-wrapper';
+		}
+		var headerheight = $(headerID).height();
+		var headerContentHeight = $('.anony-header-content').height();
+		console.log(headerContentHeight);
 		var headerContent = $( '.anony-has-sticky' ).find('.anony-header-content');
 		$( window ).scroll(
 			function () {
-				if ($( window ).scrollTop() > headerheight ) {
+				console.log($( window ).scrollTop());
+				if ($( window ).scrollTop() > headerContentHeight ) {
+					$(headerID).height( headerheight );
 					headerContent.addClass( 'anony-sticky-header' );
-					if ( $( window ).scrollTop() - headerheight > 85 ) {
+					if ( $( window ).scrollTop() - headerContentHeight > 10 ) {
 						headerContent.addClass('anony-sticky-header-in');
 					} else {
 						headerContent.removeClass( 'anony-sticky-header-in' );
