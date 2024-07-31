@@ -50,7 +50,7 @@ function anony_ajax_search_cb() {
 		}
 		wp_reset_postdata();
 	} else {
-		echo '<p>No products found.</p>';
+		echo '<p>' . esc_html__( 'No posts found.' ) . '</p>';
 	}
 
 	wp_die();
