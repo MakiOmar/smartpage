@@ -1,5 +1,7 @@
 @use './mobile_menu';
-
+.anony-menu{
+	list-style-type: none;
+}
 #anony-main-menu-con li.anony-search-form-toggle a:hover {
 	background-color: transparent
 }

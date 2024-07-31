@@ -223,7 +223,12 @@ p{
 a{
 	display: inline-block;
 }
-
+.anony-reverse-row{
+	flex-direction: row-reverse;
+}
+.anony-reverse-column{
+	flex-direction: row-reverse;
+}
 .anony-active, .anony-active-tab{
 	background-color: #fc2a2a;
 	font-weight: bold;
@@ -248,6 +253,18 @@ a{
 	box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
 	-webkit-box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
 	-moz-box-shadow: 0px 0px 14px 0px rgba(160,160,160,0.75);
+}
+.anony-padding-5{
+	padding:5px
+}
+.anony-padding-10{
+	padding:10px
+}
+.anony-padding-15{
+	padding:15px
+}
+.anony-padding-20{
+	padding:20px
 }
 .anony-curved-5{
 	border-radius: 5px;
