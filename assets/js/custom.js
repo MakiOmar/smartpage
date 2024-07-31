@@ -21,11 +21,9 @@ jQuery( document ).ready(
 		}
 		var headerheight = $(headerID).height();
 		var headerContentHeight = $('.anony-header-content').height();
-		console.log(headerContentHeight);
 		var headerContent = $( '.anony-has-sticky' ).find('.anony-header-content');
 		$( window ).scroll(
 			function () {
-				console.log($( window ).scrollTop());
 				if ($( window ).scrollTop() > headerContentHeight ) {
 					$(headerID).height( headerheight );
 					headerContent.addClass( 'anony-sticky-header' );
