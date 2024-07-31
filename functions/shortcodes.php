@@ -858,7 +858,7 @@ function anony_images_slider_shcode( $atts ) {
  * @return string
  */
 function anony_posts_slider_shcode( $atts ) {
-	$atts = shortcode_atts(
+	$atts            = shortcode_atts(
 		array(
 			'slider_content'  => '', // Accepts (featured-cat or featured-post).
 			'featured_cat'    => '0',
