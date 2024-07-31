@@ -322,3 +322,22 @@ add_filter(
 		return $mime_types;
 	}
 );
+
+/**
+ * Search posts by title
+ *
+ * @param string $where Where clause.
+ * @param object $query Query object.
+ * @return string
+ */
+function anony_search_posts_where( $where, $query ) {
+	global $wpdb;
+
+	$contains = esc_sql( $query->get( 'contains' ) );
+	if ( ! $contains ) {
+		$contains = esc_sql( $query->get( 's' ) );
+	}
+	$where .= " AND $wpdb->posts.post_title LIKE '%$contains%'";
+	return $where;
+}
+add_filter( 'posts_where', 'anony_search_posts_where', 10, 2 );

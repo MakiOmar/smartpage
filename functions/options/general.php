@@ -62,6 +62,13 @@ define(
 					// Translators: Date string.
 					'default'  => sprintf( esc_html__( 'Show/hide page scroll button', 'smartpage' ), gmdate( 'Y' ) ),
 				),
+				array(
+					'id'       => 'ajax_search',
+					'title'    => esc_html__( 'AJAX Search', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Show results while user is typing', 'smartpage' ),
+				),
 			),
 		)
 	)

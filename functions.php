@@ -121,6 +121,11 @@ require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-rate.php' );
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-cart-counter.php' );
 
 /**
+ * Searc AJAX.
+ */
+require_once wp_normalize_path( ANONY_LIBS_DIR . 'ajax/ajax-search.php' );
+
+/**
  * TinyMCE buttons.
  */
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'mce/tinymce-editor-btns.php' );
