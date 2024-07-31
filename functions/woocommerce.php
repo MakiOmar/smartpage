@@ -568,6 +568,8 @@ function anony_fancy_quantity_script() {
 		}
 		// Trigger change event for WooCommerce
 		quantityInput.trigger('change');
+		const AnonyWooQtyChanged = new Event("anony_woo_qty_changed");
+		document.dispatchEvent(AnonyWooQtyChanged);
 		});
 	});
 	</script>
