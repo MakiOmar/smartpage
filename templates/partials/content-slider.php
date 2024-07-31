@@ -341,7 +341,6 @@ add_action(
 								}
 							);
 							if ( ! recalculate ) {
-								/*
 								contentSliderInterval = setInterval(
 									function(){
 										if ( 'yes' === sliderSettings.autoplay && $('.paused').length === 0 ) {
@@ -350,7 +349,7 @@ add_action(
 										}
 									},
 									3000
-								);*/
+								);
 							}
 							let xDown = null;
 							let yDown = null;
