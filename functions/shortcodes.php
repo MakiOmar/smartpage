@@ -586,12 +586,26 @@ function anony_testimonials_shcode( $atts ) {
 }
 
 /**
+ * Flag to control scripts output
+ *
+ * @var string
+ */
+$anony_popup_scripts = false;
+
+/**
+ * Flag to control styles output
+ *
+ * @var string
+ */
+$anony_popup_styles = false;
+/**
  * Renders popup
  *
  * @param  string $atts the shortcode attributes.
  * @return string
  */
 function anony_popup_shcode( $atts ) {
+	global $anony_popup_scripts;
 	$atts = shortcode_atts(
 		array(
 			'id'                  => '',

@@ -115,7 +115,7 @@ $global_style = sprintf(
 ?>
 <style data-style="anony-popup">
 	<?php
-	if ( ! defined( 'ANONY_POPUP_STYLES' ) ) {
+	if ( ! $anony_popup_styles ) {
 		?>
 		.anony-popup-wrapper{
 			position: fixed;
@@ -160,7 +160,7 @@ $global_style = sprintf(
 			background-color: rgb(0,0,0,0.5);
 		}
 		<?php
-		defined( 'ANONY_POPUP_STYLES', true );
+		$anony_popup_styles = true;
 	}
 	?>
 	
@@ -186,7 +186,9 @@ $global_style = sprintf(
 add_action(
 	'wp_footer',
 	function () {
-		if ( ! defined( 'ANONY_POPUP_SCRIPT' ) ) {
+		//phpcs:disable
+		if ( ! $anony_popup_scripts ) {
+			//phpcs:enable
 			?>
 			<script data-script="anony-popup">
 				jQuery( document ).ready(
@@ -220,7 +222,7 @@ add_action(
 				);
 			</script>
 			<?php
-			define( 'ANONY_POPUP_SCRIPT', true );
+			$anony_popup_scripts = true;
 		}
 	}
 );
