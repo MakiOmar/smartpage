@@ -27,8 +27,11 @@ function anony_woocommerce_ajax_add_to_cart_js() {
 			),
 			true
 		);
-		wp_enqueue_script( 'anony-woocommerce-ajax-add-to-cart' );
-		wp_localize_script( 'anony-woocommerce-ajax-add-to-cart', 'AnonyCartScripts', array( 'nonce' => wp_create_nonce( 'anony-addtocart' ) ) );
+		$use_ajax_add_to_cart = apply_filters( 'anony_use_ajax_add_to_cart', true );
+		if ( $use_ajax_add_to_cart ) {
+			wp_enqueue_script( 'anony-woocommerce-ajax-add-to-cart' );
+			wp_localize_script( 'anony-woocommerce-ajax-add-to-cart', 'AnonyCartScripts', array( 'nonce' => wp_create_nonce( 'anony-addtocart' ) ) );
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'anony_woocommerce_ajax_add_to_cart_js', 99 );
