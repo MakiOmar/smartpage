@@ -25,6 +25,12 @@ define(
 					'validate' => 'no_html',
 				),
 				array(
+					'id'       => 'mini_cart_open',
+					'title'    => esc_html__( 'Mini cart open', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+				),
+				array(
 					'id'       => 'disable_wc_breadcrumbs',
 					'title'    => esc_html__( 'Disable wc breadcrumbs', 'smartpage' ),
 					'type'     => 'switch',
