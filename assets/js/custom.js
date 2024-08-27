@@ -81,6 +81,36 @@ jQuery( document ).ready(
 		);
 
 		/**--------------------------------------------------------------------
+		 *                     PopUp
+		/*--------------------------------------------------------------------*/
+		function($) {
+			$( '.anony-popup-wrapper' ).each(
+				function () {
+					var popUpSettings   = $( this ).data( 'settings' );
+					var triggerSelector =  popUpSettings.trigger_selector;
+					if ( triggerSelector === '' ) {
+						return;
+					}
+					$( document.body ).on(
+						'click',
+						triggerSelector,
+						function (e) {
+							e.preventDefault();
+							$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).addClass( 'anony-popup-open' );
+							$( '#' + popUpSettings.id ).addClass( 'anony-popup-active' );
+							$( '#' + popUpSettings.id ).find( '.anony-close-popup' ).css( 'opacity', '1' );
+							if ( $( '#' + popUpSettings.id ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
+								document.body.style.overflow = 'hidden';
+							} else {
+								document.body.style.overflow = '';
+							}
+						}
+					);
+
+				}
+			);
+		}
+		/**--------------------------------------------------------------------
 		 *                     WooCommerce
 		/*--------------------------------------------------------------------*/
 		$('body').on(
@@ -115,7 +145,7 @@ jQuery( document ).ready(
 			function () {
 				setTimeout(
 					function () {
-						if ( ! $( ".widget_shopping_cart_content" ).hasClass( 'anony-mini-cart-open' ) ) {
+						if ( anonyLoca.anonyMiniCartOpen !== 'no' && ! $( ".widget_shopping_cart_content" ).hasClass( 'anony-mini-cart-open' ) ) {
 							$( ".widget_shopping_cart_content" ).addClass( 'anony-mini-cart-open' );
 							$( "#widget_shopping_cart_content_overlay" ).show();
 						}

@@ -590,14 +590,14 @@ function anony_testimonials_shcode( $atts ) {
  *
  * @var string
  */
-$anony_popup_scripts = false;
+$GLOBALS['anony_popup_scripts'] = false;
 
 /**
  * Flag to control styles output
  *
  * @var string
  */
-$anony_popup_styles = false;
+$GLOBALS['anony_popup_styles'] = false;
 /**
  * Renders popup
  *

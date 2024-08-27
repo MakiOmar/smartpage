@@ -113,57 +113,7 @@ $global_style = sprintf(
 	esc_attr( $settings['margin'] ),
 );
 ?>
-<style data-style="anony-popup">
-	<?php
-	if ( ! $anony_popup_styles ) {
-		?>
-		.anony-popup-wrapper{
-			position: fixed;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			z-index: -10;
-			visibility: hidden;
-			opacity:0;
-		}
-		.anony-popup-wrapper.anony-popup-active{
-			z-index: 999;
-			visibility: visible;
-			opacity: 1;
-		}
-		.anony-popup-content{
-			position:absolute;
-			transition:all 0.3s ease-in;
-			overflow-y: scroll;
-		}
-		#anony-footer a.anony-close-popup{
-			position: absolute;
-			height: 30px;
-			width: 30px;
-			border-radius: 50%;
-			background-color: #000;
-			color: #fff;
-			font-size: 18px;
-			display: inline-flex;
-			justify-content: center;
-			align-items: center;
-			opacity: 0;
-			z-index: 999;
-		}
-		.anony-popup-active .anony-popup-overlay{
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			background-color: rgb(0,0,0,0.5);
-		}
-		<?php
-		$anony_popup_styles = true;
-	}
-	?>
-	
+<style data-style="anony-popup">	
 	<?php
 	//phpcs:disable
 	echo $global_style;
@@ -182,47 +132,4 @@ $global_style = sprintf(
 	</div>
 	<a href="#" class="anony-close-popup"><?php echo wp_kses( $close_icon, smpg_kses_extended_ruleset() ); ?></a>
 </div>
-<?php
-add_action(
-	'wp_footer',
-	function () {
-		//phpcs:disable
-		if ( ! $anony_popup_scripts ) {
-			//phpcs:enable
-			?>
-			<script data-script="anony-popup">
-				jQuery( document ).ready(
-					function($) {
-						$( '.anony-popup-wrapper' ).each(
-							function () {
-								var popUpSettings   = $( this ).data( 'settings' );
-								var triggerSelector =  popUpSettings.trigger_selector;
-								if ( triggerSelector === '' ) {
-									return;
-								}
-								$( document.body ).on(
-									'click',
-									triggerSelector,
-									function (e) {
-										e.preventDefault();
-										$( '#' + popUpSettings.id ).find( '.anony-popup-content' ).addClass( 'anony-popup-open' );
-										$( '#' + popUpSettings.id ).addClass( 'anony-popup-active' );
-										$( '#' + popUpSettings.id ).find( '.anony-close-popup' ).css( 'opacity', '1' );
-										if ( $( '#' + popUpSettings.id ).find( '.anony-popup-content' ).hasClass( 'anony-popup-open' ) ) {
-											document.body.style.overflow = 'hidden';
-										} else {
-											document.body.style.overflow = '';
-										}
-									}
-								);
 
-							}
-						);
-					}
-				);
-			</script>
-			<?php
-			$anony_popup_scripts = true;
-		}
-	}
-);
