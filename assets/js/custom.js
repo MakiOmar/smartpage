@@ -6,11 +6,11 @@ window.onload = function () {
 		loader.style.display = 'none';
 	}
 };
-
 // Start Jquery for wordpress
 jQuery(document).ready(
 	function ($) {
 		"use strict";
+
 		/**--------------------------------------------------------------------
 		 *                     Header
 		/*--------------------------------------------------------------------*/
@@ -37,9 +37,36 @@ jQuery(document).ready(
 				}
 			}
 		);
+		
 		/**--------------------------------------------------------------------
-		 *                     Popup
+		 *                     PopUp
 		/*--------------------------------------------------------------------*/
+
+		$('.anony-popup-wrapper').each(
+			function () {
+				var popUpSettings = $(this).data('settings');
+				var triggerSelector = popUpSettings.trigger_selector;
+				if (triggerSelector === '') {
+					return;
+				}
+				$(document.body).on(
+					'click',
+					triggerSelector,
+					function (e) {
+						e.preventDefault();
+						$('#' + popUpSettings.id).find('.anony-popup-content').addClass('anony-popup-open');
+						$('#' + popUpSettings.id).addClass('anony-popup-active');
+						$('#' + popUpSettings.id).find('.anony-close-popup').css('opacity', '1');
+						if ($('#' + popUpSettings.id).find('.anony-popup-content').hasClass('anony-popup-open')) {
+							document.body.style.overflow = 'hidden';
+						} else {
+							document.body.style.overflow = '';
+						}
+					}
+				);
+
+			}
+		);
 		$(document.body).on(
 			'click',
 			'.anony-popup-toggle',
@@ -81,36 +108,6 @@ jQuery(document).ready(
 		);
 
 		/**--------------------------------------------------------------------
-		 *                     PopUp
-		/*--------------------------------------------------------------------*/
-
-		$('.anony-popup-wrapper').each(
-			function () {
-				var popUpSettings = $(this).data('settings');
-				var triggerSelector = popUpSettings.trigger_selector;
-				if (triggerSelector === '') {
-					return;
-				}
-				$(document.body).on(
-					'click',
-					triggerSelector,
-					function (e) {
-						e.preventDefault();
-						$('#' + popUpSettings.id).find('.anony-popup-content').addClass('anony-popup-open');
-						$('#' + popUpSettings.id).addClass('anony-popup-active');
-						$('#' + popUpSettings.id).find('.anony-close-popup').css('opacity', '1');
-						if ($('#' + popUpSettings.id).find('.anony-popup-content').hasClass('anony-popup-open')) {
-							document.body.style.overflow = 'hidden';
-						} else {
-							document.body.style.overflow = '';
-						}
-					}
-				);
-
-			}
-		);
-
-		/**--------------------------------------------------------------------
 		 *                     WooCommerce
 		/*--------------------------------------------------------------------*/
 		$('body').on(
@@ -140,25 +137,28 @@ jQuery(document).ready(
 				$("#widget_shopping_cart_content_overlay").hide();
 			}
 		);
-		$(document.body).on(
-			'added_to_cart',
-			function () {
-				setTimeout(
-					function () {
-						if (anonyLoca.anonyMiniCartOpen !== 'no' && !$(".widget_shopping_cart_content").hasClass('anony-mini-cart-open')) {
-							$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
-							$("#widget_shopping_cart_content_overlay").show();
-						}
-					},
-					200
-				);
-			}
-		);
+		if (anonyLoca.anonyMiniCartOpen != 'no' ) {
+			$(document.body).on(
+				'added_to_cart',
+				function () {
+					setTimeout(
+						function () {
+								$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+								$("#widget_shopping_cart_content_overlay").show();
+						},
+						200
+					);
+				}
+			);
+		}
 		// Listen for the 'added_to_cart' event triggered by WooCommerce.
 		$('body').on(
 			'added_to_cart removed_from_cart',
 			function (e) {
-				$("#widget_shopping_cart_content_overlay").show();
+				if (anonyLoca.anonyMiniCartOpen != 'no' ) {
+					$("#widget_shopping_cart_content_overlay").show();
+				}
+				
 				// Make an AJAX request to get the updated cart count.
 				$.ajax(
 					{

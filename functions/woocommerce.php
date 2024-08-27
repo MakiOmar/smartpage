@@ -710,7 +710,13 @@ function anony_update_woo_flexslider_options( $options ) {
  * @return array
  */
 function anony_woocommerce_add_to_cart_fragments( $fragments ) {
-	$fragments['div.widget_shopping_cart_content'] = str_replace( 'widget_shopping_cart_content', 'widget_shopping_cart_content anony-mini-cart-open', $fragments['div.widget_shopping_cart_content'] );
+	$anony_options = ANONY_Options_Model::get_instance();
+	// cart_item_key is used when an item is to be removed from cart.
+	//phpcs:disable
+	if ( '1' === $anony_options->mini_cart_open || isset( $_POST['cart_item_key'] ) ) {
+		//phpcs:enable
+		$fragments['div.widget_shopping_cart_content'] = str_replace( 'widget_shopping_cart_content', 'widget_shopping_cart_content anony-mini-cart-open', $fragments['div.widget_shopping_cart_content'] );
+	}
 	return $fragments;
 }
 
