@@ -29,11 +29,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $product_tabs ) ) :
-
-	$reviews['reviews'] = $product_tabs['reviews'];
-
-	unset( $product_tabs['reviews'] );
-
+	if ( isset( $product_tabs['reviews'] ) ) {
+		$reviews['reviews'] = $product_tabs['reviews'];
+		unset( $product_tabs['reviews'] );
+	}
 	?>
 
 	<div class="woocommerce-tabs wc-tabs-wrapper">
@@ -60,21 +59,22 @@ if ( ! empty( $product_tabs ) ) :
 		<?php do_action( 'woocommerce_product_after_tabs' ); ?>
 		
 	</div>
-	
-	<div class="anony-wc-reviews">
-		<?php foreach ( $reviews as $key => $product_tab ) : ?>
-			<h3>
-				<a><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></a>
-			</h3>
-			<div class="woocommerce-panel--<?php echo esc_attr( $key ); ?> entry-content">
-				<?php
-				if ( isset( $product_tab['callback'] ) ) {
+	<?php if (  isset( $reviews ) && ! empty( $reviews ) ) { ?>
+		<div class="anony-wc-reviews">
+			<?php foreach ( $reviews as $key => $product_tab ) : ?>
+				<h3>
+					<a><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></a>
+				</h3>
+				<div class="woocommerce-panel--<?php echo esc_attr( $key ); ?> entry-content">
+					<?php
+					if ( isset( $product_tab['callback'] ) ) {
 
-					call_user_func( $product_tab['callback'], $key, $product_tab );
-				}
-				?>
-			</div>
-		<?php endforeach; ?>
-	</div>
+						call_user_func( $product_tab['callback'], $key, $product_tab );
+					}
+					?>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	<?php } ?>
 
 <?php endif; ?>
