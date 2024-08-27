@@ -200,6 +200,8 @@ function anony_scripts() {
 
 		$anony_loca['anonyUsePrettyPhoto'] = '1' === $anony_options->disable_prettyphoto ? false : true;
 
+		$anony_loca['anonyMiniCartOpen'] = '1' === $anony_options->mini_cart_open ? 'yes' : 'no';
+
 		// load prettyPhoto if needed.
 		if ( '1' !== $anony_options->disable_prettyphoto ) {
 			wp_enqueue_script( 'jquery.prettyPhoto' );
