@@ -1152,6 +1152,7 @@ function anony_products_loop_shcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'ids'                => '',
+			'category'           => '',
 			'author'             => '',
 			'slider'             => 'off',
 			'height'             => '500px',
@@ -1168,6 +1169,10 @@ function anony_products_loop_shcode( $atts ) {
 	$products_loop_args = array();
 	if ( ! empty( $ids ) ) {
 		$products_loop_args['include'] = $ids;
+	}
+	if ( ! empty( $atts['category'] ) ) {
+		$products_loop_args['product_category_id'] = explode( ',', $atts['category'] );
+		unset( $products_loop_args['include'] );
 	}
 
 	if ( ! empty( $atts['author'] ) ) {
