@@ -39,6 +39,13 @@ define(
 					'validate' => 'no_html',
 					'desc'     => esc_html__( 'Replace pagination with a load more button', 'smartpage' ),
 				),
+				array(
+					'id'       => 'ajax_load_more_comment',
+					'title'    => esc_html__( 'ajax comments', 'smartpage' ),
+					'type'     => 'switch',
+					'validate' => 'no_html',
+					'desc'     => esc_html__( 'Load comments with ajax', 'smartpage' ),
+				),
 
 				array(
 					'id'       => 'enable_direct_checkout',
