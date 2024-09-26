@@ -45,6 +45,7 @@ if ( ! $content_slider_styles ) {
 				-moz-transition: transform 1.7s ease-in-out;
 				-ms-transition: transform 1.7s ease-in-out;
 				-o-transition: transform 1.7s ease-in-out;
+				display:flex
 			}
 			.anony-content-slider-control{
 				position: absolute;
