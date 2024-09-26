@@ -664,7 +664,7 @@ function anony_direct_checkout_form() {
 function anony_direct_checkout() {
 	global $woocommerce;
 
-	if ( ! $woocommerce ) {
+	if ( ! $woocommerce || ! isset( $_POST ) ) {
 		return;
 	}
 	// phpcs:disable
