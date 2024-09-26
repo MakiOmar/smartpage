@@ -39,10 +39,203 @@ $shcods = array(
 	'anony_block',
 	'anony_image',
 	'anony_device_content',
+	'anony_phone_input',
 );
 
 foreach ( $shcods as $code ) {
 	add_shortcode( $code, $code . '_shcode' );
+}
+
+/**
+ * Renders phone input
+ *
+ * @param  string $atts the shortcode attributes.
+ * @return string
+ */
+function anony_phone_input_shcode( $atts ) {
+	$atts       = shortcode_atts(
+		array(
+			'name'        => 'phone',
+			'with-styles' => 'yes',
+			'target'      => '',
+		),
+		$atts,
+		'phone_input'
+	);
+	$countries  = file_get_contents( 'https://jalsah.app/wp-content/uploads/2024/09/countires-codes-and-flags.json' );
+	$countries  = json_decode( $countries, true );
+	$key_values = array_column( $countries, 'name_ar' );
+	array_multisort( $key_values, SORT_ASC, $countries );
+	$user_country_code = snsk_ip_api_country();
+	$unique_id         = wp_unique_id( 'anony_' );
+	ob_start();
+	?>
+	<?php if ( '' !== $atts['target'] ) { ?>
+		<style>
+			input[name=<?php echo esc_attr( $atts['target'] ); ?>]{
+				display: none;
+			}
+		</style>
+	<?php } ?>
+	<?php if ( 'yes' === $atts['with-styles'] ) { ?>
+	<style>
+		.anony-dial-codes img.emoji {
+			position: relative;
+			top: 3px;
+		}
+		input.anony_dial_phone{
+			margin-<?php echo is_rtl() ? 'right' : 'left'; ?>: 0;
+		}
+		.anony-dial-codes {
+			position: relative;
+			display: flex;
+			direction: ltr;
+			text-align: left;
+			flex-grow: 1;
+		}
+		.anony-dial-codes-content {
+			display: none;
+			position: absolute;
+			background-color: #f1f1f1;
+			min-width: 160px;
+			max-height: 200px;
+			overflow-y: auto;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+			max-width: 250px;
+				top: 55px;
+		}
+		.anony-dial-codes-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+		.anony-dial-codes-content a:hover {
+			background-color: #ddd;
+		}
+		.anony-filter-input {
+			width: 100%;
+			max-width: 220px;
+			text-align: <?php echo is_rtl() ? 'right' : 'left'; ?>;
+			direction: <?php echo is_rtl() ? 'rtl' : 'ltr'; ?>;
+			padding: 10px;
+			box-sizing: border-box;
+			margin-bottom: 5px;
+		}
+		button.anony_dial_codes_selected_choice{
+			min-width:100px;
+			height:47px;
+			padding:0 10px;
+			color: #000;
+			background-color: #ddd;
+		}
+		.anony-dial-codes-phone-label{
+			text-align: <?php echo is_rtl() ? 'right' : 'left'; ?>;;
+			font-size: 18px;
+		}
+	</style>
+	<?php } ?>
+	<label class="anony-dial-codes-phone-label">رقم الموبايل</label>
+	<div id="<?php echo esc_attr( $unique_id ); ?>" class="anony-dial-codes">
+		<div class="anony-flex flex-v-center anony-full-width">
+			<button class="anony_dial_codes_selected_choice"></button>
+			<input type="tel" class="anony_dial_phone" name="<?php echo esc_attr( $atts['name'] ); ?>" value="<?php echo esc_attr( str_replace( $user_country_code, '', apply_filters( str_replace( '-', '_', $atts['name'] . '_value' ), '' ) ) ); ?>"/>
+		</div>
+		<!-- Filter Input Box -->
+		<div class="anony-dial-codes-content">
+		<input type="text" class="anony-filter-input" placeholder="إبحث عن الدولة...">
+		<?php
+		foreach ( $countries as $index => $country ) {
+			$full_label = $country['flag'] . ' (<span style="direction="ltr"">' . $country['dial_code'] . '</span>) ' . $country['name_ar'];
+			$label      = $country['flag'] . ' (' . $country['dial_code'] . ')';
+			if ( $user_country_code === $country['country_code'] ) {
+				$first_choice   = $label;
+				$user_dial_code = $country['dial_code'];
+			} elseif ( $index < 1 ) {
+				$first_choice   = $label;
+				$user_dial_code = $country['dial_code'];
+			}
+			echo '<span>';
+			echo '<a class="anony-dialling-code" href="#" data-dial-code="' . esc_attr( $country['dial_code'] ) . '">' . wp_kses_post( $full_label ) . '</a>';
+			echo '<a style="display:none" class="anony_selected_dial_code">' . wp_kses_post( $label ) . '</a>';
+			echo '</span>';
+		}
+		?>
+		</div>
+		<input type="text" style="display:none" name="country_code" class="anony_dial_code" id="<?php echo esc_attr( $atts['name'] ); ?>_country_code" value="<?php echo isset( $user_dial_code ) ? esc_attr( $user_dial_code ) : ''; ?>"/>
+		<div style="display:none" class="anony_dial_codes_first_choice"><?php echo isset( $first_choice ) ? wp_kses_post( $first_choice ) : ''; ?></div>
+	</div>
+	<?php
+	add_action(
+		'wp_footer',
+		function () use( $atts, $unique_id ) {
+			?>
+			<?php if ( ! empty( $atts['target'] ) ) { ?>
+				<script>
+					jQuery( document ).ready( function( $ ) {
+						$('input[name=<?php echo esc_attr( $atts['target'] ); ?>]').closest('.jet-form-builder-row').hide();
+						var parent = $( '#<?php echo esc_attr( $unique_id ); ?>' );
+						var phoneInput = $('input[name=<?php echo esc_attr( $atts['name'] ); ?>]', parent);
+						var countryCodeInput = $('input[name=country_code]', parent);
+			
+						var target = '<?php echo esc_html( $atts['target'] ); ?>';
+			
+						function updateBillingPhone( billingPhoneInput ) {
+							var phone = phoneInput.val().trim();
+							var countryCode = countryCodeInput.val().trim();
+							billingPhoneInput.val( countryCode + phone ).change();
+						}
+						if ( $('input[name=' + target + ']').val() === '' ) {
+							// Set initial value on document ready
+							updateBillingPhone( $('input[name=' + target + ']') );
+						}
+						phoneInput.on(
+							'input',
+							function(){
+								updateBillingPhone( $('input[name=' + target + ']') );
+							}
+						);
+						countryCodeInput.on(
+							'input',
+							function(){
+								updateBillingPhone( $('input[name=' + target + ']') );
+							}
+						);
+					} );
+				</script>
+			<?php } ?>
+			<script>
+				jQuery( document ).ready( function( $ ) {
+					var parent = $( '#<?php echo esc_attr( $unique_id ); ?>' );
+					$('.anony-filter-input', parent).on(
+						'keyup',
+						function () {
+							const filter = $(this).val().toLowerCase();
+							const links = $('.anony-dialling-code', parent);
+
+							links.each(function () {
+								const link = $(this);
+								if (link.text().toLowerCase().includes(filter)) {
+									link.parent().show();
+								} else {
+									link.parent().hide();
+								}
+							});
+
+							// Show all links when the filter is empty
+							if (!filter) {
+								links.parent().show();
+							}
+						}
+					);
+				} );
+				
+			</script>
+			<?php
+		}
+	);
+	return ob_get_clean();
 }
 
 /**
