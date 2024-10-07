@@ -66,7 +66,7 @@ function anony_phone_input_shcode( $atts ) {
 	$countries  = json_decode( $countries, true );
 	$key_values = array_column( $countries, 'name_ar' );
 	array_multisort( $key_values, SORT_ASC, $countries );
-	$user_country_code = snsk_ip_api_country();
+	$user_country_code = '';
 	$unique_id         = wp_unique_id( 'anony_' );
 	ob_start();
 	?>
