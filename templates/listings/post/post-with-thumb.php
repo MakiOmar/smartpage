@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php echo wp_kses_post( $p['comments_number'] ); ?>
 		</div>
 
-		<?php if ( $has_category ) { ?>
+		<?php if ( isset( $has_category ) ) { ?>
 		 
 			<div class="category">
 			 
