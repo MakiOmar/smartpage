@@ -118,16 +118,6 @@ jQuery(document).ready(
 			}
 		);
 		var anonyAjaxUrl = anonyLoca.ajaxURL;
-		$("#anony-mini-cart-widget").on(
-			'click',
-			'#anony-mobile-cart-toggle',
-			function (e) {
-				e.preventDefault();
-				$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
-				$("#widget_shopping_cart_content_overlay").show();
-			}
-		);
-
 		$(document.body).on(
 			'click',
 			'.anony-close-mini-cart, #widget_shopping_cart_content_overlay,.anony-mini-cart-close-cart',

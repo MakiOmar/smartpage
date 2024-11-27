@@ -374,4 +374,26 @@ add_action(
 	}
 );
 
+add_action(
+	'wp_footer',
+	function () {
+		?>
+	<script delay-exclud>
+		jQuery( document ).ready(
+			function($) {
+				$("#anony-mini-cart-widget").on(
+					'click',
+					'#anony-mobile-cart-toggle',
+					function (e) {
+						e.preventDefault();
+						$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
+						$("#widget_shopping_cart_content_overlay").show();
+					}
+				);
+			}
+		);
+	</script>
+		<?php
+	}
+);
 require_once wp_normalize_path( ANONY_LIBS_DIR . 'skin.php' );
