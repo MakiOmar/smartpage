@@ -1,194 +1,194 @@
 html {
-	direction: rtl;
-	unicode-bidi: embed;
+  direction: rtl;
+  unicode-bidi: embed;
 }
 
 body :not(i) {
-	font-style: normal;
-	letter-spacing: 0;
+  font-style: normal;
+  letter-spacing: 0;
 }
 
 .anony-custom-bullets ul li::before {
-	margin-left: auto;
-	margin-right: -1em;
+  margin-left: auto;
+  margin-right: -1em;
 }
 
 a.pp_close, a.pp_expand {
-	text-indent: 10000px;
+  text-indent: 10000px;
 }
 
 .anony-search-form-toggle {
-	right: auto;
-	left: 0;
+  right: auto;
+  left: 0;
 }
 
 .anony-main-menu-toggle {
-	right: auto;
-	left: 15px;
+  right: auto;
+  left: 15px;
 }
 
 .anony-warning {
-	border-left: none;
-	border-right: 6px solid #1E1E1E;
+  border-left: none;
+  border-right: 6px solid #1E1E1E;
 }
 
 #dun_text_wrapper {
-	text-align: right;
+  text-align: right;
 }
 
 .anony-skew-bg::after, .anony-skew-bg::before {
-	transform-origin: bottom left;
-	transform: skew(30deg, 0deg);
+  transform-origin: bottom left;
+  transform: skew(30deg, 0deg);
 }
 
 .single-post p, .single-post li {
-	line-height: 35px;
+  line-height: 35px;
 }
 
 .anony-table-of-content {
-	float: right;
-	margin-right: 0;
-	border-right: 0;
-	margin-left: 10px;
-	border-left: 1px solid;
+  float: right;
+  margin-right: 0;
+  border-right: 0;
+  margin-left: 10px;
+  border-left: 1px solid;
 }
 
 #anony-page-scroll-wrapper {
-	right: auto;
-	left: 20px;
+  right: auto;
+  left: 20px;
 }
 
 #anony-hidden-search-form #anony-searchform {
-	flex-direction: row;
+  flex-direction: row;
 }
 
 #anony-hidden-search-form #anony-searchform .anony-search-input {
-	border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 #anony-hidden-search-form #anony-searchform .anony-form_submit {
-	border-radius: 10px 0px 0px 10px;
+  border-radius: 10px 0px 0px 10px;
 }
 
 #anony-hidden-search-form > .anony-search-form-toggle {
-	right: auto;
-	left: 20px;
+  right: auto;
+  left: 20px;
 }
 
 /***End Footer***/
 .single-download-title .date {
-	margin-right: 0;
-	margin-left: 5px;
+  margin-right: 0;
+  margin-left: 5px;
 }
 
 .anony-cat-more {
-	left: 0;
-	right: auto;
-	font-style: normal;
+  left: 0;
+  right: auto;
+  font-style: normal;
 }
 
 .anony-ca-item h4 span {
-	text-align: right;
+  text-align: right;
 }
 
 .anony-ca-item h4 span.anony-ca-quote {
-	left: auto;
-	right: 10px;
+  left: auto;
+  right: 10px;
 }
 
 .anony-ca-item h4 {
-	border-right: 10px solid #ccbda2;
-	border-left: none;
-	padding-left: 0;
-	padding-right: 10px;
+  border-right: 10px solid #ccbda2;
+  border-left: none;
+  padding-left: 0;
+  padding-right: 10px;
 }
 
 .anony-popular {
-	margin-right: auto;
-	margin-left: 0.6%;
+  margin-right: auto;
+  margin-left: 0.6%;
 }
 
 #anony-contacts li {
-	display: flex;
-	align-items: center;
-	direction: ltr;
+  display: flex;
+  align-items: center;
+  direction: ltr;
 }
 
 .anony-search-input {
-	padding-right: 10px;
-	padding-left: 0;
+  padding-right: 10px;
+  padding-left: 0;
 }
 
 .anony-skew-bg, .anony-post-image-wrapper h4 {
-	left: auto;
-	right: 0;
+  left: auto;
+  right: 0;
 }
 
 .anony-metadata {
-	padding-right: 0;
-	padding-left: 10px;
+  padding-right: 0;
+  padding-left: 10px;
 }
 
 .anony-featured-excerpt {
-	padding-right: 10px;
-	padding-left: 0;
+  padding-right: 10px;
+  padding-left: 0;
 }
 
 .toggle-category {
-	right: auto;
-	left: 0;
+  right: auto;
+  left: 0;
 }
 
 /***Body***/
 /***blog post***/
 .anony-toggle-excerpt {
-	right: auto;
-	left: 10px;
+  right: auto;
+  left: 10px;
 }
 
 .anony-text h3, .anony-text p {
-	text-align: right;
+  text-align: right;
 }
 
 .anony-post_meta div {
-	margin-left: 5px;
-	margin-right: 0px;
+  margin-left: 5px;
+  margin-right: 0px;
 }
 
 .anony-inside-thumb {
-	right: auto;
-	left: 0;
+  right: auto;
+  left: 0;
 }
 
 #reply-title small {
-	float: left;
+  float: left;
 }
 
 .child {
-	margin-left: 0;
-	margin-right: 35px;
+  margin-left: 0;
+  margin-right: 35px;
 }
 
 #menu-close {
-	right: auto;
-	left: 5px;
+  right: auto;
+  left: 5px;
 }
 
 /***End blog post**/
 /***End body***/
 @media screen and (min-width: 768px) {
-	/***Header***/
-	#anony-main-menu-con li a {
-	border-right: 0;
-	}
-	.anony-sub-menu {
-	right: 0;
-	}
-	/***End header*/
+  /***Header***/
+  #anony-main-menu-con li a {
+    border-right: 0;
+  }
+  .anony-sub-menu {
+    right: 0;
+  }
+  /***End header*/
 }
 @media screen and (max-width: 480px) {
-	#anony-languages-menu-con {
-	right: auto;
-	left: 5px;
-	}
+  #anony-languages-menu-con {
+    right: auto;
+    left: 5px;
+  }
 }
