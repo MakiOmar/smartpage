@@ -66,7 +66,7 @@ $args = array(
 
 $query = new WP_Query( $args );
 
-$data['posts'] = false;
+$data['posts'] = array();
 
 if ( have_posts() ) :
 
@@ -85,7 +85,7 @@ if ( have_posts() ) :
 
 endif;
 
-if ( $data['posts'] ) {
+if ( ! empty( $data['posts'] ) ) {
 	extract( $data );
 }
 

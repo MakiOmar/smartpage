@@ -21,7 +21,9 @@ if ( have_posts() ) {
 
 	$pagination = anony_pagination();
 }
-
+if ( empty( $data ) ) {
+	return;
+}
 ?>
 
 <div class="anony-grid">
