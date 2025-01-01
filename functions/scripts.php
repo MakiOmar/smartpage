@@ -378,12 +378,12 @@ add_action(
 	'wp_footer',
 	function () {
 		?>
-	<script delay-exclud>
+	<script delay-exclude>
 		jQuery( document ).ready(
 			function($) {
-				$("#anony-mini-cart-widget").on(
+				$(document).on(
 					'click',
-					'#anony-mobile-cart-toggle',
+					'.anony-mobile-cart-button',
 					function (e) {
 						e.preventDefault();
 						$(".widget_shopping_cart_content").addClass('anony-mini-cart-open');
