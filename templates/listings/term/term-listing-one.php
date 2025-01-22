@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	foreach ( $terms as $term_id => $name ) {
 		?>
-			<div height="<?php echo esc_html( $height ); ?>" class="anony-grid-col <?php echo esc_attr( $class_prefix ); ?>-sm-<?php echo esc_attr( $desktop_columns ); ?> <?php echo esc_attr( $class_prefix ); ?>-slg-<?php echo esc_attr( $mobile_columns ); ?> <?php echo esc_html( $layout ); ?> anony-inline-flex flex-h-center anony-align-flex-start">
+			<div height="<?php echo esc_html( $height ); ?>" class="anony-grid-col <?php echo esc_attr( $class_prefix ); ?>-sm-<?php echo esc_attr( $desktop_columns ); ?> <?php echo esc_attr( $class_prefix ); ?>-slg-<?php echo esc_attr( $mobile_columns ); ?> <?php echo esc_attr( $class_prefix ); ?>-av-<?php echo esc_attr( $tablet_columns ); ?> <?php echo esc_html( $layout ); ?> anony-inline-flex flex-h-center anony-align-flex-start">
 				<a href="<?php echo esc_url( get_term_link( $term_id ) ); ?>" title="<?php echo esc_attr( $name ); ?>" class="anony-grid-row flex-h-center anony-flex-column">
 					<?php
 					$image_id = get_term_meta( $term_id, $image_id_meta_key, true );

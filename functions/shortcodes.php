@@ -640,6 +640,8 @@ function anony_terms_listing_shcode( $atts ) {
 			'number'            => '',
 			'desktop_columns'   => 4,
 			'mobile_columns'    => 2,
+			'tablet_columns'    => 4,
+			'same_columns'      => 'no',
 			'image_id_meta_key' => 'thumbnail_id',
 			'name_align'        => 'center',
 			'desktop_font_size' => '18px',
@@ -676,6 +678,7 @@ function anony_terms_listing_shcode( $atts ) {
 
 	$desktop_columns = absint( $atts['columns_base'] ) / absint( $atts['desktop_columns'] );
 	$mobile_columns  = absint( $atts['columns_base'] ) / absint( $atts['mobile_columns'] );
+	$tablet_columns  = absint( $atts['columns_base'] ) / absint( $atts['tablet_columns'] );
 	$name_align      = $atts['name_align'];
 	$font_size       = wp_is_mobile() ? $atts['mobile_font_size'] : $atts['desktop_font_size'];
 	$height          = $atts['height'];
